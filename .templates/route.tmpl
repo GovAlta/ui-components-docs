@@ -1,0 +1,53 @@
+import { useState } from "react";
+import { GoA{{Name}}, GoACallout } from "@abgov/react-components";
+import { Sandbox, ComponentBinding } from "@components/sandbox";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+
+export default function {{Name}}Page() {
+
+  const [{{name}}Props, set{{Name}}Props] = useState({});
+  const [{{name}}Bindings, set{{Name}}Bindings] = useState<ComponentBinding[]>([ 
+    { label: "SomeProp", type: "list", name: "type", options: ["", "foo", "bar"], value: "", defaultValue: "foo"},
+    { label: "AnotherProp", type: "boolean", name: "disabled", value: false },
+  ])
+
+  const noop = () => {}
+
+  function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    set{{Name}}Bindings(bindings)
+    set{{Name}}Props(props)
+  }
+
+  return (
+    <>
+      <h1>{{Name}}</h1>
+      <p>
+        {{Name}} allows users to ...
+      </p>
+      <Sandbox 
+        name="{{name}}"
+        properties={{{name}}Bindings}
+        onChange={onChange} 
+        note=""
+      >
+        <CodeSnippet lang="typescript" tags="angular" allowCopy={true} code={`
+          export class SomeOtherComponent {
+            // angular event handling code
+          }
+        `}>
+        </CodeSnippet>
+
+        <CodeSnippet lang="tsx" tags="react" allowCopy={true} code={`
+          // react code
+        `}>
+        </CodeSnippet>
+
+        <GoA{{Name}} {...{{name}}Props} onClick={noop}></GoA{{Name}}>
+      </Sandbox>
+
+      <GoACallout type="information" mt="2xl">
+        <a href="#">View installation instructions</a>
+      </GoACallout>
+    </>
+  )
+}

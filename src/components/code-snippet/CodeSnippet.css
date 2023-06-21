@@ -1,0 +1,8 @@
+.goa-code-snippet pre code {
+  background-color: #eee;
+}
+
+.goa-code-snippet-actions {
+  text-align: right;
+  margin-bottom: 2rem;
+}
