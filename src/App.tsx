@@ -1,50 +1,31 @@
-import {
-  GoAAppHeader,
-  GoAMicrositeHeader,
-  GoAAppFooter,
-  GoAPageBlock,
-  GoAAppFooterMetaSection,
-  GoAOneColumnLayout,
-} from '@abgov/react-components';
-import { Outlet } from 'react-router-dom';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+import ComponentsPage from "./routes/components/Components"
+import DropdownPage from './routes/components/Dropdown';
+import ButtonPage from './routes/components/Button';
+import FormStepperPage from './routes/components/FormStepper';
+import CheckboxPage from './routes/components/Checkbox';
+import AllComponentsPage from './routes/components/AllComponents';
+import Root from './routes/root';
 
-export function App() {
-  return (
-    <GoAOneColumnLayout>
-      <section slot="header">
-        <GoAMicrositeHeader
-          type="beta"
-          version="React 1.0"
-          feedbackUrl="https://github.com/GovAlta/ui-components/issues/new/choose"
-        />
-        <GoAAppHeader
-          url="/"
-          heading="Design system templates"
-          maxContentWidth="100%"
-        />
-      </section>
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Root />}>
+      <Route path="components" element={<ComponentsPage />}>
+        <Route index element={<AllComponentsPage />} />
+        <Route path="button" element={<ButtonPage />} />
+        <Route path="dropdown" element={<DropdownPage />} />
+        <Route path="form-stepper" element={<FormStepperPage />} />
+        <Route path="checkbox" element={<CheckboxPage />} />
+      </Route>
+    </Route>
+  )
+)
 
-      <GoAPageBlock width="904px">
-        <Outlet />
-      </GoAPageBlock>
-
-      <section slot="footer">
-        <GoAAppFooter maxContentWidth="100%">
-          <GoAAppFooterMetaSection>
-            <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9">
-              Get help
-            </a>
-            <a href="https://goa-dio.atlassian.net/wiki/spaces/DS/pages/2342813697/Design+System+Drop-in+hours">
-              Drop-in Hours
-            </a>
-            <a href="https://github.com/GovAlta/ui-components/issues/new/choose">
-              Contribute
-            </a>
-          </GoAAppFooterMetaSection>
-        </GoAAppFooter>
-      </section>
-    </GoAOneColumnLayout>
-  );
-}
-
-export default App;
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+)

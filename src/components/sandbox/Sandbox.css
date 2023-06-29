@@ -1,0 +1,14 @@
+.sandbox-note {
+  color: #666;
+}
+
+.sandbox-render {
+  border: 1px solid #ccc;
+  padding: 2rem;
+  margin: 1rem 0;
+  resize: both;
+  overflow: auto;
+
+  display: flex;
+  justify-content: center;
+}
