@@ -1,0 +1,6 @@
+.modal {
+	padding: 2rem;
+	border: 1px solid var(--goa-color-greyscale-700);
+	border-radius: 4px;
+	box-shadow: var(--goa-shadow-modal);
+}

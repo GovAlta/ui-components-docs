@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { GoABlock, GoAButton, GoADropdown, GoADropdownItem, GoAFormItem, GoAInput } from "@abgov/react-components";
+import { GoABlock, GoAButton, GoAButtonGroup, GoADropdown, GoADropdownItem, GoAFormItem, GoAInput } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { GoAModal } from "@components/mock-modal/Modal"
 
 export default function DropdownPage() {
 
@@ -49,36 +50,58 @@ export default function DropdownPage() {
 
       <h3>Ask a user for an address</h3>
 
-      <Sandbox
-        flags={["reactive"]}
-        onChange={onChange}
-        note="Used to carry out the primary action. Don’t use more than one primary button in a section or screen."
-      >
-
-        <GoABlock direction="column">
-          <GoAFormItem label="Street Address">
-            <GoAInput name="address" type="text" value="" onChange={noop} width="400px" />
+      <Sandbox flags={["reactive"]}>
+        <GoAFormItem label="Street Address">
+          <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
+        </GoAFormItem>
+        <GoAFormItem label="Suite or unit #">
+          <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
+        </GoAFormItem>
+        <GoAFormItem label="City/town">
+          <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
+        </GoAFormItem>
+        <GoABlock direction="row">
+          <GoAFormItem label="Provice/territory">
+            <GoADropdown onChange={noop} name="province" value="alberta">
+              <GoADropdownItem label="Alberta" value="alberta" />
+              <GoADropdownItem label="BC" value="bc" />
+              <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
+            </GoADropdown>
           </GoAFormItem>
-          <GoAFormItem label="Suite or unit #">
-            <GoAInput name="suite" type="text" value="" onChange={noop} width="400px" />
+          <GoAFormItem label="Postal Code">
+            <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
           </GoAFormItem>
-          <GoAFormItem label="City/town">
-            <GoAInput name="city" type="text" value="" onChange={noop} width="400px" />
-          </GoAFormItem>
-          <GoABlock direction="row">
-            <GoAFormItem label="Provice/territory">
-              <GoADropdown onChange={noop} name="province" value="alberta">
-                <GoADropdownItem label="Alberta" value="alberta" />
-                <GoADropdownItem label="BC" value="bc" />
-                <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-              </GoADropdown>
-            </GoAFormItem>
-            <GoAFormItem label="Postal Code">
-              <GoAInput name="postalCode" type="text" value="" onChange={noop} width="190px" />
-            </GoAFormItem>
-          </GoABlock>
         </GoABlock>
 
+        <GoAButtonGroup alignment="start" mt="l">
+          <GoAButton type="primary" onClick={noop}>Submit and continue</GoAButton>
+          <GoAButton type="secondary" onClick={noop}>Cancel</GoAButton>
+        </GoAButtonGroup>
+      </Sandbox>
+
+      <h3>Confirm a destructive action</h3>
+
+      <Sandbox>
+        <GoAModal>
+          <h3>Are you sure you want to delete this record?</h3>
+          <p>You cannot undo this action.</p>
+          <GoAButtonGroup alignment="end" mt="l">
+            <GoAButton type="secondary" onClick={noop}>Cancel</GoAButton>
+            <GoAButton type="primary" variant="destructive" onClick={noop}>Delete record</GoAButton>
+          </GoAButtonGroup>
+        </GoAModal>
+      </Sandbox>
+
+      <h3>Disabled button with a required field</h3>
+
+      <Sandbox flags={["reactive"]}>
+        <GoAFormItem label="Input">
+          <GoAInput name="input" type="text" value="" onChange={noop} width="400px" />
+        </GoAFormItem>
+        <GoAButtonGroup alignment="start" mt="l">
+          <GoAButton disabled={true} onClick={noop}>Confirm</GoAButton>
+          <GoAButton type="secondary" onClick={noop}>Cancel</GoAButton>
+        </GoAButtonGroup>
       </Sandbox>
     </>
   )
