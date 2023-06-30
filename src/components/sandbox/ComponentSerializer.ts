@@ -4,11 +4,11 @@ import { Serializer } from './BaseSerializer';
 // https://github.com/grommet/jsx-to-string/blob/master/src/index.js
 
 interface GoAElement {
-  type: string | { name: string}
+  type: string | { name: string }
 }
 
 export class ComponentSerializer {
-  constructor(private serializer: Serializer) {}
+  constructor(private serializer: Serializer) { }
 
   #serializeComponent(item: ReactElement, isRoot: boolean, spacing: number): string {
     if (isValidElement(item)) {
@@ -19,8 +19,8 @@ export class ComponentSerializer {
     }
     return "";
   }
-      
-  #serializeProp(elementName: string, name: string, item: ReactElement | Object | string | number | boolean, delimit=true): string {
+
+  #serializeProp(elementName: string, name: string, item: ReactElement | Object | string | number | boolean, delimit = true): string {
     if (typeof item === "string") {
       return this.serializer.stringToProp(name, item)
     }
@@ -36,7 +36,7 @@ export class ComponentSerializer {
     if (typeof item === 'function') {
       return this.serializer.funcToProp(name, item)
     }
-  
+
     if (Array.isArray(item)) {
       const delimiter = delimit ? ', ' : `\n  `;
       const items: string = item.map(i => this.#serializeProp(elementName, name, i)).join(delimiter);
@@ -44,7 +44,7 @@ export class ComponentSerializer {
     }
 
     return ""
-  }  
+  }
 
   // Public
   componentsToString(components: ReactElement[], spacing: number = 0): string {
@@ -54,7 +54,7 @@ export class ComponentSerializer {
   #componentToString(component: ReactElement & GoAElement, isRoot: boolean, spacing: number = 0): string {
     let elementType = this.serializer.componentNameToString((component.type as unknown as any).name || component.type as string);
     this.serializer.setIsRoot(isRoot)
-    this.serializer.setState({element: elementType, props: { name: component.props.name}})
+    this.serializer.setState({ element: elementType, props: { name: component.props.name } })
 
     // no props return empty component ex <GoAInput />
     if (!component.props) {
@@ -90,13 +90,12 @@ export class ComponentSerializer {
           .map((child: ReactElement) => this.#serializeComponent(child, false, spacing))
           .join(`\n${indentation}`);
       } else {
-        // FIXME: should this be moved into the array handling above?
         children = this.#serializeComponent(component.props.children, false, spacing);
       }
 
       // final output
       return `<${elementType}${props}>\n${indentation}${children}\n${indentation.slice(0, -2)}</${elementType}>`;
-    } 
+    }
 
     return `<${elementType}${props} />`;
   }

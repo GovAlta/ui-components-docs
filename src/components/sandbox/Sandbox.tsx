@@ -16,7 +16,7 @@ type Flag = "reactive"
 interface ElementProps {
   properties?: ComponentBinding[];
   note?: string;
-  onChange: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
+  onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
 }
 
@@ -44,22 +44,22 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   const lang = useContext(LanguageContext);
   const [formatLang, setFormatLang] = useState<string>("");
 
-  const formatMap: Record<string, string> = {   
+  const formatMap: Record<string, string> = {
     react: "tsx",
     angular: "html"
   }
-  
+
   useEffect(() => {
     if (!props.properties) return;
     if (!props.children) return;
-    
+
     setFormatLang(formatMap[lang])
   }, [lang, props.children, props.properties])
 
   // Functions
 
   function onChange(bindings: ComponentBinding[]) {
-    props.onChange(bindings, toKeyValue(bindings)) 
+    props.onChange?.(bindings, toKeyValue(bindings))
   }
 
   function toKeyValue(bindings: ComponentBinding[]) {
@@ -72,18 +72,17 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     }, {})
   }
 
+  // Filters components from within the Sandbox children
+  // i.e. Get all the <CodeSnippet> components
   function getComponents(type: "goa" | "codesnippet"): ReactElement[] {
-    const children = 
-      Array.isArray(props.children)
-      ? props.children
-      : [props.children]
-    
-    if (children.length === 0) return [];
+    const children = Array.isArray(props.children) ? props.children : [props.children]
 
     return (children as ReactElement[])
-      .filter(el => typeof el.type !== "string"  && el.type.name.toLowerCase().startsWith(type))
+      .filter(el => typeof el.type !== "string" && el.type.name.toLowerCase().startsWith(type))
   }
 
+  // Gets code snippets matching the tags passed in. This allows for Angular reactive components
+  // to be displayed, while hiding the non-reactive ones
   function getCodeSnippets(...tags: string[]) {
     const matches = (list: string[]): boolean => {
       return tags.filter(tag => list.includes(tag)).length === list.length
@@ -96,12 +95,13 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
       })
   }
 
+  // CodeSnippet output. To show code the root element *must* start with goa (case-insensitive).
+  // This allows 
   function output(fn: Serializer): string {
     return fn(getComponents("goa"), props.properties || []);
   }
 
   function render() {
-    
     if (lang === "angular" && props.flags?.includes("reactive")) {
       return <>
         Angular
@@ -139,8 +139,8 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
 
   return (
     <>
-      { props.properties && 
-          <SandboxProperties properties={props.properties} onChange={onChange} />
+      {props.properties &&
+        <SandboxProperties properties={props.properties} onChange={onChange} />
       }
 
       <div className="sandbox-note">
@@ -149,10 +149,12 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
 
       {/* rendered output */}
       <div className="sandbox-render">
-        {getComponents("goa")}
+        <div>
+          {getComponents("goa")}
+        </div>
       </div>
 
-      { render() }
+      {render()}
     </>
   )
 }
