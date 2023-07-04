@@ -10,7 +10,7 @@ export function Components() {
   const [language, setLanguage] = useState("");
 
   useEffect(() => {
-    const lang = localStorage.getItem("goa-docs-lang") || "tsx";
+    const lang = localStorage.getItem("goa-docs-lang") || "react";
     setLanguage(lang)
   }, [])
 
@@ -27,7 +27,9 @@ export function Components() {
           <GoADropdownItem label="React" value="react" />
           <GoADropdownItem label="Angular" value="angular" />
         </GoADropdown>
+
         <GoASideMenu>
+          <Link to="">All Components</Link>
           <GoASideMenuGroup heading="Components">
             <Link to="dropdown">Dropdown</Link>
             <Link to="button">Button</Link>

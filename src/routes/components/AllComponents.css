@@ -1,0 +1,11 @@
+.anchors a {
+  margin-right: 1rem;
+}
+
+.anchors a:before {}
+
+.back-to-top {
+  margin-top: 1rem;
+  margin-right: 1.5rem;
+  text-align: right;
+}

@@ -10,5 +10,13 @@
   overflow: auto;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.sandbox-render-fullwidth {
+  width: 100%;
+}
+
+.sandbox-render-centered {
+  /*  */
 }

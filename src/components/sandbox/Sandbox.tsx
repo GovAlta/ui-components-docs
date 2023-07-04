@@ -16,6 +16,7 @@ type Flag = "reactive"
 interface ElementProps {
   properties?: ComponentBinding[];
   note?: string;
+  fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
 }
@@ -149,7 +150,7 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
 
       {/* rendered output */}
       <div className="sandbox-render">
-        <div>
+        <div className={ props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
           {getComponents("goa")}
         </div>
       </div>
