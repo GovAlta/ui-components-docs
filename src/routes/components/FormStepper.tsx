@@ -24,6 +24,7 @@ export default function DropdownPage() {
       </p>
       <Sandbox 
         properties={formStepperBindings} 
+        fullWidth={true}
         onChange={onChange} 
       >
         <CodeSnippet lang="typescript" tags="angular" allowCopy={true} code={`
