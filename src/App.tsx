@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
 import ComponentsPage from "./routes/components/Components"
 import DropdownPage from './routes/components/Dropdown';
@@ -9,6 +8,8 @@ import FormStepperPage from './routes/components/FormStepper';
 import CheckboxPage from './routes/components/Checkbox';
 import AllComponentsPage from './routes/components/AllComponents';
 import Root from './routes/root';
+
+import './index.css'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
