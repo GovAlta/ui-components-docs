@@ -13,6 +13,8 @@ import "./root.css";
 
 import { useLocation } from "react-router-dom";
 
+export const MAX_CONTENT_WIDTH = "1500px";
+
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -40,9 +42,9 @@ export default function Root() {
           <GoAMicrositeHeader
             type={"alpha"}
             feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
-            maxContentWidth="1440px"
+            maxContentWidth={MAX_CONTENT_WIDTH}
           />
-          <GoAAppHeader heading="Design system" maxContentWidth="1440px" url={"/"}>
+          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
@@ -55,12 +57,12 @@ export default function Root() {
           </GoAAppHeader>
         </section>
 
-        <section className="content">
+        <section>
           <Outlet />
         </section>
 
         <section slot="footer">
-          <GoAAppFooter maxContentWidth="1440px">
+          <GoAAppFooter maxContentWidth={MAX_CONTENT_WIDTH}>
             <GoAAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
               <Link to="/patterns">Patterns and templates</Link>

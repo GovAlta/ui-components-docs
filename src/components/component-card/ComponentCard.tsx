@@ -9,7 +9,7 @@ export interface Props {
 }
 
 function dasherize(value: string): string {
-	return value.split(" ").join("-")
+  return value.split(" ").join("-");
 }
 
 export function ComponentCard(props: Props) {

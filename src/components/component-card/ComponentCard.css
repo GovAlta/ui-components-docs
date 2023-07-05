@@ -17,7 +17,5 @@
 }
 
 .card-content a {
-  font-size: var(--goa-font-size-7);
-  display: block;
   margin-bottom: 1rem;
 }

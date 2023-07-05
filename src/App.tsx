@@ -28,6 +28,7 @@ import TypographyPage from "./routes/design-tokens/typography/Typography";
 import DesignTokensOverviewPage from "./routes/design-tokens/overview/Overview";
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+import HomePage from '@routes/home';
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -48,11 +49,8 @@ const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route
-        path="components"
-        element={<ComponentsPage />}
-        errorElement={<ComponentNotFoundPage />}
-      >
+      <Route path="/" element={<HomePage />} />
+      <Route path="components" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />} >
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
         <Route path="button" element={<ButtonPage />} />
