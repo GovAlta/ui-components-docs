@@ -1,0 +1,23 @@
+.do-container {
+    font-size: var(--goa-font-size-5);
+    border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200); 
+    padding: 3rem;
+}
+
+.do-content {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding-top: 1rem;
+    margin-bottom: 0.625rem;
+    border-top: 1.25rem solid;
+    color: var(--goa-color-success-default);
+}
+
+.content-label {
+    padding-bottom: var(--font-valign-fix);
+}
+
+[data-positive="dont"].do-content {
+    color: var(--goa-color-emergency-dark);
+}
