@@ -85,8 +85,15 @@ export default function CheckboxPage() {
         patterns and contexts.
       </h3>
 
-      <GoABlock mt="xl" mb="xl">
-        <GoAInput name="filter" value="" type="text" placeholder="Find component" onChange={(_name, value) => filterComponents(value)} width="400px" />
+      <GoABlock mt="xs" mb="xl">
+        <GoAInput 
+          name="filter" 
+          value="" 
+          type="text" 
+          width="80ch"
+          leadingIcon="search"
+          onChange={(_name, value) => filterComponents(value)} 
+        />
       </GoABlock>
 
       {mode === "search" &&
