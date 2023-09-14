@@ -3,7 +3,7 @@ import "./SupportInfo.css";
 
 export const SupportInfo = () => {
   return (
-    <div className="support-info">
+    <section className="support-info">
       <GoACallout
         type="information"
         heading="Need help? Connect with us on Slack"
@@ -14,6 +14,6 @@ export const SupportInfo = () => {
         General information and discussion related to design system including
         questions, new component proposals, contribution, and other requests.
       </GoACallout>
-    </div>
+    </section>
   );
 };

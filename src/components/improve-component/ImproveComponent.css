@@ -1,0 +1,7 @@
+.improve-component {
+    margin-top: var(--goa-space-2xl);
+}
+
+.improve-component ul {
+    margin-left: 1.875rem;
+}

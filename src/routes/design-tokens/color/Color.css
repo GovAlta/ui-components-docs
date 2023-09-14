@@ -20,6 +20,7 @@
   border-right: 1px solid #dcdcdc;
 }
 
+
 /*Tablet*/
 @media screen and (max-width: 1231px) {
   .colors-page div.token-block {

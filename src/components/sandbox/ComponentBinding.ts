@@ -1,4 +1,9 @@
-export type ComponentBinding = BooleanBinding | StringBinding | ListBinding | NumberBinding | EmptyBinding;
+export type ComponentBinding =
+  | BooleanBinding
+  | StringBinding
+  | ListBinding
+  | NumberBinding
+  | EmptyBinding;
 
 interface BaseBinding {
   name: string;
@@ -15,6 +20,7 @@ export interface EmptyBinding extends BaseBinding {
 export interface BooleanBinding extends BaseBinding {
   type: "boolean";
   value: boolean;
+  checkboxValue?: string; // value dispatched to binding components can be a string
 }
 
 export interface NumberBinding extends BaseBinding {
@@ -33,4 +39,3 @@ export interface ListBinding extends BaseBinding {
   value: string;
   defaultValue?: string;
 }
-

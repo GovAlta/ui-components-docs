@@ -5,6 +5,7 @@ import COLORS from "./colors.json";
 import React, { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { AnchorLinks } from "@components/anchor-links/AnchorLinks";
 
 interface Token {
   code: string;
@@ -71,13 +72,13 @@ export default function ColorPage() {
     if (isMobile) return null;
 
     return (
-      <GoAGrid minChildWidth="15rem" gap="m">
+      <AnchorLinks>
         {colors.map((color, index) => (
           <a key={index} href={`#${color.name.toLowerCase()}`}>
             {color.name}
           </a>
         ))}
-      </GoAGrid>
+      </AnchorLinks>
     );
   };
 

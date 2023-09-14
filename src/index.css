@@ -27,17 +27,11 @@ a[href^="#"]::before {
   display: inline-block;
 }
 
+
 /*Desktop*/
 @media screen and (min-width: 1232px) {
   tbody {
     border-bottom: 2px solid var(--goa-color-greyscale-200);
-  }
-}
-
-/*Tablet*/
-@media screen and (max-width: 1231px) {
-  .content {
-    margin: 0;
   }
 }
 /*Mobile*/

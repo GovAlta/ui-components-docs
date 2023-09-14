@@ -105,13 +105,11 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   function render() {
     if (lang === "angular" && props.flags?.includes("reactive")) {
       return <>
-        Angular
         {getCodeSnippets("angular")}
         <CodeSnippet lang={formatLang} allowCopy={true}>
           {output(serializers["angular"])}
         </CodeSnippet>
 
-        Reactive
         {getCodeSnippets("angular", "reactive")}
         <CodeSnippet lang={formatLang} allowCopy={true}>
           {output(serializers["angular-reactive"])}

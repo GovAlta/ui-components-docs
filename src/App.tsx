@@ -6,9 +6,8 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import ComponentsPage from "./routes/components/Components";
+import ComponentsPage from "@routes/components/ComponentsLayout.tsx";
 import DropdownPage from "./routes/components/Dropdown";
-import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import AllComponentsPage from "./routes/components/AllComponents";
@@ -25,12 +24,16 @@ import ShadowPage from "./routes/design-tokens/shadow/Shadow";
 import SpacingPage from "./routes/design-tokens/spacing/Spacing";
 import TypographyPage from "./routes/design-tokens/typography/Typography";
 import DesignTokensOverviewPage from "./routes/design-tokens/overview/Overview";
+
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+import ButtonPage from "@routes/components/button/Button";
+import Home from "@routes/Home.tsx";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
+
 const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({
   children,
 }) => {
@@ -47,6 +50,7 @@ const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
+      <Route index element={<Home />} />
       <Route
         path="components"
         element={<ComponentsPage />}
@@ -59,6 +63,7 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
+
       <Route
         path="design-tokens"
         element={<DesignTokens />}
