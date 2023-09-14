@@ -1,0 +1,68 @@
+[
+  {
+    "tokenName": "goa-space-none",
+    "rem": "0rem",
+    "px": "0px",
+    "figmaUsage": "Spacing/none"
+  },
+  {
+    "tokenName": "goa-space-3xs",
+    "rem": "0.125rem",
+    "px": "2px",
+    "figmaUsage": "Spacing/3XS"
+  },
+  {
+    "tokenName": "goa-space-2xs",
+    "rem": "0.25rem",
+    "px": "4px",
+    "figmaUsage": "Spacing/2XS"
+  },
+  {
+    "tokenName": "goa-space-xs",
+    "rem": "0.5rem",
+    "px": "8px",
+    "figmaUsage": "Spacing/XS"
+  },
+  {
+    "tokenName": "goa-space-s",
+    "rem": "0.75rem",
+    "px": "12px",
+    "figmaUsage": "Spacing/S"
+  },
+  {
+    "tokenName": "goa-space-m",
+    "rem": "1rem",
+    "px": "16px",
+    "figmaUsage": "Spacing/M"
+  },
+  {
+    "tokenName": "goa-space-l",
+    "rem": "1.5rem",
+    "px": "24px",
+    "figmaUsage": "Spacing/L"
+  },
+  {
+    "tokenName": "goa-space-xl",
+    "rem": "2rem",
+    "px": "32px",
+    "figmaUsage": "Spacing/XL"
+  },
+  {
+    "tokenName": "goa-space-2xl",
+    "rem": "3rem",
+    "px": "48px",
+    "figmaUsage": "Spacing/2XL"
+  },
+  {
+    "tokenName": "goa-space-3xl",
+    "rem": "4rem",
+    "px": "64px",
+    "figmaUsage": "Spacing/3XL"
+  },
+  {
+    "tokenName": "goa-space-4xl",
+    "rem": "8rem",
+    "px": "128px",
+    "figmaUsage": "Spacing/4XL"
+  }
+]

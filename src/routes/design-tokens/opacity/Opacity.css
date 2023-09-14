@@ -1,0 +1,14 @@
+.opacity-page div.grey-box {
+  height: 24px;
+  width: 24px;
+  border-radius: var(--goa-border-radius-none);
+  background-color: var(--goa-color-greyscale-black);
+  margin-left: -30px;
+}
+.opacity-page div.blue-box {
+  height: 14px;
+  width: 14px;
+  background-color: var(--goa-color-interactive-default);
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}

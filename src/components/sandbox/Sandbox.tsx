@@ -97,7 +97,7 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   }
 
   // CodeSnippet output. To show code the root element *must* start with goa (case-insensitive).
-  // This allows 
+  // This allows
   function output(fn: Serializer): string {
     return fn(getComponents("goa"), props.properties || []);
   }

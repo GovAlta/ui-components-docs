@@ -70,11 +70,11 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children}) => {
       return cleanTabs(code, 2)
     }
     if (typeof children !== "string") {
-      return renderToString(children as ReactElement)  
+      return renderToString(children as ReactElement)
     }
     return children;
   }
-  
+
   return (
     <div className="goa-code-snippet">
       <pre>
@@ -82,7 +82,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children}) => {
         {output}
         </code>
       </pre>
-      {allowCopy && 
+      {allowCopy &&
         <div className="goa-code-snippet-actions">
           <GoAButton type="tertiary" size="compact" leadingIcon="copy" onClick={copyCode}>Copy code</GoAButton>
         </div>

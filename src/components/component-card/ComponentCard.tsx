@@ -3,7 +3,7 @@ import "./ComponentCard.css";
 
 export interface Props {
 	name: string;
-	description: string;		
+	description: string;
 	groups: string[];
 	tags?: string[];
 }
@@ -13,7 +13,7 @@ function dasherize(value: string): string {
 }
 
 export function ComponentCard(props: Props) {
-	
+
 	return (
 		<div className="card">
 			<div className="card-image" style={{backgroundImage: `url(/images/${dasherize(props.name)}.png)`}} />
@@ -24,5 +24,5 @@ export function ComponentCard(props: Props) {
 				{props.description}
 			</div>
 		</div>
-	)	
+	)
 }

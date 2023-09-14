@@ -1,7 +1,14 @@
 @import "@abgov/web-components/index.css";
-
 body {
   padding: 0;
+}
+h1 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+h3 {
+  padding-top: 0;
+  max-width: 100%;
 }
 
 h1 + h2,
@@ -22,6 +29,41 @@ a[href^="#"]::before {
     center bottom no-repeat;
   width: 1rem;
   height: 1rem;
-  margin-right: var(--goa-spacing-xs);
+  margin-right: var(--goa-space-xs);
   display: inline-block;
+}
+
+h4 + p {
+  margin-top: 0.5rem;
+}
+p + h4 {
+  margin-bottom: 0.5rem;
+}
+p {
+  font: var(--goa-typography-body-m);
+  max-width: 72ch;
+}
+
+goa-container h4 {
+  margin : 0.5rem 0;
+}
+
+/*Desktop*/
+@media screen and (min-width: 1232px) {
+  tbody {
+    border-bottom: 2px solid var(--goa-color-greyscale-200);
+  }
+}
+
+/*Tablet*/
+@media screen and (max-width: 1231px) {
+  .content {
+    margin: 0;
+  }
+}
+/*Mobile*/
+@media screen and (max-width: 623px) {
+  h3 {
+    font: var(--goa-typography-body-m);
+  }
 }

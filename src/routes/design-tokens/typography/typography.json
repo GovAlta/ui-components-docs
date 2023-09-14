@@ -1,0 +1,82 @@
+[
+  {
+    "figmaTypeStyle": "XLarge heading",
+    "tokenName": "goa-typography-heading-xl",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Bold",
+    "fontSize": "48px | 3rem",
+    "lineHeight": "56px | 3.5rem"
+  },
+  {
+    "figmaTypeStyle": "Large heading",
+    "tokenName": "goa-typography-heading-l",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "36px | 2.25rem",
+    "lineHeight": "44px | 2.75rem"
+  },
+  {
+    "figmaTypeStyle": "Medium heading",
+    "tokenName": "goa-typography-heading-m",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "24px | 1.5rem",
+    "lineHeight": "32px | 2rem"
+  },
+  {
+    "figmaTypeStyle": "Small heading",
+    "tokenName": "goa-typography-heading-s",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Bold",
+    "fontSize": "18px | 1.125rem",
+    "lineHeight": "28px | 1.75rem"
+  },
+  {
+    "figmaTypeStyle": "XSmall heading",
+    "tokenName": "goa-typography-heading-xs",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Bold",
+    "fontSize": "16px | 1rem",
+    "lineHeight": "24px | 1.5rem"
+  },
+  {
+    "figmaTypeStyle": "Large text",
+    "tokenName": "goa-typography-body-l",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "24px | 1.5rem",
+    "lineHeight": "32px | 2rem"
+  },
+  {
+    "figmaTypeStyle": "Medium text",
+    "tokenName": "goa-typography-body-m",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "18px | 1.125rem",
+    "lineHeight": "28px  | 1.75rem"
+  },
+  {
+    "figmaTypeStyle": "Small text",
+    "tokenName": "goa-typography-body-s",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "16px | 1rem",
+    "lineHeight": "24px | 1.5rem"
+  },
+  {
+    "figmaTypeStyle": "XSmall text",
+    "tokenName": "goa-typography-body-xs",
+    "typeFamily": "Acumin Pro SemiCondensed",
+    "weight": "Regular",
+    "fontSize": "14px | 0.875rem",
+    "lineHeight": "20px | 1.25rem"
+  },
+  {
+    "figmaTypeStyle": "Medium number",
+    "tokenName": "goa-typography-number-m",
+    "typeFamily": "Roboto Mono",
+    "weight": "Regular",
+    "fontSize": "18px | 1.125rem",
+    "lineHeight": "28px | 1.75rem"
+  }
+]
