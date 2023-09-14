@@ -1,0 +1,4 @@
+.developer-setup ol {
+    list-style-type: lower-alpha;
+    margin-left: var(--goa-space-l);
+}

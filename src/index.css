@@ -26,6 +26,16 @@ a[href^="#"]::before {
   margin-right: var(--goa-space-xs);
   display: inline-block;
 }
+a[target="_blank"]::after {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  margin-left: var(--goa-space-2xs);
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>')
+  center bottom no-repeat;
+}
 
 /*Desktop*/
 @media screen and (min-width: 1232px) {
