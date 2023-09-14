@@ -1,0 +1,14 @@
+[
+  {
+    "tokenName": "goa-border-radius-none",
+    "rem": "0rem",
+    "px": "0px",
+    "figmaUsage": "Use a border radius of 0px."
+  },
+  {
+    "tokenName": "goa-border-radius-m",
+    "rem": "0.25rem",
+    "px": "4px",
+    "figmaUsage": "Use a border radius of 4px."
+  }
+]

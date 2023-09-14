@@ -31,7 +31,7 @@
   Side Menu
 ==================*/
 .side-menu {
-  max-width: 224px;
+  min-width: 224px;
   border-right: 1px solid var(--goa-color-greyscale-200);
 }
 .side-menu goa-dropdown {

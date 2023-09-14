@@ -1,0 +1,31 @@
+.get-started-page,
+.qa-testing-page,
+.roadmap-page {
+    max-width: 72ch;
+}
+
+.get-started-page a {
+    font-size: 20px;
+    margin: 0 1rem;
+}
+
+.body-label {
+    color: var(--goa-color-text-secondary);
+}
+
+.open-icon {
+    display: inline-block;
+    vertical-align: -5px;
+    margin-left: 0.5rem;
+}
+
+
+.services-principle-page ol li::marker,
+.services-principle-page h3 {
+    font: var(--goa-typography-heading-m);
+    font-weight: 700;
+}
+
+.services-principle-page ol li {
+    margin-bottom: 3rem;
+}

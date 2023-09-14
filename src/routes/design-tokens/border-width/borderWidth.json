@@ -1,0 +1,20 @@
+[
+  {
+    "tokenName": "goa-border-width-s",
+    "rem": "0.0625rem",
+    "px": "1px",
+    "figmaUsage": "Use a border width of 1px."
+  },
+  {
+    "tokenName": "goa-border-width-m",
+    "rem": "0.125rem",
+    "px": "2px",
+    "figmaUsage": "Use a border width of 2px."
+  },
+  {
+    "tokenName": "goa-border-width-l",
+    "rem": "0.1875rem",
+    "px": "3px",
+    "figmaUsage": "Use a border width of 3px."
+  }
+]

@@ -1,0 +1,10 @@
+.designers-overview-page code {
+    background-color: #eee;
+    display: inline;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.designers-overview-page ol{
+    max-width: 72ch;
+}

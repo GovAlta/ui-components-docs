@@ -1,0 +1,14 @@
+[
+
+  {
+    "tokenName": "goa-opacity-background-modal",
+    "percentage": "50%",
+    "figmaUsage": "Use an opacity of 50%"
+  },
+  {
+    "tokenName": "goa-opacity-background-loading",
+    "percentage": "90%",
+    "figmaUsage": "Use an opacity of 90%"
+  }
+
+]

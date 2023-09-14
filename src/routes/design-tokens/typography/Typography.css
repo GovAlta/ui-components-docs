@@ -1,0 +1,42 @@
+.typography {
+    white-space: normal;
+}
+.goa-typography-heading-xl{
+    font: var(--goa-typography-heading-xl);
+}
+
+.goa-typography-heading-l {
+    font: var(--goa-typography-heading-l);
+}
+
+.goa-typography-heading-m {
+    font: var(--goa-typography-heading-m);
+}
+
+.goa-typography-heading-s {
+    font: var(--goa-typography-heading-s);
+}
+
+.goa-typography-heading-xs {
+    font: var(--goa-typography-heading-xs);
+}
+
+.goa-typography-body-l {
+    font: var(--goa-typography-body-l);
+}
+
+.goa-typography-body-m {
+    font: var(--goa-typography-body-m);
+}
+
+.goa-typography-body-s {
+    font: var(--goa-typography-body-s);
+}
+
+.goa-typography-body-xs {
+    font: var(--goa-typography-body-xs);
+}
+
+.goa-typography-number-m {
+    font: var(--goa-typography-number-m);
+}

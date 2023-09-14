@@ -1,0 +1,25 @@
+[
+
+  {
+    "tokenName": "goa-icon-size-s",
+    "rem": "1rem",
+    "px": "16px",
+    "figmaUsage": "Icon Size/Small",
+    "size": "small"
+  },
+  {
+    "tokenName": "goa-icon-size-m",
+    "rem": "1.25rem",
+    "px": "20px",
+    "figmaUsage": "Icon Size/Medium",
+    "size": "medium"
+  },
+  {
+    "tokenName": "goa-icon-size-l",
+    "rem": "1.5rem",
+    "px": "24px",
+    "figmaUsage": "Icon Size/Large",
+    "size": "large"
+  }
+
+]

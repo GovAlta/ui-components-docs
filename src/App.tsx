@@ -25,8 +25,22 @@ import ShadowPage from "./routes/design-tokens/shadow/Shadow";
 import SpacingPage from "./routes/design-tokens/spacing/Spacing";
 import TypographyPage from "./routes/design-tokens/typography/Typography";
 import DesignTokensOverviewPage from "./routes/design-tokens/overview/Overview";
-import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
-import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+import GetStartedOverview from "./routes/get-started/Overview";
+import DeveloperOverview from "./routes/get-started/developers/DevelopersOverview.tsx";
+import DevelopersTechnologies from "./routes/get-started/developers/DevelopersTechnologies.tsx";
+import DevelopersSetup from "./routes/get-started/developers/DevelopersSetup.tsx";
+import DevelopersVSCode from "./routes/get-started/developers/DevelopersVSCode.tsx";
+import DevelopersBrowsers from "./routes/get-started/developers/DevelopersBrowsers.tsx";
+import DesignerOverview from "./routes/get-started/designers/DesignersOverview.tsx";
+
+import Roadmap from "./routes/get-started/Roadmap";
+import ServicePrinciples from "./routes/get-started/ServicePrinciples";
+import QATestingOverview from "./routes/get-started/qa-testing/QATestingOverview.tsx";
+import GetStarted from "./routes/get-started/GetStartedLayout.tsx";
+
+
+import { useMediaQuery } from "./hooks/useMediaQuery";
+import { DeviceWidthContext } from "./contexts/DeviceWidthContext";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -59,6 +73,7 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
+
       <Route
         path="design-tokens"
         element={<DesignTokens />}
@@ -73,6 +88,25 @@ const router = createBrowserRouter(
         <Route path="shadow" element={<ShadowPage />} />
         <Route path="spacing" element={<SpacingPage />} />
         <Route path="typography" element={<TypographyPage />} />
+      </Route>
+
+      <Route path="get-started" element={<GetStarted />}>
+        <Route index element={<GetStartedOverview />} />
+        <Route path="designers">
+          <Route index element={<DesignerOverview />} />
+        </Route>
+        <Route path="developers">
+          <Route index element={<DeveloperOverview />} />
+          <Route path="setup" element={<DevelopersSetup />} />
+          <Route path="vscode" element={<DevelopersVSCode />} />
+          <Route path="technologies" element={<DevelopersTechnologies />} />
+          <Route path="browsers" element={<DevelopersBrowsers />} />
+        </Route>
+        <Route path="qa-testing">
+          <Route index element={<QATestingOverview />} />
+        </Route>
+        <Route path="roadmap" element={<Roadmap />} />
+        <Route path="service-principles" element={<ServicePrinciples />} />
       </Route>
     </Route>
   )

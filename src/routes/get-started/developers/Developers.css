@@ -1,0 +1,32 @@
+
+.developers-overview-page pre code,
+.developers-overview-page .goa-code-snippet {
+    background-color: var(--goa-color-greyscale-white);
+    border-radius: 4px;
+}
+
+.developers-overview-page .goa-code-snippet,
+.developers-setup-page .goa-code-snippet,
+.developers-setup-page goa-container,
+.developers-technologies-page,
+.developers-browsers-page goa-container {
+    max-width: 72ch;
+}
+
+
+.developers-setup_block-sublist {
+    list-style-type: lower-alpha;
+    margin-left: var(--goa-space-l);
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.developers-overview-page a[href^="#"]::before {
+    display: none;
+}
+
+
