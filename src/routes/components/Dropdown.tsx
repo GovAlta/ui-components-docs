@@ -21,12 +21,12 @@ export default function DropdownPage() {
     <>
       <h1>Dropdown</h1>
       <p>
-        Dropdowns hide a long list of options, arranged vertically. A single select menu list is 
+        Dropdowns hide a long list of options, arranged vertically. A single select menu list is
         revealed upon interaction with this component.
       </p>
-      <Sandbox 
-        properties={dropdownBindings} 
-        onChange={onChange} 
+      <Sandbox
+        properties={dropdownBindings}
+        onChange={onChange}
         flags={["reactive"]}
         note="When using a dropdown inside a modal where there is limited space for the menu items 
         to display, ensure the `native` property is set to `true` for the dropdown to function properly."
@@ -54,7 +54,7 @@ export default function DropdownPage() {
             setValue(value);
           }
         `}/>
-      
+
         <GoADropdown name="colors" value="red" onChange={() => {}} {...dropdownProps}>
           <GoADropdownItem value="red" label="Red" />
           <GoADropdownItem value="green" label="Green" />

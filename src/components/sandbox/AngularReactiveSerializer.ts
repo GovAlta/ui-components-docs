@@ -19,29 +19,29 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   setIsRoot(isRoot: boolean) {
-    this.isRoot = isRoot;  
+    this.isRoot = isRoot;
   }
 
   setState(state: SerializerState) {
-    super.setState(state)  
+    super.setState(state)
   }
 
   #dynamicProp(name: string): string {
     return `[${name.toLowerCase()}]="some${this.capitalize(name)}Value"`;
   }
-  
+
   #toFunc(name: string): string {
-    
+
     if (name === "onChange") {
       return "";
     }
-    
+
     let _name = name.replace(/^on/, "")
     _name = _name.substring(0, 1).toLowerCase() + _name.substring(1)
 
     return `(_${_name})="${name}($event)"`
   }
-  
+
   stringToProp(name: string, item: string): string {
     if (ReactiveComponents.includes(this.state.element) && name === "value") {
       return `goaValue [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`
@@ -63,7 +63,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   booleanToProp(propName: string, propValue: boolean): string {
     if (ReactiveComponents.includes(this.state.element) && propName === "checked") {
       return `goaChecked [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`
-    }   
+    }
     if (this.isDynamic(propName)) {
       return this.#dynamicProp(propName);
     }
@@ -90,7 +90,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     const tail = name.replace(prefix, "")
     return `${prefix.toLowerCase()}-${this.dasherize(tail)}`;
   }
-  
+
   componentToString(name: string): string {
     name = this.dasherize(name)
     return `<${name} />`;

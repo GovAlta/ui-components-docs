@@ -7,7 +7,7 @@ import { DoDont } from "@components/do-dont/DoDont";
 export default function CheckboxPage() {
 
   const [checkboxProps, setCheckboxProps] = useState({});
-  const [checkboxBindings, setCheckboxBindings] = useState<ComponentBinding[]>([ 
+  const [checkboxBindings, setCheckboxBindings] = useState<ComponentBinding[]>([
     { label: "Checked", type: "boolean", name: "checked", value: false, dynamic: true, hidden: true},
   ])
 
@@ -24,9 +24,9 @@ export default function CheckboxPage() {
       <p>
         Checkbox allows users to ...
       </p>
-      <Sandbox 
+      <Sandbox
         properties={checkboxBindings}
-        onChange={onChange} 
+        onChange={onChange}
         note=""
       >
         <CodeSnippet lang="typescript" tags="angular" allowCopy={true} code={`

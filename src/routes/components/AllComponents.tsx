@@ -86,13 +86,13 @@ export default function CheckboxPage() {
       </h3>
 
       <GoABlock mt="xs" mb="xl">
-        <GoAInput 
-          name="filter" 
-          value="" 
-          type="text" 
+        <GoAInput
+          name="filter"
+          value=""
+          type="text"
           width="80ch"
           leadingIcon="search"
-          onChange={(_name, value) => filterComponents(value)} 
+          onChange={(_name, value) => filterComponents(value)}
         />
       </GoABlock>
 

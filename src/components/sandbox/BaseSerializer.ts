@@ -36,7 +36,7 @@ export class BaseSerializer {
   setState(state: SerializerState) {
     this.state = state;
   }
-  
+
   // converts React camelcase props to dasherized
   protected dasherize(name: string): string {
     const out: string[] = []

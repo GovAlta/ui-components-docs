@@ -14,7 +14,7 @@ export default function DropdownPage() {
     setFormStepProps(props)
   }
 
-  const [step, setStep] = useState(-1); 
+  const [step, setStep] = useState(-1);
 
   return (
     <>
@@ -22,10 +22,10 @@ export default function DropdownPage() {
       <p>
         Form steppers provide a visual representation of a user's journey through a series of steps.
       </p>
-      <Sandbox 
-        properties={formStepperBindings} 
+      <Sandbox
+        properties={formStepperBindings}
         fullWidth={true}
-        onChange={onChange} 
+        onChange={onChange}
       >
         <CodeSnippet lang="typescript" tags="angular" allowCopy={true} code={`
           export class SomeComponent {
@@ -39,7 +39,7 @@ export default function DropdownPage() {
         <CodeSnippet lang="typescript" tags="react" allowCopy={true} code={`
           const [step, setStep] = useState(-1); 
         `} />
-      
+
         <GoAFormStepper testId="foo" onChange={(step) => setStep(step)} {...formStepProps}>
           <GoAFormStep text="Personal details" />
           <GoAFormStep text="Employment history" />
