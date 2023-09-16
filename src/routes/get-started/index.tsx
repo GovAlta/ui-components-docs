@@ -1,4 +1,4 @@
-import { GoACallout, GoASideMenu, GoASideMenuGroup, GoASideMenuHeading } from "@abgov/react-components";
+import { GoASideMenu, GoASideMenuGroup, GoASideMenuHeading } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { ContactSupport } from "@components/contact-support/ContactSupport";
 import './get-started.css';
@@ -12,10 +12,6 @@ const GetStarted: React.FC = () => {
           <Link to="">Overview</Link>
           <GoASideMenuGroup heading="UX Designers">
             <Link to="designers">Overview</Link>
-            <Link to="designers/setup">Setup</Link>
-            <Link to="designers/figma-libraries">Figma libraries</Link>
-            <Link to="designers/fonts">Fonts</Link>
-            <Link to="designers/ux-writing">UX Writing</Link>
           </GoASideMenuGroup>
           <GoASideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>
@@ -24,8 +20,9 @@ const GetStarted: React.FC = () => {
             <Link to="developers/technologies">Technologies</Link>
             <Link to="developers/browsers">Supported Browsers</Link>
           </GoASideMenuGroup>
-          <Link to="qa-testing">QA Testing</Link>
-          <Link to="accessibility">Accessibility</Link>
+          <GoASideMenuGroup heading="QA Testing">
+            <Link to="qa-testing">Overview</Link>
+          </GoASideMenuGroup>
           <Link to="roadmap">Roadmap</Link>
           <Link to="service-principles">Service principles</Link>
         </GoASideMenu>

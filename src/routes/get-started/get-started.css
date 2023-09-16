@@ -3,6 +3,19 @@
   font: var(--goa-typography-body-m);
 }
 
+.body-callout {
+  max-width: 500px;
+}
+ul,
+ol {
+  max-width: 600px;
+  padding-left: 30px;
+}
+
+ol li::marker {
+  font: var(--goa-typography-heading-l)
+}
+
 .main {
   display: flex;
   flex-direction: column;

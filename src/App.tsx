@@ -21,10 +21,6 @@ import DeveloperBrowsers from './routes/get-started/developers/Browsers';
 import DesignerOverview from './routes/get-started/designers/Overview';
 import Roadmap from './routes/get-started/Roadmap';
 import ServicePrinciples from './routes/get-started/ServicePrinciples';
-import DesignerSetup from './routes/get-started/designers/Setup';
-import FigmaLibraries from './routes/get-started/designers/FigmaLibraries';
-import Fonts from './routes/get-started/designers/Fonts';
-import UXWriting from './routes/get-started/designers/UXWriting';
 import QATesting from './routes/get-started/QATesting';
 
 const router = createBrowserRouter(
@@ -43,11 +39,6 @@ const router = createBrowserRouter(
         <Route index element={<GetStartedOverview />} />
         <Route path="designers">
           <Route index element={<DesignerOverview />} />
-          <Route path="setup" element={<DesignerSetup />} />
-          <Route path="figma-libraries" element={<FigmaLibraries />} />
-          <Route path="fonts" element={<Fonts />} />
-          <Route path="ux-writing" element={<UXWriting />} />
-
         </Route>
 
         <Route path="developers">
@@ -57,7 +48,9 @@ const router = createBrowserRouter(
           <Route path="technologies" element={<DeveloperTechnologies />} />
           <Route path="browsers" element={<DeveloperBrowsers />} />
         </Route>
-        <Route path="qa-testing" element={<QATesting />} />
+        <Route path="qa-testing">
+          <Route index element={<QATesting />} />
+        </Route>
         <Route path="roadmap" element={<Roadmap />} />
         <Route path="service-principles" element={<ServicePrinciples />} />
       </Route>
