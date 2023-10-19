@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
 
-import "./Components.css";
-
 export function Components() {
 
   const [language, setLanguage] = useState("");

@@ -1,0 +1,43 @@
+/*Representative of the spacing tokens*/
+.spacing-page div.represent {
+  display: flex;
+  align-items: center;
+}
+
+.spacing-page div.grey-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background-color: var(--goa-color-greyscale-200);
+}
+
+.spacing-page div.space-rect {
+  border-radius: var(--goa-border-radius-none);
+  opacity: 40%;
+  height: 22px;
+}
+
+.goa-space-s {
+  background-color: #43c4fc;
+}
+.goa-space-m {
+  background-color: #ff8000;
+}
+.goa-space-l {
+  background-color: #46cb89;
+}
+.goa-space-xl {
+  background-color: #ffdc00;
+}
+.goa-space-2xs,
+.goa-space-3xl {
+  background-color: #7be7d2;
+}
+.goa-space-3xs,
+.goa-space-2xl {
+  background-color: #ff0000;
+}
+.goa-space-xs,
+.goa-space-4xl {
+  background-color: #ef80cd;
+}

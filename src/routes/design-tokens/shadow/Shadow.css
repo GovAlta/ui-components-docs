@@ -1,0 +1,7 @@
+.shadow-page .token-block {
+  height: 24px;
+  width: 24px;
+  border-radius: var(--goa-border-radius-none);
+  background-color: var(--goa-color-greyscale-black);
+  box-shadow: 6px 6px 6px 0 rgba(0, 0, 0, 0.16);
+}

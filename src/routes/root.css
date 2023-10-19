@@ -1,3 +1,24 @@
+/*==================
+  App Heading
+==================*/
+/*link to open external page and having icon after it*/
+.header a[href^="http"] {
+  color: var(--goa-color-interactive-default);
+}
+.header a[href^="http"]::after {
+  content: '';
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+  margin-left: var(--goa-space-2xs);
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>') center bottom no-repeat;
+}
+
+
+/*==================
+  Layout Page
+==================*/
 .app {
   opacity: 0;
   transition: opacity 0.5s;
@@ -5,7 +26,79 @@
 
 .content {
   max-width: 1500px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: stretch;
+}
+
+/*==================
+  Side Menu
+==================*/
+.side-menu {
+  max-width: 224px;
+  border-right: 1px solid var(--goa-color-greyscale-200);
+}
+.side-menu goa-dropdown {
+  padding: 1rem;
+}
+.side-menu goa-side-menu-heading + goa-dropdown{
+  display:block;
+}
+
+/*==================
+ Individual Page content
+==================*/
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 4rem;
+  padding: 0 1rem;
+  line-height: var(--goa-line-height-3);
+  font-size: var(--goa-font-size-4);
+  width: 100%;
+  max-width: 1206px;
+}
+.box-container {
+  border: 1px solid var(--goa-color-greyscale-200);
+  padding: 1.5rem;
+  border-radius: 4px;
+}
+
+h3.introduction {
+  margin-bottom: 2rem;
+}
+
+.support-info {
+  max-width: 700px;
+}
+
+/*Tablet*/
+@media screen and (max-width: 1231px) {
+  .content {
+    margin: 0;
+  }
+}
+
+/*Mobile*/
+@media screen and (max-width: 623px) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .side-menu,
+  .main {
+    flex-basis: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+  .main {
+    margin-right: 1rem;
+  }
+  .content {
+    flex-wrap: wrap;
+  }
+  .side-menu {
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--goa-color-greyscale-200);
+  }
 }

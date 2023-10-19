@@ -1,0 +1,19 @@
+.icon-size div.icon {
+  border-radius: var(--goa-border-radius-none);
+  background-color: var(--goa-color-emergency-background);
+}
+
+.goa-icon-size-s {
+  height: 20px;
+  width: 20px;
+}
+
+.goa-icon-size-m {
+  height: 24px;
+  width: 24px;
+}
+
+.goa-icon-size-l {
+  height: 32px;
+  width: 32px;
+}

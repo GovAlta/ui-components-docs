@@ -1,0 +1,261 @@
+[
+  {
+    "name": "Interactive",
+    "tokens": [
+      {
+        "code": "goa-color-interactive-default",
+        "value": "#0070C4",
+        "figmaColorStyle": "Interactive/Default",
+        "description": "Default color for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-hover",
+        "value": "#004F84",
+        "figmaColorStyle": "Interactive/Hover",
+        "description": "Hover state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-focus",
+        "value": "#FEBA35",
+        "figmaColorStyle": "Interactive/Focus",
+        "description": "Focus state color for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-error",
+        "value": "#EC040B",
+        "figmaColorStyle": "Interactive/Error",
+        "description": "Error state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-disabled",
+        "value": "#80B7E1",
+        "figmaColorStyle": "Interactive/Disabled",
+        "description": "Disabled state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-error-hover",
+        "value": "#BA0000",
+        "figmaColorStyle": "Interactive/Error/Hover",
+        "description": "Error state color for interactive elements when hovering."
+      },
+      {
+        "code": "goa-color-interactive-error-disabled",
+        "value": "#F58185",
+        "figmaColorStyle": "Interactive/Error/Disabled",
+        "description": "Error state color for interactive elements when disabled."
+      }
+    ]
+  },
+  {
+    "name": "Text",
+    "tokens": [
+      {
+        "code": "goa-color-text-default",
+        "value": "#333333",
+        "figmaColorStyle": "Text/Default",
+        "description": "Default color for most text (such as body, headings, subheadings)"
+      },
+      {
+        "code": "goa-color-text-secondary",
+        "value": "#666666",
+        "figmaColorStyle": "Text/Secondary",
+        "description": "Default color for secondary text labels such as \"optional\" or \"required\", or within a table heading."
+      },
+      {
+        "code": "goa-color-text-light",
+        "value": "#FFFFFF",
+        "figmaColorStyle": "Text/Light",
+        "description": "Use as the text colour on dark backgrounds."
+      },
+      {
+        "code": "goa-color-text-disabled",
+        "value": "#666666",
+        "figmaColorStyle": "Text/Disabled",
+        "description": "Text on a grey background within the disabled text input, text area, combobox, and dropdown."
+      }
+    ]
+  },
+  {
+    "name": "Brand",
+    "tokens": [
+      {
+        "code": "goa-color-brand-default",
+        "value": "#0081A2",
+        "figmaColorStyle": "Brand/Default",
+        "description": "GOA brand colour."
+      },
+      {
+        "code": "goa-color-brand-dark",
+        "value": "#005072",
+        "figmaColorStyle": "Brand/Dark",
+        "description": "Dark GOA brand colour."
+      },
+      {
+        "code": "goa-color-brand-light",
+        "value": "#C8EEFA",
+        "figmaColorStyle": "Brand/Default",
+        "description": "Light GOA brand colour."
+      }
+    ]
+  },
+  {
+    "name": "Status",
+    "tokens": [
+      {
+        "code": "goa-color-info-default",
+        "value": "#004A8F",
+        "figmaColorStyle": "Status/Info/Default",
+        "description": "Use this color to indicate information to the user."
+      },
+      {
+        "code": "goa-color-info-light",
+        "value": "#AAC9E7",
+        "figmaColorStyle": "Status/Info/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-brand-light",
+        "value": "#003B70",
+        "figmaColorStyle": "Status/Info/Dark",
+        "description": ""
+      },
+      {
+        "code": "goa-color-info-background",
+        "value": "#EFF8FF",
+        "figmaColorStyle": "Status/Info/Background",
+        "description": "Use this color as a background when indicating caution to the user such as within a container or small callout."
+      },
+      {
+        "code": "goa-color-warning-default",
+        "value": "#F9CE2D",
+        "figmaColorStyle": "Status/Warning/Default",
+        "description": "Use this color to indicate a warning to the user."
+      },
+      {
+        "code": "goa-color-warning-light",
+        "value": "#FFEAB6",
+        "figmaColorStyle": "Status/Warning/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-warning-dark",
+        "value": "#BF8D23",
+        "figmaColorStyle": "Status/Warning/Dark",
+        "description": ""
+      },
+      {
+        "code": "goa-color-warning-background",
+        "value": "#FFF6E5",
+        "figmaColorStyle": "Status/Warning/Background",
+        "description": "Use this color as a background when indicating caution to the user such as within a container or small callout."
+      },
+      {
+        "code": "goa-color-emergency-default",
+        "value": "#DA291C",
+        "figmaColorStyle": "Status/Emergency/Default",
+        "description": "Use this color to indicate an emergency to the user."
+      },
+      {
+        "code": "goa-color-emergency-light",
+        "value": "#FBD1CE",
+        "figmaColorStyle": "Status/Emergency/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-emergency-dark",
+        "value": "#A91A10",
+        "figmaColorStyle": "Status/Emergency/Dark",
+        "description": ""
+      },
+      {
+        "code": "goa-color-emergency-background",
+        "value": "#FFF1F2",
+        "figmaColorStyle": "Status/Emergency/Background",
+        "description": "Use this color as a background when indicating emergency to the user such as within a container or small callout."
+      },
+      {
+        "code": "goa-color-success-default",
+        "value": "#006F4C",
+        "figmaColorStyle": "Status/Success/Default",
+        "description": "Use this color to indicate success to the user."
+      },
+      {
+        "code": "goa-color-success-light",
+        "value": "#CCE4DC",
+        "figmaColorStyle": "Status/Success/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-success-dark",
+        "value": "#00563A",
+        "figmaColorStyle": "Status/Success/Dark",
+        "description": ""
+      },
+      {
+        "code": "goa-color-success-background",
+        "value": "#EEF9F3",
+        "figmaColorStyle": "Status/Success/Background",
+        "description": "Use this color as a background when indicating success to the user such as within a container or small callout."
+      },
+      {
+        "code": "goa-color-critical",
+        "value": "#171D23",
+        "figmaColorStyle": "Status/Critical",
+        "description": "Status color for critical events such as the king passing."
+      }
+    ]
+  },
+  {
+    "name": "Greyscale",
+    "tokens": [
+      {
+        "code": "goa-color-greyscale-white",
+        "value": "#FFFFFF",
+        "figmaColorStyle": "Greyscale/White",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-100",
+        "value": "#F1F1F1",
+        "figmaColorStyle": "Greyscale/100",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-200",
+        "value": "#DCDCDC",
+        "figmaColorStyle": "Greyscale/200",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-400",
+        "value": "#ADADAD",
+        "figmaColorStyle": "Greyscale/400",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-500",
+        "value": "#949494",
+        "figmaColorStyle": "Greyscale/500",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-600",
+        "value": "#858585",
+        "figmaColorStyle": "Greyscale/600",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-700",
+        "value": "#666666",
+        "figmaColorStyle": "Greyscale/700",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-black",
+        "value": "#333333",
+        "figmaColorStyle": "Greyscale/Black",
+        "description": ""
+      }
+    ]
+  }
+]
