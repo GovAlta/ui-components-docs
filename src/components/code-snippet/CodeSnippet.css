@@ -1,8 +1,36 @@
-.goa-code-snippet pre code {
-  background-color: #eee;
+.goa-code-snippet {
+  border: 1px solid var(--goa-color-greyscale-200);
+  border-radius: 4px;
+  margin-top: var(--goa-space-m);
+  margin-bottom: 2rem;
+}
+
+.goa-code-snippet pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.goa-code-snippet pre code, .goa-code-snippet {
+  background-color: var(--goa-color-greyscale-100);
 }
 
 .goa-code-snippet-actions {
   text-align: right;
-  margin-bottom: 2rem;
+  margin: 0.5rem;
+}
+
+.goa-code-snippet-actions goa-button {
+  background-color: var(--goa-color-greyscale-white);
+  padding: 6px 0px 2px 0px;
+  border-radius: 4px;
+  border: none;
+}
+
+.goa-code-snippet-copy-feedback {
+  color: var(--goa-color-interactive-default);
+  float: right;
+  padding: 0;
+  margin: -2rem 1rem 0 0;
+  border-radius: 4px;
 }

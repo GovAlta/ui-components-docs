@@ -1,0 +1,13 @@
+.component-info {
+    margin-bottom: 3rem;
+}
+
+.component-info h1 {
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 623px) {
+    .component-info h1 {
+        margin-top: 1.5rem;
+    }
+}

@@ -1,22 +1,43 @@
 .sandbox-note {
-  color: #666;
+    color: #666;
 }
 
 .sandbox-render {
-  border: 1px solid #ccc;
-  padding: 2rem;
-  margin: 1rem 0;
-  resize: both;
-  overflow: auto;
-
-  display: flex;
-  justify-content: space-around;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-around;
 }
 
 .sandbox-render-fullwidth {
-  width: 100%;
+    width: 100%;
+}
+
+.sandbox-container {
+    display: flex;
+    gap: 0 2rem;
+    flex-flow: wrap;
+    margin-bottom: 1.5rem;
 }
 
 .sandbox-render-centered {
-  /*  */
+    /*  */
+}
+
+
+@media screen and (max-width: 623px) {
+
+    .sandbox-render {
+        /*make sure preview element will inherit component width*/
+        display: block;
+    }
+    .sandbox-container {
+        gap: 0;
+        display: block;
+    }
+
+    .sandbox-container:nth-child(1) {
+        display: block;
+    }
+
 }

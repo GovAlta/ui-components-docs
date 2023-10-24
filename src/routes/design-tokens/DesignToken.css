@@ -1,7 +1,6 @@
-goa-table td {
-    padding: 0 1rem;
+goa-table .goa-token-snippet pre {
+    margin: 0;
 }
-
 /*Tablet*/
 @media screen and (max-width: 1231px) {
     .design-tokens dt {
