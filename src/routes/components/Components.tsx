@@ -58,7 +58,7 @@ export function Components() {
           <Link to="snackbar">Snackbar</Link>
           <Link to="spacer">Spacer</Link>
           <Link to="site-header">Site header</Link>
-          <Link to="stepper">Stepper</Link>
+          <Link to="form-stepper">Stepper</Link>
           <Link to="table">Table</Link>
           <Link to="text-area">Text area</Link>
           <Link to="text-field">Text field</Link>

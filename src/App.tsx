@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import ComponentsPage from "./routes/components/Components";
 import DropdownPage from "./routes/components/Dropdown";
+import AccordionPage from "@routes/components/Accordion.tsx";
 import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
@@ -53,6 +54,7 @@ const router = createBrowserRouter(
         errorElement={<ComponentNotFoundPage />}
       >
         <Route index element={<AllComponentsPage />} />
+        <Route path="accordion" element={<AccordionPage />} />
         <Route path="button" element={<ButtonPage />} />
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="form-stepper" element={<FormStepperPage />} />
