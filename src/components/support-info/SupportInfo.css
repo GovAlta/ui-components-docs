@@ -1,12 +1,11 @@
 .support-info {
-    margin-right: var(--goa-space-3xl);
-    max-width: 700px;
-    margin-top: var(--goa-space-3xl);
-    margin-bottom: 104px;
+  margin-right: var(--goa-space-3xl);
+  max-width: 700px;
+  margin-top: var(--goa-space-3xl);
 }
 
 @media screen and (max-width: 623px) {
-    .support-info {
-        margin-right: var(--goa-space-m);
-    }
+  .support-info {
+    margin-right: var(--goa-space-m);
+  }
 }

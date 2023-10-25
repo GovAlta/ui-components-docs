@@ -1,8 +1,33 @@
+.goa-code-snippet {
+  border: 1px solid var(--goa-color-greyscale-200);
+  border-radius: 4px;
+  margin-top: var(--goa-space-m);
+}
 .goa-code-snippet pre code {
-  background-color: #eee;
+  background-color: var(--goa-color-greyscale-100);
+}
+
+.goa-code-snippet pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .goa-code-snippet-actions {
   text-align: right;
-  margin-bottom: 2rem;
+  margin-bottom: var(--goa-space-xs);
+  margin-top: var(--goa-space-xs);
+}
+
+.goa-code-snippet .copy-feedback {
+  color: var(--goa-color-interactive-default);
+  float: right;
+  padding: 0;
+  margin: -2rem 1rem 0 0;
+}
+@media screen and (max-width: 623px) {
+  /*TODO: Will use snackbar notification later for Copied effect*/
+  .goa-code-snippet .copy-feedback {
+    float: none;
+  }
 }

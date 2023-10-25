@@ -33,6 +33,10 @@ export function DesignTokenLayout() {
 
             <GoADropdown
               value={tokenLanguage}
+              mb="m"
+              ml="m"
+              mr="m"
+              mt="m"
               onChange={designTokenLanguageChange}
             >
               <GoADropdownItem label="SCSS" value="scss" />
