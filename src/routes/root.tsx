@@ -42,17 +42,14 @@ export default function Root() {
             feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
             maxContentWidth="1440px"
           />
-          <GoAAppHeader heading="Design system" maxContentWidth="1500px">
+          <GoAAppHeader heading="Design system" maxContentWidth="1440px" url={"/"}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
             <Link to="/content">Content</Link>
             <Link to="/support">Support</Link>
-            <Link
-              to="https://github.com/GovAlta/ui-components/issues/new/choose"
-              target="_blank"
-            >
+            <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
               Report a bug
             </Link>
           </GoAAppHeader>
@@ -63,7 +60,7 @@ export default function Root() {
         </section>
 
         <section slot="footer">
-          <GoAAppFooter maxContentWidth="1500px">
+          <GoAAppFooter maxContentWidth="1440px">
             <GoAAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
               <Link to="/patterns">Patterns and templates</Link>
@@ -78,9 +75,7 @@ export default function Root() {
               <Link to="/drop-in-hours">Drop in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
-              <Link to="/contribute-design-system">
-                Contribute to the design system
-              </Link>
+              <Link to="/contribute-design-system">Contribute to the design system</Link>
               <Link to="/leave-feedback">Leave feedback</Link>
               <Link to="/release-notes">Release notes</Link>
             </GoAAppFooterMetaSection>

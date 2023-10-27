@@ -6,15 +6,15 @@
   color: var(--goa-color-interactive-default);
 }
 .header a[href^="http"]::after {
-  content: '';
+  content: "";
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
   vertical-align: middle;
   margin-left: var(--goa-space-2xs);
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>') center bottom no-repeat;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>')
+    center bottom no-repeat;
 }
-
 
 /*==================
   Layout Page
@@ -39,12 +39,6 @@
   max-width: 224px;
   border-right: 1px solid var(--goa-color-greyscale-200);
 }
-.side-menu goa-dropdown {
-  padding: 1rem;
-}
-.side-menu goa-side-menu-heading + goa-dropdown{
-  display:block;
-}
 
 /*==================
  Individual Page content
@@ -52,7 +46,7 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: 0 4rem;
+  margin: 0 4rem var(--goa-space-4xl);
   padding: 0 1rem;
   line-height: var(--goa-line-height-3);
   font-size: var(--goa-font-size-4);
