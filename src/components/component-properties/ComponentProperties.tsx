@@ -35,7 +35,7 @@ export const ComponentProperties = (props: Props) => {
       <tr key={index}>
         <td className="token-name">
           {property.name}
-          {property.required && <GoABadge type="midtone" content="Midtone"></GoABadge>}
+          {property.required && <GoABadge type="midtone" content="Required" ml="xs"></GoABadge>}
         </td>
         <td>{property.type}</td>
         <td>{property.description}</td>
