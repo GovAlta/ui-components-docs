@@ -12,6 +12,7 @@ import AccordionPage from "@routes/components/Accordion.tsx";
 import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
+import BadgePage from "./routes/components/Badge";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -72,6 +73,7 @@ const router = createBrowserRouter(
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="form-stepper" element={<FormStepperPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
+        <Route path="badge" element={<BadgePage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
