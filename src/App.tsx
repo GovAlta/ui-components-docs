@@ -16,6 +16,7 @@ import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
 import "./index.css";
+// Design Tokens Pages
 import DesignTokens from "./routes/design-tokens/DesignTokenLayout.tsx";
 import BorderWidthPage from "./routes/design-tokens/border-width/BorderWidth";
 import BorderRadiusPage from "./routes/design-tokens/border-radius/BorderRadius";
@@ -26,15 +27,27 @@ import ShadowPage from "./routes/design-tokens/shadow/Shadow";
 import SpacingPage from "./routes/design-tokens/spacing/Spacing";
 import TypographyPage from "./routes/design-tokens/typography/Typography";
 import DesignTokensOverviewPage from "./routes/design-tokens/overview/Overview";
+// Get Started Pages
+import GetStartedLayout from "./routes/get-started/GetStartedLayout";
+import UxDesignerPage from "./routes/get-started/designers/UxDesigner";
+import DevelopersTechnologiesPage from "./routes/get-started/developers/DevelopersTechnologies";
+import DevelopersVSCodePage from "./routes/get-started/developers/DevelopersVSCode";
+import SupportedBrowsersPage from "./routes/get-started/developers/SupportedBrowsers";
+import QATestingOverviewPage from "./routes/get-started/qa-testing/QATestingOverview";
+import GetStartedOverviewPage from "./routes/get-started/GetStartedOverview";
+import RoadmapPage from "./routes/get-started/Roadmap";
+import ServicePrinciplesPage from "./routes/get-started/ServicePrinciples";
+import DevelopersOverviewPage from "./routes/get-started/developers/DevelopersOverview";
+import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup";
+
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
-const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({
-  children,
-}) => {
+
+const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({ children }) => {
   const isDesktop = useMediaQuery("(min-width: 1232px)");
   const isMobile = useMediaQuery("(max-width: 623px)");
 
@@ -61,6 +74,7 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
+
       <Route
         path="design-tokens"
         element={<DesignTokens />}
@@ -75,6 +89,25 @@ const router = createBrowserRouter(
         <Route path="shadow" element={<ShadowPage />} />
         <Route path="spacing" element={<SpacingPage />} />
         <Route path="typography" element={<TypographyPage />} />
+      </Route>
+
+      <Route path="get-started" element={<GetStartedLayout />}>
+        <Route index element={<GetStartedOverviewPage />} />
+        <Route path="designers">
+          <Route index element={<UxDesignerPage />} />
+        </Route>
+        <Route path="developers">
+          <Route index element={<DevelopersOverviewPage />} />
+          <Route path="setup" element={<DevelopersSetupPage />} />
+          <Route path="vscode" element={<DevelopersVSCodePage />} />
+          <Route path="technologies" element={<DevelopersTechnologiesPage />} />
+          <Route path="browsers" element={<SupportedBrowsersPage />} />
+        </Route>
+        <Route path="qa-testing">
+          <Route index element={<QATestingOverviewPage />} />
+        </Route>
+        <Route path="roadmap" element={<RoadmapPage />} />
+        <Route path="service-principles" element={<ServicePrinciplesPage />} />
       </Route>
     </Route>
   )
