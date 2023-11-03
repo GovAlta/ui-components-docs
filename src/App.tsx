@@ -13,6 +13,7 @@ import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import BadgePage from "./routes/components/Badge";
+import ListPage from "@routes/components/List";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -45,6 +46,7 @@ import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
 import HomePage from '@routes/home';
 
+
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
@@ -72,6 +74,7 @@ const router = createBrowserRouter(
         <Route path="form-stepper" element={<FormStepperPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="badge" element={<BadgePage/>} />
+        <Route path="list" element={<ListPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
