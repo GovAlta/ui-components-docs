@@ -43,6 +43,7 @@ import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup
 
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+import PopoverPage from "@routes/components/Popover.tsx";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -74,6 +75,7 @@ const router = createBrowserRouter(
         <Route path="form-stepper" element={<FormStepperPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="badge" element={<BadgePage/>} />
+        <Route path="popover" element={<PopoverPage/>}/>
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
