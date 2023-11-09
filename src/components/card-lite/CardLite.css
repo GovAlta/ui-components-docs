@@ -1,0 +1,23 @@
+.card-lite .title {
+  font: var(--goa-typography-heading-l);
+  margin-bottom: var(--goa-space-m);
+}
+
+.card-lite .description {
+  font-size: var(--goa-font-size-4);
+  margin-bottom:  var(--goa-space-xs);
+}
+
+.card-content a {
+  font-size: var(--goa-font-size-5);
+}
+
+.card-lite .link {
+  font-size: var(--goa-font-size-5)
+}
+
+@media screen and (min-width: 1231px) {
+  .card-lite {
+    max-width: 300px;
+  }
+}

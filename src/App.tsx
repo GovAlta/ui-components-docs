@@ -43,6 +43,7 @@ import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup
 
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+import HomePage from '@routes/home';
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -62,11 +63,8 @@ const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({ children }) =
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route
-        path="components"
-        element={<ComponentsPage />}
-        errorElement={<ComponentNotFoundPage />}
-      >
+      <Route path="/" element={<HomePage />} />
+      <Route path="components" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />} >
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
         <Route path="button" element={<ButtonPage />} />
