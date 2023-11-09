@@ -17,7 +17,7 @@ import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
 import "./index.css";
-// Design Tokens Pages
+// Design Tokens Pages 
 import DesignTokens from "./routes/design-tokens/DesignTokenLayout.tsx";
 import BorderWidthPage from "./routes/design-tokens/border-width/BorderWidth";
 import BorderRadiusPage from "./routes/design-tokens/border-radius/BorderRadius";
