@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
-  createRoutesFromElements,
+  createRoutesFromElements
 } from "react-router-dom";
 import ComponentsPage from "./routes/components/Components";
 import DropdownPage from "./routes/components/Dropdown";
@@ -13,7 +13,10 @@ import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import BadgePage from "./routes/components/Badge";
+
 import ListPage from "@routes/components/List";
+import PopoverPage from "./routes/components/Popover";
+import ContainerPage from "@routes/components/Container";
 import SkeletonPage from "@routes/components/Skeleton.tsx";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
@@ -45,7 +48,9 @@ import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup
 
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
-import HomePage from '@routes/home';
+import HomePage from "@routes/home";
+
+
 
 
 interface DeviceWidthProviderProps {
@@ -67,15 +72,18 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
-      <Route path="components" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />} >
+      <Route path="components" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
         <Route path="button" element={<ButtonPage />} />
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="form-stepper" element={<FormStepperPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
+        <Route path="badge" element={<BadgePage />} />
+        <Route path="popover" element={<PopoverPage />} />
         <Route path="badge" element={<BadgePage/>} />
         <Route path="list" element={<ListPage/>} />
+        <Route path='container' element={<ContainerPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
