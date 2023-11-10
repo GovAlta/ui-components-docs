@@ -14,6 +14,7 @@ import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import BadgePage from "./routes/components/Badge";
 
+import DetailsPage from "./routes/components/Details";
 import ListPage from "@routes/components/List";
 import PopoverPage from "./routes/components/Popover";
 import ContainerPage from "@routes/components/Container";
@@ -82,6 +83,7 @@ const router = createBrowserRouter(
         <Route path="badge" element={<BadgePage />} />
         <Route path="popover" element={<PopoverPage />} />
         <Route path="badge" element={<BadgePage/>} />
+        <Route path="details" element={<DetailsPage />} />
         <Route path="list" element={<ListPage/>} />
         <Route path='container' element={<ContainerPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />ß

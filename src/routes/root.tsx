@@ -44,7 +44,7 @@ export default function Root() {
             feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />
-          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH}>
+          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
