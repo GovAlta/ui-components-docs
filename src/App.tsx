@@ -13,12 +13,12 @@ import ButtonPage from "./routes/components/Button";
 import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import BadgePage from "./routes/components/Badge";
-
 import DetailsPage from "./routes/components/Details";
-import ListPage from "@routes/components/List";
+import ListPage from "./routes/components/List";
 import PopoverPage from "./routes/components/Popover";
-import ContainerPage from "@routes/components/Container";
-import SkeletonPage from "@routes/components/Skeleton.tsx";
+import ContainerPage from "./routes/components/Container";
+import SkeletonPage from "./routes/components/Skeleton";
+import HeroBannerPage from "./routes/components/HeroBanner";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -49,9 +49,7 @@ import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup
 
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
-import HomePage from "@routes/home";
-
-
+import HomePage from "./routes/home";
 
 
 interface DeviceWidthProviderProps {
@@ -87,6 +85,7 @@ const router = createBrowserRouter(
         <Route path="list" element={<ListPage/>} />
         <Route path='container' element={<ContainerPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
+        <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
