@@ -169,11 +169,11 @@ export default function ButtonPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Button Examples*/}
-          <goa-block gap="xs" direction="column" mt="2xl" mb="3xl">
+          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
             <a href="#ask-address">Ask a user for an address</a>
             <a href="#confirm-action">Confirm a destructive action</a>
             <a href="#disabled-button">Disabled button in a form</a>
-          </goa-block>
+          </GoABlock>
           <h3 id="ask-address">Ask a user for an address</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Street Address">

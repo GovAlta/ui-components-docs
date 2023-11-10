@@ -14,6 +14,9 @@ import FormStepperPage from "./routes/components/FormStepper";
 import CheckboxPage from "./routes/components/Checkbox";
 import BadgePage from "./routes/components/Badge";
 import PopoverPage from "./routes/components/Popover";
+
+import ContainerPage from "@routes/components/Container";
+import SkeletonPage from "@routes/components/Skeleton.tsx";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -47,6 +50,7 @@ import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
 import HomePage from "@routes/home";
 
 
+
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
@@ -75,6 +79,9 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="badge" element={<BadgePage />} />
         <Route path="popover" element={<PopoverPage />} />
+        <Route path="badge" element={<BadgePage/>} />
+        <Route path='container' element={<ContainerPage />} />
+        <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
