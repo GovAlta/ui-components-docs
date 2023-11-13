@@ -16,13 +16,12 @@ import BadgePage from "./routes/components/Badge";
 import DetailsPage from "./routes/components/Details";
 import ListPage from "./routes/components/List";
 import PopoverPage from "./routes/components/Popover";
-import ContainerPage from "@routes/components/Container";
-import SkeletonPage from "@routes/components/Skeleton.tsx";
 import TablePage from "./routes/components/Table";
 import ContainerPage from "./routes/components/Container";
 import SkeletonPage from "./routes/components/Skeleton";
 import DividerPage from "./routes/components/Divider";
 import HeroBannerPage from "./routes/components/HeroBanner";
+import SpacerPage from "./routes/components/Spacer";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -92,8 +91,9 @@ const router = createBrowserRouter(
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="table" element={<TablePage />} />
         <Route path="divider" element={<DividerPage/>} />
-        <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
+        <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="hero-banner" element={<HeroBannerPage />} />
+        <Route path="spacer" element={<SpacerPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
