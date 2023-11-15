@@ -21,7 +21,7 @@ export default function TypographyPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th>Figma type style</th>

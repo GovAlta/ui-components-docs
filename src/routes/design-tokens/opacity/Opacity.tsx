@@ -29,7 +29,7 @@ export default function OpacityPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>

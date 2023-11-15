@@ -46,7 +46,7 @@ export const ComponentProperties = (props: Props) => {
 
   return (
     <GoAAccordion heading="Components properties" mt="xl">
-      <GoATable variant="relaxed">
+      <GoATable variant="relaxed" width="100%">
         <thead>
           <tr>
             <th>Name</th>
