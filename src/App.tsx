@@ -16,6 +16,9 @@ import BadgePage from "./routes/components/Badge";
 import DetailsPage from "./routes/components/Details";
 import ListPage from "./routes/components/List";
 import PopoverPage from "./routes/components/Popover";
+import ContainerPage from "@routes/components/Container";
+import SkeletonPage from "@routes/components/Skeleton.tsx";
+import TablePage from "./routes/components/Table";
 import ContainerPage from "./routes/components/Container";
 import SkeletonPage from "./routes/components/Skeleton";
 import DividerPage from "./routes/components/Divider";
@@ -87,6 +90,7 @@ const router = createBrowserRouter(
         <Route path="list" element={<ListPage/>} />
         <Route path='container' element={<ContainerPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
+        <Route path="table" element={<TablePage />} />
         <Route path="divider" element={<DividerPage/>} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
         <Route path="hero-banner" element={<HeroBannerPage />} />
