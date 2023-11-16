@@ -23,6 +23,7 @@ import DividerPage from "./routes/components/Divider";
 import HeroBannerPage from "./routes/components/HeroBanner";
 import SpacerPage from "./routes/components/Spacer";
 import BlockPage from "./routes/components/Block";
+import GridPage from "./routes/components/Grid";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -55,7 +56,6 @@ import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
 
 import HomePage from "@routes/home";
-
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -96,6 +96,7 @@ const router = createBrowserRouter(
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="block" element={<BlockPage />} />
         <Route path="spacer" element={<SpacerPage/>} />
+        <Route path="grid" element={<GridPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
