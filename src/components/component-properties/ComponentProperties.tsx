@@ -1,6 +1,6 @@
-import { GoAAccordion, GoABadge, GoATable } from "@abgov/react-components";
-import { useContext, useEffect, useState } from "react";
-import { LanguageContext } from "@components/sandbox";
+import {GoAAccordion, GoABadge, GoATable} from "@abgov/react-components";
+import {useContext, useEffect, useState} from "react";
+import {LanguageContext} from "@components/sandbox";
 
 export type ComponentProperty = {
   name: string;
