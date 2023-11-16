@@ -19,6 +19,7 @@ import PopoverPage from "./routes/components/Popover";
 import ContainerPage from "./routes/components/Container";
 import SkeletonPage from "./routes/components/Skeleton";
 import DividerPage from "./routes/components/Divider";
+import HeroBannerPage from "./routes/components/HeroBanner";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -49,6 +50,7 @@ import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup
 
 import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
+
 import HomePage from "@routes/home";
 
 
@@ -86,6 +88,8 @@ const router = createBrowserRouter(
         <Route path='container' element={<ContainerPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="divider" element={<DividerPage/>} />
+        <Route path="skeleton-loader" element={<SkeletonPage/>} />ß
+        <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
