@@ -22,6 +22,7 @@ import SkeletonPage from "./routes/components/Skeleton";
 import DividerPage from "./routes/components/Divider";
 import HeroBannerPage from "./routes/components/HeroBanner";
 import SpacerPage from "./routes/components/Spacer";
+import BlockPage from "./routes/components/Block";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -93,6 +94,7 @@ const router = createBrowserRouter(
         <Route path="divider" element={<DividerPage/>} />
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="hero-banner" element={<HeroBannerPage />} />
+        <Route path="block" element={<BlockPage />} />
         <Route path="spacer" element={<SpacerPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
