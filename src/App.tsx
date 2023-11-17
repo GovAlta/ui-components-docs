@@ -21,6 +21,7 @@ import ContainerPage from "./routes/components/Container";
 import SkeletonPage from "./routes/components/Skeleton";
 import DividerPage from "./routes/components/Divider";
 import HeroBannerPage from "./routes/components/HeroBanner";
+import IconsPage from "./routes/components/Icons";
 import SpacerPage from "./routes/components/Spacer";
 import BlockPage from "./routes/components/Block";
 import GridPage from "./routes/components/Grid";
@@ -96,6 +97,7 @@ const router = createBrowserRouter(
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="block" element={<BlockPage />} />
+        <Route path="icons" element={<IconsPage/>} />
         <Route path="spacer" element={<SpacerPage/>} />
         <Route path="grid" element={<GridPage />} />
         <Route path="button-group" element={<ButtonGroupPage />} />
