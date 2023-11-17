@@ -1,0 +1,25 @@
+div.icon-snippet {
+    height: 60px;
+    border: 1px var(--goa-color-greyscale-200) solid;
+    border-radius: 4px;
+    padding: var(--goa-space-m);
+}
+
+div.icon-snippet:hover, div.icon-snippet:focus {
+    border-color: var(--goa-color-greyscale-black);
+}
+
+/*Will remove when we have temporary notification component*/
+div.icon-snippet div.copy-feedback {
+    color: white;
+    background-color: var(--goa-color-greyscale-black);
+    border: 1px solid var(--goa-color-greyscale-200);
+    border-radius: var(--goa-border-radius-m);
+    padding: var(--goa-space-m) var(--goa-space-l) var(--goa-space-m) var(--goa-space-l);
+    z-index: 10000;
+    position: absolute;
+}
+
+div.icon-snippet div.copy-feedback span {
+    color: #D9C7FF;
+}

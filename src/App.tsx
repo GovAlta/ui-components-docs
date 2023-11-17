@@ -22,6 +22,7 @@ import TablePage from "./routes/components/Table";
 import DividerPage from "./routes/components/Divider";
 import HeroBannerPage from "./routes/components/HeroBanner";
 import BlockPage from "./routes/components/Block";
+import IconsPage from "./routes/components/Icons";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -54,6 +55,7 @@ import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
 import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
 
 import HomePage from "@routes/home";
+
 
 
 interface DeviceWidthProviderProps {
@@ -94,6 +96,7 @@ const router = createBrowserRouter(
         <Route path="skeleton-loader" element={<SkeletonPage/>} />
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="block" element={<BlockPage />} />
+        <Route path="icons" element={<IconsPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
