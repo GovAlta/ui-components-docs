@@ -34,6 +34,7 @@ export function Components() {
           <Link to="badge">Badge</Link>
           <Link to="block">Block</Link>
           <Link to="button">Button</Link>
+          <Link to="button-group">Button group</Link>
           <Link to="callout">Callout</Link>
           <Link to="checkbox">Checkbox</Link>
           <Link to="chip">Chip</Link>
