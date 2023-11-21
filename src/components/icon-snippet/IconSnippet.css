@@ -1,0 +1,44 @@
+div.icon-snippet {
+    height: 60px;
+    border: 1px var(--goa-color-greyscale-200) solid;
+    border-radius: 4px;
+    padding: var(--goa-space-m);
+    color: var(--goa-color-text-secondary);
+    cursor: pointer;
+    /*Below to make icons and text on the same row*/
+    display: inline-flex;
+    line-height: 100%;
+    gap: var(--goa-space-m);
+    align-items: center;
+    justify-content: start;
+}
+
+div.icon-snippet goa-icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+div.icon-snippet span {
+    padding-bottom: var(--font-valign-fix);
+}
+
+div.icon-snippet:hover, div.icon-snippet:focus {
+    border-color: var(--goa-color-greyscale-black);
+    color: var(--goa-color-greyscale-black);
+}
+
+/*Will remove when we have temporary notification component*/
+div.icon-snippet div.copy-feedback {
+    color: white;
+    background-color: var(--goa-color-greyscale-black);
+    border: 1px solid var(--goa-color-greyscale-200);
+    border-radius: var(--goa-border-radius-m);
+    padding: var(--goa-space-m) var(--goa-space-l) var(--goa-space-m) var(--goa-space-l);
+    z-index: 10000;
+    position: absolute;
+    margin-top: 100px;
+}
+
+div.icon-snippet div.copy-feedback span {
+    color: #D9C7FF;
+}
