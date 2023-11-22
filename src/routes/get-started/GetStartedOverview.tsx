@@ -40,7 +40,7 @@ export default function GetStartedOverviewPage() {
         </GoAGrid>
 
         <GoAContainer type="non-interactive" mb="l">
-          Start with the design system. You don’t need to reinvent the wheel. The design system is
+          Start with the design system. You don't need to reinvent the wheel. The design system is
           the floor, not the ceiling. Start with it to save time building the common parts of a
           service, so that you can spend time on the unique challenges within your service context.
         </GoAContainer>

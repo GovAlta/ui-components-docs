@@ -10,8 +10,8 @@ import {
 import "./home.css";
 import { MAX_CONTENT_WIDTH } from "@routes/root";
 import CardLite from "../components/card-lite/CardLite";
-import { ContactSupport } from "@components/contact-support/ContactSupport";
 import { Link, useNavigate } from "react-router-dom";
+import { SupportInfo } from '../components/support-info/SupportInfo';
 const HomePage = () => {
   const navigate = useNavigate();
   return (
@@ -85,7 +85,7 @@ const HomePage = () => {
           <Link to="https://goa-dio.atlassian.net/wiki/spaces/DS/pages/2663678161/Starting+with+the+DDD+design+system">
             View more information on starting with the design system
           </Link>
-          <ContactSupport />
+          <SupportInfo />
         </div>
       </GoAPageBlock>
     </>

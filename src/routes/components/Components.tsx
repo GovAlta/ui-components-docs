@@ -80,11 +80,11 @@ export function Components() {
 
             <ul style={{ marginLeft: "1.875rem" }}>
               <li>
-                <a href="https://github.com/GovAlta/ui…ts/issues/new/choose">
+                <a href="https://github.com/GovAlta/ui…ts/issues/new/choose" target="_blank">
                   Propose a change or report a bug on Github
                 </a>
                 <span> - Read more about </span>
-                <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2763096293/How+to+work+with+us">
+                <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2763096293/How+to+work+with+us" target="_blank">
                   our contribution process
                 </a>
               </li>
