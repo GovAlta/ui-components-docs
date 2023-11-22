@@ -13,6 +13,7 @@ export type ComponentProperty = {
 
 interface Props {
   properties: ComponentProperty[];
+  heading?: string;
 }
 
 export const ComponentProperties = (props: Props) => {
@@ -45,7 +46,7 @@ export const ComponentProperties = (props: Props) => {
   };
 
   return (
-    <GoAAccordion heading="Components properties" mt="xl">
+    <GoAAccordion heading={props.heading ? props.heading : "Components properties"} mt="xl">
       <GoATable variant="relaxed" width="100%">
         <thead>
           <tr>

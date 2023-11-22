@@ -136,9 +136,13 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     // formatted code snippet ex React -> Angular
     if (lang === "react") {
       return (
-        <CodeSnippet lang={formatLang} allowCopy={true}>
-          {output(serializers["react"])}
-        </CodeSnippet>
+        <>
+          {getCodeSnippets("react")}
+          <CodeSnippet lang={formatLang} allowCopy={true}>
+            {output(serializers["react"])}
+          </CodeSnippet>
+        </>
+
       );
     }
 
