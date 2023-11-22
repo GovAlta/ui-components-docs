@@ -27,6 +27,7 @@ import BlockPage from "./routes/components/Block";
 import GridPage from "./routes/components/Grid";
 import ButtonGroupPage from "./routes/components/ButtonGroup";
 import FileUploaderPage from "./routes/components/FileUploader";
+import FormItemPage from "./routes/components/FormItemPage.tsx";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -103,6 +104,7 @@ const router = createBrowserRouter(
         <Route path="grid" element={<GridPage />} />
         <Route path="button-group" element={<ButtonGroupPage />} />
         <Route path="file-uploader" element={<FileUploaderPage />} />
+        <Route path="form-item" element={<FormItemPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
