@@ -28,6 +28,7 @@ import GridPage from "./routes/components/Grid";
 import ButtonGroupPage from "./routes/components/ButtonGroup";
 import FileUploaderPage from "./routes/components/FileUploader";
 import FormItemPage from "./routes/components/FormItemPage.tsx";
+import RadioPage from "./routes/components/Radio";
 import AllComponentsPage from "./routes/components/AllComponents";
 import ComponentNotFoundPage from "./routes/not-found/NotFound";
 import Root from "./routes/root";
@@ -105,6 +106,7 @@ const router = createBrowserRouter(
         <Route path="button-group" element={<ButtonGroupPage />} />
         <Route path="file-uploader" element={<FileUploaderPage />} />
         <Route path="form-item" element={<FormItemPage />} />
+        <Route path="radio" element={<RadioPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
