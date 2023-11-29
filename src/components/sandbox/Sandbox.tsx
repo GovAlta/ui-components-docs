@@ -19,21 +19,25 @@ interface ElementProps {
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
-  allow?: string[];
+  skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
+  allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
+                        // additional elements to what is allowed to be rendered out
 }
 
 export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
   const serializers: Record<string, Serializer> = {
-    react: (els: ReactElement[], properties) => {
+    "react": (els: ReactElement[], properties) => {
       const serializer = new ComponentSerializer(new ReactSerializer(properties));
       return serializer.componentsToString(els);
     },
-    angular: (els: ReactElement[], properties) => {
+
+    "angular": (els: ReactElement[], properties) => {
       const serializer = new ComponentSerializer(new AngularSerializer(properties));
       return serializer.componentsToString(els);
     },
+
     "angular-reactive": (els: ReactElement[], properties) => {
       const serializer = new ComponentSerializer(new AngularReactiveSerializer(properties));
       return serializer.componentsToString(els);
@@ -105,16 +109,15 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   }
 
   function SandboxView() {
-    return (
-      <div className="sandbox-render">
-        <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-          {getComponents("goa")}
-        </div>
+    return <div className="sandbox-render">
+      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+        {getComponents("goa")}
       </div>
-    );
+    </div>
   }
 
   function SandboxCode() {
+    // reactive angular
     if (lang === "angular" && props.flags?.includes("reactive")) {
       return (
         <>
@@ -126,32 +129,40 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
 
           <h4>Reactive forms (FormControl)</h4>
           {getCodeSnippets("angular", "reactive")}
-          <CodeSnippet lang={formatLang} allowCopy={true}>
-            {output(serializers["angular-reactive"])}
-          </CodeSnippet>
+
+          { !props.skipRender && 
+            <CodeSnippet lang={formatLang} allowCopy={true}>
+              {output(serializers["angular-reactive"])}
+            </CodeSnippet>
+          }
         </>
       );
     }
 
+    // angular
     if (lang === "angular") {
       return (
         <>
           {getCodeSnippets("angular")}
-          <CodeSnippet lang={formatLang} allowCopy={true}>
-            {output(serializers["angular"])}
-          </CodeSnippet>
+          { !props.skipRender && 
+            <CodeSnippet lang={formatLang} allowCopy={true}>
+              {output(serializers["angular"])}
+            </CodeSnippet>
+          }
         </>
       );
     }
 
-    // formatted code snippet ex React -> Angular
+    // react
     if (lang === "react") {
       return (
         <>
           {getCodeSnippets("react")}
-          <CodeSnippet lang={formatLang} allowCopy={true}>
-            {output(serializers["react"])}
-          </CodeSnippet>
+          { !props.skipRender && 
+            <CodeSnippet lang={formatLang} allowCopy={true}>
+              {output(serializers["react"])}
+            </CodeSnippet>
+          }
         </>
       );
     }
