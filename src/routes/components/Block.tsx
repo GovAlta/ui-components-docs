@@ -75,6 +75,7 @@ export default function BlockPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
+                  width: "5rem",
                 }}>
                 Item 1
               </div>
@@ -83,6 +84,7 @@ export default function BlockPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
+                  width: "5rem",
                 }}>
                 Item 2
               </div>
@@ -91,6 +93,7 @@ export default function BlockPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
+                  width: "5rem",
                 }}>
                 Item 3
               </div>
