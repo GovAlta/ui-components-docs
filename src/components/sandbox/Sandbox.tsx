@@ -103,7 +103,15 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     return fn(getComponents("goa"), props.properties || []);
   }
 
-  function render() {
+  function SandboxView() {
+    return <div className="sandbox-render">
+      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+        {getComponents("goa")}
+      </div>
+    </div>
+  }
+
+  function SandboxCode() {
     if (lang === "angular" && props.flags?.includes("reactive")) {
       return (
         <>
@@ -149,20 +157,13 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     return <>No formatter found for {lang}</>;
   }
 
+
   return (
     <>
-      {props.properties && <SandboxProperties properties={props.properties} onChange={onChange} />}
-
+      <SandboxView />
+      <SandboxProperties properties={props.properties} onChange={onChange} />
+      <SandboxCode />
       <div className="sandbox-note">{props.note}</div>
-
-      {/* rendered output */}
-      <div className="sandbox-render">
-        <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-          {getComponents("goa")}
-        </div>
-      </div>
-
-      {render()}
     </>
   );
 };
