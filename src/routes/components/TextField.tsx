@@ -452,6 +452,7 @@ export default function TextFieldPage() {
                   <GoAInput onChange={noop} value="" name="position" type="number" width="88px" min={1900} max={2023} maxLength={4} />
                 </GoAFormItem>
               </GoABlock>
+              <small style={{color: "#333333"}}>For example, 27 11 2007</small>
             </GoABlock>
           </Sandbox>
 
