@@ -1,6 +1,6 @@
 import { GoAAccordion } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
-import { LanguageContext } from "@components/sandbox"; 
+import { LanguageContext } from "@components/sandbox";
 
 import css from "./ComponentProperties.module.css";
 
