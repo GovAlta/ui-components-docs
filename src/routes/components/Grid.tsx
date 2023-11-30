@@ -1,11 +1,11 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader";
-import {GoABadge, GoAGrid, GoATab, GoATabs} from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
+import { GoABadge, GoAGrid, GoATab, GoATabs } from "@abgov/react-components";
 
 export default function GridPage() {
   const [gridProps, setGridProps] = useState({
@@ -51,7 +51,7 @@ export default function GridPage() {
 
   function onSandboxChange(gridBindings: ComponentBinding[], props: Record<string, unknown>) {
     setGridBindings(gridBindings);
-    setGridProps(props as {minChildWidth: string; gap: string; [key: string]: unknown});
+    setGridProps(props as { minChildWidth: string; gap: string; [key: string]: unknown });
   }
 
   return (
@@ -72,7 +72,8 @@ export default function GridPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 1
               </div>
               <div
@@ -80,7 +81,8 @@ export default function GridPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 2
               </div>
               <div
@@ -88,7 +90,8 @@ export default function GridPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 3
               </div>
               <div
@@ -96,7 +99,8 @@ export default function GridPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 4
               </div>
               <div
@@ -104,7 +108,8 @@ export default function GridPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 5
               </div>
             </GoAGrid>
@@ -119,7 +124,8 @@ export default function GridPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
   );

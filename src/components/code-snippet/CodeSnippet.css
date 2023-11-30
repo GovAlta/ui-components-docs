@@ -15,8 +15,12 @@
 
 .goa-code-snippet-actions {
   text-align: right;
-  margin-bottom: var(--goa-space-xs);
-  margin-top: var(--goa-space-xs);
+  padding: var(--goa-space-xs) 0;
+  background-color: var(--goa-color-greyscale-100);
+}
+
+.goa-code-snippet-actions goa-button {
+  padding-right: 1rem;
 }
 
 .goa-code-snippet .copy-feedback {
@@ -25,6 +29,7 @@
   padding: 0;
   margin: -2rem 1rem 0 0;
 }
+
 @media screen and (max-width: 623px) {
   /*TODO: Will use snackbar notification later for Copied effect*/
   .goa-code-snippet .copy-feedback {

@@ -1,4 +1,4 @@
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet.tsx";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function DevelopersOverviewPage() {
   return (

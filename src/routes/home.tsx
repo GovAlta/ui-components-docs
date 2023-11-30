@@ -21,9 +21,8 @@ const HomePage = () => {
         and patterns."
         maxContentWidth={MAX_CONTENT_WIDTH}
       >
-        Use these resources to build your service. Use and learn from the
-        research and experience of other service teams and avoid repeating work
-        that's already been done.
+        Use these resources to build your service. Use and learn from the research and experience of
+        other service teams and avoid repeating work that's already been done.
         <GoAHeroBannerActions>
           <GoAButtonGroup alignment="start">
             <GoAButton
@@ -73,19 +72,15 @@ const HomePage = () => {
         <h2>Using the design system in your service</h2>
         <div className="home__using-design-system">
           <ol>
+            <li>Start with the design system and validate your design through user testing.</li>
             <li>
-              Start with the design system and validate your design through user
-              testing.
-            </li>
-            <li>
-              If usability issues arise or a problem cannot be resolved within
-              the system, only then consider a custom solution or extending a
-              component.
+              If usability issues arise or a problem cannot be resolved within the system, only then
+              consider a custom solution or extending a component.
             </li>
           </ol>
           <p>
-            <strong>Remember:</strong> Avoid custom solutions without a genuine
-            user need to prevent unnecessary rework and keep your team on track.
+            <strong>Remember:</strong> Avoid custom solutions without a genuine user need to prevent
+            unnecessary rework and keep your team on track.
           </p>
           <Link to="https://goa-dio.atlassian.net/wiki/spaces/DS/pages/2663678161/Starting+with+the+DDD+design+system">
             View more information on starting with the design system

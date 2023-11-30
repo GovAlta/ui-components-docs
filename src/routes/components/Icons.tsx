@@ -1,13 +1,13 @@
 import ICONS from "./icons.json";
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {GoABlock, GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs} from "@abgov/react-components";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {IconSnippet} from "@components/icon-snippet/IconSnippet.tsx";
+import { GoABlock, GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -61,7 +61,7 @@ export default function IconsPage() {
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
-    setIconsProps(props as {type: GoAIconType; [key: string]: unknown});
+    setIconsProps(props as { type: GoAIconType; [key: string]: unknown });
   }
 
   return (

@@ -2,11 +2,10 @@ import { ComponentBinding } from "./ComponentBinding";
 import { BaseSerializer, Serializer } from "./BaseSerializer";
 
 export class ReactSerializer extends BaseSerializer implements Serializer {
-
   public isRoot = false;
 
   constructor(properties: ComponentBinding[]) {
-    super(properties)
+    super(properties);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -14,7 +13,7 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   }
 
   getProperty(name: string): ComponentBinding | undefined {
-    return this.properties.find(p => p.name === name)
+    return this.properties.find(p => p.name === name);
   }
 
   dynamicProp(name: string): string {
@@ -52,7 +51,7 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.dynamicProp(name);
     }
-    return delimit ? `${name}=[${values}]` : `${name}=${values}` ;
+    return delimit ? `${name}=[${values}]` : `${name}=${values}`;
   }
 
   componentNameToString(name: string): string {

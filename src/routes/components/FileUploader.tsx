@@ -1,6 +1,6 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoAFileUploadCard,
   GoAFileUploadInput,
@@ -12,7 +12,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet.tsx";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
@@ -172,7 +172,7 @@ export default function FileUploaderPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFileUploaderBindings(bindings);
-    setFileUploaderProps(props as {maxFileSize: string; [key: string]: unknown});
+    setFileUploaderProps(props as { maxFileSize: string; [key: string]: unknown });
   }
 
   // For file uploader demo
@@ -186,13 +186,13 @@ export default function FileUploaderPage() {
       const url = e.target.result;
       const uploader = new MockUploader();
 
-      setUploads(old => [...old, {file, uploader}]);
+      setUploads(old => [...old, { file, uploader }]);
 
       uploader.onabort = () => console.log("Aborting upload");
       uploader.onfail = err => console.log("Upload failed: ", err);
       uploader.oncomplete = () => console.log("File upload complete");
       uploader.onprogress = percent => {
-        setProgressList(old => ({...old, [file.name]: percent}));
+        setProgressList(old => ({ ...old, [file.name]: percent }));
       };
       if (url) {
         uploader.upload(url);

@@ -7,15 +7,17 @@ const ReactiveComponents = [
   "goa-dropdown",
   "goa-checkbox",
   "goa-radio-group",
-]
+];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
-
   public isRoot = false;
-  private nativeEls = "div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section".split(" ")
+  private nativeEls =
+    "div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section".split(
+      " "
+    );
 
   constructor(properties: ComponentBinding[]) {
-    super(properties)
+    super(properties);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -23,7 +25,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   setState(state: SerializerState) {
-    super.setState(state)
+    super.setState(state);
   }
 
   #dynamicProp(name: string): string {
@@ -31,20 +33,19 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   #toFunc(name: string): string {
-
     if (name === "onChange") {
       return "";
     }
 
-    let _name = name.replace(/^on/, "")
-    _name = _name.substring(0, 1).toLowerCase() + _name.substring(1)
+    let _name = name.replace(/^on/, "");
+    _name = _name.substring(0, 1).toLowerCase() + _name.substring(1);
 
-    return `(_${_name})="${name}($event)"`
+    return `(_${_name})="${name}($event)"`;
   }
 
   stringToProp(name: string, item: string): string {
     if (ReactiveComponents.includes(this.state.element) && name === "value") {
-      return `goaValue [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`
+      return `goaValue [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`;
     }
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
@@ -62,7 +63,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
   booleanToProp(propName: string, propValue: boolean): string {
     if (ReactiveComponents.includes(this.state.element) && propName === "checked") {
-      return `goaChecked [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`
+      return `goaChecked [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`;
     }
     if (this.isDynamic(propName)) {
       return this.#dynamicProp(propName);
@@ -79,7 +80,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return delimit ? `${name.toLowerCase()}=[${items}]` : `${name.toLowerCase()}=${items}` ;
+    return delimit ? `${name.toLowerCase()}=[${items}]` : `${name.toLowerCase()}=${items}`;
   }
 
   componentNameToString(name: string): string {
@@ -87,13 +88,12 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return name;
     }
     const prefix = "GoA";
-    const tail = name.replace(prefix, "")
+    const tail = name.replace(prefix, "");
     return `${prefix.toLowerCase()}-${this.dasherize(tail)}`;
   }
 
   componentToString(name: string): string {
-    name = this.dasherize(name)
+    name = this.dasherize(name);
     return `<${name} />`;
   }
 }
-

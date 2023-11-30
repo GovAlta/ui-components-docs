@@ -1,11 +1,11 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs} from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
 
 export default function FormItemPage() {
   const [formItemProps, setFormItemProps] = useState({
@@ -99,7 +99,7 @@ export default function FormItemPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFormItemBindings(bindings);
-    setFormItemProps(props as {label: string; [key: string]: unknown});
+    setFormItemProps(props as { label: string; [key: string]: unknown });
   }
 
   const noop = () => {};
@@ -129,7 +129,8 @@ export default function FormItemPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }>
+          }
+        >
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

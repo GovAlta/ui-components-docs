@@ -28,6 +28,12 @@
       "@components/*": [
         "./src/components/*"
       ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@contexts/*": [
+        "./src/contexts/*"
+      ],
       "@routes/*": [
         "./src/routes/*"
       ]

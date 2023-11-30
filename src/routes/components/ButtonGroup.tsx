@@ -1,12 +1,12 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoAButton, GoAButtonGroup, GoATab, GoATabs} from "@abgov/react-components";
-import {Alignment} from "@abgov/react-components/common/styling";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
+import { Alignment } from "@abgov/react-components/common/styling";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
@@ -48,7 +48,7 @@ export default function ButtonGroupPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setButtonGroupBindings(bindings);
-    setButtonGroupProps(props as {alignment: Alignment; [key: string]: unknown});
+    setButtonGroupProps(props as { alignment: Alignment; [key: string]: unknown });
   }
 
   return (

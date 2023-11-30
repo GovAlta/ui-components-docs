@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
   GoABlock,
@@ -46,7 +46,7 @@ export default function DetailsPage() {
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setDetailsProps(props as {heading: string; [key: string]: unknown});
+    setDetailsProps(props as { heading: string; [key: string]: unknown });
     setDetailsBindings(bindings);
   }
 
@@ -116,7 +116,8 @@ export default function DetailsPage() {
           <Sandbox flags={["reactive"]} fullWidth>
             <GoAFormItem
               label="Do you have additional education expense?"
-              helpText="You can request this money now or at any time during your program.">
+              helpText="You can request this money now or at any time during your program."
+            >
               <GoARadioGroup name="additional" onChange={noop}>
                 <GoARadioItem label="Yes" value="yes" name="additional" />
                 <GoARadioItem label="No" value="no" name="additional" />
@@ -160,7 +161,8 @@ export default function DetailsPage() {
             <GoAFormItem
               label="Bank or Institution number"
               id="bankNumber"
-              helpText={"3-4 digits in length"}>
+              helpText={"3-4 digits in length"}
+            >
               <GoAInput
                 maxLength={4}
                 name="bankNumber"
@@ -173,7 +175,8 @@ export default function DetailsPage() {
             <GoAFormItem
               label="Branch or Transit number"
               helpText={"5 digits in length"}
-              id="transitNumber">
+              id="transitNumber"
+            >
               <GoAInput
                 maxLength={5}
                 name="transitNumber"
@@ -209,7 +212,8 @@ export default function DetailsPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }>
+          }
+        >
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

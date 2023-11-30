@@ -16,7 +16,7 @@
 
 .sandbox-container {
   display: flex;
-  gap: 0 2rem;
+  gap: 1rem 2rem;
   flex-flow: wrap;
   margin-bottom: 1.5rem;
 }

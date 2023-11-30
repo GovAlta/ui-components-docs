@@ -166,7 +166,7 @@ export default function CheckboxPage() {
 
   function getComponentsByGroup(group: string): ReactNode[] {
     return cards
-      .filter((card) => card.groups.includes(group))
+      .filter(card => card.groups.includes(group))
       .map((card: ComponentProps) => (
         <ComponentCard
           key={card.name}
@@ -179,7 +179,7 @@ export default function CheckboxPage() {
 
   function getComponentsByFilter(): ReactNode[] {
     return cards
-      .filter((card) => card.name.includes(filter) || card.tags?.includes(filter))
+      .filter(card => card.name.includes(filter) || card.tags?.includes(filter))
       .map((card: ComponentProps) => (
         <ComponentCard
           key={card.name}

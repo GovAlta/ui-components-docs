@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
   GoAFormItem,
@@ -13,7 +13,7 @@ import {
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet.tsx";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function RadioPage() {
   const [radioProps, setRadioProps] = useState({
@@ -111,7 +111,7 @@ export default function RadioPage() {
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setRadioProps(props as {name: string; [key: string]: unknown});
+    setRadioProps(props as { name: string; [key: string]: unknown });
     setRadioBindings(bindings);
   }
 
@@ -173,7 +173,8 @@ export default function RadioPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
   );

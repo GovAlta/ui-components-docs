@@ -1,11 +1,11 @@
-import {GoABadge} from "@abgov/react-components";
+import { GoABadge } from "@abgov/react-components";
 import "./ComponentHeader.css";
 
 interface Props {
   category?: Category;
   name: string;
   description?: string;
-  relatedComponents?: {link: string; name: string}[];
+  relatedComponents?: { link: string; name: string }[];
 }
 
 export enum Category {

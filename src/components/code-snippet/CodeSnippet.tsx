@@ -38,7 +38,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
     const space = space0 < tabSize ? space1 : space0;
 
     return lines
-      .map((line) => line.substring(space))
+      .map(line => line.substring(space))
       .join("\n")
       .trim();
   };

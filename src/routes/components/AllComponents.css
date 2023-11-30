@@ -2,7 +2,8 @@
   margin-right: 1rem;
 }
 
-.anchors a:before {}
+.anchors a:before {
+}
 
 .back-to-top {
   margin-top: 1rem;

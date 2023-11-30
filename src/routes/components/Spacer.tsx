@@ -1,7 +1,7 @@
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoABlock, GoASpacer, GoATab, GoATabs} from "@abgov/react-components";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
-import {useState} from "react";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoABlock, GoASpacer, GoATab, GoATabs } from "@abgov/react-components";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -80,7 +80,8 @@ export default function SpacerPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 Item 1
               </div>
               <GoASpacer {...spacerProps} />
@@ -89,7 +90,8 @@ export default function SpacerPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 Item 1
               </div>
               <GoASpacer {...spacerProps} />
@@ -98,7 +100,8 @@ export default function SpacerPage() {
                   padding: "1rem",
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
-                }}>
+                }}
+              >
                 Item 1
               </div>
             </GoABlock>
