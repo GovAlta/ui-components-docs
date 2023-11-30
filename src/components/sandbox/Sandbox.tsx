@@ -19,6 +19,7 @@ interface ElementProps {
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
+  allow?: string[];
 }
 
 export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
@@ -78,7 +79,7 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     const children = Array.isArray(props.children) ? props.children : [props.children];
 
     return (children as ReactElement[]).filter(
-      el => typeof el.type !== "string" && el.type.name.toLowerCase().startsWith(type)
+      el => typeof el.type !== "string" && (el.type.name.toLowerCase().startsWith(type) || props["allow"]?.includes(el.type.name))
     );
   }
 
