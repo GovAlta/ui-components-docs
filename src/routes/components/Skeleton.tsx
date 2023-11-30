@@ -1,14 +1,14 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoABadge, GoASkeleton, GoATab, GoATabs, SkeletonType} from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoABadge, GoASkeleton, GoATab, GoATabs, SkeletonType } from "@abgov/react-components";
 
 export default function SkeletonPage() {
-  const [skeletonProps, setSkeletonProps] = useState({type: "text" as SkeletonType});
+  const [skeletonProps, setSkeletonProps] = useState({ type: "text" as SkeletonType });
   const [skeletonBindings, setSkeletonBindings] = useState<ComponentBinding[]>([
     {
       label: "Type",
@@ -79,7 +79,7 @@ export default function SkeletonPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
     setSkeletonBindings(bindings);
-    setSkeletonProps(props as {type: SkeletonType; [key: string]: unknown});
+    setSkeletonProps(props as { type: SkeletonType; [key: string]: unknown });
   }
 
   return (
@@ -107,7 +107,8 @@ export default function SkeletonPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
   );

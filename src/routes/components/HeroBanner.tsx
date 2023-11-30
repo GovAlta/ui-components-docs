@@ -1,10 +1,10 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoAButton,
   GoAHeroBanner,
@@ -79,14 +79,14 @@ export default function HeroBannerPage() {
       type: "string",
       description: "Set the height of the Hero Banner",
       lang: "angular",
-      defaultValue: "600px"
+      defaultValue: "600px",
     },
     {
       name: "minHeight",
       type: "string",
       description: "Sets the height of the Hero Banner",
       lang: "react",
-      defaultValue: "600px"
+      defaultValue: "600px",
     },
     {
       name: "maxcontentwidth",
@@ -134,7 +134,7 @@ export default function HeroBannerPage() {
 
   function onSandboxChange(heroBannerBindings: ComponentBinding[], props: Record<string, unknown>) {
     setHeroBannerBindings(heroBannerBindings);
-    setHeroBannerProps(props as {heading: string; [key: string]: unknown});
+    setHeroBannerProps(props as { heading: string; [key: string]: unknown });
   }
 
   function noop() {}

@@ -1,11 +1,11 @@
-import {useState} from "react";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoABadge, GoAButton, GoAPopover, GoATab, GoATabs} from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
 
 export default function PopoverPage() {
   const [popoverProps, setPopoverProps] = useState({});
@@ -103,7 +103,8 @@ export default function PopoverPage() {
                 <GoAButton type="secondary" size="compact">
                   Click me
                 </GoAButton>
-              }>
+              }
+            >
               <p>This is a popover</p>
               It can be used for a number of different contexts.
             </GoAPopover>
@@ -119,7 +120,8 @@ export default function PopoverPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
   );

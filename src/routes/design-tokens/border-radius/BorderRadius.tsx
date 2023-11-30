@@ -63,7 +63,7 @@ export default function BorderRadiusPage() {
   const renderMobile = () => {
     return (
       <GoAGrid minChildWidth="22rem" gap="xl">
-        {getTokenGroups(tokens).map((group) =>
+        {getTokenGroups(tokens).map(group =>
           group.map((token, idx) => (
             <>
               <GoAContainer key={idx}>

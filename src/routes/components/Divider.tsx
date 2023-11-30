@@ -1,11 +1,11 @@
-import {useState} from "react";
-import {ComponentBinding} from "@components/sandbox";
+import { useState } from "react";
+import { ComponentBinding } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
-import {GoABadge, GoADivider, GoATab, GoATabs} from "@abgov/react-components";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoABadge, GoADivider, GoATab, GoATabs } from "@abgov/react-components";
 import Sandbox from "@components/sandbox/Sandbox.tsx";
 import "./AllComponents.css";
 
@@ -83,7 +83,8 @@ export default function DividerPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </div>
   );

@@ -89,7 +89,7 @@ export default function AccordionPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setAccordionBindings(bindings);
-    setAccordionProps(props as { heading: string;[key: string]: unknown });
+    setAccordionProps(props as { heading: string; [key: string]: unknown });
   }
 
   return (

@@ -1,12 +1,12 @@
-import {useState} from "react";
-import {GoACheckbox} from "@abgov/react-components";
-import {Sandbox, ComponentBinding} from "@components/sandbox";
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet";
+import { useState } from "react";
+import { GoACheckbox } from "@abgov/react-components";
+import { Sandbox, ComponentBinding } from "@components/sandbox";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 
 export default function CheckboxPage() {
   const [checkboxProps, setCheckboxProps] = useState({
@@ -15,11 +15,11 @@ export default function CheckboxPage() {
     text: "Item",
   });
   const [checkboxBindings, setCheckboxBindings] = useState<ComponentBinding[]>([
-    {label: "Text", type: "string", name: "text", value: "Item"},
-    {label: "Description", type: "string", name: "description", value: ""},
-    {label: "Disabled", type: "boolean", name: "disabled", value: false},
-    {label: "Error", type: "boolean", name: "error", value: false},
-    {label: "ARIA label", type: "string", name: "ariaLabel", value: ""},
+    { label: "Text", type: "string", name: "text", value: "Item" },
+    { label: "Description", type: "string", name: "description", value: "" },
+    { label: "Disabled", type: "boolean", name: "disabled", value: false },
+    { label: "Error", type: "boolean", name: "error", value: false },
+    { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -83,7 +83,7 @@ export default function CheckboxPage() {
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setCheckboxBindings(bindings);
     setCheckboxProps(
-      props as {name: string; checked: boolean; text: string; [key: string]: unknown}
+      props as { name: string; checked: boolean; text: string; [key: string]: unknown }
     );
   }
 

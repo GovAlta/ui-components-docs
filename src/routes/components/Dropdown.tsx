@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import {
   GoABadge,
   GoADropdown,
@@ -7,10 +7,10 @@ import {
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet";
-import {ComponentBinding, Sandbox} from "@components/sandbox";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import ICONS from "./icons.json";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader.tsx";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -44,11 +44,11 @@ export default function DropdownPage() {
       name: "width",
       value: "",
     },
-    {label: "Disabled", type: "boolean", name: "disabled", value: false},
-    {label: "Error", type: "boolean", name: "error", value: false},
-    {label: "Native", type: "boolean", name: "native", value: false},
-    {label: "Filterable", type: "boolean", name: "filterable", value: false},
-    {label: "ARIA label", type: "string", name: "ariaLabel", value: ""},
+    { label: "Disabled", type: "boolean", name: "disabled", value: false },
+    { label: "Error", type: "boolean", name: "error", value: false },
+    { label: "Native", type: "boolean", name: "native", value: false },
+    { label: "Filterable", type: "boolean", name: "filterable", value: false },
+    { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
 
   const dropdownProperties: ComponentProperty[] = [
@@ -225,26 +225,26 @@ export default function DropdownPage() {
             }
           }  
         `}
-        />
+            />
 
-        <CodeSnippet
-          lang="typescript"
-          tags={["angular", "reactive"]}
-          allowCopy={true}
-          code={`
+            <CodeSnippet
+              lang="typescript"
+              tags={["angular", "reactive"]}
+              allowCopy={true}
+              code={`
           // reactive code
           import { FormControl } from "@angular/forms";
           export class MyComponent {
             reactiveFormCtrl = new FormControl("red");
           }  
         `}
-        />
+            />
 
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
           const [value, setValue] = useState("red");
           function onChange(name: string, value: string | string[]) {
             setValue(value);
@@ -276,7 +276,8 @@ export default function DropdownPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }>
+          }
+        >
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

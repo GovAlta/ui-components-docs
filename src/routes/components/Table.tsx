@@ -1,10 +1,10 @@
-import {useContext, useEffect, useState} from "react";
-import {ComponentBinding, LanguageContext, Sandbox} from "@components/sandbox";
+import { useContext, useEffect, useState } from "react";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
-import {Category, ComponentHeader} from "@components/component-header/ComponentHeader";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
   GoABlock,
@@ -15,7 +15,7 @@ import {
   GoATableSortHeader,
   GoATabs,
 } from "@abgov/react-components";
-import {CodeSnippet} from "@components/code-snippet/CodeSnippet.tsx";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 interface User {
   firstName: string;
@@ -400,7 +400,8 @@ export default function TablePage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
   );

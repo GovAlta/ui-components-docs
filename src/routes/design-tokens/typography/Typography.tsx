@@ -42,13 +42,7 @@ export default function TypographyPage() {
                 <TokenSnippet code={token.tokenName} />
               </td>
               <td>{token.typeFamily}</td>
-              <td>
-                {token.weight === "Bold" ? (
-                  <strong>{token.weight}</strong>
-                ) : (
-                  token.weight
-                )}
-              </td>
+              <td>{token.weight === "Bold" ? <strong>{token.weight}</strong> : token.weight}</td>
               <td>{token.fontSize}</td>
               <td>{token.lineHeight}</td>
             </tr>
@@ -61,7 +55,7 @@ export default function TypographyPage() {
   const renderMobile = () => {
     return (
       <GoAGrid minChildWidth="22rem" gap="xl">
-        {getTokenGroups(tokens as Token[]).map((group) =>
+        {getTokenGroups(tokens as Token[]).map(group =>
           group.map((token: TypographyToken, idx: number) => (
             <GoAContainer key={idx}>
               <dl>

@@ -1,4 +1,4 @@
-import {GoACallout} from "@abgov/react-components";
+import { GoACallout } from "@abgov/react-components";
 
 export default function QATestingOverviewPage() {
   return (
@@ -16,7 +16,8 @@ export default function QATestingOverviewPage() {
           heading="Design system components are thoroughly tested"
           size="large"
           mt="xl"
-          mb="xl">
+          mb="xl"
+        >
           You don't need to test the design system components. <br />
           <strong>
             If problems found regarding components{" "}

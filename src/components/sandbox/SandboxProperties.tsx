@@ -7,23 +7,23 @@ import {
   GoARadioGroup,
   GoARadioItem,
 } from "@abgov/react-components";
-import {ComponentBinding} from "./ComponentBinding";
+import { ComponentBinding } from "./ComponentBinding";
 
 interface Props {
   properties?: ComponentBinding[];
   onChange: (props: ComponentBinding[]) => void;
 }
 
-export function SandboxProperties({properties = [], onChange}: Props) {
+export function SandboxProperties({ properties = [], onChange }: Props) {
   function onListChange(name: string, value: string | string[]) {
-    const prop = properties.find((p) => ["list", "dropdown"].includes(p.type) && p.name === name);
+    const prop = properties.find(p => ["list", "dropdown"].includes(p.type) && p.name === name);
     if (!prop || !["list", "dropdown"].includes(prop.type)) return;
     prop.value = !value ? "" : typeof value === "string" ? value : value[0];
     onChange([...properties]);
   }
 
   function onRadioChange(name: string, value: string | string[]) {
-    const prop = properties.find((p) => p.type === "radio" && p.name === name);
+    const prop = properties.find(p => p.type === "radio" && p.name === name);
     if (!prop || prop.type !== "radio") return;
     prop.value = !value ? "" : typeof value === "string" ? value : value[0];
     onChange([...properties]);
@@ -84,7 +84,8 @@ export function SandboxProperties({properties = [], onChange}: Props) {
             filterable
             leadingIcon="search"
             value={p.value}
-            onChange={onComboboxChange}>
+            onChange={onComboboxChange}
+          >
             {p.options.map(option => (
               <GoADropdownItem
                 value={option || ""}
@@ -97,20 +98,24 @@ export function SandboxProperties({properties = [], onChange}: Props) {
       case "radio":
         return (
           <GoARadioGroup name={p.name} value={p.value} onChange={onRadioChange}>
-            {p.options.map((option) => {
+            {p.options.map(option => {
               const label = option[0].toUpperCase() + option.substring(1);
-              return <GoARadioItem value={option} label={label} key={option}  />
+              return <GoARadioItem value={option} label={label} key={option} />;
             })}
           </GoARadioGroup>
         );
       case "boolean":
         return (
-          <GoACheckbox name={p.name} checked={p.value} onChange={onCheckboxChange} mt="xs" text="Yes" />
+          <GoACheckbox
+            name={p.name}
+            checked={p.value}
+            onChange={onCheckboxChange}
+            mt="xs"
+            text="Yes"
+          />
         );
       case "string":
-        return (
-          <GoAInput name={p.name} value={p.value} width={p.width} onChange={onTextChange} />
-        );
+        return <GoAInput name={p.name} value={p.value} width={p.width} onChange={onTextChange} />;
       case "number":
         return (
           <GoAInput type="number" name={p.name} value={`${p.value}`} onChange={onNumberChange} />
@@ -120,7 +125,7 @@ export function SandboxProperties({properties = [], onChange}: Props) {
 
   return (
     <div className="sandbox-container">
-      {properties.map((p) => (
+      {properties.map(p => (
         <GoAFormItem key={p.name} label={p.label || ""}>
           {renderProps(p)}
         </GoAFormItem>

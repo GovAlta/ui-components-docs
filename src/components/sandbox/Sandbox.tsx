@@ -78,7 +78,7 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     const children = Array.isArray(props.children) ? props.children : [props.children];
 
     return (children as ReactElement[]).filter(
-      (el) => typeof el.type !== "string" && el.type.name.toLowerCase().startsWith(type)
+      el => typeof el.type !== "string" && el.type.name.toLowerCase().startsWith(type)
     );
   }
 
@@ -86,9 +86,9 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   // to be displayed, while hiding the non-reactive ones
   function getCodeSnippets(...tags: string[]) {
     const matches = (list: string[]): boolean => {
-      return tags.filter((tag) => list.includes(tag)).length === list.length;
+      return tags.filter(tag => list.includes(tag)).length === list.length;
     };
-    return getComponents("codesnippet").filter((el) => {
+    return getComponents("codesnippet").filter(el => {
       const componentTags: string[] = Array.isArray(el.props.tags)
         ? el.props.tags
         : [el.props.tags];
@@ -104,11 +104,13 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   }
 
   function SandboxView() {
-    return <div className="sandbox-render">
-      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-        {getComponents("goa")}
+    return (
+      <div className="sandbox-render">
+        <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+          {getComponents("goa")}
+        </div>
       </div>
-    </div>
+    );
   }
 
   function SandboxCode() {
@@ -150,13 +152,11 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
             {output(serializers["react"])}
           </CodeSnippet>
         </>
-
       );
     }
 
     return <>No formatter found for {lang}</>;
   }
-
 
   return (
     <>

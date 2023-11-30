@@ -33,7 +33,6 @@ export const ComponentProperties = (props: Props) => {
     setFilteredProperties([...filterBy(props.properties)]);
   }, [lang]);
 
-  
   return (
     <GoAAccordion heading="Components properties" mt="xl">
       {filteredProperties.map((props, index) => (
@@ -47,25 +46,28 @@ interface ComponentPropertyProps {
   props: ComponentProperty;
 }
 
-function ComponentProperty({props}: ComponentPropertyProps) {
+function ComponentProperty({ props }: ComponentPropertyProps) {
   return (
     <div className={css["component-props"]}>
       <div className={css.details}>
         <code className={`${css.codek} ${css.name}`}>{props.name}</code>
 
-        { props.type && 
+        {props.type && (
           <code className={`${css.code} ${css.type}`}>
             {typeof props.type === "string" ? props.type : props.type.join(" | ")}
-          </code> 
-        }
+          </code>
+        )}
       </div>
 
       <div className={css.description}>
         {props.required && <span>Required. </span>}
         {props.description}
-        {props.defaultValue && 
-          <span> Defaults to <code className={css.code}>{props.defaultValue}</code>.</span>
-        }
+        {props.defaultValue && (
+          <span>
+            {" "}
+            Defaults to <code className={css.code}>{props.defaultValue}</code>.
+          </span>
+        )}
       </div>
     </div>
   );

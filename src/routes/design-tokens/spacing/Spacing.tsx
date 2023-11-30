@@ -61,7 +61,7 @@ export default function SpacingPage() {
   const renderMobile = () => {
     return (
       <GoAGrid minChildWidth="22rem" gap="xl">
-        {getTokenGroups(tokens).map((group) =>
+        {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
             <GoAContainer key={idx}>
               <div className="represent">

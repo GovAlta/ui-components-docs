@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { ComponentProperties, ComponentProperty } from "@components/component-properties/ComponentProperties.tsx";
+import {
+  ComponentProperties,
+  ComponentProperty,
+} from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoABlock, GoATab, GoATabs } from "@abgov/react-components";
 
@@ -13,7 +16,7 @@ export default function BlockPage() {
       name: "gap",
       options: ["", "none", "3xs", "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl"],
       value: "",
-      defaultValue: "m"
+      defaultValue: "m",
     },
     {
       label: "Direction",
@@ -21,7 +24,7 @@ export default function BlockPage() {
       name: "direction",
       options: ["", "row", "column"],
       value: "",
-      defaultValue: "row"
+      defaultValue: "row",
     },
     {
       label: "Alignment",
@@ -29,28 +32,28 @@ export default function BlockPage() {
       name: "alignment",
       options: ["", "center", "start", "end"],
       value: "",
-      defaultValue: "start"
-    }
+      defaultValue: "start",
+    },
   ]);
   const componentProperties: ComponentProperty[] = [
     {
       name: "gap",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Spacing between items",
-      defaultValue: "m"
+      defaultValue: "m",
     },
     {
       name: "direction",
       type: "row | column",
       description: "Stacking direction of child components",
-      defaultValue: "row"
+      defaultValue: "row",
     },
     {
       name: "alignment",
       type: "center | start | end",
       description: "Primary axis alignment",
-      defaultValue: "start"
-    }
+      defaultValue: "start",
+    },
   ];
 
   function onSandboxChange(blockBindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -58,12 +61,13 @@ export default function BlockPage() {
     setBlockProps(props);
   }
 
-  return(
+  return (
     <>
       <ComponentHeader
         name="Block"
         category={Category.UTILITIES}
-        description="Used when grouping components into a block with consistent space between."/>
+        description="Used when grouping components into a block with consistent space between."
+      />
 
       <GoATabs>
         <GoATab heading="Code examples">
@@ -76,7 +80,8 @@ export default function BlockPage() {
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
                   width: "5rem",
-                }}>
+                }}
+              >
                 Item 1
               </div>
               <div
@@ -85,7 +90,8 @@ export default function BlockPage() {
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
                   width: "5rem",
-                }}>
+                }}
+              >
                 Item 2
               </div>
               <div
@@ -94,7 +100,8 @@ export default function BlockPage() {
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
                   width: "5rem",
-                }}>
+                }}
+              >
                 Item 3
               </div>
             </GoABlock>
@@ -103,16 +110,15 @@ export default function BlockPage() {
           <ComponentProperties properties={componentProperties} />
         </GoATab>
 
-
         <GoATab
           heading={
             <>
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }></GoATab>
+          }
+        ></GoATab>
       </GoATabs>
     </>
-  )
-
+  );
 }

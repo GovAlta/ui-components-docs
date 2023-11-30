@@ -1,5 +1,5 @@
-import {GoAButton, GoAButtonGroup, GoAContainer, GoAGrid} from "@abgov/react-components";
-import {useNavigate} from "react-router-dom";
+import { GoAButton, GoAButtonGroup, GoAContainer, GoAGrid } from "@abgov/react-components";
+import { useNavigate } from "react-router-dom";
 
 export default function GetStartedOverviewPage() {
   const navigate = useNavigate();
@@ -18,19 +18,22 @@ export default function GetStartedOverviewPage() {
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/designers")}>
+              onClick={() => navigate("/get-started/designers")}
+            >
               Designers
             </GoAButton>
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/developers")}>
+              onClick={() => navigate("/get-started/developers")}
+            >
               Developers
             </GoAButton>
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/qa-testing")}>
+              onClick={() => navigate("/get-started/qa-testing")}
+            >
               QA Testers
             </GoAButton>
           </GoAButtonGroup>

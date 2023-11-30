@@ -1,5 +1,12 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoATab, GoATabs, GoACallout, GoACalloutProps, GoACalloutType } from "@abgov/react-components";
+import {
+  GoABadge,
+  GoATab,
+  GoATabs,
+  GoACallout,
+  GoACalloutProps,
+  GoACalloutType,
+} from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 

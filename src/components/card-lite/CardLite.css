@@ -5,7 +5,7 @@
 
 .card-lite .description {
   font-size: var(--goa-font-size-4);
-  margin-bottom:  var(--goa-space-xs);
+  margin-bottom: var(--goa-space-xs);
 }
 
 .card-content a {
@@ -13,7 +13,7 @@
 }
 
 .card-lite .link {
-  font-size: var(--goa-font-size-5)
+  font-size: var(--goa-font-size-5);
 }
 
 @media screen and (min-width: 1231px) {

@@ -198,7 +198,8 @@ export default function ListPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }>
+          }
+        >
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

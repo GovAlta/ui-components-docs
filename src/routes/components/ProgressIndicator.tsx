@@ -84,7 +84,8 @@ export default function ProgressIndicatorPage() {
     {
       name: "visible",
       type: "boolean",
-      description: "Show/hide the page loader. This allows for fade transition to be applied in each transition.",
+      description:
+        "Show/hide the page loader. This allows for fade transition to be applied in each transition.",
     },
   ];
 
