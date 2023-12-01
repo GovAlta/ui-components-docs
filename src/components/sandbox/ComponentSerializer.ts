@@ -24,7 +24,7 @@ export class ComponentSerializer {
     elementName: string,
     name: string,
     item: ReactElement | Object | string | number | boolean,
-    delimit = true
+    delimit = true,
   ): string {
     if (typeof item === "string") {
       return this.serializer.stringToProp(name, item);
@@ -61,10 +61,10 @@ export class ComponentSerializer {
   #componentToString(
     component: ReactElement & GoAElement,
     isRoot: boolean,
-    spacing: number = 0
+    spacing: number = 0,
   ): string {
     let elementType = this.serializer.componentNameToString(
-      (component.type as unknown as any).name || (component.type as string)
+      (component.type as unknown as any).name || (component.type as string),
     );
     this.serializer.setIsRoot(isRoot);
     this.serializer.setState({ element: elementType, props: { name: component.props.name } });
@@ -91,29 +91,35 @@ export class ComponentSerializer {
       props = " " + props;
     }
 
-    let children: string = "";
-    if (component.props.children) {
-      spacing += 2;
-      const indentation = new Array(spacing + 1).join(" ");
-      // children output
-      if (Array.isArray(component.props.children)) {
-        children = component.props.children
-          .reduce((a: ReactElement[], b: ReactElement) => a.concat(b), []) // handle Array of Arrays
-          .filter((child: ReactElement) => child && isValidElement(child))
-          .map((child: ReactElement) => this.#serializeComponent(child, false, spacing))
-          .join(`\n${indentation}`);
-      } else {
-        children = this.#serializeComponent(component.props.children, false, spacing);
-      }
-
-      // final output
-      return `<${elementType}${props}>\n${indentation}${children}\n${indentation.slice(
-        0,
-        -2
-      )}</${elementType}>`;
+    if (!component.props.children) {
+      return `<${elementType}${props} />`;
     }
 
-    return `<${elementType}${props} />`;
+    let children: string = "";
+    if (!component.props["ignore"]) {
+      spacing += 2;
+    }
+    const indentation = new Array(spacing + 1).join(" ");
+    // children output
+    if (Array.isArray(component.props.children)) {
+      children = component.props.children
+        .reduce((a: ReactElement[], b: ReactElement) => a.concat(b), []) // handle Array of Arrays
+        .filter((child: ReactElement) => child && isValidElement(child))
+        .map((child: ReactElement) => this.#serializeComponent(child, false, spacing))
+        .join(`\n${indentation}`);
+    } else {
+      children = this.#serializeComponent(component.props.children, false, spacing);
+    }
+
+    if (component.props["ignore"]) {
+      return children;
+    }
+
+    // final output
+    return `<${elementType}${props}>\n${indentation}${children}\n${indentation.slice(
+      0,
+      -2,
+    )}</${elementType}>`;
   }
 }
 
