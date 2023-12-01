@@ -50,7 +50,7 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
   return (
     <div className={css["component-props"]}>
       <div className={css.details}>
-        <code className={`${css.codek} ${css.name}`}>{props.name}</code>
+        <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
         {props.type && (
           <code className={`${css.code} ${css.type}`}>
