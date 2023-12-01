@@ -119,7 +119,7 @@ export default function TablePage() {
       />
       <GoATabs>
         <GoATab heading="Code examples">
-          {/*Table sandbox*/}
+
           <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
             <GoATable {...tableProps}>
               <thead>
@@ -177,16 +177,14 @@ export default function TablePage() {
 
           <ComponentProperties properties={componentProperties} />
 
-          {/*Examples*/}
           <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
             <a href="#sortable-columns">Sortable columns</a>
             <a href="#number-column">Number columns</a>
           </GoABlock>
 
           <h3 id="sortable-columns">Sortable columns</h3>
-          {/*Sortable columns demo - sandbox cannot display users.map and its logic*/}
           <GoAContainer>
-            <GoATable onSort={sortData}>
+            <GoATable onSort={sortData} width="100%">
               <thead>
                 <tr>
                   <th>
@@ -370,12 +368,12 @@ export default function TablePage() {
 
           <h3 id="number-column">Number column</h3>
           <Sandbox fullWidth>
-            <GoATable>
+            <GoATable width="100%">
               <thead>
                 <tr>
                   <th>Col 1</th>
                   <th>Col 2</th>
-                  <th>Number Column</th>
+                  <th className="goa-table-number-header">Number Column</th>
                 </tr>
               </thead>
               <tbody>
