@@ -1,15 +1,15 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABlock, GoASpacer, GoATab, GoATabs } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 
 export default function SpacerPage() {
-  const [spacerProps, setSpacerProps] = useState({});
-  const [spacerBindings, setSpacerBindings] = useState<ComponentBinding[]>([
+  const [hSpacerProps, setHSpacerProps] = useState({});
+  const [hSpacerBindings, setHSpacerBindings] = useState<ComponentBinding[]>([
     {
       label: "Horizontal Spacing",
       type: "list",
@@ -18,6 +18,10 @@ export default function SpacerPage() {
       defaultValue: "none",
       value: "",
     },
+  ]);
+
+  const [vSpacerProps, setVSpacerProps] = useState({});
+  const [vSpacerBindings, setVSpacerBindings] = useState<ComponentBinding[]>([
     {
       label: "Vertical Spacing",
       type: "list",
@@ -27,6 +31,7 @@ export default function SpacerPage() {
       value: "",
     },
   ]);
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "hSpacing",
@@ -58,9 +63,20 @@ export default function SpacerPage() {
     },
   ];
 
-  function onSandboxChange(spacerBindings: ComponentBinding[], props: Record<string, unknown>) {
-    setSpacerBindings(spacerBindings);
-    setSpacerProps(props);
+  function onHSandboxChange(spacerBindings: ComponentBinding[], props: Record<string, unknown>) {
+    setHSpacerBindings(spacerBindings);
+    setHSpacerProps(props);
+  }
+
+  function onVSandboxChange(spacerBindings: ComponentBinding[], props: Record<string, unknown>) {
+    setVSpacerBindings(spacerBindings);
+    setVSpacerProps(props);
+  }
+
+  const styles: CSSProperties = {
+    padding: "1rem",
+    backgroundColor: "rgba(0, 150, 255, 0.2)",
+    whiteSpace: "nowrap",
   }
 
   return (
@@ -73,41 +89,38 @@ export default function SpacerPage() {
 
       <GoATabs>
         <GoATab heading="Code examples">
-          <Sandbox properties={spacerBindings} onChange={onSandboxChange} fullWidth>
+          <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange} fullWidth allow={["h4"]}>
             <GoABlock>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <div style={styles}>
                 Item 1
               </div>
-              <GoASpacer {...spacerProps} />
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <GoASpacer {...hSpacerProps} />
+              <div style={styles}>
                 Item 1
               </div>
-              <GoASpacer {...spacerProps} />
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
+              <GoASpacer {...hSpacerProps} />
+              <div style={styles}>
                 Item 1
               </div>
             </GoABlock>
           </Sandbox>
 
-          {/*Spacer table properties*/}
+          <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange} fullWidth allow={["h4"]}>
+            <GoABlock direction="column">
+              <div style={styles}>
+                Item 1
+              </div>
+              <GoASpacer {...vSpacerProps} />
+              <div style={styles}>
+                Item 1
+              </div>
+              <GoASpacer {...vSpacerProps} />
+              <div style={styles}>
+                Item 1
+              </div>
+            </GoABlock>
+          </Sandbox>
+
           <ComponentProperties properties={componentProperties} />
         </GoATab>
       </GoATabs>
