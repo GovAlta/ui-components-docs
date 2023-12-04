@@ -175,7 +175,13 @@ export default function TEMPLATE_Page() {
 
           <ComponentProperties properties={componentProperties} />
 
-          <h3>Basic Modal</h3>
+          <a href="#basic">Basic Modal</a>
+          <a href="#destructive">Basic Modal</a>
+          <a href="#warning">Warning Modal</a>
+          <a href="#with-input">Modal with input</a>
+          
+
+          <h3 id="basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Heading">
               <p>Content</p>
@@ -191,7 +197,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3>Confirm a destructive action</h3>
+          <h3 id="destructive">Confirm a destructive action</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Are you sure you want to withdraw this assessment?">
               <p>This action cannot be undone.</p>
@@ -207,13 +213,11 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3>Warning callout modal</h3>
+          <h3 id="warning">Warning callout modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Complete submission prior to 1PM" variant="information">
               <p>
-                You’ve selected to adjourn a matter that is required to appear today. This Calgary
-                court location does not accept adjournment requests past 1PM MST. Please submit your
-                adjournment request as soon as possible.
+                You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.
               </p>
 
               <GoAButtonGroup alignment="end" mt="l">
@@ -224,7 +228,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3>Modal with input</h3>
+          <h3 id="within-input">Modal with input</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Why was this adjusted?">
               <GoAFormItem label="Reason for adjustment">
@@ -233,6 +237,7 @@ export default function TEMPLATE_Page() {
                   <GoADropdownItem value="Late submission" />
                   <GoADropdownItem value="It's Friday 🎉" />
                 </GoADropdown>
+
               </GoAFormItem>
 
               <GoAButtonGroup alignment="end" mt="l">

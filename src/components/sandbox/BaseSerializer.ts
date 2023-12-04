@@ -18,6 +18,17 @@ export interface SerializerState {
   props: { name: string };
 }
 
+export function propsToString(props: Record<string, string>, lang: "angular" | "react"): string {
+  if (lang === "angular") {
+    return Object.entries(props)
+      .map(e => `${e[0].toLowerCase()}="${e[1]}"`)
+      .join(" ");
+  }
+  return Object.entries(props)
+    .map(e => `${e[0]}="${e[1]}"`)
+    .join(" ");
+}
+
 export class BaseSerializer {
   protected isRoot = false;
   protected state: SerializerState = { element: "", props: { name: "" } };
