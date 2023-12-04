@@ -178,6 +178,7 @@ export default function DropdownPage() {
       description: "Callback function when dropdown value is changed.",
     },
   ];
+
   const dropdownItemProperties: ComponentProperty[] = [
     {
       name: "value",
@@ -198,7 +199,15 @@ export default function DropdownPage() {
     },
   ];
 
-  function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  const [ color, setColor ] = useState<string>("red");
+
+  function onChange(_name: string, value: string | string[]) { 
+    if (typeof value === "string") {
+      setColor(value);
+    }
+  }
+
+  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setDropdownBindings(bindings);
     setDropdownProps(props);
   }
@@ -212,19 +221,20 @@ export default function DropdownPage() {
       />
       <GoATabs>
         <GoATab heading="Code examples">
-          <Sandbox properties={dropdownBindings} onChange={onChange} flags={["reactive"]}>
+          <Sandbox properties={dropdownBindings} onChange={onSandboxChange} flags={["reactive"]}>
+
             <CodeSnippet
               lang="typescript"
               tags="angular"
               allowCopy={true}
               code={`
-          // non-reactive code
-          export class MyComponent {
-            onChange(event) {
-              // handle change
-            }
-          }  
-        `}
+                // non-reactive code
+                export class MyComponent {
+                  onChange(event) {
+                    // handle change
+                  }
+                }  
+              `}
             />
 
             <CodeSnippet
@@ -232,12 +242,12 @@ export default function DropdownPage() {
               tags={["angular", "reactive"]}
               allowCopy={true}
               code={`
-          // reactive code
-          import { FormControl } from "@angular/forms";
-          export class MyComponent {
-            reactiveFormCtrl = new FormControl("red");
-          }  
-        `}
+                // reactive code
+                import { FormControl } from "@angular/forms";
+                export class MyComponent {
+                  reactiveFormCtrl = new FormControl("red");
+                }  
+              `}
             />
 
             <CodeSnippet
@@ -245,25 +255,25 @@ export default function DropdownPage() {
               tags="react"
               allowCopy={true}
               code={`
-          const [value, setValue] = useState("red");
-          function onChange(name: string, value: string | string[]) {
-            setValue(value);
-          }
-        `}
+                const [value, setValue] = useState("red");
+                function onChange(name: string, value: string | string[]) {
+                  setValue(value);
+                }
+              `}
             />
-            <GoAFormItem label="Basic">
-              <GoADropdown name="colors" value="red" onChange={() => {}} {...dropdownProps}>
+
+            <GoAFormItem label="Favourite colour">
+              <GoADropdown name="colors" value={color} onChange={onChange} {...dropdownProps}>
                 <GoADropdownItem value="red" label="Red" />
                 <GoADropdownItem value="green" label="Green" />
                 <GoADropdownItem value="blue" label="Blue" />
               </GoADropdown>
             </GoAFormItem>
+
           </Sandbox>
 
-          {/*Dropdown properties table*/}
           <ComponentProperties properties={dropdownProperties} />
 
-          {/*Dropdown Item Properties Table*/}
           <ComponentProperties
             heading="Dropdown item properties"
             properties={dropdownItemProperties}
