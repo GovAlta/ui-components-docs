@@ -51,7 +51,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       return this.#dynamicProp(name);
     }
     if (!item) return "";
-    return `${name.toLowerCase()}=${item}`;
+    return `${name.toLowerCase()}="${item}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
