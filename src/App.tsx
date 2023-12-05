@@ -48,6 +48,7 @@ import SkeletonPage from "@routes/components/Skeleton.tsx";
 import SpacerPage from "@routes/components/Spacer";
 import TablePage from "@routes/components/Table";
 import TooltipPage from "@routes/components/Tooltip";
+import TextFieldPage from "@routes/components/TextField";
 
 // Design Tokens
 
@@ -134,6 +135,7 @@ const router = createBrowserRouter(
         <Route path="spacer" element={<SpacerPage />} />
         <Route path="table" element={<TablePage />} />
         <Route path="tooltip" element={<TooltipPage />} />
+        <Route path="text-field" element={<TextFieldPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
