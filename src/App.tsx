@@ -76,6 +76,10 @@ import ServicePrinciplesPage from "@routes/get-started/ServicePrinciples";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 
+// Patterns Pages
+import PatternsLayout from "@routes/patterns/PatternsLayout";
+import LayoutPage from "@routes/patterns/LayoutPage";
+
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
@@ -166,6 +170,10 @@ const router = createBrowserRouter(
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="service-principles" element={<ServicePrinciplesPage />} />
+      </Route>
+
+      <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
+        <Route index element={<LayoutPage />} />
       </Route>
     </Route>
   )
