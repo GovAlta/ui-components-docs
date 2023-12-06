@@ -19,7 +19,7 @@ export interface SerializerState {
   props: { name: string };
 }
 
-export function propsToString(props: Record<string, string>, lang: "angular" | "react"): string {
+export function propsToString(props: Record<string, string|number>, lang: "angular" | "react"): string {
   if (lang === "angular") {
     return Object.entries(props)
       .map(e => `${e[0].toLowerCase()}="${e[1]}"`)

@@ -193,13 +193,12 @@ type ComponentListProps = {
 }
 function ComponentList(props: ComponentListProps): ReactElement[] {
   const children = React.Children.toArray(props.sandboxProps.children) as ReactElement[];
-
-  return children.filter(el =>
-    React.isValidElement(el)
-    && typeof el.type === 'function'
-    && (el.type.name.toLowerCase().startsWith(props.type)
-        || props.sandboxProps.allow?.includes(el.type.name)
-    )
+  const isValidGOAComponent = (el: ReactElement) =>
+    typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
+  const isAllowedInSandbox = (el: ReactElement) =>
+    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type);
+  return children.filter(
+    el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
   );
 }
 

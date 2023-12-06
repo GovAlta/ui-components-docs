@@ -57,6 +57,7 @@ export default function TEMPLATE_Page() {
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <></>
             {/* <GoABadge {...componentProps} /> */}
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
