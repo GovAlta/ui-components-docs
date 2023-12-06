@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoACheckbox } from "@abgov/react-components";
+import { GoACheckbox, GoACheckboxProps } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -8,11 +8,22 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 
+// == Page props ==
+const componentName = "Checkbox";
+const description = "Let the user select one ore more options";
+const category = Category.INPUTS_AND_ACTIONS;
+type ComponentPropsType = GoACheckboxProps;
+type CastingType = {
+  name: string;
+  checked: boolean;
+  [key: string]: unknown;
+};
 export default function CheckboxPage() {
-  const [checkboxProps, setCheckboxProps] = useState({
+  const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
     name: "item",
     checked: false,
     text: "Item",
+    value: "",
   });
   const [checkboxBindings, setCheckboxBindings] = useState<ComponentBinding[]>([
     { label: "Text", type: "string", name: "text", value: "Item" },
@@ -82,18 +93,12 @@ export default function CheckboxPage() {
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setCheckboxBindings(bindings);
-    setCheckboxProps(
-      props as { name: string; checked: boolean; text: string; [key: string]: unknown }
-    );
+    setCheckboxProps(props as CastingType);
   }
 
   return (
     <>
-      <ComponentHeader
-        name="Checkbox"
-        category={Category.INPUTS_AND_ACTIONS}
-        description="Let the user select one ore more options"
-      />
+      <ComponentHeader name={componentName} category={category} description={description} />
 
       <Sandbox properties={checkboxBindings} onChange={onChange} flags={["reactive"]}>
         <CodeSnippet
@@ -103,8 +108,9 @@ export default function CheckboxPage() {
           code={`
           export class SomeOtherComponent {
             checked = false;
-            onChange(event) {
-              const {name, checked, value} = event.detail;
+            onChange(event: Event) {
+              const {name, checked, value} = (event as CustomEvent).detail;
+              // or this.checked = !this.checked;
             }
           }
         `}

@@ -133,6 +133,21 @@ export default function RadioPage() {
               tags="angular"
               allowCopy={true}
               code={`
+              // non-reactive code
+              export class MyComponent {
+                onChange(e: Event) {
+                  // handle change
+                  console.log("onChange", (e as CustomEvent).detail.name, (e as CustomEvent).detail.value);
+                }
+              }
+            `}
+            />
+            <CodeSnippet
+              lang="typescript"
+              tags={["angular", "reactive"]}
+              allowCopy={true}
+              code={`
+              // reactive code
               import { FormControl } from "@angular/forms";
               export class MyComponent {
                itemFormCtrl = new FormControl("1");
