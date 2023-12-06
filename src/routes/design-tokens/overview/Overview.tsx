@@ -39,7 +39,7 @@ export default function DesignTokensOverviewPage() {
       <h4>Developers</h4>
       <p>
         You can access the design tokens as an NPM package here:{" "}
-        <a href="https://www.npmjs.com/package/@abgov/design-tokens">npm: @abgov/design-tokens</a>.
+        <a href="https://www.npmjs.com/package/@abgov/design-tokens" target="_blank">npm: @abgov/design-tokens</a>.
         Incorporate the SCSS or CSS file into your projects, replacing hard-coded values with the
         token variables from the design system. Your designers can use and reference these design
         tokens in their tools to hand off their designs to you.

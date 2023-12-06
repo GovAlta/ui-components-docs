@@ -13,6 +13,11 @@ import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
 import HomePage from "@routes/home";
+import SupportOverviewPage from './routes/support/SupportOverview';
+import SupportLayout from './routes/support/SupportLayout';
+import ContributePage from './routes/support/Contribute';
+import DropInHoursPage from './routes/support/DropInHours';
+import ReleaseNotesPage from './routes/support/ReleaseNotes.tsx';
 
 // Components
 
@@ -176,6 +181,16 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<LayoutPage />} />
+      </Route>
+      <Route path="support" element={<SupportLayout />}>
+        <Route index element={<SupportOverviewPage />} />
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
+        <Route path="drop-in-hours">
+          <Route index element={<DropInHoursPage />} />
+        </Route>
+        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )

@@ -1,0 +1,24 @@
+.support-overview-drop-in-hours-heading > span{
+  font-size: var(--goa-font-size-4);
+  color: var(--goa-color-text-secondary);
+}
+.ds-team-title {
+  font: var(--goa-typography-heading-m);
+  margin-bottom: var(--goa-space-2xs);
+}
+
+.contribute-page-content>ol>li,
+.contribute-page-content>ul>li{
+  padding-bottom: var(--goa-space-l);
+}
+
+.share-ideas {
+  padding-bottom: var(--goa-space-s);
+}
+
+br {
+  display: block;
+  content: "";
+  margin-bottom: var(--goa-space-xs);
+}
+
