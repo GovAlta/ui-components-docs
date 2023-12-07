@@ -92,7 +92,7 @@ export class ComponentSerializer {
     }
 
     if (!component.props.children) {
-      return `<${elementType}${props} />`;
+      return `<${elementType}${props}></${elementType}>`;
     }
 
     let children: string = "";
