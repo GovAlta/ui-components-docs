@@ -27,7 +27,7 @@ export interface BooleanBinding extends BaseBinding {
 
 export interface NumberBinding extends BaseBinding {
   type: "number";
-  value: number;
+  value?: number;
 }
 
 export interface StringBinding extends BaseBinding {
