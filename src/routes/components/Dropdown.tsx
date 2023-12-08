@@ -230,8 +230,9 @@ export default function DropdownPage() {
               code={`
                 // non-reactive code
                 export class MyComponent {
-                  onChange(event) {
+                  onChange(event: Event) {
                     // handle change
+                    console.log((event as CustomEvent).detail.value);
                   }
                 }  
               `}

@@ -56,7 +56,7 @@ export function Components() {
             <Link to="popover">Popover</Link>
             <Link to="progress-indicator">Progress indicator</Link>
             <Link to="radio">Radio</Link>
-            <Link to="skeleton-loader">Skeleton loader</Link>
+            <Link to="skeleton-loader">Skeleton loading</Link>
             <Link to="snackbar">Snackbar</Link>
             <Link to="spacer">Spacer</Link>
             <Link to="site-header">Site header</Link>

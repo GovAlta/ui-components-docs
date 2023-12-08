@@ -154,8 +154,8 @@ export default function ButtonPage() {
               allowCopy={true}
               code={`
           export class SomeOtherComponent {
-            onClick() {
-              console.log('clicked');
+            onClick(event: Event) {
+              console.log('clicked ', event);
             }
           }
         `}

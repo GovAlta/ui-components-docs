@@ -5,10 +5,22 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoASkeleton, GoATab, GoATabs, SkeletonType } from "@abgov/react-components";
+import { GoABadge, GoASkeleton, GoATab, GoATabs, GoASkeletonProps, SkeletonType } from "@abgov/react-components";
+
+// == Page props ==
+const componentName = "Skeleton loading";
+const description = "Provide visual feedback to users while loading a content heavy page or page element.";
+const category = Category.CONTENT_AND_LAYOUT;
+type ComponentPropsType = GoASkeletonProps;
+type CastingType = {
+  type: SkeletonType;
+  [key: string]: unknown;
+};
 
 export default function SkeletonPage() {
-  const [skeletonProps, setSkeletonProps] = useState({ type: "text" as SkeletonType });
+  const [skeletonProps, setSkeletonProps] = useState<ComponentPropsType>(
+    { type: "text" as SkeletonType }
+  );
   const [skeletonBindings, setSkeletonBindings] = useState<ComponentBinding[]>([
     {
       label: "Type",
@@ -79,16 +91,12 @@ export default function SkeletonPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
     setSkeletonBindings(bindings);
-    setSkeletonProps(props as { type: SkeletonType; [key: string]: unknown });
+    setSkeletonProps(props as CastingType);
   }
 
   return (
     <>
-      <ComponentHeader
-        name="Skeleton"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="Provide visual feedback to users while loading a content heavy page or page element."
-      />
+      <ComponentHeader name={componentName} category={category} description={description} />
 
       <GoATabs>
         <GoATab heading="Code examples">

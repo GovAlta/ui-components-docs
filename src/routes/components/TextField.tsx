@@ -370,6 +370,21 @@ export default function TextFieldPage() {
               tags="angular"
               allowCopy={true}
               code={`
+                // non-reactive code
+                export class SomeComponent {
+                  onChange(event: Event) {
+                    // handle change
+                    console.log((event as CustomEvent).detail.value);
+                  }
+                }
+              `}
+            />
+            <CodeSnippet
+              lang="typescript"
+              tags={["angular", "reactive"]}
+              allowCopy={true}
+              code={`
+                // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }

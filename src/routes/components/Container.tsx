@@ -10,14 +10,25 @@ import {
   GoABlock,
   GoAButton,
   GoACallout,
-  GoAContainer,
+  GoAContainer, GoAContainerProps,
   GoATab,
   GoATable,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+
+// == Page props ==
+const componentName = "Container";
+const description = "Group information, create hierarchy, and show related information.";
+const category = Category.FEEDBACK_AND_ALERTS;
+type ComponentPropsType = GoAContainerProps;
+type CastingType = {
+  [key: string]: unknown;
+};
 
 export default function ContainerPage() {
-  const [containerProps, setContainerProps] = useState({});
+  const [containerProps, setContainerProps] = useState<ComponentPropsType>({});
+
   const [containerBindings, setContainerBindings] = useState<ComponentBinding[]>([
     {
       label: "Type",
@@ -80,16 +91,12 @@ export default function ContainerPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setContainerBindings(bindings);
-    setContainerProps(props);
+    setContainerProps(props as CastingType);
   }
 
   return (
     <>
-      <ComponentHeader
-        name="Container"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="Group information, create hierarchy, and show related information."
-      />
+      <ComponentHeader name={componentName} category={category} description={description} />
 
       <GoATabs>
         <GoATab heading={"Code examples"}>
@@ -120,7 +127,37 @@ export default function ContainerPage() {
           </Sandbox>
 
           <h3 id="accent-bar-with-badge">Accent bar with badge</h3>
-          <Sandbox fullWidth>
+          <Sandbox fullWidth skipRender>
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                <goa-container type="non-interactive" accent="thick" heading="Group Heading">
+                  <div slot="actions">
+                    <goa-badge type="success" icon content="Badge Text"></goa-badge>
+                  </div>
+                  Content
+                </goa-container>
+              `}
+            />
+
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
+                <GoAContainer
+                  type="non-interactive"
+                  accent="thick"
+                  heading="Group Heading"
+                  actions={<GoABadge type="success" content="Badge Text" icon={true} />}
+                >
+                  Content
+                </GoAContainer>
+             `}
+            />
+
             <GoAContainer
               type="non-interactive"
               accent="thick"
@@ -132,7 +169,40 @@ export default function ContainerPage() {
           </Sandbox>
 
           <h3 id="accent-bar-with-button">Accent bar with button</h3>
-          <Sandbox fullWidth>
+          <Sandbox fullWidth skipRender>
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
+                <GoAContainer
+                  type="non-interactive"
+                  accent="thick"
+                  heading="Group Heading"
+                  actions={
+                    <GoAButton type="secondary" size="compact">
+                      Edit
+                    </GoAButton>
+                  }>
+                  Content
+                </GoAContainer>
+              `}
+            />
+
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                <goa-container type="non-interactive" accent="thick" heading="Group Heading">
+                   <div slot="actions">
+                    <goa-button type="secondary" size="compact">Assign to me</goa-button>
+                   </div>
+                   Content
+                </goa-container>
+              `}
+            />
+
             <GoAContainer
               type="non-interactive"
               accent="thick"

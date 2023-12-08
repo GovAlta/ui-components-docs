@@ -263,8 +263,9 @@ export default function FileUploaderPage() {
                   uploads: Upload[] = [];
                   progressList: Record<string, number> = {};
               
-                  uploadFile(file: File) {
+                  uploadFile(e: Event) {
                     const reader = new FileReader();
+                    const file = (e as CustomEvent).detail.file;
                     reader.onload = (e: ProgressEvent<FileReader>) => {
                       if (!e.target) return;
                       const url = e.target.result;

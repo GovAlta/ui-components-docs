@@ -193,11 +193,26 @@ export default function TextAreaPage() {
             fullWidth>
             <CodeSnippet
               lang="typescript"
+              tags={["angular", "reactive"]}
+              allowCopy={true}
+              code={`
+                // reactive code
+                export class SomeComponent {
+                  itemFormCtrl = new FormControl("");
+                }
+              `}
+            />
+            <CodeSnippet
+              lang="typescript"
               tags="angular"
               allowCopy={true}
               code={`
+                // non-reactive code
                 export class SomeComponent {
-                  itemFormCtrl = new FormControl("");
+                  onChange(event: Event) {
+                    // handle change
+                    console.log((event as CustomEvent).detail.value);
+                  }
                 }
               `}
             />
