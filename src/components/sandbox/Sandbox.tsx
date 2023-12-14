@@ -202,7 +202,7 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
     <CodeSnippet 
       lang={props.formatLang} 
       allowCopy={true}
-      code={props.serializer(ComponentList({type: "goa", sandboxProps: props.sandboxProps}), props.sandboxProps.properties || [])}
+      code={code}
     />
   )  
 }
