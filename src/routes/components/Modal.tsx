@@ -1,6 +1,7 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
+  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoADropdown,
@@ -156,6 +157,10 @@ export default function TEMPLATE_Page() {
 
   const [open, setOpen] = useState<boolean>(false);
 
+  function onClose() {
+    setOpen(false)
+  }
+
   function noop() {}
 
   return (
@@ -166,7 +171,7 @@ export default function TEMPLATE_Page() {
         <GoATab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>
             <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
-            <GoAModal {...componentProps} open={open} onClose={() => setOpen(false)}>
+            <GoAModal {...componentProps} open={open} onClose={onClose}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
               molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
               laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
@@ -175,11 +180,12 @@ export default function TEMPLATE_Page() {
 
           <ComponentProperties properties={componentProperties} />
 
-          <a href="#basic">Basic Modal</a>
-          <a href="#destructive">Basic Modal</a>
-          <a href="#warning">Warning Modal</a>
-          <a href="#with-input">Modal with input</a>
-          
+          <GoABlock direction="column" gap="xs" mt="2xl" mb="3xl">
+            <a href="#basic">Basic Modal</a>
+            <a href="#destructive">Destructive Modal</a>
+            <a href="#warning">Warning Modal</a>
+            <a href="#with-input">Modal with input</a>
+          </GoABlock>          
 
           <h3 id="basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
@@ -228,7 +234,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="within-input">Modal with input</h3>
+          <h3 id="with-input">Modal with input</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Why was this adjusted?">
               <GoAFormItem label="Reason for adjustment">
