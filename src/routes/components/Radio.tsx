@@ -8,16 +8,31 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoABadge,
   GoAFormItem,
-  GoARadioGroup,
+  GoARadioGroup, GoARadioGroupProps,
   GoARadioItem,
   GoATab,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+
+// == Page props ==
+const componentName = "Radio";
+const description = "Allow users to select one option from a set.";
+const category = Category.INPUTS_AND_ACTIONS;
+type ComponentPropsType = GoARadioGroupProps;
+type CastingType = {
+  name: string;
+  value: string;
+  [key: string]: unknown;
+  onChange: (name: string, value: string) => void;
+}
 
 export default function RadioPage() {
-  const [radioProps, setRadioProps] = useState({
+  const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
+    value: "",
+    onChange: () => {},
   });
   const [radioBindings, setRadioBindings] = useState<ComponentBinding[]>([
     {
@@ -46,6 +61,8 @@ export default function RadioPage() {
       value: "",
     },
   ]);
+  const {formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({label: "Basic"});
+
   const radioGroupProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -111,7 +128,7 @@ export default function RadioPage() {
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setRadioProps(props as { name: string; [key: string]: unknown });
+    setRadioProps(props as CastingType);
     setRadioBindings(bindings);
   }
 
@@ -119,15 +136,17 @@ export default function RadioPage() {
 
   return (
     <>
-      <ComponentHeader
-        name="Radio"
-        category={Category.INPUTS_AND_ACTIONS}
-        description="Allow users to select one option from a set."
-      />
+      <ComponentHeader name={componentName} description={description} category={category} />
+
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Radio sandbox*/}
-          <Sandbox properties={radioBindings} onChange={onSandboxChange} flags={["reactive"]}>
+          <Sandbox
+            properties={radioBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -167,7 +186,7 @@ export default function RadioPage() {
             `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoARadioGroup {...radioProps} value="1" onChange={noop}>
                 <GoARadioItem value="1" label="Label"></GoARadioItem>
                 <GoARadioItem value="2" label="Label"></GoARadioItem>

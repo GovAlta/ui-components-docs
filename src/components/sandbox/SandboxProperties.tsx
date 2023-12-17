@@ -58,7 +58,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
   }
 
   function toUpperCase(label: string) {
-    return label.charAt(0).toUpperCase() + label.slice(1);
+    return label?.length > 0 ? label.charAt(0).toUpperCase() + label.slice(1): "";
   }
 
   function renderProps(p: ComponentBinding) {
@@ -99,8 +99,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
         return (
           <GoARadioGroup name={p.name} value={p.value} onChange={onRadioChange}>
             {p.options.map(option => {
-              const label = option[0].toUpperCase() + option.substring(1);
-              return <GoARadioItem value={option} label={label} key={option} />;
+              return <GoARadioItem value={option} label={toUpperCase(option) || "None (default)"} key={option} />;
             })}
           </GoARadioGroup>
         );

@@ -19,6 +19,7 @@ import {
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 const componentName = "Text field";
@@ -111,6 +112,7 @@ export default function TextFieldPage() {
       name: "ariaLabel",
     },
   ]);
+  const {formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({label: "Basic"});
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
@@ -364,7 +366,13 @@ export default function TextFieldPage() {
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Input sandbox*/}
-          <Sandbox properties={componentBindings} onChange={onSandboxChange} flags={["reactive"]}>
+          <Sandbox
+            properties={componentBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            fullWidth
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -403,7 +411,7 @@ export default function TextFieldPage() {
               `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoAInput {...componentProps} onChange={noop} />
             </GoAFormItem>
           </Sandbox>

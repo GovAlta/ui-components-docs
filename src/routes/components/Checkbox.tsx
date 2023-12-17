@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoACheckbox, GoACheckboxProps } from "@abgov/react-components";
+import { GoACheckbox, GoACheckboxProps, GoAFormItem } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -7,10 +7,11 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 const componentName = "Checkbox";
-const description = "Let the user select one ore more options";
+const description = "Let the user select one or more options";
 const category = Category.INPUTS_AND_ACTIONS;
 type ComponentPropsType = GoACheckboxProps;
 type CastingType = {
@@ -32,6 +33,9 @@ export default function CheckboxPage() {
     { label: "Error", type: "boolean", name: "error", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
+    label: "Basic",
+  });
 
   const componentProperties: ComponentProperty[] = [
     {
@@ -100,7 +104,12 @@ export default function CheckboxPage() {
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
 
-      <Sandbox properties={checkboxBindings} onChange={onChange} flags={["reactive"]}>
+      <Sandbox
+        properties={checkboxBindings}
+        formItemProperties={formItemBindings}
+        onChange={onChange}
+        onChangeFormItemBindings={onFormItemChange}
+        flags={["reactive"]}>
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -126,7 +135,9 @@ export default function CheckboxPage() {
             }
           `}
         />
-        <GoACheckbox {...checkboxProps} onChange={noop} />
+        <GoAFormItem {...formItemProps}>
+          <GoACheckbox {...checkboxProps} onChange={noop} />
+        </GoAFormItem>
       </Sandbox>
 
       <ComponentProperties properties={componentProperties} />
