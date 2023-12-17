@@ -19,6 +19,7 @@ import {
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { GoAFormItemProps } from "@abgov/react-components/lib/form/form-item";
 
 // == Page props ==
 const componentName = "Text field";
@@ -349,9 +350,32 @@ export default function TextFieldPage() {
     },
   ];
 
+  const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Input label",
+      type: "string",
+      value: "Item label",
+      name: "label",
+    },
+    {
+      label: "Helper text",
+      type: "string",
+      value: "",
+      name: "helpText",
+    },
+  ]);
+  const [formItemProps, setFormItemProps] = useState<GoAFormItemProps>({
+    label: "Input label",
+  });
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
+  }
+
+  function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setFormItemBindings(bindings);
+    setFormItemProps(props as GoAFormItemProps);
   }
 
   // For sandbox demo function
@@ -364,7 +388,12 @@ export default function TextFieldPage() {
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Input sandbox*/}
-          <Sandbox properties={componentBindings} onChange={onSandboxChange} flags={["reactive"]}>
+          <Sandbox
+            properties={componentBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -403,7 +432,7 @@ export default function TextFieldPage() {
               `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoAInput {...componentProps} onChange={noop} />
             </GoAFormItem>
           </Sandbox>

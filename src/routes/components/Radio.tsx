@@ -14,6 +14,7 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { GoAFormItemProps } from "@abgov/react-components/lib/form/form-item";
 
 export default function RadioPage() {
   const [radioProps, setRadioProps] = useState({
@@ -110,9 +111,32 @@ export default function RadioPage() {
     },
   ];
 
+  const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Radio label",
+      type: "string",
+      value: "Radio label",
+      name: "label",
+    },
+    {
+      label: "Helper text",
+      type: "string",
+      value: "",
+      name: "helpText",
+    },
+  ]);
+  const [formItemProps, setFormItemProps] = useState<GoAFormItemProps>({
+    label: "Radio label",
+  });
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setRadioProps(props as { name: string; [key: string]: unknown });
     setRadioBindings(bindings);
+  }
+
+  function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setFormItemBindings(bindings);
+    setFormItemProps(props as GoAFormItemProps);
   }
 
   const noop = () => {};
@@ -127,7 +151,12 @@ export default function RadioPage() {
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Radio sandbox*/}
-          <Sandbox properties={radioBindings} onChange={onSandboxChange} flags={["reactive"]}>
+          <Sandbox
+            properties={radioBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -167,7 +196,7 @@ export default function RadioPage() {
             `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoARadioGroup {...radioProps} value="1" onChange={noop}>
                 <GoARadioItem value="1" label="Label"></GoARadioItem>
                 <GoARadioItem value="2" label="Label"></GoARadioItem>

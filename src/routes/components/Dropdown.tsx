@@ -15,6 +15,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { GoAFormItemProps } from "@abgov/react-components/lib/form/form-item";
 
 export default function DropdownPage() {
   const [dropdownProps, setDropdownProps] = useState({});
@@ -198,6 +199,23 @@ export default function DropdownPage() {
         "In case of the filterable dropdown, this property is for us to set what we want to search the option with different keywords. The label or value property is the fallback value.",
     },
   ];
+  const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Dropdown Label",
+      type: "string",
+      value: "Dropdown label",
+      name: "label",
+    },
+    {
+      label: "Helper text",
+      type: "string",
+      value: "",
+      name: "helpText",
+    },
+  ]);
+  const [formItemProps, setFormItemProps] = useState<GoAFormItemProps>({
+    label: "Dropdown label",
+  });
 
   const [ color, setColor ] = useState<string>("red");
 
@@ -212,6 +230,11 @@ export default function DropdownPage() {
     setDropdownProps(props);
   }
 
+  function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setFormItemBindings(bindings);
+    setFormItemProps(props as GoAFormItemProps);
+  }
+
   return (
     <>
       <ComponentHeader
@@ -221,8 +244,12 @@ export default function DropdownPage() {
       />
       <GoATabs>
         <GoATab heading="Code examples">
-          <Sandbox properties={dropdownBindings} onChange={onSandboxChange} flags={["reactive"]}>
-
+          <Sandbox
+            properties={dropdownBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -263,14 +290,13 @@ export default function DropdownPage() {
               `}
             />
 
-            <GoAFormItem label="Favourite colour">
+            <GoAFormItem {...formItemProps}>
               <GoADropdown name="colors" value={color} onChange={onChange} {...dropdownProps}>
                 <GoADropdownItem value="red" label="Red" />
                 <GoADropdownItem value="green" label="Green" />
                 <GoADropdownItem value="blue" label="Blue" />
               </GoADropdown>
             </GoAFormItem>
-
           </Sandbox>
 
           <ComponentProperties properties={dropdownProperties} />

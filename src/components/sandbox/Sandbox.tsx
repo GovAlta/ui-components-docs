@@ -15,25 +15,27 @@ type Flag = "reactive";
 
 interface ElementProps {
   properties?: ComponentBinding[];
+  formItemProperties?: ComponentBinding[];
   note?: string;
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
+  onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
-  allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
-                        // additional elements to what is allowed to be rendered out
+  allow?: string[]; // Be default the Sandbox is selective to what it renders out. This adds
+  // additional elements to what is allowed to be rendered out
 }
 
 export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
   type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
   const serializers: Record<string, Serializer> = {
-    "react": (els: ReactElement[], properties) => {
+    react: (els: ReactElement[], properties) => {
       const serializer = new ComponentSerializer(new ReactSerializer(properties));
       return serializer.componentsToString(els);
     },
 
-    "angular": (els: ReactElement[], properties) => {
+    angular: (els: ReactElement[], properties) => {
       const serializer = new ComponentSerializer(new AngularSerializer(properties));
       return serializer.componentsToString(els);
     },
@@ -65,6 +67,10 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
 
   function onChange(bindings: ComponentBinding[]) {
     props.onChange?.(bindings, toKeyValue(bindings));
+  }
+
+  function onChangeFormItemBindings(bindings: ComponentBinding[]) {
+    props.onChangeFormItemBindings?.(bindings, toKeyValue(bindings));
   }
 
   function toKeyValue(bindings: ComponentBinding[]) {
@@ -174,6 +180,12 @@ export const Sandbox = (props: ElementProps & { children: ReactNode }) => {
     <>
       <SandboxView />
       <SandboxProperties properties={props.properties} onChange={onChange} />
+      {props.formItemProperties && props.formItemProperties.length > 0 && (
+        <SandboxProperties
+          onChange={onChangeFormItemBindings}
+          properties={props.formItemProperties}
+        />
+      )}
       <SandboxCode />
       <div className="sandbox-note">{props.note}</div>
     </>

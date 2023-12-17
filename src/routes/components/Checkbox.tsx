@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoACheckbox, GoACheckboxProps } from "@abgov/react-components";
+import { GoACheckbox, GoACheckboxProps, GoAFormItem } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -7,6 +7,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { GoAFormItemProps } from "@abgov/react-components/lib/form/form-item";
 
 // == Page props ==
 const componentName = "Checkbox";
@@ -89,6 +90,24 @@ export default function CheckboxPage() {
       lang: "angular",
     },
   ];
+
+  const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Checkbox label",
+      type: "string",
+      value: "Checkbox label",
+      name: "label",
+    },
+    {
+      label: "Helper text",
+      type: "string",
+      value: "",
+      name: "helpText",
+    },
+  ]);
+  const [formItemProps, setFormItemProps] = useState<GoAFormItemProps>({
+    label: "Checkbox label",
+  });
   const noop = () => {};
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -96,11 +115,21 @@ export default function CheckboxPage() {
     setCheckboxProps(props as CastingType);
   }
 
+  function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setFormItemBindings(bindings);
+    setFormItemProps(props as GoAFormItemProps);
+  }
+
   return (
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
 
-      <Sandbox properties={checkboxBindings} onChange={onChange} flags={["reactive"]}>
+      <Sandbox
+        properties={checkboxBindings}
+        formItemProperties={formItemBindings}
+        onChange={onChange}
+        onChangeFormItemBindings={onFormItemChange}
+        flags={["reactive"]}>
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -127,7 +156,9 @@ export default function CheckboxPage() {
           }
         `}
         />
-        <GoACheckbox {...checkboxProps} onChange={noop} />
+        <GoAFormItem {...formItemProps}>
+          <GoACheckbox {...checkboxProps} onChange={noop} />
+        </GoAFormItem>
       </Sandbox>
 
       <ComponentProperties properties={componentProperties} />

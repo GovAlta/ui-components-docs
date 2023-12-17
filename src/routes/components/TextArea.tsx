@@ -19,6 +19,7 @@ import {
   GoATextAreaProps,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { GoAFormItemProps } from "@abgov/react-components/lib/form/form-item";
 
 // == Page props ==
 
@@ -172,10 +173,32 @@ export default function TextAreaPage() {
         "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
     },
   ];
+  const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Textarea label",
+      type: "string",
+      value: "Textarea label",
+      name: "label",
+    },
+    {
+      label: "Helper text",
+      type: "string",
+      value: "",
+      name: "helpText",
+    },
+  ]);
+  const [formItemProps, setFormItemProps] = useState<GoAFormItemProps>({
+    label: "Textarea label",
+  });
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setTextAreaBindings(bindings);
     setComponentProps(props as CastingType);
+  }
+
+  function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setFormItemBindings(bindings);
+    setFormItemProps(props as GoAFormItemProps);
   }
 
   const noop = () => {};
@@ -188,7 +211,9 @@ export default function TextAreaPage() {
         <GoATab heading="Code examples">
           <Sandbox
             properties={textAreaBindings}
+            formItemProperties={formItemBindings}
             onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
             flags={["reactive"]}
             fullWidth>
             <CodeSnippet
@@ -230,7 +255,7 @@ export default function TextAreaPage() {
             `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoATextarea {...componentProps} value="" onChange={noop} />
             </GoAFormItem>
           </Sandbox>
