@@ -112,8 +112,7 @@ export default function CheckboxPage() {
               const {name, checked, value} = (event as CustomEvent).detail;
               // or this.checked = !this.checked;
             }
-          }
-        `}
+          `}
         />
 
         <CodeSnippet
@@ -121,11 +120,11 @@ export default function CheckboxPage() {
           tags={["angular", "reactive"]}
           allowCopy={true}
           code={`
-          import { FormControl } from "@angular/forms";
-          export class SomeOtherComponent {
-            itemFormCtrl = new FormControl();
-          }
-        `}
+            import { FormControl } from "@angular/forms";
+            export class SomeOtherComponent {
+              itemFormCtrl = new FormControl();
+            }
+          `}
         />
         <GoACheckbox {...checkboxProps} onChange={noop} />
       </Sandbox>

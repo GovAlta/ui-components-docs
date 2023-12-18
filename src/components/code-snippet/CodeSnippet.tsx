@@ -27,21 +27,35 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const cleanTabs = (code = "", tabSize: number): string => {
-    const lines = code.split("\n");
+    const lines = code.trim().split("\n");
+    const indents = lines.map(line => (line.length - line.trimStart().length) / tabSize);
 
     if (lines.length === 1) {
       return code.trim();
     }
 
-    const space0 = lines[0].length - lines[0].trimStart().length;
-    const space1 = lines[1].length - lines[1].trimStart().length;
-    const space = space0 < tabSize ? space1 : space0;
+    // first and last have no additional spacing
+    if (indents[0] === 0 && indents[indents.length - 1] === 0) {
+      return code;      
+    }
 
+    // use the last line as the amount of indent correction needed
+    const indentCorr = indents[indents.length - 1];
+
+    // join the lines with the indent correction
     return lines
-      .map(line => line.substring(space))
+      .map((line, index) => {
+        return padLeft(line.trim(), (indents[index] - indentCorr) * tabSize)
+      })
       .join("\n")
       .trim();
   };
+
+  function padLeft(str: string, padding: number): string {
+    padding = padding < 0 ? 0 : padding;
+    const spaces = new Array(padding + 1).join(" ");
+    return spaces + str;
+  }
 
   function copyCode() {
     navigator.clipboard.writeText(output);
@@ -59,6 +73,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   }, []);
 
   useEffect(() => {
+    if (!code) return;
     setOutput(render());
     setTimeout(hljs.highlightAll, 1);
   }, [code, children]);
