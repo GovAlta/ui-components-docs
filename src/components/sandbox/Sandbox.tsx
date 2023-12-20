@@ -30,6 +30,11 @@ interface SandboxProps {
   children: ReactNode;
 }
 
+type SandboxViewProps = {
+  fullWidth?: boolean;
+  sandboxProps: SandboxProps;
+}
+
 export const Sandbox = (props: SandboxProps) => {
 
   const lang = useContext(LanguageContext);
@@ -84,6 +89,14 @@ export const Sandbox = (props: SandboxProps) => {
       acc[prop.name] = prop.value;
       return acc;
     }, {});
+  }
+
+  function SandboxView(props: SandboxViewProps): ReactElement {
+    return <div className="sandbox-render">
+      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+        <ComponentList type="goa" sandboxProps={props.sandboxProps} />
+      </div>
+    </div>
   }
 
   return (
@@ -219,16 +232,5 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
   )
 }
 
-type SandboxViewProps = {
-  fullWidth?: boolean;
-  sandboxProps: SandboxProps;
-}
-function SandboxView(props: SandboxViewProps): ReactElement {
-  return <div className="sandbox-render">
-    <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-      <ComponentList type="goa" sandboxProps={props.sandboxProps} />
-    </div>
-  </div>
-}
 
 export default Sandbox;
