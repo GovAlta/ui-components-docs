@@ -34,7 +34,7 @@ const HomePage = () => {
               Get Started
             </GoAButton>
             <GoAButton onClick={() => {}} type="tertiary">
-              Learn about v1.5.0
+              Learn about our latest release
             </GoAButton>
           </GoAButtonGroup>
         </GoAHeroBannerActions>
