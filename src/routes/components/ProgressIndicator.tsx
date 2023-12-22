@@ -26,7 +26,12 @@ type CastingType = {
 };
 
 export default function ProgressIndicatorPage() {
-  const [componentProps, setComponentProps] = useState<ComponentPropsType>({});
+  const [componentProps, setComponentProps] = useState<ComponentPropsType>({
+    variant: "inline",
+    size: "large",
+    message: "Loading message...",
+    visible: true,
+  });
 
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
@@ -89,19 +94,27 @@ export default function ProgressIndicatorPage() {
     },
   ];
 
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    const updatedProps = { ...props, visible: true } as CastingType;
+
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(updatedProps);
+
+    if (props?.variant === "fullscreen") {
+      setTimeout(() => {
+        setComponentProps({ ...updatedProps, visible: false });
+      }, 3000);
+    }
   }
 
   return (
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
-
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-            <GoACircularProgress {...componentProps} visible={true} />
+            <GoACircularProgress {...componentProps}/>
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
         </GoATab>
