@@ -90,9 +90,9 @@ export default function BlockPage() {
                   backgroundColor: "rgba(0, 150, 255, 0.2)",
                   whiteSpace: "nowrap",
                   width: "5rem",
-                }}
-              >
-                Item 2
+                }}>
+                <div>Item 2</div>
+                <div>Item 2</div>
               </div>
               <div
                 style={{
