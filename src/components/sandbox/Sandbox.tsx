@@ -18,9 +18,11 @@ type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
 interface SandboxProps {
   properties?: ComponentBinding[];
+  formItemProperties?: ComponentBinding[];
   note?: string;
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
+  onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
   allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
@@ -70,6 +72,10 @@ export const Sandbox = (props: SandboxProps) => {
     props.onChange?.(bindings, toKeyValue(bindings));
   }
 
+  function onChangeFormItemBindings(bindings: ComponentBinding[]) {
+    props.onChangeFormItemBindings?.(bindings, toKeyValue(bindings));
+  }
+
   function toKeyValue(bindings: ComponentBinding[]) {
     return bindings.reduce((acc: Record<string, unknown>, prop: ComponentBinding) => {
       if (typeof prop.value === "string" && prop.value === "") {
@@ -83,6 +89,12 @@ export const Sandbox = (props: SandboxProps) => {
   return (
     <>
       <SandboxView fullWidth={props.fullWidth} sandboxProps={props} />
+      {props.formItemProperties && props.formItemProperties.length > 0 && (
+        <SandboxProperties
+          onChange={onChangeFormItemBindings}
+          properties={props.formItemProperties}
+        />
+      )}
       <SandboxProperties properties={props.properties} onChange={onChange} />
       <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} />
       <div className="sandbox-note">{props.note}</div>
@@ -149,11 +161,11 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
   };
   const els = ComponentList({type: "codesnippet", sandboxProps: props.sandboxProps})
     .filter(el => {
-      const componentTags: string[] = 
+      const componentTags: string[] =
         Array.isArray(el.props.tags)
           ? el.props.tags
           : [el.props.tags];
-      if (props.tags.length !== componentTags.length) 
+      if (props.tags.length !== componentTags.length)
         return false;
       return matches(componentTags);
     });
@@ -170,10 +182,10 @@ type ComponentListProps = {
 function ComponentList(props: ComponentListProps): ReactElement[] {
   const children = React.Children.toArray(props.sandboxProps.children) as ReactElement[];
 
-  return children.filter(el => 
-    React.isValidElement(el) 
-    && typeof el.type === 'function' 
-    && (el.type.name.toLowerCase().startsWith(props.type) 
+  return children.filter(el =>
+    React.isValidElement(el)
+    && typeof el.type === 'function'
+    && (el.type.name.toLowerCase().startsWith(props.type)
         || props.sandboxProps.allow?.includes(el.type.name)
     )
   );
@@ -196,20 +208,20 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
   )
 
   // HACK: remove `$1`s that appear only in the prod build
-  code = code.replace(/\$1/g, "") 
-  
+  code = code.replace(/\$1/g, "")
+
   return (
-    <CodeSnippet 
-      lang={props.formatLang} 
+    <CodeSnippet
+      lang={props.formatLang}
       allowCopy={true}
       code={code}
     />
-  )  
+  )
 }
 
 type SandboxViewProps = {
   fullWidth?: boolean;
-  sandboxProps: SandboxProps; 
+  sandboxProps: SandboxProps;
 }
 function SandboxView(props: SandboxViewProps): ReactElement {
   return <div className="sandbox-render">

@@ -19,6 +19,7 @@ import {
   GoATextAreaProps,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 
@@ -94,6 +95,7 @@ export default function TextAreaPage() {
       type: "number",
     },
   ]);
+  const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic"});
   const componentProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -188,7 +190,9 @@ export default function TextAreaPage() {
         <GoATab heading="Code examples">
           <Sandbox
             properties={textAreaBindings}
+            formItemProperties={formItemBindings}
             onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
             flags={["reactive"]}
             fullWidth>
             <CodeSnippet
@@ -230,7 +234,7 @@ export default function TextAreaPage() {
             `}
             />
 
-            <GoAFormItem label="Input label">
+            <GoAFormItem {...formItemProps}>
               <GoATextarea {...componentProps} value="" onChange={noop} />
             </GoAFormItem>
           </Sandbox>

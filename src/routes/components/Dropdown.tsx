@@ -2,10 +2,10 @@ import { useState } from "react";
 import {
   GoABadge,
   GoADropdown,
-  GoADropdownItem,
+  GoADropdownItem, GoADropdownProps,
   GoAFormItem,
   GoATab,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
@@ -15,9 +15,26 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+
+// == Page props ==
+const componentName = "Dropdown";
+const description = "Present a list of options to the user to select from.";
+const category = Category.INPUTS_AND_ACTIONS;
+type ComponentPropsType = GoADropdownProps;
+type CastingType = {
+  name: string;
+  value: string;
+  [key: string]: unknown;
+  onChange: (name: string, values: string[] | string) => void;
+}
 
 export default function DropdownPage() {
-  const [dropdownProps, setDropdownProps] = useState({});
+  const [dropdownProps, setDropdownProps] = useState<ComponentPropsType>({
+    name: "item",
+    value: "",
+    onChange: onChange,
+  });
   const [dropdownBindings, setDropdownBindings] = useState<ComponentBinding[]>([
     {
       label: "Placeholder",
@@ -50,6 +67,7 @@ export default function DropdownPage() {
     { label: "Filterable", type: "boolean", name: "filterable", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
+  const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic dropdown"});
 
   const dropdownProperties: ComponentProperty[] = [
     {
@@ -178,7 +196,6 @@ export default function DropdownPage() {
       description: "Callback function when dropdown value is changed.",
     },
   ];
-
   const dropdownItemProperties: ComponentProperty[] = [
     {
       name: "value",
@@ -199,30 +216,33 @@ export default function DropdownPage() {
     },
   ];
 
+  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setDropdownBindings(bindings);
+    setDropdownProps(props as CastingType);
+  }
+
+  // Demo
   const [ color, setColor ] = useState<string>("red");
 
-  function onChange(_name: string, value: string | string[]) { 
+  function onChange(_name: string, value: string | string[]) {
     if (typeof value === "string") {
       setColor(value);
     }
   }
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setDropdownBindings(bindings);
-    setDropdownProps(props);
-  }
-
   return (
     <>
-      <ComponentHeader
-        name="Dropdown"
-        description="Present a list of options to the user to select from."
-        category={Category.INPUTS_AND_ACTIONS}
-      />
+      <ComponentHeader name={componentName} category={category} description={description} />
+
       <GoATabs>
         <GoATab heading="Code examples">
-          <Sandbox properties={dropdownBindings} onChange={onSandboxChange} flags={["reactive"]}>
-
+          <Sandbox
+            properties={dropdownBindings}
+            formItemProperties={formItemBindings}
+            onChange={onSandboxChange}
+            onChangeFormItemBindings={onFormItemChange}
+            fullWidth
+            flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"
               tags="angular"
@@ -263,14 +283,13 @@ export default function DropdownPage() {
               `}
             />
 
-            <GoAFormItem label="Favourite colour">
-              <GoADropdown name="colors" value={color} onChange={onChange} {...dropdownProps}>
+            <GoAFormItem {...formItemProps}>
+              <GoADropdown name="colors" value={color} {...dropdownProps}>
                 <GoADropdownItem value="red" label="Red" />
                 <GoADropdownItem value="green" label="Green" />
                 <GoADropdownItem value="blue" label="Blue" />
               </GoADropdown>
             </GoAFormItem>
-
           </Sandbox>
 
           <ComponentProperties properties={dropdownProperties} />
