@@ -13,6 +13,7 @@ import {
   GoACircularProgress,
   GoACircularProgressProps,
 } from "@abgov/react-components";
+import { resetScrollbars } from "../../utils/styling";
 
 // == Page props ==
 
@@ -104,6 +105,8 @@ export default function ProgressIndicatorPage() {
     if (props?.variant === "fullscreen") {
       setTimeout(() => {
         setComponentProps({ ...updatedProps, visible: false });
+        // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
+        resetScrollbars();
       }, 3000);
     }
   }

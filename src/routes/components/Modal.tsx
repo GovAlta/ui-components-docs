@@ -19,6 +19,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { resetScrollbars } from "../../utils/styling";
 
 // == Page props ==
 
@@ -159,6 +160,8 @@ export default function TEMPLATE_Page() {
 
   function onClose() {
     setOpen(false)
+    // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
+    resetScrollbars();
   }
 
   function noop() {}
@@ -185,7 +188,7 @@ export default function TEMPLATE_Page() {
             <a href="#destructive">Destructive Modal</a>
             <a href="#warning">Warning Modal</a>
             <a href="#with-input">Modal with input</a>
-          </GoABlock>          
+          </GoABlock>
 
           <h3 id="basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
