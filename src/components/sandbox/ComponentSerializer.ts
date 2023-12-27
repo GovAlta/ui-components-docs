@@ -81,11 +81,6 @@ export class ComponentSerializer {
       .filter(item => !!item)
       .join(" ");
 
-    // manually add a key if it exists i.e. is React
-    if (component.key) {
-      props += ` key="${component.key}"`;
-    }
-
     // add single space here to ensure only 1 space is added
     if (props.length > 0) {
       props = " " + props;
