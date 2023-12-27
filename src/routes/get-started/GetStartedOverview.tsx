@@ -1,5 +1,5 @@
-import {GoAButton, GoAButtonGroup, GoAContainer, GoAGrid} from "@abgov/react-components";
-import {useNavigate} from "react-router-dom";
+import { GoAButton, GoAButtonGroup, GoAContainer, GoAGrid } from "@abgov/react-components";
+import { useNavigate } from "react-router-dom";
 
 export default function GetStartedOverviewPage() {
   const navigate = useNavigate();
@@ -18,26 +18,29 @@ export default function GetStartedOverviewPage() {
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/designers")}>
+              onClick={() => navigate("/get-started/designers")}
+            >
               Designers
             </GoAButton>
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/developers")}>
+              onClick={() => navigate("/get-started/developers")}
+            >
               Developers
             </GoAButton>
             <GoAButton
               type="tertiary"
               size="compact"
-              onClick={() => navigate("/get-started/qa-testing")}>
+              onClick={() => navigate("/get-started/qa-testing")}
+            >
               QA Testers
             </GoAButton>
           </GoAButtonGroup>
         </GoAGrid>
 
         <GoAContainer type="non-interactive" mb="l">
-          Start with the design system. You don’t need to reinvent the wheel. The design system is
+          Start with the design system. You don't need to reinvent the wheel. The design system is
           the floor, not the ceiling. Start with it to save time building the common parts of a
           service, so that you can spend time on the unique challenges within your service context.
         </GoAContainer>

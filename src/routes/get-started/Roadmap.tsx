@@ -4,7 +4,8 @@ export default function RoadmapPage() {
       <h1>Roadmap</h1>
       <h3 className="introduction">
         A high level summary of the work the design system team plans to complete in 2023. For more
-        information on the latest releases, visit the <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
+        information on the latest releases, visit the{" "}
+        <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
           release notes
         </a>
         .
@@ -16,9 +17,11 @@ export default function RoadmapPage() {
           align, prepare, and strategize their work as applicable.
         </p>
         <p>
-          See our <a href="https://github.com/orgs/GovAlta/projects/35/views/1" target="_blank">
+          See our{" "}
+          <a href="https://github.com/orgs/GovAlta/projects/35/views/1" target="_blank">
             GitHub design system backlog
-          </a> for more details on our priorities and day-to-day activities.
+          </a>{" "}
+          for more details on our priorities and day-to-day activities.
         </p>
 
         <h2>Now</h2>
@@ -67,7 +70,8 @@ export default function RoadmapPage() {
           <li>
             <strong>
               Initiate a pilot project to build a digital service with a product team:
-            </strong> As part of this initiative, members of the design system team will be integrated into a
+            </strong>{" "}
+            As part of this initiative, members of the design system team will be integrated into a
             product team. This arrangement benefits both sides - product teams will have direct
             access to design system expertise, speeding up their processes. Concurrently, design
             system team members will gain hands-on experience on how design system components are

@@ -24,7 +24,7 @@ export default function ColorPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th>Type</th>
@@ -40,15 +40,12 @@ export default function ColorPage() {
             <React.Fragment key={index}>
               {color.tokens.map((token, tokenIndex) => (
                 <tr key={tokenIndex}>
-                  {tokenIndex === 0 && (
-                    <td rowSpan={color.tokens.length}>{color.name}</td>
-                  )}
+                  {tokenIndex === 0 && <td rowSpan={color.tokens.length}>{color.name}</td>}
                   <td>
                     <div
                       className="token-block"
                       style={{
-                        backgroundColor:
-                          getCssVarValue(`--${token.code}`) || token.value,
+                        backgroundColor: getCssVarValue(`--${token.code}`) || token.value,
                       }}
                     />
                   </td>
@@ -97,8 +94,7 @@ export default function ColorPage() {
                   <div
                     className="token-block"
                     style={{
-                      backgroundColor:
-                        getCssVarValue(`--${token.code}`) || token.value,
+                      backgroundColor: getCssVarValue(`--${token.code}`) || token.value,
                     }}
                   />
                   <TokenSnippet code={token.code} />
@@ -120,9 +116,9 @@ export default function ColorPage() {
     <div className="colors-page">
       <h1>Color</h1>
       <h3 className="introduction">
-        Our design system has a wide range of color design tokens to ensure
-        brand consistency. Tokens are semantically named to make it easier for
-        easy application by both developers and designers.
+        Our design system has a wide range of color design tokens to ensure brand consistency.
+        Tokens are semantically named to make it easier for easy application by both developers and
+        designers.
       </h3>
       {isDesktop ? renderDesktop() : renderTablet()}
     </div>

@@ -1,4 +1,4 @@
-import {GoACheckbox, GoAContainer, GoATable} from "@abgov/react-components";
+import { GoACheckbox, GoAContainer, GoATable } from "@abgov/react-components";
 
 export default function SupportedBrowsersPage() {
   return (
@@ -82,8 +82,8 @@ export default function SupportedBrowsersPage() {
       <div className="max-width-72ch">
         <GoAContainer type="non-interactive" mt="2xl">
           <h3>Browser version support</h3>
-          The design system components support the two latest stable versions of each browser. Latest
-          version and Latest version -1
+          The design system components support the two latest stable versions of each browser.
+          Latest version and Latest version -1
         </GoAContainer>
 
         <GoAContainer type="non-interactive" mt="2xs">

@@ -1,4 +1,12 @@
-export type ComponentBinding = BooleanBinding | StringBinding | ListBinding | NumberBinding | EmptyBinding;
+export type ComponentBinding =
+  | BooleanBinding
+  | StringBinding
+  | ListBinding
+  | ComboboxBinding
+  | DropdownBinding
+  | RadioBinding
+  | NumberBinding
+  | EmptyBinding;
 
 interface BaseBinding {
   name: string;
@@ -19,12 +27,13 @@ export interface BooleanBinding extends BaseBinding {
 
 export interface NumberBinding extends BaseBinding {
   type: "number";
-  value: number;
+  value?: number;
 }
 
 export interface StringBinding extends BaseBinding {
   type: "string";
   value: string;
+  width?: string;
 }
 
 export interface ListBinding extends BaseBinding {
@@ -34,3 +43,23 @@ export interface ListBinding extends BaseBinding {
   defaultValue?: string;
 }
 
+export interface ComboboxBinding extends BaseBinding {
+  type: "combobox";
+  options: string[];
+  value: string;
+  defaultValue?: string;
+}
+
+export interface DropdownBinding extends BaseBinding {
+  type: "dropdown";
+  options: string[];
+  value: string;
+  defaultValue?: string;
+}
+
+export interface RadioBinding extends BaseBinding {
+  type: "radio";
+  options: string[];
+  value: string;
+  defaultValue?: string;
+}

@@ -66,8 +66,7 @@ h4.heading {
 }
 
 code {
-  background-color: #eee;
-  padding: 2px 4px;
+  font: var(--goa-typography-number-m);
 }
 
 /*Tablet*/

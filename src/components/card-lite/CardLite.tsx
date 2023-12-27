@@ -17,7 +17,6 @@ export function CardLite(props: Props) {
       <div className="link">
         <Link to={props.linkTo}>{props.linkDisplay}</Link>
       </div>
-      
     </div>
   );
 }

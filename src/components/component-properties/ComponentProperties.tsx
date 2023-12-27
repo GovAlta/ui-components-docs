@@ -1,11 +1,13 @@
-import { GoAAccordion, GoABadge, GoATable } from "@abgov/react-components";
+import { GoAAccordion } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@components/sandbox";
 
+import css from "./ComponentProperties.module.css";
+
 export type ComponentProperty = {
   name: string;
-  type?: string;
-  lang?: string;
+  type?: string | string[];
+  lang?: "react" | "angular";
   required?: boolean;
   description?: string;
   defaultValue?: string;
@@ -13,6 +15,7 @@ export type ComponentProperty = {
 
 interface Props {
   properties: ComponentProperty[];
+  heading?: string;
 }
 
 export const ComponentProperties = (props: Props) => {
@@ -30,33 +33,42 @@ export const ComponentProperties = (props: Props) => {
     setFilteredProperties([...filterBy(props.properties)]);
   }, [lang]);
 
-  const rows = (properties: ComponentProperty[]) => {
-    return properties.map((property, index) => (
-      <tr key={index}>
-        <td className="token-name">
-          {property.name}
-          {property.required && <GoABadge type="midtone" content="Required" ml="xs"></GoABadge>}
-        </td>
-        <td>{property.type}</td>
-        <td>{property.description}</td>
-        <td>{property.defaultValue}</td>
-      </tr>
-    ));
-  };
-
   return (
-    <GoAAccordion heading="Components properties" mt="xl">
-      <GoATable variant="relaxed">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Description</th>
-            <th>Default</th>
-          </tr>
-        </thead>
-        <tbody>{rows(filteredProperties)}</tbody>
-      </GoATable>
+    <GoAAccordion heading={props.heading || "Component properties"} mt="xl">
+      {filteredProperties.map((props, index) => (
+        <ComponentProperty key={index} props={props} />
+      ))}
     </GoAAccordion>
   );
 };
+
+interface ComponentPropertyProps {
+  props: ComponentProperty;
+}
+
+function ComponentProperty({ props }: ComponentPropertyProps) {
+  return (
+    <div className={css["component-props"]}>
+      <div className={css.details}>
+        <code className={`${css.code} ${css.name}`}>{props.name}</code>
+
+        {props.type && (
+          <code className={`${css.code} ${css.type}`}>
+            {typeof props.type === "string" ? props.type : props.type.join(" | ")}
+          </code>
+        )}
+      </div>
+
+      <div className={css.description}>
+        {props.required && <span>Required. </span>}
+        {props.description}
+        {props.defaultValue && (
+          <span>
+            {" "}
+            Defaults to <code className={css.code}>{props.defaultValue}</code>.
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}

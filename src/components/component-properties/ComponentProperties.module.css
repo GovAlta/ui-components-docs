@@ -1,0 +1,27 @@
+.component-props {
+  border-bottom: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+.component-props:last-of-type {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.code {
+  font-size: var(--goa-font-size-3);
+}
+
+.details {
+  display: flex;
+  gap: 1rem;
+}
+
+.name {
+  font-weight: var(--goa-font-weight-bold);
+}
+
+.type {
+  color: var(--goa-color-info-default);
+}

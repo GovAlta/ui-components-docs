@@ -6,44 +6,86 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import ComponentsPage from "./routes/components/Components";
-import DropdownPage from "./routes/components/Dropdown";
-import AccordionPage from "@routes/components/Accordion.tsx";
-import ButtonPage from "./routes/components/Button";
-import FormStepperPage from "./routes/components/FormStepper";
-import CheckboxPage from "./routes/components/Checkbox";
-import BadgePage from "./routes/components/Badge";
-import AllComponentsPage from "./routes/components/AllComponents";
-import ComponentNotFoundPage from "./routes/not-found/NotFound";
-import Root from "./routes/root";
-import "./index.css";
-// Design Tokens Pages 
-import DesignTokens from "./routes/design-tokens/DesignTokenLayout.tsx";
-import BorderWidthPage from "./routes/design-tokens/border-width/BorderWidth";
-import BorderRadiusPage from "./routes/design-tokens/border-radius/BorderRadius";
-import ColorPage from "./routes/design-tokens/color/Color";
-import IconSizePage from "./routes/design-tokens/icon-size/IconSize";
-import OpacityPage from "./routes/design-tokens/opacity/Opacity";
-import ShadowPage from "./routes/design-tokens/shadow/Shadow";
-import SpacingPage from "./routes/design-tokens/spacing/Spacing";
-import TypographyPage from "./routes/design-tokens/typography/Typography";
-import DesignTokensOverviewPage from "./routes/design-tokens/overview/Overview";
-// Get Started Pages
-import GetStartedLayout from "./routes/get-started/GetStartedLayout";
-import UxDesignerPage from "./routes/get-started/designers/UxDesigner";
-import DevelopersTechnologiesPage from "./routes/get-started/developers/DevelopersTechnologies";
-import DevelopersVSCodePage from "./routes/get-started/developers/DevelopersVSCode";
-import SupportedBrowsersPage from "./routes/get-started/developers/SupportedBrowsers";
-import QATestingOverviewPage from "./routes/get-started/qa-testing/QATestingOverview";
-import GetStartedOverviewPage from "./routes/get-started/GetStartedOverview";
-import RoadmapPage from "./routes/get-started/Roadmap";
-import ServicePrinciplesPage from "./routes/get-started/ServicePrinciples";
-import DevelopersOverviewPage from "./routes/get-started/developers/DevelopersOverview";
-import DevelopersSetupPage from "./routes/get-started/developers/DevelopersSetup";
 
-import { useMediaQuery } from "./hooks/useMediaQuery.tsx";
-import { DeviceWidthContext } from "./contexts/DeviceWidthContext.ts";
-import HomePage from '@routes/home';
+import Root from "@routes/root";
+import { useMediaQuery } from "@hooks/useMediaQuery";
+import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
+import "./index.css";
+
+import HomePage from "@routes/home";
+import SupportOverviewPage from './routes/support/SupportOverview';
+import SupportLayout from './routes/support/SupportLayout';
+import ContributePage from './routes/support/Contribute';
+import DropInHoursPage from './routes/support/DropInHours';
+import ReleaseNotesPage from './routes/support/ReleaseNotes.tsx';
+
+// Components
+
+import ComponentsPage from "@routes/components/Components";
+
+import AccordionPage from "@routes/components/Accordion.tsx";
+import AllComponentsPage from "@routes/components/AllComponents";
+import BadgePage from "@routes/components/Badge";
+import BlockPage from "@routes/components/Block";
+import ButtonGroupPage from "@routes/components/ButtonGroup";
+import ButtonPage from "@routes/components/Button";
+import CalloutPage from "@routes/components/Callout";
+import CheckboxPage from "@routes/components/Checkbox";
+import ChipPage from "@routes/components/Chip";
+import ComponentNotFoundPage from "@routes/not-found/NotFound";
+import ContainerPage from "@routes/components/Container";
+import DetailsPage from "@routes/components/Details";
+import DividerPage from "@routes/components/Divider";
+import DropdownPage from "@routes/components/Dropdown";
+import FileUploaderPage from "@routes/components/FileUploader";
+import FormItemPage from "@routes/components/FormItemPage.tsx";
+import FormStepperPage from "@routes/components/FormStepper";
+import GridPage from "@routes/components/Grid";
+import HeroBannerPage from "@routes/components/HeroBanner";
+import IconsPage from "@routes/components/Icons";
+import ListPage from "@routes/components/List";
+import ModalPage from "@routes/components/Modal";
+import NotificationBannerPage from "@routes/components/Notificationbanner";
+import PopoverPage from "@routes/components/Popover";
+import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
+import RadioPage from "@routes/components/Radio";
+import SkeletonPage from "@routes/components/Skeleton.tsx";
+import SpacerPage from "@routes/components/Spacer";
+import TablePage from "@routes/components/Table";
+import TooltipPage from "@routes/components/Tooltip";
+import TextFieldPage from "@routes/components/TextField";
+import TextAreaPage from "@routes/components/TextArea";
+
+// Design Tokens
+
+import BorderRadiusPage from "@routes/design-tokens/border-radius/BorderRadius";
+import BorderWidthPage from "@routes/design-tokens/border-width/BorderWidth";
+import ColorPage from "@routes/design-tokens/color/Color";
+import DesignTokens from "@routes/design-tokens/DesignTokenLayout.tsx";
+import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
+import IconSizePage from "@routes/design-tokens/icon-size/IconSize";
+import OpacityPage from "@routes/design-tokens/opacity/Opacity";
+import ShadowPage from "@routes/design-tokens/shadow/Shadow";
+import SpacingPage from "@routes/design-tokens/spacing/Spacing";
+import TypographyPage from "@routes/design-tokens/typography/Typography";
+
+// Get Started
+
+import DevelopersOverviewPage from "@routes/get-started/developers/DevelopersOverview";
+import DevelopersSetupPage from "@routes/get-started/developers/DevelopersSetup";
+import DevelopersTechnologiesPage from "@routes/get-started/developers/DevelopersTechnologies";
+import DevelopersVSCodePage from "@routes/get-started/developers/DevelopersVSCode";
+import GetStartedLayout from "@routes/get-started/GetStartedLayout";
+import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
+import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
+import RoadmapPage from "@routes/get-started/Roadmap";
+import ServicePrinciplesPage from "@routes/get-started/ServicePrinciples";
+import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
+import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
+
+// Patterns Pages
+import PatternsLayout from "@routes/patterns/PatternsLayout";
+import LayoutPage from "@routes/patterns/LayoutPage";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -64,14 +106,43 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
-      <Route path="components" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />} >
+      <Route
+        path="components"
+        element={<ComponentsPage />}
+        errorElement={<ComponentNotFoundPage />}
+      >
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
+        <Route path="badge" element={<BadgePage />} />
+        <Route path="badge" element={<BadgePage />} />
+        <Route path="block" element={<BlockPage />} />
         <Route path="button" element={<ButtonPage />} />
-        <Route path="dropdown" element={<DropdownPage />} />
-        <Route path="form-stepper" element={<FormStepperPage />} />
+        <Route path="button-group" element={<ButtonGroupPage />} />
+        <Route path="callout" element={<CalloutPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
-        <Route path="badge" element={<BadgePage/>} />
+        <Route path="chip" element={<ChipPage />} />
+        <Route path="container" element={<ContainerPage />} />
+        <Route path="details" element={<DetailsPage />} />
+        <Route path="divider" element={<DividerPage />} />
+        <Route path="dropdown" element={<DropdownPage />} />
+        <Route path="file-uploader" element={<FileUploaderPage />} />
+        <Route path="form-item" element={<FormItemPage />} />
+        <Route path="form-stepper" element={<FormStepperPage />} />
+        <Route path="grid" element={<GridPage />} />
+        <Route path="hero-banner" element={<HeroBannerPage />} />
+        <Route path="icons" element={<IconsPage />} />
+        <Route path="list" element={<ListPage />} />
+        <Route path="modal" element={<ModalPage />} />
+        <Route path="notification-banner" element={<NotificationBannerPage />} />
+        <Route path="popover" element={<PopoverPage />} />
+        <Route path="progress-indicator" element={<ProgressIndicatorPage />} />
+        <Route path="radio" element={<RadioPage />} />
+        <Route path="skeleton-loader" element={<SkeletonPage />} />
+        <Route path="spacer" element={<SpacerPage />} />
+        <Route path="table" element={<TablePage />} />
+        <Route path="text-area" element={<TextAreaPage/>} />
+        <Route path="tooltip" element={<TooltipPage />} />
+        <Route path="text-field" element={<TextFieldPage/>} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
@@ -98,16 +169,30 @@ const router = createBrowserRouter(
         </Route>
         <Route path="developers">
           <Route index element={<DevelopersOverviewPage />} />
-          <Route path="setup" element={<DevelopersSetupPage />} />
-          <Route path="vscode" element={<DevelopersVSCodePage />} />
-          <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="browsers" element={<SupportedBrowsersPage />} />
+          <Route path="setup" element={<DevelopersSetupPage />} />
+          <Route path="technologies" element={<DevelopersTechnologiesPage />} />
+          <Route path="vscode" element={<DevelopersVSCodePage />} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="service-principles" element={<ServicePrinciplesPage />} />
+      </Route>
+
+      <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
+        <Route index element={<LayoutPage />} />
+      </Route>
+      <Route path="support" element={<SupportLayout />}>
+        <Route index element={<SupportOverviewPage />} />
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
+        <Route path="drop-in-hours">
+          <Route index element={<DropInHoursPage />} />
+        </Route>
+        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )

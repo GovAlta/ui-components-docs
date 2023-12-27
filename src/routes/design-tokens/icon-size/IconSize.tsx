@@ -1,9 +1,4 @@
-import {
-  GoAContainer,
-  GoAGrid,
-  GoAIcon,
-  GoATable,
-} from "@abgov/react-components";
+import { GoAContainer, GoAGrid, GoAIcon, GoATable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./IconSize.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -44,7 +39,7 @@ export default function IconSizePage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -78,7 +73,7 @@ export default function IconSizePage() {
   const renderMobile = () => {
     return (
       <GoAGrid minChildWidth="22rem" gap="xl">
-        {getTokenGroups(tokens).map((group) =>
+        {getTokenGroups(tokens).map(group =>
           group.map((token: IconSizeToken, idx: number) => (
             <GoAContainer key={idx}>
               <div className={`icon ${token.tokenName}`}>

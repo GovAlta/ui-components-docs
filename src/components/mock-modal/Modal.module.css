@@ -1,0 +1,45 @@
+.modal {
+  display: flex;
+  border: 1px solid var(--goa-color-greyscale-700);
+  border-radius: 4px;
+  box-shadow: var(--goa-shadow-modal);
+  min-width: 420px;
+}
+
+.heading {
+  margin-top: 0;
+}
+
+.content {
+  padding: 2rem;
+  flex: 1 1 auto;
+}
+
+.variant {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2rem;
+  width: 4rem;
+  height: auto;
+}
+
+.information {
+  background-color: var(--goa-color-interactive-default);
+  color: white;
+}
+.important {
+  background-color: var(--goa-color-warning-default);
+}
+.emergency {
+  background-color: var(--goa-color-emergency-default);
+  color: white;
+}
+.success {
+  background-color: var(--goa-color-success-default);
+  color: white;
+}
+.event {
+  background-color: var(--goa-color-interactive-default);
+  color: white;
+}

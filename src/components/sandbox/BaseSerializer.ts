@@ -15,18 +15,28 @@ export interface Serializer {
 
 export interface SerializerState {
   element: string;
-  props: {name: string};
+  props: { name: string };
+}
+
+export function propsToString(props: Record<string, string>, lang: "angular" | "react"): string {
+  if (lang === "angular") {
+    return Object.entries(props)
+      .map(e => `${e[0].toLowerCase()}="${e[1]}"`)
+      .join(" ");
+  }
+  return Object.entries(props)
+    .map(e => `${e[0]}="${e[1]}"`)
+    .join(" ");
 }
 
 export class BaseSerializer {
-
   protected isRoot = false;
-  protected state: SerializerState = { element: "", props: {name: ""}}
+  protected state: SerializerState = { element: "", props: { name: "" } };
 
-  constructor(protected properties: ComponentBinding[]) { }
+  constructor(protected properties: ComponentBinding[]) {}
 
   getProperty(name: string): ComponentBinding | undefined {
-    return this.properties.find(p => p.name === name)
+    return this.properties.find(p => p.name === name);
   }
 
   protected setIsRoot(value: boolean) {
@@ -39,15 +49,15 @@ export class BaseSerializer {
 
   // converts React camelcase props to dasherized
   protected dasherize(name: string): string {
-    const out: string[] = []
+    const out: string[] = [];
     name.split("").forEach((c: string, i: number) => {
       const code = c.charCodeAt(0);
       if (code >= 65 && code <= 90 && i > 0) {
         out.push("-");
       }
-      out.push(c.toLowerCase())
-    })
-    return out.join("")
+      out.push(c.toLowerCase());
+    });
+    return out.join("");
   }
 
   protected capitalize(value: string): string {
@@ -57,5 +67,4 @@ export class BaseSerializer {
   protected isDynamic(name: string): boolean {
     return this.getProperty(name)?.dynamic || false;
   }
-
 }

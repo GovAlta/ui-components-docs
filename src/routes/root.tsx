@@ -44,7 +44,7 @@ export default function Root() {
             feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />
-          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH}>
+          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
@@ -69,17 +69,17 @@ export default function Root() {
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Styles</Link>
               <Link to="/ux-writing">UX writing</Link>
-              <Link to="/contribute">Contribute</Link>
+              <Link to="/support/contribute">Contribute</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
               <Link to="/submit-an-issue">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
-              <Link to="/drop-in-hours">Drop in hours</Link>
+              <Link to="/support/drop-in-hours">Drop in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
-              <Link to="/contribute-design-system">Contribute to the design system</Link>
+              <Link to="support/contribute-design-system">Contribute to the design system</Link>
               <Link to="/leave-feedback">Leave feedback</Link>
-              <Link to="/release-notes">Release notes</Link>
+              <Link to="/support/release-notes">Release notes</Link>
             </GoAAppFooterMetaSection>
           </GoAAppFooter>
         </section>

@@ -29,7 +29,7 @@ export default function OpacityPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -67,7 +67,7 @@ export default function OpacityPage() {
   const renderMobile = () => {
     return (
       <GoAGrid minChildWidth="22rem" gap="xl">
-        {getTokenGroups(tokens).map((group) =>
+        {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
             <GoAContainer key={idx}>
               <div style={{ display: "flex" }}>

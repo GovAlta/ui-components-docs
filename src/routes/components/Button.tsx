@@ -134,10 +134,7 @@ export default function ButtonPage() {
       <ComponentHeader
         name="Button"
         category={Category.INPUTS_AND_ACTIONS}
-        description="Buttons allow users to perform an action or to navigate to another page.
-        They have multiple styles for various needs, and are ideal for calling
-        attention to where a user needs to do something or so they can move
-        forward in a flow."
+        description="Carry out an important action or to navigate to another page."
         relatedComponents={[
           { link: "/components/icon-button", name: "Icon button" },
           { link: "/components/link", name: "Link" },
@@ -154,8 +151,8 @@ export default function ButtonPage() {
               allowCopy={true}
               code={`
           export class SomeOtherComponent {
-            onClick() {
-              console.log('clicked');
+            onClick(event: Event) {
+              console.log('clicked ', event);
             }
           }
         `}
@@ -169,11 +166,11 @@ export default function ButtonPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Button Examples*/}
-          <goa-block gap="xs" direction="column" mt="2xl" mb="3xl">
+          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
             <a href="#ask-address">Ask a user for an address</a>
             <a href="#confirm-action">Confirm a destructive action</a>
             <a href="#disabled-button">Disabled button in a form</a>
-          </goa-block>
+          </GoABlock>
           <h3 id="ask-address">Ask a user for an address</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Street Address">
