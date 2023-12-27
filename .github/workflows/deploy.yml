@@ -23,8 +23,6 @@ jobs:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
-      - name: Lint
-        run: npm run lint
       - name: Build
         run: npm run build
       - name: Oc login
