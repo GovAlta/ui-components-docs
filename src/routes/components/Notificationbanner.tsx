@@ -57,7 +57,6 @@ export default function NotificationBannerPage() {
       name: "type",
       type: "success | important | information | emergency",
       description: "Define the context and colour of the badge",
-      required: true,
     },
     {
       name: "maxcontentwidth",

@@ -187,6 +187,7 @@ export default function DropdownPage() {
       name: "onChange",
       lang: "react",
       type: "(name: string, value: string[] | string | null) => void",
+      required: true,
       description: "Callback function when dropdown value is changed",
     },
     {
@@ -200,6 +201,7 @@ export default function DropdownPage() {
     {
       name: "value",
       type: "string",
+      required: true,
       description: "The value of the item. This value will be contained within the onChange event",
     },
     {
