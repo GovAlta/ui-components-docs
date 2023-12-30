@@ -73,7 +73,7 @@ export default function Root() {
             <GoAAppFooterNavSection heading="Get support">
               <Link to="/submit-an-issue">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
-              <Link to="/support/drop-in-hours">Drop in hours</Link>
+              <Link to="/support/drop-in-hours">Drop-in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
               <Link to="support/contribute">Contribute to the design system</Link>
