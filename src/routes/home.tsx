@@ -17,52 +17,52 @@ const HomePage = () => {
   return (
     <>
       <GoAHeroBanner
-        heading="Design your service using reusable guidelines, tokens, components,
-        and patterns."
+        heading="Design your service using reusable patterns, components, tokens, and content guidelines."
         maxContentWidth={MAX_CONTENT_WIDTH}
       >
-        Use these resources to build your service. Use and learn from the research and experience of
-        other service teams and avoid repeating work that's already been done.
+        Use these resources to build your service. Learn from the research and experience of other 
+        service teams and avoid repeating work that’s already been done.
         <GoAHeroBannerActions>
           <GoAButtonGroup alignment="start">
-            <GoAButton
-              onClick={() => {
-                navigate("get-started");
+            <GoAButton onClick={() => {
+              navigate("get-started");
               }}
               trailingIcon="arrow-forward"
             >
               Get Started
             </GoAButton>
-            <GoAButton onClick={() => {}} type="tertiary">
-              Learn about our latest release
+            <GoAButton onClick={() => {
+              navigate("support/release-notes");  
+            }} type="tertiary">
+              Learn about the latest release
             </GoAButton>
           </GoAButtonGroup>
         </GoAHeroBannerActions>
       </GoAHeroBanner>
 
       <GoAPageBlock width={MAX_CONTENT_WIDTH}>
-        <GoAGrid minChildWidth="300px" mt="2xl" mb="2xl" gap="2xl">
+        <GoAGrid minChildWidth="300px" mt="2xl" mb="2xl" gap="xl">
           <CardLite
             title="Patterns and templates"
-            description="Patterns and page templates to create a better user experience for government services."
+            description="Common patterns and page templates to use as a starting point for a government service."
             linkTo="/patterns"
             linkDisplay="Browse patterns"
           />
           <CardLite
             title="Components"
-            description="Reusable parts of the user interface such as buttons, modals, steppers, and text inputs."
+            description="Reusable parts of the user interface for content layout, feedback, alerts, inputs, actions, structure, navigation, and other utilities."
             linkTo="/components"
             linkDisplay="Browse Components"
           />
           <CardLite
             title="Styles"
-            description="Use the design system styles within your service, shared across design and development."
+            description="Shared design decisions encapsulated in design tokens to use across design and development."
             linkTo="/design-tokens"
             linkDisplay="Browse Styles"
           />
           <CardLite
             title="Content"
-            description="Use the design system styles within your service, shared across design and development."
+            description="Guidelines on creating clear and simple communication of information for the user."
             linkTo="/content"
             linkDisplay="Browse Content"
           />
@@ -74,16 +74,16 @@ const HomePage = () => {
           <ol>
             <li>Start with the design system and validate your design through user testing.</li>
             <li>
-              If usability issues arise or a problem cannot be resolved within the system, only then
+              If usability issues arise or a problem cannot be resolved within the system, then
               consider a custom solution or extending a component.
             </li>
           </ol>
           <p>
-            <strong>Remember:</strong> Avoid custom solutions without a genuine user need to prevent
-            unnecessary rework and keep your team on track.
+            <strong>Remember:</strong> Avoid custom solutions without a genuine user need. Leverage the existing resources from the design system first to prevent
+            unnecessary rework and iterate on your service faster.
           </p>
-          <Link to="https://goa-dio.atlassian.net/wiki/spaces/DS/pages/2663678161/Starting+with+the+DDD+design+system">
-            View more information on starting with the design system
+          <Link to="/get-started">
+            Learn more about starting with the design system
           </Link>
           <SupportInfo />
         </div>
