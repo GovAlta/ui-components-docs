@@ -11,7 +11,7 @@ import ICONS from "./icons.json";
 // == Page props ==
 
 const componentName = "Chip";
-const description = "An overlay that appears in front of the main page content.";
+const description = "Allow the user to enter information, filter content, and make selections.";
 const category = Category.FEEDBACK_AND_ALERTS;
 type ComponentPropsType = GoAChipProps;
 
