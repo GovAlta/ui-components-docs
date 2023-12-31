@@ -9,12 +9,10 @@ export default function DropInHoursPage() {
       </h3>
 
       <div className="max-width-72ch">
-        <p>Every Friday from 1:00pm - 3:00pm MST</p>
+        <p>Every Tuesday and Friday from 1:00pm - 3:00pm MST</p>
         <h2>Purpose</h2>
         <p>
-          For designers seeking feedback on their usage of design system, content, styles, and
-          anything else. This is also a great time to propose new components or changes to existing
-          components, ask any questions, and give feedback to the design system.
+          For designers and developers seeking feedback on their usage of design system, content, styles, and anything else. This is also a great time to propose new components or changes to existing components, ask any questions, and give feedback to the design system.
         </p>
         <h2>Audience</h2>
         <p>
