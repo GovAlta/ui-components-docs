@@ -18,8 +18,7 @@ export default function LayoutPage() {
     <>
       <h1>Layout</h1>
       <h3>
-        A layout is a structural template that supports consistency across applications by defining
-        visual grids, spacing, and sections.
+        A structural template that supports consistency across applications by defining visual grids, spacing, and sections.
       </h3>
       <GoATabs>
         <GoATab heading="Code examples">
