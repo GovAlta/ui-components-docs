@@ -15,8 +15,8 @@ export default function ShadowPage() {
   const tokens: Token[] = [
     {
       tokenName: "goa-shadow-modal",
-      value: "x=6,y=6,blur=6,spread=0, rgba(0,0,0,0,16)",
-      figmaUsage: "Drop Shadow/Small",
+      value: "x=6, y=6, blur=6, spread=0, rgba(0,0,0,0,16)",
+      figmaUsage: "Effect: Drop Shadow/Modal",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
