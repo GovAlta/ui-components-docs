@@ -95,7 +95,7 @@ export default function DetailsPage() {
             Show more information for a basic question
           </h3>
           <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
-            <GoAFormItem label="Do you pay for childcare?" helpText="3-12 digits in length">
+            <GoAFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
               <GoARadioGroup name="pay" onChange={() => {}}>
                 <GoARadioItem label="Yes" value="yes" name="pay" />
                 <GoARadioItem label="No" value="no" name="pay" />
