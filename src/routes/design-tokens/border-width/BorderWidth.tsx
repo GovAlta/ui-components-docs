@@ -37,8 +37,8 @@ export default function BorderWidthPage() {
           <tr>
             <th></th>
             <th>Token name</th>
-            <th>REM</th>
-            <th>PX</th>
+            <th>rem</th>
+            <th>px</th>
             <th>Figma usage</th>
           </tr>
         </thead>
@@ -80,8 +80,8 @@ export default function BorderWidthPage() {
               />
               <TokenSnippet code={token.tokenName} />
               <dl>
-                <dt>REM</dt> <dd>{token.rem}</dd>
-                <dt>PX</dt> <dd>{token.px}</dd>
+                <dt>rem</dt> <dd>{token.rem}</dd>
+                <dt>px</dt> <dd>{token.px}</dd>
                 <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
             </GoAContainer>
