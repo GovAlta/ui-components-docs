@@ -17,12 +17,12 @@ export default function OpacityPage() {
     {
       tokenName: "goa-opacity-background-modal",
       percentage: "50%",
-      figmaUsage: "Use an opacity of 50%",
+      figmaUsage: "Fill: opacity/background/modal",
     },
     {
       tokenName: "goa-opacity-background-loading",
       percentage: "90%",
-      figmaUsage: "Use an opacity of 90%",
+      figmaUsage: "Fill: opacity/background/loading",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
@@ -35,7 +35,7 @@ export default function OpacityPage() {
             <th></th>
             <th>Token name</th>
             <th>%</th>
-            <th>Figma usage</th>
+            <th>Figma style</th>
           </tr>
         </thead>
         <tbody>
