@@ -32,9 +32,9 @@ export default function QATestingOverviewPage() {
         <ul>
           <li>Automated unit testing is run.</li>
           <li>
-            The developed component is{" "}
+            The developed component is validated on all popular browsers leading to cross-browser testing.{" "}
             <a href="/get-started/developers/browsers">
-              validated on all popular browsers leading to cross-browser testing.
+              View cross browser compatibility.
             </a>
           </li>
           <li>Manual accessibility testing of components using Axe accessibility testing tools.</li>
