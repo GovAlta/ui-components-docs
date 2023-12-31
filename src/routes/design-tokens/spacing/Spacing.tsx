@@ -25,9 +25,9 @@ export default function SpacingPage() {
           <tr>
             <th></th>
             <th>Token name</th>
-            <th>REM</th>
-            <th>PX</th>
-            <th>Figma usage</th>
+            <th>rem</th>
+            <th>px</th>
+            <th>Figma variable</th>
           </tr>
         </thead>
         <tbody>
