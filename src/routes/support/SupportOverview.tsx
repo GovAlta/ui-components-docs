@@ -5,8 +5,7 @@ export default function SupportOverviewPage() {
     <>
       <h1>Overview</h1>
       <h3>
-        Get support from the design system team regarding using the component library, design and
-        usage guidelines, design system best practices, and accessibility.
+        Get support from the design system team using the component library, design and usage guidelines, design system best practices, and accessibility.
       </h3>
 
       <div className="max-width-72ch">
@@ -37,12 +36,10 @@ export default function SupportOverviewPage() {
           report issues.
         </p>
         <h3 className="support-overview-drop-in-hours-heading">
-          Drop in hours <span>(every Friday 1:00 - 3:00pm MST)</span>
+          Drop in hours <span>(every Tuesday and Friday 1:00 - 3:00pm MST)</span>
         </h3>
         <p>
-          For designers to get feedback on their usage of the design system, propose new components
-          or changes to existing components, ask any questions, and give feedback to the design
-          system.
+          For designers and developers to get feedback on their usage of the design system, propose new components or changes to existing components, ask any questions, and give feedback to the design system.
         </p>
         <GoABlock gap="m" mb="2xl">
           <a href="/support/drop-in-hours">Learn more about Drop in hours</a>
@@ -115,7 +112,7 @@ export default function SupportOverviewPage() {
           <br />
           <span>
             Amar Kothapalli |{" "}
-            <a href="mailto:Amarnath.Kothapalli@gov.ab.ca">Amarnath.Kothapalli@gov.ab.ca</a>
+            <a href="mailto:Amarnath.Kothapalli@gov.ab.ca">amarnath.kothapalli@gov.ab.ca</a>
           </span>
           <br />
           <span>
