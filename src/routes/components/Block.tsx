@@ -92,7 +92,6 @@ export default function BlockPage() {
                   width: "5rem",
                 }}>
                 <div>Item 2</div>
-                <div>Item 2</div>
               </div>
               <div
                 style={{
