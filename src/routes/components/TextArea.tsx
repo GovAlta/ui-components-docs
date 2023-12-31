@@ -243,7 +243,7 @@ export default function TextAreaPage() {
 
           {/*Examples*/}
           <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#example-1">Example 1</a>
+            <a href="#example-1">Ask a question and give more information</a>
           </GoABlock>
 
           <h3 id="example-1">Ask a question and give more information</h3>
