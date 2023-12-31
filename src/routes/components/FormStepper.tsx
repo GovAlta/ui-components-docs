@@ -18,7 +18,7 @@ export default function DropdownPage() {
     <>
       <h1>Form Stepper</h1>
       <p>
-        Form steppers provide a visual representation of a user's journey through a series of steps.
+        Provides a visual representation of a form through a series of steps.
       </p>
       <Sandbox properties={formStepperBindings} fullWidth={true} onChange={onChange}>
         <CodeSnippet
