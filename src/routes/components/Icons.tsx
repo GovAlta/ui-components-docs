@@ -69,7 +69,7 @@ export default function IconsPage() {
       <ComponentHeader
         name="Icons"
         category={Category.UTILITIES}
-        description="Use simple, easy-to-understand, universal icons from the design system to help guide users."
+        description="A simple and universal graphic symbol representing an action, object, or concept to help guide the user."
       />
 
       <GoATabs>
