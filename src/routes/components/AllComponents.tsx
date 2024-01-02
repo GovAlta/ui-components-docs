@@ -3,238 +3,314 @@ import { ComponentCard, Props as ComponentProps } from "@components/component-ca
 import { ReactNode, useState } from "react";
 import "./AllComponents.css";
 
-export default function CheckboxPage() {
+export default function AllComponentsPage() {
   const cards: ComponentProps[] = [
     {
       name: "accordion",
       groups: ["content"],
-      tags: ["Blind, Collapse, Content layout, Expandable panel, Expand"],
+      tags: ["blind", "collapse", "content layout", "expandable panel", "expand"],
       description: "Let users show and hide sections of related content on a page.",
     },
     {
       name: "callout",
       groups: ["content"],
-      tags: ["Alert, Feedback and alerts, Show more information"],
+      tags: ["alert", "feedback and alerts", "show more information"],
       description: "Communicate important information through a strong visual emphasis.",
     },
     {
       name: "container",
       groups: ["content"],
-      tags: ["Card, Content, Content layout, Group, Structure"],
+      tags: ["card", "content", "content layout", "group", "structure"],
       description: "Group information, create hierarchy, and show related information.",
     },
     {
       name: "date picker",
       groups: ["inputs"],
-      description: "A date picker lets users select a date through a calendar without the need to manually type it in a field."
+      description:
+        "A date picker lets users select a date through a calendar without the need to manually type it in a field.",
     },
     {
       name: "details",
       groups: ["content"],
-      tags: ["Accordion details, Additional info, Additional information, Content layout, Detail accordion, Details expander, Details toggle, Disclosure, Expand, Expander, Expanding detail, Expandable details, Expandable help text, More info, See more, Show more, Show more information"],
+      tags: [
+        "accordion details",
+        "additional info",
+        "additional information",
+        "content layout",
+        "detail accordion",
+        "details expander",
+        "details toggle",
+        "disclosure",
+        "expand",
+        "expander",
+        "expanding detail",
+        "expandable details",
+        "expandable help text",
+        "more info",
+        "see more",
+        "show more",
+        "show more information",
+      ],
       description: "Let users reveal more detailed information when they need it.",
     },
     {
       name: "hero banner",
       groups: ["content"],
-      tags: ["Promotion banner, Hero panel, Structure and navigation"],
+      tags: ["promotion banner", "hero panel", "structure and navigation"],
       description: "A visual band of text, including an image and a call to action.",
     },
-    { 
-      name: "list", 
+    {
+      name: "list",
       groups: ["content"],
-      tags: ["Content layout"],
+      tags: ["content layout"],
       description: "Chunk information into short succinct ideas.",
     },
-    { 
-      name: "popover", 
+    {
+      name: "popover",
       groups: ["content"],
-      tags: ["Content layout, Show more information"],
+      tags: ["content layout", "show more information"],
       description: "A small overlay that opens on demand, used in other components.",
     },
     {
       name: "table",
       groups: ["content"],
-      tags: ["Data table, Content layout, Interactive table, Sortable table"],
+      tags: ["data table", "content layout", "interactive table", "sortable table"],
       description:
         "A set of structured data that is easy for a user to scan, examine, and compare.",
     },
     {
       name: "badge",
       groups: ["feedback"],
-      tags: ["Feedback and alerts, Label, Lozenge, Status, Tag, Token"],
+      tags: ["feedback and alerts", "label", "lozenge", "status", "tag", "token"],
       description:
         "Small labels which hold small amounts of information, system feedback, or states.",
     },
     {
       name: "chip",
       groups: ["feedback"],
-      tags: ["Inputs and actions, Pill"],
+      tags: ["inputs and actions", "pill"],
       description: "Allow the user to enter information, filter content, and make selections.",
     },
     {
       name: "modal",
       groups: ["feedback"],
-      tags: ["Feedback and alerts, Popup modal, Popup box, Modal dialog, Show more information"],
+      tags: [
+        "feedback and alerts",
+        "popup modal",
+        "popup box",
+        "modal dialog",
+        "show more information",
+      ],
       description: "An overlay that appears in front of the main page content.",
     },
     {
       name: "notification banner",
       groups: ["feedback"],
-      tags: ["Alert banner, Banner, Feedback and alerts"],
+      tags: ["alert banner", "banner", "feedback and alerts"],
       description: "Display important page level information or notifications.",
     },
     {
       name: "progress indicator",
       groups: ["feedback"],
-      tags: ["Feedback and alerts, Loading, Loader, Loading indicator, Progress spinner, Process timer, Spinner"],
+      tags: [
+        "feedback and alerts",
+        "loading",
+        "loader",
+        "loading indicator",
+        "progress spinner",
+        "process timer",
+        "spinner",
+      ],
       description: "Provide feedback of progress to users while loading.",
     },
     {
       name: "skeleton loading",
       groups: ["feedback"],
-      tags: ["Content layout, Loading"],
-      description: "Provide visual feedback to users while loading a content heavy page or page element.",
+      tags: ["content layout", "loading"],
+      description:
+        "Provide visual feedback to users while loading a content heavy page or page element.",
     },
     {
       name: "tooltip",
       groups: ["feedback"],
-      tags: ["Feedback and alerts"],
+      tags: ["feedback and alerts"],
       description: "Display more information in a popover when a user hovers over an element.",
     },
     {
       name: "button",
       groups: ["inputs"],
-      tags: ["Action, Inputs and actions, Submit"],
+      tags: ["action", "inputs and actions", "submit"],
       description: "Carry out an important action or navigate to another page.",
     },
     {
       name: "button group",
       groups: ["inputs"],
-      tags: ["Action, Inputs and actions, Submit"],
-      description: "Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing.",
+      tags: ["action", "inputs and actions", "submit"],
+      description:
+        "Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing.",
     },
     {
       name: "checkbox",
       groups: ["inputs"],
-      tags: ["Checkbox, Checklist, Input, Inputs and actions, Options"],
+      tags: ["checkbox", "checklist", "input", "inputs and actions", "options"],
       description: "Let the user select one or more options.",
     },
     {
       name: "dropdown",
       groups: ["inputs"],
-      tags: ["Inputs and actions, Select, Single select dropdown"],
+      tags: ["inputs and actions", "select", "single select dropdown"],
       description: "Present a list of options to the user to select from.",
     },
     {
       name: "file uploader",
       groups: ["inputs"],
-      tags: ["Drag and drop, File upload, Inputs and actions, Uploader"],
+      tags: ["drag and drop", "file upload", "inputs and actions", "uploader"],
       description: "Help users select and upload a file from their computer.",
     },
     {
       name: "icon button",
       groups: ["inputs"],
-      tags: ["Action, Inputs and actions, Submit"],
+      tags: ["action", "inputs and actions", "submit"],
       description: "A compact button with an icon and no text.",
     },
     {
       name: "radio",
       groups: ["inputs"],
-      tags: ["Inputs and actions, Option button, Radio button group, Radio buttons"],
+      tags: ["inputs and actions", "option button", "radio button group", "radio buttons"],
       description: "Allow users to select one option from a set.",
     },
     {
       name: "text area",
       groups: ["inputs"],
-      tags: ["Inputs and actions, Long answer input field, Multi line text input, Multiple text box, Text box, Text input area"],
+      tags: [
+        "inputs and actions",
+        "long answer input field",
+        "multi line text input",
+        "multiple text box",
+        "text box",
+        "text input area",
+      ],
       description: "Let users enter and input text for multiple lines of information.",
     },
     {
       name: "text field",
       groups: ["inputs"],
-      tags: ["Inputs and actions, Text field, Text box"],
+      tags: ["inputs and actions", "text field", "text box"],
       description: "Let users enter and input text for a single line of information.",
     },
     {
       name: "footer",
       groups: ["structure"],
-      tags: ["Page footer, Structure and navigation"],
+      tags: ["page footer", "structure and navigation"],
       description: "Provides information related your service at the bottom of every page.",
     },
     {
       name: "header",
       groups: ["structure"],
-      tags: ["App Header, Global navigation, Header, Header and navigation, Main Navigation, Navigation header, Navigation menu, Primary Navigation, Service Header, Structure and navigation, Top Navigation"],
+      tags: [
+        "app header",
+        "global navigation",
+        "header",
+        "header and navigation",
+        "main navigation",
+        "navigation header",
+        "navigation menu",
+        "primary navigation",
+        "service header",
+        "structure and navigation",
+        "top navigation",
+      ],
       description: "Used to help users find their way around a website or app.",
     },
     {
       name: "microsite header",
       groups: ["structure"],
-      tags: ["Banner, Development header, Feedback bar, Microheader, Microsite banner, Service header, Service bar, Service stage banner, Service state banner, Status bar, Structure and navigation"],
+      tags: [
+        "banner",
+        "development header",
+        "feedback bar",
+        "microheader",
+        "microsite banner",
+        "service header",
+        "service bar",
+        "service stage banner",
+        "service state banner",
+        "status bar",
+        "structure and navigation",
+      ],
       description: "Communicate what stage the service is at and gather feedback on your service.",
     },
     {
       name: "pagination",
       groups: ["structure"],
-      tags: ["Pager, Pagination controls, Structure and navigation"],
+      tags: ["pager", "pagination controls", "structure and navigation"],
       description: "Help users navigation between multiple pages or screens as part of a set.",
     },
     {
       name: "side menu",
       groups: ["structure"],
-      tags: ["Secondary navigation, Side nav, Side bar, Structure and navigation"],
+      tags: ["secondary navigation", "side nav", "side bar", "structure and navigation"],
       description: "A side navigation that helps the user navigate between pages.",
     },
     {
       name: "stepper",
       groups: ["structure"],
-      tags: ["Form stepper, Horizontal step navigation, Process overview, Progress indicator, Steps, Structure and navigation, Wizard"],
+      tags: [
+        "form stepper",
+        "horizontal step navigation",
+        "process overview",
+        "progress indicator",
+        "steps",
+        "structure and navigation",
+        "wizard",
+      ],
       description: "Provides a visual representation of a form through a series of steps.",
     },
     {
       name: "tabs",
       groups: ["structure"],
-      tags: ["Sections, Structure and navigation, Tabbed interface"],
-      description: "Let users navigate between related sections of content, displaying one section at a time.",
+      tags: ["sections", "structure and navigation", "tabbed interface"],
+      description:
+        "Let users navigate between related sections of content, displaying one section at a time.",
     },
     {
       name: "block",
       groups: ["utilities"],
-      tags: ["Utility"],
+      tags: ["utility"],
       description: "Used when grouping components into a block with consistent space between.",
     },
     {
       name: "divider",
       groups: ["utilities"],
-      tags: ["Dividing line, Page divider, Utilities"],
-      description: "Indicate a separation of layout, or to distinguish large chunks of information on a page.",
+      tags: ["dividing line", "page divider", "utilities"],
+      description:
+        "Indicate a separation of layout, or to distinguish large chunks of information on a page.",
     },
     {
       name: "form item",
       groups: ["utilities"],
-      tags: ["Form, Input, Inputs and actions"],
+      tags: ["form", "input", "inputs and actions"],
       description:
         "Wraps an input control with a text label, requirement label, helper text, and error text.",
     },
     {
       name: "grid",
       groups: ["utilities"],
-      tags: ["Utilities"],
+      tags: ["utilities"],
       description:
         "The grid helps to arrange a number of components into a responsive grid pattern.",
     },
     {
       name: "icon",
       groups: ["utilities"],
-      tags: ["Utilities"],
+      tags: ["utilities"],
       description:
         "Use simple, easy-to-understand, universal icons from the design system to help guide users.",
     },
     {
       name: "spacer",
       groups: ["utilities"],
-      tags: ["Gap, Margin, Padding, Space, Utilities"],
+      tags: ["gap", "margin", "padding", "space", "utilities"],
       description: "Negative area between the components and the interface.",
     },
   ];
@@ -254,7 +330,10 @@ export default function CheckboxPage() {
 
   function getComponentsByFilter(): ReactNode[] {
     return cards
-      .filter(card => card.name.includes(filter) || card.tags?.includes(filter))
+      .filter(
+        card =>
+          card.name.includes(filter.toLowerCase()) || (card.tags && card.tags.some(tag => tag.includes(filter.toLowerCase())))
+      )
       .map((card: ComponentProps) => (
         <ComponentCard
           key={card.name}
