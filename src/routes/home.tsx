@@ -32,7 +32,7 @@ const HomePage = () => {
               Get Started
             </GoAButton>
             <GoAButton onClick={() => {
-              navigate("support/release-notes");  
+              window.open("https://github.com/GovAlta/ui-components/releases", "_blank");
             }} type="tertiary">
               Learn about the latest release
             </GoAButton>
