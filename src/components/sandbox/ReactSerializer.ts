@@ -47,6 +47,13 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
     return `${name}={${name}}`;
   }
 
+  dateToProp(name: string, item: Date): string {
+    const year = item.getFullYear();
+    const month = item.getMonth();
+    const day = item.getDate();
+    return `${name}={new Date(${year},${month},${day})}`;
+  }
+
   arrayToProp(name: string, values: string, delimit: boolean): string {
     if (this.isDynamic(name)) {
       return this.dynamicProp(name);

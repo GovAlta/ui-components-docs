@@ -42,6 +42,10 @@ export class ComponentSerializer {
       return this.serializer.funcToProp(name, item);
     }
 
+    if (typeof item === "object" && item instanceof Date) {
+      return this.serializer.dateToProp(name, item);
+    }
+
     if (Array.isArray(item)) {
       const delimiter = delimit ? ", " : `\n  `;
       const items: string = item

@@ -133,7 +133,7 @@ function SandboxCode(p: SandboxCodeProps) {
         <h4>Reactive forms (FormControl)</h4>
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
 
-        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-reactive" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-reactive" sandboxProps={p.props} serializer={p.serializers["angular-reactive"]} />}
       </>
     );
   }
@@ -182,7 +182,6 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
         return false;
       return matches(componentTags);
     });
-
   return <>{els}</>
 }
 

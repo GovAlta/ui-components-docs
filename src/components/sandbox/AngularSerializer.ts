@@ -39,6 +39,10 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     return `${name.toLowerCase()}="${item}"`;
   }
 
+  dateToProp(name: string, item: Date): string {
+    return this.stringToProp(name, `${item}`);
+  }
+
   numberToProp(name: string, item: number): string {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);

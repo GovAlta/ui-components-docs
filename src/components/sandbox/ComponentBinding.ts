@@ -6,6 +6,7 @@ export type ComponentBinding =
   | DropdownBinding
   | RadioBinding
   | NumberBinding
+  | DateBinding
   | EmptyBinding;
 
 interface BaseBinding {
@@ -62,4 +63,9 @@ export interface RadioBinding extends BaseBinding {
   options: string[];
   value: string;
   defaultValue?: string;
+}
+
+export interface DateBinding extends BaseBinding {
+  type: "date",
+  value?: Date;
 }

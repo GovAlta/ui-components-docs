@@ -39,6 +39,7 @@ export function Components() {
             <Link to="checkbox">Checkbox</Link>
             <Link to="chip">Chip</Link>
             <Link to="container">Container</Link>
+            <Link to="date-picker">Date picker</Link>
             <Link to="details">Details</Link>
             <Link to="divider">Divider</Link>
             <Link to="dropdown">Dropdown</Link>
