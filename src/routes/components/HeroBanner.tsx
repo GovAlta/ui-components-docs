@@ -144,7 +144,7 @@ export default function HeroBannerPage() {
       <ComponentHeader
         name="Hero banner"
         category={Category.STRUCTURE_AND_NAVIGATION}
-        description="A visual band of text, including an image and a call to action."
+        description="A visual band of text, including a background colour or image and a call to action."
       />
 
       <GoATabs>
