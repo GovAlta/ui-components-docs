@@ -7,6 +7,7 @@ const ReactiveComponents = [
   "goa-dropdown",
   "goa-checkbox",
   "goa-radio-group",
+  "goa-date-picker"
 ];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
@@ -52,6 +53,10 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     }
     if (item === "") return "";
     return `${name.toLowerCase()}="${item}"`;
+  }
+
+  dateToProp(name: string, item: Date): string {
+    return this.stringToProp(name, `${item}`);
   }
 
   numberToProp(name: string, item: number): string {

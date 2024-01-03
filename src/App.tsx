@@ -34,6 +34,7 @@ import CheckboxPage from "@routes/components/Checkbox";
 import ChipPage from "@routes/components/Chip";
 import ComponentNotFoundPage from "@routes/not-found/NotFound";
 import ContainerPage from "@routes/components/Container";
+import DatePickerPage from "@routes/components/DatePicker";
 import DetailsPage from "@routes/components/Details";
 import DividerPage from "@routes/components/Divider";
 import DropdownPage from "@routes/components/Dropdown";
@@ -122,6 +123,7 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="chip" element={<ChipPage />} />
         <Route path="container" element={<ContainerPage />} />
+        <Route path="date-picker" element={<DatePickerPage/>} />
         <Route path="details" element={<DetailsPage />} />
         <Route path="divider" element={<DividerPage />} />
         <Route path="dropdown" element={<DropdownPage />} />

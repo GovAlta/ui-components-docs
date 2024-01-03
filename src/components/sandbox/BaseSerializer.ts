@@ -5,6 +5,7 @@ export interface Serializer {
   numberToProp: (name: string, item: number) => string;
   booleanToProp: (name: string, item: boolean) => string;
   funcToProp: (name: string, item: Object) => string;
+  dateToProp: (name: string, item: Date) => string;
   arrayToProp: (name: string, item: string, delimit: boolean) => string;
   componentNameToString: (name: string) => string;
   componentToString: (name: string) => string;

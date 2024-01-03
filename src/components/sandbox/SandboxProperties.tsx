@@ -1,5 +1,6 @@
 import {
   GoACheckbox,
+  GoADatePicker,
   GoADropdown,
   GoADropdownItem,
   GoAFormItem,
@@ -54,6 +55,13 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
     const prop = properties.find(p => p.type === "boolean" && p.name === name);
     if (!prop || prop.type !== "boolean") return;
     prop.value = checked;
+    onChange([...properties]);
+  }
+
+  function onDateChange(name: string, value: Date): void {
+    const prop = properties.find(p => p.type === "date" && p.name === name);
+    if (!prop || prop.type !== "date") return;
+    prop.value = value;
     onChange([...properties]);
   }
 
@@ -119,6 +127,10 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
         return (
           <GoAInput type="number" name={p.name} value={`${p.value}`} onChange={onNumberChange} />
         );
+      case "date":
+        return (
+          <GoADatePicker onChange={onDateChange} name={p.name} value={p.value} />
+        )
     }
   }
 

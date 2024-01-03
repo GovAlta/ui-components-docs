@@ -24,6 +24,11 @@ export default function CheckboxPage() {
       description: "Group information, create hierarchy, and show related information.",
     },
     {
+      name: "date picker",
+      groups: ["inputs"],
+      description: "A date picker lets users select a date through a calendar without the need to manually type it in a field."
+    },
+    {
       name: "details",
       groups: ["content"],
       tags: ["Accordion details, Additional info, Additional information, Content layout, Detail accordion, Details expander, Details toggle, Disclosure, Expand, Expander, Expanding detail, Expandable details, Expandable help text, More info, See more, Show more, Show more information"],
