@@ -84,7 +84,7 @@ export default function SpacerPage() {
       <ComponentHeader
         name="Spacer"
         category={Category.UTILITIES}
-        description="Navigate area between the components and the interface."
+        description="Negative area between the components and the interface."
       />
 
       <GoATabs>
