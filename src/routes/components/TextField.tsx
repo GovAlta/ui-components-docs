@@ -23,7 +23,7 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 const componentName = "Text field";
-const description = "Let user enters and input text for a single line of information.";
+const description = "A single-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 type ComponentPropsType = GoAInputProps;
 type CastingType = {

@@ -18,7 +18,7 @@ import {
 // == Page props ==
 
 const componentName = "Tooltip";
-const description = "More information displayed in a popover when a user hovers over an element.";
+const description = "A small popover that displays more information about an item.";
 type ComponentPropsType = GoATooltipProps;
 type CastingType = {
   content: string;

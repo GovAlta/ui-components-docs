@@ -13,13 +13,13 @@ export default function BorderRadiusPage() {
       tokenName: "goa-border-radius-none",
       rem: "0rem",
       px: "0px",
-      figmaUsage: "Use a border radius of 0px.",
+      figmaUsage: "Border Radius/None.",
     },
     {
       tokenName: "goa-border-radius-m",
       rem: "0.25rem",
       px: "4px",
-      figmaUsage: "Use a border radius of 4px.",
+      figmaUsage: "Border Radius/Medium",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
@@ -31,9 +31,9 @@ export default function BorderRadiusPage() {
           <tr>
             <th></th>
             <th>Token name</th>
-            <th>REM</th>
-            <th>PX</th>
-            <th>Figma usage</th>
+            <th>rem</th>
+            <th>px</th>
+            <th>Figma variable</th>
           </tr>
         </thead>
         <tbody>
@@ -75,9 +75,9 @@ export default function BorderRadiusPage() {
                 />
                 <TokenSnippet code={token.tokenName} />
                 <dl>
-                  <dt>REM</dt> <dd>{token.rem}</dd>
-                  <dt>PX</dt> <dd>{token.px}</dd>
-                  <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
+                  <dt>rem</dt> <dd>{token.rem}</dd>
+                  <dt>px</dt> <dd>{token.px}</dd>
+                  <dt>Figma variable</dt> <dd>{token.figmaUsage}</dd>
                 </dl>
               </GoAContainer>
             </>

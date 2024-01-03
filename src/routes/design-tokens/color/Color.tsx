@@ -31,7 +31,7 @@ export default function ColorPage() {
             <th></th>
             <th>Token</th>
             <th>Hex value</th>
-            <th>Figma colour style</th>
+            <th>Figma color style</th>
             <th>Description</th>
           </tr>
         </thead>

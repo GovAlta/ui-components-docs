@@ -18,13 +18,12 @@ export default function ContributePage() {
         <ol>
           <li>
             <div className="share-ideas">
-              Share your idea or suggestion at a Friday{" "}
+              Share your idea or suggestion with us at Design System Drop-in hours. {" "}
               <a
-                href="https://goa-dio.atlassian.net/wiki/spaces/DS/pages/2342813697"
+                href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/"
                 target="_blank">
-                Design System Drop-in Hours
+                Book a time
               </a>
-              . Book a time with us
             </div>
             <strong>Be prepared to:</strong>
             <ul>
@@ -68,7 +67,7 @@ export default function ContributePage() {
         <p>
           It is inclusive and accessible. <br />
           It should meet or exceed accessible standards. <br />
-          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/1702690950" target="_blank">
+          <a href="https://www.w3.org/TR/WCAG21/" target="_blank">
             WCAG 2.1
           </a>
         </p>
@@ -92,7 +91,7 @@ export default function ContributePage() {
             <a
               href="https://github.com/GovAlta/ui-components/tree/alpha/libs/web-components/playground"
               target="_blank">
-              palyground
+              playground
             </a>{" "}
             with examples of your component in use. The design system team uses this for manual
             testing.

@@ -53,7 +53,7 @@ export default function DesignTokensOverviewPage() {
       <h4>Designers</h4>
       <p>
         Many of the design tokens are represented in Figma as styles within the shared GOA Figma
-        Styles Library here: <a href="/guidelines">Styles, Guidelines, and Patterns | DDD</a>, and
+        Styles Library here: <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=4154-103403&mode=design&t=gILvZW7G5Zl8hYZz-4" target="_blank">Styles, Guidelines, and Patterns | DDD</a>, and
         is automatically enabled in your project files. Spacing can be applied in Figma using the
         spacing component. As a designer, you can communicate design decisions using design tokens,
         which developers can then use in code.

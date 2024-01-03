@@ -1,7 +1,7 @@
 export default function UxDesignerPage() {
   return (
     <>
-      <h1>UX Designers</h1>
+      <h1>Designers</h1>
       <h3>
         As a designer, you can consume the design system through Figma. Through Figma you can use
         tokens, components, and page templates.
@@ -10,8 +10,10 @@ export default function UxDesignerPage() {
       <h2>Overview</h2>
       <p>
         The design system provides designers with a library of{" "}
-        <a href="/design-tokens">design tokens</a>, <a href="/components">components</a>, and{" "}
-        <a href="/patterns">patterns</a> in Figma that are also available to developers in code.
+        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>, 
+        <a href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?type=design&node-id=1101-7241&mode=design" target="_blank">components</a>, and{" "}
+        <a href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-and-Templates-library-%7C-DDD?type=design&node-id=101-4112&mode=design" target="_blank">patterns</a> 
+        in Figma that are also available to developers in code.
         Start by using the design system components for common parts of your service so that your
         developers can also use the coded components.
       </p>
@@ -35,7 +37,7 @@ export default function UxDesignerPage() {
       <h4>Design system library - Figma</h4>
       <p>
         <a
-          href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Components-%7C-DDI?node-id=1101%3A7241"
+          href="https://www.figma.com/files/project/36119371/%E2%9D%96-Design-System-libraries?fuid=997916706634348976"
           target="_blank"
         >
           View the Figma design system library

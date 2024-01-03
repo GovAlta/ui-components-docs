@@ -80,7 +80,7 @@ export default function GetStartedOverviewPage() {
           <li>Content design</li>
           <li>Accessibility</li>
           <li>Design integrity of the product</li>
-          <li>Lo-fidelity design and testing</li>
+          <li>Low fidelity design and testing</li>
         </ul>
       </div>
     </>

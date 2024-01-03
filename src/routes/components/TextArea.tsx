@@ -24,7 +24,7 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 // == Page props ==
 
 const componentName = "Text area";
-const description = "Let users enter and type input text for multiple lines of information";
+const description = "A multi-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 type ComponentPropsType = GoATextAreaProps;
 type CastingType = {
@@ -243,7 +243,7 @@ export default function TextAreaPage() {
 
           {/*Examples*/}
           <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#example-1">Example 1</a>
+            <a href="#example-1">Ask a question and give more information</a>
           </GoABlock>
 
           <h3 id="example-1">Ask a question and give more information</h3>

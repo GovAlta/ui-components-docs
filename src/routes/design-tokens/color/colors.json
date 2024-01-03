@@ -53,13 +53,13 @@
         "code": "goa-color-text-default",
         "value": "#333333",
         "figmaColorStyle": "Text/Default",
-        "description": "Default color for most text (such as body, headings, subheadings)"
+        "description": "Default color for text on a white background such as body text, headings, and subheadings."
       },
       {
         "code": "goa-color-text-secondary",
         "value": "#666666",
         "figmaColorStyle": "Text/Secondary",
-        "description": "Default color for secondary text labels such as \"optional\" or \"required\", or within a table heading."
+        "description": "Default color for secondary text including such as \"optional\" or \"required\" input labels."
       },
       {
         "code": "goa-color-text-light",

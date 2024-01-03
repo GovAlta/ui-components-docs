@@ -27,21 +27,21 @@ export default function RoadmapPage() {
         <h2>Now</h2>
         <ul>
           <li>
-            <strong>Design System Documentation Upgrade:</strong> We plan to enhance and centralize
+            <strong>Design system documentation upgrade:</strong> We plan to enhance and centralize
             our documentation site to serve both design and technical practitioners better. Key
             updates will include a real-time component sandbox for configuring components, and
             context-specific examples with code samples, all designed to expedite product
             development.
           </li>
           <li>
-            <strong>User Experience-focused Form Improvements:</strong> Acknowledging the importance
+            <strong>User experience-focused form improvements:</strong> Acknowledging the importance
             of forms in government services, we are developing a form pattern in conjunction with
             product teams. This will provide guidance and design and development resources to easily
             create user-friendly and accessible forms, thereby enhancing the user experience and
             streamline data collection.
           </li>
           <li>
-            <strong>Design System Onboarding:</strong> We're preparing a comprehensive onboarding
+            <strong>Design system onboarding:</strong> We're preparing a comprehensive onboarding
             process for new design and technical practitioners, providing them with the knowledge
             and tools to build efficient, consistent services that encourage cross-functional
             collaboration.
@@ -57,7 +57,7 @@ export default function RoadmapPage() {
             development and creating better services.
           </li>
           <li>
-            <strong>Collaborative UI Components Delivery:</strong> The design system plans to
+            <strong>Collaborative UI components delivery:</strong> The design system plans to
             partner with platform teams to co-create components and patterns. This initiative builds
             on the success of our past collaboration with the Seniors Community and Social Services
             (SCSS) platform team. It aims to foster similar partnerships to deliver UI components
