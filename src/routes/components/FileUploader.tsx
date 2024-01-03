@@ -54,7 +54,7 @@ class MockUploader implements Uploader {
 }
 
 const componentName = "File uploader";
-const description = "Help users select and upload a file from their computer.";
+const description = "Help users select and upload a file.";
 const category = Category.INPUTS_AND_ACTIONS;
 type ComponentPropsType = Omit<GoAFileUploadInputProps, "onSelectFile">;
 type CastingType = {
