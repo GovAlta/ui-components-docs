@@ -68,17 +68,16 @@ export default function Root() {
               <Link to="/patterns">Patterns and templates</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Styles</Link>
-              <Link to="/ux-writing">UX writing</Link>
-              <Link to="/support/contribute">Contribute</Link>
+              <Link to="/content">Content</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
               <Link to="/submit-an-issue">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
-              <Link to="/support/drop-in-hours">Drop in hours</Link>
+              <Link to="/support/drop-in-hours">Drop-in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
-              <Link to="support/contribute-design-system">Contribute to the design system</Link>
-              <Link to="/leave-feedback">Leave feedback</Link>
+              <Link to="support/contribute">Contribute to the design system</Link>
+              <Link to="/leave-feedback">Give feedback</Link>
               <Link to="/support/release-notes">Release notes</Link>
             </GoAAppFooterMetaSection>
           </GoAAppFooter>
