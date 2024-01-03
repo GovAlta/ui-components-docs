@@ -12,7 +12,7 @@ export default function ListPage() {
       <ComponentHeader
         name="List"
         category={Category.CONTENT_AND_LAYOUT}
-        description="Chunk information into short succinct ideas."
+        description="Organize information into brief and clear groups."
       />
       <GoATabs>
         <GoATab heading="Code examples">
