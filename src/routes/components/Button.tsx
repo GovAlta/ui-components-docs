@@ -19,6 +19,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
+import ICONS from "@routes/components/icons.json";
 
 export default function ButtonPage() {
   const [buttonProps, setButtonProps] = useState({});
@@ -46,17 +47,17 @@ export default function ButtonPage() {
       value: "",
     },
     {
-      label: "Leading Icon",
-      type: "list",
+      label: "Leading icon",
+      type: "combobox",
       name: "leadingIcon",
-      options: ["", "airplane"],
+      options: [""].concat(ICONS),
       value: "",
     },
     {
       label: "Trailing Icon",
-      type: "list",
+      type: "combobox",
       name: "trailingIcon",
-      options: ["", "airplane"],
+      options: [""].concat(ICONS),
       value: "",
     },
     { label: "Disabled", type: "boolean", name: "disabled", value: false },

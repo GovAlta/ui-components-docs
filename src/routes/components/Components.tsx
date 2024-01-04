@@ -58,7 +58,6 @@ export function Components() {
             <Link to="progress-indicator">Progress indicator</Link>
             <Link to="radio">Radio</Link>
             <Link to="skeleton-loader">Skeleton loading</Link>
-            <Link to="snackbar">Snackbar</Link>
             <Link to="spacer">Spacer</Link>
             <Link to="site-header">Site header</Link>
             <Link to="form-stepper">Stepper</Link>
@@ -81,11 +80,11 @@ export function Components() {
 
             <ul style={{ marginLeft: "1.875rem" }}>
               <li>
-                <a href="https://github.com/GovAlta/ui…ts/issues/new/choose" target="_blank">
+                <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
                   Propose a change or report a bug on Github
                 </a>
                 <span> - Read more about </span>
-                <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2763096293/How+to+work+with+us" target="_blank">
+                <a href="/support/contribute" target="_blank">
                   our contribution process
                 </a>
               </li>

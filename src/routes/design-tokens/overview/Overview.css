@@ -1,3 +1,6 @@
 .overview-page goa-container {
   max-width: 72ch;
 }
+.overview-page code {
+  background-color: var(--goa-color-greyscale-100);
+}

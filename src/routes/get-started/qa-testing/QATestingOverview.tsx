@@ -1,4 +1,3 @@
-import { GoACallout } from "@abgov/react-components";
 
 export default function QATestingOverviewPage() {
   return (
@@ -11,25 +10,10 @@ export default function QATestingOverviewPage() {
       </h3>
 
       <div className="max-width-72ch">
-        <GoACallout
-          type="information"
-          heading="Design system components are thoroughly tested"
-          size="large"
-          mt="xl"
-          mb="xl"
-        >
-          You don't need to test the design system components. <br />
-          <strong>
-            If problems found regarding components{" "}
-            <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-              report a bug
-            </a>
-          </strong>
-        </GoACallout>
 
         <h2>Definition of done for testing activities</h2>
 
-        <ul>
+        <ol>
           <li>Automated unit testing is run.</li>
           <li>
             The developed component is validated on all popular browsers leading to cross-browser testing.{" "}
@@ -48,7 +32,7 @@ export default function QATestingOverviewPage() {
           </li>
           <li>The component undergoes a design review to ensure alignment to the design.</li>
           <li>After QA signoff, the code is deployed to Alpha branch.</li>
-        </ul>
+        </ol>
 
         <h2>Accessibility testing</h2>
         <p>

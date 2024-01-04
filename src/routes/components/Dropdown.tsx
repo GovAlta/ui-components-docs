@@ -222,7 +222,7 @@ export default function DropdownPage() {
   }
 
   // Demo
-  const [ color, setColor ] = useState<string>("red");
+  const [ color, setColor ] = useState<string>("");
 
   function onChange(_name: string, value: string | string[]) {
     if (typeof value === "string") {
@@ -266,7 +266,7 @@ export default function DropdownPage() {
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
-                  reactiveFormCtrl = new FormControl("red");
+                  reactiveFormCtrl = new FormControl("");
                 }  
               `}
             />
@@ -276,7 +276,7 @@ export default function DropdownPage() {
               tags="react"
               allowCopy={true}
               code={`
-                const [value, setValue] = useState("red");
+                const [value, setValue] = useState("");
                 function onChange(name: string, value: string | string[]) {
                   setValue(value);
                 }

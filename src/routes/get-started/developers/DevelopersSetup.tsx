@@ -43,7 +43,7 @@ export default function DevelopersSetupPage() {
         allowCopy={true}
         code={`
           npm i @abgov/web-components
-          npm i @abgov/angular-components -f
+          npm i @abgov/angular-components
         `}
       ></CodeSnippet>
 
