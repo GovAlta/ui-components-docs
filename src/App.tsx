@@ -13,11 +13,11 @@ import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
 import HomePage from "@routes/home";
-import SupportOverviewPage from './routes/support/SupportOverview';
-import SupportLayout from './routes/support/SupportLayout';
-import ContributePage from './routes/support/Contribute';
-import DropInHoursPage from './routes/support/DropInHours';
-import ReleaseNotesPage from './routes/support/ReleaseNotes.tsx';
+import SupportOverviewPage from '@routes/support/SupportOverview';
+import SupportLayout from '@routes/support/SupportLayout';
+import ContributePage from '@routes/support/Contribute';
+import DropInHoursPage from '@routes/support/DropInHours';
+import ReleaseNotesPage from '@routes/support/ReleaseNotes.tsx';
 
 // Components
 
@@ -47,6 +47,7 @@ import IconsPage from "@routes/components/Icons";
 import ListPage from "@routes/components/List";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
+import PaginationPage from '@routes/components/Pagination';
 import PopoverPage from "@routes/components/Popover";
 import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
 import RadioPage from "@routes/components/Radio";
@@ -56,6 +57,11 @@ import TablePage from "@routes/components/Table";
 import TooltipPage from "@routes/components/Tooltip";
 import TextFieldPage from "@routes/components/TextField";
 import TextAreaPage from "@routes/components/TextArea";
+import MicrositeHeaderPage from '@routes/components/MicrositeHeader';
+import AppHeaderPage from '@routes/components/AppHeader';
+import AppFooterPage from '@routes/components/AppFooter';
+import SideMenuPage from '@routes/components/SideMenu';
+
 
 // Design Tokens
 
@@ -114,7 +120,8 @@ const router = createBrowserRouter(
       >
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
-        <Route path="badge" element={<BadgePage />} />
+        <Route path="header" element={<AppHeaderPage />} />
+        <Route path="footer" element={<AppFooterPage />} />
         <Route path="badge" element={<BadgePage />} />
         <Route path="block" element={<BlockPage />} />
         <Route path="button" element={<ButtonPage />} />
@@ -134,11 +141,14 @@ const router = createBrowserRouter(
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="icons" element={<IconsPage />} />
         <Route path="list" element={<ListPage />} />
+        <Route path="microsite-header" element={<MicrositeHeaderPage />} />
         <Route path="modal" element={<ModalPage />} />
         <Route path="notification-banner" element={<NotificationBannerPage />} />
+        <Route path="pagination" element={<PaginationPage />} />
         <Route path="popover" element={<PopoverPage />} />
         <Route path="progress-indicator" element={<ProgressIndicatorPage />} />
         <Route path="radio" element={<RadioPage />} />
+        <Route path="side-menu" element={<SideMenuPage />} />
         <Route path="skeleton-loader" element={<SkeletonPage />} />
         <Route path="spacer" element={<SpacerPage />} />
         <Route path="table" element={<TablePage />} />

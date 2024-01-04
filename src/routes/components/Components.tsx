@@ -46,7 +46,9 @@ export function Components() {
             <Link to="file-uploader">File uploader</Link>
             <Link to="footer">Footer</Link>
             <Link to="form-item">Form item</Link>
+            <Link to="form-stepper">Form stepper</Link>
             <Link to="grid">Grid</Link>
+            <Link to="header">Header</Link>
             <Link to="hero-banner">Hero banner</Link>
             <Link to="icons">Icons</Link>
             <Link to="list">List</Link>
@@ -57,11 +59,10 @@ export function Components() {
             <Link to="popover">Popover</Link>
             <Link to="progress-indicator">Progress indicator</Link>
             <Link to="radio">Radio</Link>
+            <Link to="side-menu">Side menu</Link>
             <Link to="skeleton-loader">Skeleton loading</Link>
             <Link to="snackbar">Snackbar</Link>
             <Link to="spacer">Spacer</Link>
-            <Link to="site-header">Site header</Link>
-            <Link to="form-stepper">Stepper</Link>
             <Link to="table">Table</Link>
             <Link to="text-area">Text area</Link>
             <Link to="text-field">Text field</Link>
