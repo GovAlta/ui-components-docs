@@ -61,7 +61,6 @@ export function Components() {
             <Link to="radio">Radio</Link>
             <Link to="side-menu">Side menu</Link>
             <Link to="skeleton-loader">Skeleton loading</Link>
-            <Link to="snackbar">Snackbar</Link>
             <Link to="spacer">Spacer</Link>
             <Link to="table">Table</Link>
             <Link to="text-area">Text area</Link>
