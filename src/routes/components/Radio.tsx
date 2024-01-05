@@ -107,6 +107,13 @@ export default function RadioPage() {
         "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
       type: "string",
     },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(name: string, value: string[] | string | null) => void",
+      required: true,
+      description: "Callback function when radio value is changed",
+    },
   ];
   const radioItemProperties: ComponentProperty[] = [
     {

@@ -122,11 +122,27 @@ export default function TextFieldPage() {
     },
     {
       name: "name",
+      lang: "react",
+      type: "string",
+      required: true,
+      description: "Name of input value that is received in the _change event.",
+    },
+    {
+      name: "name",
+      lang: "angular",
       type: "string",
       description: "Name of input value that is received in the _change event.",
     },
     {
       name: "value",
+      lang: "react",
+      type: "string",
+      required: true,
+      description: "Bound to value",
+    },
+    {
+      name: "value",
+      lang: "angular",
       type: "string",
       description: "Bound to value",
     },
@@ -324,6 +340,13 @@ export default function TextFieldPage() {
       lang: "react",
       type: "ReactNode",
       description: "Sets the content to the right of the input field",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(name: string, value: string[] | string | null) => void",
+      required: true,
+      description: "Callback function when input value is changed",
     },
     {
       name: "_focus",

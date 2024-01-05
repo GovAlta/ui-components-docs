@@ -1,4 +1,4 @@
-import { GoAAccordion } from "@abgov/react-components";
+import { GoAAccordion, GoABadge } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@components/sandbox";
 
@@ -52,6 +52,10 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       <div className={css.details}>
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
+        {props.required && (
+          <GoABadge type="important" content="Required" />
+        )}
+
         {props.type && (
           <code className={`${css.code} ${css.type}`}>
             {typeof props.type === "string" ? props.type : props.type.join(" | ")}
@@ -60,7 +64,6 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       </div>
 
       <div className={css.description}>
-        {props.required && <span>Required. </span>}
         {props.description}
         {props.defaultValue && (
           <span>

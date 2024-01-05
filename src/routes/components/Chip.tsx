@@ -79,6 +79,7 @@ export default function ChipPage() {
     {
       name: "content",
       type: "string",
+      required: true,
       description: "Text label of the chip",
     },
     {

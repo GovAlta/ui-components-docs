@@ -113,6 +113,14 @@ export default function TextAreaPage() {
     },
     {
       name: "value",
+      lang: "react",
+      type: "string",
+      required: true,
+      description: "Bound to value",
+    },
+    {
+      name: "value",
+      lang: "angular",
       type: "string",
       description: "Bound to value",
     },
@@ -172,6 +180,13 @@ export default function TextAreaPage() {
       type: "string",
       description:
         "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(name: string, value: string[] | string | null) => void",
+      required: true,
+      description: "Callback function when textarea value is changed",
     },
   ];
 
