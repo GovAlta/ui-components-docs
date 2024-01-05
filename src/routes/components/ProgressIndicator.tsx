@@ -104,6 +104,9 @@ export default function ProgressIndicatorPage() {
     if (props?.variant === "fullscreen") {
       setTimeout(() => {
         setComponentProps({ ...updatedProps, visible: false });
+        // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
+        document.body.style.overflow = "";
+        document.body.style.borderRight = "";
       }, 3000);
     }
   }
