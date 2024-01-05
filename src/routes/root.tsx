@@ -49,7 +49,6 @@ export default function Root() {
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
-            <Link to="/content">Content</Link>
             <Link to="/support">Support</Link>
             <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
               Report a bug
