@@ -1,9 +1,0 @@
-.services-principle-page ol li::marker,
-.services-principle-page h3:not(.introduction) {
-  font: var(--goa-typography-heading-m);
-  font-weight: var(--goa-font-weight-bold);
-}
-
-.services-principle-page ol li {
-  margin-bottom: var(--goa-space-2xl);
-}

@@ -127,8 +127,19 @@ export default function AccordionPage() {
               exercitation ullamco laboris nisi
             </GoAAccordion>
           </Sandbox>
+          {/*Accordion Table Properties*/}
+          <ComponentProperties properties={componentProperties} />
 
-          <h4>Accordion Group</h4>
+          {/* Examples*/}
+          <goa-block gap="xs" direction="column" mt="2xl" mb="3xl">
+            <a href="#accordion-group">
+              Accordion Group
+            </a>
+          </goa-block>
+
+          <h3 id="accordion-group">
+            Accordion Group
+          </h3>
           <Sandbox
             skipRender
             fullWidth>
@@ -207,9 +218,6 @@ export default function AccordionPage() {
               Content 3
             </GoAAccordion>
           </Sandbox>
-
-          {/*Accordion Table Properties*/}
-          <ComponentProperties properties={componentProperties} />
         </GoATab>
 
         <GoATab
