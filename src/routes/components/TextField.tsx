@@ -451,18 +451,9 @@ export default function TextFieldPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-ask-user-for-an-address">Ask a user for an address</a>
-            <a href="#example-ask-user-for-birthday">Ask a user for their birthday</a>
-            <a href="#example-search">Search</a>
-            <a href="#example-phone">Phone number</a>
-            <a href="#example-ask-for-costs">Ask a user for dollar amounts or costs</a>
-            <a href="#example-registration-number">
-              Ask a user for their indian registration number
-            </a>
-          </GoABlock>
-
-          <h3 id="example-ask-user-for-an-address">Ask a user for an address </h3>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          
+          <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Street Address">
               <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
@@ -496,7 +487,7 @@ export default function TextFieldPage() {
             </GoABlock>
           </Sandbox>
 
-          <h3 id="example-ask-user-for-birthday">Ask a user for their birthday</h3>
+          <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem
               label="When is your birthday?"
@@ -540,7 +531,7 @@ export default function TextFieldPage() {
             </GoAFormItem>
           </Sandbox>
 
-          <h3 id="example-search">Search</h3>
+          <h3 id="component-example-search">Search</h3>
           <Sandbox flags={["reactive"]}>
             <GoABlock gap="m" direction="row">
               <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
@@ -550,14 +541,14 @@ export default function TextFieldPage() {
             </GoABlock>
           </Sandbox>
 
-          <h3 id="example-phone">Phone number</h3>
+          <h3 id="component-example-phone">Phone number</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Phone number">
               <GoAInput onChange={noop} value="" name="phone" leadingContent="+1" />
             </GoAFormItem>
           </Sandbox>
 
-          <h3 id="example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
+          <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Tuition">
               <GoAInput onChange={noop} value="" name="tuition" leadingContent="$" />
@@ -570,7 +561,7 @@ export default function TextFieldPage() {
             </GoAFormItem>
           </Sandbox>
 
-          <h3 id="example-registration-number">Ask a user for their indian registration number</h3>
+          <h3 id="component-example-registration-number">Ask a user for their indian registration number</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Indian registration number" labelSize="large">
               <GoABlock gap="m" direction="row">

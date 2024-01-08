@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoACheckbox, GoACheckboxProps, GoAFormItem } from "@abgov/react-components";
+import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -108,18 +108,19 @@ export default function CheckboxPage() {
   return (
     <>
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
-
-      <Sandbox
-        properties={checkboxBindings}
-        formItemProperties={formItemBindings}
-        onChange={onChange}
-        onChangeFormItemBindings={onFormItemChange}
-        flags={["reactive"]}>
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+      <GoATabs>
+        <GoATab heading="Code examples">
+          <Sandbox
+            properties={checkboxBindings}
+            formItemProperties={formItemBindings}
+            onChange={onChange}
+            onChangeFormItemBindings={onFormItemChange}
+            flags={["reactive"]}>
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
           export class SomeOtherComponent {
             checked = false;
             onChange(event: Event) {
@@ -127,25 +128,36 @@ export default function CheckboxPage() {
               // or this.checked = !this.checked;
             }
           `}
-        />
+            />
 
-        <CodeSnippet
-          lang="typescript"
-          tags={["angular", "reactive"]}
-          allowCopy={true}
-          code={`
+            <CodeSnippet
+              lang="typescript"
+              tags={["angular", "reactive"]}
+              allowCopy={true}
+              code={`
             import { FormControl } from "@angular/forms";
             export class SomeOtherComponent {
               itemFormCtrl = new FormControl();
             }
           `}
-        />
-        <GoAFormItem {...formItemProps}>
-          <GoACheckbox {...checkboxProps} onChange={noop} />
-        </GoAFormItem>
-      </Sandbox>
+            />
+            <GoAFormItem {...formItemProps}>
+              <GoACheckbox {...checkboxProps} onChange={noop} />
+            </GoAFormItem>
+          </Sandbox>
 
-      <ComponentProperties properties={componentProperties} />
+          <ComponentProperties properties={componentProperties} />
+        </GoATab>
+
+        <GoATab
+          heading={
+            <>
+              Design guidelines
+              <GoABadge type="information" content="In progress" />
+            </>
+          }></GoATab>
+      </GoATabs>
+
     </>
   );
 }

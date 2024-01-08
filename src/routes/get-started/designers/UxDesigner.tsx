@@ -9,7 +9,7 @@ export default function UxDesignerPage() {
         tokens, components, and page templates.
       </h3>
 
-      <h2>Overview</h2>
+      <h2 id="overview">Overview</h2>
       <p>
         The design system provides designers with a library of{" "}
         <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>, 
@@ -30,7 +30,7 @@ export default function UxDesignerPage() {
 
       <p>The tools below will set you up to access the most up-to-date designs and standards:</p>
 
-      <h3>Figma</h3>
+      <h3 id="figma">Figma</h3>
       <p>
         The design system tokens, styles, components and page templates are all available to pull
         into your file in Figma.
@@ -46,7 +46,7 @@ export default function UxDesignerPage() {
         </a>
       </p>
 
-      <h3>Design tokens</h3>
+      <h3 id="design-tokens">Design tokens</h3>
       <p>
         The components and resources in the design system libraries in both Figma and code are built
         using <Link to="/design-tokens">design tokens</Link>. As a designer, you can communicate design
@@ -61,7 +61,7 @@ export default function UxDesignerPage() {
         <code>--goa-color-info-default</code>, the spacing is: <code>--goa-spacing-m"</code>.
       </p>
 
-      <h3>Components</h3>
+      <h3 id="components">Components</h3>
       <p>All of the components in the design system are available in Figma and in code.</p>
       <p>
         These design system components have all been designed and coded to meet a{" "}
@@ -85,7 +85,7 @@ export default function UxDesignerPage() {
         corner of Figma when an update is available.
       </p>
 
-      <h3>Figma file templates and helper components</h3>
+      <h3 id="figma-templates">Figma file templates and helper components</h3>
       <p>
         A{" "}
         <a

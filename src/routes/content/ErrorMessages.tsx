@@ -1,6 +1,5 @@
 import { DoDont } from "@components/do-dont/DoDont";
 import {
-  GoABlock,
   GoACheckbox,
   GoADivider,
   GoAFormItem,
@@ -57,13 +56,6 @@ export default function ErrorMessagesPage() {
             error
             checked={false}></GoACheckbox>
         </GoAFormItem>
-      </GoAGrid>
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth="50ch" gap="xs">
-        <a href="#anatomy">Anatomy</a>
-        <a href="#language-and-tone">Language and tone</a>
-        <a href="#common-error-message-templates">Common error message templates</a>
       </GoAGrid>
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="anatomy">Anatomy</h2>
@@ -152,22 +144,6 @@ export default function ErrorMessagesPage() {
         Follow the templates and examples below for common errors to create an error message that
         fits your context.
       </p>
-      <h3>Message types</h3>
-      <GoABlock direction="column" gap="xs">
-        <a href="#input-empty">Input is empty</a>
-        <a href="#incorrect-information">Incorrect information format</a>
-        <a href="#error-date-input">Error with a date input</a>
-        <a href="#error-value-range">Error within a value range</a>
-        <a href="#error-outside-accepted">Input outside accepted values</a>
-        <a href="#upload-errors">Upload errors</a>
-        <a href="#wrong-file-type">Wrong file type</a>
-        <a href="#file-too-large">File too large</a>
-        <a href="#upload-failed">File upload failed</a>
-        <a href="#duplicate-upload">Duplicate file uploaded</a>
-        <a href="#no-file-selected">No file selected</a>
-        <a href="#invalid-characters">Invalid characters used</a>
-        <a href="#incorrect-number-of-characters">Incorrect number of characters</a>
-      </GoABlock>
       <GoADivider mb="xl" mt="xl"></GoADivider>
       <h3 id="input-empty">Input is empty</h3>
       <p>This error appears when user leaves a required field blank.</p>

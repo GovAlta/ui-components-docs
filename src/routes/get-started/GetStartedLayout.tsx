@@ -1,8 +1,11 @@
 import { GoASideMenu, GoASideMenuGroup, GoASideMenuHeading } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
+import TOC from '@components/table-of-contents/TOC';
+import { useTOC } from '@hooks/useTOC';
 
 export default function GetStartedLayout() {
+  const { tocItems } = useTOC();
   return (
     <div className="content">
       <section className="side-menu">
@@ -26,6 +29,9 @@ export default function GetStartedLayout() {
         <Outlet />
         <SupportInfo />
       </main>
+      <nav className="toc">
+        <TOC items={tocItems}/>
+      </nav>
     </div>
   );
 }

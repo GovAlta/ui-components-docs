@@ -1,7 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoADropdown,
@@ -186,15 +185,9 @@ export default function TEMPLATE_Page() {
           </Sandbox>
 
           <ComponentProperties properties={componentProperties} />
-
-          <GoABlock direction="column" gap="s" mt="3xl" mb="3xl">
-            <a href="#example-basic">Basic Modal</a>
-            <a href="#example-destructive">Destructive Modal</a>
-            <a href="#example-warning">Warning Modal</a>
-            <a href="#example-with-input">Modal with input</a>
-          </GoABlock>
-
-          <h3 id="example-basic">Basic Modal</h3>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          
+          <h3 id="component-example-basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Heading">
               <p>Content</p>
@@ -210,7 +203,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="example-destructive">Confirm a destructive action</h3>
+          <h3 id="component-example-destructive">Confirm a destructive action</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Are you sure you want to withdraw this assessment?">
               <p>This action cannot be undone.</p>
@@ -226,7 +219,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="example-warning">Warning callout modal</h3>
+          <h3 id="component-example-warning">Warning callout modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Complete submission prior to 1PM" variant="information">
               <p>
@@ -241,7 +234,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="example-with-input">Modal with input</h3>
+          <h3 id="component-example-with-input">Modal with input</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Why was this adjusted?">
               <GoAFormItem label="Reason for adjustment">

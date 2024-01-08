@@ -7,7 +7,6 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoAContainer,
@@ -261,11 +260,9 @@ export default function TextAreaPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-1">Ask a question and give more information</a>
-          </GoABlock>
-
-          <h3 id="example-1">Ask a question and give more information</h3>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+         
+          <h3 id="component-example-1">Ask a question and give more information</h3>
           <Sandbox flags={["reactive"]} fullWidth>
             <GoAContainer>
               <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">

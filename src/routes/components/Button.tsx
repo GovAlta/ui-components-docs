@@ -167,14 +167,11 @@ export default function ButtonPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Button Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-ask-address">Ask a user for an address</a>
-            <a href="#example-confirm-action">Confirm a destructive action</a>
-            <a href="#example-disabled-button">Disabled button in a form</a>
-          </GoABlock>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          
 
           {/*Button Example 1*/}
-          <h3 id="example-ask-address">Ask a user for an address</h3>
+          <h3 id="component-example-ask-address">Ask a user for an address</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Street Address">
               <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
@@ -218,7 +215,7 @@ export default function ButtonPage() {
           </Sandbox>
 
           {/*Button example 2*/}
-          <h3 id="example-confirm-action">Confirm a destructive action</h3>
+          <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
           <Sandbox flags={["reactive"]}>
             <GoAModal>
               <h3>Are you sure you want to delete this record?</h3>
@@ -236,7 +233,7 @@ export default function ButtonPage() {
           </Sandbox>
 
           {/*Button example 3*/}
-          <h3 id="example-disabled-button">Disabled button with a required field</h3>
+          <h3 id="component-example-disabled-button">Disabled button with a required field</h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Input">
               <GoAInput name="input" type="text" value="" onChange={noop} width="400px" />

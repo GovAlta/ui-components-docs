@@ -20,7 +20,7 @@ interface Color {
 
 export default function ColorPage() {
   const colors: Color[] = COLORS;
-  const { isDesktop, isMobile } = useContext(DeviceWidthContext);
+  const { isDesktop } = useContext(DeviceWidthContext);
 
   const renderDesktop = () => {
     return (
@@ -64,29 +64,15 @@ export default function ColorPage() {
     );
   };
 
-  const renderColorsLinks = () => {
-    if (isMobile) return null;
-
-    return (
-      <GoAGrid minChildWidth="15rem" gap="m">
-        {colors.map((color, index) => (
-          <a key={index} href={`#${color.name.toLowerCase()}`}>
-            {color.name}
-          </a>
-        ))}
-      </GoAGrid>
-    );
-  };
-
   const renderTablet = () => {
     return (
       <section>
-        {renderColorsLinks()}
+        <>
         {colors.map((color, index) => (
           <React.Fragment key={index}>
-            <p id={color.name.toLowerCase()} className="category">
+            <h3 id={color.name.toLowerCase()} className="category">
               {color.name}
-            </p>
+            </h3>
 
             <GoAGrid minChildWidth="22rem" gap="xl">
               {color.tokens.map((token, tokenIndex) => (
@@ -108,6 +94,7 @@ export default function ColorPage() {
             </GoAGrid>
           </React.Fragment>
         ))}
+        </>
       </section>
     );
   };

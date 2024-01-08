@@ -7,7 +7,6 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAContainer,
   GoATab,
@@ -188,13 +187,9 @@ export default function TablePage() {
           </Sandbox>
 
           <ComponentProperties properties={componentProperties} />
-
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-sortable-columns">Sortable columns</a>
-            <a href="#example-number-column">Number columns</a>
-          </GoABlock>
-
-          <h3 id="example-sortable-columns">Sortable columns</h3>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          
+          <h3 id="component-example-sortable-columns">Sortable columns</h3>
           <GoAContainer mt="m" mb="none">
             <div style={{ padding: "40px"}}>
               <GoATable onSort={sortData} width="100%">
@@ -379,7 +374,7 @@ export default function TablePage() {
             />
           )}
 
-          <h3 id="example-number-column">Number column</h3>
+          <h3 id="component-example-number-column">Number column</h3>
           <Sandbox fullWidth>
             <GoATable width="100%">
               <thead>

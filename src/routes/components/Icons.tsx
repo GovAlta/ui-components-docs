@@ -5,7 +5,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoABlock, GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
+import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 
@@ -89,15 +89,9 @@ export default function IconsPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Icons example*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-alert-messaging">Alert and messaging</a>
-            <a href="#example-basic">Basic</a>
-            <a href="#example-direction">Direction</a>
-            <a href="#example-interaction">Interactions</a>
-            <a href="#example-accounts">Accounts</a>
-          </GoABlock>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-alert-messaging">Alert and messaging</h3>
+          <h3 id="component-example-alert-messaging">Alert and messaging</h3>
           <GoAGrid minChildWidth="230px" gap="l">
             <IconSnippet type={"information-circle"} />
             <IconSnippet type={"warning"} />
@@ -109,7 +103,7 @@ export default function IconsPage() {
             <IconSnippet type={"remove-circle"} />
           </GoAGrid>
 
-          <h3 id="example-basic">Basic</h3>
+          <h3 id="component-example-basic">Basic</h3>
           <GoAGrid minChildWidth="230px" gap="l">
             <IconSnippet type={"close"} />
             <IconSnippet type={"checkmark"} />
@@ -117,7 +111,7 @@ export default function IconsPage() {
             <IconSnippet type={"remove"} />
           </GoAGrid>
 
-          <h3 id="example-direction">Direction</h3>
+          <h3 id="component-example-direction">Direction</h3>
           <GoAGrid minChildWidth={"230px"} gap={"l"}>
             <IconSnippet type={"chevron-down"} />
             <IconSnippet type={"chevron-up"} />
@@ -133,7 +127,7 @@ export default function IconsPage() {
             <IconSnippet type={"caret-forward"} />
           </GoAGrid>
 
-          <h3 id="example-interaction">Interactions</h3>
+          <h3 id="component-example-interaction">Interactions</h3>
           <GoAGrid minChildWidth={"230px"} gap={"l"}>
             <IconSnippet type={"menu"} />
             <IconSnippet type={"reload"} />
@@ -155,7 +149,7 @@ export default function IconsPage() {
             <IconSnippet type={"download"} />
           </GoAGrid>
 
-          <h3 id="example-accounts">Accounts</h3>
+          <h3 id="component-example-accounts">Accounts</h3>
           <GoAGrid minChildWidth={"230px"} gap={"l"}>
             <IconSnippet type={"person-circle"} />
             <IconSnippet type={"settings"} />

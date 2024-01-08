@@ -9,9 +9,13 @@ import { SupportInfo } from "@components/support-info/SupportInfo";
 import { useEffect, useState } from "react";
 import { DesignTokensLanguageContext } from "@components/sandbox";
 import "./DesignToken.css";
+import TOC from '@components/table-of-contents/TOC';
+import { useTOC } from '@hooks/useTOC';
+
 
 export function DesignTokenLayout() {
   const [tokenLanguage, setLanguage] = useState("");
+  const { tocItems } = useTOC();
 
   useEffect(() => {
     const lang = localStorage.getItem("goa-docs-design-tokens-lang");
@@ -25,6 +29,7 @@ export function DesignTokenLayout() {
   }
 
   return (
+    <>
     <DesignTokensLanguageContext.Provider value={tokenLanguage}>
       <div className="content design-tokens">
         <section className="side-menu">
@@ -54,13 +59,17 @@ export function DesignTokenLayout() {
             <Link to="typography">Typography</Link>
           </GoASideMenu>
         </section>
-
+        
         <main className="main">
           <Outlet />
           <SupportInfo />
         </main>
+        <nav className="toc">
+          <TOC items={tocItems}/>
+      </nav>
       </div>
     </DesignTokensLanguageContext.Provider>
+    </>
   );
 }
 

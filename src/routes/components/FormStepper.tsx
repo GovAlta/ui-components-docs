@@ -1,6 +1,5 @@
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAFormStep,
   GoAFormStepStatusType,
@@ -148,12 +147,10 @@ export default function FormStepperPage() {
           <ComponentProperties heading="Step Properties" properties={formStepProperties} />
 
           {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-controlled-navigation">Controlled Navigation</a>
-            <a href="#example-step-status">Step status</a>
-          </GoABlock>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
           {/*Example 1*/}
-          <h3 id="example-controlled-navigation">Controlled Navigation</h3>
+          <h3 id="component-example-controlled-navigation">Controlled Navigation</h3>
           <p>
             The user needs to partially or completely finish a step to be able to move forward to
             the next step. In this case:
@@ -281,7 +278,7 @@ export default function FormStepperPage() {
             </div>
           </Sandbox>
           {/*Example 2*/}
-          <h3 id="example-step-status">Step status</h3>
+          <h3 id="component-example-step-status">Step status</h3>
           The status of each step can be configured to either “complete” or “incomplete” using the
           status property.
           <Sandbox fullWidth skipRender allow={["div"]}>

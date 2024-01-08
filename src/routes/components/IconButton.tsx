@@ -132,11 +132,9 @@ export default function IconButtonPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/* Examples */}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-multiple-actions-table">Show multiple actions in a compact table</a>
-          </GoABlock>
-
-          <h3 id="example-multiple-actions-table">Show multiple actions in a compact table</h3>
+          <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          
+          <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
           <Sandbox fullWidth>
             <GoATable width="100%">
               <thead>
