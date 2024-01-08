@@ -4,12 +4,19 @@
   padding: 3rem;
 }
 
+.description {
+  font: var(--goa-typography-body-s);
+}
+.description.type-generic{
+  margin-top: var(--goa-space-m);
+}
+
 .do-content {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
   padding-top: 1rem;
-  margin-bottom: 0.625rem;
+  margin-bottom: 0.25rem;
   border-top: 1.25rem solid;
   color: var(--goa-color-success-default);
 }
@@ -21,3 +28,4 @@
 [data-positive="dont"].do-content {
   color: var(--goa-color-emergency-dark);
 }
+

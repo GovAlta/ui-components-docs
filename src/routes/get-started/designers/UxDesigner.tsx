@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function UxDesignerPage() {
   return (
     <>
@@ -47,7 +49,7 @@ export default function UxDesignerPage() {
       <h3>Design tokens</h3>
       <p>
         The components and resources in the design system libraries in both Figma and code are built
-        using <a href="/design-tokens">design tokens</a>. As a designer, you can communicate design
+        using <Link to="/design-tokens">design tokens</Link>. As a designer, you can communicate design
         decisions using design tokens, which developers can then use in code.
       </p>
       <p>

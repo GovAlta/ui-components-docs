@@ -1,4 +1,5 @@
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { Link } from "react-router-dom";
 
 export default function DevelopersOverviewPage() {
   return (
@@ -39,7 +40,7 @@ export default function DevelopersOverviewPage() {
 
       <h3 id="design-token-intro">Design tokens</h3>
       <p>
-        You can access the <a href="/design-tokens">design tokens</a> as an NPM package here:{" "}
+        You can access the <Link to="/design-tokens">design tokens</Link> as an NPM package here:{" "}
         <a href="https://www.npmjs.com/package/@abgov/design-tokens" target="_blank">
           npm: @abgov/design-tokens
         </a>
@@ -69,7 +70,7 @@ export default function DevelopersOverviewPage() {
         </a>
         .
       </p>
-      <a href="/get-started/developers/technologies">Read more about design system technologies</a>
+      <Link to="/get-started/developers/technologies">Read more about design system technologies</Link>
 
       <h4>Visual Studio Code support</h4>
       <p>

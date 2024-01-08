@@ -1,0 +1,74 @@
+p {
+  max-width: unset;
+}
+
+.example {
+  font: var(--goa-typography-body-l);
+  text-align: center;
+  min-height: 28px;
+}
+
+.month-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+}
+
+.dodont-wrapper {
+  margin: var(--goa-space-xl) 0 var(--goa-space-3xl);
+}
+
+.month {
+  flex: 1 1 8%;
+  border: 1px solid black;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
+  min-width: 50px;
+}
+
+.dst::before, .partial-dst-start::before, .partial-dst-end::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0, 133, 63, 0.20);
+  top: 0;
+  left: 0;
+}
+
+.dst::before {
+  width: 100%;
+}
+
+.partial-dst-start::before {
+  width: 70%;
+  left: 30%;
+}
+
+.partial-dst-end::before {
+  width: 90%;
+  right: 10%;
+}
+
+.dst-months {
+    border: 1px solid var(--goa-color-greyscale-200);
+    padding: 3rem 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-table td {
+  padding: 8px 20px 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 623px) {
+  .month {
+      flex-basis: 15%; 
+      min-width: 50px;
+  }
+}
