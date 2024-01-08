@@ -16,6 +16,7 @@ import {
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 
@@ -35,7 +36,7 @@ type CastingType = {
 
 export default function DatePickerPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    onChange: () => {},
+    onChange: () => { },
   });
 
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
@@ -86,21 +87,24 @@ export default function DatePickerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox
-            properties={componentBindings}
-            formItemProperties={formItemBindings}
-            onChange={onSandboxChange}
-            onChangeFormItemBindings={onFormItemChange}
-            flags={["reactive"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={componentBindings}
+              formItemProperties={formItemBindings}
+              onChange={onSandboxChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 // non-reactive code
                 export class MyComponent {
                   const item = new Date();
@@ -110,46 +114,47 @@ export default function DatePickerPage() {
                   }
                 }  
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags={["angular", "reactive"]}
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
                   reactiveFormCtrl = new FormControl(new Date());
                 }  
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 function onChange(name: string, value: Date) {
                   setValue(value);
                 }
               `}
-            />
-            <GoAFormItem {...formItemProps}>
-              <GoADatePicker {...componentProps} name="item" value={new Date()} />
-            </GoAFormItem>
-          </Sandbox>
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+              />
+              <GoAFormItem {...formItemProps}>
+                <GoADatePicker {...componentProps} name="item" value={new Date()} />
+              </GoAFormItem>
+            </Sandbox>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

@@ -26,7 +26,7 @@
   Side Menu
 ==================*/
 .side-menu {
-  width: 300px;
+  width: 224px;
   border-right: 1px solid var(--goa-color-greyscale-200);
 }
 
@@ -34,13 +34,12 @@
  Individual Page content
 ==================*/
 .main {
-  margin: 0 4rem var(--goa-space-4xl);
-  padding: 0 1rem;
+  flex: 1 1 auto;
+  margin: 0 var(--goa-space-2xl) var(--goa-space-4xl) var(--goa-space-3xl);
   line-height: var(--goa-line-height-3);
   font-size: var(--goa-font-size-4);
-  width: 100%;
-  max-width: 1206px;
 }
+
 .box-container {
   border: 1px solid var(--goa-color-greyscale-200);
   padding: 1.5rem;
@@ -81,18 +80,23 @@ code {
   .container {
     flex-wrap: wrap;
   }
+
   .side-menu,
   .main {
     flex-basis: 100%;
     max-width: 100%;
     margin: 0;
   }
+
   .main {
     margin-right: 1rem;
+    padding: 0 1rem;
   }
+
   .content {
     flex-wrap: wrap;
   }
+
   .side-menu {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--goa-color-greyscale-200);

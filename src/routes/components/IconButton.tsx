@@ -16,6 +16,7 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import ICONS from "./icons.json";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Icon button";
 const description = "A compact button with an icon and no text.";
@@ -122,137 +123,139 @@ export default function IconButtonPage() {
         description={description}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
-            <GoAIconButton {...iconButtonProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*Component properties table*/}
-          <ComponentProperties properties={componentProperties} />
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
+              <GoAIconButton {...iconButtonProps} />
+            </Sandbox>
 
-          {/* Examples */}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-multiple-actions-table">Show multiple actions in a compact table</a>
-          </GoABlock>
+            {/*Component properties table*/}
+            <ComponentProperties properties={componentProperties} />
 
-          <h3 id="example-multiple-actions-table">Show multiple actions in a compact table</h3>
-          <Sandbox fullWidth>
-            <GoATable width="100%">
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Name</th>
-                  <th style={{ textAlign: "right" }}>Id Number</th>
-                  <th>Edit | Flag | Send</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <GoABadge type="information" content="In progress"></GoABadge>
-                  </td>
-                  <td>Darlene Robertson</td>
-                  <td className="goa-table-number-column">45904</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="dark" content="Inactive"></GoABadge>
-                  </td>
-                  <td>Floyd Miles</td>
-                  <td className="goa-table-number-column">47838</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="success" content="Active"></GoABadge>
-                  </td>
-                  <td>Kathryn Murphy</td>
-                  <td className="goa-table-number-column">34343</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="important" content="Recent"></GoABadge>
-                  </td>
-                  <td>Annette Black</td>
-                  <td className="goa-table-number-column">89897</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="success" content="Active"></GoABadge>
-                  </td>
-                  <td>Esther Howard</td>
-                  <td className="goa-table-number-column">12323</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="success" content="Active"></GoABadge>
-                  </td>
-                  <td>Jane Cooper</td>
-                  <td className="goa-table-number-column">56565</td>
-                  <td>
-                    <GoABlock>
-                      <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                      <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                      <GoAIconButton size="small" icon="mail"></GoAIconButton>
-                    </GoABlock>
-                  </td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </GoATable>
-          </Sandbox>
-        </GoATab>
+            {/* Examples */}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+            <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
+            <Sandbox fullWidth>
+              <GoATable width="100%">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th style={{ textAlign: "right" }}>Id Number</th>
+                    <th>Edit | Flag | Send</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <GoABadge type="information" content="In progress"></GoABadge>
+                    </td>
+                    <td>Darlene Robertson</td>
+                    <td className="goa-table-number-column">45904</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="dark" content="Inactive"></GoABadge>
+                    </td>
+                    <td>Floyd Miles</td>
+                    <td className="goa-table-number-column">47838</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="success" content="Active"></GoABadge>
+                    </td>
+                    <td>Kathryn Murphy</td>
+                    <td className="goa-table-number-column">34343</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="important" content="Recent"></GoABadge>
+                    </td>
+                    <td>Annette Black</td>
+                    <td className="goa-table-number-column">89897</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="success" content="Active"></GoABadge>
+                    </td>
+                    <td>Esther Howard</td>
+                    <td className="goa-table-number-column">12323</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="success" content="Active"></GoABadge>
+                    </td>
+                    <td>Jane Cooper</td>
+                    <td className="goa-table-number-column">56565</td>
+                    <td>
+                      <GoABlock>
+                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                      </GoABlock>
+                    </td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </GoATable>
+            </Sandbox>
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

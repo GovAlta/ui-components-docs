@@ -1,7 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoADropdown,
@@ -20,6 +19,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { resetScrollbars } from "../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 
@@ -168,111 +168,109 @@ export default function TEMPLATE_Page() {
     resetScrollbars();
   }
 
-  function noop() {}
+  function noop() { }
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-            <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
-            <GoAModal {...componentProps} open={open} onClose={onClose}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
-              molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-              laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-            </GoAModal>
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          <ComponentProperties properties={componentProperties} />
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+              <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
+              <GoAModal {...componentProps} open={open} onClose={onClose}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
+                laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+              </GoAModal>
+            </Sandbox>
 
-          <GoABlock direction="column" gap="s" mt="3xl" mb="3xl">
-            <a href="#example-basic">Basic Modal</a>
-            <a href="#example-destructive">Destructive Modal</a>
-            <a href="#example-warning">Warning Modal</a>
-            <a href="#example-with-input">Modal with input</a>
-          </GoABlock>
+            <ComponentProperties properties={componentProperties} />
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-basic">Basic Modal</h3>
-          <Sandbox flags={["reactive"]}>
-            <MockModal heading="Heading">
-              <p>Content</p>
+            <h3 id="component-example-basic">Basic Modal</h3>
+            <Sandbox flags={["reactive"]}>
+              <MockModal heading="Heading">
+                <p>Content</p>
 
-              <GoAButtonGroup alignment="end" mt="l">
-                <GoAButton type="secondary" onClick={noop}>
-                  Secondary
-                </GoAButton>
-                <GoAButton type="primary" onClick={noop}>
-                  Primary
-                </GoAButton>
-              </GoAButtonGroup>
-            </MockModal>
-          </Sandbox>
+                <GoAButtonGroup alignment="end" mt="l">
+                  <GoAButton type="secondary" onClick={noop}>
+                    Secondary
+                  </GoAButton>
+                  <GoAButton type="primary" onClick={noop}>
+                    Primary
+                  </GoAButton>
+                </GoAButtonGroup>
+              </MockModal>
+            </Sandbox>
 
-          <h3 id="example-destructive">Confirm a destructive action</h3>
-          <Sandbox flags={["reactive"]}>
-            <MockModal heading="Are you sure you want to withdraw this assessment?">
-              <p>This action cannot be undone.</p>
+            <h3 id="component-example-destructive">Confirm a destructive action</h3>
+            <Sandbox flags={["reactive"]}>
+              <MockModal heading="Are you sure you want to withdraw this assessment?">
+                <p>This action cannot be undone.</p>
 
-              <GoAButtonGroup alignment="end" mt="l">
-                <GoAButton type="secondary" onClick={noop}>
-                  Cancel
-                </GoAButton>
-                <GoAButton type="primary" variant="destructive" onClick={noop}>
-                  Withdraw assessment
-                </GoAButton>
-              </GoAButtonGroup>
-            </MockModal>
-          </Sandbox>
+                <GoAButtonGroup alignment="end" mt="l">
+                  <GoAButton type="secondary" onClick={noop}>
+                    Cancel
+                  </GoAButton>
+                  <GoAButton type="primary" variant="destructive" onClick={noop}>
+                    Withdraw assessment
+                  </GoAButton>
+                </GoAButtonGroup>
+              </MockModal>
+            </Sandbox>
 
-          <h3 id="example-warning">Warning callout modal</h3>
-          <Sandbox flags={["reactive"]}>
-            <MockModal heading="Complete submission prior to 1PM" variant="information">
-              <p>
-                You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.
-              </p>
+            <h3 id="component-example-warning">Warning callout modal</h3>
+            <Sandbox flags={["reactive"]}>
+              <MockModal heading="Complete submission prior to 1PM" variant="information">
+                <p>
+                  You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.
+                </p>
 
-              <GoAButtonGroup alignment="end" mt="l">
-                <GoAButton type="primary" onClick={noop}>
-                  I understand
-                </GoAButton>
-              </GoAButtonGroup>
-            </MockModal>
-          </Sandbox>
+                <GoAButtonGroup alignment="end" mt="l">
+                  <GoAButton type="primary" onClick={noop}>
+                    I understand
+                  </GoAButton>
+                </GoAButtonGroup>
+              </MockModal>
+            </Sandbox>
 
-          <h3 id="example-with-input">Modal with input</h3>
-          <Sandbox flags={["reactive"]}>
-            <MockModal heading="Why was this adjusted?">
-              <GoAFormItem label="Reason for adjustment">
-                <GoADropdown onChange={noop}>
-                  <GoADropdownItem value="Correction" />
-                  <GoADropdownItem value="Late submission" />
-                  <GoADropdownItem value="It's Friday 🎉" />
-                </GoADropdown>
-              </GoAFormItem>
+            <h3 id="component-example-with-input">Modal with input</h3>
+            <Sandbox flags={["reactive"]}>
+              <MockModal heading="Why was this adjusted?">
+                <GoAFormItem label="Reason for adjustment">
+                  <GoADropdown onChange={noop}>
+                    <GoADropdownItem value="Correction" />
+                    <GoADropdownItem value="Late submission" />
+                    <GoADropdownItem value="It's Friday 🎉" />
+                  </GoADropdown>
+                </GoAFormItem>
 
-              <GoAButtonGroup alignment="end" mt="l">
-                <GoAButton type="secondary" onClick={noop}>
-                  Cancel
-                </GoAButton>
-                <GoAButton type="primary" onClick={noop}>
-                  Choose
-                </GoAButton>
-              </GoAButtonGroup>
-            </MockModal>
-          </Sandbox>
-        </GoATab>
+                <GoAButtonGroup alignment="end" mt="l">
+                  <GoAButton type="secondary" onClick={noop}>
+                    Cancel
+                  </GoAButton>
+                  <GoAButton type="primary" onClick={noop}>
+                    Choose
+                  </GoAButton>
+                </GoAButtonGroup>
+              </MockModal>
+            </Sandbox>
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

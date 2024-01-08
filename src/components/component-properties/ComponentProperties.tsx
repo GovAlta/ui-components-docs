@@ -33,12 +33,25 @@ export const ComponentProperties = (props: Props) => {
     setFilteredProperties([...filterBy(props.properties)]);
   }, [lang]);
 
+  function dasherize(str: string): string {
+    return str.replace(" ", "-").toLowerCase();
+  }
+
   return (
-    <GoAAccordion heading={props.heading || "Properties"} mt="l" mb="none">
-      {filteredProperties.map((props, index) => (
-        <ComponentProperty key={index} props={props} />
-      ))}
-    </GoAAccordion>
+    <>
+      <h3 
+        id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"} 
+        className="hidden" 
+        aria-hidden="true"
+      >
+        {props.heading || "Properties"}
+      </h3>
+      <GoAAccordion heading={props.heading || "Properties"} mt="l" mb="none">
+        {filteredProperties.map((props, index) => (
+          <ComponentProperty key={index} props={props} />
+        ))}
+      </GoAAccordion>
+    </>
   );
 };
 
@@ -52,9 +65,7 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       <div className={css.details}>
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
-        {props.required && (
-          <GoABadge type="important" content="Required" />
-        )}
+        {props.required && <GoABadge type="important" content="Required" />}
 
         {props.type && (
           <code className={`${css.code} ${css.type}`}>

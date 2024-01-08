@@ -14,14 +14,8 @@ export default function ContainerExamples() {
   return (
     <>
       {/*Container examples*/}
-      <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-        <a href="#example-1">User information</a>
-        <a href="#example-2">Card view of case files</a>
-        <a href="#example-3">Card grid that links to different sections</a>
-        <a href="#example-4">Review and action</a>
-      </GoABlock>
-
-      <h3 id="example-1">User information</h3>
+      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+      <h3 id="component-example-1">User information</h3>
       <Sandbox fullWidth skipRender>
         {/*CSS Code Snippet*/}
         <CodeSnippet
@@ -233,7 +227,7 @@ export default function ContainerExamples() {
         </GoAContainer>
       </Sandbox>
 
-      <h3 id="example-2">Card view of case files</h3>
+      <h3 id="component-example-2">Card view of case files</h3>
       <Sandbox fullWidth>
         <CodeSnippet
           lang="css"
@@ -321,7 +315,7 @@ export default function ContainerExamples() {
         </GoAContainer>
       </Sandbox>
 
-      <h3 id="example-3">Card grid that links to different sections</h3>
+      <h3 id="component-example-3">Card grid that links to different sections</h3>
       <Sandbox fullWidth>
         <CodeSnippet
           lang="css"

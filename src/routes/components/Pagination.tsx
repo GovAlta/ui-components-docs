@@ -16,17 +16,10 @@ import { faker } from "@faker-js/faker";
 import { useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { propsToString } from "@components/sandbox/BaseSerializer";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
-
-const componentName = "Pagination";
-const description = "Help users navigation between multiple pages or screens as part of a set.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/table", name: "Table" },
-];
 type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
-  // add any required props here
   itemCount: number;
   [key: string]: unknown;
 };
@@ -38,11 +31,19 @@ interface User {
   age: number;
 }
 
+const componentName = "Pagination";
+const description = "Help users navigation between multiple pages or screens as part of a set.";
+const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/table", name: "Table" },
+];
+
 export default function PaginationPage() {
   const [paginationProps, setPaginationProps] = useState<ComponentPropsType>({
     itemCount: 10,
     perPageCount: 5,
   });
+
   const [paginationBindings, setPaginationBindings] = useState<ComponentBinding[]>([
     {
       label: "Variant",
@@ -147,14 +148,17 @@ export default function PaginationPage() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={paginationBindings} onChange={onSandboxChange} fullWidth skipRender>
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={paginationBindings} onChange={onSandboxChange} fullWidth skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 import { faker } from "@faker-js/faker";
                 interface User {
                   id: string;
@@ -195,12 +199,12 @@ export default function PaginationPage() {
                   setPageUsers(_users)
                 }
         `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                   <GoATable width="100%" mb="xl">
                     <thead>
                       <tr>
@@ -219,18 +223,18 @@ export default function PaginationPage() {
                       ))}
                     </tbody>
                   </GoATable>
-                  <GoAPagination ${propsToString(paginationProps, "react")} 
+                  <GoAPagination ${propsToString(paginationProps as unknown as Record<string, string | number>, "react")} 
                     pageNumber={page} 
                     onChange={changePage}
                   />
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 import { faker } from "@faker-js/faker";
                 interface User {
                   id: string;
@@ -266,12 +270,12 @@ export default function PaginationPage() {
                   }
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-table width="100%" mb="xl">
                   <thead>
                     <tr>
@@ -290,43 +294,44 @@ export default function PaginationPage() {
                 </goa-table>
                 <goa-pagination [itemcount]="users.length" perpagecount="10" [pagenumber]="page" (_change)="handlePageChange($event)"></goa-pagination>
               `}
-            />
-            <GoATable width="100%" mb="xl">
-              <thead>
-                <tr>
-                  <th>First name</th>
-                  <th>Last name</th>
-                  <th>Age</th>
-                </tr>
-              </thead>
-              <tbody>
-                {pageUsers.map(u => (
-                  <tr key={u.id}>
-                    <td>{u.firstName}</td>
-                    <td>{u.lastName}</td>
-                    <td>{u.age}</td>
+              />
+              <GoATable width="100%" mb="xl">
+                <thead>
+                  <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Age</th>
                   </tr>
-                ))}
-              </tbody>
-            </GoATable>
+                </thead>
+                <tbody>
+                  {pageUsers.map(u => (
+                    <tr key={u.id}>
+                      <td>{u.firstName}</td>
+                      <td>{u.lastName}</td>
+                      <td>{u.age}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </GoATable>
 
-            <GoAPagination {...paginationProps} pageNumber={page} onChange={changePage} />
-          </Sandbox>
+              <GoAPagination {...paginationProps} pageNumber={page} onChange={changePage} />
+            </Sandbox>
 
-          {/*Component properties table*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+            {/*Component properties table*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

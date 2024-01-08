@@ -7,7 +7,6 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAContainer,
   GoATab,
@@ -16,7 +15,8 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoATableProps } from "@abgov/react-components/lib/table/table";
+import { GoATableProps } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface User {
   firstName: string;
@@ -130,107 +130,106 @@ export default function TablePage() {
           { link: "/components/tabs", name: "Tabs" },
         ]}
       />
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
-            <GoATable {...tableProps}>
-              <thead>
-                <tr>
-                  <th>Status</th>
-                  <th>Text</th>
-                  <th>Number</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <GoABadge type="information" content="Badge text" />
-                  </td>
-                  <td>Lorem ipsum</td>
-                  <td>1234567890</td>
-                  <td>
-                    <GoAButton type="tertiary">Action</GoAButton>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="information" content="Badge text" />
-                  </td>
-                  <td>Lorem ipsum</td>
-                  <td>1234567890</td>
-                  <td>
-                    <GoAButton type="tertiary">Action</GoAButton>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="information" content="Badge text" />
-                  </td>
-                  <td>Lorem ipsum</td>
-                  <td>1234567890</td>
-                  <td>
-                    <GoAButton type="tertiary">Action</GoAButton>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <GoABadge type="information" content="Badge text" />
-                  </td>
-                  <td>Lorem ipsum</td>
-                  <td>1234567890</td>
-                  <td>
-                    <GoAButton type="tertiary">Action</GoAButton>
-                  </td>
-                </tr>
-              </tbody>
-            </GoATable>
-          </Sandbox>
 
-          <ComponentProperties properties={componentProperties} />
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-sortable-columns">Sortable columns</a>
-            <a href="#example-number-column">Number columns</a>
-          </GoABlock>
-
-          <h3 id="example-sortable-columns">Sortable columns</h3>
-          <GoAContainer mt="m" mb="none">
-            <div style={{ padding: "40px"}}>
-              <GoATable onSort={sortData} width="100%">
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
+              <GoATable {...tableProps}>
                 <thead>
                   <tr>
-                    <th>
-                      <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
-                    </th>
-                    <th>
-                      <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
-                    </th>
-                    <th>
-                      <GoATableSortHeader name="age" direction="asc">
-                        Age
-                      </GoATableSortHeader>
-                    </th>
+                    <th>Status</th>
+                    <th>Text</th>
+                    <th>Number</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map(user => (
-                    <tr key={user.firstName}>
-                      <td>{user.firstName}</td>
-                      <td>{user.lastName}</td>
-                      <td>{user.age}</td>
-                    </tr>
-                  ))}
+                  <tr>
+                    <td>
+                      <GoABadge type="information" content="Badge text" />
+                    </td>
+                    <td>Lorem ipsum</td>
+                    <td>1234567890</td>
+                    <td>
+                      <GoAButton type="tertiary">Action</GoAButton>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="information" content="Badge text" />
+                    </td>
+                    <td>Lorem ipsum</td>
+                    <td>1234567890</td>
+                    <td>
+                      <GoAButton type="tertiary">Action</GoAButton>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="information" content="Badge text" />
+                    </td>
+                    <td>Lorem ipsum</td>
+                    <td>1234567890</td>
+                    <td>
+                      <GoAButton type="tertiary">Action</GoAButton>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <GoABadge type="information" content="Badge text" />
+                    </td>
+                    <td>Lorem ipsum</td>
+                    <td>1234567890</td>
+                    <td>
+                      <GoAButton type="tertiary">Action</GoAButton>
+                    </td>
+                  </tr>
                 </tbody>
               </GoATable>
-            </div>
-          </GoAContainer>
-          {language === "react" && (
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+            </Sandbox>
+
+            <ComponentProperties properties={componentProperties} />
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-sortable-columns">Sortable columns</h3>
+            <GoAContainer mt="m" mb="none">
+              <div style={{ padding: "40px" }}>
+                <GoATable onSort={sortData} width="100%">
+                  <thead>
+                    <tr>
+                      <th>
+                        <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
+                      </th>
+                      <th>
+                        <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
+                      </th>
+                      <th>
+                        <GoATableSortHeader name="age" direction="asc">
+                          Age
+                        </GoATableSortHeader>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {users.map(user => (
+                      <tr key={user.firstName}>
+                        <td>{user.firstName}</td>
+                        <td>{user.lastName}</td>
+                        <td>{user.age}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </GoATable>
+              </div>
+            </GoAContainer>
+            {language === "react" && (
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
               interface User {
                 firstName: string;
                 lastName: string;
@@ -299,15 +298,15 @@ export default function TablePage() {
                 </GoATable>
               )
            `}
-            />
-          )}
+              />
+            )}
 
-          {language === "angular" && (
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+            {language === "angular" && (
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
               interface User {
                 firstName: string;
                 lastName: string;
@@ -350,15 +349,15 @@ export default function TablePage() {
                 }
               }
               `}
-            />
-          )}
+              />
+            )}
 
-          {language === "angular" && (
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+            {language === "angular" && (
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-table width="100%" mb="xl" (_sort)="handleSort($event)">
                   <thead>
                     <tr>
@@ -376,43 +375,44 @@ export default function TablePage() {
                   </tbody>
                 </goa-table>
               `}
-            />
-          )}
+              />
+            )}
 
-          <h3 id="example-number-column">Number column</h3>
-          <Sandbox fullWidth>
-            <GoATable width="100%">
-              <thead>
-                <tr>
-                  <th>Col 1</th>
-                  <th>Col 2</th>
-                  <th className="goa-table-number-header">Number Column</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Item 1</td>
-                  <td>Item 2</td>
-                  <td className="goa-table-number-column">54</td>
-                </tr>
-                <tr>
-                  <td>Item 1</td>
-                  <td>Item 2</td>
-                  <td className="goa-table-number-column">4567</td>
-                </tr>
-              </tbody>
-            </GoATable>
-          </Sandbox>
-        </GoATab>
+            <h3 id="component-example-number-column">Number column</h3>
+            <Sandbox fullWidth>
+              <GoATable width="100%">
+                <thead>
+                  <tr>
+                    <th>Col 1</th>
+                    <th>Col 2</th>
+                    <th className="goa-table-number-header">Number Column</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Item 1</td>
+                    <td>Item 2</td>
+                    <td className="goa-table-number-column">54</td>
+                  </tr>
+                  <tr>
+                    <td>Item 1</td>
+                    <td>Item 2</td>
+                    <td className="goa-table-number-column">4567</td>
+                  </tr>
+                </tbody>
+              </GoATable>
+            </Sandbox>
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

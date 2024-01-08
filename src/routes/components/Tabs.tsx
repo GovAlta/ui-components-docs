@@ -5,6 +5,7 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Tabs";
@@ -40,38 +41,42 @@ export default function TabsPage() {
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox fullWidth>
-            <GoATabs>
-              <GoATab heading="Tab Item 1">
-                Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </GoATab>
-              <GoATab heading="Tab Item 2">
-                Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </GoATab>
-              <GoATab heading="Tab Item 3">
-                Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.
-              </GoATab>
-            </GoATabs>
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*GoATabs Table Properties*/}
-          <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
-          <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
-        </GoATab>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox fullWidth>
+              <GoATabs>
+                <GoATab heading="Tab Item 1">
+                  Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua.
+                </GoATab>
+                <GoATab heading="Tab Item 2">
+                  Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua.
+                </GoATab>
+                <GoATab heading="Tab Item 3">
+                  Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua.
+                </GoATab>
+              </GoATabs>
+            </Sandbox>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }></GoATab>
-      </GoATabs>
+            {/*GoATabs Table Properties*/}
+            <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
+            <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

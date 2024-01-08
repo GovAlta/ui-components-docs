@@ -9,7 +9,7 @@ import {
   GoARadioItem,
 } from "@abgov/react-components";
 import { ComponentBinding } from "./ComponentBinding";
-import { GoAFormItemRequirement } from "@abgov/react-components/lib/form/form-item";
+import { GoAFormItemRequirement } from "@abgov/react-components";
 
 interface Props {
   properties?: ComponentBinding[];

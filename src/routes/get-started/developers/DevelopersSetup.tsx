@@ -1,36 +1,18 @@
-import { GoABlock, GoAButton, GoAContainer, GoADivider, GoAGrid } from "@abgov/react-components";
+import { GoABlock, GoAContainer, GoADivider } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import "./Developers.css";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function DevelopersSetupPage() {
-  function scrollToDiv(targetId: string) {
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  }
 
   return (
     <div className="developer-setup">
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
-      <h2>Setup</h2>
-
-      <GoAGrid minChildWidth="20ch" gap="xs" mt="m" mb="3xl">
-        <GoABlock gap="xs" direction="column">
-          <a href="#angular">Angular</a>
-          <a href="#vue">Vue</a>
-        </GoABlock>
-        <GoABlock gap="xs" direction="column">
-          <a href="#react">React</a>
-          <a href="#templates">Template</a>
-        </GoABlock>
-      </GoAGrid>
-
+      <h2 id="setup">Setup</h2>
       <GoAContainer type="non-interactive">
         <h3>Once you are setup, you can use the project template to quickly get started.</h3>
-        <GoAButton type="tertiary" onClick={() => scrollToDiv("templates")}>
-          View project templates
-        </GoAButton>
+        <a href="#templates">View project templates</a>
       </GoAContainer>
 
       <h3 id="angular">Angular UI components</h3>
@@ -45,7 +27,7 @@ export default function DevelopersSetupPage() {
           npm i @abgov/web-components
           npm i @abgov/angular-components
         `}
-      ></CodeSnippet>
+      />
 
       <h4>2. Link ionicons in app/index.html Add the following in the head element</h4>
       <CodeSnippet
@@ -236,6 +218,7 @@ export default function DevelopersSetupPage() {
         </li>
         <li>Go to the listed port number of your localhost</li>
       </ol>
+    </ComponentContent>
     </div>
   );
 }

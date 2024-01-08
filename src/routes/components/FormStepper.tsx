@@ -1,6 +1,5 @@
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAFormStep,
   GoAFormStepStatusType,
@@ -20,6 +19,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Form Stepper";
 const description =
@@ -86,7 +86,7 @@ export default function FormStepperPage() {
   }
 
   const [statusStep, setStatusStep] = useState(-1);
-  const status:GoAFormStepStatusType[] = [
+  const status: GoAFormStepStatusType[] = [
     "complete",
     "complete",
     "incomplete",
@@ -104,14 +104,17 @@ export default function FormStepperPage() {
         description={description}
         relatedComponents={relatedComponents}
       />
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={formStepperBindings} fullWidth={true} onChange={onSandboxChange}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={formStepperBindings} fullWidth={true} onChange={onSandboxChange}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 export class SomeComponent {
                   step = -1;
                   updateStep(event: Event) {
@@ -119,60 +122,58 @@ export default function FormStepperPage() {
                   }
                 }
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [step, setStep] = useState(-1); 
               `}
-            />
+              />
 
-            <GoAFormStepper testId="foo" onChange={step => setStep(step)} {...formStepProps}>
-              <GoAFormStep text="Personal details" />
-              <GoAFormStep text="Employment history" />
-              <GoAFormStep text="References" />
-              <GoAFormStep text="Review" />
-            </GoAFormStepper>
-            <GoAPages current={step} mb="3xl">
-              <div>Page 1 content</div>
-              <div>Page 2 content</div>
-              <div>Page 3 content</div>
-              <div>Page 4 content</div>
-            </GoAPages>
-          </Sandbox>
-          {/*Component properties table*/}
-          <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
-          <ComponentProperties heading="Step Properties" properties={formStepProperties} />
+              <GoAFormStepper testId="foo" onChange={step => setStep(step)} {...formStepProps}>
+                <GoAFormStep text="Personal details" />
+                <GoAFormStep text="Employment history" />
+                <GoAFormStep text="References" />
+                <GoAFormStep text="Review" />
+              </GoAFormStepper>
+              <GoAPages current={step} mb="3xl">
+                <div>Page 1 content</div>
+                <div>Page 2 content</div>
+                <div>Page 3 content</div>
+                <div>Page 4 content</div>
+              </GoAPages>
+            </Sandbox>
+            {/*Component properties table*/}
+            <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
+            <ComponentProperties heading="Step Properties" properties={formStepProperties} />
 
-          {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-controlled-navigation">Controlled Navigation</a>
-            <a href="#example-step-status">Step status</a>
-          </GoABlock>
-          {/*Example 1*/}
-          <h3 id="example-controlled-navigation">Controlled Navigation</h3>
-          <p>
-            The user needs to partially or completely finish a step to be able to move forward to
-            the next step. In this case:
-            <ul>
-              <li>A step that is “Not started” will not be clickable.</li>
-              <li>A user cannot use the stepper to navigate to another page.</li>
-              <li>
-                Clicking the Active step when you are on that step will do nothing. (no page
-                refresh).
-              </li>
-            </ul>
-            To use the controlled type you must set a step value ≥ 1
-          </p>
-          <Sandbox fullWidth skipRender allow={["div"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+            {/* Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            {/*Example 1*/}
+            <h3 id="component-example-controlled-navigation">Controlled Navigation</h3>
+            <p>
+              The user needs to partially or completely finish a step to be able to move forward to
+              the next step. In this case:
+              <ul>
+                <li>A step that is “Not started” will not be clickable.</li>
+                <li>A user cannot use the stepper to navigate to another page.</li>
+                <li>
+                  Clicking the Active step when you are on that step will do nothing. (no page
+                  refresh).
+                </li>
+              </ul>
+              To use the controlled type you must set a step value ≥ 1
+            </p>
+            <Sandbox fullWidth skipRender allow={["div"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 export class SomeComponent {
                   step = 1;  // set to first step
                   updateStep(event: Event) {
@@ -184,12 +185,12 @@ export default function FormStepperPage() {
                   }
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
                   <goa-form-step text="Personal details"></goa-form-step>
                   <goa-form-step text="Employment history"></goa-form-step>
@@ -207,13 +208,13 @@ export default function FormStepperPage() {
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
                 </div>
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [step, setStep] = useState(1); // set to first step
                 function setPage(page) {
                   if (page < 1 || page > 4) return;
@@ -240,56 +241,56 @@ export default function FormStepperPage() {
                   </>
                 ) 
               `}
-            />
+              />
 
-            <GoAFormStepper step={controlledStep} onChange={step => setControlledStep(step)}>
-              <GoAFormStep text="Personal details" />
-              <GoAFormStep text="Employment history" />
-              <GoAFormStep text="References" />
-              <GoAFormStep text="Review" />
-            </GoAFormStepper>
-            <GoAPages current={controlledStep} mb="3xl" mt="xl" mr="xl" ml="xl">
-              <div>
-                <GoASkeleton type="article" />
-              </div>
-              <div>
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-              </div>
-              <div>
-                <GoASkeleton type="text" />
-                <GoASpacer vSpacing="m" />
-                <GoASkeleton type="text" />
-              </div>
-              <div>
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-                <GoASpacer vSpacing="m" />
-                <GoASkeleton type="text" />
-              </div>
-            </GoAPages>
+              <GoAFormStepper step={controlledStep} onChange={step => setControlledStep(step)}>
+                <GoAFormStep text="Personal details" />
+                <GoAFormStep text="Employment history" />
+                <GoAFormStep text="References" />
+                <GoAFormStep text="Review" />
+              </GoAFormStepper>
+              <GoAPages current={controlledStep} mb="3xl" mt="xl" mr="xl" ml="xl">
+                <div>
+                  <GoASkeleton type="article" />
+                </div>
+                <div>
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                </div>
+                <div>
+                  <GoASkeleton type="text" />
+                  <GoASpacer vSpacing="m" />
+                  <GoASkeleton type="text" />
+                </div>
+                <div>
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                  <GoASpacer vSpacing="m" />
+                  <GoASkeleton type="text" />
+                </div>
+              </GoAPages>
 
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <GoAButton type="secondary" onClick={() => setControlledPage(controlledStep - 1)}>
-                Previous
-              </GoAButton>
-              <GoAButton type="primary" onClick={() => setControlledPage(controlledStep + 1)}>
-                Next
-              </GoAButton>
-            </div>
-          </Sandbox>
-          {/*Example 2*/}
-          <h3 id="example-step-status">Step status</h3>
-          The status of each step can be configured to either “complete” or “incomplete” using the
-          status property.
-          <Sandbox fullWidth skipRender allow={["div"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <GoAButton type="secondary" onClick={() => setControlledPage(controlledStep - 1)}>
+                  Previous
+                </GoAButton>
+                <GoAButton type="primary" onClick={() => setControlledPage(controlledStep + 1)}>
+                  Next
+                </GoAButton>
+              </div>
+            </Sandbox>
+            {/*Example 2*/}
+            <h3 id="component-example-step-status">Step status</h3>
+            The status of each step can be configured to either “complete” or “incomplete” using the
+            status property.
+            <Sandbox fullWidth skipRender allow={["div"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 export class SomeComponent {
                   step = -1;
                   // controlled by the user based on form completion
@@ -303,12 +304,12 @@ export default function FormStepperPage() {
                   }
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
                   <goa-form-step text="Personal details" [status]="status[0]"></goa-form-step>
                   <goa-form-step text="Employment history" [status]="status[1]"></goa-form-step>
@@ -326,13 +327,13 @@ export default function FormStepperPage() {
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
                 </div>
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [step, setStep] = useState<number>(-1);
                 // controlled by the user based on form completion
                 const [status, setStatus] = useState<GoAFormStepStatusType[]>([
@@ -366,57 +367,58 @@ export default function FormStepperPage() {
                   </>
                 )
               `}
-            />
+              />
 
-            <GoAFormStepper step={statusStep} onChange={step => setStatusStep(step)}>
-              <GoAFormStep text="Personal details" status={status[0]} />
-              <GoAFormStep text="Employment history" status={status[1]} />
-              <GoAFormStep text="References" status={status[2]} />
-              <GoAFormStep text="Review" status={status[3]} />
-            </GoAFormStepper>
-            <GoAPages current={statusStep} mb="3xl" mt="xl" mr="xl" ml="xl">
-              <div>
-                <GoASkeleton type="article" />
+              <GoAFormStepper step={statusStep} onChange={step => setStatusStep(step)}>
+                <GoAFormStep text="Personal details" status={status[0]} />
+                <GoAFormStep text="Employment history" status={status[1]} />
+                <GoAFormStep text="References" status={status[2]} />
+                <GoAFormStep text="Review" status={status[3]} />
+              </GoAFormStepper>
+              <GoAPages current={statusStep} mb="3xl" mt="xl" mr="xl" ml="xl">
+                <div>
+                  <GoASkeleton type="article" />
+                </div>
+                <div>
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                </div>
+                <div>
+                  <GoASkeleton type="text" />
+                  <GoASpacer vSpacing="m" />
+                  <GoASkeleton type="text" />
+                </div>
+                <div>
+                  <GoASkeleton type="header" size={2} />
+                  <GoASkeleton type="text" />
+                  <GoASpacer vSpacing="m" />
+                  <GoASkeleton type="text" />
+                </div>
+              </GoAPages>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <GoAButton type="secondary" onClick={() => setStatusPage(statusStep - 1)}>
+                  Previous
+                </GoAButton>
+                <GoAButton type="primary" onClick={() => setStatusPage(statusStep + 1)}>
+                  Next
+                </GoAButton>
               </div>
-              <div>
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-              </div>
-              <div>
-                <GoASkeleton type="text" />
-                <GoASpacer vSpacing="m" />
-                <GoASkeleton type="text" />
-              </div>
-              <div>
-                <GoASkeleton type="header" size={2} />
-                <GoASkeleton type="text" />
-                <GoASpacer vSpacing="m" />
-                <GoASkeleton type="text" />
-              </div>
-            </GoAPages>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <GoAButton type="secondary" onClick={() => setStatusPage(statusStep - 1)}>
-                Previous
-              </GoAButton>
-              <GoAButton type="primary" onClick={() => setStatusPage(statusStep + 1)}>
-                Next
-              </GoAButton>
-            </div>
-          </Sandbox>
-        </GoATab>
+            </Sandbox>
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

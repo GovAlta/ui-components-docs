@@ -6,6 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoASkeleton, GoATab, GoATabs, GoASkeletonProps, SkeletonType } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Skeleton loading";
@@ -99,28 +100,32 @@ export default function SkeletonPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Skeleton Sandbox*/}
-          <Sandbox properties={skeletonBindings} onChange={onSandboxChange} fullWidth>
-            <GoASkeleton {...skeletonProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*Skeleton Properties*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Skeleton Sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={skeletonBindings} onChange={onSandboxChange} fullWidth>
+              <GoASkeleton {...skeletonProps} />
+            </Sandbox>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+            {/*Skeleton Properties*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

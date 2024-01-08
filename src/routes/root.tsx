@@ -57,9 +57,7 @@ export default function Root() {
           </GoAAppHeader>
         </section>
 
-        <section>
-          <Outlet />
-        </section>
+        <Outlet />
 
         <section slot="footer">
           <GoAAppFooter maxContentWidth={MAX_CONTENT_WIDTH}>

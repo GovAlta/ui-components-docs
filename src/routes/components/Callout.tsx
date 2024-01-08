@@ -14,6 +14,8 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 
 // == Page props ==
 
@@ -85,27 +87,31 @@ export default function CalloutPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-            <GoACallout {...componentProps}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </GoACallout>
-          </Sandbox>
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+              <GoACallout {...componentProps}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </GoACallout>
+            </Sandbox>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

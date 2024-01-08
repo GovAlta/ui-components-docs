@@ -7,7 +7,6 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoAContainer,
@@ -20,6 +19,7 @@ import {
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 
@@ -42,7 +42,7 @@ export default function TextAreaPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => {},
+    onChange: () => { },
   });
   const [textAreaBindings, setTextAreaBindings] = useState<ComponentBinding[]>([
     {
@@ -99,7 +99,7 @@ export default function TextAreaPage() {
       type: "number",
     },
   ]);
-  const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic"});
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
   const componentProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -199,37 +199,40 @@ export default function TextAreaPage() {
     setComponentProps(props as CastingType);
   }
 
-  const noop = () => {};
+  const noop = () => { };
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox
-            properties={textAreaBindings}
-            formItemProperties={formItemBindings}
-            onChange={onSandboxChange}
-            onChangeFormItemBindings={onFormItemChange}
-            flags={["reactive"]}
-            fullWidth>
-            <CodeSnippet
-              lang="typescript"
-              tags={["angular", "reactive"]}
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={textAreaBindings}
+              formItemProperties={formItemBindings}
+              onChange={onSandboxChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}
+              fullWidth>
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 // non-reactive code
                 export class SomeComponent {
                   onChange(event: Event) {
@@ -238,78 +241,77 @@ export default function TextAreaPage() {
                   }
                 }
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [value, setValue] = useState<string>("");
               
                 onChange(name: string, value: string) {
                   setValue(value);
                 }
             `}
-            />
+              />
 
-            <GoAFormItem {...formItemProps}>
-              <GoATextarea {...componentProps} value="" onChange={noop} />
-            </GoAFormItem>
-          </Sandbox>
-
-          <ComponentProperties properties={componentProperties} />
-
-          {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-1">Ask a question and give more information</a>
-          </GoABlock>
-
-          <h3 id="example-1">Ask a question and give more information</h3>
-          <Sandbox flags={["reactive"]} fullWidth>
-            <GoAContainer>
-              <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
-                Back
-              </GoAButton>
-
-              <h2>Description</h2>
-              <p>
-                List all components and include a description, including the number of hours for
-                each.
-              </p>
-
-              <GoAFormItem
-                label="Program outline"
-                helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                <GoATextarea name="program" value="Input text" onChange={noop} />
+              <GoAFormItem {...formItemProps}>
+                <GoATextarea {...componentProps} value="" onChange={noop} />
               </GoAFormItem>
+            </Sandbox>
 
-              <GoADetails heading="How to write a good outline">
-                <p>
-                  Break down your outline into easily digestible sections. This can help to ensure
-                  that the document is well-organized and easy to navigate.
-                </p>
-              </GoADetails>
+            <ComponentProperties properties={componentProperties} />
 
-              <GoAButtonGroup alignment="start" mt="l">
-                <GoAButton type="primary" onClick={noop}>
-                  Continue
+            {/*Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-1">Ask a question and give more information</h3>
+            <Sandbox flags={["reactive"]} fullWidth>
+              <GoAContainer>
+                <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
+                  Back
                 </GoAButton>
-              </GoAButtonGroup>
-            </GoAContainer>
-          </Sandbox>
-        </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+                <h2>Description</h2>
+                <p>
+                  List all components and include a description, including the number of hours for
+                  each.
+                </p>
+
+                <GoAFormItem
+                  label="Program outline"
+                  helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
+                  <GoATextarea name="program" value="Input text" onChange={noop} />
+                </GoAFormItem>
+
+                <GoADetails heading="How to write a good outline">
+                  <p>
+                    Break down your outline into easily digestible sections. This can help to ensure
+                    that the document is well-organized and easy to navigate.
+                  </p>
+                </GoADetails>
+
+                <GoAButtonGroup alignment="start" mt="l">
+                  <GoAButton type="primary" onClick={noop}>
+                    Continue
+                  </GoAButton>
+                </GoAButtonGroup>
+              </GoAContainer>
+            </Sandbox>
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

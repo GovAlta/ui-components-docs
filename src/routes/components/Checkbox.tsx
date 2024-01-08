@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoACheckbox, GoACheckboxProps, GoAFormItem } from "@abgov/react-components";
+import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -8,6 +8,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Checkbox";
@@ -98,7 +99,7 @@ export default function CheckboxPage() {
       lang: "angular",
     },
   ];
-  const noop = () => {};
+  const noop = () => { };
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setCheckboxBindings(bindings);
@@ -107,45 +108,61 @@ export default function CheckboxPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-      <Sandbox
-        properties={checkboxBindings}
-        formItemProperties={formItemBindings}
-        onChange={onChange}
-        onChangeFormItemBindings={onFormItemChange}
-        flags={["reactive"]}>
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
-          export class SomeOtherComponent {
-            checked = false;
-            onChange(event: Event) {
-              const {name, checked, value} = (event as CustomEvent).detail;
-              // or this.checked = !this.checked;
-            }
-          `}
-        />
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={checkboxBindings}
+              formItemProperties={formItemBindings}
+              onChange={onChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    checked = false;
+                    onChange(event: Event) {
+                      const {name, checked, value} = (event as CustomEvent).detail;
+                      // or this.checked = !this.checked;
+                    }
+                  }
+                `}
+              />
 
-        <CodeSnippet
-          lang="typescript"
-          tags={["angular", "reactive"]}
-          allowCopy={true}
-          code={`
-            import { FormControl } from "@angular/forms";
-            export class SomeOtherComponent {
-              itemFormCtrl = new FormControl();
-            }
-          `}
-        />
-        <GoAFormItem {...formItemProps}>
-          <GoACheckbox {...checkboxProps} onChange={noop} />
-        </GoAFormItem>
-      </Sandbox>
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                  import { FormControl } from "@angular/forms";
+                  export class SomeOtherComponent {
+                    itemFormCtrl = new FormControl();
+                  }
+                `}
+              />
+              <GoAFormItem {...formItemProps}>
+                <GoACheckbox {...checkboxProps} onChange={noop} />
+              </GoAFormItem>
+            </Sandbox>
 
-      <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

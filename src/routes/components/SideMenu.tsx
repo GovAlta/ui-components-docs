@@ -13,6 +13,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Sandbox } from "@components/sandbox";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Side menu";
 const description =
@@ -62,14 +63,17 @@ export default function SideMenuPage() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox fullWidth allow={["div"]} skipRender>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox fullWidth allow={["div"]} skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <div style="max-width: 250px">
                   <goa-side-menu>
                     <goa-side-menu-heading>
@@ -92,12 +96,12 @@ export default function SideMenuPage() {
                   </goa-side-menu>
                 </div>
               `}
-            />
-            <CodeSnippet
-              allowCopy={true}
-              lang="typescript"
-              tags={["react"]}
-              code={`
+              />
+              <CodeSnippet
+                allowCopy={true}
+                lang="typescript"
+                tags={["react"]}
+                code={`
                   <div style={{ maxWidth: "250px" }}>
                   <GoASideMenu>
                     <GoASideMenuHeading>
@@ -120,49 +124,50 @@ export default function SideMenuPage() {
                   </GoASideMenu>
                 </div>
                 `}
+              />
+              <div style={{ maxWidth: "250px" }}>
+                <GoASideMenu>
+                  <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
+                  <a>Home</a>
+                  <a>Profile</a>
+                  <GoASideMenuHeading
+                    meta={<GoABadge type="midtone" content="Details"></GoABadge>}
+                    icon="home">
+                    Nav section 2
+                  </GoASideMenuHeading>
+                  <a>About</a>
+                  <a>Contact</a>
+                  <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
+                  <GoASideMenuGroup heading="Group heading">
+                    <a>Foo</a>
+                    <a>Bar</a>
+                  </GoASideMenuGroup>
+                </GoASideMenu>
+              </div>
+            </Sandbox>
+
+            {/*Component properties table*/}
+            <ComponentProperties
+              heading="Side menu group properties"
+              properties={sideMenuGroupProperties}
             />
-            <div style={{ maxWidth: "250px" }}>
-              <GoASideMenu>
-                <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
-                <a>Home</a>
-                <a>Profile</a>
-                <GoASideMenuHeading
-                  meta={<GoABadge type="midtone" content="Details"></GoABadge>}
-                  icon="home">
-                  Nav section 2
-                </GoASideMenuHeading>
-                <a>About</a>
-                <a>Contact</a>
-                <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                <GoASideMenuGroup heading="Group heading">
-                  <a>Foo</a>
-                  <a>Bar</a>
-                </GoASideMenuGroup>
-              </GoASideMenu>
-            </div>
-          </Sandbox>
+            <ComponentProperties
+              heading="Side menu heading properties"
+              properties={sideMenuHeadingProperties}
+            />
+          </GoATab>
 
-          {/*Component properties table*/}
-          <ComponentProperties
-            heading="Side menu group properties"
-            properties={sideMenuGroupProperties}
-          />
-          <ComponentProperties
-            heading="Side menu heading properties"
-            properties={sideMenuHeadingProperties}
-          />
-        </GoATab>
-
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

@@ -15,6 +15,7 @@ import {
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Radio";
@@ -37,7 +38,7 @@ export default function RadioPage() {
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => {},
+    onChange: () => { },
   });
   const [radioBindings, setRadioBindings] = useState<ComponentBinding[]>([
     {
@@ -66,7 +67,7 @@ export default function RadioPage() {
       value: "",
     },
   ]);
-  const {formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({label: "Basic"});
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
 
   const radioGroupProperties: ComponentProperty[] = [
     {
@@ -144,26 +145,29 @@ export default function RadioPage() {
     setRadioBindings(bindings);
   }
 
-  const noop = () => {};
+  const noop = () => { };
 
   return (
     <>
       <ComponentHeader name={componentName} description={description} category={category} relatedComponents={relatedComponents} />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Radio sandbox*/}
-          <Sandbox
-            properties={radioBindings}
-            formItemProperties={formItemBindings}
-            onChange={onSandboxChange}
-            onChangeFormItemBindings={onFormItemChange}
-            flags={["reactive"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Radio sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={radioBindings}
+              formItemProperties={formItemBindings}
+              onChange={onSandboxChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
               // non-reactive code
               export class MyComponent {
                 onChange(e: Event) {
@@ -172,56 +176,57 @@ export default function RadioPage() {
                 }
               }
             `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags={["angular", "reactive"]}
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
               // reactive code
               import { FormControl } from "@angular/forms";
               export class MyComponent {
                itemFormCtrl = new FormControl("1");
               }
             `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
               const [item, setItem] = useState("1");
               function onChange(name: string, value: string) {
                 setItem(value);
               }
             `}
-            />
+              />
 
-            <GoAFormItem {...formItemProps}>
-              <GoARadioGroup {...radioProps} value="1" onChange={noop}>
-                <GoARadioItem value="1" label="Label"></GoARadioItem>
-                <GoARadioItem value="2" label="Label"></GoARadioItem>
-                <GoARadioItem value="3" label="Label"></GoARadioItem>
-              </GoARadioGroup>
-            </GoAFormItem>
-          </Sandbox>
+              <GoAFormItem {...formItemProps}>
+                <GoARadioGroup {...radioProps} value="1" onChange={noop}>
+                  <GoARadioItem value="1" label="Label"></GoARadioItem>
+                  <GoARadioItem value="2" label="Label"></GoARadioItem>
+                  <GoARadioItem value="3" label="Label"></GoARadioItem>
+                </GoARadioGroup>
+              </GoAFormItem>
+            </Sandbox>
 
-          {/*Radio Group properties*/}
-          <ComponentProperties heading="Radio group properties" properties={radioGroupProperties} />
-          {/*Radio Item properties*/}
-          <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
-        </GoATab>
+            {/*Radio Group properties*/}
+            <ComponentProperties heading="Radio group properties" properties={radioGroupProperties} />
+            {/*Radio Item properties*/}
+            <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

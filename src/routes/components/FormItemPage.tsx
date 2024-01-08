@@ -6,6 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function FormItemPage() {
   const [formItemProps, setFormItemProps] = useState({
@@ -99,10 +100,10 @@ export default function FormItemPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFormItemBindings(bindings);
-    setFormItemProps(props as { label: string; [key: string]: unknown });
+    setFormItemProps(props as { label: string;[key: string]: unknown });
   }
 
-  const noop = () => {};
+  const noop = () => { };
 
   return (
     <>
@@ -111,36 +112,39 @@ export default function FormItemPage() {
         category={Category.INPUTS_AND_ACTIONS}
         description="Wraps an input control with a text label, requirement label, helper text, and error text."
         relatedComponents={[
-        { link: "/components/checkbox", name: "Checkbox" },
-        { link: "/components/dropdown", name: "Dropdown" },
-        { link: "/components/Radio", name: "Radio" },
-        { link: "/components/text-area", name: "Text area" },
-        { link: "/components/text-field", name: "Text field" },
+          { link: "/components/checkbox", name: "Checkbox" },
+          { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/Radio", name: "Radio" },
+          { link: "/components/text-area", name: "Text area" },
+          { link: "/components/text-field", name: "Text field" },
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Form Item Sandbox*/}
-          <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
-            <GoAFormItem {...formItemProps}>
-              <GoAInput onChange={noop} value="" name="firstName" />
-            </GoAFormItem>
-          </Sandbox>
-          {/*Form Item Properties Table*/}
-          <ComponentProperties properties={componentProps} />
-        </GoATab>
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        >
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
+              <GoAFormItem {...formItemProps}>
+                <GoAInput onChange={noop} value="" name="firstName" />
+              </GoAFormItem>
+            </Sandbox>
+
+            <ComponentProperties properties={componentProps} />
+          </GoATab>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          >
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

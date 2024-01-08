@@ -1,19 +1,15 @@
 import { GoABlock, GoADivider, GoAFormItem, GoAGrid, GoASideMenu } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 export default function CapitalizationPage() {
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Capitalization</h1>
       <h3>Use sentence case for all headings, labels, and content.</h3>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"30ch"} gap="xs">
-        <a href="#sentence-case">Sentence case</a>
-        <a href="#title-case">Title case</a>
-        <a href="#capital-case">Capital case</a>
-        <a href="#references">References</a>
-      </GoAGrid>
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="sentence-case">Sentence case</h2>
       <p>
         Sentence case means everything is lowercase except for the first word in a label, phrase, or
@@ -56,6 +52,7 @@ export default function CapitalizationPage() {
       </div>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="title-case">Title case</h2>
       <p>
         Title case may be used in certain situations including: proper nouns, brands, products, and
@@ -69,6 +66,7 @@ export default function CapitalizationPage() {
         If a title, label, or heading includes a colon or ampersand, capitalize the first word after
         it.
       </p>
+
       <GoAGrid minChildWidth="30ch" gap="2xl" mt="xl">
         <DoDont
           type="do"
@@ -99,7 +97,9 @@ export default function CapitalizationPage() {
           </div>
         </DoDont>
       </GoAGrid>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="capital-case">Capital case</h2>
       <p>
         When displaying information pulled from legacy systems there may be information that must
@@ -114,6 +114,7 @@ export default function CapitalizationPage() {
         <br />
         Display the following information in sentence case when possible for better readability.
       </p>
+
       <GoABlock mt="xl" mb="xl">
         <DoDont type="generic">
           <div style={{ textAlign: "center" }}>
@@ -121,7 +122,9 @@ export default function CapitalizationPage() {
           </div>
         </DoDont>
       </GoABlock>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="references">References</h2>
       <p>
         <a
@@ -137,6 +140,6 @@ export default function CapitalizationPage() {
           Why letter casing is important to consider during design decisions - Medium
         </a>
       </p>
-    </>
+    </ComponentContent>
   );
 }

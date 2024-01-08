@@ -1,7 +1,8 @@
-import { GoABlock, GoAGrid, GoAInput } from "@abgov/react-components";
+import { GoAGrid, GoAInput } from "@abgov/react-components";
 import { ComponentCard, Props as ComponentProps } from "@components/component-card/ComponentCard";
 import { ReactNode, useState } from "react";
 import "./AllComponents.css";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function AllComponentsPage() {
   const cards: ComponentProps[] = [
@@ -359,37 +360,30 @@ export default function AllComponentsPage() {
   return (
     <>
       <a id="top" />
-      <h1>Components</h1>
-      <h3>
-        Components are reusable parts of the user interface that have been made to support a variety
-        of applications. You can use individual components in many different patterns and contexts.
-      </h3>
+      <div className="component-header">
+        <h1>Components</h1>
+        <h3>
+          Components are reusable parts of the user interface that have been made to support a variety
+          of applications. You can use individual components in many different patterns and contexts.
+        </h3>
+      </div>
 
-      <GoABlock mt="xs" mb="xl">
-        <GoAInput
-          name="filter"
-          value=""
-          type="text"
-          width="80ch"
-          leadingIcon="search"
-          onChange={(_name, value) => filterComponents(value)}
-        />
-      </GoABlock>
+      <GoAInput
+        leadingIcon="search"
+        mt="xs" 
+        mb="xl"
+        name="filter"
+        type="text"
+        value=""
+        width="100%"
+        onChange={(_name, value) => filterComponents(value)}
+      />
 
       {mode === "search" && <GoAGrid minChildWidth="300px">{getComponentsByFilter()}</GoAGrid>}
 
       {mode === "list" && (
-        <>
-          <GoAGrid minChildWidth={"30ch"} gap="xs" mt="2xl" mb="3xl">
-            <a href="#content">Content layout</a>
-            <a href="#feedback">Feedback and alerts</a>
-            <a href="#structure">Structure and navigation</a>
-            <a href="#inputs">Inputs and actions</a>
-            <a href="#utilities">Utilities</a>
-          </GoAGrid>
-
-          <a id="content" />
-          <h2>Content layout</h2>
+        <ComponentContent cssQuery="h2[id], h3[id]">
+          <h2 id="content">Content layout</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("content")}
           </GoAGrid>
@@ -397,8 +391,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="feedback" />
-          <h2>Feedback and alerts</h2>
+          <h2 id="feedback">Feedback and alerts</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("feedback")}
           </GoAGrid>
@@ -406,8 +399,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="inputs" />
-          <h2>Inputs and actions</h2>
+          <h2 id="inputs">Inputs and actions</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("inputs")}
           </GoAGrid>
@@ -415,8 +407,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="structure" />
-          <h2>Structure and navigation</h2>
+          <h2 id="structure">Structure and navigation</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("structure")}
           </GoAGrid>
@@ -424,15 +415,14 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="utilities" />
-          <h2>Utilities</h2>
+          <h2 id="utilities">Utilities</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("utilities")}
           </GoAGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>
-        </>
+        </ComponentContent>
       )}
     </>
   );

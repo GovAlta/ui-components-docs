@@ -1,9 +1,10 @@
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { Link } from "react-router-dom";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function DevelopersOverviewPage() {
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
       <h3>
         As a developer, you can consume the design system using tokens, components, templates, and
@@ -115,6 +116,6 @@ export default function DevelopersOverviewPage() {
       <a href="https://abgov-ui-react.netlify.app/" target="_blank">
         View demo application
       </a>
-    </>
+    </ComponentContent>
   );
 }

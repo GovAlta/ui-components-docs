@@ -6,6 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoADivider, GoATab, GoATabs } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 import Sandbox from "@components/sandbox/Sandbox.tsx";
 import "./AllComponents.css";
 
@@ -61,34 +62,38 @@ export default function DividerPage() {
   }
 
   return (
-    <div className="divider-page">
+    <>
       <ComponentHeader
         name="Divider"
         category={Category.UTILITIES}
         description="Indicate a separation of layout, or to distinguish large chunks of information on a page."
         relatedComponents={[
-        { link: "/components/container", name: "Container" },
+          { link: "/components/container", name: "Container" },
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={dividerBindings} onChange={onSandboxChange} fullWidth>
-            <GoADivider {...dividerProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={dividerBindings} onChange={onSandboxChange} fullWidth>
+              <GoADivider {...dividerProps} />
+            </Sandbox>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
-    </div>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
+    </>
   );
 }

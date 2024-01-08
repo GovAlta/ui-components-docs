@@ -16,6 +16,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -73,7 +74,7 @@ export default function DropdownPage() {
     { label: "Filterable", type: "boolean", name: "filterable", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
-  const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic dropdown"});
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic dropdown" });
 
   const dropdownProperties: ComponentProperty[] = [
     {
@@ -230,7 +231,7 @@ export default function DropdownPage() {
   }
 
   // Demo
-  const [ color, setColor ] = useState<string>("");
+  const [color, setColor] = useState<string>("");
 
   function onChange(_name: string, value: string | string[]) {
     if (typeof value === "string") {
@@ -240,20 +241,23 @@ export default function DropdownPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox
-            properties={dropdownBindings}
-            formItemProperties={formItemBindings}
-            onChange={onSandboxChange}
-            onChangeFormItemBindings={onFormItemChange}
-            flags={["reactive"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={dropdownBindings}
+              formItemProperties={formItemBindings}
+              onChange={onSandboxChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 // non-reactive code
                 export class MyComponent {
                   onChange(event: Event) {
@@ -262,61 +266,62 @@ export default function DropdownPage() {
                   }
                 }  
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags={["angular", "reactive"]}
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
                   reactiveFormCtrl = new FormControl("");
                 }  
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [value, setValue] = useState("");
                 function onChange(name: string, value: string | string[]) {
                   setValue(value);
                 }
               `}
+              />
+
+              <GoAFormItem {...formItemProps}>
+                <GoADropdown name="colors" value={color} {...dropdownProps}>
+                  <GoADropdownItem value="red" label="Red" />
+                  <GoADropdownItem value="green" label="Green" />
+                  <GoADropdownItem value="blue" label="Blue" />
+                </GoADropdown>
+              </GoAFormItem>
+            </Sandbox>
+
+            <ComponentProperties properties={dropdownProperties} />
+
+            <ComponentProperties
+              heading="Dropdown item properties"
+              properties={dropdownItemProperties}
             />
+          </GoATab>
 
-            <GoAFormItem {...formItemProps}>
-              <GoADropdown name="colors" value={color} {...dropdownProps}>
-                <GoADropdownItem value="red" label="Red" />
-                <GoADropdownItem value="green" label="Green" />
-                <GoADropdownItem value="blue" label="Blue" />
-              </GoADropdown>
-            </GoAFormItem>
-          </Sandbox>
-
-          <ComponentProperties properties={dropdownProperties} />
-
-          <ComponentProperties
-            heading="Dropdown item properties"
-            properties={dropdownItemProperties}
-          />
-        </GoATab>
-
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        >
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          >
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

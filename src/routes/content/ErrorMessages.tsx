@@ -1,6 +1,5 @@
 import { DoDont } from "@components/do-dont/DoDont";
 import {
-  GoABlock,
   GoACheckbox,
   GoADivider,
   GoAFormItem,
@@ -10,14 +9,17 @@ import {
   GoARadioItem,
 } from "@abgov/react-components";
 import { Link } from "react-router-dom";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function ErrorMessagesPage() {
-  const noop = () => {};
+  const noop = () => { };
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Error messages</h1>
       <h3>Error messages appear when the user’s proposed action fails.</h3>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <GoAGrid minChildWidth="40ch" gap="3xl">
         <GoAFormItem
           label="First name"
@@ -26,6 +28,7 @@ export default function ErrorMessagesPage() {
           key=".0">
           <GoAInput onChange={noop} name="firstName" value="" error></GoAInput>
         </GoAFormItem>
+
         <GoAFormItem
           label="How would you prefer to be contacted"
           labelSize="regular"
@@ -36,6 +39,7 @@ export default function ErrorMessagesPage() {
             <GoARadioItem value="3" label="Text message"></GoARadioItem>
           </GoARadioGroup>
         </GoAFormItem>
+
         <GoAFormItem label="Tuition" error="Tuition cost must be lower than $5,000." key=".0">
           <GoAInput
             name="input"
@@ -46,6 +50,7 @@ export default function ErrorMessagesPage() {
             error
           />
         </GoAFormItem>
+
         <GoAFormItem
           label="Acknowledgment"
           labelSize="regular"
@@ -58,14 +63,9 @@ export default function ErrorMessagesPage() {
             checked={false}></GoACheckbox>
         </GoAFormItem>
       </GoAGrid>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth="50ch" gap="xs">
-        <a href="#anatomy">Anatomy</a>
-        <a href="#language-and-tone">Language and tone</a>
-        <a href="#common-error-message-templates">Common error message templates</a>
-      </GoAGrid>
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="anatomy">Anatomy</h2>
       <p>
         When a user inputs an unexpected value in the input field, an error message will appear
@@ -77,6 +77,7 @@ export default function ErrorMessagesPage() {
         When helper text and error message are both shown, the error message always appears above
         the helper text.
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch" gap="2xl">
           <DoDont type="do" description="Place error message above helper text.">
@@ -87,6 +88,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3>Border</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch" gap="2xl">
@@ -100,6 +102,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3>Button/upload area</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch" gap="2xl">
@@ -125,7 +128,9 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="language-and-tone">Language and tone</h2>
       <h3>Be clear and concise</h3>
       <p>
@@ -146,31 +151,20 @@ export default function ErrorMessagesPage() {
         Speak in a humanized tone to be empathetic to the user. Let the user know that you
         understand their frustration.
       </p>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="common-error-message-templates">Common error message templates</h2>
       <p>
         Follow the templates and examples below for common errors to create an error message that
         fits your context.
       </p>
-      <h3>Message types</h3>
-      <GoABlock direction="column" gap="xs">
-        <a href="#input-empty">Input is empty</a>
-        <a href="#incorrect-information">Incorrect information format</a>
-        <a href="#error-date-input">Error with a date input</a>
-        <a href="#error-value-range">Error within a value range</a>
-        <a href="#error-outside-accepted">Input outside accepted values</a>
-        <a href="#upload-errors">Upload errors</a>
-        <a href="#wrong-file-type">Wrong file type</a>
-        <a href="#file-too-large">File too large</a>
-        <a href="#upload-failed">File upload failed</a>
-        <a href="#duplicate-upload">Duplicate file uploaded</a>
-        <a href="#no-file-selected">No file selected</a>
-        <a href="#invalid-characters">Invalid characters used</a>
-        <a href="#incorrect-number-of-characters">Incorrect number of characters</a>
-      </GoABlock>
+
       <GoADivider mb="xl" mt="xl"></GoADivider>
+
       <h3 id="input-empty">Input is empty</h3>
       <p>This error appears when user leaves a required field blank.</p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
           <DoDont type="generic">
@@ -202,6 +196,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="incorrect-information">Incorrect information format</h3>
       <p>
         This error appears when the user fails to input valid/correct information such as entering
@@ -211,6 +206,7 @@ export default function ErrorMessagesPage() {
         To keep messages clear and concise, provide the solution to the user and include an example
         of a valid entry.
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch" gap="2xl">
           <DoDont type="generic">
@@ -246,6 +242,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="error-date-input">Error with a date input</h3>
       <p>
         This error appears when the user fails to input a valid/correct date. Date range/duration
@@ -254,6 +251,7 @@ export default function ErrorMessagesPage() {
       <p>
         <Link to="/content/date-format">View more information on date formatting.</Link>
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
           <DoDont type="generic">
@@ -288,8 +286,10 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="error-value-range">Error within a value range</h3>
       <p>This error appears when user fails to input a valid/correct amount.</p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
           <DoDont type="generic" description="*Include amount if known">
@@ -327,6 +327,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h2 id="upload-errors">Upload errors</h2>
       <p>
         When there is an error with the requested file, error message appears below the file upload
@@ -345,6 +346,7 @@ export default function ErrorMessagesPage() {
           <li>Required file is missing.</li>
         </ul>
       </p>
+
       <h3 id="wrong-file-type">Wrong file type</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
@@ -366,6 +368,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="file-too-large">File too large</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
@@ -411,6 +414,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="duplicate-upload">Duplicate file uploaded</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
@@ -435,6 +439,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <div className="dodont-wrapper">
         <h3 id="no-file-selected">No file selected</h3>
         <GoAGrid minChildWidth="50ch">
@@ -461,6 +466,7 @@ export default function ErrorMessagesPage() {
         This error appears when user inputs invalid characters. To keep messages clear and concise,
         provide a guided solution.
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
           <DoDont type="generic">
@@ -508,6 +514,7 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
+
       <h3 id="incorrect-number-of-characters">Incorrect number of characters</h3>
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
@@ -526,6 +533,6 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoAGrid>
       </div>
-    </>
+    </ComponentContent>
   );
 }

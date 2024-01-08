@@ -6,6 +6,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 
@@ -24,6 +25,7 @@ const relatedComponents = [
     link: "/components/Table", name: "Table"
   }
 ];
+
 type ComponentPropsType = GoABadgeProps;
 type CastingType = {
   // add any required props here
@@ -105,25 +107,28 @@ export default function BadgePage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
-            <GoABadge {...badgeProps} />
-          </Sandbox>
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
+              <GoABadge {...badgeProps} />
+            </Sandbox>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }
