@@ -30,7 +30,7 @@ export default function DesignTokensOverviewPage() {
         <h4>Design token example</h4>
         <p>
           The GoA’s colour for a hover interaction is #004F84. This property is defined as a design
-          token called <code>--goa-color-interactive-hover</code>. This token is used in Figma as a
+          token called <code className="inline">--goa-color-interactive-hover</code>. This token is used in Figma as a
           style and used in code as CSS or SASS variables
         </p>
       </GoAContainer>
@@ -46,8 +46,8 @@ export default function DesignTokensOverviewPage() {
       </p>
       <p>
         Save time going back and forth with your designer on hex values and adjusting a few pixels
-        at a time. "The colour is: <code>--goa-color-info-default</code>, the spacing is:{" "}
-        <code>--goa-spacing-m</code>".
+        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the spacing is:{" "}
+        <code className="inline">--goa-spacing-m</code>".
       </p>
 
       <h4>Designers</h4>
@@ -60,8 +60,8 @@ export default function DesignTokensOverviewPage() {
       </p>
       <p>
         Save time going back and forth with your developer on hex values and adjusting a few pixels
-        at a time. "The colour is: <code>--goa-color-info-default</code>, the spacing is:{" "}
-        <code> --goa-spacing-m</code>".
+        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the spacing is:{" "}
+        <code className="inline"> --goa-spacing-m</code>".
       </p>
     </div>
   );
