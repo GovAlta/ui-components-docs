@@ -26,7 +26,7 @@ const relatedComponents = [
   },
   {
     link: "/components/tabs", name: "Tabs"
-  }
+  },
 ];
 type ComponentPropsType = GoAAccordionProps;
 type CastingType = {
