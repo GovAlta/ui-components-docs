@@ -67,6 +67,12 @@ export default function BlockPage() {
         name="Block"
         category={Category.UTILITIES}
         description="Used when grouping components into a block with consistent space between."
+        relatedComponents={[
+        { link: "/components/divider", name: "Divider" },
+        { link: "/components/Grid", name: "Grid" },
+        { link: "/patterns", name: "Layout" },
+        { link: "/component/spacer", name: "Spacer" },
+      ]}
       />
 
       <GoATabs>
