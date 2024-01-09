@@ -86,7 +86,6 @@ import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
 import RoadmapPage from "@routes/get-started/Roadmap";
-import ServicePrinciplesPage from "@routes/get-started/ServicePrinciples";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 
@@ -190,7 +189,6 @@ const router = createBrowserRouter(
           <Route index element={<QATestingOverviewPage />} />
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
-        <Route path="service-principles" element={<ServicePrinciplesPage />} />
       </Route>
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
