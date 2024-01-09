@@ -54,6 +54,7 @@ import RadioPage from "@routes/components/Radio";
 import SkeletonPage from "@routes/components/Skeleton.tsx";
 import SpacerPage from "@routes/components/Spacer";
 import TablePage from "@routes/components/Table";
+import TabsPage from "@routes/components/Tabs.tsx";
 import TooltipPage from "@routes/components/Tooltip";
 import TextFieldPage from "@routes/components/TextField";
 import TextAreaPage from "@routes/components/TextArea";
@@ -152,6 +153,7 @@ const router = createBrowserRouter(
         <Route path="skeleton-loader" element={<SkeletonPage />} />
         <Route path="spacer" element={<SpacerPage />} />
         <Route path="table" element={<TablePage />} />
+        <Route path="tabs" element={<TabsPage />} />
         <Route path="text-area" element={<TextAreaPage/>} />
         <Route path="tooltip" element={<TooltipPage />} />
         <Route path="text-field" element={<TextFieldPage/>} />

@@ -63,6 +63,7 @@ export function Components() {
             <Link to="skeleton-loader">Skeleton loading</Link>
             <Link to="spacer">Spacer</Link>
             <Link to="table">Table</Link>
+            <Link to="tabs">Tabs</Link>
             <Link to="text-area">Text area</Link>
             <Link to="text-field">Text field</Link>
             <Link to="tooltip">Tooltip</Link>

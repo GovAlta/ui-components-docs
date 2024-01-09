@@ -31,7 +31,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function DropdownPage() {
+export default function FormStepperPage() {
   const [formStepProps, setFormStepProps] = useState<ComponentPropsType>();
   const [formStepperBindings, setFormStepperBindings] = useState<ComponentBinding[]>([]);
 
