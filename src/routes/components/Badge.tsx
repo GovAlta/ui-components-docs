@@ -13,6 +13,17 @@ const componentName = "Badge";
 const description =
   "Small labels which hold small amounts of information, system feedback, or states.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  {
+    link: "/components/chip", name: "Chip"
+  },
+  {
+    link: "/components/Icons", name: "Icons"
+  },
+  {
+    link: "/components/Table", name: "Table"
+  }
+];
 type ComponentPropsType = GoABadgeProps;
 type CastingType = {
   // add any required props here
@@ -94,7 +105,7 @@ export default function BadgePage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">
