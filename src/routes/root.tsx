@@ -41,7 +41,7 @@ export default function Root() {
         <section className="header" slot="header">
           <GoAMicrositeHeader
             type={"alpha"}
-            feedbackUrl="https://github.com/GovAlta/ui-components/discussions"
+            feedbackUrl="https://forms.microsoft.com/r/8Zp7zSJS6W"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />
           <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}>
