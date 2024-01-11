@@ -1,7 +1,7 @@
-import { FC, ReactElement, ReactNode, useEffect, useState } from "react";
+import { FC, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 import "./CodeSnippet.css";
-import { GoAButton } from "@abgov/react-components";
+import { GoAButton, GoAIconButton, GoATooltip } from "@abgov/react-components";
 import { renderToString } from "react-dom/server";
 
 import hljs from "highlight.js/lib/core";
@@ -25,6 +25,17 @@ interface Props {
 export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   const [output, setOutput] = useState<string>("");
   const [isCopied, setIsCopied] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [showMore, setShowMore] = useState<boolean>(false);
+
+  const codeSnippetRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (codeSnippetRef.current) {
+      const showMore = codeSnippetRef.current.scrollHeight > 350; // 400px = 25rem and some padding
+      setShowMore(showMore);
+    }
+  }, [output]);
 
   const cleanTabs = (code = "", tabSize: number): string => {
     const lines = code.trim().split("\n");
@@ -36,7 +47,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
 
     // first and last have no additional spacing
     if (indents[0] === 0 && indents[indents.length - 1] === 0) {
-      return code;      
+      return code;
     }
 
     // use the last line as the amount of indent correction needed
@@ -45,7 +56,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
     // join the lines with the indent correction
     return lines
       .map((line, index) => {
-        return padLeft(line.trim(), (indents[index] - indentCorr) * tabSize)
+        return padLeft(line.trim(), (indents[index] - indentCorr) * tabSize);
       })
       .join("\n")
       .trim();
@@ -89,21 +100,31 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   }
 
   return (
-    <div className="goa-code-snippet">
+    <div
+      ref={codeSnippetRef}
+      className={`goa-code-snippet ${showMore ? "overflow" : ""}`}
+      style={isExpanded ? { maxHeight: "none" } : {}}>
       <pre>
         <code className={`highlight-${lang}`}>{output}</code>
       </pre>
-      {allowCopy && (
-        <div className="goa-code-snippet-actions">
-          <GoAButton type="tertiary" size="compact" leadingIcon="copy" onClick={copyCode}>
-            Copy code
+      {showMore && !isExpanded && <div className={"gradient"}></div>}
+      {showMore && (
+        <div className={"goa-code-snippet-actions--show-more"}>
+          <GoAButton
+            type="tertiary"
+            size="compact"
+            trailingIcon={isExpanded ? "chevron-up" : "chevron-down"}
+            onClick={() => setIsExpanded(!isExpanded)}>
+            Show {isExpanded ? "less" : "more"}
           </GoAButton>
-          <span
-            className="copy-feedback"
-            style={isCopied ? { visibility: "visible" } : { visibility: "hidden" }}
-          >
-            Copied!
-          </span>
+        </div>
+      )}
+
+      {allowCopy && (
+        <div className="goa-code-snippet-actions--copy">
+          <GoATooltip content={isCopied ? `Copied` : `Copy?`} position="left">
+            <GoAIconButton icon="copy" onClick={copyCode}/>
+          </GoATooltip>
         </div>
       )}
     </div>
