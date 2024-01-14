@@ -61,8 +61,10 @@ export default function ButtonGroupPage() {
         }
         relatedComponents={[
         { link: "/components/button", name: "Button" },
+        /* 
         { link: "/components/icon-button", name: "Icon button" },
-        { link: "/components/link", name: "Link" },
+        { link: "/components/link", name: "Link" }, 
+        */
         ]}
       />
 
