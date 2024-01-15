@@ -17,7 +17,7 @@ import { useState } from "react";
 
 const componentName = "Header";
 const description =
-  "The header helps users identify where they are and provides a quick, organized way to reach important sections of a website.";
+  "Provide structure to help users find their way around the service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/footer", name: "Footer" },
