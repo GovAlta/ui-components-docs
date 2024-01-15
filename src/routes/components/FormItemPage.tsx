@@ -114,8 +114,8 @@ export default function FormItemPage() {
         { link: "/components/checkbox", name: "Checkbox" },
         { link: "/components/dropdown", name: "Dropdown" },
         { link: "/components/Radio", name: "Radio" },
-        { link: "/components/text-field", name: "Text field" },
         { link: "/components/text-area", name: "Text area" },
+        { link: "/components/text-field", name: "Text field" },
         ]}
       />
 
