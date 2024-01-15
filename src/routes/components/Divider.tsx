@@ -65,7 +65,10 @@ export default function DividerPage() {
       <ComponentHeader
         name="Divider"
         category={Category.UTILITIES}
-        description="Dividers are used to indicate a sepearation of layout, or to distinguish large chunks of information on a page."
+        description="Indicate a separation of layout, or to distinguish large chunks of information on a page."
+        relatedComponents={[
+        { link: "/components/container", name: "Container" },
+        ]}
       />
 
       <GoATabs>
