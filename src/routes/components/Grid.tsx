@@ -60,6 +60,11 @@ export default function GridPage() {
         name="Grid"
         category={Category.UTILITIES}
         description="The grid helps to arrange a number of components into a responsive grid pattern."
+        relatedComponents={[
+        { link: "/components/block", name: "Block" },
+        { link: "/components/divider", name: "Divider" },
+        { link: "/components/spacer", name: "Spacer" },
+        ]}
       />
 
       <GoATabs>
