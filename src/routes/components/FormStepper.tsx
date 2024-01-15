@@ -25,6 +25,9 @@ const componentName = "Form Stepper";
 const description =
   "Provides a visual representation of a form through a series of steps.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/form-item", name: "Form item" },
+];
 type ComponentPropsType = GoAFormStepperProps;
 type CastingType = {
   // add any required props here
@@ -99,6 +102,7 @@ export default function DropdownPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
       <GoATabs>
         <GoATab heading="Code examples">
