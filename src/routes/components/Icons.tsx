@@ -70,6 +70,12 @@ export default function IconsPage() {
         name="Icons"
         category={Category.UTILITIES}
         description="A simple and universal graphic symbol representing an action, object, or concept to help guide the user."
+        relatedComponents={[
+        { link: "/components/badge", name: "Badge" },
+        { link: "/components/callout", name: "Callout" },
+        { link: "/components/icon-button", name: "Icon button" },
+        { link: "/components/Tooltip", name: "Tooltip" },
+        ]}
       />
 
       <GoATabs>
