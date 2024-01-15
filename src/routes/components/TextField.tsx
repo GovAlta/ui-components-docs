@@ -25,6 +25,10 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 const componentName = "Text field";
 const description = "A single-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/form-item", name: "Form item" },
+  { link: "/components/text-area", name: "Text area" }
+];
 type ComponentPropsType = GoAInputProps;
 type CastingType = {
   name: string;
@@ -384,7 +388,7 @@ export default function TextFieldPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">
