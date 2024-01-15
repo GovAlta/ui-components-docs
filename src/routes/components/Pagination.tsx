@@ -19,8 +19,11 @@ import { propsToString } from "@components/sandbox/BaseSerializer";
 
 
 const componentName = "Pagination";
-const description = "Pagination helps users navigate between multiple pages or screens that are part of a related set.";
+const description = "Help users navigation between multiple pages or screens as part of a set.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/table", name: "Table" },
+];
 type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
   // add any required props here
@@ -141,6 +144,7 @@ export default function PaginationPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>
