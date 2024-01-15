@@ -56,6 +56,10 @@ class MockUploader implements Uploader {
 const componentName = "File uploader";
 const description = "Help users select and upload a file.";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/container", name: "Container" },
+  { link: "/components/progress-indicator", name: "Progress indicator" }
+];
 type ComponentPropsType = Omit<GoAFileUploadInputProps, "onSelectFile">;
 type CastingType = {
   maxFileSize: string;
@@ -222,7 +226,7 @@ export default function FileUploaderPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
