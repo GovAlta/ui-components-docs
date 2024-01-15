@@ -18,7 +18,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 // == Page props ==
 const componentName = "Accordion";
 const description =
-  "Accordion containers enable multiple content sections to be displayed in a limited space and collapsed or expanded by the user. You can create hierarchy of information by hiding secondary content inside collapsed expand containers.";
+  "Let users show and hide sections of related content on a page.";
 const category = Category.CONTENT_AND_LAYOUT;
 const relatedComponents = [
   {
