@@ -19,9 +19,9 @@ import { useState } from "react";
 
 // == Page props ==
 
-const componentName = "App Footer";
+const componentName = "Footer";
 const description =
-  "The Footer helps users identify where they are and provides a quick, organized way to reach important sections of a website.";
+  "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
