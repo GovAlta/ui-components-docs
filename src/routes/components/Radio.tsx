@@ -20,6 +20,11 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 const componentName = "Radio";
 const description = "Allow users to select one option from a set.";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/checkbox", name: "Checkbox" },
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/form-item", name: "Form item" }
+];
 type ComponentPropsType = GoARadioGroupProps;
 type CastingType = {
   name: string;
@@ -143,7 +148,7 @@ export default function RadioPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} description={description} category={category} />
+      <ComponentHeader name={componentName} description={description} category={category} relatedComponents={relatedComponents} />
 
       <GoATabs>
         <GoATab heading="Code examples">
