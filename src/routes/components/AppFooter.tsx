@@ -23,10 +23,6 @@ const componentName = "Footer";
 const description =
   "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/header", name: "Header" },
-  { link: "/patterns/", name: "Layout" },
-];
 type ComponentPropsType = GoAAppFooterProps;
 type FooterNavPropsType = GoAFooterNavSectionProps;
 type CastingType = {
@@ -115,8 +111,11 @@ export default function AppFooterPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
-
+       <ComponentHeader
+        name={componentName}
+        category={componentCategory}
+        description={description}
+      />
       <GoATabs>
         <GoATab heading="Code examples">
           <h3>Basic Footer</h3>
