@@ -23,6 +23,10 @@ const componentName = "App Footer";
 const description =
   "The Footer helps users identify where they are and provides a quick, organized way to reach important sections of a website.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/header", name: "Header" },
+  { link: "/patterns", name: "Layout" }
+];
 type ComponentPropsType = GoAAppFooterProps;
 type FooterNavPropsType = GoAFooterNavSectionProps;
 type CastingType = {
@@ -111,11 +115,7 @@ export default function AppFooterPage() {
 
   return (
     <>
-      <ComponentHeader
-        name={componentName}
-        category={componentCategory}
-        description={description}
-      />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">
