@@ -11,7 +11,7 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 const componentName = "Checkbox";
-const description = "Let the user select one or more options";
+const description = "Let the user select one or more options.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/dropdown", name: "Dropdown" },
