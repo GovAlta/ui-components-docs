@@ -12,6 +12,10 @@ import { GoABadge, GoATab, GoATabs, GoACalloutProps } from "@abgov/react-compone
 
 const componentName = "Temporary notification";
 const description = "A temporary notification showing a process started or completed.";
+const relatedComponents = [
+  { link: "/components/callout", name: "Callout" },
+  { link: "/components/notification-banner", name: "Notification banner" }
+];
 type ComponentPropsType = GoACalloutProps;
 type CastingType = {
   // add any required props here
@@ -52,6 +56,7 @@ export default function TEMPLATE_Page() {
         name={componentName}
         category={Category.FEEDBACK_AND_ALERTS}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>
