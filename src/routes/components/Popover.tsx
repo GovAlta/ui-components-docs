@@ -90,7 +90,13 @@ export default function PopoverPage() {
       <ComponentHeader
         name="Popover"
         category={Category.CONTENT_AND_LAYOUT}
-        description="Display additional information for an object in a compact way and without leaving the page."
+        description="A small overlay that opens on demand, used in other components."
+        relatedComponents={[
+        { link: "/components/dropdown", name: "Dropdown" },
+        { link: "/components/header", name: "Header" },
+        { link: "/components/tooltip", name: "Tooltip" },
+
+        ]}
       />
 
       <GoATabs>
