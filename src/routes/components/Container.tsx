@@ -23,7 +23,7 @@ const description = "Group information, create hierarchy, and show related infor
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/accordion", name: "Accordion" },
-  { link: "/components/details", name: "Detail" },
+  { link: "/components/details", name: "Details" },
   { link: "/components/divider", name: "Divider" }
 ];
 type ComponentPropsType = GoAContainerProps;
