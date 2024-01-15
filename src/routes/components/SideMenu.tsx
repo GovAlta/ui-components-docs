@@ -16,8 +16,12 @@ import { Sandbox } from "@components/sandbox";
 
 const componentName = "Side menu";
 const description =
-  "The side menu is a navigation component positioned on the left side of the screen.";
+  "A side navigation that helps the user navigate between pages.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/header", name: "Header" },
+  { link: "/patterns", name: "Layout" }
+];
 
 export default function SideMenuPage() {
   const sideMenuGroupProperties: ComponentProperty[] = [
@@ -55,6 +59,7 @@ export default function SideMenuPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>
