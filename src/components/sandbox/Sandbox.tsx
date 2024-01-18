@@ -196,7 +196,8 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
   const isValidGOAComponent = (el: ReactElement) =>
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
   const isAllowedInSandbox = (el: ReactElement) =>
-    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type);
+    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) || 
+    typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);;
   return children.filter(
     el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
   );
