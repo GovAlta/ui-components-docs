@@ -1,5 +1,6 @@
 import { GoABadge } from "@abgov/react-components";
 import "./ComponentHeader.css";
+import { Link } from "react-router-dom";
 
 
 interface Props {
@@ -29,7 +30,7 @@ export const ComponentHeader: React.FC<Props> = (props: Props) => {
           <span>Related components: </span>
           {props.relatedComponents.map((relatedComponent, index, array) => (
             <span key={index}>
-              <a href={relatedComponent.link}>{relatedComponent.name}</a>
+              <Link to={relatedComponent.link}>{relatedComponent.name}</Link>
               {index < array.length - 1 && ", "}
             </span>
           ))}

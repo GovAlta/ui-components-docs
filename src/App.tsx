@@ -44,6 +44,7 @@ import FormStepperPage from "@routes/components/FormStepper";
 import GridPage from "@routes/components/Grid";
 import HeroBannerPage from "@routes/components/HeroBanner";
 import IconsPage from "@routes/components/Icons";
+import IconButtonPage from '@routes/components/IconButton';
 import ListPage from "@routes/components/List";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
@@ -94,6 +95,7 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 import PatternsLayout from "@routes/patterns/PatternsLayout";
 import LayoutPage from "@routes/patterns/LayoutPage";
 
+
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
@@ -140,6 +142,7 @@ const router = createBrowserRouter(
         <Route path="grid" element={<GridPage />} />
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="icons" element={<IconsPage />} />
+        <Route path="icon-button" element={<IconButtonPage />} />
         <Route path="list" element={<ListPage />} />
         <Route path="microsite-header" element={<MicrositeHeaderPage />} />
         <Route path="modal" element={<ModalPage />} />
