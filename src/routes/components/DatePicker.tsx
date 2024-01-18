@@ -21,8 +21,12 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 const componentName = "Date picker";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  // { link: "/content/date-format", name: "Date format" },
+  { link: "/components/form-item", name: "Form item" }
+];
 const description =
-  "A date picker lets users select a date through a calendar without the need to manually type it in a field.";
+  "Lets users select a date through a calendar without the need to manually type it in a field.";
 type ComponentPropsType = GoADatePickerProps;
 type CastingType = {
   [key: string]: unknown;
@@ -82,7 +86,7 @@ export default function DatePickerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">

@@ -19,6 +19,12 @@ import {
 
 const componentName = "Tooltip";
 const description = "A small popover that displays more information about an item.";
+const relatedComponents = [
+  { link: "/components/details", name: "Details" },
+  { link: "/components/form-item", name: "Helper text" },
+  { link: "/components/icon-button", name: "Icon button" },
+  { link: "/components/popover", name: "Popover" }
+];
 type ComponentPropsType = GoATooltipProps;
 type CastingType = {
   content: string;
@@ -84,6 +90,7 @@ export default function TEMPLATE_Page() {
         name={componentName}
         category={Category.FEEDBACK_AND_ALERTS}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>

@@ -21,6 +21,11 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 const componentName = "Container";
 const description = "Group information, create hierarchy, and show related information.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/accordion", name: "Accordion" },
+  { link: "/components/details", name: "Details" },
+  { link: "/components/divider", name: "Divider" }
+];
 type ComponentPropsType = GoAContainerProps;
 type CastingType = {
   [key: string]: unknown;
@@ -96,7 +101,7 @@ export default function ContainerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading={"Code examples"}>

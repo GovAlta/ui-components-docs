@@ -24,8 +24,12 @@ import { resetScrollbars } from "../../utils/styling";
 // == Page props ==
 
 const componentName = "Modal";
-const description = "An overlay that appears in front of the main page content.";
+const description = "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/button-group", name: "Button group" },
+  { link: "/components/callout", name: "Callout" }
+];
 type ComponentPropsType = Omit<GoAModalProps, "open">;
 type CastingType = {
   // add any required props here
@@ -168,7 +172,7 @@ export default function TEMPLATE_Page() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">

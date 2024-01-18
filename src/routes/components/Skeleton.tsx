@@ -11,6 +11,9 @@ import { GoABadge, GoASkeleton, GoATab, GoATabs, GoASkeletonProps, SkeletonType 
 const componentName = "Skeleton loading";
 const description = "Provide visual feedback to users while loading a content heavy page or page element.";
 const category = Category.CONTENT_AND_LAYOUT;
+const relatedComponents = [
+  { link: "/components/progress-indicator", name: "Progress indicator" },
+];
 type ComponentPropsType = GoASkeletonProps;
 type CastingType = {
   type: SkeletonType;
@@ -96,7 +99,7 @@ export default function SkeletonPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">

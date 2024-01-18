@@ -59,6 +59,13 @@ export default function ButtonGroupPage() {
         description={
           "Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
         }
+        relatedComponents={[
+        { link: "/components/button", name: "Button" },
+        /* 
+        { link: "/components/icon-button", name: "Icon button" },
+        { link: "/components/link", name: "Link" }, 
+        */
+        ]}
       />
 
       <GoATabs>

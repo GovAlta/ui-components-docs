@@ -24,12 +24,6 @@ export default function AllComponentsPage() {
       description: "Group information, create hierarchy, and show related information.",
     },
     {
-      name: "date picker",
-      groups: ["inputs"],
-      description:
-        "A date picker lets users select a date through a calendar without the need to manually type it in a field.",
-    },
-    {
       name: "details",
       groups: ["content"],
       tags: [
@@ -63,7 +57,7 @@ export default function AllComponentsPage() {
       name: "list",
       groups: ["content"],
       tags: ["content layout"],
-      description: "Chunk information into short succinct ideas.",
+      description: "Organize information into brief and clear groups.",
     },
     {
       name: "popover",
@@ -101,7 +95,7 @@ export default function AllComponentsPage() {
         "modal dialog",
         "show more information",
       ],
-      description: "An overlay that appears in front of the main page content.",
+      description: "An overlay that appears in front of all other content, and requires a user to take an action before continuing.",
     },
     {
       name: "notification banner",
@@ -134,7 +128,7 @@ export default function AllComponentsPage() {
       name: "tooltip",
       groups: ["feedback"],
       tags: ["feedback and alerts"],
-      description: "Display more information in a popover when a user hovers over an element.",
+      description: "A small popover that displays more information about an item.",
     },
     {
       name: "button",
@@ -156,6 +150,12 @@ export default function AllComponentsPage() {
       description: "Let the user select one or more options.",
     },
     {
+      name: "date picker",
+      groups: ["inputs"],
+      description:
+        "Lets users select a date through a calendar without the need to manually type it in a field.",
+    },
+    {
       name: "dropdown",
       groups: ["inputs"],
       tags: ["inputs and actions", "select", "single select dropdown"],
@@ -165,7 +165,7 @@ export default function AllComponentsPage() {
       name: "file uploader",
       groups: ["inputs"],
       tags: ["drag and drop", "file upload", "inputs and actions", "uploader"],
-      description: "Help users select and upload a file from their computer.",
+      description: "Help users select and upload a file.",
     },
     {
       name: "icon button",
@@ -190,19 +190,33 @@ export default function AllComponentsPage() {
         "text box",
         "text input area",
       ],
-      description: "Let users enter and input text for multiple lines of information.",
+      description: "A multi-line field where users can input and edit text.",
     },
     {
       name: "text field",
       groups: ["inputs"],
       tags: ["inputs and actions", "text field", "text box"],
-      description: "Let users enter and input text for a single line of information.",
+      description: "A single-line field where users can input and edit text.",
     },
     {
       name: "footer",
       groups: ["structure"],
       tags: ["page footer", "structure and navigation"],
       description: "Provides information related your service at the bottom of every page.",
+    },
+    {
+      name: "form stepper",
+      groups: ["structure"],
+      tags: [
+        "form stepper",
+        "horizontal step navigation",
+        "process overview",
+        "progress indicator",
+        "steps",
+        "structure and navigation",
+        "wizard",
+      ],
+      description: "Provides a visual representation of a form through a series of steps.",
     },
     {
       name: "header",
@@ -220,7 +234,7 @@ export default function AllComponentsPage() {
         "structure and navigation",
         "top navigation",
       ],
-      description: "Used to help users find their way around a website or app.",
+      description: "Provide structure to help users find their way around the service.",
     },
     {
       name: "microsite header",
@@ -238,7 +252,7 @@ export default function AllComponentsPage() {
         "status bar",
         "structure and navigation",
       ],
-      description: "Communicate what stage the service is at and gather feedback on your service.",
+      description: "Communicate what stage the service is at, connect to Alberta.ca, and gather feedback on your service.",
     },
     {
       name: "pagination",
@@ -251,20 +265,6 @@ export default function AllComponentsPage() {
       groups: ["structure"],
       tags: ["secondary navigation", "side nav", "side bar", "structure and navigation"],
       description: "A side navigation that helps the user navigate between pages.",
-    },
-    {
-      name: "stepper",
-      groups: ["structure"],
-      tags: [
-        "form stepper",
-        "horizontal step navigation",
-        "process overview",
-        "progress indicator",
-        "steps",
-        "structure and navigation",
-        "wizard",
-      ],
-      description: "Provides a visual representation of a form through a series of steps.",
     },
     {
       name: "tabs",
@@ -298,14 +298,14 @@ export default function AllComponentsPage() {
       groups: ["utilities"],
       tags: ["utilities"],
       description:
-        "The grid helps to arrange a number of components into a responsive grid pattern.",
+        "Arrange a number of components into a responsive grid pattern.",
     },
     {
       name: "icon",
       groups: ["utilities"],
       tags: ["utilities"],
       description:
-        "Use simple, easy-to-understand, universal icons from the design system to help guide users.",
+        "A simple and universal graphic symbol representing an action, object, or concept to help guide the user.",
     },
     {
       name: "spacer",

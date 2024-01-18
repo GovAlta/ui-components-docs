@@ -18,8 +18,16 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 // == Page props ==
 const componentName = "Accordion";
 const description =
-  "Accordion containers enable multiple content sections to be displayed in a limited space and collapsed or expanded by the user. You can create hierarchy of information by hiding secondary content inside collapsed expand containers.";
+  "Let users show and hide sections of related content on a page.";
 const category = Category.CONTENT_AND_LAYOUT;
+const relatedComponents = [
+  {
+    link: "/components/details", name: "Details"
+  },
+  {
+    link: "/components/tabs", name: "Tabs"
+  },
+];
 type ComponentPropsType = GoAAccordionProps;
 type CastingType = {
   heading: string;
@@ -115,9 +123,10 @@ export default function AccordionPage() {
   }
 
   return (
+    
     <div className="accordion-page">
-      <ComponentHeader name={componentName} category={category} description={description} />
-
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>

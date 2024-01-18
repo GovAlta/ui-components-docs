@@ -18,6 +18,9 @@ import {
 const componentName = "Notification Banner";
 const description = "Display important page level information or notifications.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/callout", name: "Callout" },
+];
 type ComponentPropsType = {
   type: NotificationType;
   content?: string;
@@ -105,7 +108,7 @@ export default function NotificationBannerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">

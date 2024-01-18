@@ -109,7 +109,14 @@ export default function FormItemPage() {
       <ComponentHeader
         name="Form Item"
         category={Category.INPUTS_AND_ACTIONS}
-        description="A form item wraps an input control such as a text input, checkbox, or radio with a text label, requirement label, helper text, and error test."
+        description="Wraps an input control with a text label, requirement label, helper text, and error text."
+        relatedComponents={[
+        { link: "/components/checkbox", name: "Checkbox" },
+        { link: "/components/dropdown", name: "Dropdown" },
+        { link: "/components/Radio", name: "Radio" },
+        { link: "/components/text-area", name: "Text area" },
+        { link: "/components/text-field", name: "Text field" },
+        ]}
       />
 
       <GoATabs>

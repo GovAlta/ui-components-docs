@@ -20,6 +20,10 @@ import { resetScrollbars } from "../../utils/styling";
 const componentName = "Progress indicator";
 const description = "Provide visual feedback to users while loading.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/file-uploader", name: "File uploader" },
+  { link: "/components/skeleton-loader", name: "Skeleton loading" }
+];
 type ComponentPropsType = GoACircularProgressProps;
 type CastingType = {
   // add any required props here
@@ -113,7 +117,7 @@ export default function ProgressIndicatorPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>

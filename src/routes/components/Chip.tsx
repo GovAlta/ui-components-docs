@@ -13,6 +13,11 @@ import ICONS from "./icons.json";
 const componentName = "Chip";
 const description = "Allow the user to enter information, filter content, and make selections.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/badge", name: "Badge" },
+  { link: "/components/popover", name: "Popover" },
+  { link: "/components/Table", name: "Table" }
+];
 type ComponentPropsType = GoAChipProps;
 
 type CastingType = {
@@ -104,8 +109,7 @@ export default function ChipPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
-
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>

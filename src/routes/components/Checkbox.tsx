@@ -11,8 +11,13 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
 const componentName = "Checkbox";
-const description = "Let the user select one or more options";
+const description = "Let the user select one or more options.";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/form-item", name: "Form item" },
+  { link: "/components/radio", name: "Radio" }
+];
 type ComponentPropsType = GoACheckboxProps;
 type CastingType = {
   name: string;
@@ -102,7 +107,7 @@ export default function CheckboxPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <Sandbox
         properties={checkboxBindings}

@@ -85,6 +85,12 @@ export default function SpacerPage() {
         name="Spacer"
         category={Category.UTILITIES}
         description="Negative area between the components and the interface."
+        relatedComponents={[
+        { link: "/components/block", name: "Block" },
+        { link: "/components/divider", name: "Divider" },
+        { link: "/components/grid", name: "Grid" },
+        { link: "/patterns", name: "Layout" },
+        ]}
       />
 
       <GoATabs>

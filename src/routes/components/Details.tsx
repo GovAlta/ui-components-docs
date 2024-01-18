@@ -58,6 +58,10 @@ export default function DetailsPage() {
         name="Details"
         category={Category.CONTENT_AND_LAYOUT}
         description="Let users reveal more detailed information when they need it."
+        relatedComponents={[
+        { link: "/components/accordion", name: "Accordion" },
+        { link: "/components/form-item", name: "Form item" },
+        ]}
       />
 
       <GoATabs>

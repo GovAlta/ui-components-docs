@@ -116,6 +116,12 @@ export default function TablePage() {
         name="Table"
         category={Category.CONTENT_AND_LAYOUT}
         description="A set of structured data that is easy for a user to scan, examine, and compare."
+        relatedComponents={[
+        { link: "/components/button", name: "Button" },
+        { link: "/components/dropdown", name: "Dropdown" },
+        { link: "/components/pagination", name: "Pagination" },
+        { link: "/components/tabs", name: "Tabs" },
+        ]}
       />
       <GoATabs>
         <GoATab heading="Code examples">

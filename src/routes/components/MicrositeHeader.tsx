@@ -16,8 +16,11 @@ import { useState } from "react";
 
 const componentName = "Microsite header";
 const description =
-  "Use the microsite header to communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
+  "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/header", name: "Header" },
+];
 type ComponentPropsType = GoAHeaderProps;
 type CastingType = {
   // add any required props here
@@ -116,6 +119,7 @@ export default function MicrositeHeaderPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>

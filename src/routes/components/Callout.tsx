@@ -20,6 +20,9 @@ import {
 const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/Notification-banner", name: "Notification banner" },
+];
 type ComponentPropsType = GoACalloutProps;
 type CastingType = {
   type: GoACalloutType;
@@ -82,7 +85,7 @@ export default function CalloutPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
 
       <GoATabs>
         <GoATab heading="Code examples">

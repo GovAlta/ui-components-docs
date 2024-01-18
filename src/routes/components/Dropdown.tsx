@@ -21,6 +21,12 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 const componentName = "Dropdown";
 const description = "Present a list of options to the user to select from.";
 const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/checkbox", name: "Checkbox" },
+  { link: "/components/form-item", name: "Form item" },
+  { link: "/components/popover", name: "Popover" },
+  { link: "/components/radio", name: "Radio" },
+];
 type ComponentPropsType = GoADropdownProps;
 type CastingType = {
   name: string;
@@ -234,8 +240,7 @@ export default function DropdownPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
-
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
       <GoATabs>
         <GoATab heading="Code examples">
           <Sandbox

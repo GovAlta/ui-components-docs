@@ -19,10 +19,14 @@ import { useState } from "react";
 
 // == Page props ==
 
-const componentName = "App Footer";
+const componentName = "Footer";
 const description =
-  "The Footer helps users identify where they are and provides a quick, organized way to reach important sections of a website.";
+  "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/header", name: "Header" },
+  { link: "/patterns", name: "Layout" }
+];
 type ComponentPropsType = GoAAppFooterProps;
 type FooterNavPropsType = GoAFooterNavSectionProps;
 type CastingType = {
@@ -111,12 +115,12 @@ export default function AppFooterPage() {
 
   return (
     <>
-      <ComponentHeader
+       <ComponentHeader
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
-
       <GoATabs>
         <GoATab heading="Code examples">
           <h3>Basic Footer</h3>

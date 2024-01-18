@@ -17,8 +17,13 @@ import { useState } from "react";
 
 const componentName = "Header";
 const description =
-  "The header helps users identify where they are and provides a quick, organized way to reach important sections of a website.";
+  "Provide structure to help users find their way around the service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/footer", name: "Footer" },
+  { link: "/patterns", name: "Layout" },
+  { link: "/components/microsite-header", name: "Microsite header" }
+];
 type ComponentPropsType = GoAAppHeaderProps;
 type CastingType = {
   // add any required props here
@@ -80,6 +85,7 @@ export default function AppHeaderPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
       />
 
       <GoATabs>
