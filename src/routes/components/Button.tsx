@@ -175,7 +175,7 @@ export default function ButtonPage() {
           <h3 id="ask-address">Ask a user for an address</h3>
           <Sandbox flags={["reactive"]}>
             
-            <GoABlock gap={"xl"} direction={"column"}>
+            <GoABlock gap={"l"} direction={"column"}>
               <GoAFormItem label="Street Address">
                 <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
@@ -220,8 +220,7 @@ export default function ButtonPage() {
           </Sandbox>
           <h3 id="confirm-action">Confirm a destructive action</h3>
           <Sandbox flags={["reactive"]}>
-            <GoAModal>
-              <h3>Are you sure you want to delete this record?</h3>
+            <GoAModal heading="Are you sure you want to delete this record?">
               <p>You cannot undo this action.</p>
 
               <GoAButtonGroup alignment="end" mt="l">
