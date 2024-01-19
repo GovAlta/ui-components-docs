@@ -3,13 +3,13 @@ import {GoABlock} from "@abgov/react-components";
 export default function SupportOverviewPage() {
   return (
     <>
-      <h1>Overview</h1>
+      <h1>Support</h1>
       <h3>
         Get support from the design system team using the component library, design and usage guidelines, design system best practices, and accessibility.
       </h3>
 
       <div className="max-width-72ch">
-        <h2>Support</h2>
+        <h2>Support channels</h2>
         <h3>Slack</h3>
         <p>
           <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">
