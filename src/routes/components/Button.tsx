@@ -176,7 +176,7 @@ export default function ButtonPage() {
           <Sandbox flags={["reactive"]}>
             
             <GoABlock gap={"xl"} direction={"column"}>
-              <GoAFormItem label="Street Address" width="100%">
+              <GoAFormItem label="Street Address">
                 <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
               <GoAFormItem label="Suite or unit #">
