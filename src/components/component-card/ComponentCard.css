@@ -1,6 +1,7 @@
 .card {
   border: 1px solid var(--goa-color-greyscale-200);
   border-radius: 4px;
+  overflow: hidden;
 }
 
 .card-image {
