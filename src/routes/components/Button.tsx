@@ -175,8 +175,8 @@ export default function ButtonPage() {
           <h3 id="ask-address">Ask a user for an address</h3>
           <Sandbox flags={["reactive"]}>
             
-            <GoABlock gap={"l"} direction={"column"}>
-              <GoAFormItem label="Street Address">
+            <GoABlock gap={"xl"} direction={"column"}>
+              <GoAFormItem label="Street Address" width="100%">
                 <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
               <GoAFormItem label="Suite or unit #">
@@ -187,7 +187,7 @@ export default function ButtonPage() {
               </GoAFormItem>
            
 
-            <GoABlock direction={"row"}>
+            <GoABlock gap={"xl"} direction={"row"}>
               <GoAFormItem label="Provice/territory">
                 <GoADropdown onChange={noop} name="province" value="alberta">
                   <GoADropdownItem label="Alberta" value="alberta" />
@@ -209,7 +209,7 @@ export default function ButtonPage() {
             </GoABlock>
           </GoABlock>
 
-            <GoAButtonGroup alignment="start" mt="l">
+            <GoAButtonGroup alignment="start" mt="2xl">
               <GoAButton type="primary" onClick={noop}>
                 Submit and continue
               </GoAButton>
