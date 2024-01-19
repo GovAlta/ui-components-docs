@@ -11,6 +11,7 @@
   background-position: center;
   border-bottom: 1px solid var(--goa-color-greyscale-200);
   background-color: #F8F8F8;
+  border-radius: 3px 3px 0px 0px;
 }
 
 .card-content {
