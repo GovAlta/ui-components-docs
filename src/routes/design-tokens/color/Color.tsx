@@ -115,11 +115,6 @@ export default function ColorPage() {
   return (
     <div className="colors-page">
       <h1>Color</h1>
-      <h3 className="introduction">
-        Our design system has a wide range of color design tokens to ensure brand consistency.
-        Tokens are semantically named to make it easier for easy application by both developers and
-        designers.
-      </h3>
       {isDesktop ? renderDesktop() : renderTablet()}
     </div>
   );
