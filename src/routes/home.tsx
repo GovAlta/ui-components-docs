@@ -29,7 +29,7 @@ const HomePage = () => {
               }}
               trailingIcon="arrow-forward"
             >
-              Get Started
+              Get started
             </GoAButton>
             <GoAButton onClick={() => {
               window.open("https://github.com/GovAlta/ui-components/releases", "_blank");
@@ -52,20 +52,22 @@ const HomePage = () => {
             title="Components"
             description="Reusable parts of the user interface for content layout, feedback, alerts, inputs, actions, structure, navigation, and other utilities."
             linkTo="/components"
-            linkDisplay="Browse Components"
+            linkDisplay="Browse components"
           />
           <CardLite
             title="Styles"
             description="Shared design decisions encapsulated in design tokens to use across design and development."
             linkTo="/design-tokens"
-            linkDisplay="Browse Styles"
+            linkDisplay="Browse styles"
           />
+           {/* removed until we have content docs up
           <CardLite
             title="Content"
             description="Guidelines on creating clear and simple communication of information for the user."
             linkTo="/content"
-            linkDisplay="Browse Content"
+            linkDisplay="Browse content"
           />
+          */}
         </GoAGrid>
 
         <GoADivider mb="2xl"></GoADivider>
