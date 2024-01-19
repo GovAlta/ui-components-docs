@@ -3,7 +3,7 @@ export default function RoadmapPage() {
     <>
       <h1>Roadmap</h1>
       <h3 className="introduction">
-        A high level summary of the work the design system team plans to complete in 2023. For more
+        A high level summary of the work the design system team plans to complete in 2024. For more
         information on the latest releases, visit the{" "}
         <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
           release notes
