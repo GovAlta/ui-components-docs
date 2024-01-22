@@ -80,7 +80,7 @@ export default function SupportedBrowsersPage() {
       </GoATable>
 
       <div className="max-width-72ch">
-        <GoAContainer type="non-interactive" mt="2xs">
+        <GoAContainer type="non-interactive" mt="2xl">
           <h3>Representative mobile OS used in testing</h3>
           <p>
             <strong>Android OS:</strong> 10+
