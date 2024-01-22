@@ -28,7 +28,7 @@ export default function SupportOverviewPage() {
         </p>
         <p>
           <a
-            href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Components-%7C-DDI?node-id=1101%3A7241"
+            href="https://goa-dio.slack.com/archives/C02BQQBKN66"
             target="_blank">
             #figma
           </a>{" "}
@@ -82,7 +82,7 @@ export default function SupportOverviewPage() {
           about sharing information, having a conversation, or asking a question. <br />
           <GoABlock mb="3xl">
             <a
-              href="https://www.figma.com/file/qWGWDvULAAZuVaDpXCRzqP/DS-Resource-Website?type=design&node-id=4967-609345&mode=dev"
+              href="https://github.com/GovAlta/ui-components/discussions"
               target="_blank">
               Start a discussion
             </a>

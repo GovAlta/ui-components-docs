@@ -67,16 +67,16 @@ export default function Root() {
               <Link to="/patterns">Patterns and templates</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Styles</Link>
-              <Link to="/content">Content</Link>
+              {/*Removed until content pages added <Link to="/content">Content</Link> */}
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
-              <Link to="/submit-an-issue">Submit an issue</Link>
+              <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
               <Link to="/support/drop-in-hours">Drop-in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
               <Link to="support/contribute">Contribute to the design system</Link>
-              <Link to="/leave-feedback">Give feedback</Link>
+              <Link to="https://forms.microsoft.com/pages/responsepage.aspx?id=Bhy1K5uvxUKL9Tw7exCFCy-G9FVGUGFMnXc6L30n_ANUM0dTOFg4UU01VVY2QzJPT0k1Qzg2RUJMUy4u" target="_blank">Give feedback</Link>
               <Link to="/support/release-notes">Release notes</Link>
             </GoAAppFooterMetaSection>
           </GoAAppFooter>
