@@ -141,12 +141,14 @@ export default function AppFooterPage() {
 
 
           {/* Examples*/}
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#footer-meta">Footer with meta info</a>
-            <a href="#footer-secondary-nav">Secondary navigation column section and meta section</a>
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-footer-meta">Footer with meta info</a>
+            <a href="#example-footer-secondary-nav">
+              Secondary navigation column section and meta section
+            </a>
           </GoABlock>
 
-          <h3 id="footer-meta">Footer with meta info</h3>
+          <h3 id="example-footer-meta">Footer with meta info</h3>
           <Sandbox fullWidth>
             <GoAAppFooter {...appFooterProps}>
               <GoAAppFooterMetaSection>
@@ -158,7 +160,7 @@ export default function AppFooterPage() {
             </GoAAppFooter>
           </Sandbox>
 
-          <h3 id="footer-secondary-nav">Secondary navigation column section and meta section</h3>
+          <h3 id="example-footer-secondary-nav">Secondary navigation column section and meta section</h3>
           <Sandbox properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
             <GoAAppFooter {...appFooterProps}>
               <GoAAppFooterNavSection {...appFooterNavProps}>

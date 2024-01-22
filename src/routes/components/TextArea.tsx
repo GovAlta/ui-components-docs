@@ -261,7 +261,7 @@ export default function TextAreaPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Examples*/}
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
             <a href="#example-1">Ask a question and give more information</a>
           </GoABlock>
 

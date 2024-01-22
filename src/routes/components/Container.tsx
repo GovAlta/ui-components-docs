@@ -101,7 +101,12 @@ export default function ContainerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <GoATabs>
         <GoATab heading={"Code examples"}>
@@ -116,22 +121,22 @@ export default function ContainerPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Container examples*/}
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#accent-bar-with-heading">Accent bar with heading</a>
-            <a href="#accent-bar-with-badge">Accent bar with badge</a>
-            <a href="#accent-bar-with-button">Accent bar with button</a>
-            <a href="#container-inside-container">Container with container inside</a>
-            <a href="#complex-container">Container with complex content</a>
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-accent-bar-with-heading">Accent bar with heading</a>
+            <a href="#example-accent-bar-with-badge">Accent bar with badge</a>
+            <a href="#example-accent-bar-with-button">Accent bar with button</a>
+            <a href="#example-container-inside-container">Container with container inside</a>
+            <a href="#example-complex-container">Container with complex content</a>
           </GoABlock>
 
-          <h3 id="accent-bar-with-heading">Accent bar with heading</h3>
+          <h3 id="example-accent-bar-with-heading">Accent bar with heading</h3>
           <Sandbox fullWidth>
             <GoAContainer accent="thick" heading="Group Heading">
               Content
             </GoAContainer>
           </Sandbox>
 
-          <h3 id="accent-bar-with-badge">Accent bar with badge</h3>
+          <h3 id="example-accent-bar-with-badge">Accent bar with badge</h3>
           <Sandbox fullWidth skipRender>
             <CodeSnippet
               lang="typescript"
@@ -167,13 +172,12 @@ export default function ContainerPage() {
               type="non-interactive"
               accent="thick"
               heading="Group Heading"
-              actions={<GoABadge type="success" content="Badge Text" icon={true} />}
-            >
+              actions={<GoABadge type="success" content="Badge Text" icon={true} />}>
               Content
             </GoAContainer>
           </Sandbox>
 
-          <h3 id="accent-bar-with-button">Accent bar with button</h3>
+          <h3 id="example-accent-bar-with-button">Accent bar with button</h3>
           <Sandbox fullWidth skipRender>
             <CodeSnippet
               lang="typescript"
@@ -216,13 +220,12 @@ export default function ContainerPage() {
                 <GoAButton type="secondary" size="compact">
                   Edit
                 </GoAButton>
-              }
-            >
+              }>
               Content
             </GoAContainer>
           </Sandbox>
 
-          <h3 id="container-inside-container">Container with container inside</h3>
+          <h3 id="example-container-inside-container">Container with container inside</h3>
           <Sandbox fullWidth>
             <GoAContainer accent="thick">
               <h2>Heading</h2>
@@ -234,7 +237,7 @@ export default function ContainerPage() {
             </GoAContainer>
           </Sandbox>
 
-          <h3 id="complex-container">Container with complex content</h3>
+          <h3 id="example-complex-container">Container with complex content</h3>
           <Sandbox fullWidth>
             <GoAContainer>
               <h2>Heading</h2>
@@ -268,8 +271,7 @@ export default function ContainerPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }
-        >
+          }>
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

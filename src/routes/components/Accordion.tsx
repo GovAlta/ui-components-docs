@@ -1,10 +1,10 @@
 import {
   GoAAccordion,
   GoAAccordionProps,
-  GoABadge,
+  GoABadge, GoABlock,
   GoAButton,
   GoATab,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -140,13 +140,13 @@ export default function AccordionPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/* Examples*/}
-          <goa-block gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#accordion-group">
-              Accordion Group
-            </a>
-          </goa-block>
+            <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+              <a href="#example-accordion-group">
+                Accordion Group
+              </a>
+            </GoABlock>
 
-          <h3 id="accordion-group">
+          <h3 id="example-accordion-group">
             Accordion Group
           </h3>
           <Sandbox

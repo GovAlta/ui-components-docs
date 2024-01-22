@@ -187,14 +187,14 @@ export default function TEMPLATE_Page() {
 
           <ComponentProperties properties={componentProperties} />
 
-          <GoABlock direction="column" gap="xs" mt="2xl" mb="3xl">
-            <a href="#basic">Basic Modal</a>
-            <a href="#destructive">Destructive Modal</a>
-            <a href="#warning">Warning Modal</a>
-            <a href="#with-input">Modal with input</a>
+          <GoABlock direction="column" gap="s" mt="3xl" mb="3xl">
+            <a href="#example-basic">Basic Modal</a>
+            <a href="#example-destructive">Destructive Modal</a>
+            <a href="#example-warning">Warning Modal</a>
+            <a href="#example-with-input">Modal with input</a>
           </GoABlock>
 
-          <h3 id="basic">Basic Modal</h3>
+          <h3 id="example-basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Heading">
               <p>Content</p>
@@ -210,7 +210,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="destructive">Confirm a destructive action</h3>
+          <h3 id="example-destructive">Confirm a destructive action</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Are you sure you want to withdraw this assessment?">
               <p>This action cannot be undone.</p>
@@ -226,7 +226,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="warning">Warning callout modal</h3>
+          <h3 id="example-warning">Warning callout modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Complete submission prior to 1PM" variant="information">
               <p>
@@ -241,7 +241,7 @@ export default function TEMPLATE_Page() {
             </MockModal>
           </Sandbox>
 
-          <h3 id="with-input">Modal with input</h3>
+          <h3 id="example-with-input">Modal with input</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Why was this adjusted?">
               <GoAFormItem label="Reason for adjustment">
@@ -250,7 +250,6 @@ export default function TEMPLATE_Page() {
                   <GoADropdownItem value="Late submission" />
                   <GoADropdownItem value="It's Friday 🎉" />
                 </GoADropdown>
-
               </GoAFormItem>
 
               <GoAButtonGroup alignment="end" mt="l">

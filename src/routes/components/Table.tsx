@@ -117,15 +117,14 @@ export default function TablePage() {
         category={Category.CONTENT_AND_LAYOUT}
         description="A set of structured data that is easy for a user to scan, examine, and compare."
         relatedComponents={[
-        { link: "/components/button", name: "Button" },
-        { link: "/components/dropdown", name: "Dropdown" },
-        { link: "/components/pagination", name: "Pagination" },
-        { link: "/components/tabs", name: "Tabs" },
+          { link: "/components/button", name: "Button" },
+          { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/pagination", name: "Pagination" },
+          { link: "/components/tabs", name: "Tabs" },
         ]}
       />
       <GoATabs>
         <GoATab heading="Code examples">
-
           <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
             <GoATable {...tableProps}>
               <thead>
@@ -183,41 +182,42 @@ export default function TablePage() {
 
           <ComponentProperties properties={componentProperties} />
 
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#sortable-columns">Sortable columns</a>
-            <a href="#number-column">Number columns</a>
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-sortable-columns">Sortable columns</a>
+            <a href="#example-number-column">Number columns</a>
           </GoABlock>
 
-          <h3 id="sortable-columns">Sortable columns</h3>
-          <GoAContainer>
-            <GoATable onSort={sortData} width="100%">
-              <thead>
-                <tr>
-                  <th>
-                    <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
-                  </th>
-                  <th>
-                    <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
-                  </th>
-                  <th>
-                    <GoATableSortHeader name="age" direction="asc">
-                      Age
-                    </GoATableSortHeader>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map(user => (
-                  <tr key={user.firstName}>
-                    <td>{user.firstName}</td>
-                    <td>{user.lastName}</td>
-                    <td>{user.age}</td>
+          <h3 id="example-sortable-columns">Sortable columns</h3>
+          <GoAContainer mt="m" mb="none">
+            <div style={{ padding: "40px"}}>
+              <GoATable onSort={sortData} width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
+                    </th>
+                    <th>
+                      <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
+                    </th>
+                    <th>
+                      <GoATableSortHeader name="age" direction="asc">
+                        Age
+                      </GoATableSortHeader>
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </GoATable>
+                </thead>
+                <tbody>
+                  {users.map(user => (
+                    <tr key={user.firstName}>
+                      <td>{user.firstName}</td>
+                      <td>{user.lastName}</td>
+                      <td>{user.age}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </GoATable>
+            </div>
           </GoAContainer>
-
           {language === "react" && (
             <CodeSnippet
               lang="typescript"
@@ -372,7 +372,7 @@ export default function TablePage() {
             />
           )}
 
-          <h3 id="number-column">Number column</h3>
+          <h3 id="example-number-column">Number column</h3>
           <Sandbox fullWidth>
             <GoATable width="100%">
               <thead>
@@ -404,8 +404,7 @@ export default function TablePage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }
-        ></GoATab>
+          }></GoATab>
       </GoATabs>
     </>
   );

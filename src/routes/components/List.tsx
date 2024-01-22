@@ -133,11 +133,11 @@ export default function ListPage() {
             />
           )}
 
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#unordered-list">Unordered list</a>
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-unordered-list">Unordered list</a>
           </GoABlock>
 
-          <h3 id="unordered-list">Unordered list</h3>
+          <h3 id="example-unordered-list">Unordered list</h3>
           <GoAContainer>
             <ul className="goa-unordered-list">
               <li>Milk</li>
@@ -198,8 +198,7 @@ export default function ListPage() {
               Design guidelines
               <GoABadge type="information" content="In progress" />
             </>
-          }
-        >
+          }>
           <p>Coming Soon</p>
         </GoATab>
       </GoATabs>

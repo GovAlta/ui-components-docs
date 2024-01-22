@@ -83,19 +83,19 @@ export default function DetailsPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/* Examples*/}
-          <goa-block gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#show-more-information-for-basic-question">
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-show-more-information-for-basic-question">
               Show more information for a basic question
             </a>
-            <a href="#additional-information-help">
+            <a href="#example-additional-information-help">
               Additional information to help a user understand and answer a question
             </a>
-            <a href="#direct-deposit-information">
+            <a href="#example-direct-deposit-information">
               Show more information to help a user fill out direct deposit information
             </a>
-          </goa-block>
+          </GoABlock>
 
-          <h3 id="show-more-information-for-basic-question">
+          <h3 id="example-show-more-information-for-basic-question">
             Show more information for a basic question
           </h3>
           <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
@@ -114,7 +114,7 @@ export default function DetailsPage() {
             </GoADetails>
           </Sandbox>
 
-          <h3 id="additional-information-help">
+          <h3 id="example-additional-information-help">
             Additional information to help a user understand and answer a question
           </h3>
           <Sandbox flags={["reactive"]} fullWidth>
@@ -153,7 +153,7 @@ export default function DetailsPage() {
             </GoADetails>
           </Sandbox>
 
-          <h3 id="#direct-deposit-information">
+          <h3 id="example-direct-deposit-information">
             Show more information to help a user fill out direct deposit information
           </h3>
           <Sandbox flags={["reactive"]} fullWidth>
