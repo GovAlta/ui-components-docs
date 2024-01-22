@@ -7,10 +7,11 @@ import { renderToString } from "react-dom/server";
 import hljs from "highlight.js/lib/core";
 import typescript from "highlight.js/lib/languages/typescript";
 import html from "highlight.js/lib/languages/xml";
+import css from "highlight.js/lib/languages/css";
 
 import "highlight.js/styles/github.css";
 
-type Language = "typescript" | "javascript" | "tsx" | "jsx" | "html" | string;
+type Language = "typescript" | "javascript" | "tsx" | "jsx" | "html" | "css" | string;
 
 interface Props {
   lang: Language;
@@ -81,6 +82,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   useEffect(() => {
     hljs.registerLanguage("typescript", typescript);
     hljs.registerLanguage("html", html);
+    hljs.registerLanguage("css", css);
   }, []);
 
   useEffect(() => {

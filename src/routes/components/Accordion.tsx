@@ -1,8 +1,7 @@
 import {
   GoAAccordion,
   GoAAccordionProps,
-  GoABadge, GoABlock,
-  GoAButton,
+  GoABadge,
   GoATab,
   GoATabs
 } from "@abgov/react-components";
@@ -13,7 +12,8 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useState } from "react";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
+import { GoAHeadingSize } from "@abgov/react-components/lib/accordion/accordion";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -31,33 +31,36 @@ const relatedComponents = [
 type ComponentPropsType = GoAAccordionProps;
 type CastingType = {
   heading: string;
+  headingSize: GoAHeadingSize;
   children: React.ReactNode;
   [key: string]: unknown;
 };
 export default function AccordionPage() {
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Heading",
+    headingSize: "medium",
     children: <></>,
   });
 
   const [accordionBindings, setAccordionBindings] = useState<ComponentBinding[]>([
     {
+      label: "Heading Size",
+      type: "radio",
+      name: "headingSize",
+      options: ["small", "medium"],
+      value: "medium",
+    },
+    {
       label: "Heading",
       type: "string",
       name: "heading",
-      value: "Heading",
+      value: "Accordion heading",
     },
     {
       label: "Secondary Text",
       type: "string",
       name: "secondaryText",
-      value: "",
-    },
-    {
-      label: "Heading Size",
-      type: "list",
-      name: "headingSize",
-      options: ["", "small", "medium"],
+      requirement: "optional",
       value: "",
     },
 
@@ -115,7 +118,7 @@ export default function AccordionPage() {
       description: "Add components to the accordion container heading such as badges",
     },
   ];
-  const [open, setOpen] = useState<boolean>(false); // for accordion group
+
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setAccordionBindings(bindings);
@@ -136,97 +139,8 @@ export default function AccordionPage() {
               exercitation ullamco laboris nisi
             </GoAAccordion>
           </Sandbox>
-          {/*Accordion Table Properties*/}
           <ComponentProperties properties={componentProperties} />
-
-          {/* Examples*/}
-            <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-              <a href="#example-accordion-group">
-                Accordion Group
-              </a>
-            </GoABlock>
-
-          <h3 id="example-accordion-group">
-            Accordion Group
-          </h3>
-          <Sandbox
-            skipRender
-            fullWidth>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
-                export class SomeOtherComponent {
-                  open = false;
-                  onClick() {
-                    this.open = !this.open;
-                  }
-                }
-              `}
-            />
-
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
-                <goa-button type="tertiary" mb="xl" (_click)="onClick()">
-                  Toggle Accordion Group
-                </goa-button>
-                
-                <goa-accordion heading="Heading" [open]="open">
-                  Content 1
-                </goa-accordion>
-                <goa-accordion heading="Heading" [open]="open">
-                  <goa-badge type="success" content="Success" slot="headingcontent"></goa-badge>
-                   Content 2
-                </goa-accordion>
-                <goa-accordion heading="Heading" [open]="open">
-                  Content 3
-                </goa-accordion>
-              `}
-            />
-
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
-                const [open, setOpen] = useState<boolean>(false);
-                const onClick = () => setOpen(!open);
-                const headingContent = (<GoABadge type="success" content="Success" />);
-              `}
-            />
-
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
-                <GoAButton type="tertiary" mb="xl" onClick={onClick}>Toggle Accordion Group</GoAButton>
-                <GoAAccordion open={open} heading="Heading">Content 1</GoAAccordion>
-                <GoAAccordion open={open} heading="Heading" headingContent={headingContent}>Content 2</GoAAccordion>
-                <GoAAccordion open={open} heading="Heading">Content 3</GoAAccordion>
-              `}
-            />
-
-            <GoAButton type="tertiary" mb="xl" onClick={() => setOpen(!open)}>
-              Toggle Accordion Group
-            </GoAButton>
-            <GoAAccordion open={open} heading="Heading">
-              Content 1
-            </GoAAccordion>
-            <GoAAccordion
-              open={open}
-              heading="Heading"
-              headingContent={<GoABadge type="success" content="Success" />}>
-              Content 2
-            </GoAAccordion>
-            <GoAAccordion open={open} heading="Heading">
-              Content 3
-            </GoAAccordion>
-          </Sandbox>
+          <AccordionExamples/>
         </GoATab>
 
         <GoATab
