@@ -6,6 +6,8 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 
 export default function PopoverPage() {
   const [popoverProps, setPopoverProps] = useState({});
@@ -102,7 +104,49 @@ export default function PopoverPage() {
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Popover sandbox*/}
-          <Sandbox properties={popoverBindings} onChange={onSandboxChange}>
+          <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
+
+            {/*Angular*/}
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                <goa-popover ${propsToString(popoverProps, "angular")}>
+                  <p>This is a popover</p>
+                  It can be used for a number of different contexts.
+                  <div slot="target">
+                    <goa-button type="secondary" size="compact">Click me</goa-button>
+                  </div>
+                </goa-popover>
+              `}
+            />
+
+            {/*React*/}
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
+                const target = (
+                  <GoAButton type="secondary" size="compact">
+                    Click me
+                  </GoAButton>
+                );
+              `}
+            />
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
+                <GoAPopover target={target} ${propsToString(popoverProps, "react")}>
+                  <p>This is a popover</p>
+                  It can be used for a number of different contexts.
+                </GoAPopover>
+              `}
+            />
+
             <GoAPopover
               {...popoverProps}
               target={
