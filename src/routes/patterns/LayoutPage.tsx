@@ -12,7 +12,6 @@ import {
 } from "@abgov/react-components";
 import {Sandbox} from "@components/sandbox";
 import Browser from "@components/browser/Browser";
-import { Link } from "react-router-dom";
 
 export default function LayoutPage() {
   return (
@@ -30,7 +29,7 @@ export default function LayoutPage() {
               <section slot="header">
                 <GoAMicrositeHeader type="alpha" version="UAT" />
                 <GoAAppHeader url="/" heading="Design System">
-                  <Link to="/login">Sign in</Link>
+                  <a href="/login">Sign in</a>
                 </GoAAppHeader>
               </section>
               <GoAPageBlock width="704px">

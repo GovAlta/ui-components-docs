@@ -7,15 +7,11 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
-  GoABlock,
-  GoAButton,
-  GoACallout,
   GoAContainer, GoAContainerProps,
   GoATab,
-  GoATable,
   GoATabs
 } from "@abgov/react-components";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import ContainerExamples from "@examples/container/ContainerExamples.tsx";
 
 // == Page props ==
 const componentName = "Container";
@@ -45,18 +41,18 @@ export default function ContainerPage() {
     },
     {
       label: "Accent",
-      type: "list",
+      type: "radio",
       name: "accent",
-      options: ["", "thick", "thin", "filled"],
-      value: "",
+      options: ["thick", "thin", "filled"],
+      value: "filled",
       defaultValue: "filled",
     },
     {
       label: "Padding",
-      type: "list",
+      type: "radio",
       name: "padding",
-      options: ["", "relaxed", "compact"],
-      value: "",
+      options: ["relaxed", "compact"],
+      value: "relaxed",
       defaultValue: "relaxed",
     },
   ]);
@@ -119,150 +115,8 @@ export default function ContainerPage() {
 
           {/*Container Table Properties*/}
           <ComponentProperties properties={componentProperties} />
+          <ContainerExamples/>
 
-          {/*Container examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-accent-bar-with-heading">Accent bar with heading</a>
-            <a href="#example-accent-bar-with-badge">Accent bar with badge</a>
-            <a href="#example-accent-bar-with-button">Accent bar with button</a>
-            <a href="#example-container-inside-container">Container with container inside</a>
-            <a href="#example-complex-container">Container with complex content</a>
-          </GoABlock>
-
-          <h3 id="example-accent-bar-with-heading">Accent bar with heading</h3>
-          <Sandbox fullWidth>
-            <GoAContainer accent="thick" heading="Group Heading">
-              Content
-            </GoAContainer>
-          </Sandbox>
-
-          <h3 id="example-accent-bar-with-badge">Accent bar with badge</h3>
-          <Sandbox fullWidth skipRender>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
-                <goa-container type="non-interactive" accent="thick" heading="Group Heading">
-                  <div slot="actions">
-                    <goa-badge type="success" icon content="Badge Text"></goa-badge>
-                  </div>
-                  Content
-                </goa-container>
-              `}
-            />
-
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
-                <GoAContainer
-                  type="non-interactive"
-                  accent="thick"
-                  heading="Group Heading"
-                  actions={<GoABadge type="success" content="Badge Text" icon={true} />}
-                >
-                  Content
-                </GoAContainer>
-             `}
-            />
-
-            <GoAContainer
-              type="non-interactive"
-              accent="thick"
-              heading="Group Heading"
-              actions={<GoABadge type="success" content="Badge Text" icon={true} />}>
-              Content
-            </GoAContainer>
-          </Sandbox>
-
-          <h3 id="example-accent-bar-with-button">Accent bar with button</h3>
-          <Sandbox fullWidth skipRender>
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
-                <GoAContainer
-                  type="non-interactive"
-                  accent="thick"
-                  heading="Group Heading"
-                  actions={
-                    <GoAButton type="secondary" size="compact">
-                      Edit
-                    </GoAButton>
-                  }>
-                  Content
-                </GoAContainer>
-              `}
-            />
-
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
-                <goa-container type="non-interactive" accent="thick" heading="Group Heading">
-                   <div slot="actions">
-                    <goa-button type="secondary" size="compact">Assign to me</goa-button>
-                   </div>
-                   Content
-                </goa-container>
-              `}
-            />
-
-            <GoAContainer
-              type="non-interactive"
-              accent="thick"
-              heading="Group Heading"
-              actions={
-                <GoAButton type="secondary" size="compact">
-                  Edit
-                </GoAButton>
-              }>
-              Content
-            </GoAContainer>
-          </Sandbox>
-
-          <h3 id="example-container-inside-container">Container with container inside</h3>
-          <Sandbox fullWidth>
-            <GoAContainer accent="thick">
-              <h2>Heading</h2>
-              <p>Content</p>
-              <GoAContainer type="non-interactive">
-                <h2>Heading</h2>
-                <p>Content</p>
-              </GoAContainer>
-            </GoAContainer>
-          </Sandbox>
-
-          <h3 id="example-complex-container">Container with complex content</h3>
-          <Sandbox fullWidth>
-            <GoAContainer>
-              <h2>Heading</h2>
-              <GoATable width="100%">
-                <tbody>
-                  <tr>
-                    <td>Content</td>
-                    <td align="right">$2,110.00</td>
-                  </tr>
-                  <tr>
-                    <td>Content</td>
-                    <td align="right">$525.00</td>
-                  </tr>
-                  <tr>
-                    <td>Content</td>
-                    <td align="right">$275.00</td>
-                  </tr>
-                </tbody>
-              </GoATable>
-              <GoACallout type="important" mt="l">
-                Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint
-                consectetur cupidatat.
-              </GoACallout>
-            </GoAContainer>
-          </Sandbox>
         </GoATab>
 
         <GoATab
