@@ -6,7 +6,7 @@ export default function SupportedBrowsersPage() {
       <h1>Developers</h1>
       <h2>Supported browsers</h2>
       <h3 className="introduction">
-        The design system components are tested and supported on the following browsers and devices:
+        The design system components are tested on the following browsers and devices:
       </h3>
 
       <GoATable width="564px">
@@ -81,12 +81,6 @@ export default function SupportedBrowsersPage() {
 
       <div className="max-width-72ch">
         <GoAContainer type="non-interactive" mt="2xl">
-          <h3>Browser version support</h3>
-          The design system components support the two latest stable versions of each browser.
-          Latest version and Latest version -1
-        </GoAContainer>
-
-        <GoAContainer type="non-interactive" mt="2xs">
           <h3>Representative mobile OS used in testing</h3>
           <p>
             <strong>Android OS:</strong> 10+
