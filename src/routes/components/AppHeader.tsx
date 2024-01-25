@@ -3,8 +3,9 @@ import {
   GoAAppHeaderMenu,
   GoAAppHeaderProps,
   GoABadge,
+  GoABlock,
   GoATab,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -97,8 +98,12 @@ export default function AppHeaderPage() {
           {/*Component properties*/}
           <ComponentProperties properties={componentProperties} />
 
-          <h3>Header with navigation</h3>
+          {/*Examples*/}
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-header-navigation">Header with navigation</a>
+          </GoABlock>
 
+          <h3 id="example-header-navigation">Header with navigation</h3>
           <Sandbox fullWidth skipRender>
             <CodeSnippet
               lang="typescript"

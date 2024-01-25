@@ -108,9 +108,11 @@ export const Sandbox = (props: SandboxProps) => {
           properties={props.formItemProperties}
         />
       )}
-      <SandboxProperties properties={props.properties} onChange={onChange} />
+      {props.properties && props.properties.length > 0 && (
+        <SandboxProperties properties={props.properties} onChange={onChange} />
+      )}
       <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} />
-      <div className="sandbox-note">{props.note}</div>
+      {props.note && (<div className="sandbox-note">{props.note}</div>)}
     </>
   );
 };

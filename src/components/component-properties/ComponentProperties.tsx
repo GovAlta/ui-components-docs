@@ -34,7 +34,7 @@ export const ComponentProperties = (props: Props) => {
   }, [lang]);
 
   return (
-    <GoAAccordion heading={props.heading || "Component properties"} mt="xl">
+    <GoAAccordion heading={props.heading || "Component properties"} mt="l" mb="none">
       {filteredProperties.map((props, index) => (
         <ComponentProperty key={index} props={props} />
       ))}

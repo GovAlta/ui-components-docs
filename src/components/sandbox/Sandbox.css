@@ -3,9 +3,11 @@
 }
 
 .sandbox-render {
-  border: 1px solid #ccc;
-  padding: 2rem;
-  margin: 1rem 0;
+  border-radius: 4px;
+  border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
+  background: var(--goa-color-greyscale-white);
+  padding: var(--goa-space-3xl);
+  margin: var(--goa-space-xs) 0 0;
   display: flex;
   justify-content: space-around;
 }
@@ -18,7 +20,7 @@
   display: flex;
   gap: 1rem 2rem;
   flex-flow: wrap;
-  margin-bottom: 1.5rem;
+  margin-top: var(--goa-space-l);
 }
 
 .sandbox-render-centered {

@@ -65,6 +65,19 @@ export default function TEMPLATE_Page() {
 
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
+
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-1">
+                Example 1
+            </a>
+          </GoABlock>
+
+          <h3 id="example-1">
+            Example 1
+          </h3>
+          <Sandbox>
+            <GoABadge/>
+          </Sandbox>
         </GoATab>
         
         <GoATab

@@ -146,13 +146,15 @@ export default function FormStepperPage() {
           {/*Component properties table*/}
           <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
           <ComponentProperties heading="Step Properties" properties={formStepProperties} />
+
           {/* Examples*/}
-          <GoABlock gap="xs" direction="column" mt="2xl" mb="3xl">
-            <a href="#controlled-navigation">Controlled Navigation</a>
-            <a href="#step-status">Step status</a>
+          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
+            <a href="#example-controlled-navigation">Controlled Navigation</a>
+            <a href="#example-step-status">Step status</a>
           </GoABlock>
-          <h3 id="controlled-navigation">Controlled Navigation</h3>
-          <div>
+          {/*Example 1*/}
+          <h3 id="example-controlled-navigation">Controlled Navigation</h3>
+          <p>
             The user needs to partially or completely finish a step to be able to move forward to
             the next step. In this case:
             <ul>
@@ -164,7 +166,7 @@ export default function FormStepperPage() {
               </li>
             </ul>
             To use the controlled type you must set a step value ≥ 1
-          </div>
+          </p>
           <Sandbox fullWidth skipRender allow={["div"]}>
             <CodeSnippet
               lang="typescript"
@@ -278,7 +280,8 @@ export default function FormStepperPage() {
               </GoAButton>
             </div>
           </Sandbox>
-          <h3 id="step-status">Step status</h3>
+          {/*Example 2*/}
+          <h3 id="example-step-status">Step status</h3>
           The status of each step can be configured to either “complete” or “incomplete” using the
           status property.
           <Sandbox fullWidth skipRender allow={["div"]}>
