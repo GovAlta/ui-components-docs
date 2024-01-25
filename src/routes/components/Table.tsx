@@ -16,21 +16,28 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { GoATableProps } from "@abgov/react-components/lib/table/table";
 
 interface User {
   firstName: string;
   lastName: string;
   age: number;
 }
-
+type ComponentPropsType = GoATableProps;
+type CastingType = {
+  width: string;
+  [key: string]: unknown;
+}
 export default function TablePage() {
-  const [tableProps, setTableProps] = useState({});
+  const [tableProps, setTableProps] = useState<ComponentPropsType>({
+    width: "100%"
+  });
   const [tableBindings, setTableBindings] = useState<ComponentBinding[]>([
     {
       label: "Width",
       type: "string",
       name: "width",
-      value: "",
+      value: "100%",
     },
     {
       label: "Variant",
@@ -70,7 +77,7 @@ export default function TablePage() {
 
   function onSandboxChange(tableBindings: ComponentBinding[], props: Record<string, unknown>) {
     setTableBindings(tableBindings);
-    setTableProps(props);
+    setTableProps(props as CastingType);
   }
 
   // For table demo -- needs to do sort functionality

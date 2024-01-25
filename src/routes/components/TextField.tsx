@@ -403,7 +403,6 @@ export default function TextFieldPage() {
             formItemProperties={formItemBindings}
             onChange={onSandboxChange}
             onChangeFormItemBindings={onFormItemChange}
-            fullWidth
             flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"

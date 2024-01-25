@@ -95,7 +95,7 @@ export default function SpacerPage() {
 
       <GoATabs>
         <GoATab heading="Code examples">
-          <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange} fullWidth>
+          <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
             <GoABlock gap="none">
               <div style={styles}>
                 Item 1
@@ -111,7 +111,7 @@ export default function SpacerPage() {
             </GoABlock>
           </Sandbox>
 
-          <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange} fullWidth>
+          <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange}>
             <GoABlock direction="column" gap="none">
               <div style={styles}>
                 Item 1
