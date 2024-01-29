@@ -121,13 +121,6 @@ export default function SupportOverviewPage() {
         </p>
 
         <p>
-          <div className="ds-team-title">QA Automation Developer</div>
-          <span>
-            Radha Jupalli | <a href="mailto:radha.jupalli@gov.ab.ca">radha.jupalli@gov.ab.ca</a>
-          </span>
-        </p>
-
-        <p>
           <div className="ds-team-title">Service designer</div>
           <span>
             Ali Nicholls Asikinack |{" "}
