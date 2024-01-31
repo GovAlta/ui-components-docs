@@ -12,8 +12,8 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "alpha",
     "@abgov/web-components": "alpha",
+    "@abgov/react-components": "alpha",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "react": "^18.2.0",
@@ -21,6 +21,7 @@
     "react-router-dom": "^6.13.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.10",
     "@types/react": "^18.2.13",
     "@types/react-dom": "^18.2.6",
     "@types/react-router-dom": "^5.3.3",
