@@ -16,7 +16,7 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoATableProps } from "@abgov/react-components/lib/table/table";
+import { GoATableProps } from "@abgov/react-components";
 
 interface User {
   firstName: string;

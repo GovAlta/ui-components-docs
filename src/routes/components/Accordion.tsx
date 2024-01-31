@@ -13,7 +13,7 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
-import { GoAHeadingSize } from "@abgov/react-components/lib/accordion/accordion";
+import { GoAHeadingSize } from "@abgov/react-components";
 
 // == Page props ==
 const componentName = "Accordion";

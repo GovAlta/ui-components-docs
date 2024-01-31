@@ -99,7 +99,9 @@ export default function TextAreaPage() {
       type: "number",
     },
   ]);
+
   const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic"});
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -213,7 +215,8 @@ export default function TextAreaPage() {
             onChange={onSandboxChange}
             onChangeFormItemBindings={onFormItemChange}
             flags={["reactive"]}
-            fullWidth>
+            fullWidth
+          >
             <CodeSnippet
               lang="typescript"
               tags={["angular", "reactive"]}

@@ -27,6 +27,7 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" },
   { link: "/components/radio", name: "Radio" },
 ];
+
 type ComponentPropsType = GoADropdownProps;
 type CastingType = {
   name: string;
@@ -73,6 +74,7 @@ export default function DropdownPage() {
     { label: "Filterable", type: "boolean", name: "filterable", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
+
   const {formItemBindings, formItemProps, onFormItemChange} = useSandboxFormItem({label: "Basic dropdown"});
 
   const dropdownProperties: ComponentProperty[] = [
