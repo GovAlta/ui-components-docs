@@ -1,13 +1,15 @@
 import { ReactElement, ReactNode, useContext, useEffect, useState } from "react";
 
 import SandboxProperties from "./SandboxProperties";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding } from "./ComponentBinding";
 import { LanguageContext } from "./LanguageContext";
 import { ReactSerializer } from "./ReactSerializer";
 import { AngularSerializer } from "./AngularSerializer";
 import { AngularReactiveSerializer } from "./AngularReactiveSerializer";
 import ComponentSerializer from "./ComponentSerializer";
+
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { ResizablePanel } from "@components/resizable-panel/ResizablePanel";
 
 import "./Sandbox.css";
 import React from "react";
@@ -19,6 +21,7 @@ type Serializer = (el: any, properties: ComponentBinding[]) => string;
 interface SandboxProps {
   properties?: ComponentBinding[];
   formItemProperties?: ComponentBinding[];
+  resizable?: boolean;
   note?: string;
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
@@ -28,11 +31,6 @@ interface SandboxProps {
   allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
                         // additional elements to what is allowed to be rendered out
   children: ReactNode;
-}
-
-type SandboxViewProps = {
-  fullWidth?: boolean;
-  sandboxProps: SandboxProps;
 }
 
 export const Sandbox = (props: SandboxProps) => {
@@ -91,17 +89,28 @@ export const Sandbox = (props: SandboxProps) => {
     }, {});
   }
 
-  function SandboxView(props: SandboxViewProps): ReactElement {
-    return <div className="sandbox-render">
-      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-        <ComponentList type="goa" sandboxProps={props.sandboxProps} />
+  function SandboxView(props: SandboxProps): ReactElement {
+    if (props.resizable || typeof props.resizable === "undefined") {
+      return (
+        <ResizablePanel>
+          <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+            <ComponentList type="goa" sandboxProps={props} />
+          </div>
+        </ResizablePanel>
+      );
+    }
+    return (
+      <div className="sandbox-render">
+        <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+          <ComponentList type="goa" sandboxProps={props} />
+        </div>
       </div>
-    </div>
+    );
   }
 
   return (
     <>
-      <SandboxView fullWidth={props.fullWidth} sandboxProps={props} />
+      <SandboxView {...props} />
       {props.formItemProperties && props.formItemProperties.length > 0 && (
         <SandboxProperties
           onChange={onChangeFormItemBindings}
@@ -196,8 +205,10 @@ type ComponentListProps = {
 }
 function ComponentList(props: ComponentListProps): ReactElement[] {
   const children = React.Children.toArray(props.sandboxProps.children) as ReactElement[];
+
   const isValidGOAComponent = (el: ReactElement) =>
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
+
   const isAllowedInSandbox = (el: ReactElement) =>
     typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) || 
     typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);

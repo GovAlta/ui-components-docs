@@ -5,10 +5,12 @@ import {
   GoATab,
   GoATabs
 } from "@abgov/react-components";
+
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
+
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useState } from "react";
@@ -33,7 +35,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function AccordionPage() {  
+export default function AccordionPage() {
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Heading",
     headingSize: "medium",

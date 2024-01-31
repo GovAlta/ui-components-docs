@@ -28,6 +28,7 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" },
   { link: "/components/radio", name: "Radio" },
 ];
+
 type ComponentPropsType = GoADropdownProps;
 type CastingType = {
   name: string;

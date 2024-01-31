@@ -63,6 +63,7 @@ export default function ButtonPage() {
     },
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
   ]);
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
