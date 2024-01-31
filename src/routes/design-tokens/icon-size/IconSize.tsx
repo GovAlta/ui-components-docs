@@ -2,7 +2,7 @@ import { GoAContainer, GoAGrid, GoAIcon, GoATable } from "@abgov/react-component
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./IconSize.css";
 import { getTokenGroups } from "../getTokenGroups";
-import { IconSize } from "@abgov/react-components/lib/icon/icon";
+import type { IconSize } from "@abgov/react-components";
 import { Token } from "../token";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";

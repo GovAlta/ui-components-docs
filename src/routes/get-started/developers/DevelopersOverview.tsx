@@ -1,5 +1,6 @@
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { Link } from "react-router-dom";
+import { GoABlock } from "@abgov/react-components";
 
 export default function DevelopersOverviewPage() {
   return (
@@ -18,11 +19,11 @@ export default function DevelopersOverviewPage() {
       </p>
 
       <p>The design system consists of:</p>
-      <goa-block gap="xs" direction="column" mb="m">
+      <GoABlock gap="xs" direction="column" mb="m">
         <a href="#design-token-intro">Design tokens</a>
         <a href="#components-intro">Components</a>
         <a href="#product-templates-intro">Product templates</a>
-      </goa-block>
+      </GoABlock>
 
       <p>
         Designers also have access to the same resources in Figma. To begin with, they should

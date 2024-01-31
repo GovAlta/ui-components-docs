@@ -6,7 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
-import { Alignment } from "@abgov/react-components/common/styling";
+import { Alignment } from "@abgov/react-components";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
