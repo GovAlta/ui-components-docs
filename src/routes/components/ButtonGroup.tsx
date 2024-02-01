@@ -10,7 +10,7 @@ import { Alignment } from "@abgov/react-components/common/styling";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
-    alignment: "start" as Alignment,
+    alignment: "center" as Alignment,
   });
   const [buttonGroupBindings, setButtonGroupBindings] = useState<ComponentBinding[]>([
     {
@@ -18,7 +18,7 @@ export default function ButtonGroupPage() {
       type: "list",
       name: "alignment",
       options: ["start", "end", "center"],
-      value: "start",
+      value: "center",
     },
     {
       label: "Gap",

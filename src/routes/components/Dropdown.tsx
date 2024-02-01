@@ -248,7 +248,6 @@ export default function DropdownPage() {
             formItemProperties={formItemBindings}
             onChange={onSandboxChange}
             onChangeFormItemBindings={onFormItemChange}
-            fullWidth
             flags={["reactive"]}>
             <CodeSnippet
               lang="typescript"

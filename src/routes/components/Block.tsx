@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -35,6 +35,7 @@ export default function BlockPage() {
       defaultValue: "start",
     },
   ]);
+  const [sandboxFullWidth, setSandboxFullWidth] = useState<boolean>(false);
   const componentProperties: ComponentProperty[] = [
     {
       name: "gap",
@@ -55,6 +56,11 @@ export default function BlockPage() {
       defaultValue: "start",
     },
   ];
+
+  useEffect(() => {
+    const direction = blockBindings.find(binding => binding.name === "direction");
+    setSandboxFullWidth(direction?.value === "column");
+  }, [blockBindings]);
 
   function onSandboxChange(blockBindings: ComponentBinding[], props: Record<string, unknown>) {
     setBlockBindings(blockBindings);
@@ -78,7 +84,7 @@ export default function BlockPage() {
       <GoATabs>
         <GoATab heading="Code examples">
           {/*Block sandbox*/}
-          <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth>
+          <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
             <GoABlock {...blockProps}>
               <div
                 style={{
