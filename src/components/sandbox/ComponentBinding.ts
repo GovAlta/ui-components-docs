@@ -12,6 +12,7 @@ export type ComponentBinding =
 interface BaseBinding {
   name: string;
   label: string;
+  requirement?: string;
   dynamic?: boolean;
   hidden?: boolean;
 }

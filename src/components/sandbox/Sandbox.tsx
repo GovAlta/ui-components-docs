@@ -176,6 +176,7 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
   };
   const els = ComponentList({type: "codesnippet", sandboxProps: props.sandboxProps})
     .filter(el => {
+      if (el.props.lang === "css") return true;
       const componentTags: string[] =
         Array.isArray(el.props.tags)
           ? el.props.tags
@@ -199,7 +200,7 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
   const isAllowedInSandbox = (el: ReactElement) =>
     typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) || 
-    typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);;
+    typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);
   return children.filter(
     el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
   );

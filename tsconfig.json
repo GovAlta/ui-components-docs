@@ -36,6 +36,9 @@
       ],
       "@routes/*": [
         "./src/routes/*"
+      ],
+      "@examples/*": [
+        "./src/examples/*"
       ]
     }
   },

@@ -9,6 +9,7 @@ import {
   GoARadioItem,
 } from "@abgov/react-components";
 import { ComponentBinding } from "./ComponentBinding";
+import { GoAFormItemRequirement } from "@abgov/react-components/lib/form/form-item";
 
 interface Props {
   properties?: ComponentBinding[];
@@ -137,7 +138,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
   return (
     <div className="sandbox-container">
       {properties.map(p => (
-        <GoAFormItem key={p.name} label={p.label || ""}>
+        <GoAFormItem key={p.name} label={p.label || ""} requirement={p.requirement as GoAFormItemRequirement || null}>
           {renderProps(p)}
         </GoAFormItem>
       ))}

@@ -13,7 +13,7 @@ const ReactiveComponents = [
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section".split(
+    "div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dt dl dd".split(
       " "
     );
 
@@ -52,6 +52,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return this.#dynamicProp(name);
     }
     if (item === "") return "";
+    if (name === "className") name = "class";
     return `${name.toLowerCase()}="${item}"`;
   }
 

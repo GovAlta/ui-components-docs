@@ -23,8 +23,8 @@ import ReleaseNotesPage from '@routes/support/ReleaseNotes.tsx';
 
 import ComponentsPage from "@routes/components/Components";
 
-import AccordionPage from "@routes/components/Accordion.tsx";
 import AllComponentsPage from "@routes/components/AllComponents";
+import AccordionPage from "@routes/components/Accordion.tsx";
 import BadgePage from "@routes/components/Badge";
 import BlockPage from "@routes/components/Block";
 import ButtonGroupPage from "@routes/components/ButtonGroup";
@@ -94,7 +94,6 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 // Patterns Pages
 import PatternsLayout from "@routes/patterns/PatternsLayout";
 import LayoutPage from "@routes/patterns/LayoutPage";
-
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
