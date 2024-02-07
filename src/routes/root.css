@@ -34,12 +34,11 @@
  Individual Page content
 ==================*/
 .main {
-  margin: 0 4rem var(--goa-space-4xl);
-  padding: 0 1rem;
+  margin: 0 var(--goa-space-2xl) var(--goa-space-4xl) var(--goa-space-3xl);
   line-height: var(--goa-line-height-3);
   font-size: var(--goa-font-size-4);
   width: 100%;
-  max-width: 1206px;
+  max-width: 864px;
 }
 .box-container {
   border: 1px solid var(--goa-color-greyscale-200);
@@ -67,6 +66,53 @@ h4.heading {
 
 code {
   font: var(--goa-typography-number-m);
+}
+
+.toc {
+  align-self: flex-start;
+  position: sticky;
+  top: calc(var(--header-height, 60px) + var(--goa-space-l));
+  padding: var(--goa-space-l) var(--goa-space-xl) var(--goa-space-l) 0;
+  width: 224px;
+  overscroll-behavior: contain;
+
+  @media screen and (max-width: 864px) {
+    display: none;
+  }
+}
+.toc-item-h2, 
+.toc-item-h3 {
+  border-left : 1px solid var(--goa-color-greyscale-200);
+  font: var(--goa-typography-body-s);
+  color: var(--goa-color-text-secondary);
+  padding-bottom: var(--goa-space-xs);
+  display: block;
+  text-decoration: none;
+}
+
+.toc-item-h2:visited, 
+.toc-item-h3:visited {
+  color: var(--goa-color-text-secondary);
+}
+
+.toc-item-h2:focus-visible, 
+.toc-item-h3:focus-visible {
+  outline: var(--goa-border-width-l) solid var(--goa-color-interactive-focus);
+}
+
+.toc-item-h2 {
+  padding-left: var(--goa-space-m)
+}
+
+.toc-item-h3 {
+  padding-left: var(--goa-space-xl)
+}
+
+.toc-item-h2.active-link,
+.toc-item-h3.active-link {
+  font: var(--goa-typography-heading-xs);
+  color: var(--goa-color-text-default);
+  border-left : 4px solid var(--goa-color-interactive-default);
 }
 
 /*Tablet*/

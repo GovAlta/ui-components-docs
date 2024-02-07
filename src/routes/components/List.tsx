@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoABlock, GoAContainer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoAContainer, GoATab, GoATabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageContext } from "@components/sandbox";
@@ -132,10 +132,7 @@ export default function ListPage() {
             `}
             />
           )}
-
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-unordered-list">Unordered list</a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
 
           <h3 id="example-unordered-list">Unordered list</h3>
           <GoAContainer>

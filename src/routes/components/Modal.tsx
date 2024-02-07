@@ -1,7 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoADropdown,
@@ -186,14 +185,8 @@ export default function TEMPLATE_Page() {
           </Sandbox>
 
           <ComponentProperties properties={componentProperties} />
-
-          <GoABlock direction="column" gap="s" mt="3xl" mb="3xl">
-            <a href="#example-basic">Basic Modal</a>
-            <a href="#example-destructive">Destructive Modal</a>
-            <a href="#example-warning">Warning Modal</a>
-            <a href="#example-with-input">Modal with input</a>
-          </GoABlock>
-
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
+          
           <h3 id="example-basic">Basic Modal</h3>
           <Sandbox flags={["reactive"]}>
             <MockModal heading="Heading">

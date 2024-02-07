@@ -380,16 +380,7 @@ export default function AllComponentsPage() {
 
       {mode === "list" && (
         <>
-          <GoAGrid minChildWidth={"30ch"} gap="xs" mt="2xl" mb="3xl">
-            <a href="#content">Content layout</a>
-            <a href="#feedback">Feedback and alerts</a>
-            <a href="#structure">Structure and navigation</a>
-            <a href="#inputs">Inputs and actions</a>
-            <a href="#utilities">Utilities</a>
-          </GoAGrid>
-
-          <a id="content" />
-          <h2>Content layout</h2>
+          <h2 id="content">Content layout</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("content")}
           </GoAGrid>
@@ -397,8 +388,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="feedback" />
-          <h2>Feedback and alerts</h2>
+          <h2 id="feedback">Feedback and alerts</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("feedback")}
           </GoAGrid>
@@ -406,8 +396,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="inputs" />
-          <h2>Inputs and actions</h2>
+          <h2 id="inputs">Inputs and actions</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("inputs")}
           </GoAGrid>
@@ -415,8 +404,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="structure" />
-          <h2>Structure and navigation</h2>
+          <h2 id="structure">Structure and navigation</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("structure")}
           </GoAGrid>
@@ -424,8 +412,7 @@ export default function AllComponentsPage() {
             <a href="#top">Back to top</a>
           </div>
 
-          <a id="utilities" />
-          <h2>Utilities</h2>
+          <h2 id="utilities">Utilities</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("utilities")}
           </GoAGrid>

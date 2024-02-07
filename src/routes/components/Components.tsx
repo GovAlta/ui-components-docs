@@ -4,13 +4,26 @@ import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
 import { getCssVarValue } from "../../utils/styling";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
-
+import TOC, { HeaderThreshold } from "@components/table-of-contents/TOC";
+import { useTOC } from "@hooks/useTOC";
 export function Components() {
   const [language, setLanguage] = useState("");
-
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const { tocItems } = useTOC();
   useEffect(() => {
     const lang = localStorage.getItem("goa-docs-lang") || "react";
     setLanguage(lang);
+  }, []);
+
+  const getHeaderHeight = () => {
+    const componentHeader = document.querySelector(".component-header");
+    const componentHeight =
+      (componentHeader?.getBoundingClientRect()?.bottom || 0) + HeaderThreshold;
+    setHeaderHeight(componentHeight);
+  };
+
+  useEffect(() => {
+    getHeaderHeight();
   }, []);
 
   function onLanguageChange(_name: string, value: string[] | string) {
@@ -83,7 +96,9 @@ export function Components() {
 
             <ul style={{ marginLeft: "1.875rem" }}>
               <li>
-                <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
+                <a
+                  href="https://github.com/GovAlta/ui-components/issues/new/choose"
+                  target="_blank">
                   Propose a change or report a bug on Github
                 </a>
                 <span> - Read more about </span>
@@ -94,6 +109,11 @@ export function Components() {
             </ul>
           </div>
         </main>
+        <nav
+          className="toc"
+          style={{ "--header-height": `${headerHeight}px` } as React.CSSProperties}>
+          <TOC items={tocItems} />
+        </nav>
       </section>
     </LanguageContext.Provider>
   );

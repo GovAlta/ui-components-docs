@@ -5,7 +5,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoABlock, GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
+import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 
@@ -89,13 +89,7 @@ export default function IconsPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Icons example*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-alert-messaging">Alert and messaging</a>
-            <a href="#example-basic">Basic</a>
-            <a href="#example-direction">Direction</a>
-            <a href="#example-interaction">Interactions</a>
-            <a href="#example-accounts">Accounts</a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
 
           <h3 id="example-alert-messaging">Alert and messaging</h3>
           <GoAGrid minChildWidth="230px" gap="l">

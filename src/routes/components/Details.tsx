@@ -83,17 +83,7 @@ export default function DetailsPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-show-more-information-for-basic-question">
-              Show more information for a basic question
-            </a>
-            <a href="#example-additional-information-help">
-              Additional information to help a user understand and answer a question
-            </a>
-            <a href="#example-direct-deposit-information">
-              Show more information to help a user fill out direct deposit information
-            </a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
 
           <h3 id="example-show-more-information-for-basic-question">
             Show more information for a basic question

@@ -167,11 +167,8 @@ export default function ButtonPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Button Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-ask-address">Ask a user for an address</a>
-            <a href="#example-confirm-action">Confirm a destructive action</a>
-            <a href="#example-disabled-button">Disabled button in a form</a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
+          
 
           {/*Button Example 1*/}
           <h3 id="example-ask-address">Ask a user for an address</h3>

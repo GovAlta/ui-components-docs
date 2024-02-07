@@ -7,7 +7,6 @@ import {
   GoABadge,
   GoATab,
   GoATabs,
-  GoABlock,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -141,12 +140,7 @@ export default function AppFooterPage() {
 
 
           {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-footer-meta">Footer with meta info</a>
-            <a href="#example-footer-secondary-nav">
-              Secondary navigation column section and meta section
-            </a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
 
           <h3 id="example-footer-meta">Footer with meta info</h3>
           <Sandbox fullWidth>

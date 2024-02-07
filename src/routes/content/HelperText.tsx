@@ -42,16 +42,6 @@ export default function HelperTextPage() {
           </GoAFormItem>
         </div>
       </GoAContainer>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"50ch"} gap="xs">
-        <a href="#considerations">Considerations</a>
-        <a href="#anatomy">Anatomy</a>
-        <a href="#language-and-tone">Language and tone</a>
-        <a href="#usage">Usage</a>
-        <a href="#formatting">Formatting</a>
-        <a href="#accessibility">Accessibility</a>
-      </GoAGrid>
-
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="considerations">Considerations</h2>
       <p>Consider the following ways to convey more information:</p>

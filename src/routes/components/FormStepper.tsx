@@ -1,6 +1,5 @@
 import {
   GoABadge,
-  GoABlock,
   GoAButton,
   GoAFormStep,
   GoAFormStepStatusType,
@@ -148,10 +147,8 @@ export default function FormStepperPage() {
           <ComponentProperties heading="Step Properties" properties={formStepProperties} />
 
           {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-controlled-navigation">Controlled Navigation</a>
-            <a href="#example-step-status">Step status</a>
-          </GoABlock>
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
+
           {/*Example 1*/}
           <h3 id="example-controlled-navigation">Controlled Navigation</h3>
           <p>

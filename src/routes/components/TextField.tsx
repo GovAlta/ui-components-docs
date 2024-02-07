@@ -451,17 +451,8 @@ export default function TextFieldPage() {
           <ComponentProperties properties={componentProperties} />
 
           {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-ask-user-for-an-address">Ask a user for an address</a>
-            <a href="#example-ask-user-for-birthday">Ask a user for their birthday</a>
-            <a href="#example-search">Search</a>
-            <a href="#example-phone">Phone number</a>
-            <a href="#example-ask-for-costs">Ask a user for dollar amounts or costs</a>
-            <a href="#example-registration-number">
-              Ask a user for their indian registration number
-            </a>
-          </GoABlock>
-
+          <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
+          
           <h3 id="example-ask-user-for-an-address">Ask a user for an address </h3>
           <Sandbox flags={["reactive"]}>
             <GoAFormItem label="Street Address">

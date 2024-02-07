@@ -1,4 +1,4 @@
-import { GoAAccordion, GoABadge, GoABlock, GoAButton } from "@abgov/react-components";
+import { GoAAccordion, GoABadge, GoAButton } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import "./accordion-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -8,11 +8,7 @@ export default function AccordionExamples() {
   const [open, setOpen] = useState<boolean>(false); // for accordion group
   return (
     <>
-      <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-        <a href="#example-expand-collapse-form">Expand or collapse part of a form</a>
-        <a href="#example-faq">Hide and show many sections of information (FAQ)</a>
-      </GoABlock>
-
+      <h2 id="examples" className="hidden" aria-hidden="true">Examples</h2>
       <h3 id="example-expand-collapse-form">Expand or collapse part of a form</h3>
       <Sandbox fullWidth skipRender allow={["h3"]}>
         <CodeSnippet

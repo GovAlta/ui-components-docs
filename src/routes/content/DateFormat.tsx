@@ -19,15 +19,6 @@ export default function DateFormatPage() {
           March 14, 2021
         </div>
       </GoAContainer>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"30ch"} gap="xs" mt="2xl" mb="3xl">
-        <a href="#conversational-long-form">Conversational and long-form</a>
-        <a href="#short-hand">Short-hand</a>
-        <a href="#day-of-the-week">Day of the week</a>
-        <a href="#time">Time</a>
-        <a href="#time-zones">Time zones</a>
-        <a href="#accessibility">Accessibility and Screen readers</a>
-      </GoAGrid>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="conversational-long-form">Conversational and long-form</h2>

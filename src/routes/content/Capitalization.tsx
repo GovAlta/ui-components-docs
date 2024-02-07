@@ -6,14 +6,6 @@ export default function CapitalizationPage() {
       <h1>Capitalization</h1>
       <h3>Use sentence case for all headings, labels, and content.</h3>
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"30ch"} gap="xs">
-        <a href="#sentence-case">Sentence case</a>
-        <a href="#title-case">Title case</a>
-        <a href="#capital-case">Capital case</a>
-        <a href="#references">References</a>
-      </GoAGrid>
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="sentence-case">Sentence case</h2>
       <p>
         Sentence case means everything is lowercase except for the first word in a label, phrase, or
