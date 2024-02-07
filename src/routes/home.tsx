@@ -60,14 +60,12 @@ const HomePage = () => {
             linkTo="/design-tokens"
             linkDisplay="Browse styles"
           />
-           {/* removed until we have content docs up
           <CardLite
             title="Content"
-            description="Guidelines on creating clear and simple communication of information for the user."
-            linkTo="/content"
-            linkDisplay="Browse content"
+            description="Use the design system styles within your service, shared across design and development."
+            linkTo="/content/capitalization"
+            linkDisplay="Browse Content"
           />
-          */}
         </GoAGrid>
 
         <GoADivider mb="2xl"></GoADivider>

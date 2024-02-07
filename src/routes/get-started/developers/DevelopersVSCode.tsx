@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function DevelopersVSCodePage() {
   return (
     <>
@@ -10,7 +12,7 @@ export default function DevelopersVSCodePage() {
 
       <h3>Design tokens autocomplete</h3>
       <p>
-        Get code autocomplete suggestions for the <a href="/design-tokens">goa design tokens.</a>
+        Get code autocomplete suggestions for the <Link to="/design-tokens">goa design tokens.</Link>
       </p>
       <ul>
         <li>Automatically works for CSS and Sass files</li>

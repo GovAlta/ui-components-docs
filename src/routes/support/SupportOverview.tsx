@@ -1,4 +1,5 @@
 import {GoABlock} from "@abgov/react-components";
+import { Link } from "react-router-dom";
 
 export default function SupportOverviewPage() {
   return (
@@ -42,7 +43,7 @@ export default function SupportOverviewPage() {
           For designers and developers to get feedback on their usage of the design system, propose new components or changes to existing components, ask any questions, and give feedback to the design system.
         </p>
         <GoABlock gap="m" mb="2xl">
-          <a href="/support/drop-in-hours">Learn more about Drop in hours</a>
+          <Link to="/support/drop-in-hours">Learn more about Drop in hours</Link>
           <a
             href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/"
             target="_blank">
@@ -68,7 +69,7 @@ export default function SupportOverviewPage() {
           implies that the contribution process has been followed, providing the design system team
           with actionable items to evaluate and prioritize.
           <GoABlock gap="m">
-            <a href="/support/contribute">Learn more about about the contribution process</a>
+            <Link to="/support/contribute">Learn more about about the contribution process</Link>
             <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
               Request a feature
             </a>

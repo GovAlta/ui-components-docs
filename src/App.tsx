@@ -94,6 +94,11 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 // Patterns Pages
 import PatternsLayout from "@routes/patterns/PatternsLayout";
 import LayoutPage from "@routes/patterns/LayoutPage";
+import ContentLayout from '@routes/content/ContentLayout';
+import CapitalizationPage from '@routes/content/Capitalization';
+import DateFormatPage from '@routes/content/DateFormat';
+import ErrorMessagesPage from '@routes/content/ErrorMessages';
+import HelperTextPage from '@routes/content/HelperText';
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -193,6 +198,15 @@ const router = createBrowserRouter(
           <Route index element={<QATestingOverviewPage />} />
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
+      </Route>
+
+      <Route path="content" element={<ContentLayout />}>
+        <Route path="capitalization">
+          <Route index element={<CapitalizationPage />} />
+        </Route>
+        <Route path="date-format" element={<DateFormatPage />} />
+        <Route path="error-messages" element={<ErrorMessagesPage />} />
+        <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>

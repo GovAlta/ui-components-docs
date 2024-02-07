@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export default function QATestingOverviewPage() {
   return (
@@ -17,9 +18,9 @@ export default function QATestingOverviewPage() {
           <li>Automated unit testing is run.</li>
           <li>
             The developed component is validated on all popular browsers leading to cross-browser testing.{" "}
-            <a href="/get-started/developers/browsers">
+            <Link to="/get-started/developers/browsers">
               View cross browser compatibility.
-            </a>
+            </Link>
           </li>
           <li>Manual accessibility testing of components using Axe accessibility testing tools.</li>
           <li>
