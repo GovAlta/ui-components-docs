@@ -91,7 +91,7 @@ export default function DevelopersSetupPage() {
         lang="typescript"
         tags="react"
         allowCopy={true}
-        code={`@import "abgov/web-components/index.css";`}
+        code={`@import "@abgov/web-components/index.css";`}
       />
 
       <GoADivider mt="2xl" mb="xl" />
@@ -128,7 +128,7 @@ export default function DevelopersSetupPage() {
         lang="typescript"
         tags="react"
         allowCopy={true}
-        code={`@import "abgov/web-components/index.css";`}
+        code={`@import "@abgov/web-components/index.css";`}
       />
 
       <GoADivider mt="2xl" mb="xl" />

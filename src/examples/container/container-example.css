@@ -1,0 +1,102 @@
+/*Example 1*/
+/*User information example*/
+.container-example-1--sub-header {
+    color: var(--goa-color-greyscale-700);
+    font: var(--goa-typography-body-m);
+}
+
+.container-example-1--header {
+    color: var(--goa-color-greyscale-700);
+    font-size: var(--goa-font-size-7);
+    font-weight: var(--goa-font-weight-bold);
+    line-height: var(--goa-line-height-4);
+    margin-bottom: var(--goa-space-s);
+}
+
+span.container-example-1--contact-label {
+    color: var(--goa-color-greyscale-700);
+    font: var(--goa-typography-heading-s);
+}
+
+span.container-example-1--contact-value {
+    color: var(--goa-color-greyscale-700);
+    font: var(--goa-typography-body-m);
+}
+
+/*Upcoming important due dates example*/
+.container-example-1 goa-table tbody.striped tr:nth-child(even) {
+    background-color: #F8F8F8;
+}
+.container-example-1 goa-table td.align-right {
+    text-align: right;
+}
+
+/*Example 2*/
+.container-example-2--container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+span.container-example-2--body-text {
+    font: var(--goa-typography-body-s);
+}
+
+.container-example-2--right-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 623px) {
+    .container-example-2--container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: stretch;
+    }
+    .container-example-2--right-content {
+        display:block;
+        margin-top: var(--goa-space-xs);
+    }
+}
+
+/*Example 3*/
+.container-example-3--container-title {
+    color: var(--goa-color-interactive-default);
+    font: var(--goa-typography-heading-m);
+    text-decoration-line: underline;
+    margin-top:0;
+    margin-bottom: var(--goa-space-m);
+}
+.container-example-3--container-content {
+   font: var(--goa-typography-body-m);
+}
+
+
+/*Example 4*/
+h3.container-example-4--h3 {
+    margin-bottom: var(--goa-space-m);
+}
+label.container-example-4--label {
+    font: var(--goa-typography-body-s);
+    color: var(--goa-color-text-secondary);
+}
+.container-example-4--container-content {
+    font: var(--goa-typography-body-m);
+}
+p.container-example-4--container-content {
+    margin-bottom: 0;
+}
+
+h5.container-example-4--h5 {
+    font: var(--goa-typography-body-m);
+    color: var(--goa-color-text-secondary);
+    margin-top: var(--goa-space-m);
+    margin-bottom: var(--goa-space-m);
+}
+
+h6.container-example-4--h6 {
+    font: var(--goa-typography-heading-s);
+    margin-top:0;
+    margin-bottom: 0;
+}
