@@ -123,13 +123,24 @@ export default function DevelopersSetupPage() {
         `}
       />
 
-      <h4>3. Import the web-component styles in the src/index.css file</h4>
+      <h4>4. Import the component libraries at the root of your app's (app.tsx or main.tsx)</h4>
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
+          import "@abgov/web-components";
+          import "@abgov/react-components";
+        `}
+      />
+
+      <h4>4. Import the web-component styles in the src/index.css file</h4>
       <CodeSnippet
         lang="typescript"
         tags="react"
         allowCopy={true}
         code={`@import "@abgov/web-components/index.css";`}
-      />
+      />    
 
       <GoADivider mt="2xl" mb="xl" />
 
