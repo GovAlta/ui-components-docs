@@ -91,55 +91,45 @@ export default function SupportOverviewPage() {
         </p>
 
         <h2>Design system team</h2>
-        <p>
-          <div className="ds-team-title">Product Owner</div>
-          <span>
-            Mark Elamatha | <a href="mailto:mark.elamatha@gov.ab.ca">mark.elamatha@gov.ab.ca</a>
-          </span>
-        </p>
+        <div className="ds-team-title">Product Owner</div>
+        <div className="ds-team">
+          Mark Elamatha | <a href="mailto:mark.elamatha@gov.ab.ca">mark.elamatha@gov.ab.ca</a>
+        </div>
 
-        <p>
-          <div className="ds-team-title">Digital architect and scrum master</div>
-          <span>
-            Dustin Nielsen | <a href="mailto:dustin.nielsen@gov.ab.ca">dustin.nielsen@gov.ab.ca</a>
-          </span>
-        </p>
+        <div className="ds-team-title">Digital architect and scrum master</div>
+        <div>
+          Dustin Nielsen | <a href="mailto:dustin.nielsen@gov.ab.ca">dustin.nielsen@gov.ab.ca</a>
+        </div>
 
-        <p>
-          <div className="ds-team-title">Developers</div>
-          <span>
-            Chris Olsen | <a href="mailto:chris.olsen@gov.ab.ca">chris.olsen@gov.ab.ca</a>
-          </span>
-          <br />
-          <span>
-            Amar Kothapalli |{" "}
-            <a href="mailto:Amarnath.Kothapalli@gov.ab.ca">amarnath.kothapalli@gov.ab.ca</a>
-          </span>
-          <br />
-          <span>
-            Vanessa Tran | <a href="mailto:vanessa.m.tran@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
-          </span>
-        </p>
+        <div className="ds-team-title">Developers</div>
+        <div>
+          Chris Olsen | <a href="mailto:chris.olsen@gov.ab.ca">chris.olsen@gov.ab.ca</a>
+        </div>
+        <div>
+          Vanessa Tran | <a href="mailto:vanessa.m.tran@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
+        </div>
 
-        <p>
-          <div className="ds-team-title">Service designer</div>
-          <span>
-            Ali Nicholls Asikinack |{" "}
-            <a href="mailto:ali.nicholls-asikinack@gov.ab.ca">ali.nicholls-asikinack@gov.ab.ca</a>
-          </span>
-        </p>
+        <div className="ds-team-title">Service designer</div>
+        <div>
+          Ali Nicholls Asikinack |{" "}
+          <a href="mailto:ali.nicholls-asikinack@gov.ab.ca">ali.nicholls-asikinack@gov.ab.ca</a>
+        </div>
 
-        <p>
-          <div className="ds-team-title">UX designers</div>
-          <span>
-            Thomas Jeffery | <a href="mailto:thomas.jeffery@gov.ab.ca">thomas.jeffery@gov.ab.ca</a>
-          </span>
-          <br />
-          <span>
-            Rianna Alizadeh |{" "}
-            <a href="mailto:rianna.alizadeh@gov.ab.ca">rianna.alizadeh@gov.ab.ca</a>
-          </span>
-        </p>
+        <div className="ds-team-title">UX designers</div>
+        <div>
+          Thomas Jeffery | <a href="mailto:thomas.jeffery@gov.ab.ca">thomas.jeffery@gov.ab.ca</a>
+        </div>
+        <div>
+          Rianna Alizadeh |{" "}
+          <a href="mailto:rianna.alizadeh@gov.ab.ca">rianna.alizadeh@gov.ab.ca</a>
+        </div>
+
+        <div className="ds-team-title">QA</div>
+        <div>
+          Ken Li |{" "}
+          <a href="mailto:ken.li@gov.ab.ca">ken.li@gov.ab.ca</a>
+        </div>
+        
       </div>
     </>
   );

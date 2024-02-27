@@ -1,14 +1,16 @@
-.support-overview-drop-in-hours-heading > span{
+.support-overview-drop-in-hours-heading>span {
   font-size: var(--goa-font-size-4);
   color: var(--goa-color-text-secondary);
 }
+
 .ds-team-title {
   font: var(--goa-typography-heading-m);
   margin-bottom: var(--goa-space-2xs);
+  margin-top: 1rem;
 }
 
 .contribute-page-content>ol>li,
-.contribute-page-content>ul>li{
+.contribute-page-content>ul>li {
   padding-bottom: var(--goa-space-l);
 }
 
@@ -21,4 +23,3 @@ br {
   content: "";
   margin-bottom: var(--goa-space-xs);
 }
-
