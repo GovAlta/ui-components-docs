@@ -72,7 +72,27 @@ export default function AppHeaderPage() {
       type: "string",
       description: "Maximum width of the content area",
       defaultValue: "100%",
+      lang: "react"
     },
+    {
+      name: "maxcontentwidth",
+      type: "string",
+      description: "Maximum width of the content area",
+      defaultValue: "100%",
+      lang: "angular"
+    },
+    {
+      name: "fullmenubreakpoint",
+      type: "string",
+      description: "Set the breakpoint for the full menu to display, ex: 1500px",
+      lang: "angular"
+    },
+    {
+      name: "fullMenuBreakpoint",
+      type: "string",
+      description: "Set the breakpoint for the full menu to display, ex: 1500px",
+      lang: "react"
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
