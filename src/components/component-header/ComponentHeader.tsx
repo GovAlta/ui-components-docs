@@ -21,7 +21,7 @@ export enum Category {
 export const ComponentHeader: React.FC<Props> = (props: Props) => {
   return (
     <div className="component-header">
-      <GoABadge type="information" content={props.category} />
+      {props.category && <GoABadge type="information" content={props.category} />}
       <h1>{props.name}</h1>
       <h2 id="component" className="hidden" aria-hidden="true">Component</h2>
       <h3 dangerouslySetInnerHTML={{__html: props.description || ''}}></h3>

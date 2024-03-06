@@ -2,6 +2,7 @@ import { GoABlock, GoAGrid, GoAInput } from "@abgov/react-components";
 import { ComponentCard, Props as ComponentProps } from "@components/component-card/ComponentCard";
 import { ReactNode, useState } from "react";
 import "./AllComponents.css";
+import { ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 
 export default function AllComponentsPage() {
   const cards: ComponentProps[] = [
@@ -359,12 +360,9 @@ export default function AllComponentsPage() {
   return (
     <>
       <a id="top" />
-      <h1>Components</h1>
-      <h3>
-        Components are reusable parts of the user interface that have been made to support a variety
-        of applications. You can use individual components in many different patterns and contexts.
-      </h3>
-
+      <ComponentHeader name={"Components"}
+      description="Components are reusable parts of the user interface that have been made to support a variety
+        of applications. You can use individual components in many different patterns and contexts."/>
       <GoABlock mt="xs" mb="xl">
         <GoAInput
           name="filter"

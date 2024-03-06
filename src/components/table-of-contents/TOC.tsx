@@ -1,5 +1,6 @@
 import { TOCItem } from "@hooks/useTOC";
 import { useEffect, useRef, useState } from "react";
+import throttle from "lodash/throttle";
 
 interface Props {
   items: TOCItem[];
@@ -87,12 +88,12 @@ export function TOC({ items }: Props) {
   }
 
   useEffect(() => {
+    const throttledDetectCurrentHeading = throttle(detectCurrentHeading, 100);
     detectCurrentHeading();
-    window.addEventListener("scroll", detectCurrentHeading);
-    return () => window.removeEventListener("scroll", detectCurrentHeading);
+    window.addEventListener("scroll", throttledDetectCurrentHeading);
+    return () => window.removeEventListener("scroll", throttledDetectCurrentHeading);
   }, []);
 
-  useEffect(() => detectCurrentHeading(), [items]);
   if (!items.length) {
     return null;
   }
