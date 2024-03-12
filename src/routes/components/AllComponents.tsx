@@ -193,7 +193,7 @@ export default function AllComponentsPage() {
       description: "A multi-line field where users can input and edit text.",
     },
     {
-      name: "text field",
+      name: "input",
       groups: ["inputs"],
       tags: ["inputs and actions", "text field", "text box"],
       description: "A single-line field where users can input and edit text.",

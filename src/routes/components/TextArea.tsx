@@ -28,7 +28,7 @@ const description = "A multi-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
-  { link: "/components/text-field", name: "Text field" }
+  { link: "/components/input", name: "Input" }
 ];
 type ComponentPropsType = GoATextAreaProps;
 type CastingType = {

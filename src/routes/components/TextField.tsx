@@ -22,7 +22,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 
 // == Page props ==
-const componentName = "Text field";
+const componentName = "Input";
 const description = "A single-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
