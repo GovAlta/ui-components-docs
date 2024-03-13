@@ -99,6 +99,7 @@ import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
 import ErrorMessagesPage from '@routes/content/ErrorMessages';
 import HelperTextPage from '@routes/content/HelperText';
+import ServiceStandardPage from "@routes/get-started/ServiceStandard.tsx";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -122,8 +123,7 @@ const router = createBrowserRouter(
       <Route
         path="components"
         element={<ComponentsPage />}
-        errorElement={<ComponentNotFoundPage />}
-      >
+        errorElement={<ComponentNotFoundPage />}>
         <Route index element={<AllComponentsPage />} />
         <Route path="accordion" element={<AccordionPage />} />
         <Route path="header" element={<AppHeaderPage />} />
@@ -136,7 +136,7 @@ const router = createBrowserRouter(
         <Route path="checkbox" element={<CheckboxPage />} />
         <Route path="chip" element={<ChipPage />} />
         <Route path="container" element={<ContainerPage />} />
-        <Route path="date-picker" element={<DatePickerPage/>} />
+        <Route path="date-picker" element={<DatePickerPage />} />
         <Route path="details" element={<DetailsPage />} />
         <Route path="divider" element={<DividerPage />} />
         <Route path="dropdown" element={<DropdownPage />} />
@@ -160,17 +160,16 @@ const router = createBrowserRouter(
         <Route path="spacer" element={<SpacerPage />} />
         <Route path="table" element={<TablePage />} />
         <Route path="tabs" element={<TabsPage />} />
-        <Route path="text-area" element={<TextAreaPage/>} />
+        <Route path="text-area" element={<TextAreaPage />} />
         <Route path="tooltip" element={<TooltipPage />} />
-        <Route path="text-field" element={<TextFieldPage/>} />
+        <Route path="text-field" element={<TextFieldPage />} />
         <Route path="*" element={<ComponentNotFoundPage />} />
       </Route>
 
       <Route
         path="design-tokens"
         element={<DesignTokens />}
-        errorElement={<ComponentNotFoundPage />}
-      >
+        errorElement={<ComponentNotFoundPage />}>
         <Route index element={<DesignTokensOverviewPage />} />
         <Route path="border-width" element={<BorderWidthPage />} />
         <Route path="border-radius" element={<BorderRadiusPage />} />
@@ -198,6 +197,7 @@ const router = createBrowserRouter(
           <Route index element={<QATestingOverviewPage />} />
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
+        <Route path="service-standard" element={<ServiceStandardPage />} />
       </Route>
 
       <Route path="content" element={<ContentLayout />}>
