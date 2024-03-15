@@ -38,7 +38,9 @@ As part of this strategy, resources are available for teams to conduct their own
         <p>
           Usability testing is our primary process to ensure we are delivering digital experiences that meet the needs and expectations of users as well as our digital experience guidelines.
         </p>
+        
         <p>Usability testing success will help ensure we design the right product and will be determined by our ability to:</p>
+        
         <ul>
           <li>
             recruit a diverse set of users who will experience the problem or benefit the design is looking to improve upon
@@ -55,9 +57,7 @@ As part of this strategy, resources are available for teams to conduct their own
         </ul>
 
         <p>
-         For more details on the process of usability testing, refer to our
-          <a href="#" target="_blank">
-            Usability field guide.
+         For more details on the process of usability testing, refer to our Usability field guide.
           </a>
         </p>
       </div>
