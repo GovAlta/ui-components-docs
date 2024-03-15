@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function ServiceStandardPage() {
   return (
     <>
@@ -10,9 +12,9 @@ export default function ServiceStandardPage() {
 
         <h2>The strategy</h2>
         <p>
-          The Digital Design and Delivery’s User Experience Team is beginning the process of establishing a broader User Experience Strategy for the Government of Alberta. This strategy will be focused on the experience delivered to the public and/or staff through design and development of digital products.
-As part of this strategy, resources are available for teams to conduct their own usability testing. The User Experience team is also available for consultation.
+        The Digital Design and Delivery’s User Experience Team is beginning the process of establishing a broader User Experience Strategy for the Government of Alberta. This strategy will be focused on the experience delivered to the public and/or staff through design and development of digital products. As part of this strategy, resources are available for teams to conduct their own usability testing. The User Experience team is also available for consultation.
         </p>
+        
         <h2>Digital experience guidelines</h2>
         <p>
         These guidelines apply to all digital products across government, regardless of delivery method or platform for both public and employee experiences.
@@ -40,15 +42,9 @@ As part of this strategy, resources are available for teams to conduct their own
         <p>Usability testing success will help ensure we design the right product and will be determined by our ability to:</p>
         
         <ul>
-          <li>
-            recruit a diverse set of users who will experience the problem or benefit the design is looking to improve upon
-          </li>
-          <li>
-            recruit users varying in physical and cognitive limitations, literacy level, or technical capability
-          </li>
-          <li>
-            include the users’ preferred choice of device during testing to understand the diversity of technology used to interact with government
-          </li>
+          <li>recruit a diverse set of users who will experience the problem or benefit the design is looking to improve upon</li>
+          <li>recruit users varying in physical and cognitive limitations, literacy level, or technical capability</li>
+          <li>include the users’ preferred choice of device during testing to understand the diversity of technology used to interact with government</li>
           <li>test continuously to understand changing needs and expectations as they arise</li>
           <li>ensure resource availability to act on test findings</li>
           <li>test entire process not just an application or task in isolation</li>
@@ -56,7 +52,6 @@ As part of this strategy, resources are available for teams to conduct their own
 
         <p>
          For more details on the process of usability testing, refer to our Usability field guide.
-          </a>
         </p>
       </div>
     </>
