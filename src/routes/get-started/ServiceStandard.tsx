@@ -55,11 +55,10 @@ As part of this strategy, resources are available for teams to conduct their own
         </ul>
 
         <p>
-         For more details on the process of usability testing, refer to our {" "}
+         For more details on the process of usability testing, refer to our
           <a href="#" target="_blank">
-            Usability field guide
-          </a>{" "}
-          .
+            Usability field guide.
+          </a>
         </p>
       </div>
     </>
