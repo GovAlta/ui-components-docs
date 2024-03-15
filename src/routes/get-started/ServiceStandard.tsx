@@ -20,13 +20,23 @@ export default function ServiceStandardPage() {
           As part of this strategy, resources are available for teams to conduct their own usability testing. 
           The User Experience team is also available for consultation.
         </p>
+        <h2>Digital experience guidelines</h2>
+        <p>
+          These guidelines apply to all digital products across government, regardless of delivery method or 
+          platform for both public and employee experiences.
+        </p>
+        <h3>How do these guidelines relate to other standards and practices?</h3>
+        <p>
+          When the Government of Alberta begins to redesign or create a new digital service, we employ Service 
+          Design principles and methodologies. The Alberta Digital Strategy contains the standards that govern 
+          these outcomes. Once a service becomes supported by a digital product (working software), the 
+          Experience Guidelines specify quality measures for these digital experiences.
+        </p>
+        <h3>Digital products are:</h3>
         <ol>
-          <li>Automated unit testing is run.</li>
+          <li><strong>Usable:</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
           <li>
-            The developed component is validated on all popular browsers leading to cross-browser testing.{" "}
-            <Link to="/get-started/developers/browsers">
-              View cross browser compatibility.
-            </Link>
+            The developed component is validated on all popular browsers leading to cross-browser testing.
           </li>
           <li>Manual accessibility testing of components using Axe accessibility testing tools.</li>
           <li>
