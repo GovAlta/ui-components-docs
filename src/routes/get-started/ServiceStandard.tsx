@@ -10,7 +10,16 @@ export default function ServiceStandardPage() {
       <div className="max-width-72ch">
 
         <h2>The strategy</h2>
-
+        <p>
+          The Digital Design and Delivery’s User Experience Team is beginning the process of establishing 
+          a broader User Experience Strategy for the Government of Alberta. This strategy will be focused 
+          on the experience delivered to the public and/or staff through design and development of digital 
+          products.
+        </p>
+        <p>
+          As part of this strategy, resources are available for teams to conduct their own usability testing. 
+          The User Experience team is also available for consultation.
+        </p>
         <ol>
           <li>Automated unit testing is run.</li>
           <li>
