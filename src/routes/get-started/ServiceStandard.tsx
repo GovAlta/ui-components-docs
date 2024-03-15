@@ -3,16 +3,14 @@ import { Link } from "react-router-dom";
 export default function ServiceStandardPage() {
   return (
     <>
-      <h1>User experience at the Government of Alberta</h1>
+      <h1>Service standards</h1>
       <h3 className="introduction">
-        The QA testing practice involves creating test cases based on user acceptance criteria,
-        conducting functional and cross-browser testing of components, and executing accessibility
-        validations using assistive technologies.
+        User experience at the Government of Alberta.
       </h3>
 
       <div className="max-width-72ch">
 
-        <h2>Definition of done for testing activities</h2>
+        <h2>The strategy</h2>
 
         <ol>
           <li>Automated unit testing is run.</li>
