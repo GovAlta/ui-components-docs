@@ -1,10 +1,7 @@
 export default function ServiceStandardPage() {
   return (
     <>
-      <h1>Service standards</h1>
-      <h3 className="introduction">
-        User experience at the Government of Alberta.
-      </h3>
+      <h1>User experience at the Government of Alberta</h1>
 
       <div className="max-width-72ch">
 
