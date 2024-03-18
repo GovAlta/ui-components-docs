@@ -19,7 +19,7 @@ export default function ServiceStandardPage() {
           As part of this strategy, resources are available for teams to conduct their own usability testing. 
           The User Experience team is also available for consultation.
         </p>
-        <GoASpacer vSpacing="l"></GoASpacer>
+    
         <h2>Digital experience guidelines</h2>
         <p>
           These guidelines apply to all digital products across government, regardless of delivery method or 
