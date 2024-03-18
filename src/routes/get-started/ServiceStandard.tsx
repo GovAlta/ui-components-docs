@@ -1,4 +1,4 @@
-export default function UserExperienceStandardsPage() {
+export default function ServiceStandardPage() {
   return (
     <>
       <h1>User experience standards</h1>
