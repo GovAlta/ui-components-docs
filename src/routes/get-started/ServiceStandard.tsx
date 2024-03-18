@@ -83,7 +83,7 @@ export default function ServiceStandardPage() {
         
         <h4>Digital products are usable.</h4>
         <p>Usability testing should focus on understanding user tasks and the efficiency in which users are able to perform actions and reach their goals.</p>
-        <p><Requirement: recruitment of a diverse set of users who will experience the problem or benefit the design is looking to improve. 
+        <p>Requirement: recruitment of a diverse set of users who will experience the problem or benefit the design is looking to improve. 
           Identification of high priority user tasks and the content required for them to complete their tasks.</p>
         
         <h4>Digital products are suitable.</h4>
@@ -95,7 +95,7 @@ export default function ServiceStandardPage() {
         <h4>Digital products are accessible.</h4>
         <p>Usability test participants should represent the diversity of users within the population the product is looking 
           to serve.</p>
-        <p> Requirement: recruitment of a diverse set of users varying in physical and cognitive limitations, 
+        <p>Requirement: recruitment of a diverse set of users varying in physical and cognitive limitations, 
           literacy level, or technical capability. Careful consideration has been placed on the diversity and inclusion of usability participants.</p>
         
         <h4>Digital products are comprehensible.</h4>
