@@ -81,7 +81,7 @@ export default function ServiceStandardPage() {
         <h3>User Experience Standards and Review</h3>
         <p>The UX Team has established a Heuristic Self-Evaluation for teams to reference as they begin their usability testing planning
           and implementation. This evaluation will be part of a User Experience Review process that the UX Team will be creating.</p>
-        <p>If you haven’t conducted a Heuristic Review before, please reach out to the UX Team for assistance.</p>
+        <p>If you haven’t conducted a Heuristic Review before, please reach out to the the director of UX - <a href="#" target="_blank">Sheldon Bauld</a> for assistance.</p>
         
         <h4>Digital products are usable.</h4>
         <p>Usability testing should focus on understanding user tasks and the efficiency in which users are able to perform actions and reach their goals.</p>
