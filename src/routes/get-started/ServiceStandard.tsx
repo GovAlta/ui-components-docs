@@ -33,24 +33,24 @@ export default function ServiceStandardPage() {
         </p>
         <h3>Digital products are:</h3>
         <ol>
-          <li><strong>Usable:</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
-          <li><strong>Suitable:</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be on par 
+          <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
+          <li><strong>Suitable:&nbsp;</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be on par 
             with outside modern digital products used in other aspects of users lives.</li>
-          <li><strong>Accessible:</strong>Digital products will be usable for the broadest range of users possible regardless of physical or 
+          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of users possible regardless of physical or 
             cognitive limitations, literacy level, or technical capability.</li>
-          <li><strong>Comprehensible:</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
+          <li><strong>Comprehensible:&nbsp;</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
             information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
-          <li><strong>Device-agnostic:</strong>Users should not be limited by the device they choose to use or the technology they have 
+          <li><strong>Device-agnostic:&nbsp;</strong>Users should not be limited by the device they choose to use or the technology they have 
             access to when interacting with government.</li>
-          <li><strong>Compliant:</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
+          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
             user expectations of safety and security must be understood and met with experiences that evoke a sense of trust.</li>
-          <li><strong>Lean:</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in 
+          <li><strong>Lean:&nbsp;</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in 
             a way that feels intuitive and can be operated without the need of outside help.</li>
-          <li><strong>Iterative:</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
+          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
             to ensure lasting effectiveness, efficiency, and usability.</li>
-          <li><strong>Connected:</strong>Digital products will be designed for integration into the broader eco-system of the government 
+          <li><strong>Connected:&nbsp;</strong>Digital products will be designed for integration into the broader eco-system of the government 
             reducing the need for new and separate destinations that fracture the experience.</li>
-          <li><strong>Responsive:</strong>Digital products will make available and clearly visible channels for technical support and 
+          <li><strong>Responsive:&nbsp;</strong>Digital products will make available and clearly visible channels for technical support and 
             allow users to submit feedback on product performance, bugs, or suggest improvements.</li>
         </ol>
         <h3>Meeting the guidelines through usability testing</h3>
@@ -70,10 +70,10 @@ export default function ServiceStandardPage() {
           <li>Test entire process not just an application or task in isolation</li>
         </ul>
         <p>
-          For more details on the process of usability testing, refer to our{" "}
+          For more details on the process of usability testing, refer to our
           <a href="#" target="_blank">
             Usability field guide.
-          </a>{" "}
+          </a>
         </p>
         
         <h3>User Experience Standards and Review</h3>
