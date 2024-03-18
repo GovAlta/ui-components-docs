@@ -2,7 +2,7 @@ export default function ServiceStandardPage() {
   return (
     <>
       <h1>Digital service standards</h1>
-      <h3>User experience standards for digital services at the Government of Alberta</h3>
+      <h3>User experience standards for digital services at the Government of Alberta.</h3>
 
       <div className="max-width-72ch">
 
