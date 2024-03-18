@@ -33,24 +33,24 @@ export default function ServiceStandardPage() {
         </p>
         <h3>Digital products are:</h3>
         <ol>
-          <li><strong>Usable:</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
-          <li><strong>Suitable:</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be on par 
+          <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
+          <li><strong>Suitable:&nbsp;</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be on par 
             with outside modern digital products used in other aspects of users lives.</li>
-          <li><strong>Accessible:</strong>Digital products will be usable for the broadest range of users possible regardless of physical or 
+          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of users possible regardless of physical or 
             cognitive limitations, literacy level, or technical capability.</li>
-          <li><strong>Comprehensible:</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
+          <li><strong>Comprehensible:&nbsp;</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
             information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
-          <li><strong>Device-agnostic:</strong>Users should not be limited by the device they choose to use or the technology they have 
+          <li><strong>Device-agnostic:&nbsp;</strong>Users should not be limited by the device they choose to use or the technology they have 
             access to when interacting with government.</li>
-          <li><strong>Compliant:</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
+          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
             user expectations of safety and security must be understood and met with experiences that evoke a sense of trust.</li>
-          <li><strong>Lean:</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in 
+          <li><strong>Lean:&nbsp;</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in 
             a way that feels intuitive and can be operated without the need of outside help.</li>
-          <li><strong>Iterative:</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
+          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
             to ensure lasting effectiveness, efficiency, and usability.</li>
-          <li><strong>Connected:</strong>Digital products will be designed for integration into the broader eco-system of the government 
+          <li><strong>Connected:&nbsp;</strong>Digital products will be designed for integration into the broader eco-system of the government 
             reducing the need for new and separate destinations that fracture the experience.</li>
-          <li><strong>Responsive:</strong>Digital products will make available and clearly visible channels for technical support and 
+          <li><strong>Responsive:&nbsp;</strong>Digital products will make available and clearly visible channels for technical support and 
             allow users to submit feedback on product performance, bugs, or suggest improvements.</li>
         </ol>
         <h3>Meeting the guidelines through usability testing</h3>
@@ -83,61 +83,61 @@ export default function ServiceStandardPage() {
         
         <h4>Digital products are usable.</h4>
         <p>Usability testing should focus on understanding user tasks and the efficiency in which users are able to perform actions and reach their goals.</p>
-        <p><strong>Requirement:</strong>recruitment of a diverse set of users who will experience the problem or benefit the design is looking to improve. 
+        <p><Requirement: recruitment of a diverse set of users who will experience the problem or benefit the design is looking to improve. 
           Identification of high priority user tasks and the content required for them to complete their tasks.</p>
         
         <h4>Digital products are suitable.</h4>
         <p>Usability testing should provide an understanding of how our digital product experiences deliver on user expectations 
           compared to other experiences users are familiar with.</p>
-        <p><strong>Requirement:</strong>Users can easily switch from one task to the next without confusion or frustration. 
+        <p>Requirement: Users can easily switch from one task to the next without confusion or frustration. 
           Prompt users to explain or compare similar and preferred digital experiences.</p>
         
         <h4>Digital products are accessible.</h4>
         <p>Usability test participants should represent the diversity of users within the population the product is looking 
           to serve.</p>
-        <p><strong>Requirement:</strong>recruitment of a diverse set of users varying in physical and cognitive limitations, 
+        <p> Requirement: recruitment of a diverse set of users varying in physical and cognitive limitations, 
           literacy level, or technical capability. Careful consideration has been placed on the diversity and inclusion of usability participants.</p>
         
         <h4>Digital products are comprehensible.</h4>
         <p>Usability testing should include validation that the language and information presented is appropriate to the user and that decisions, 
           tasks, processes, and outcomes are easily understood. Links to other useful and relevant content (for example, related pages, external 
           websites, or documents) are available and shown in context.</p>
-        <p><strong>Requirement:</strong>prompt users to explain terminology in their own words to validate comprehension on key processes Observing 
+        <p>Requirement: prompt users to explain terminology in their own words to validate comprehension on key processes Observing 
           facial and physical reactions help signal areas of confusion, concern or delight and should be probed for more feedback.</p>
         
         <h4>Digital products are device-agnostic.</h4>
         <p>Usability tests should include a range of devices and assistive technologies to ensure government services will perform in any 
           technology setting users choose to use.</p>
-        <p><strong>Requirement:</strong>test participants should use their preferred choice of technology during tests and usability research 
+        <p>Requirement: test participants should use their preferred choice of technology during tests and usability research 
           studies should include a range of devices.</p>
         
         <h4>Digital products are compliant.</h4>
         <p>Usability tests should validate that we understand user needs and preferences around appropriate levels of trust, credibility, 
           security, and privacy within our digital products.</p>
-        <p><strong>Requirement:</strong>prompt users to describe their feelings, perceptions, or concerns regarding trust, security, and privacy.</p>
+        <p>Requirement: prompt users to describe their feelings, perceptions, or concerns regarding trust, security, and privacy.</p>
         
         <h4>Digital products are lean.</h4>
         <p>Usability testing should be used to validate that enough features are available to meet user needs and that the experience does not 
           include feature bloat making interfaces harder to understand or navigate.</p>
-        <p><strong>Requirement:</strong>validate not just what features are needed but also what features are not. Features and functionality should 
+        <p>Requirement: validate not just what features are needed but also what features are not. Features and functionality should 
           only be developed when usability studies show users can easily complete their tasks using the proposed features and functionality.</p>
         
         <h4>Digital products are iterative.</h4>
         <p>Usability testing should be done frequently and aligned to major releases or change in functionality. User needs evolve over time and 
           continuous testing is required to ensure our experiences are keeping up with expectations.</p>
-        <p><strong>Requirement:</strong>continuous testing and resource availability to act on findings. Tasks are validated and easily actionable 
+        <p>Requirement: continuous testing and resource availability to act on findings. Tasks are validated and easily actionable 
           on updated designs.</p>
         
         <h4>Digital products are connected.</h4>
         <p>Usability testing should mirror the true end-to-end experience whenever possible so that we can ensure seamless experiences across channels. 
           Features and functionality should support users desired workflows identified in usability testing.</p>
-        <p><strong>Requirement:</strong>don’t just test the application, test the entire process. Workflows should be visualized with areas of 
+        <p>Requirement: don’t just test the application, test the entire process. Workflows should be visualized with areas of 
           friction and opportunity.</p>
         
         <h4>Digital products are responsive.</h4>
         <p>Usability testing should validate that appropriate support is available within an application to assist users when they need help 
           or want to provide feedback.</p>
-        <p><strong>Requirement:</strong>support mechanisms should be part of usability test tasks.</p>
+        <p>Requirement: support mechanisms should be part of usability test tasks.</p>
         
       </div>
     </>
