@@ -1,4 +1,3 @@
-import { GoADetail, GoACallout } from "@abgov/react-components";
 export default function ServiceStandardPage() {
   return (
     <>
@@ -92,10 +91,6 @@ export default function ServiceStandardPage() {
         <h4>Digital products are suitable.</h4>
         <p>Usability testing should provide an understanding of how our digital product experiences deliver on user expectations 
           compared to other experiences users are familiar with.</p>
-        <GoADetails heading="Requirement">
-        Users can easily switch from one task to the next without confusion or frustration. 
-          Prompt users to explain or compare similar and preferred digital experiences.
-      </GoADetails>
         <p>Requirement: Users can easily switch from one task to the next without confusion or frustration. 
           Prompt users to explain or compare similar and preferred digital experiences.</p>
         
