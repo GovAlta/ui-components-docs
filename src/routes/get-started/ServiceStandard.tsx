@@ -2,7 +2,7 @@ export default function ServiceStandardPage() {
   return (
     <>
       <h1>Service standards</h1>
-      <h3 className="introduction" style="margin-bottom: 1rem">
+      <h3 className="introduction">
         User experience at the Government of Alberta.
       </h3>
 
