@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function ServiceStandardPage() {
   return (
     <>
@@ -34,59 +35,111 @@ export default function ServiceStandardPage() {
         <h3>Digital products are:</h3>
         <ol>
           <li><strong>Usable:</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments</li>
-          <li>
-            The developed component is validated on all popular browsers leading to cross-browser testing.
-          </li>
-          <li>Manual accessibility testing of components using Axe accessibility testing tools.</li>
-          <li>
-            Defects observed are communicated to the development team by logging an issue or comment
-            in Github.
-          </li>
-          <li>
-            Once the development team fixes all the issues/defects raised, retesting will be
-            performed on the component to validate the fixes.
-          </li>
-          <li>The component undergoes a design review to ensure alignment to the design.</li>
-          <li>After QA signoff, the code is deployed to Alpha branch.</li>
+          <li><strong>Suitable:</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be on par 
+            with outside modern digital products used in other aspects of users lives.</li>
+          <li><strong>Accessible:</strong>Digital products will be usable for the broadest range of users possible regardless of physical or 
+            cognitive limitations, literacy level, or technical capability.</li>
+          <li><strong>Comprehensible:</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
+            information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
+          <li><strong>Device-agnostic:</strong>Users should not be limited by the device they choose to use or the technology they have 
+            access to when interacting with government.</li>
+          <li><strong>Compliant:</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
+            user expectations of safety and security must be understood and met with experiences that evoke a sense of trust.</li>
+          <li><strong>Lean:</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in 
+            a way that feels intuitive and can be operated without the need of outside help.</li>
+          <li><strong>Iterative:</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
+            to ensure lasting effectiveness, efficiency, and usability.</li>
+          <li><strong>Connected:</strong>Digital products will be designed for integration into the broader eco-system of the government 
+            reducing the need for new and separate destinations that fracture the experience.</li>
+          <li><strong>Responsive:</strong>Digital products will make available and clearly visible channels for technical support and 
+            allow users to submit feedback on product performance, bugs, or suggest improvements.</li>
         </ol>
-        <h2>Accessibility testing</h2>
+        <h3>Meeting the guidelines through usability testing</h3>
         <p>
-          To perform accessibility testing, NVDA and VoiceOver screen reader software are used to
-          navigate through the application, ensuring proper keyboard accessibility, accurate screen
-          reader feedback, and adherence to accessibility guidelines for elements such as focus
-          management, and semantic markup.
+          Usability testing is our primary process to ensure we are delivering digital experiences that meet the needs and expectations 
+          of users as well as our digital experience guidelines.
         </p>
-        <h3>We use following tools for accessibility testing:</h3>
+        <p>
+          Usability testing success will help ensure we design the right product and will be determined by our ability to:
+        </p>
         <ul>
-          <li>
-            <strong>NVDA (Windows):</strong> NVDA provides various features to test accessibility,
-            such as Keyboard navigation, Screen reader announcements, ARIA support. Apple VoiceOver
-            (Mac): Apple VoiceOver, the built-in screen reader for Mac and iOS devices, offers a
-            range of features to enhance accessibility such as Spoken Feedback, Navigation and
-            Gestures, Web Page Navigation, Multi-language Support.
-          </li>
-          <li>
-            <strong>Apple VoiceOver (Mac):</strong> Apple VoiceOver, the built-in screen reader for
-            Mac and iOS devices, offers a range of features to enhance accessibility such as Spoken
-            Feedback, Navigation and Gestures, Web Page Navigation, Multi-language Support.
-          </li>
+          <li>Recruit a diverse set of users who will experience the problem or benefit the design is looking to improve upon</li>
+          <li>Recruit users varying in physical and cognitive limitations, literacy level, or technical capability</li>
+          <li>Include the users’ preferred choice of device during testing to understand the diversity of technology used to interact with government</li>
+          <li>Test continuously to understand changing needs and expectations as they arise</li>
+          <li>Ensure resource availability to act on test findings</li>
+          <li>Test entire process not just an application or task in isolation</li>
         </ul>
         <p>
-          The design system team uses{" "}
-          <a href="https://www.lambdatest.com/" target="_blank">
-            Lambda Test
+          For more details on the process of usability testing, refer to our{" "}
+          <a href="#" target="_blank">
+            Usability field guide.
           </a>{" "}
-          which offers built-in accessibility testing features using NVDA for Windows and VoiceOver
-          for macOS, allowing to easily test the accessibility of our components.
         </p>
-        <p>
-          To see the latest updates, additions, changes, and improvements to our design system, view
-          our{" "}
-          <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
-            release notes on GitHub
-          </a>
-          .
-        </p>
+        
+        <h3>User Experience Standards and Review</h3>
+        <p>The UX Team has established a Heuristic Self-Evaluation for teams to reference as they begin their usability testing planning
+          and implementation. This evaluation will be part of a User Experience Review process that the UX Team will be creating.</p>
+        <p>If you haven’t conducted a Heuristic Review before, please reach out to the UX Team for assistance.</p>
+        
+        <h4>Digital products are usable.</h4>
+        <p>Usability testing should focus on understanding user tasks and the efficiency in which users are able to perform actions and reach their goals.</p>
+        <p><strong>Requirement:</strong>recruitment of a diverse set of users who will experience the problem or benefit the design is looking to improve. 
+          Identification of high priority user tasks and the content required for them to complete their tasks.</p>
+        
+        <h4>Digital products are suitable.</h4>
+        <p>Usability testing should provide an understanding of how our digital product experiences deliver on user expectations 
+          compared to other experiences users are familiar with.</p>
+        <p><strong>Requirement:</strong>Users can easily switch from one task to the next without confusion or frustration. 
+          Prompt users to explain or compare similar and preferred digital experiences.</p>
+        
+        <h4>Digital products are accessible.</h4>
+        <p>Usability test participants should represent the diversity of users within the population the product is looking 
+          to serve.</p>
+        <p><strong>Requirement:</strong>recruitment of a diverse set of users varying in physical and cognitive limitations, 
+          literacy level, or technical capability. Careful consideration has been placed on the diversity and inclusion of usability participants.</p>
+        
+        <h4>Digital products are comprehensible.</h4>
+        <p>Usability testing should include validation that the language and information presented is appropriate to the user and that decisions, 
+          tasks, processes, and outcomes are easily understood. Links to other useful and relevant content (for example, related pages, external 
+          websites, or documents) are available and shown in context.</p>
+        <p><strong>Requirement:</strong>prompt users to explain terminology in their own words to validate comprehension on key processes Observing 
+          facial and physical reactions help signal areas of confusion, concern or delight and should be probed for more feedback.</p>
+        
+        <h4>Digital products are device-agnostic.</h4>
+        <p>Usability tests should include a range of devices and assistive technologies to ensure government services will perform in any 
+          technology setting users choose to use.</p>
+        <p><strong>Requirement:</strong>test participants should use their preferred choice of technology during tests and usability research 
+          studies should include a range of devices.</p>
+        
+        <h4>Digital products are compliant.</h4>
+        <p>Usability tests should validate that we understand user needs and preferences around appropriate levels of trust, credibility, 
+          security, and privacy within our digital products.</p>
+        <p><strong>Requirement:</strong>prompt users to describe their feelings, perceptions, or concerns regarding trust, security, and privacy.</p>
+        
+        <h4>Digital products are lean.</h4>
+        <p>Usability testing should be used to validate that enough features are available to meet user needs and that the experience does not 
+          include feature bloat making interfaces harder to understand or navigate.</p>
+        <p><strong>Requirement:</strong>validate not just what features are needed but also what features are not. Features and functionality should 
+          only be developed when usability studies show users can easily complete their tasks using the proposed features and functionality.</p>
+        
+        <h4>Digital products are iterative.</h4>
+        <p>Usability testing should be done frequently and aligned to major releases or change in functionality. User needs evolve over time and 
+          continuous testing is required to ensure our experiences are keeping up with expectations.</p>
+        <p><strong>Requirement:</strong>continuous testing and resource availability to act on findings. Tasks are validated and easily actionable 
+          on updated designs.</p>
+        
+        <h4>Digital products are connected.</h4>
+        <p>Usability testing should mirror the true end-to-end experience whenever possible so that we can ensure seamless experiences across channels. 
+          Features and functionality should support users desired workflows identified in usability testing.</p>
+        <p><strong>Requirement:</strong>don’t just test the application, test the entire process. Workflows should be visualized with areas of 
+          friction and opportunity.</p>
+        
+        <h4>Digital products are responsive.</h4>
+        <p>Usability testing should validate that appropriate support is available within an application to assist users when they need help 
+          or want to provide feedback.</p>
+        <p><strong>Requirement:</strong>support mechanisms should be part of usability test tasks.</p>
+        
       </div>
     </>
   );
