@@ -108,7 +108,6 @@ export function TOC(props: TOCProps) {
       {items && items.map(({ title, tagName: element, id }) => {
         return <div key={id}>
           <a
-            key={id}
             className={`
               ${css[`toc-item-${element.toLowerCase()}`]}
               ${isActive(id) ? css["active"] : ""}

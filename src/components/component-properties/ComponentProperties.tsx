@@ -47,9 +47,11 @@ export const ComponentProperties = (props: Props) => {
         {props.heading || "Properties"}
       </h3>
       <GoAAccordion heading={props.heading || "Properties"} mt="l" mb="none">
-        {filteredProperties.map((props, index) => (
-          <ComponentProperty key={index} props={props} />
-        ))}
+        <div>
+          {filteredProperties.map((props, index) => (
+            <ComponentProperty key={index} props={props} />
+          ))}
+        </div>
       </GoAAccordion>
     </>
   );
