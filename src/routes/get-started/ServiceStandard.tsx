@@ -99,10 +99,6 @@ export default function ServiceStandardPage() {
         <h4>Digital products are accessible.</h4>
         <p>Usability test participants should represent the diversity of users within the population the product is looking 
           to serve.</p>
-        <GoADetails heading="Requirement"> 
-          Recruitment of a diverse set of users varying in physical and cognitive limitations, 
-          literacy level, or technical capability. Careful consideration has been placed on the diversity and inclusion of usability participants.
-        </GoADetails>
         <p>Requirement: recruitment of a diverse set of users varying in physical and cognitive limitations, 
           literacy level, or technical capability. Careful consideration has been placed on the diversity and inclusion of usability participants.</p>
         
