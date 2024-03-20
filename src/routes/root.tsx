@@ -44,7 +44,7 @@ export default function Root() {
             feedbackUrl="https://forms.microsoft.com/r/8Zp7zSJS6W"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />
-          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}>
+          <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"} fullMenuBreakpoint={1140}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns and templates</Link>
             <Link to="/components">Components</Link>
