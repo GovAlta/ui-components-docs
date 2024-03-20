@@ -13,6 +13,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Microsite header";
 const description =
@@ -122,26 +123,30 @@ export default function MicrositeHeaderPage() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
-            <GoAMicrositeHeader {...micrositeHeaderProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*Component properties table*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
+              <GoAMicrositeHeader {...micrositeHeaderProps} />
+            </Sandbox>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+            {/*Component properties table*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

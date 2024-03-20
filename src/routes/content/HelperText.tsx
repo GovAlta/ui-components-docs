@@ -10,10 +10,11 @@ import {
 } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
 import { Link } from "react-router-dom";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function HelperTextPage() {
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Helper text</h1>
       <h3>
         Helper text is additional context and guidance that is always visible below an input. The
@@ -42,16 +43,6 @@ export default function HelperTextPage() {
           </GoAFormItem>
         </div>
       </GoAContainer>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"50ch"} gap="xs">
-        <a href="#considerations">Considerations</a>
-        <a href="#anatomy">Anatomy</a>
-        <a href="#language-and-tone">Language and tone</a>
-        <a href="#usage">Usage</a>
-        <a href="#formatting">Formatting</a>
-        <a href="#accessibility">Accessibility</a>
-      </GoAGrid>
-
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="considerations">Considerations</h2>
       <p>Consider the following ways to convey more information:</p>
@@ -427,6 +418,6 @@ export default function HelperTextPage() {
           Aria described by Introduction to Accessibility
         </a>
       </p>
-    </>
+    </ComponentContent>
   );
 }

@@ -12,6 +12,7 @@ import {
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function HeroBannerPage() {
   const [heroBannerProps, setHeroBannerProps] = useState({
@@ -134,10 +135,10 @@ export default function HeroBannerPage() {
 
   function onSandboxChange(heroBannerBindings: ComponentBinding[], props: Record<string, unknown>) {
     setHeroBannerBindings(heroBannerBindings);
-    setHeroBannerProps(props as { heading: string; [key: string]: unknown });
+    setHeroBannerProps(props as { heading: string;[key: string]: unknown });
   }
 
-  function noop() {}
+  function noop() { }
 
   return (
     <>
@@ -147,24 +148,28 @@ export default function HeroBannerPage() {
         description="A visual band of text, including a background colour or image and a call to action."
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Hero Banner Sandbox*/}
-          <Sandbox properties={heroBannerBindings} onChange={onSandboxChange}>
-            <GoAHeroBanner {...heroBannerProps}>
-              Resources are available to help Alberta entrepreneurs and small businesses start, grow
-              and succeed.
-              <GoAHeroBannerActions>
-                <GoAButton type="start" onClick={noop}>
-                  Call to action
-                </GoAButton>
-              </GoAHeroBannerActions>
-            </GoAHeroBanner>
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
-      </GoATabs>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Hero Banner Sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={heroBannerBindings} onChange={onSandboxChange}>
+              <GoAHeroBanner {...heroBannerProps}>
+                Resources are available to help Alberta entrepreneurs and small businesses start, grow
+                and succeed.
+                <GoAHeroBannerActions>
+                  <GoAButton type="start" onClick={noop}>
+                    Call to action
+                  </GoAButton>
+                </GoAHeroBannerActions>
+              </GoAHeroBanner>
+            </Sandbox>
+
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

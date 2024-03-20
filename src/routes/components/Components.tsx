@@ -76,14 +76,15 @@ export function Components() {
 
           <SupportInfo />
 
-          {/*Improve text*/}
           <div style={{ marginTop: getCssVarValue("--goa-space-2xl") }}>
             <h2>Help improve this component</h2>
             <p>To help make sure that this page is useful, relevant, and up to date, you can:</p>
 
             <ul style={{ marginLeft: "1.875rem" }}>
               <li>
-                <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
+                <a
+                  href="https://github.com/GovAlta/ui-components/issues/new/choose"
+                  target="_blank">
                   Propose a change or report a bug on Github
                 </a>
                 <span> - Read more about </span>
@@ -94,6 +95,7 @@ export function Components() {
             </ul>
           </div>
         </main>
+
       </section>
     </LanguageContext.Provider>
   );

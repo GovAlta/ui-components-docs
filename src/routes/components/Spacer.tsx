@@ -6,6 +6,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function SpacerPage() {
   const [hSpacerProps, setHSpacerProps] = useState({});
@@ -86,50 +87,54 @@ export default function SpacerPage() {
         category={Category.UTILITIES}
         description="Negative area between the components and the interface."
         relatedComponents={[
-        { link: "/components/block", name: "Block" },
-        { link: "/components/divider", name: "Divider" },
-        { link: "/components/grid", name: "Grid" },
-        { link: "/patterns", name: "Layout" },
+          { link: "/components/block", name: "Block" },
+          { link: "/components/divider", name: "Divider" },
+          { link: "/components/grid", name: "Grid" },
+          { link: "/patterns", name: "Layout" },
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
-            <GoABlock gap="none">
-              <div style={styles}>
-                Item 1
-              </div>
-              <GoASpacer {...hSpacerProps} />
-              <div style={styles}>
-                Item 1
-              </div>
-              <GoASpacer {...hSpacerProps} />
-              <div style={styles}>
-                Item 1
-              </div>
-            </GoABlock>
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange}>
-            <GoABlock direction="column" gap="none">
-              <div style={styles}>
-                Item 1
-              </div>
-              <GoASpacer {...vSpacerProps} />
-              <div style={styles}>
-                Item 1
-              </div>
-              <GoASpacer {...vSpacerProps} />
-              <div style={styles}>
-                Item 1
-              </div>
-            </GoABlock>
-          </Sandbox>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
+              <GoABlock gap="none">
+                <div style={styles}>
+                  Item 1
+                </div>
+                <GoASpacer {...hSpacerProps} />
+                <div style={styles}>
+                  Item 1
+                </div>
+                <GoASpacer {...hSpacerProps} />
+                <div style={styles}>
+                  Item 1
+                </div>
+              </GoABlock>
+            </Sandbox>
 
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
-      </GoATabs>
+            <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange}>
+              <GoABlock direction="column" gap="none">
+                <div style={styles}>
+                  Item 1
+                </div>
+                <GoASpacer {...vSpacerProps} />
+                <div style={styles}>
+                  Item 1
+                </div>
+                <GoASpacer {...vSpacerProps} />
+                <div style={styles}>
+                  Item 1
+                </div>
+              </GoABlock>
+            </Sandbox>
+
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

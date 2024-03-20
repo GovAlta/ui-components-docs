@@ -6,6 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import { GoABadge, GoAGrid, GoATab, GoATabs } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function GridPage() {
   const [gridProps, setGridProps] = useState({
@@ -51,7 +52,7 @@ export default function GridPage() {
 
   function onSandboxChange(gridBindings: ComponentBinding[], props: Record<string, unknown>) {
     setGridBindings(gridBindings);
-    setGridProps(props as { minChildWidth: string; gap: string; [key: string]: unknown });
+    setGridProps(props as { minChildWidth: string; gap: string;[key: string]: unknown });
   }
 
   return (
@@ -61,78 +62,82 @@ export default function GridPage() {
         category={Category.UTILITIES}
         description="Arrange a number of components into a responsive grid pattern."
         relatedComponents={[
-        { link: "/components/block", name: "Block" },
-        { link: "/components/divider", name: "Divider" },
-        { link: "/patterns", name: "Layout" },
-        { link: "/components/spacer", name: "Spacer" },
+          { link: "/components/block", name: "Block" },
+          { link: "/components/divider", name: "Divider" },
+          { link: "/patterns", name: "Layout" },
+          { link: "/components/spacer", name: "Spacer" },
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Grid sandbox*/}
-          <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
-            <GoAGrid {...gridProps}>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                1
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                2
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                3
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                4
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                5
-              </div>
-            </GoAGrid>
-          </Sandbox>
-          {/*Grid component properties*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Grid sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
+              <GoAGrid {...gridProps}>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  1
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  2
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  3
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  4
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  5
+                </div>
+              </GoAGrid>
+            </Sandbox>
+            {/*Grid component properties*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

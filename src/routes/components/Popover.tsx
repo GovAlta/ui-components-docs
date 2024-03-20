@@ -8,6 +8,7 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function PopoverPage() {
   const [popoverProps, setPopoverProps] = useState({});
@@ -94,24 +95,27 @@ export default function PopoverPage() {
         category={Category.CONTENT_AND_LAYOUT}
         description="A small overlay that opens on demand, used in other components."
         relatedComponents={[
-        { link: "/components/dropdown", name: "Dropdown" },
-        { link: "/components/header", name: "Header" },
-        { link: "/components/tooltip", name: "Tooltip" },
+          { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/header", name: "Header" },
+          { link: "/components/tooltip", name: "Tooltip" },
 
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Popover sandbox*/}
-          <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-            {/*Angular*/}
-            <CodeSnippet
-              lang="html"
-              tags="angular"
-              allowCopy={true}
-              code={`
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Popover sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
+
+              {/*Angular*/}
+              <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-popover ${propsToString(popoverProps, "angular")}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
@@ -120,59 +124,60 @@ export default function PopoverPage() {
                   </div>
                 </goa-popover>
               `}
-            />
+              />
 
-            {/*React*/}
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              {/*React*/}
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const target = (
                   <GoAButton type="secondary" size="compact">
                     Click me
                   </GoAButton>
                 );
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 <GoAPopover target={target} ${propsToString(popoverProps, "react")}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                 </GoAPopover>
               `}
-            />
+              />
 
-            <GoAPopover
-              {...popoverProps}
-              target={
-                <GoAButton type="secondary" size="compact">
-                  Click me
-                </GoAButton>
-              }
-            >
-              <p>This is a popover</p>
-              It can be used for a number of different contexts.
-            </GoAPopover>
-          </Sandbox>
+              <GoAPopover
+                {...popoverProps}
+                target={
+                  <GoAButton type="secondary" size="compact">
+                    Click me
+                  </GoAButton>
+                }
+              >
+                <p>This is a popover</p>
+                It can be used for a number of different contexts.
+              </GoAPopover>
+            </Sandbox>
 
-          {/*Popover table properties*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+            {/*Popover table properties*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

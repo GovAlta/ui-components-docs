@@ -6,6 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoABlock, GoATab, GoATabs } from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function BlockPage() {
   const [blockProps, setBlockProps] = useState({});
@@ -74,63 +75,66 @@ export default function BlockPage() {
         category={Category.UTILITIES}
         description="Used when grouping components into a block with consistent space between."
         relatedComponents={[
-        { link: "/components/divider", name: "Divider" },
-        { link: "/components/Grid", name: "Grid" },
-        { link: "/patterns", name: "Layout" },
-        { link: "/component/spacer", name: "Spacer" },
-      ]}
+          { link: "/components/divider", name: "Divider" },
+          { link: "/components/Grid", name: "Grid" },
+          { link: "/patterns", name: "Layout" },
+          { link: "/component/spacer", name: "Spacer" },
+        ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Block sandbox*/}
-          <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
-            <GoABlock {...blockProps}>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                  width: "5rem",
-                }}
-              >
-                Item 1
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                  width: "5rem",
-                }}>
-                <div>Item 2</div>
-                <div>Item 2</div>
-              </div>
-              <div
-                style={{
-                  padding: "1rem",
-                  backgroundColor: "rgba(0, 150, 255, 0.2)",
-                  whiteSpace: "nowrap",
-                  width: "5rem",
-                }}
-              >
-                Item 3
-              </div>
-            </GoABlock>
-          </Sandbox>
-          {/*Block table properties*/}
-          <ComponentProperties properties={componentProperties} />
-        </GoATab>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }
-        ></GoATab>
-      </GoATabs>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
+              <GoABlock {...blockProps}>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                    width: "5rem",
+                  }}
+                >
+                  Item 1
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                    width: "5rem",
+                  }}>
+                  <div>Item 2</div>
+                  <div>Item 2</div>
+                </div>
+                <div
+                  style={{
+                    padding: "1rem",
+                    backgroundColor: "rgba(0, 150, 255, 0.2)",
+                    whiteSpace: "nowrap",
+                    width: "5rem",
+                  }}
+                >
+                  Item 3
+                </div>
+              </GoABlock>
+            </Sandbox>
+            {/*Block table properties*/}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

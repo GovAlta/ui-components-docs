@@ -20,6 +20,7 @@ import {
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
 const componentName = "Text field";
@@ -41,7 +42,7 @@ export default function TextFieldPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => {},
+    onChange: () => { },
   });
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
@@ -116,7 +117,7 @@ export default function TextFieldPage() {
       name: "ariaLabel",
     },
   ]);
-  const {formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({label: "Basic"});
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
@@ -384,7 +385,7 @@ export default function TextFieldPage() {
   }
 
   // For sandbox demo function
-  const noop = () => {};
+  const noop = () => { };
 
   return (
     <>
@@ -395,20 +396,23 @@ export default function TextFieldPage() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Input sandbox*/}
-          <Sandbox
-            properties={componentBindings}
-            formItemProperties={formItemBindings}
-            onChange={onSandboxChange}
-            onChangeFormItemBindings={onFormItemChange}
-            flags={["reactive"]}>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Input sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox
+              properties={componentBindings}
+              formItemProperties={formItemBindings}
+              onChange={onSandboxChange}
+              onChangeFormItemBindings={onFormItemChange}
+              flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 // non-reactive code
                 export class SomeComponent {
                   onChange(event: Event) {
@@ -417,211 +421,203 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags={["angular", "reactive"]}
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-            />
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [value, setValue] = useState<string>("");
               
                 onChange(name: string, value: string) {
                   setValue(value);
                 }
               `}
-            />
+              />
 
-            <GoAFormItem {...formItemProps}>
-              <GoAInput {...componentProps} onChange={noop} />
-            </GoAFormItem>
-          </Sandbox>
+              <GoAFormItem {...formItemProps}>
+                <GoAInput {...componentProps} onChange={noop} />
+              </GoAFormItem>
+            </Sandbox>
 
-          {/*Input component properties table*/}
-          <ComponentProperties properties={componentProperties} />
+            {/*Input component properties table*/}
+            <ComponentProperties properties={componentProperties} />
 
-          {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-ask-user-for-an-address">Ask a user for an address</a>
-            <a href="#example-ask-user-for-birthday">Ask a user for their birthday</a>
-            <a href="#example-search">Search</a>
-            <a href="#example-phone">Phone number</a>
-            <a href="#example-ask-for-costs">Ask a user for dollar amounts or costs</a>
-            <a href="#example-registration-number">
-              Ask a user for their indian registration number
-            </a>
-          </GoABlock>
+            {/*Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-ask-user-for-an-address">Ask a user for an address </h3>
-          <Sandbox flags={["reactive"]}>
-            <GoAFormItem label="Street Address">
-              <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
-            </GoAFormItem>
-            <GoAFormItem label="Suite or unit #">
-              <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
-            </GoAFormItem>
-            <GoAFormItem label="City/town">
-              <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
-            </GoAFormItem>
-
-            <GoABlock direction={"row"}>
-              <GoAFormItem label="Provice/territory">
-                <GoADropdown onChange={noop} name="province" value="alberta">
-                  <GoADropdownItem label="Alberta" value="alberta" />
-                  <GoADropdownItem label="BC" value="bc" />
-                  <GoADropdownItem label="Manitoba" value="manitoba" />
-                  <GoADropdownItem label="New Brunswick" value="new-brunswick" />
-                  <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
-                  <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
-                  <GoADropdownItem label="Ontario" value="ontario" />
-                  <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
-                  <GoADropdownItem label="Quebec" value="quebec" />
-                  <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-                </GoADropdown>
+            <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
+            <Sandbox flags={["reactive"]}>
+              <GoAFormItem label="Street Address">
+                <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
+              </GoAFormItem>
+              <GoAFormItem label="Suite or unit #">
+                <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
+              </GoAFormItem>
+              <GoAFormItem label="City/town">
+                <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
 
-              <GoAFormItem label="Postal Code">
-                <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+              <GoABlock direction={"row"}>
+                <GoAFormItem label="Provice/territory">
+                  <GoADropdown onChange={noop} name="province" value="alberta">
+                    <GoADropdownItem label="Alberta" value="alberta" />
+                    <GoADropdownItem label="BC" value="bc" />
+                    <GoADropdownItem label="Manitoba" value="manitoba" />
+                    <GoADropdownItem label="New Brunswick" value="new-brunswick" />
+                    <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
+                    <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
+                    <GoADropdownItem label="Ontario" value="ontario" />
+                    <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
+                    <GoADropdownItem label="Quebec" value="quebec" />
+                    <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
+                  </GoADropdown>
+                </GoAFormItem>
+
+                <GoAFormItem label="Postal Code">
+                  <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+                </GoAFormItem>
+              </GoABlock>
+            </Sandbox>
+
+            <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
+            <Sandbox flags={["reactive"]}>
+              <GoAFormItem
+                label="When is your birthday?"
+                labelSize="large"
+                helpText={"For example, 27 11 2007"}>
+                <GoABlock gap="m" direction="row">
+                  <GoAFormItem label="Day">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="bandNo"
+                      type="number"
+                      width="60px"
+                      min={1}
+                      max={31}
+                    />
+                  </GoAFormItem>
+                  <GoAFormItem label="Month">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="family"
+                      type="number"
+                      width="60px"
+                      min={1}
+                      max={12}
+                    />
+                  </GoAFormItem>
+                  <GoAFormItem label="Year">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="position"
+                      type="number"
+                      width="88px"
+                      min={1900}
+                      max={2023}
+                    />
+                  </GoAFormItem>
+                </GoABlock>
               </GoAFormItem>
-            </GoABlock>
-          </Sandbox>
+            </Sandbox>
 
-          <h3 id="example-ask-user-for-birthday">Ask a user for their birthday</h3>
-          <Sandbox flags={["reactive"]}>
-            <GoAFormItem
-              label="When is your birthday?"
-              labelSize="large"
-              helpText={"For example, 27 11 2007"}>
+            <h3 id="component-example-search">Search</h3>
+            <Sandbox flags={["reactive"]}>
               <GoABlock gap="m" direction="row">
-                <GoAFormItem label="Day">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="bandNo"
-                    type="number"
-                    width="60px"
-                    min={1}
-                    max={31}
-                  />
-                </GoAFormItem>
-                <GoAFormItem label="Month">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="family"
-                    type="number"
-                    width="60px"
-                    min={1}
-                    max={12}
-                  />
-                </GoAFormItem>
-                <GoAFormItem label="Year">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="position"
-                    type="number"
-                    width="88px"
-                    min={1900}
-                    max={2023}
-                  />
-                </GoAFormItem>
+                <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
+                <GoAButton type="primary" onClick={noop}>
+                  Search
+                </GoAButton>
               </GoABlock>
-            </GoAFormItem>
-          </Sandbox>
+            </Sandbox>
 
-          <h3 id="example-search">Search</h3>
-          <Sandbox flags={["reactive"]}>
-            <GoABlock gap="m" direction="row">
-              <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
-              <GoAButton type="primary" onClick={noop}>
-                Search
-              </GoAButton>
-            </GoABlock>
-          </Sandbox>
+            <h3 id="component-example-phone">Phone number</h3>
+            <Sandbox flags={["reactive"]}>
+              <GoAFormItem label="Phone number">
+                <GoAInput onChange={noop} value="" name="phone" leadingContent="+1" />
+              </GoAFormItem>
+            </Sandbox>
 
-          <h3 id="example-phone">Phone number</h3>
-          <Sandbox flags={["reactive"]}>
-            <GoAFormItem label="Phone number">
-              <GoAInput onChange={noop} value="" name="phone" leadingContent="+1" />
-            </GoAFormItem>
-          </Sandbox>
+            <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
+            <Sandbox flags={["reactive"]}>
+              <GoAFormItem label="Tuition">
+                <GoAInput onChange={noop} value="" name="tuition" leadingContent="$" />
+              </GoAFormItem>
+              <GoAFormItem label="Books/Supplies/Instruments">
+                <GoAInput onChange={noop} value="" name="book" leadingContent="$" />
+              </GoAFormItem>
+              <GoAFormItem label="Other costs">
+                <GoAInput onChange={noop} value="" name="others" leadingContent="$" />
+              </GoAFormItem>
+            </Sandbox>
 
-          <h3 id="example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
-          <Sandbox flags={["reactive"]}>
-            <GoAFormItem label="Tuition">
-              <GoAInput onChange={noop} value="" name="tuition" leadingContent="$" />
-            </GoAFormItem>
-            <GoAFormItem label="Books/Supplies/Instruments">
-              <GoAInput onChange={noop} value="" name="book" leadingContent="$" />
-            </GoAFormItem>
-            <GoAFormItem label="Other costs">
-              <GoAInput onChange={noop} value="" name="others" leadingContent="$" />
-            </GoAFormItem>
-          </Sandbox>
+            <h3 id="component-example-registration-number">Ask a user for their indian registration number</h3>
+            <Sandbox flags={["reactive"]}>
+              <GoAFormItem label="Indian registration number" labelSize="large">
+                <GoABlock gap="m" direction="row">
+                  <GoAFormItem label="Band #" helpText="3 digits">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="bandNo"
+                      min={1}
+                      max={999}
+                      type="number"
+                      width="88px"
+                    />
+                  </GoAFormItem>
+                  <GoAFormItem label="Family" helpText="Up to 5 digits">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="family"
+                      min={1}
+                      max={99999}
+                      type="number"
+                      width="105px"
+                    />
+                  </GoAFormItem>
+                  <GoAFormItem label="Position" helpText="2 digits">
+                    <GoAInput
+                      onChange={noop}
+                      value=""
+                      name="position"
+                      min={1}
+                      max={99}
+                      type="number"
+                      width="71px"
+                    />
+                  </GoAFormItem>
+                </GoABlock>
+              </GoAFormItem>
+            </Sandbox>
+          </GoATab>
 
-          <h3 id="example-registration-number">Ask a user for their indian registration number</h3>
-          <Sandbox flags={["reactive"]}>
-            <GoAFormItem label="Indian registration number" labelSize="large">
-              <GoABlock gap="m" direction="row">
-                <GoAFormItem label="Band #" helpText="3 digits">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="bandNo"
-                    min={1}
-                    max={999}
-                    type="number"
-                    width="88px"
-                  />
-                </GoAFormItem>
-                <GoAFormItem label="Family" helpText="Up to 5 digits">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="family"
-                    min={1}
-                    max={99999}
-                    type="number"
-                    width="105px"
-                  />
-                </GoAFormItem>
-                <GoAFormItem label="Position" helpText="2 digits">
-                  <GoAInput
-                    onChange={noop}
-                    value=""
-                    name="position"
-                    min={1}
-                    max={99}
-                    type="number"
-                    width="71px"
-                  />
-                </GoAFormItem>
-              </GoABlock>
-            </GoAFormItem>
-          </Sandbox>
-        </GoATab>
-
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

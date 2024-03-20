@@ -15,6 +15,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
@@ -226,20 +227,23 @@ export default function FileUploaderPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents}/>
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-            {/* ******* */}
-            {/* Angular */}
-            {/* ******* */}
-            
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
+
+              {/* ******* */}
+              {/* Angular */}
+              {/* ******* */}
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 interface Uploader {
                   upload: (url: string | ArrayBuffer) => void;
                   abort: () => void;
@@ -296,13 +300,13 @@ export default function FileUploaderPage() {
                   }
                 }
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="html"
-              tags="angular"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-form-item label="Upload a file">
                   <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps, "angular")}></goa-file-upload-input>
                   <goa-file-upload-card
@@ -317,18 +321,18 @@ export default function FileUploaderPage() {
                   </goa-file-upload-card>              
                 </goa-form-item>
               `}
-            />
+              />
 
 
-            {/* ***** */}
-            {/* React */}
-            {/* ***** */}
+              {/* ***** */}
+              {/* React */}
+              {/* ***** */}
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 const [uploads, setUploads] = useState<Upload[]>([]);
                 const [progressList, setProgressList] = useState<Record<string, number>>({});
 
@@ -360,13 +364,13 @@ export default function FileUploaderPage() {
                 }
                 reader.readAsDataURL(file);
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 <GoAFormItem label="Upload a file">
                   <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps, "react")} />
                   {uploads.map(upload => (
@@ -382,36 +386,37 @@ export default function FileUploaderPage() {
                   ))}
                 </GoAFormItem>
               `}
+              />
+
+              <GoAFormItem label="Upload a file">
+                <GoAFileUploadInput onSelectFile={uploadFile} {...fileUploaderProps} />
+                {uploads.map(upload => (
+                  <GoAFileUploadCard
+                    key={upload.file.name}
+                    filename={upload.file.name}
+                    type={upload.file.type}
+                    size={upload.file.size}
+                    progress={progressList[upload.file.name]}
+                    onDelete={() => deleteFile(upload)}
+                    onCancel={() => deleteFile(upload)}
+                  />
+                ))}
+              </GoAFormItem>
+            </Sandbox>
+
+            <ComponentProperties
+              heading="FileUploadInput properties"
+              properties={fileUploadInputProperties}
             />
 
-            <GoAFormItem label="Upload a file">
-              <GoAFileUploadInput onSelectFile={uploadFile} {...fileUploaderProps} />
-              {uploads.map(upload => (
-                <GoAFileUploadCard
-                  key={upload.file.name}
-                  filename={upload.file.name}
-                  type={upload.file.type}
-                  size={upload.file.size}
-                  progress={progressList[upload.file.name]}
-                  onDelete={() => deleteFile(upload)}
-                  onCancel={() => deleteFile(upload)}
-                />
-              ))}
-            </GoAFormItem>
-          </Sandbox>
+            <ComponentProperties
+              heading="FileUploadCard properties"
+              properties={fileUploadCardProperties}
+            />
 
-          <ComponentProperties
-            heading="FileUploadInput properties"
-            properties={fileUploadInputProperties}
-          />
-
-          <ComponentProperties
-            heading="FileUploadCard properties"
-            properties={fileUploadCardProperties}
-          />
-
-        </GoATab>
-      </GoATabs>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

@@ -1,13 +1,15 @@
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 export default function DevelopersTechnologiesPage() {
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
       <h2>Design system technologies</h2>
       <div className="design-system-image">
         <img src="/images/design-system-technologies.png" />
       </div>
 
-      <h3>Web components</h3>
+      <h3 id="web-components">Web components</h3>
       <p>
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">
           Web Components
@@ -52,7 +54,7 @@ export default function DevelopersTechnologiesPage() {
         frameworks or used with our Angular or React implementations.
       </p>
 
-      <h3>Svelte</h3>
+      <h3 id="svelte">Svelte</h3>
       <p>
         <a href="https://svelte.dev/" target="_blank">
           Svelte
@@ -67,7 +69,7 @@ export default function DevelopersTechnologiesPage() {
         and reusable components for larger applications written with various front-end frameworks.
       </p>
 
-      <h3>Angular</h3>
+      <h3 id="angular">Angular</h3>
       <p>
         <a href="https://angular.io/" target="_blank">
           Angular
@@ -86,7 +88,7 @@ export default function DevelopersTechnologiesPage() {
       </p>
       <p>Angular applications will need to use our web components and Angular components.</p>
 
-      <h3>React</h3>
+      <h3 id="react">React</h3>
       <p>
         <a href="https://react.dev/" target="_blank">
           React
@@ -105,6 +107,6 @@ export default function DevelopersTechnologiesPage() {
         The React wrappers are used inside a React app, which then makes requests back to our web
         components to create the actual component.
       </p>
-    </>
+    </ComponentContent>
   );
 }

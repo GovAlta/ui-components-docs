@@ -7,7 +7,6 @@ import {
   GoABadge,
   GoATab,
   GoATabs,
-  GoABlock,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -15,6 +14,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 import { useState } from "react";
 
 // == Page props ==
@@ -115,86 +115,85 @@ export default function AppFooterPage() {
 
   return (
     <>
-       <ComponentHeader
+      <ComponentHeader
         name={componentName}
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
       />
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <h3>Basic Footer</h3>
-          <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
-            <GoAAppFooter {...appFooterProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*Component properties table*/}
-          <ComponentProperties properties={componentProperties} />
-          <ComponentProperties
-            heading="Footer Secondary nav properties"
-            properties={secondaryNavProperties}
-          />
-          <ComponentProperties
-            heading="Meta link properties"
-            properties={metaLinkProperties}
-          />
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h3>Basic Footer</h3>
+            <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
+              <GoAAppFooter {...appFooterProps} />
+            </Sandbox>
+
+            {/*Component properties table*/}
+            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties
+              heading="Footer Secondary nav properties"
+              properties={secondaryNavProperties}
+            />
+            <ComponentProperties
+              heading="Meta link properties"
+              properties={metaLinkProperties}
+            />
 
 
-          {/* Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-footer-meta">Footer with meta info</a>
-            <a href="#example-footer-secondary-nav">
-              Secondary navigation column section and meta section
-            </a>
-          </GoABlock>
+            {/* Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-footer-meta">Footer with meta info</h3>
-          <Sandbox fullWidth>
-            <GoAAppFooter {...appFooterProps}>
-              <GoAAppFooterMetaSection>
-                <a href="privacy.html">Privacy</a>
-                <a href="disclaimer.html">Disclaimer</a>
-                <a href="accessibility.html">Accessibility</a>
-                <a href="using-alberta.html">Using Alberta.ca</a>
-              </GoAAppFooterMetaSection>
-            </GoAAppFooter>
-          </Sandbox>
+            <h3 id="component-example-footer-meta">Footer with meta info</h3>
+            <Sandbox fullWidth>
+              <GoAAppFooter {...appFooterProps}>
+                <GoAAppFooterMetaSection>
+                  <a href="privacy.html">Privacy</a>
+                  <a href="disclaimer.html">Disclaimer</a>
+                  <a href="accessibility.html">Accessibility</a>
+                  <a href="using-alberta.html">Using Alberta.ca</a>
+                </GoAAppFooterMetaSection>
+              </GoAAppFooter>
+            </Sandbox>
 
-          <h3 id="example-footer-secondary-nav">Secondary navigation column section and meta section</h3>
-          <Sandbox properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
-            <GoAAppFooter {...appFooterProps}>
-              <GoAAppFooterNavSection {...appFooterNavProps}>
-                <a href="a.html">Arts and culture</a>
-                <a href="b.html">Education and training</a>
-                <a href="c.html">Family and social supports</a>
-                <a href="d.html">Housing and community</a>
-                <a href="e.html">Life events</a>
-                <a href="f.html">Business and economy</a>
-                <a href="g.html">Emergencies and public safety</a>
-                <a href="h.html">Government</a>
-                <a href="i.html">Jobs and employment</a>
-                <a href="j.html">Moving to Alberta</a>
-              </GoAAppFooterNavSection>
-              <GoAAppFooterMetaSection>
-                <a href="privacy.html">Privacy</a>
-                <a href="disclaimer.html">Disclaimer</a>
-                <a href="accessibility.html">Accessibility</a>
-                <a href="using-alberta.html">Using Alberta.ca</a>
-              </GoAAppFooterMetaSection>
-            </GoAAppFooter>
-          </Sandbox>
-        </GoATab>
+            <h3 id="component-example-footer-secondary-nav">Secondary navigation column section and meta section</h3>
+            <Sandbox properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
+              <GoAAppFooter {...appFooterProps}>
+                <GoAAppFooterNavSection {...appFooterNavProps}>
+                  <a href="a.html">Arts and culture</a>
+                  <a href="b.html">Education and training</a>
+                  <a href="c.html">Family and social supports</a>
+                  <a href="d.html">Housing and community</a>
+                  <a href="e.html">Life events</a>
+                  <a href="f.html">Business and economy</a>
+                  <a href="g.html">Emergencies and public safety</a>
+                  <a href="h.html">Government</a>
+                  <a href="i.html">Jobs and employment</a>
+                  <a href="j.html">Moving to Alberta</a>
+                </GoAAppFooterNavSection>
+                <GoAAppFooterMetaSection>
+                  <a href="privacy.html">Privacy</a>
+                  <a href="disclaimer.html">Disclaimer</a>
+                  <a href="accessibility.html">Accessibility</a>
+                  <a href="using-alberta.html">Using Alberta.ca</a>
+                </GoAAppFooterMetaSection>
+              </GoAAppFooter>
+            </Sandbox>
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

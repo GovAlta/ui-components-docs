@@ -3,7 +3,6 @@ import {
   GoAAppHeaderMenu,
   GoAAppHeaderProps,
   GoABadge,
-  GoABlock,
   GoATab,
   GoATabs
 } from "@abgov/react-components";
@@ -15,6 +14,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Header";
 const description =
@@ -109,27 +109,27 @@ export default function AppHeaderPage() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
-            <GoAAppHeader {...appHeaderProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
+              <GoAAppHeader {...appHeaderProps} />
+            </Sandbox>
 
-          {/*Component properties*/}
-          <ComponentProperties properties={componentProperties} />
+            {/*Component properties*/}
+            <ComponentProperties properties={componentProperties} />
 
-          {/*Examples*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-header-navigation">Header with navigation</a>
-          </GoABlock>
+            {/*Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-header-navigation">Header with navigation</h3>
-          <Sandbox fullWidth skipRender>
-            <CodeSnippet
-              lang="typescript"
-              tags="angular"
-              allowCopy={true}
-              code={`
+            <h3 id="component-example-header-navigation">Header with navigation</h3>
+            <Sandbox fullWidth skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                 <goa-microsite-header type="live"></goa-microsite-header>
                 <goa-app-header url="https://example.com" heading="Ticket and Fine Payments">
                   <a href="#">Support</a>
@@ -141,13 +141,13 @@ export default function AppHeaderPage() {
                   <a href="#" className="interactive">Sign in</a>
                 </goa-app-header>
               `}
-            />
+              />
 
-            <CodeSnippet
-              lang="typescript"
-              tags="react"
-              allowCopy={true}
-              code={`
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                 <GoAAppHeader url="https://example.com" heading="Ticket and Fine Payments">
                   <a href="#">Support</a>
                   <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
@@ -158,29 +158,30 @@ export default function AppHeaderPage() {
                   <a href="#" className="interactive">Sign in</a>
                 </GoAAppHeader>
               `}
-            />
-            <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
-              <a href="">Support</a>
-              <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                <a>Cases</a>
-                <a>Payments</a>
-                <a>Outstanding</a>
-              </GoAAppHeaderMenu>
-              <a className="interactive">Sign in</a>
-            </GoAAppHeader>
-          </Sandbox>
-        </GoATab>
+              />
+              <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
+                <a href="">Support</a>
+                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                  <a>Cases</a>
+                  <a>Payments</a>
+                  <a>Outstanding</a>
+                </GoAAppHeaderMenu>
+                <a className="interactive">Sign in</a>
+              </GoAAppHeader>
+            </Sandbox>
+          </GoATab>
 
-        <GoATab
-          heading={
-            <>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>
-          }>
-          <p>Coming Soon</p>
-        </GoATab>
-      </GoATabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }>
+            <p>Coming Soon</p>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

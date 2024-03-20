@@ -25,6 +25,7 @@ export function DesignTokenLayout() {
   }
 
   return (
+    <>
     <DesignTokensLanguageContext.Provider value={tokenLanguage}>
       <div className="content design-tokens">
         <section className="side-menu">
@@ -54,13 +55,14 @@ export function DesignTokenLayout() {
             <Link to="typography">Typography</Link>
           </GoASideMenu>
         </section>
-
+        
         <main className="main">
           <Outlet />
           <SupportInfo />
         </main>
       </div>
     </DesignTokensLanguageContext.Provider>
+    </>
   );
 }
 

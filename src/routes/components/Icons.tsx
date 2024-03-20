@@ -5,9 +5,10 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoABlock, GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
+import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -61,7 +62,7 @@ export default function IconsPage() {
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
-    setIconsProps(props as { type: GoAIconType; [key: string]: unknown });
+    setIconsProps(props as { type: GoAIconType;[key: string]: unknown });
   }
 
   return (
@@ -78,92 +79,90 @@ export default function IconsPage() {
         ]}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
-          {/*Icons Sandbox*/}
-          <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
-            <GoAIcon {...iconsProps} />
-          </Sandbox>
+      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-          {/*Icons Properties*/}
-          <ComponentProperties properties={componentProperties} />
+        <GoATabs>
+          <GoATab heading="Code examples">
+            {/*Icons Sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
+              <GoAIcon {...iconsProps} />
+            </Sandbox>
 
-          {/*Icons example*/}
-          <GoABlock gap="s" direction="column" mt="3xl" mb="3xl">
-            <a href="#example-alert-messaging">Alert and messaging</a>
-            <a href="#example-basic">Basic</a>
-            <a href="#example-direction">Direction</a>
-            <a href="#example-interaction">Interactions</a>
-            <a href="#example-accounts">Accounts</a>
-          </GoABlock>
+            {/*Icons Properties*/}
+            <ComponentProperties properties={componentProperties} />
 
-          <h3 id="example-alert-messaging">Alert and messaging</h3>
-          <GoAGrid minChildWidth="230px" gap="l">
-            <IconSnippet type={"information-circle"} />
-            <IconSnippet type={"warning"} />
-            <IconSnippet type={"add-circle"} />
-            <IconSnippet type={"alert-circle"} />
-            <IconSnippet type={"checkmark-circle"} />
-            <IconSnippet type={"close-circle"} />
-            <IconSnippet type={"help-circle"} />
-            <IconSnippet type={"remove-circle"} />
-          </GoAGrid>
+            {/*Icons example*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-          <h3 id="example-basic">Basic</h3>
-          <GoAGrid minChildWidth="230px" gap="l">
-            <IconSnippet type={"close"} />
-            <IconSnippet type={"checkmark"} />
-            <IconSnippet type={"add"} />
-            <IconSnippet type={"remove"} />
-          </GoAGrid>
+            <h3 id="component-example-alert-messaging">Alert and messaging</h3>
+            <GoAGrid minChildWidth="230px" gap="l">
+              <IconSnippet type={"information-circle"} />
+              <IconSnippet type={"warning"} />
+              <IconSnippet type={"add-circle"} />
+              <IconSnippet type={"alert-circle"} />
+              <IconSnippet type={"checkmark-circle"} />
+              <IconSnippet type={"close-circle"} />
+              <IconSnippet type={"help-circle"} />
+              <IconSnippet type={"remove-circle"} />
+            </GoAGrid>
 
-          <h3 id="example-direction">Direction</h3>
-          <GoAGrid minChildWidth={"230px"} gap={"l"}>
-            <IconSnippet type={"chevron-down"} />
-            <IconSnippet type={"chevron-up"} />
-            <IconSnippet type={"chevron-back"} />
-            <IconSnippet type={"chevron-forward"} />
-            <IconSnippet type={"arrow-down"} />
-            <IconSnippet type={"arrow-up"} />
-            <IconSnippet type={"arrow-back"} />
-            <IconSnippet type={"arrow-forward"} />
-            <IconSnippet type={"caret-down"} />
-            <IconSnippet type={"caret-up"} />
-            <IconSnippet type={"caret-back"} />
-            <IconSnippet type={"caret-forward"} />
-          </GoAGrid>
+            <h3 id="component-example-basic">Basic</h3>
+            <GoAGrid minChildWidth="230px" gap="l">
+              <IconSnippet type={"close"} />
+              <IconSnippet type={"checkmark"} />
+              <IconSnippet type={"add"} />
+              <IconSnippet type={"remove"} />
+            </GoAGrid>
 
-          <h3 id="example-interaction">Interactions</h3>
-          <GoAGrid minChildWidth={"230px"} gap={"l"}>
-            <IconSnippet type={"menu"} />
-            <IconSnippet type={"reload"} />
-            <IconSnippet type={"search"} />
-            <IconSnippet type={"pencil"} />
-            <IconSnippet type={"flag"} />
-            <IconSnippet type={"open"} />
-            <IconSnippet type={"bookmark"} />
-            <IconSnippet type={"calendar"} />
-            <IconSnippet type={"documents"} />
-            <IconSnippet type={"trash"} />
-            <IconSnippet type={"funnel"} />
-            <IconSnippet type={"ellipsis-vertical"} />
-            <IconSnippet type={"notifications"} />
-            <IconSnippet type={"notifications-off"} />
-            <IconSnippet type={"eye"} />
-            <IconSnippet type={"eye-off"} />
-            <IconSnippet type={"cloud-upload"} />
-            <IconSnippet type={"download"} />
-          </GoAGrid>
+            <h3 id="component-example-direction">Direction</h3>
+            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+              <IconSnippet type={"chevron-down"} />
+              <IconSnippet type={"chevron-up"} />
+              <IconSnippet type={"chevron-back"} />
+              <IconSnippet type={"chevron-forward"} />
+              <IconSnippet type={"arrow-down"} />
+              <IconSnippet type={"arrow-up"} />
+              <IconSnippet type={"arrow-back"} />
+              <IconSnippet type={"arrow-forward"} />
+              <IconSnippet type={"caret-down"} />
+              <IconSnippet type={"caret-up"} />
+              <IconSnippet type={"caret-back"} />
+              <IconSnippet type={"caret-forward"} />
+            </GoAGrid>
 
-          <h3 id="example-accounts">Accounts</h3>
-          <GoAGrid minChildWidth={"230px"} gap={"l"}>
-            <IconSnippet type={"person-circle"} />
-            <IconSnippet type={"settings"} />
-            <IconSnippet type={"mail"} />
-            <IconSnippet type={"call"} />
-          </GoAGrid>
-        </GoATab>
-      </GoATabs>
+            <h3 id="component-example-interaction">Interactions</h3>
+            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+              <IconSnippet type={"menu"} />
+              <IconSnippet type={"reload"} />
+              <IconSnippet type={"search"} />
+              <IconSnippet type={"pencil"} />
+              <IconSnippet type={"flag"} />
+              <IconSnippet type={"open"} />
+              <IconSnippet type={"bookmark"} />
+              <IconSnippet type={"calendar"} />
+              <IconSnippet type={"documents"} />
+              <IconSnippet type={"trash"} />
+              <IconSnippet type={"funnel"} />
+              <IconSnippet type={"ellipsis-vertical"} />
+              <IconSnippet type={"notifications"} />
+              <IconSnippet type={"notifications-off"} />
+              <IconSnippet type={"eye"} />
+              <IconSnippet type={"eye-off"} />
+              <IconSnippet type={"cloud-upload"} />
+              <IconSnippet type={"download"} />
+            </GoAGrid>
+
+            <h3 id="component-example-accounts">Accounts</h3>
+            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+              <IconSnippet type={"person-circle"} />
+              <IconSnippet type={"settings"} />
+              <IconSnippet type={"mail"} />
+              <IconSnippet type={"call"} />
+            </GoAGrid>
+          </GoATab>
+        </GoATabs>
+      </ComponentContent>
     </>
   );
 }

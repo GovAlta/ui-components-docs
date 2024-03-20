@@ -1,13 +1,16 @@
 import { GoACallout, GoAContainer, GoADivider, GoAGrid } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 export default function DateFormatPage() {
   return (
-    <>
+    <ComponentContent cssQuery="h2[id], h3[id]">
       <h1>Date format</h1>
       <h3>
         Configuration which contains date information that includes the specification of the form
         and structure of the date data within the date format in different scenarios.
       </h3>
+
       <GoAContainer type="non-interactive" mb="2xl">
         <div
           className="example"
@@ -19,17 +22,9 @@ export default function DateFormatPage() {
           March 14, 2021
         </div>
       </GoAContainer>
-      <h3>On this page</h3>
-      <GoAGrid minChildWidth={"30ch"} gap="xs" mt="2xl" mb="3xl">
-        <a href="#conversational-long-form">Conversational and long-form</a>
-        <a href="#short-hand">Short-hand</a>
-        <a href="#day-of-the-week">Day of the week</a>
-        <a href="#time">Time</a>
-        <a href="#time-zones">Time zones</a>
-        <a href="#accessibility">Accessibility and Screen readers</a>
-      </GoAGrid>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="conversational-long-form">Conversational and long-form</h2>
       <p>
         When the date is written out in long-form (i.e. narrative, instructions, commentary,
@@ -48,10 +43,12 @@ export default function DateFormatPage() {
           <strong>Month date, Year</strong> (e.g., March 14, 2021)
         </div>
       </GoAContainer>
+
       <p>
         This presents the date in a conventional “speaking” way and aligns with the Canadian Style
         Guide 5.14 Dates.
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="30ch" gap="2xl">
           <DoDont type="do" description="Use the format: Month, cardinal date, year.">
@@ -80,6 +77,7 @@ export default function DateFormatPage() {
       </div>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="short-hand">Short-hand</h2>
       <p>
         When space is limited (e.g., example forms, tables, summary pages, mobile) it may be
@@ -151,6 +149,7 @@ export default function DateFormatPage() {
       </div>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="day-of-the-week">Day of the week</h2>
       <p>
         Days of the week can be included. It helps to bring clarity and comprehension of the date.
@@ -218,7 +217,9 @@ export default function DateFormatPage() {
           </GoACallout>
         </div>
       </div>
+
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="time">Time</h2>
       <p>
         When displaying time, the Government of Alberta prefers to use the 12-hour clock format.
@@ -263,6 +264,7 @@ export default function DateFormatPage() {
       </div>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="time-zones">Time zones</h2>
       <p>
         When needed, the time zone can be written after the time in long-form or short-form. The
@@ -315,6 +317,7 @@ export default function DateFormatPage() {
         saving time lasts for 34 weeks (238 days) every year, or about 65 percent of the entire
         year.
       </p>
+
       <div className="dodont-wrapper">
         <GoAGrid minChildWidth="50ch">
           <DoDont
@@ -336,6 +339,7 @@ export default function DateFormatPage() {
             </div>
           </DoDont>
         </GoAGrid>
+
         <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
           <DoDont
             type="do"
@@ -363,6 +367,7 @@ export default function DateFormatPage() {
       </div>
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
+
       <h2 id="accessibility">Accessibility and Screen readers</h2>
       <p>
         Using a npm module (accessible-date), we are able to ensure that dates displayed are
@@ -372,6 +377,7 @@ export default function DateFormatPage() {
           https://github.com/MikesBarto/accessible-date
         </a>
       </p>
+
       <GoAContainer>
         Consider the following html <br />
         <span style={{ color: "var(--goa-color-text-secondary)" }}>
@@ -391,12 +397,13 @@ export default function DateFormatPage() {
           <i>“Tuesday, May fifteenth, two-thousand one at seven thirty pm”</i>
         </strong>
       </GoAContainer>
+
       <div style={{ maxWidth: "700px" }}>
         <GoACallout type="information" heading="ISO 8601 format" size="large" mt="xl">
           The date time variables entered into the module for producing “readable” and
           “conversational” need to be rendered in the ISO 8601 format.
         </GoACallout>
       </div>
-    </>
+    </ComponentContent>
   );
 }
