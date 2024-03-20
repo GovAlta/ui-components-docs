@@ -52,6 +52,7 @@ export function Components() {
             <Link to="hero-banner">Hero banner</Link>
             <Link to="icons">Icons</Link>
             <Link to="icon-button">Icon button</Link>
+            <Link to="input">Input</Link>
             <Link to="list">List</Link>
             <Link to="microsite-header">Microsite header</Link>
             <Link to="modal">Modal</Link>
@@ -66,7 +67,6 @@ export function Components() {
             <Link to="table">Table</Link>
             <Link to="tabs">Tabs</Link>
             <Link to="text-area">Text area</Link>
-            <Link to="text-field">Text field</Link>
             <Link to="tooltip">Tooltip</Link>
           </GoASideMenu>
         </section>

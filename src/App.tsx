@@ -147,6 +147,7 @@ const router = createBrowserRouter(
         <Route path="hero-banner" element={<HeroBannerPage />} />
         <Route path="icons" element={<IconsPage />} />
         <Route path="icon-button" element={<IconButtonPage />} />
+        <Route path="input" element={<TextFieldPage />} />
         <Route path="list" element={<ListPage />} />
         <Route path="microsite-header" element={<MicrositeHeaderPage />} />
         <Route path="modal" element={<ModalPage />} />
