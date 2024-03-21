@@ -368,9 +368,9 @@ export default function AllComponentsPage() {
         </h3>
       </div>
 
+      <GoAFormItem helpText="Search by keyword, category, or name">
       <GoAInput
-        leadingIcon="search"
-        mt="xs" 
+        leadingIcon="search" 
         mb="xl"
         name="filter"
         type="text"
@@ -378,6 +378,7 @@ export default function AllComponentsPage() {
         width="100%"
         onChange={(_name, value) => filterComponents(value)}
       />
+        </GoAFormItem>
 
       {mode === "search" && <GoAGrid minChildWidth="300px">{getComponentsByFilter()}</GoAGrid>}
 
