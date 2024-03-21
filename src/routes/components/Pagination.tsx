@@ -119,6 +119,7 @@ export default function PaginationPage() {
     (paginationBindings.find(binding => binding.name === "itemCount")?.value as number) || 10;
   const perPageUsers =
     (paginationBindings.find(binding => binding.name === "perPageCount")?.value as number) || 5;
+
   useEffect(() => {
     const _users = [];
     for (let i = 1; i < totalUsers + 1; i++) {
@@ -139,6 +140,7 @@ export default function PaginationPage() {
     setPage(newPage);
     setPageUsers(_users);
   }
+
   return (
     <>
       <ComponentHeader
