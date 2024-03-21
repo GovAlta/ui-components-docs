@@ -368,10 +368,9 @@ export default function AllComponentsPage() {
         </h3>
       </div>
 
-      <GoAFormItem helpText="Search by keyword, category, or name">
+      <GoAFormItem helpText="Search by keyword, category, or name" mb="xl">
       <GoAInput
         leadingIcon="search" 
-        mb="xl"
         name="filter"
         type="text"
         value=""
