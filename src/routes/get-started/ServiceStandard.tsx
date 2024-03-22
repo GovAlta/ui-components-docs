@@ -19,7 +19,7 @@ export default function ServiceStandardPage() {
         </ul>
         
         <p>
-          For more details on the process of usability testing, refer to our
+          For more details on the process of usability testing, refer to our &nbsp;
           <a href="#" target="_blank">
             usability field guide.
           </a>
@@ -50,15 +50,15 @@ export default function ServiceStandardPage() {
         </ol>
 
         <p>
-          For more details on the process of assessing compliance to each guideline, refer to our
+          For more details on the process of assessing compliance to each guideline, refer to our &nbsp;
           <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023569024/User+Experience+Guideline+Review+Process" target="_blank">
             user experience guideline review process
           </a>
-          , and
+          , and &nbsp;
           <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023143415/Heuristic+evaluation+template" target="_blank">
              heuristic evaluation template
           </a>
-          for teams.
+          &nbsp; for teams.
         </p>
         
       </div>
