@@ -32,11 +32,14 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   const codeSnippetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (codeSnippetRef.current) {
-      const showMore = codeSnippetRef.current.scrollHeight > 350; // 400px = 25rem and some padding
+    if (!codeSnippetRef.current) return;
+    const resizeObserver = new ResizeObserver(() => {
+      const showMore = codeSnippetRef.current ? codeSnippetRef.current?.scrollHeight > 350 : false; // 400px = 25rem and some padding
       setShowMore(showMore);
-    }
-  }, [output]);
+    });
+    resizeObserver.observe(codeSnippetRef.current);
+    return () => resizeObserver.disconnect(); // clean up
+  }, []);
 
   const cleanTabs = (code = "", tabSize: number): string => {
     const lines = code.trim().split("\n");
