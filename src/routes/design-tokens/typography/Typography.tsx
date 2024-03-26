@@ -6,6 +6,7 @@ import { Token } from "../token";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface TypographyToken extends Token {
   figmaTypeStyle: string;
@@ -78,9 +79,11 @@ export default function TypographyPage() {
   };
 
   return (
-    <div style={{ whiteSpace: "normal" }}>
-      <h1>Typography</h1>
-      {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    <ComponentContent>
+      <div style={{ whiteSpace: "normal" }}>
+        <h1>Typography</h1>
+        {isDesktop ? renderDesktop() : renderMobile()}
+      </div>
+    </ComponentContent>
   );
 }

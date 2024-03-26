@@ -6,6 +6,7 @@ import { getTokenGroups } from "../getTokenGroups";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { useContext } from "react";
 import { getCssVarValue } from "../../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface Token {
   tokenName: string;
@@ -88,9 +89,9 @@ export default function SpacingPage() {
   };
 
   return (
-    <div className="spacing-page">
+    <ComponentContent contentClassName="spacing-page">
       <h1>Spacing</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </ComponentContent>
   );
 }

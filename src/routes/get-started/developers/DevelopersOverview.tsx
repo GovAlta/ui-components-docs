@@ -4,7 +4,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function DevelopersOverviewPage() {
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
       <h3>
         As a developer, you can consume the design system using tokens, components, templates, and

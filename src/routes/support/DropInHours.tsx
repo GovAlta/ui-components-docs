@@ -1,6 +1,8 @@
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
+
 export default function DropInHoursPage() {
   return (
-    <>
+    <ComponentContent>
       <h1>Drop in hours</h1>
       <h3>
         <a href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/" target="_blank">
@@ -21,6 +23,6 @@ export default function DropInHoursPage() {
         </p>
 
       </div>
-    </>
+    </ComponentContent>
   );
 }

@@ -4,7 +4,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function CapitalizationPage() {
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Capitalization</h1>
       <h3>Use sentence case for all headings, labels, and content.</h3>
 

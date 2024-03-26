@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function UxDesignerPage() {
-  return ( <ComponentContent cssQuery="h2[id], h3[id]">
+  return ( <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Designers</h1>
       <h3>
         As a designer, you can consume the design system through Figma. Through Figma you can use

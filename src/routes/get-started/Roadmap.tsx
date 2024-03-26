@@ -1,6 +1,8 @@
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 export default function RoadmapPage() {
   return (
-    <>
+    <ComponentContent>
       <h1>Roadmap</h1>
       <h3 className="introduction">
         A high level summary of the work the design system team plans to complete in 2024. For more
@@ -79,6 +81,6 @@ export default function RoadmapPage() {
           </li>
         </ul>
       </div>
-    </>
+    </ComponentContent>
   );
 }

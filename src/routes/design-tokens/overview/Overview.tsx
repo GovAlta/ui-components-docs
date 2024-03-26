@@ -1,8 +1,9 @@
 import { GoAContainer } from "@abgov/react-components";
 import "./Overview.css";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 export default function DesignTokensOverviewPage() {
   return (
-    <div className="overview-page">
+    <ComponentContent contentClassName="overview-page">
       <h1>Styles</h1>
       <h3 className="introduction">
         We use design tokens to communicate design decisions across design and development. These
@@ -63,6 +64,6 @@ export default function DesignTokensOverviewPage() {
         at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the spacing is:{" "}
         <code className="inline"> --goa-spacing-m</code>".
       </p>
-    </div>
+    </ComponentContent>
   );
 }

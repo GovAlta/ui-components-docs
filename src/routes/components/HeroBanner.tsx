@@ -148,7 +148,7 @@ export default function HeroBannerPage() {
         description="A visual band of text, including a background colour or image and a call to action."
       />
 
-      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+      <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
           <GoATab heading="Code examples">

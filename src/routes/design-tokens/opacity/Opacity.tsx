@@ -5,6 +5,7 @@ import { getTokenGroups } from "../getTokenGroups";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface Token {
   tokenName: string;
@@ -92,9 +93,9 @@ export default function OpacityPage() {
   };
 
   return (
-    <div className="opacity-page">
+    <ComponentContent contentClassName="opacity-page">
       <h1>Opacity</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </ComponentContent>
   );
 }

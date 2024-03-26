@@ -1,6 +1,8 @@
+import { ComponentContent } from "@components/component-content/ComponentContent";
+
 export default function ReleaseNotesPage() {
   return (
-    <>
+    <ComponentContent>
       <h1>Release notes</h1>
       <p>
         Design system release notes are official documentation that accompany a new version or
@@ -11,6 +13,6 @@ export default function ReleaseNotesPage() {
       <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
         View our release notes on GitHub
       </a>
-    </>
+    </ComponentContent>
   );
 }

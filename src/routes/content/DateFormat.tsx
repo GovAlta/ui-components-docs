@@ -4,7 +4,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function DateFormatPage() {
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Date format</h1>
       <h3>
         Configuration which contains date information that includes the specification of the form

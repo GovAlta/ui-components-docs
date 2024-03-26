@@ -4,6 +4,7 @@ import "./Shadow.css";
 import { getTokenGroups } from "../getTokenGroups";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface Token {
   tokenName: string;
@@ -70,9 +71,9 @@ export default function ShadowPage() {
   };
 
   return (
-    <div className="shadow-page">
+    <ComponentContent contentClassName="shadow-page">
       <h1>Shadow</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </ComponentContent>
   );
 }

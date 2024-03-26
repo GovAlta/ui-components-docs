@@ -3,8 +3,9 @@ import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Color.css";
 import COLORS from "./colors.json";
 import React, { useContext } from "react";
-import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
+import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 interface Token {
   code: string;
@@ -100,9 +101,9 @@ export default function ColorPage() {
   };
 
   return (
-    <div className="colors-page">
+    <ComponentContent contentClassName="colors-page">
       <h1>Color</h1>
       {isDesktop ? renderDesktop() : renderTablet()}
-    </div>
+    </ComponentContent>
   );
 }

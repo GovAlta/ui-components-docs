@@ -2,7 +2,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function DevelopersTechnologiesPage() {
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
       <h2>Design system technologies</h2>
       <div className="design-system-image">
