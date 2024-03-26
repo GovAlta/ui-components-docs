@@ -1,9 +1,10 @@
 import {GoABlock} from "@abgov/react-components";
 import { Link } from "react-router-dom";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function SupportOverviewPage() {
   return (
-    <>
+    <PageContent>
       <h1>Support</h1>
       <h3>
         Get support from the design system team using the component library, design and usage guidelines, design system best practices, and accessibility.
@@ -131,6 +132,6 @@ export default function SupportOverviewPage() {
         </div>
         
       </div>
-    </>
+    </PageContent>
   );
 }

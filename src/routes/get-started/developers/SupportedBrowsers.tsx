@@ -1,8 +1,9 @@
 import { GoACheckbox, GoAContainer, GoATable } from "@abgov/react-components";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function SupportedBrowsersPage() {
   return (
-    <>
+    <PageContent>
       <h1>Developers</h1>
       <h2>Supported browsers</h2>
       <h3 className="introduction">
@@ -90,6 +91,6 @@ export default function SupportedBrowsersPage() {
           </p>
         </GoAContainer>
       </div>
-    </>
+    </PageContent>
   );
 }

@@ -1,6 +1,8 @@
+import { PageContent } from "@components/page-content/PageContent";
+
 export default function DropInHoursPage() {
   return (
-    <>
+    <PageContent>
       <h1>Drop in hours</h1>
       <h3>
         <a href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/" target="_blank">
@@ -21,6 +23,6 @@ export default function DropInHoursPage() {
         </p>
 
       </div>
-    </>
+    </PageContent>
   );
 }

@@ -9,7 +9,7 @@ type Props = {
 export function ComponentContent({cssQuery, children}: Props): JSX.Element {
   return <>
     <GoABlock gap="2xl">
-      <div style={{flex: "1 1 auto"}}>
+      <div style={{flex: "1 1 auto", container: "self/inline-size"}}>
         {children}
       </div>
       <TOC cssQuery={cssQuery} />
