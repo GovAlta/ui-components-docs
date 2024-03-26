@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function DevelopersVSCodePage() {
   return (
-    <>
+    <PageContent>
       <h1>Developers</h1>
       <h2>VS Code</h2>
       <p>
@@ -30,6 +31,6 @@ export default function DevelopersVSCodePage() {
         support to enhance GoA Web Components HTML editing experience, include our html custom data
         setting found in <code>.vscode/settings.json</code>:
       </p>
-    </>
+    </PageContent>
   );
 }

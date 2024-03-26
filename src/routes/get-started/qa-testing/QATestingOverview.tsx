@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function QATestingOverviewPage() {
   return (
-    <>
+    <PageContent>
       <h1>QA testing</h1>
       <h3 className="introduction">
         The QA testing practice involves creating test cases based on user acceptance criteria,
@@ -77,6 +78,6 @@ export default function QATestingOverviewPage() {
           .
         </p>
       </div>
-    </>
+    </PageContent>
   );
 }

@@ -1,9 +1,10 @@
 import { GoABlock, GoAContainer, GoADivider } from "@abgov/react-components";
 import { Link } from "react-router-dom";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function ContributePage() {
   return (
-    <div>
+    <PageContent>
       <h1>Contribute</h1>
       <h3 className="introduction">Propose a new component or pattern to the design system</h3>
 
@@ -148,6 +149,6 @@ export default function ContributePage() {
           </li>
         </ol>
       </div>
-    </div>
+    </PageContent>
   );
 }

@@ -6,6 +6,7 @@ import { IconSize } from "@abgov/react-components";
 import { Token } from "../token";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
+import { PageContent } from "@components/page-content/PageContent";
 
 interface IconSizeToken extends Token {
   size: IconSize | string;
@@ -93,9 +94,9 @@ export default function IconSizePage() {
   };
 
   return (
-    <div className="icon-size">
+    <PageContent cssClass="icon-size">
       <h1>Icon size</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </PageContent>
   );
 }

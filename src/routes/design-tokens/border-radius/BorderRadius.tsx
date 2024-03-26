@@ -6,6 +6,7 @@ import { Token } from "../token";
 import { getTokenGroups } from "../getTokenGroups";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { PageContent } from "@components/page-content/PageContent";
 
 export default function BorderRadiusPage() {
   const tokens: Token[] = [
@@ -88,9 +89,9 @@ export default function BorderRadiusPage() {
   };
 
   return (
-    <div className="border-radius-page">
+    <PageContent cssClass="border-radius-page">
       <h1>Border Radius</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </PageContent>
   );
 }
