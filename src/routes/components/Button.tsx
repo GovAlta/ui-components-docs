@@ -220,8 +220,7 @@ export default function ButtonPage() {
             {/*Button example 2*/}
             <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
             <Sandbox flags={["reactive"]}>
-              <GoAModal>
-                <h3>Are you sure you want to delete this record?</h3>
+              <GoAModal heading="Are you sure you want to delete this record?">
                 <p>You cannot undo this action.</p>
 
                 <GoAButtonGroup alignment="end" mt="l">
@@ -238,8 +237,8 @@ export default function ButtonPage() {
             {/*Button example 3*/}
             <h3 id="component-example-disabled-button">Disabled button with a required field</h3>
             <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Input">
-                <GoAInput name="input" type="text" value="" onChange={noop} width="400px" />
+              <GoAFormItem label="Name" requirement="required">
+                <GoAInput name="input" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
 
               <GoAButtonGroup alignment="start" mt="l">
