@@ -302,7 +302,7 @@ export default function AllComponentsPage() {
         "Arrange a number of components into a responsive grid pattern.",
     },
     {
-      name: "icon",
+      name: "icons",
       groups: ["utilities"],
       tags: ["utilities"],
       description:
