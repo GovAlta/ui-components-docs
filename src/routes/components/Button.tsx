@@ -211,7 +211,7 @@ export default function ButtonPage() {
               
              </GoABlock>
               
-              <GoAButtonGroup alignment="start" mt="l">
+              <GoAButtonGroup alignment="start" mt="2xl">
                 <GoAButton type="primary" onClick={noop}>
                   Submit and continue
                 </GoAButton>
