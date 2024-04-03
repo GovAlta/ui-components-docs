@@ -83,14 +83,14 @@ export default function AppHeaderPage() {
     },
     {
       name: "fullmenubreakpoint",
-      type: "string",
-      description: "Set the breakpoint for the full menu to display, ex: 1500px",
+      type: "number",
+      description: "Set the breakpoint for the full menu to display, ex: 1500 (means 1500px)",
       lang: "angular"
     },
     {
       name: "fullMenuBreakpoint",
-      type: "string",
-      description: "Set the breakpoint for the full menu to display, ex: 1500px",
+      type: "number",
+      description: "Set the breakpoint for the full menu to display, ex: 1500 (means 1500px)",
       lang: "react"
     }
   ];
