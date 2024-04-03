@@ -58,7 +58,7 @@ export default function TextFieldPage() {
         "search",
         "tel",
         "date",
-        "datetime-locale",
+        "datetime-local",
         "time",
         "url",
         "week",
@@ -121,7 +121,7 @@ export default function TextFieldPage() {
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
-      type: "text | number | password | email | search | tel | date | datetime-locale | time | url | week",
+      type: "text | number | password | email | search | tel | date | datetime-local | time | url | week",
       defaultValue: "text",
       description: "Sets the type of the input field",
     },
