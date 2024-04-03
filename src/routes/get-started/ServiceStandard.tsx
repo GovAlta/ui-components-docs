@@ -51,14 +51,9 @@ export default function ServiceStandardPage() {
 
         <p>
           For more details on the process of assessing compliance to each guideline, refer to our &nbsp;
-          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023569024/User+Experience+Guideline+Review+Process" target="_blank">
-            user experience guideline review process
+          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023569024/Heuristic+Worksheet+UX+Review+Process" target="_blank">
+            Heuristic Worksheet & UX Review Process.
           </a>
-          , and &nbsp;
-          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023143415/Heuristic+evaluation+template" target="_blank">
-             heuristic evaluation template
-          </a>
-          &nbsp; for teams.
         </p>
         
       </div>
