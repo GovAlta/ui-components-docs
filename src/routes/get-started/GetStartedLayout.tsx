@@ -19,7 +19,7 @@ export default function GetStartedLayout() {
           </GoASideMenuGroup>
           <Link to="qa-testing">QA testing</Link>
           <Link to="roadmap">Roadmap</Link>
-          <Link to="service-standard">User experience guidelines</Link>
+          <Link to="user-experience-guidelines">User experience guidelines</Link>
         </GoASideMenu>
       </section>
 
