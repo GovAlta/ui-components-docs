@@ -99,8 +99,7 @@ import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
 import ErrorMessagesPage from '@routes/content/ErrorMessages';
 import HelperTextPage from '@routes/content/HelperText';
-import ServiceStandardPage from "@routes/get-started/ServiceStandard.tsx";
-
+import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 interface DeviceWidthProviderProps {
   children: ReactNode;
 }
