@@ -196,8 +196,9 @@ const router = createBrowserRouter(
           <Route index element={<QATestingOverviewPage />} />
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
-        <Route path="service-standard" element={<ServiceStandardPage />} />
+        <Route path="user-experience-guidelines" element={} />
       </Route>
+      
 
       <Route path="content" element={<ContentLayout />}>
         <Route path="capitalization">
