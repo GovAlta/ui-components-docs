@@ -382,7 +382,7 @@ export default function AllComponentsPage() {
       {mode === "search" && <GoAGrid minChildWidth="300px">{getComponentsByFilter()}</GoAGrid>}
 
       {mode === "list" && (
-        <ComponentContent cssQuery="h2[id], h3[id]">
+        <ComponentContent tocCssQuery="h2[id], h3[id]">
           <h2 id="content">Content layout</h2>
           <GoAGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("content")}

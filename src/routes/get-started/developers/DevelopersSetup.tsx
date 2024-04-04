@@ -7,7 +7,7 @@ export default function DevelopersSetupPage() {
 
   return (
     <div className="developer-setup">
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Developers</h1>
       <h2 id="setup">Setup</h2>
       <GoAContainer type="non-interactive">

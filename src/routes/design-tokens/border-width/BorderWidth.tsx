@@ -6,6 +6,7 @@ import { Token } from "../token";
 import { getTokenGroups } from "../getTokenGroups";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { getCssVarValue } from "../../../utils/styling";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function BorderWidthPage() {
   const tokens: Token[] = [
@@ -92,9 +93,9 @@ export default function BorderWidthPage() {
   };
 
   return (
-    <div className="border-width-page">
+    <ComponentContent contentClassName="border-width-page">
       <h1>Border Width</h1>
       {isDesktop ? renderDesktop() : renderMobile()}
-    </div>
+    </ComponentContent>
   );
 }

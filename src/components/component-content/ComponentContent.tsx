@@ -3,16 +3,22 @@ import TOC from "@components/table-of-contents/TOC";
 
 type Props = {
   children: React.ReactNode;
-  cssQuery: string;
+  tocCssQuery?: string;
+  contentClassName?: string;
 }
 
-export function ComponentContent({cssQuery, children}: Props): JSX.Element {
+export function ComponentContent({tocCssQuery, contentClassName, children}: Props): JSX.Element {
+  const contentStyle = {
+    flex: "1 1 auto",
+    container: "self/inline-size",
+    maxWidth: tocCssQuery ? undefined : "54rem" // if no table of content, set max width
+  };
   return <>
     <GoABlock gap="2xl">
-      <div style={{flex: "1 1 auto"}}>
+      <div style={contentStyle} className={contentClassName}>
         {children}
       </div>
-      <TOC cssQuery={cssQuery} />
+      {tocCssQuery && <TOC cssQuery={tocCssQuery} />}
     </GoABlock>
   </>  
 }

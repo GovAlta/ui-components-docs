@@ -121,8 +121,7 @@ export default function AppFooterPage() {
         description={description}
         relatedComponents={relatedComponents}
       />
-      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
+      <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
           <GoATab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>

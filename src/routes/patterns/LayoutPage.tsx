@@ -12,10 +12,11 @@ import {
 } from "@abgov/react-components";
 import {Sandbox} from "@components/sandbox";
 import Browser from "@components/browser/Browser";
+import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function LayoutPage() {
   return (
-    <>
+    <ComponentContent>
       <h1>Layout</h1>
       <h3>
         A structural template that supports consistency across applications by defining visual grids, spacing, and sections.
@@ -62,6 +63,6 @@ export default function LayoutPage() {
             </>
           }></GoATab>
       </GoATabs>
-    </>
+    </ComponentContent>
   );
 }

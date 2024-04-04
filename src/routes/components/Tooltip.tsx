@@ -94,7 +94,7 @@ export default function TEMPLATE_Page() {
         relatedComponents={relatedComponents}
       />
 
-      <ComponentContent cssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+      <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
           <GoATab heading="Code examples">

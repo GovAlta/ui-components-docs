@@ -14,7 +14,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function HelperTextPage() {
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Helper text</h1>
       <h3>
         Helper text is additional context and guidance that is always visible below an input. The

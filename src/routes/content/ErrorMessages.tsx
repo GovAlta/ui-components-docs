@@ -14,7 +14,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function ErrorMessagesPage() {
   const noop = () => { };
   return (
-    <ComponentContent cssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Error messages</h1>
       <h3>Error messages appear when the user’s proposed action fails.</h3>
 
