@@ -20,12 +20,12 @@
   justify-content: center;
   align-items: flex-start;
   padding-top: 2rem;
-  width: 4rem;
+  flex: 0 0 3rem;
   height: auto;
 }
 
 .information {
-  background-color: var(--goa-color-interactive-default);
+  background-color: var(--goa-color-info-default);
   color: white;
 }
 .important {

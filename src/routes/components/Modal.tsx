@@ -225,7 +225,7 @@ export default function TEMPLATE_Page() {
 
             <h3 id="component-example-warning">Warning callout modal</h3>
             <Sandbox flags={["reactive"]}>
-              <MockModal heading="Complete submission prior to 1PM" variant="information">
+              <MockModal heading="Complete submission prior to 1PM" calloutVariant="information">
                 <p>
                   You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.
                 </p>
