@@ -6,16 +6,16 @@ type Variant = "information" | "important" | "emergency" | "success" | "event";
 
 interface Props {
   heading?: string;
-  variant?: Variant;
+  calloutVariant?: Variant;
   children: ReactNode;
 }
 
-export function GoAModal({ heading, variant, children }: Props) {
+export function GoAModal({ heading, calloutVariant, children }: Props) {
   return (
     <div className={css.modal}>
-      {variant && (
-        <div className={`${css.variant} ${css[variant]}`}>
-          <GoAIcon type={`${variant}-circle` as GoAIconType} />
+      {calloutVariant && (
+        <div className={`${css.variant} ${css[calloutVariant]}`}>
+          <GoAIcon type={`${calloutVariant}-circle` as GoAIconType} />
         </div>
       )}
       <div className={css.content}>
