@@ -1,0 +1,10 @@
+.start-page-example h1.page-title {
+    margin-bottom: var(--goa-space-l);
+}
+.start-page-example h2 {
+    margin-top: var(--goa-space-xl);
+    margin-bottom: 0;
+}
+.start-page-example h2 + p {
+    margin-top: var(--goa-space-l);
+}

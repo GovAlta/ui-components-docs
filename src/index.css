@@ -37,6 +37,21 @@ a[target="_blank"]::after {
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>') center bottom no-repeat;
 }
 
+a.back-link::before {
+    content: "";
+    display: inline-block;
+    width: 42px;
+    height: 24px;
+    vertical-align: middle;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 2 22 22" fill="none" stroke="%230070C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') center center no-repeat;
+}
+
+a.back-link:visited::before,
+a.back-link:hover::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 2 22 22" fill="none" stroke="%23004f84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') center center no-repeat;
+}
+
+
 h1+h2,
 h1+h3,
 h2+h3 {
