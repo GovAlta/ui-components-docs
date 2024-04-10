@@ -99,6 +99,13 @@ import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
 import ErrorMessagesPage from '@routes/content/ErrorMessages';
 import HelperTextPage from '@routes/content/HelperText';
+import PatternsOverviewPage from "@routes/patterns/PatternsOverview.tsx";
+import SimpleFormPage from "@routes/patterns/SimpleFormPage.tsx";
+import StartPage from "@routes/patterns/StartPage.tsx";
+import TaskListPage from "@routes/patterns/TaskListPage.tsx";
+import QuestionPage from "@routes/patterns/QuestionPage.tsx";
+import ReviewPage from "@routes/patterns/ReviewPage.tsx";
+import ResultPage from "@routes/patterns/ResultPage.tsx";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -211,7 +218,14 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
-        <Route index element={<LayoutPage />} />
+        <Route index element={<PatternsOverviewPage />} />
+        <Route path="simple-form" element={<SimpleFormPage/>} />
+        <Route path="layout" element={<LayoutPage />} />
+        <Route path="start-page" element={<StartPage/>} />
+        <Route path="task-list-page" element={<TaskListPage/>} />
+        <Route path="question-page" element={<QuestionPage/>} />
+        <Route path="review-page" element={<ReviewPage/>} />
+        <Route path="result-page" element={<ResultPage/>} />
       </Route>
       <Route path="support" element={<SupportLayout />}>
         <Route index element={<SupportOverviewPage />} />

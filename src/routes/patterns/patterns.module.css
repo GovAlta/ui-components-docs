@@ -1,0 +1,26 @@
+
+figure.imageContainer {
+  max-width: 54rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.imageContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.imageContainer figcaption {
+  margin-top: var(--goa-space-l);
+  font: var(--goa-typography-body-s);
+}
+
+.descriptionWithList h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.descriptionWithList h3 + ul {
+  margin-top: var(--goa-space-l);
+}
+.descriptionWithList h4 + ul {
+  margin-top: var(--goa-space-m);
+}

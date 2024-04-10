@@ -1,5 +1,6 @@
 import { GoABlock } from "@abgov/react-components";
 import TOC from "@components/table-of-contents/TOC";
+import "./component-content.css";
 
 type Props = {
   children: React.ReactNode;

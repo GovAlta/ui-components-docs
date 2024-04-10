@@ -1,0 +1,8 @@
+.review-page-example .page-header h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.review-page-example .page-header h2 + h3 {
+    margin-top: var(--goa-space-l);
+    color: var(--goa-color-text-secondary);
+}
