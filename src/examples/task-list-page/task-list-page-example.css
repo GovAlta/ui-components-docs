@@ -1,0 +1,8 @@
+.task-list-page-example h2 {
+    margin-top: var(--goa-space-xl);
+    margin-bottom: 0;
+}
+.task-list-page-example h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -4,7 +4,7 @@ import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
 export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "table th thead tbody tr td div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dl dt dd".split(
+    "table th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 img label ul li ol hr section dl dt dd".split(
       " ",
     );
 

@@ -1,0 +1,46 @@
+figure.imageContainer {
+  max-width: 54rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+figure.imageContainer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure.imageContainer figcaption {
+  margin-top: var(--goa-space-l);
+  font: var(--goa-typography-body-s);
+}
+
+h2 + figure.imageContainer {
+  margin-top: var(--goa-space-l);
+}
+
+.descriptionWithList + .descriptionWithList {
+  margin-top: var(--goa-space-xl);
+}
+
+.descriptionWithList h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.descriptionWithList h3 + ul, .descriptionWithList h3 + ol {
+  margin-top: var(--goa-space-l);
+}
+
+.descriptionWithList h4 + ul {
+  margin-top: var(--goa-space-m);
+}
+
+h3[id^="toc"] + .descriptionWithList {
+  margin-top: var(--goa-space-xs);
+}
+
+.linkWithDescription h3 {
+  margin-top: var(--goa-space-xl);
+  margin-bottom: var(--goa-space-m);
+}
