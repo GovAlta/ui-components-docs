@@ -21,10 +21,11 @@ h2[id^="toc"] {
 goa-details + h2[id^="toc"]{
     margin-top: var(--goa-space-2xl);
 }
-h2[id^="toc"] + div, h2[id^="toc"] + p {
+h2[id^="toc"] + div, h2[id^="toc"] + p, h3[id^="toc"] + p {
     margin-top: var(--goa-space-l);
 }
+
 h3[id^="toc"] {
     margin-top: var(--goa-space-2xl);
-    margin-bottom: var(--goa-space-xl);
+    margin-bottom: var(--goa-space-l);
 }
