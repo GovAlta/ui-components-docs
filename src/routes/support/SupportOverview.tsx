@@ -13,7 +13,7 @@ export default function SupportOverviewPage() {
         <h2>
           Drop in hours
         </h2>
-        <h3>(every Tuesday and Friday 1:00 - 3:00pm MST)</h3>>
+        <h3>(every Tuesday and Friday 1:00 - 3:00pm MST)</h3>
         <p>
           For designers and developers to get feedback on their usage of the design system, propose new components or changes to existing components, ask any questions, and give feedback to the design system.
         </p>
