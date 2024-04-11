@@ -9,13 +9,13 @@ export const SupportInfo = (props:{hidden?: boolean}) => {
     <div className="support-info">
       <GoACallout
         type="information"
-        heading="Need help? Connect with us on Slack"
+        heading="Need help? Join us in Drop in hours"
       >
-        <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">
-          #design-system-support
+        <a href="https://outlook.office365.com/book/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/" target="_blank">
+          Book time with us in drop in hours
         </a>{" "}
-        General information and discussion related to design system including
-        questions, new component proposals, contribution, and other requests.
+        Get feedback on usage of the design system, propose new ideas or components or changes 
+        to existing components, ask any questions, and give feedback to the design system.
       </GoACallout>
     </div>
   );
