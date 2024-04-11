@@ -84,7 +84,7 @@ export default function SupportOverviewPage() {
           Vanessa Tran | <a href="mailto:vanessa.m.tran@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
         </div>
         <div>
-          Syed Zeeshan | <a href="mailto:syed.zeeshan@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
+          Syed Zeeshan | <a href="mailto:syed.zeeshan@gov.ab.ca">syed.zeeshan@gov.ab.ca</a>
         </div>
 
         <div className="ds-team-title">Service designer</div>
