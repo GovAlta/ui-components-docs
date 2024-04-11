@@ -1,9 +1,13 @@
-.question-page-example p.last-paragraph {
-    margin-bottom: 0;
+.question-page-example h2.section-title{
+    margin-top: 0;
+    margin-bottom: var(--goa-space-l);
 }
-.question-page-example .form-header h2 {
+.question-page-example h3.section-title {
     margin-top: 0;
     margin-bottom: 0;
+}
+.question-page-example h2.section-title + h3, .question-page-example h3.section-title + h2 {
+    margin-top: var(--goa-space-xs);
 }
 .question-page-example .form-header h3 {
     margin-bottom: var(--goa-space-xs);

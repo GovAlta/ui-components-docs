@@ -31,7 +31,7 @@ export default function QuestionPage() {
                 src="/images/patterns/form-pattern_question-page.png"
               />
             </figure>
-            <h2 id="design-guidelines-1">Form structure</h2>
+            <h2 id="toc-1">Form structure</h2>
             <div className={css.descriptionWithList}>
               <p>
                 Start by splitting the form across multiple pages with each page containing just one
@@ -115,12 +115,12 @@ export default function QuestionPage() {
               </p>
             </GoADetails>
 
-            <h2 id="design-guidelines-2">Asking the right question</h2>
+            <h2 id="toc-2">Asking the right question</h2>
             <GoAButton type="tertiary" mt="l">
               View more common questions
             </GoAButton>
 
-            <h2 id="design-guidelines-3">Using progress indicators</h2>
+            <h2 id="toc-3">Using progress indicators</h2>
             <p>
               Start by testing your form without a progress indicator to see if it’s simple enough
               that users do not need one.
