@@ -13,6 +13,9 @@ figure.imageContainer {
   margin-top: var(--goa-space-l);
   font: var(--goa-typography-body-s);
 }
+h2 + figure.imageContainer {
+  margin-top: var(--goa-space-l);
+}
 
 .descriptionWithList + .descriptionWithList {
   margin-top: var(--goa-space-xl);
