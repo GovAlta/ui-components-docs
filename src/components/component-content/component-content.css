@@ -18,7 +18,7 @@ h2[id^="toc"] {
     margin-top: var(--goa-space-3xl);
     margin-bottom: 0;
 }
-goa-details + h2[id^="toc"]{
+goa-details + h2[id^="toc"], figure + h2[id^="toc"] {
     margin-top: var(--goa-space-2xl);
 }
 h2[id^="toc"] + div, h2[id^="toc"] + p, h3[id^="toc"] + p {
