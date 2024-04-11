@@ -29,10 +29,11 @@ export default function ResultPage() {
                 src="/images/patterns/form-pattern_results-page.png"
               />
             </figure>
-            <h2 id="design-guidelines-1">When to use a results page</h2>
+
+            <h2 id="toc-1">When to use a results page</h2>
             <p>Use a results page when a user has submitted a form, application, or task, and there is a result to show them. </p>
 
-            <h2 id="design-guidelines-2">What content to include</h2>
+            <h2 id="toc-2">What content to include</h2>
             <ul>
               <li>Details of what happens next, and when</li>
               <li>a reference number (if applicable)</li>

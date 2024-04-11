@@ -10,37 +10,47 @@ export default function ReviewPage() {
   return (
     <>
       <h1>Review page</h1>
-      <h3>
-        Let users check answers before submitting information to a service.
-      </h3>
+      <h3>Let users check answers before submitting information to a service.</h3>
       <ComponentContent
         contentClassName="question-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
           <GoATab heading="Code examples">
-            <ReviewPageExamples/>
+            <ReviewPageExamples />
           </GoATab>
 
           <GoATab heading="Design guidelines">
-            <h2 id="overview" className="hidden">Overview</h2>
             <figure className={css.imageContainer}>
+              <h2 id="overview" className="hidden">
+                Overview
+              </h2>
               <img
                 alt="review page overview image"
                 src="/images/patterns/form-pattern_review-page.png"
               />
             </figure>
-            <h2 id="design-guidelines-1">When to use a review page</h2>
+            <h2 id="toc-1">When to use a review page</h2>
             <div className={css.descriptionWithList}>
               <p>Review and submit your answers at the end of a form or section.</p>
-              <p>When designing a very large transaction with multiple sections, it may help to include a check answers pages at the end of each section.</p>
+              <p>
+                When designing a very large transaction with multiple sections, it may help to
+                include a check answers pages at the end of each section.
+              </p>
             </div>
 
-            <h2 id="design-guidelines-2">Let users go back and change their answers</h2>
-            <p>Provide a "change" link next to each section so that users can add or change the information they are submitting.</p>
-            <p>If you have questions that are optional, let users know that they’ve skipped it without giving an answer by showing their response as “Not provided”.</p>
+            <h2 id="toc-2">Let users go back and change their answers</h2>
+            <p>
+              Provide a "change" link next to each section so that users can add or change the
+              information they are submitting.
+            </p>
+            <p>
+              If you have questions that are optional, let users know that they’ve skipped it
+              without giving an answer by showing their response as “Not provided”.
+            </p>
 
             <figure className={css.imageContainer}>
-              <img alt="let users go back and change their answer example image"
+              <img
+                alt="let users go back and change their answer example image"
                 src="/images/patterns/review-page-change-answers.png"
               />
             </figure>
