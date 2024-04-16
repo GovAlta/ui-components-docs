@@ -11,35 +11,10 @@ export default function SupportOverviewPage() {
       </h3>
 
       <div className="max-width-72ch">
-        <h2>Support channels</h2>
-        <h3>Slack</h3>
-        <p>
-          <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">
-            #design-system-support
-          </a>{" "}
-          <br />
-          Reach out to the design system directly to ask a question and get support.
-        </p>
-        <p>
-          <a href="https://goa-dio.slack.com/archives/C02P8S4T2AZ" target="_blank">
-            #design-system-releases
-          </a>{" "}
-          <br />
-          Automated messages from GitHub for design system releases. Subscribe to this channel to
-          get notified about ui-component releases including new components, updates or fixes.
-        </p>
-        <p>
-          <a
-            href="https://goa-dio.slack.com/archives/C02BQQBKN66"
-            target="_blank">
-            #figma
-          </a>{" "}
-          <br />A place for any Figma discussion. Share tips, tricks, techniques, ask questions,
-          report issues.
-        </p>
-        <h3 className="support-overview-drop-in-hours-heading">
-          Drop in hours <span>(every Tuesday and Friday 1:00 - 3:00pm MST)</span>
-        </h3>
+        <h2>
+          Drop in hours
+        </h2>
+        <h3>(every Tuesday and Friday 1:00 - 3:00pm MST)</h3>
         <p>
           For designers and developers to get feedback on their usage of the design system, propose new components or changes to existing components, ask any questions, and give feedback to the design system.
         </p>
@@ -108,6 +83,9 @@ export default function SupportOverviewPage() {
         </div>
         <div>
           Vanessa Tran | <a href="mailto:vanessa.m.tran@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
+        </div>
+        <div>
+          Syed Zeeshan | <a href="mailto:syed.zeeshan@gov.ab.ca">syed.zeeshan@gov.ab.ca</a>
         </div>
 
         <div className="ds-team-title">Service designer</div>
