@@ -15,7 +15,9 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { LanguageContext } from "@components/sandbox";
 
 // == Page props ==
 
@@ -35,6 +37,8 @@ type CastingType = {
 };
 
 export default function AppFooterPage() {
+  const language = useContext(LanguageContext);
+
   const [appFooterProps, setAppFooterProps] = useState<ComponentPropsType>({
     maxContentWidth: "100%",
   });
@@ -133,20 +137,70 @@ export default function AppFooterPage() {
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
             <ComponentProperties
-              heading="Footer Secondary nav properties"
+              heading="App Footer Nav Section"
               properties={secondaryNavProperties}
             />
-            <ComponentProperties
-              heading="Meta link properties"
-              properties={metaLinkProperties}
-            />
-
+            
+            {language === "angular" && (
+              <ComponentProperties
+                heading="App Footer Meta Section"
+                properties={metaLinkProperties}
+              />
+            )}
 
             {/* Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
             <h3 id="component-example-footer-meta">Footer with meta info</h3>
-            <Sandbox fullWidth>
+            <Sandbox skipRender fullWidth>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goa-app-footer maxcontentwidth="100%">
+                  <goa-app-footer-meta-section slot="meta">
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </goa-app-footer-meta-section>
+                </goa-app-footer>
+               `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                 <GoAAppFooter maxContentWidth="100%">
+                  <GoAAppFooterMetaSection>
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </GoAAppFooterMetaSection>
+                </GoAAppFooter>
+              `}
+              />
+
               <GoAAppFooter {...appFooterProps}>
                 <GoAAppFooterMetaSection>
                   <a href="privacy.html">Privacy</a>
@@ -158,7 +212,120 @@ export default function AppFooterPage() {
             </Sandbox>
 
             <h3 id="component-example-footer-secondary-nav">Secondary navigation column section and meta section</h3>
-            <Sandbox properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
+            <Sandbox skipRender properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goa-app-footer maxcontentwidth="100%">
+                  <goa-app-footer-nav-section slot="nav" maxcolumncount="1">
+                    <a href="a.html">
+                      Arts and culture
+                    </a>
+                    <a href="b.html">
+                      Education and training
+                    </a>
+                    <a href="c.html">
+                      Family and social supports
+                    </a>
+                    <a href="d.html">
+                      Housing and community
+                    </a>
+                    <a href="e.html">
+                      Life events
+                    </a>
+                    <a href="f.html">
+                      Business and economy
+                    </a>
+                    <a href="g.html">
+                      Emergencies and public safety
+                    </a>
+                    <a href="h.html">
+                      Government
+                    </a>
+                    <a href="i.html">
+                      Jobs and employment
+                    </a>
+                    <a href="j.html">
+                      Moving to Alberta
+                    </a>
+                  </goa-app-footer-nav-section>
+                  <goa-app-footer-meta-section slot="meta">
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </goa-app-footer-meta-section>
+                </goa-app-footer>
+               `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                 <GoAAppFooter maxContentWidth="100%">
+                  <GoAAppFooterNavSection maxColumnCount=1>
+                    <a href="a.html">
+                      Arts and culture
+                    </a>
+                    <a href="b.html">
+                      Education and training
+                    </a>
+                    <a href="c.html">
+                      Family and social supports
+                    </a>
+                    <a href="d.html">
+                      Housing and community
+                    </a>
+                    <a href="e.html">
+                      Life events
+                    </a>
+                    <a href="f.html">
+                      Business and economy
+                    </a>
+                    <a href="g.html">
+                      Emergencies and public safety
+                    </a>
+                    <a href="h.html">
+                      Government
+                    </a>
+                    <a href="i.html">
+                      Jobs and employment
+                    </a>
+                    <a href="j.html">
+                      Moving to Alberta
+                    </a>
+                  </GoAAppFooterNavSection>
+                  <GoAAppFooterMetaSection>
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </GoAAppFooterMetaSection>
+                </GoAAppFooter>
+              `}
+              />
+
               <GoAAppFooter {...appFooterProps}>
                 <GoAAppFooterNavSection {...appFooterNavProps}>
                   <a href="a.html">Arts and culture</a>
