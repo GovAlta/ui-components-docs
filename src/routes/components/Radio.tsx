@@ -16,6 +16,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import RadioExamples from "@examples/radio/RadioExamples.tsx";
 
 // == Page props ==
 const componentName = "Radio";
@@ -74,30 +75,30 @@ export default function RadioPage() {
       name: "name",
       type: "string",
       required: true,
-      description: "Must match the name assigned to the children",
+      description: "Must match the name assigned to the children.",
     },
     {
       name: "value",
       type: "string",
-      description: "The value binding",
+      description: "The value binding.",
     },
     {
       name: "orientation",
       type: "horizontal|vertical",
-      description: "Orientation of the radio items",
+      description: "Orientation of the radio items.",
       defaultValue: "vertical",
     },
     {
       name: "error",
       type: "boolean",
       defaultValue: "false",
-      description: "Set the component to an error state",
+      description: "Set the component to an error state.",
     },
     {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
-      description: "Set the component to disabled. Use [attr.disabled] with [formControl]",
+      description: "Set the component to disabled. Use [attr.disabled] with [formControl].",
     },
     {
       name: "ariaLabel",
@@ -118,7 +119,7 @@ export default function RadioPage() {
       lang: "react",
       type: "(name: string, value: string[] | string | null) => void",
       required: true,
-      description: "Callback function when radio value is changed",
+      description: "Callback function when radio value is changed.",
     },
   ];
   const radioItemProperties: ComponentProperty[] = [
@@ -131,12 +132,19 @@ export default function RadioPage() {
     {
       name: "label",
       type: "string",
-      description: "Tetx to show to the user",
+      description: "Text shown beside the radio.",
     },
     {
       name: "description",
-      type: "string",
-      description: "Additional text to the bottom of the label",
+      type: "string | slot",
+      description: "Additional content shown below the label.",
+      lang: "angular",
+    },
+    {
+      name: "description",
+      type: "string | ReactNode",
+      description: "Additional content shown below the label.",
+      lang: "react",
     },
   ];
 
@@ -215,6 +223,7 @@ export default function RadioPage() {
             <ComponentProperties heading="Radio group properties" properties={radioGroupProperties} />
             {/*Radio Item properties*/}
             <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
+            <RadioExamples />
           </GoATab>
 
           <GoATab
