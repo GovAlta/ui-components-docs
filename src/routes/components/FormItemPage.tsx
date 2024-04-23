@@ -7,6 +7,7 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function FormItemPage() {
   const [formItemProps, setFormItemProps] = useState({
@@ -46,6 +47,14 @@ export default function FormItemPage() {
       options: ["", "optional", "required"],
       value: "",
     },
+    {
+      label: "Value",
+      type: "string",
+      name: "value",
+      value: "",
+      hidden: true,
+      dynamic: true,
+    }
   ]);
   const componentProps: ComponentProperty[] = [
     {
@@ -126,8 +135,48 @@ export default function FormItemPage() {
           <GoATab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular"]}
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value: string = "";
+                  
+                  onChange(event: Event) {
+                    console.log("Event ", event);
+                    console.log("Value ", (event.target as HTMLInputElement).value);
+                  }
+                }
+              `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                // reactive code
+                export class SomeComponent {
+                  itemFormCtrl = new FormControl("");
+                }
+              `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const [value, setValue] = useState<string>("");
+              
+                onChange(name: string, value: string) {
+                  setValue(value);
+                }
+              `}/>
+
               <GoAFormItem {...formItemProps}>
-                <GoAInput onChange={noop} value="" name="firstName" />
+                <GoAInput onChange={noop} value="" name="item" />
               </GoAFormItem>
             </Sandbox>
 

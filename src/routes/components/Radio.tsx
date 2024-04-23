@@ -195,18 +195,17 @@ export default function RadioPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-              const [item, setItem] = useState("1");
               function onChange(name: string, value: string) {
-                setItem(value);
+                console.log("onChange", name, value);
               }
             `}
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoARadioGroup {...radioProps} value="1" onChange={noop}>
-                  <GoARadioItem value="1" label="Label"></GoARadioItem>
-                  <GoARadioItem value="2" label="Label"></GoARadioItem>
-                  <GoARadioItem value="3" label="Label"></GoARadioItem>
+                <GoARadioGroup {...radioProps} name="item" value="1" onChange={noop}>
+                  <GoARadioItem value="1" label="Label 1"></GoARadioItem>
+                  <GoARadioItem value="2" label="Label 2"></GoARadioItem>
+                  <GoARadioItem value="3" label="Label 3"></GoARadioItem>
                 </GoARadioGroup>
               </GoAFormItem>
             </Sandbox>
