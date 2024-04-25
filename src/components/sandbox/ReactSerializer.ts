@@ -68,4 +68,13 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   componentToString(name: string): string {
     return `<${name} />`;
   }
+
+  // @ts-ignore
+  modifyProps(props: string, propName: string, elementType: string): string {
+      return props;
+  }
+
+  postProcess (children: string): string {
+    return children;
+  }
 }
