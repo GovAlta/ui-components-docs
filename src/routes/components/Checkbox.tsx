@@ -102,8 +102,15 @@ export default function CheckboxPage() {
   const noop = () => { };
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    const missingProps = {
+      name: "item",
+      checked: false,
+      value: ""
+    };
+    const updatedProps = { ...missingProps, ...props };
+
     setCheckboxBindings(bindings);
-    setCheckboxProps(props as CastingType);
+    setCheckboxProps(updatedProps as CastingType);
   }
 
   return (

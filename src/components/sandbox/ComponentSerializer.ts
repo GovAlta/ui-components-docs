@@ -85,6 +85,8 @@ export class ComponentSerializer {
       .filter(item => !!item)
       .join(" ");
 
+      props = this.serializer.modifyProps(props, component.props.name, elementType);
+
     // add single space here to ensure only 1 space is added
     if (props.length > 0) {
       props = " " + props;
@@ -113,6 +115,8 @@ export class ComponentSerializer {
     if (component.props["ignore"]) {
       return children;
     }
+
+    children = this.serializer.postProcess(children);
 
     // final output
     return `<${elementType}${props}>\n${indentation}${children}\n${indentation.slice(

@@ -12,6 +12,8 @@ export interface Serializer {
 
   setIsRoot: (value: boolean) => void;
   setState: (state: SerializerState) => void;
+  modifyProps: (props: string, propName: string, elementType: string) => string;
+  postProcess: (value: string) => string;
 }
 
 export interface SerializerState {
@@ -68,4 +70,6 @@ export class BaseSerializer {
   protected isDynamic(name: string): boolean {
     return this.getProperty(name)?.dynamic || false;
   }
+
+
 }

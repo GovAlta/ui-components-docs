@@ -83,4 +83,13 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     name = this.dasherize(name);
     return `<${name} />`;
   }
+  
+  //@ts-ignore
+  modifyProps(props: string, propName: string, elementType: string): string {
+    return props;
+  }
+
+  postProcess (children: string): string {
+    return children;
+  }
 }

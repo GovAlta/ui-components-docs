@@ -46,7 +46,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
   stringToProp(name: string, item: string): string {
     if (ReactiveComponents.includes(this.state.element) && name === "value") {
-      return `goaValue [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`;
+      return `goaValue`;
     }
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
@@ -69,7 +69,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
   booleanToProp(propName: string, propValue: boolean): string {
     if (ReactiveComponents.includes(this.state.element) && propName === "checked") {
-      return `goaChecked [formControl]="${this.state.props.name}FormCtrl" [value]="${this.state.props.name}FormCtrl.value"`;
+      return `goaChecked`;
     }
     if (this.isDynamic(propName)) {
       return this.#dynamicProp(propName);
@@ -101,5 +101,32 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   componentToString(name: string): string {
     name = this.dasherize(name);
     return `<${name} />`;
+  }
+
+  addReactiveProperties(props: string, propName: string): string {
+    const additionalProps = `[formControl]="${propName}FormCtrl" [value]="${propName}FormCtrl.value"`;
+    props = props ? `${props} ${additionalProps}` : additionalProps;
+    return props;
+  }
+
+  modifyProps(props: string, propName: string, elementType: string): string {
+    if (ReactiveComponents.includes(elementType)) {
+      const additionalProps = `[formControl]="${propName}FormCtrl" [value]="${propName}FormCtrl.value"`;
+      props = props ? `${props} ${additionalProps}` : additionalProps;
+    }
+    return props;
+  }
+
+  postProcess (children: string): string {
+    if(children.startsWith('<goa-checkbox')) {
+      if (children.includes('goaChecked') && children.includes('goaValue')) {
+        children = children.replace(/\bgoaValue\b\s?/g, '');
+      }
+
+      if(children.includes('disabled=true')) {
+        children = children.replace(/disabled=true/g, '[attr.disabled]="true"').replace(/\bgoaValue\b\s?/g, ''); 
+      }
+    }
+    return children;
   }
 }
