@@ -28,25 +28,17 @@ export default function UserExperienceGuidelinesPage() {
         <h3>Guidelines:</h3>
 
         <ol>
+          <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments.</li>
+          <li><strong>Modern:&nbsp;</strong>Users can achieve their goals and complete tasks in a manner that is on par with digital products 
+            used in other aspects of users lives.</li>
           <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of users possible regardless of physical 
             or cognitive limitations, literacy level, or technical capability.</li>
-          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy. As a government asset, 
-            user expectations of safety and security must be understood and met with experiences that evoke a sense of trust. </li>
-          <li><strong>Device-agnostic:&nbsp;</strong>Users should not be limited by the device they choose to use or the technology they have 
-            access to when interacting with government. </li>
-          <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments. </li>
-          <li><strong>Suitable:&nbsp;</strong>Users can achieve their goals and complete tasks in a manner that is satisfactory and will be 
-            on par with outside modern digital products used in other aspects of users lives. </li>
-          <li><strong>Connected:&nbsp;</strong>Digital products will be designed for integration into the broader eco-system of the government 
-            reducing the need for new and separate destinations that fracture the experience. </li>
-          <li><strong>Comprehensible:&nbsp;</strong>Digital products are broadly comprehensible by the largest user base possible by presenting 
-            information in plain language, absent of organizational speak, industry jargon, and complex legalese. </li>
-          <li><strong>Lean:&nbsp;</strong>Interfaces are designed to be the least amount of function possible to meet the needs of users in a 
-            way that feels intuitive and can be operated without the need of outside help.  </li>
-          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data 
-            to ensure lasting effectiveness, efficiency, and usability. </li>
-          <li><strong>Responsive:&nbsp;</strong>Digital products will make available and clearly visible channels for technical support and 
-            allow users to submit feedback on product performance, bugs, or suggest improvements. </li>
+          <li><strong>Understandable:&nbsp;</strong>Digital products can be broadly understood by the largest user base possible by presenting 
+            information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
+          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy as a government asset 
+            and user expectations of safety and security must be understood and met with experiences that evoke a sense of trust.</li>
+          <li><strong>Learning:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data to 
+            ensure lasting effectiveness, efficiency, and usability.</li>
         </ol>
 
         <p>
