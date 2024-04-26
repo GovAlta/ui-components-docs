@@ -83,6 +83,12 @@ export default function TEMPLATE_Page() {
       hidden: true,
       dynamic: true,
     }
+    {
+      label: "Closable",
+      type: "boolean",
+      name: "closable",
+      value: false,
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
