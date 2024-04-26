@@ -70,6 +70,12 @@ export default function TEMPLATE_Page() {
       options: ["", "fast", "slow", "none"],
       value: "",
     },
+    {
+      label: "Closable",
+      type: "boolean",
+      name: "closable",
+      value: false,
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
