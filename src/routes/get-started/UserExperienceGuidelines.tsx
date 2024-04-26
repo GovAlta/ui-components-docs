@@ -42,7 +42,7 @@ export default function UserExperienceGuidelinesPage() {
         </ol>
 
         <p>
-          For more details on the process of assessing compliance to each guideline, refer to our &nbsp;
+          For more details on the process of assessing compliance to each guideline, refer to our&nbsp;
           <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023569024/Heuristic+Worksheet+UX+Review+Process" target="_blank">
             Heuristic Worksheet & UX Review Process.
           </a>
