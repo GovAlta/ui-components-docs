@@ -19,7 +19,7 @@ export default function UserExperienceGuidelinesPage() {
         </ul>
         
         <p>
-          For more details on the process of usability testing, refer to our &nbsp;
+          For more details on the process of usability testing, refer to our&nbsp;
           <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2642346595/Usability+field+guide" target="_blank">
             usability field guide.
           </a>
