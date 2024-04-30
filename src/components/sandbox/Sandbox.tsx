@@ -222,6 +222,10 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
     ,props.sandboxProps.properties || []
   )
 
+  // HACK: solve angular template error: If you meant to write the @ character, you should use the "&#64;" HTML entity instead.
+  if (props.type.includes("angular")) {
+    code = code.replace(/@/g, "&#64;");
+  }
   // HACK: remove `$1`s that appear only in the prod build
   code = code.replace(/\$1/g, "")
 

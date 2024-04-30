@@ -1,0 +1,17 @@
+.question-page-example a.back-link + h2,
+.question-page-example a.back-link + h3 {
+    margin-top: var(--goa-space-2xl);
+}
+.question-page-example h2.section-title{
+    margin-bottom: var(--goa-space-l);
+}
+
+.question-page-example h3.section-title {
+    margin-bottom: 0;
+    color: var(--goa-color-text-secondary);
+}
+
+.question-page-example h2.section-title + h3,
+.question-page-example h3.section-title + h2 {
+    margin-top: var(--goa-space-xs);
+}

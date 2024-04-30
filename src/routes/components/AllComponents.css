@@ -10,16 +10,3 @@
   margin-right: 1.5rem;
   text-align: right;
 }
-h3[id^="component-example"] {
-  margin-bottom: 0;
-}
-h3[id^="component-example"]:first-of-type {
-  margin-top: 0;
-}
-h3[id^="component-example"]:not(:first-of-type) {
-  margin-top: var(--goa-space-3xl);
-}
-
-h3[id^="component-example"] + div.sandbox-render {
-  margin-top: var(--goa-space-m);
-}
