@@ -30,7 +30,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   #dynamicProp(name: string): string {
-    return `[${name.toLowerCase()}]="some${this.capitalize(name)}Value"`;
+    return `[${name.toLowerCase()}]="${name}"`;
   }
 
   #toFunc(name: string): string {
