@@ -43,3 +43,13 @@ h3[id^="toc"] + p {
     margin-top: var(--goa-space-l);
 }
 
+.component-content--container {
+    display: grid;
+    grid-template-columns: 1fr 12rem;
+    grid-gap: var(--goa-space-2xl);
+}
+
+.component-content--content {
+    flex: 1 1 auto;
+    container: inline-size;
+}
