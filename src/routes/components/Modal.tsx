@@ -20,6 +20,8 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { useNavigate } from "react-router-dom";
 
 // == Page props ==
 
@@ -37,8 +39,10 @@ type CastingType = {
 };
 
 export default function TEMPLATE_Page() {
+  const navigate = useNavigate();
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    heading: "Heading",
+    heading: "Are you sure you want to exit your application?",
+    role: "alertdialog"
   });
 
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
@@ -54,7 +58,7 @@ export default function TEMPLATE_Page() {
       type: "string",
       name: "heading",
       width: "40ch",
-      value: "Heading",
+      value: "Are you sure you want to exit your application?",
     },
     {
       label: "Max width",
@@ -64,12 +68,21 @@ export default function TEMPLATE_Page() {
       value: "",
     },
     {
-      label: "Transition",
+      label: "Role",
       type: "list",
-      name: "transition",
-      options: ["", "fast", "slow", "none"],
-      value: "",
+      name: "role",
+      options: ["", "dialog", "alertdialog"],
+      value: "alertdialog",
+      helpText: "Select an ARIA role to determine what is announced by the screen reader."
     },
+    {
+      label: "Open",
+      type: "boolean",
+      name: "open",
+      value: false,
+      hidden: true,
+      dynamic: true,
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -124,10 +137,10 @@ export default function TEMPLATE_Page() {
       defaultValue: "false",
     },
     {
-      name: "transition",
-      type: "fast | slow | none",
-      description: "How modal transition onto screen",
-      defaultValue: "none",
+      name: "role",
+      type: "dialog | alertdialog",
+      description: "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
+      defaultValue: "dialog",
     },
     {
       name: "_close",
@@ -172,27 +185,144 @@ export default function TEMPLATE_Page() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onClick(event: Event) {
+                      this.open = true;
+                    }
+                    onClose(event: Event) {
+                      this.open = false;
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                   function onClick() {
+                    setOpen(true);
+                   }
+                   function onClose() {
+                    setOpen(false);
+                   }
+                `}
+              />
+
               <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
               <GoAModal {...componentProps} open={open} onClose={onClose}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
-                molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                <p>Your progress will not be saved.</p>
+                <GoAButtonGroup alignment="end">
+                  <GoAButton type="tertiary" onClick={() => setOpen(false)}>
+                    Cancel
+                  </GoAButton>
+                  <GoAButton type="primary" onClick={() => setOpen(false)}>
+                    Exit
+                  </GoAButton>
+                </GoAButtonGroup>
               </GoAModal>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-basic">Basic Modal</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onOpen() {
+                      this.open = true;
+                    }
+                    onClose() {
+                      this.open = false;
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="onOpen();">Open</goa-button>
+                  <goa-modal [open]="open"
+                    (_close)="onClose()" heading="Heading">
+                      <p>Content</p>
+                    <div slot="actions">
+                      <goa-button-group alignment="end">
+                        <goa-button type="secondary" (_click)="onClose()">Secondary</goa-button>
+                        <goa-button type="primary" (_click)="onClose()">Primary</goa-button>
+                      </goa-button-group>
+                    </div>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
+                  <GoAModal
+                    heading="Heading"
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoAButtonGroup alignment="end">
+                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
+                          Secondary
+                        </GoAButton>
+                        <GoAButton type="primary" onClick={() => setOpen(false)}>
+                          Primary
+                        </GoAButton>
+                      </GoAButtonGroup>
+                    }
+                  >
+                    <p>Content</p>
+                  </GoAModal>
+                `}
+              />
+
               <MockModal heading="Heading">
                 <p>Content</p>
 
@@ -208,7 +338,79 @@ export default function TEMPLATE_Page() {
             </Sandbox>
 
             <h3 id="component-example-destructive">Confirm a destructive action</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onOpen() {
+                      this.open = true;
+                    }
+                    onClose() {
+                      this.open = false;
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="onOpen();">Open</goa-button>
+                  <goa-modal [open]="open" role="alertdialog"
+                    (_close)="onClose()" heading="Are you sure you want to withdraw this assessment?">
+                      <p>This action cannot be undone.</p>
+                    <div slot="actions">
+                      <goa-button-group alignment="end">
+                        <goa-button type="secondary" (_click)="onClose()">Cancel</goa-button>
+                        <goa-button type="primary" variant="destructive" (_click)="onClose()">Withdraw assessment</goa-button>
+                      </goa-button-group>
+                    </div>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
+                  <GoAModal
+                    heading="Are you sure you want to withdraw this assessment?"
+                    open={open}
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoAButtonGroup alignment="end">
+                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
+                          Cancel
+                        </GoAButton>
+                        <GoAButton type="primary" variant="destructive" onClick={() => setOpen(false)}>
+                           Withdraw assessment
+                        </GoAButton>
+                      </GoAButtonGroup>
+                    }
+                  >
+                    <p>This action cannot be undone.</p>
+                  </GoAModal>
+                `}
+              />
+
               <MockModal heading="Are you sure you want to withdraw this assessment?">
                 <p>This action cannot be undone.</p>
 
@@ -224,10 +426,89 @@ export default function TEMPLATE_Page() {
             </Sandbox>
 
             <h3 id="component-example-warning">Warning callout modal</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onOpen() {
+                      this.open = true;
+                    }
+                    onClose() {
+                      this.open = false;
+                    }
+                    onClick(event: Event) {
+                      console.log("clicked", event);
+                      this.open = false;
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="onOpen();">Open</goa-button>
+                  <goa-modal [open]="open" role="alertdialog" calloutvariant="information"
+                    (_close)="onClose()" heading="Complete submission prior to 1PM">
+                      <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
+                    <div slot="actions">
+                      <goa-button-group alignment="end" mt="l">
+                        <goa-button type="primary" (_click)="onClick($event)">
+                          I understand
+                        </goa-button>
+                      </goa-button-group>
+                    </div>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                  function onClick(event: Event) {
+                      console.log("clicked", event);
+                      setOpen(false);
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
+                  <GoAModal
+                    heading="Complete submission prior to 1PM"
+                    open={open}
+                    calloutVariant="information"
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoAButtonGroup alignment="end" mt="l">
+                        <GoAButton type="primary" onClick={onClick}>I understand</GoAButton>
+                      </GoAButtonGroup>
+                    }
+                  >
+                    <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
+                  </GoAModal>
+                `}
+              />
+
               <MockModal heading="Complete submission prior to 1PM" calloutVariant="information">
                 <p>
-                  You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.
+                  You’ve selected to adjourn a matter that is required to appear today. This Calgary
+                  court location does not accept adjournment requests past 1PM MST. Please submit
+                  your adjournment request as soon as possible.
                 </p>
 
                 <GoAButtonGroup alignment="end" mt="l">
@@ -239,7 +520,105 @@ export default function TEMPLATE_Page() {
             </Sandbox>
 
             <h3 id="component-example-with-input">Modal with input</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onOpen() {
+                      this.open = true;
+                    }
+                    onClose() {
+                      this.open = false;
+                    }
+                    
+                    onChange($event) {
+                      console.log($event);
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="onOpen();">Open</goa-button>
+                  <goa-modal [open]="open"
+                    (_close)="onClose()" heading="Why was this adjusted?">
+                      <goa-form-item label="Reason for adjustment">
+                        <goa-dropdown (_change)="onChange($event)">
+                          <goa-dropdown-item value="Correction"></goa-dropdown-item>
+                          <goa-dropdown-item value="Late submission"></goa-dropdown-item>
+                          <goa-dropdown-item value="It's Friday 🎉"></goa-dropdown-item>
+                        </goa-dropdown>
+                      </goa-form-item>
+                    <div slot="actions">
+                      <goa-button-group alignment="end" mt="l">
+                        <goa-button type="secondary" (_click)="onClose()">
+                          Cancel
+                        </goa-button>
+                        <goa-button type="primary" (_click)="onClose()">
+                          Choose
+                        </goa-button>
+                      </goa-button-group>
+                    </div>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                  
+                  onChange(event: Event) {
+                    console.log("onChange", e);
+                  }
+                  
+                  onClick(event: Event) {
+                    console.log("onClick", e);
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
+                  <GoAModal
+                    heading="Why was this adjusted?"
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoAButtonGroup alignment="end">
+                        <GoAButton type="secondary" onClick={onClick}>
+                          Cancel
+                        </GoAButton>
+                        <GoAButton type="primary" onClick={onClick}>
+                          Choose
+                        </GoAButton>
+                      </GoAButtonGroup>
+                    }
+                  >
+                    <GoAFormItem label="Reason for adjustment">
+                      <GoADropdown onChange={onChange}>
+                        <GoADropdownItem value="Correction"></GoADropdownItem>
+                        <GoADropdownItem value="Late submission"></GoADropdownItem>
+                        <GoADropdownItem value="It's Friday 🎉"></GoADropdownItem>
+                      </GoADropdown>
+                    </GoAFormItem>
+                  </GoAModal>
+                `}
+              />
               <MockModal heading="Why was this adjusted?">
                 <GoAFormItem label="Reason for adjustment">
                   <GoADropdown onChange={noop}>
@@ -259,6 +638,100 @@ export default function TEMPLATE_Page() {
                 </GoAButtonGroup>
               </MockModal>
             </Sandbox>
+
+            <h3 id="component-example-route-change">Route changes</h3>
+            <Sandbox skipRender>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    onOpen() {
+                      this.open = true;
+                    }
+                    onClose() {
+                      this.open = false;
+                    }
+                    onChangeRoute() {
+                      this.open = false;
+                      setTimeout(() => this.router.navigate(["/components"]), 0)
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="onOpen();">Open</goa-button>
+                  <goa-modal [open]="open" role="alertdialog" heading="Are you sure you want to change route?">
+                    <div slot="actions">
+                      <goa-button-group alignment="end">
+                        <goa-button type="secondary" (_click)="onClose()">Cancel</goa-button>
+                        <goa-button type="primary" (_click)="onChangeRoute()">Change route</goa-button>
+                      </goa-button-group>
+                    </div>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [open, setOpen] = useState(false);
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
+                  <GoAModal
+                    heading="Are you sure you want to change route?"
+                    open={open}
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoAButtonGroup alignment="end">
+                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
+                          Cancel
+                        </GoAButton>
+                        <GoAButton
+                          size="medium"
+                          onClick={() => {
+                            setOpen(false);
+                            // setTimeout will allow any modal transitions to be run
+                            // setTimeout(() => navigate("/some-path"), 300) }
+                            navigate("/components")
+                        }}>Change route</GoAButton>
+                      </GoAButtonGroup>
+                    }
+                  ></GoAModal>
+                `}
+              />
+              <MockModal heading="Are you sure you want to change route?">
+                <GoAButtonGroup alignment="end" mt="l">
+                  <GoAButton type="secondary" onClick={noop}>
+                    Cancel
+                  </GoAButton>
+                  <GoAButton
+                    type="primary"
+                    onClick={() => {
+                      navigate("/components");
+                    }}>
+                    Change route
+                  </GoAButton>
+                </GoAButtonGroup>
+              </MockModal>
+            </Sandbox>
           </GoATab>
 
           <GoATab
@@ -267,8 +740,7 @@ export default function TEMPLATE_Page() {
                 Design guidelines
                 <GoABadge type="information" content="In progress" />
               </>
-            }
-          ></GoATab>
+            }></GoATab>
         </GoATabs>
       </ComponentContent>
     </>

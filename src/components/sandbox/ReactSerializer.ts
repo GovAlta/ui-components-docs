@@ -17,7 +17,7 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   }
 
   dynamicProp(name: string): string {
-    return `${name.toLowerCase()}={some${this.capitalize(name)}Value}`;
+    return `${name.toLowerCase()}={${name}}`;
   }
 
   stringToProp(name: string, value: string): string {

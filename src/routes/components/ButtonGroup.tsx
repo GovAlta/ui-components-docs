@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
 import { GoAButtonGroupAlignment } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
@@ -93,6 +93,14 @@ export default function ButtonGroupPage() {
 
             <ComponentProperties properties={componentProperties} />
           </GoATab>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
         </GoATabs>
       </ComponentContent>
     </>

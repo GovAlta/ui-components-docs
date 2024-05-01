@@ -21,7 +21,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   }
 
   #dynamicProp(name: string): string {
-    return `[${name.toLowerCase()}]="some${this.capitalize(name)}Value"`;
+    return `[${name.toLowerCase()}]="${name}"`;
   }
 
   #toFunc(name: string): string {

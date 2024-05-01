@@ -63,10 +63,6 @@ export class BaseSerializer {
     return out.join("");
   }
 
-  protected capitalize(value: string): string {
-    return `${value[0].toUpperCase()}${value.substring(1)}`;
-  }
-
   protected isDynamic(name: string): boolean {
     return this.getProperty(name)?.dynamic || false;
   }

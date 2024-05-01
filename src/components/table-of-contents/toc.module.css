@@ -4,7 +4,7 @@
   padding: 3.75rem var(--goa-space-xl) var(--goa-space-l) 0;
   overscroll-behavior: contain;
   width: 12rem;
-
+  height: fit-content;
   @media screen and (max-width: 1230px) {
     display: none;
   }

@@ -13,6 +13,7 @@ interface BaseBinding {
   name: string;
   label: string;
   requirement?: string;
+  helpText?: string;
   dynamic?: boolean;
   hidden?: boolean;
 }
