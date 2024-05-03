@@ -75,7 +75,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return this.#dynamicProp(propName);
     }
     if (!propValue) return "";
-    return `${propName.toLowerCase()}=${propValue}`;
+    return `[${propName.toLowerCase()}]=${propValue}`;
   }
 
   funcToProp(name: string, _item: Object): string {
