@@ -11,6 +11,8 @@ import {
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
+const minGridWidth = "36ch";
+
 export default function ErrorMessagesPage() {
   const noop = () => { };
   return (
@@ -20,7 +22,7 @@ export default function ErrorMessagesPage() {
 
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
 
-      <GoAGrid minChildWidth="40ch" gap="3xl">
+      <GoAGrid minChildWidth={minGridWidth} gap="3xl">
         <GoAFormItem
           label="First name"
           helpText="Enter your legal name."
@@ -79,7 +81,7 @@ export default function ErrorMessagesPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Place error message above helper text.">
             <img src="/images/error-messages/helper-text-do.png" width="80%"></img>
           </DoDont>
@@ -91,7 +93,7 @@ export default function ErrorMessagesPage() {
 
       <h3>Border</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Display input field border in red when there is an error.">
             <img src="/images/error-messages/border-do.png" width="80%"></img>
           </DoDont>
@@ -105,7 +107,7 @@ export default function ErrorMessagesPage() {
 
       <h3>Button/upload area</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Display an error message below the upload button.">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/upload-button-do.png" width="100px"></img>
@@ -166,14 +168,14 @@ export default function ErrorMessagesPage() {
       <p>This error appears when user leaves a required field blank.</p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/empty-input.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" mt="2xl" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} mt="2xl" gap="2xl">
           <DoDont
             type="do"
             description="Provide a clear solution for the user to correct the error.">
@@ -208,14 +210,14 @@ export default function ErrorMessagesPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/incorrect-information.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide a clear positive solution with an example.">
             <div className="example">
               Enter a valid postal code,
@@ -253,14 +255,14 @@ export default function ErrorMessagesPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/error-with-date.png" width="70%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide adequate information.">
             <div className="example">
               The student must be 16 years old or older to be eligible for funding.
@@ -291,14 +293,14 @@ export default function ErrorMessagesPage() {
       <p>This error appears when user fails to input a valid/correct amount.</p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic" description="*Include amount if known">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/error-with-range.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide a correct value if it is known.">
             <div className="example">Books and Materials cost must be lower than $4,000.</div>
           </DoDont>
@@ -309,14 +311,14 @@ export default function ErrorMessagesPage() {
       </div>
       <div className="dodont-wrapper">
         <h3 id="error-outside-accepted">Input outside accepted values</h3>
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/input-outside-expected.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Give a ranged value when possible.">
             <div className="example">PID must be between 10 and 15 digits.</div>
           </DoDont>
@@ -349,14 +351,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="wrong-file-type">Wrong file type</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/wrong-file-types.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide user with the list of accepted formats.">
             <div className="example">The selected file must be a PDF, JPG, PNG, or TIFF.</div>
           </DoDont>
@@ -371,14 +373,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="file-too-large">File too large</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/file-too-large.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide user with the exact file size limit.">
             <div className="example">The selected file must be less than 5MB.</div>
           </DoDont>
@@ -392,14 +394,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="upload-failed">File upload failed</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/file-upload-failed.png" width="70%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
             description="Use humanized tone when stating the problem. In this example, the service accepts the responsibility for the failed upload and eases the frustration that user might feel.">
@@ -417,14 +419,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="duplicate-upload">Duplicate file uploaded</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/duplicate-file-upload.png" width="70%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
             description="State the problem in a clear language and provide a solution as to what action should be taken.">
@@ -442,14 +444,14 @@ export default function ErrorMessagesPage() {
 
       <div className="dodont-wrapper">
         <h3 id="no-file-selected">No file selected</h3>
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/no-file-selected.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide a clear solution as to what user should do.">
             <div className="example">Upload a work permit.</div>
           </DoDont>
@@ -468,14 +470,14 @@ export default function ErrorMessagesPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/invalid-characters.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
             description="Display valid characters when possible. This example also conveys the accepted letters case to the users.">
@@ -494,14 +496,14 @@ export default function ErrorMessagesPage() {
 
       <p>When the accepted characters are known, include an example in the error message.</p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic" description="*Use “only” when relevant.">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/invalid-characters-2.png" width="80%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide clear guided solution.">
             <div className="example">
               Alberta Bar ID must include numbers only, such as “12345.”
@@ -517,14 +519,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="incorrect-number-of-characters">Incorrect number of characters</h3>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/invalid-number-of-characters.png" width="60%"></img>
             </div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="do" description="Provide a clear guided solution with context.">
             <div className="example">The Mobius reference number must be 10 digits.</div>
           </DoDont>

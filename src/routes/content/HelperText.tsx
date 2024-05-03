@@ -12,6 +12,8 @@ import { DoDont } from "@components/do-dont/DoDont";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
+const minGridWidth = "36ch";
+
 export default function HelperTextPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
@@ -45,7 +47,7 @@ export default function HelperTextPage() {
       </GoAContainer>
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="considerations">Considerations</h2>
-      <p>Consider the following ways to convey more information:</p>
+      <p>Consider the following ways to convey more information:</p>      
       <GoATable width="100%" mb="xl">
         <thead>
           <tr>
@@ -255,7 +257,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
             description="Refer directly to the content in the Text field using words such as This, These, and The when possible.">
@@ -306,7 +308,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
             description="Begin with an Action (Directive Verb) e.g. Search, Start, Select, Find, Deposit; phrasing that follows should briefly describe or summarize directions.">
@@ -351,7 +353,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Be specific about the information you are asking for.">
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/restrictive-do-1.png" width="80%"></img>
@@ -385,7 +387,7 @@ export default function HelperTextPage() {
         punctuation.
       </p>
       <div className="dodont-wrapper">
-        <GoAGrid gap="2xl" minChildWidth="50ch">
+        <GoAGrid gap="2xl" minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use sentence case with no punctuation at the end of the helper text.">
