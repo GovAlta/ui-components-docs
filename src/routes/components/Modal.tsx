@@ -110,12 +110,6 @@ export default function TEMPLATE_Page() {
       name: "closable",
       value: false,
     }
-    {
-      label: "Closable",
-      type: "boolean",
-      name: "closable",
-      value: true,
-    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
