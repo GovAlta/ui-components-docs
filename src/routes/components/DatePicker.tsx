@@ -50,6 +50,12 @@ export default function DatePickerPage() {
       type: "date",
       name: "max",
     },
+    {
+      label: "Error",
+      type: "boolean",
+      name: "error",
+      value: false,
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Item",
@@ -59,24 +65,30 @@ export default function DatePickerPage() {
     {
       name: "name",
       type: "string",
-      description: "Name of the date field",
+      description: "Name of the date field.",
     },
     {
       name: "value",
       type: "string",
-      description: "Value of the calendar date",
+      description: "Value of the calendar date.",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to an error state.",
     },
     {
       name: "min",
       type: "string",
       defaultValue: "5 year previous",
-      description: "Minimum date value allowed",
+      description: "Minimum date value allowed.",
     },
     {
       name: "max",
       type: "string",
       defaultValue: "5 years forward",
-      description: "Maximum date value allowed",
+      description: "Maximum date value allowed.",
     },
   ];
 
@@ -84,6 +96,8 @@ export default function DatePickerPage() {
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
   }
+
+  const noop = () => { };
 
   return (
     <>
@@ -140,7 +154,7 @@ export default function DatePickerPage() {
               `}
               />
               <GoAFormItem {...formItemProps}>
-                <GoADatePicker {...componentProps} name="item" value={new Date()} />
+                <GoADatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
               </GoAFormItem>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
