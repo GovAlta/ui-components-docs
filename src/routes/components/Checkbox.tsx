@@ -9,6 +9,7 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
 
 // == Page props ==
 const componentName = "Checkbox";
@@ -47,36 +48,43 @@ export default function CheckboxPage() {
     {
       name: "name",
       type: "string",
-      description: "Must match the name assigned to the children",
+      description: "Must match the name assigned to the children.",
       required: true,
     },
     {
       name: "checked",
       type: "boolean",
-      description: "Mark the checkbox item as selected",
+      description: "Mark the checkbox item as selected.",
       required: true,
     },
     {
       name: "text",
       type: "string",
-      description: "Content to display as the label for the Checkbox",
+      description: "Label shown beside the checkbox.",
     },
     {
       name: "value",
       type: "string",
-      description: "The value binding to the checkbox",
+      description: "The value binding.",
     },
     {
       name: "description",
-      type: "string",
-      description: "Additional content added below the content text",
+      type: "string | slot",
+      description: "Additional content shown below the label.",
+      lang: "angular",
+    },
+    {
+      name: "description",
+      type: "string | ReactNode",
+      description: "Additional content shown below the label.",
+      lang: "react",
     },
     {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
       description:
-        "Disable this control. It will not receive focus or events. Use [attr.disabled] with [formControl]",
+        "Disable this control. It will not receive focus or events. Use [attr.disabled] with [formControl].",
     },
     {
       name: "error",
@@ -159,6 +167,7 @@ export default function CheckboxPage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
+            <CheckboxExamples />
           </GoATab>
 
           <GoATab
