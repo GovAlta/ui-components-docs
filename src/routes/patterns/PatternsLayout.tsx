@@ -29,6 +29,7 @@ export default function PatternsLayout() {
               <GoADropdownItem label="Angular" value="angular" />
             </GoADropdown>
             <Link to="">Layout</Link>
+            <Link to="/complex-form">Complex Form</Link>
           </GoASideMenu>
         </section>
         <main className="main">
