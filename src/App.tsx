@@ -99,6 +99,7 @@ import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
 import ErrorMessagesPage from '@routes/content/ErrorMessages';
 import HelperTextPage from '@routes/content/HelperText';
+import ComplexFormPage from "@routes/patterns/ComplexFormPage";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -212,6 +213,9 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<LayoutPage />} />
+        <Route path="complex-form">
+            <Route index element={<ComplexFormPage />} />
+        </Route>
       </Route>
       <Route path="support" element={<SupportLayout />}>
         <Route index element={<SupportOverviewPage />} />
