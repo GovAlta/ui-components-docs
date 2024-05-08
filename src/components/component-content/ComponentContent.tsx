@@ -11,7 +11,7 @@ export function ComponentContent({tocCssQuery, contentClassName, children}: Prop
 
   return <>
     <div className="component-content--container">
-      <div style={{ maxWidth: tocCssQuery ? "auto" : "54rem" }} className={`component-content--content ${contentClassName}`}>
+      <div style={{ maxWidth: tocCssQuery ? "auto" : "54rem" }} className={`component-content--content ${contentClassName ? contentClassName: ""}`}>
         {children}
       </div>
       {tocCssQuery && <TOC cssQuery={tocCssQuery} />}

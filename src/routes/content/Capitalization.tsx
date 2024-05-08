@@ -2,6 +2,8 @@ import { GoABlock, GoADivider, GoAFormItem, GoAGrid, GoASideMenu } from "@abgov/
 import { DoDont } from "@components/do-dont/DoDont";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
+const minGridWidth = "36ch";
+
 export default function CapitalizationPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
@@ -22,7 +24,7 @@ export default function CapitalizationPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
             description="Always capitalize the first word of a heading or new sentence.">
@@ -67,7 +69,7 @@ export default function CapitalizationPage() {
         it.
       </p>
 
-      <GoAGrid minChildWidth="30ch" gap="2xl" mt="xl">
+      <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="xl">
         <DoDont
           type="do"
           description="Use title case when words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.">
@@ -88,7 +90,7 @@ export default function CapitalizationPage() {
         </DoDont>
       </GoAGrid>
 
-      <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl" mb="3xl">
+      <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="3xl">
         <DoDont
           type="dont"
           description="Don’t use internal capitalization (such as AutoScale or e-Book) unless it’s part of a proper noun.">

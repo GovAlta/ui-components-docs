@@ -2,6 +2,8 @@ import { GoACallout, GoAContainer, GoADivider, GoAGrid } from "@abgov/react-comp
 import { DoDont } from "@components/do-dont/DoDont";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
+const minGridWidth = "36ch";
+
 export default function DateFormatPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
@@ -50,7 +52,7 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="30ch" gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Use the format: Month, cardinal date, year.">
             <div className="example">March 14, 2021</div>
             <div className="example"></div>
@@ -61,7 +63,7 @@ export default function DateFormatPage() {
           </DoDont>
         </GoAGrid>
 
-        <GoAGrid minChildWidth="20ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don’t use ordinal numbers with written out month.">
             <div className="example">March 14th, 2021</div>
           </DoDont>
@@ -112,7 +114,7 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use the same format as the long-form: month, cardinal date, year.">
@@ -120,7 +122,7 @@ export default function DateFormatPage() {
           </DoDont>
         </GoAGrid>
 
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="dont"
             description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity.">
@@ -134,9 +136,6 @@ export default function DateFormatPage() {
           <DoDont type="dont" description="Don’t use capital letters for the month abbreviation.">
             <div className="example">MAR 12, 21</div>
           </DoDont>
-        </GoAGrid>
-
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don’t use leading zeros for single date numbers.">
             <div className="example">Mar 07, 21</div>
             <div className="example"></div>
@@ -187,14 +186,14 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont type="do" description="Use the same format: month, cardinal date, year.">
             <div className="example">Monday, March 14, 2021</div>
             <div className="example">Mon, Mar 14, 2021</div>
           </DoDont>
         </GoAGrid>
 
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don’t mix long-form and short-form.">
             <div className="example">Monday, Mar 12, 2021</div>
             <div className="example">Mon, March 12, 2021</div>
@@ -241,14 +240,14 @@ export default function DateFormatPage() {
       </p>
       <p>(e.g., Friday, March 14, 2021 at 2:26 pm)</p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use the same format: day, month cardinal date, year at XX:XX am/pm">
             <div className="example">Monday, March 14, 2021 at 3:30 pm</div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don't include a leading zero for the time.">
             <div className="example">08:15 am</div>
           </DoDont>
@@ -256,7 +255,7 @@ export default function DateFormatPage() {
             <div className="example">4:43 p.m.</div>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} mt="2xl">
           <DoDont type="dont" description="Don’t write the time before the date.">
             <div className="example">7:55 am on Saturday, May 15, 2021</div>
           </DoDont>
@@ -319,7 +318,7 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth="50ch">
+        <GoAGrid minChildWidth={minGridWidth}>
           <DoDont
             type="generic"
             description="12-month timeline highlighting those that pertain to daylight time.">
@@ -340,7 +339,7 @@ export default function DateFormatPage() {
           </DoDont>
         </GoAGrid>
 
-        <GoAGrid minChildWidth="30ch" gap="2xl" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
             description="Use standard time between the months of November and March.">
@@ -352,7 +351,7 @@ export default function DateFormatPage() {
             <img src="/images/date-dst.png" width="80%"></img>
           </DoDont>
         </GoAGrid>
-        <GoAGrid minChildWidth="50ch" mt="2xl">
+        <GoAGrid minChildWidth={minGridWidth} mt="2xl">
           <DoDont
             type="dont"
             description="Don’t wrap the three-letter abbreviation in parentheses.">
