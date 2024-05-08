@@ -1,4 +1,4 @@
-import { GoAGrid, GoAInput } from "@abgov/react-components";
+import { GoAGrid, GoAInput, GoAFormItem } from "@abgov/react-components";
 import { ComponentCard, Props as ComponentProps } from "@components/component-card/ComponentCard";
 import { ReactNode, useState } from "react";
 import "./AllComponents.css";
@@ -302,7 +302,7 @@ export default function AllComponentsPage() {
         "Arrange a number of components into a responsive grid pattern.",
     },
     {
-      name: "icon",
+      name: "icons",
       groups: ["utilities"],
       tags: ["utilities"],
       description:
@@ -368,16 +368,16 @@ export default function AllComponentsPage() {
         </h3>
       </div>
 
+      <GoAFormItem helpText="Search by keyword, category, or name" mb="xl">
       <GoAInput
-        leadingIcon="search"
-        mt="xs" 
-        mb="xl"
+        leadingIcon="search" 
         name="filter"
         type="text"
         value=""
         width="100%"
         onChange={(_name, value) => filterComponents(value)}
       />
+        </GoAFormItem>
 
       {mode === "search" && <GoAGrid minChildWidth="300px">{getComponentsByFilter()}</GoAGrid>}
 

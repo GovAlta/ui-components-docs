@@ -17,13 +17,15 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   }
 
   dynamicProp(name: string): string {
-    return `${name.toLowerCase()}={some${this.capitalize(name)}Value}`;
+    return `${name.toLowerCase()}={${name}}`;
   }
 
   stringToProp(name: string, value: string): string {
     if (this.isDynamic(name)) {
       return this.dynamicProp(name);
     }
+    if (name === "value" && value === "") return `value=""`;
+
     if (value === "") return "";
     return `${name}="${value}"`;
   }
@@ -67,5 +69,14 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
 
   componentToString(name: string): string {
     return `<${name} />`;
+  }
+
+  // @ts-ignore
+  modifyProps(props: string, propName: string, elementType: string): string {
+      return props;
+  }
+
+  postProcess (children: string): string {
+    return children;
   }
 }

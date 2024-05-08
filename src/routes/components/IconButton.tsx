@@ -30,6 +30,7 @@ type CastingType = {
 export default function IconButtonPage() {
   const [iconButtonProps, setIconButtonProps] = useState<ComponentPropsType>({
     icon: "refresh",
+    ariaLabel: "Refresh icon",
   });
   const [iconButtonBindings, setIconButtonBindings] = useState<ComponentBinding[]>([
     {
@@ -65,6 +66,12 @@ export default function IconButtonPage() {
       name: "title",
       value: "",
     },
+    {
+      label: "ARIA label",
+      type: "string",
+      name: "ariaLabel",
+      value: "Refresh icon",
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -96,6 +103,18 @@ export default function IconButtonPage() {
       type: "boolean",
       description: "Disable this button'",
       defaultValue: "false",
+    },
+    {
+      name: "arialabel",
+      type: "string",
+      lang: "angular",
+      description: "Sets the aria-label of the button",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      lang: "react",
+      description: "Sets the aria-label of the button",
     },
     {
       name: "_click",
@@ -158,9 +177,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">45904</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>
@@ -173,9 +192,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">47838</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>
@@ -188,9 +207,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">34343</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>
@@ -203,9 +222,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">89897</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>
@@ -218,9 +237,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">12323</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>
@@ -233,9 +252,9 @@ export default function IconButtonPage() {
                     <td className="goa-table-number-column">56565</td>
                     <td>
                       <GoABlock>
-                        <GoAIconButton size="small" icon="pencil"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail"></GoAIconButton>
+                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
+                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
+                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
                       </GoABlock>
                     </td>
                     <td></td>

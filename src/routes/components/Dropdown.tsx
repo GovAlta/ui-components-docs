@@ -234,9 +234,8 @@ export default function DropdownPage() {
   const [color, setColor] = useState<string>("");
 
   function onChange(_name: string, value: string | string[]) {
-    if (typeof value === "string") {
-      setColor(value);
-    }
+    setColor(value as string);
+    setDropdownProps({ ...dropdownProps, value: value as string } as CastingType);
   }
 
   return (
@@ -276,7 +275,7 @@ export default function DropdownPage() {
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
-                  reactiveFormCtrl = new FormControl("");
+                  itemFormCtrl = new FormControl("");
                 }  
               `}
               />
@@ -286,15 +285,14 @@ export default function DropdownPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                const [value, setValue] = useState("");
                 function onChange(name: string, value: string | string[]) {
-                  setValue(value);
+                 console.log("onChange", name, value);
                 }
               `}
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoADropdown name="colors" value={color} {...dropdownProps}>
+                <GoADropdown name="item" value={color} {...dropdownProps}>
                   <GoADropdownItem value="red" label="Red" />
                   <GoADropdownItem value="green" label="Green" />
                   <GoADropdownItem value="blue" label="Blue" />

@@ -13,8 +13,9 @@ interface BaseBinding {
   name: string;
   label: string;
   requirement?: string;
-  dynamic?: boolean;
-  hidden?: boolean;
+  helpText?: string;
+  dynamic?: boolean; // If the value is dynamic, it will be displayed to bind with a variable under code snippet
+  hidden?: boolean; // if the value is true, it will hide the property field at sandbox properties
 }
 
 export interface EmptyBinding extends BaseBinding {

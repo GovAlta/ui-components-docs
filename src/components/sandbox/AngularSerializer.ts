@@ -4,7 +4,7 @@ import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
 export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "table th thead tbody tr td div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dl dt dd".split(
+    "table th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 img label ul li ol hr section dl dt dd strong u".split(
       " ",
     );
 
@@ -21,7 +21,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   }
 
   #dynamicProp(name: string): string {
-    return `[${name.toLowerCase()}]="some${this.capitalize(name)}Value"`;
+    return `[${name.toLowerCase()}]="${name}"`;
   }
 
   #toFunc(name: string): string {
@@ -35,6 +35,8 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
+
+    if (name === "value" && item === "") return `value=""`;
     if (item === "") return "";
     if (name === "className") name = "class";
     return `${name.toLowerCase()}="${item}"`;
@@ -56,7 +58,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       return this.#dynamicProp(name);
     }
     if (!item) return "";
-    return `${name.toLowerCase()}="${item}"`;
+    return `[${name.toLowerCase()}]=${item}`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -82,5 +84,14 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   componentToString(name: string): string {
     name = this.dasherize(name);
     return `<${name} />`;
+  }
+
+  //@ts-ignore
+  modifyProps(props: string, propName: string, elementType: string): string {
+    return props;
+  }
+
+  postProcess (children: string): string {
+    return children;
   }
 }

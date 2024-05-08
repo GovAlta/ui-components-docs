@@ -98,6 +98,14 @@ export default function TextAreaPage() {
       name: "maxCount",
       type: "number",
     },
+    {
+      name: "value",
+      type: "string",
+      value: "",
+      dynamic: true,
+      hidden: true,
+      label: "Value",
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
   const componentProperties: ComponentProperty[] = [
@@ -235,6 +243,7 @@ export default function TextAreaPage() {
                 code={`
                 // non-reactive code
                 export class SomeComponent {
+                  value: string = "";
                   onChange(event: Event) {
                     // handle change
                     console.log((event as CustomEvent).detail.value);
@@ -257,7 +266,7 @@ export default function TextAreaPage() {
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoATextarea {...componentProps} value="" onChange={noop} />
+                <GoATextarea {...componentProps} width="60ch" name="item" value="" onChange={noop} />
               </GoAFormItem>
             </Sandbox>
 

@@ -42,6 +42,7 @@ export default function TextFieldPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
+    width: "20ch",
     onChange: () => { },
   });
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
@@ -96,7 +97,6 @@ export default function TextFieldPage() {
       label: "Max length",
       type: "number",
       name: "maxLength",
-      value: 20,
     },
     {
       label: "Disabled",
@@ -116,6 +116,14 @@ export default function TextFieldPage() {
       value: "",
       name: "ariaLabel",
     },
+    {
+      label: "Value",
+      type: "string",
+      name: "value",
+      value: "",
+      hidden: true,
+      dynamic: true,
+    }
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
   const componentProperties: ComponentProperty[] = [
@@ -386,7 +394,6 @@ export default function TextFieldPage() {
 
   // For sandbox demo function
   const noop = () => { };
-
   return (
     <>
       <ComponentHeader
@@ -415,6 +422,7 @@ export default function TextFieldPage() {
                 code={`
                 // non-reactive code
                 export class SomeComponent {
+                  value: string = "";
                   onChange(event: Event) {
                     // handle change
                     console.log((event as CustomEvent).detail.value);
@@ -447,7 +455,7 @@ export default function TextFieldPage() {
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoAInput {...componentProps} onChange={noop} />
+                <GoAInput {...componentProps} name="item" value="" onChange={noop}/>
               </GoAFormItem>
             </Sandbox>
 

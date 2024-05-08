@@ -97,7 +97,8 @@ export function TOC(props: TOCProps) {
     return tocNodes;
   }
 
-  function isActive(id: string): boolean {
+  function isActive(id: string, index: number): boolean {
+    if (activeByScroll == null && index === 0) return true;
     if (activeByScroll?.id === id) return true;
     if (!activeByScroll && location.hash === "#"+id) return true;
     return false;
@@ -105,12 +106,12 @@ export function TOC(props: TOCProps) {
 
   return (
     <nav className={css["toc"]}>
-      {items && items.map(({ title, tagName: element, id }) => {
+      {items && items.map(({ title, tagName: element, id }, index) => {
         return <div key={id}>
           <a
             className={`
               ${css[`toc-item-${element.toLowerCase()}`]}
-              ${isActive(id) ? css["active"] : ""}
+              ${isActive(id, index) ? css["active"] : ""}
             `}
             href={`#${id}`}
           >

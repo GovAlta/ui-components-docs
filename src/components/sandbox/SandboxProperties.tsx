@@ -137,8 +137,8 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
 
   return (
     <div className="sandbox-container">
-      {properties.map(p => (
-        <GoAFormItem key={p.name} label={p.label || ""} requirement={p.requirement as GoAFormItemRequirement || null}>
+      {properties.filter(p => !p.hidden).map(p => (
+        <GoAFormItem key={p.name} label={p.label || ""} requirement={p.requirement as GoAFormItemRequirement || null} helpText={p.helpText}>
           {renderProps(p)}
         </GoAFormItem>
       ))}

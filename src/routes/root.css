@@ -56,6 +56,11 @@ h4.heading {
   margin-bottom: 0;
 }
 
+p.small {
+  font-size: var(--goa-typography-body-s);
+  color: var(--goa-color-text-secondary);
+}
+
 .support-info {
   max-width: 700px;
 }
