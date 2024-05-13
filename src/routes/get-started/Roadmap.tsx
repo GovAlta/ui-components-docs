@@ -10,7 +10,7 @@ export default function RoadmapPage() {
         <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
           release notes
         </a>
-        .
+        
       </h3>
       <div className="max-width-72ch">
         <p>
