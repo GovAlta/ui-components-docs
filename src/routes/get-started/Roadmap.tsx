@@ -27,27 +27,19 @@ export default function RoadmapPage() {
         </p>
 
         <h2>Now</h2>
+        <p>Work that is currently in progress.</p>
+        <h3>Citizen-facing form documentation and examples:</h3>
         <ul>
           <li>
-            <strong>Design system documentation upgrade:</strong> We plan to enhance and centralize
-            our documentation site to serve both design and technical practitioners better. Key
-            updates will include a real-time component sandbox for configuring components, and
-            context-specific examples with code samples, all designed to expedite product
-            development.
+            <strong>Objective:</strong>To simplify the design and development process by offering 
+            predefined page layouts and comprehensive guidelines on the structure and workflow of 
+            citizen-facing forms.
           </li>
           <li>
-            <strong>User experience-focused form improvements:</strong> Acknowledging the importance
-            of forms in government services, we are developing a form pattern in conjunction with
-            product teams. This will provide guidance and design and development resources to easily
-            create user-friendly and accessible forms, thereby enhancing the user experience and
-            streamline data collection.
+            <strong>Benefit:</strong> Accelerates delivery, ensures consistency, and maintains 
+            high quality across projects.
           </li>
-          <li>
-            <strong>Design system onboarding:</strong> We're preparing a comprehensive onboarding
-            process for new design and technical practitioners, providing them with the knowledge
-            and tools to build efficient, consistent services that encourage cross-functional
-            collaboration.
-          </li>
+        
         </ul>
 
         <h2>Next</h2>
