@@ -37,6 +37,13 @@ export const ComponentHeader: React.FC<Props> = (props: Props) => {
           ))}
         </>
       )}
+
+      
+      <p><a
+          href="https://github.com/GovAlta/ui-components-docs/blob/b5693af3a5b6c2ef08f8d3d233d617ce38f74ce3/src/routes/components/Button.tsx"
+          target="_blank">
+          Edit this page
+        </a></p>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  GoABadge,
   GoABlock,
   GoAButton,
   GoAButtonGroup,
@@ -10,7 +9,11 @@ import {
   GoAInput,
   GoATab,
   GoATabs,
+  GoAContainer,
+  GoAGrid,
+  GoADivider
 } from "@abgov/react-components";
+import { DoDont } from "@components/do-dont/DoDont";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { GoAModal } from "@components/mock-modal/Modal";
@@ -126,6 +129,7 @@ export default function ButtonPage() {
     },
   ];
   const noop = () => { };
+  const minGridWidth = "36ch";
 
   function SandboxOnChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setButtonBindings(bindings);
@@ -144,8 +148,14 @@ export default function ButtonPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+
+        
         <GoATabs>
-          <GoATab heading="Code examples">
+
+          
+  {/*Code Examples-----------------------------------------------------------------------*/}
+          
+          <GoATab heading="Examples">
             {/*Button Sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
@@ -255,15 +265,115 @@ export default function ButtonPage() {
               </GoAButtonGroup>
             </Sandbox>
           </GoATab>
-
+ 
+          
+  {/*Design guidelines-----------------------------------------------------------------------*/}
+          
           <GoATab
             heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
+              <>Design guidelines</>
             }>
-            <p>Coming Soon</p>
+      <p>
+        <a
+          href="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810"
+          target="_blank">
+          View component in Figma
+        </a>
+      </p>
+          <h2 id="types">Types</h2>
+            <h3>There are 5 types of buttons: primary, secondary, tertiary, start, and destructive.</h3>
+            
+      <GoAContainer>
+        <GoAButtonGroup alignment="start">
+            <GoAButton type="primary" onClick={noop}>
+              Primary
+            </GoAButton>
+            <GoAButton type="secondary" onClick={noop}>
+              Secondary
+            </GoAButton>
+            <GoAButton type="tertiary" onClick={noop}>
+              Tertiary
+            </GoAButton>
+              <GoAButton type="start" onClick={noop}>
+              Get started
+            </GoAButton>
+              <GoAButton type="primary" variant="destructive" onClick={noop}>
+              Destructive
+            </GoAButton>
+        </GoAButtonGroup>
+      </GoAContainer>
+
+      <div className="dodont-wrapper">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
+          <DoDont
+            type="do"
+            description="Use a primary button for the primary action on the page. For citizen 
+            facing applications there should generally only be one primary button on a page.">
+            <p>image</p>
+          </DoDont>
+          
+          <DoDont type="dont" description="Don’t use two primary buttons.">
+            <p>image</p>
+          </DoDont>
+        </GoAGrid>
+
+      <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="3xl">
+        <DoDont
+          type="do"
+          description="Use a start button for the main call to action on your service’s 
+          start page. This is the “front door” to your service on Alberta.ca.">
+          <p>image</p>
+        </DoDont>
+      </GoAGrid>
+      </div>
+             
+      <GoADivider mt="3xl" mb="3xl"></GoADivider>
+
+      <h2 id="accessibility">Accessibility</h2>
+        <h3>Users with visual impairment often use screen readers and other assistive 
+          technology to help them navigate a service.</h3>
+        <p>
+        <a
+          href="https://w3c.github.io/wcag/understanding/target-size-minimum.html"
+          target="_blank">
+          View more information on web accessibility from WCAG
+        </a>
+      </p>
+
+             <div className="dodont-wrapper">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
+          <DoDont
+            type="do"
+            description="Use a primary button for the primary action on the page. For citizen 
+            facing applications there should generally only be one primary button on a page.">
+            <p>image</p>
+          </DoDont>
+          
+          <DoDont type="dont" description="Don’t use two primary buttons.">
+           <p>image</p> 
+          </DoDont>
+        </GoAGrid>
+      </div>
+
+      <GoADivider mt="3xl" mb="3xl"></GoADivider>
+
+      <h2 id="contribution">Design contribution</h2>
+      <GoAContainer type="non-interactive" accent="filled" padding="relaxed">
+        <h3>
+          <a
+          href="https://www.figma.com/design/jDsIoiKh5ViZRWJdS0Dgtf/Component---Button?t=Ub6ZLMiI17pE4Rhe-1"
+          target="_blank">
+          Figma contribution file
+        </a>
+        </h3>
+        <p>
+          Propose changes, contribute new ideas, and see the research and iterations 
+          that has gone into the current design.
+        </p>
+    </GoAContainer>
+
+    <GoADivider mt="3xl" mb="xl"></GoADivider>
+            
           </GoATab>
         </GoATabs>
       </ComponentContent>
