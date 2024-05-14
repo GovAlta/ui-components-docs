@@ -31,7 +31,7 @@ export default function RoadmapPage() {
         <h3>Citizen-facing form documentation and examples:</h3>
         <ul>
           <li>
-            <strong>Objective:</strong>To simplify the design and development process by offering 
+            <strong>Objective:</strong> To simplify the design and development process by offering 
             predefined page layouts and comprehensive guidelines on the structure and workflow of 
             citizen-facing forms.
           </li>
@@ -42,36 +42,82 @@ export default function RoadmapPage() {
         
         </ul>
 
-        <h2>Next</h2>
+        <h3>Angular library wrappers:</h3>
         <ul>
           <li>
-            <strong>Pattern research initiative:</strong> With this initiative we aim to improve our
-            visibility and understanding of the organization's existing 3D products to identify and
-            document the most effective and frequently used service patterns, thereby accelerating
-            development and creating better services.
+            <strong>Objective:</strong> To streamline the integration of our components with Angular, 
+            enhancing natural development flows and real-time error checking.
           </li>
           <li>
-            <strong>Collaborative UI components delivery:</strong> The design system plans to
-            partner with platform teams to co-create components and patterns. This initiative builds
-            on the success of our past collaboration with the Seniors Community and Social Services
-            (SCSS) platform team. It aims to foster similar partnerships to deliver UI components
-            and patterns effectively.
+            <strong>Benefit:</strong> Increases efficiency and reduces development time, enabling 
+            Angular developers to utilize design system components more effectively.
           </li>
+        
+        </ul>
+
+        <h2>Next</h2>
+        <p>Work that we have a clear definition around, discovery is well underway, or we have moved 
+          to the design phase.</p>
+        <h3>Sample citizen-facing form:</h3>
+        <ul>
+          <li>
+            <strong>Objective:</strong> To create an implementation of a citizen-facing form through 
+            an end-to-end sample service that integrates all components as they would appear in actual 
+            use.
+          </li>
+          <li>
+            <strong>Benefit:</strong> Provides a practical example to facilitate the adoption of the 
+            citizen-facing form pattern.
+          </li>
+        
+        </ul>
+
+        <h3>Design documentation enhancement:</h3>
+        <ul>
+          <li>
+            <strong>Objective:</strong> To centralize design resources by migrating design and usage 
+            guidelines from Figma to our design system website.
+          </li>
+          <li>
+            <strong>Benefit:</strong> Improves accessibility of documentation for teams and allows 
+            for the refinement of content based on feedback from earlier iterations.
+          </li>
+        
         </ul>
 
         <h2>Future</h2>
+        <p>Work that is currently in the early phases of discovery and may see substantial changes 
+          as the work becomes more defined.</p>
+        <h3>Continued focus on patterns:</h3>
+        <p>Patterns will help drive consistency and quality across digital services. They also 
+          allow teams to get to working software more quickly, leaving more time for content design, 
+          user and stakeholder engagement, and testing.</p>
+        <h4>Complex form pattern:</h4>
         <ul>
           <li>
-            <strong>
-              Initiate a pilot project to build a digital service with a product team:
-            </strong>{" "}
-            As part of this initiative, members of the design system team will be integrated into a
-            product team. This arrangement benefits both sides - product teams will have direct
-            access to design system expertise, speeding up their processes. Concurrently, design
-            system team members will gain hands-on experience on how design system components are
-            incorporated into a real DDD product.
+            <strong>Definition:</strong> For frequent or expert users, this pattern emphasizes speed 
+            and flexibility, streamlining repeated form interactions.
           </li>
+          <li>
+            <strong>Context:</strong> Ideal for scenarios where efficiency and speed are prioritized 
+            over clarity and error prevention.
+          </li>
+        
         </ul>
+        
+        <h4>Case management patterns:</h4>
+        <ul>
+          <li>
+            <strong>Definition:</strong> To support professional users in managing, reviewing, and 
+            processing cases within work contexts.
+          </li>
+          <li>
+            <strong>Context:</strong> Used in services where cases are created, reviewed, actioned, 
+            and processed, supporting "case" workflows.
+          </li>
+        
+        </ul>
+        
       </div>
     </ComponentContent>
   );
