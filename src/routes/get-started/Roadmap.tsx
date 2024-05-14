@@ -2,7 +2,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function RoadmapPage() {
   return (
-    <ComponentContent>
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
       <h1>Roadmap</h1>
       <h3 className="introduction">
         A high level summary of the work the design system team plans to complete in 2024. For more
@@ -26,7 +26,7 @@ export default function RoadmapPage() {
           for more details on our priorities and day-to-day activities.
         </p>
 
-        <h2>Now</h2>
+        <h2 id="now">Now</h2>
         <p>Work that is currently in progress.</p>
         <h3>Citizen-facing form documentation and examples:</h3>
         <ul>
@@ -55,7 +55,7 @@ export default function RoadmapPage() {
         
         </ul>
 
-        <h2>Next</h2>
+        <h2 id="next">Next</h2>
         <p>Work that we have a clear definition around, discovery is well underway, or we have moved 
           to the design phase.</p>
         <h3>Sample citizen-facing form:</h3>
@@ -85,7 +85,7 @@ export default function RoadmapPage() {
         
         </ul>
 
-        <h2>Future</h2>
+        <h2 id="future">Future</h2>
         <p>Work that is currently in the early phases of discovery and may see substantial changes 
           as the work becomes more defined.</p>
         <h3>Continued focus on patterns:</h3>
