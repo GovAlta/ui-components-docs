@@ -48,7 +48,7 @@ export default function CheckboxPage() {
     {
       name: "name",
       type: "string",
-      description: "Must match the name assigned to the children.",
+      description: "Unique name to identify the checkbox.",
       required: true,
     },
     {
@@ -106,6 +106,12 @@ export default function CheckboxPage() {
         "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
       lang: "angular",
     },
+    {
+      name: "onChange",
+      type: "(name: string, checked: boolean, value: string) => void",
+      description: "Callback function when checkbox value is changed",
+      lang: "react"
+    }
   ];
   const noop = () => { };
 

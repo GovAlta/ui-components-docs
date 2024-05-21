@@ -117,7 +117,7 @@ export default function RadioPage() {
     {
       name: "onChange",
       lang: "react",
-      type: "(name: string, value: string[] | string | null) => void",
+      type: "(name: string, value: string) => void",
       required: true,
       description: "Callback function when radio value is changed.",
     },
