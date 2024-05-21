@@ -481,7 +481,7 @@ export default function ContainerExamples() {
             </GoAFormItem>
 
             <GoAFormItem label="Reason to deny">
-              <GoADropdown name="reason" onChange={() => {}}>
+              <GoADropdown name="reason" onChange={() => {}} width="35ch">
                 <GoADropdownItem value="1" label="Incomplete Application"></GoADropdownItem>
                 <GoADropdownItem value="2" label="Eligibility Criteria Not Met"></GoADropdownItem>
                 <GoADropdownItem value="3" label="Documentation Verification Failure"></GoADropdownItem>
@@ -489,7 +489,7 @@ export default function ContainerExamples() {
             </GoAFormItem>
 
             <GoAFormItem label="Message" mt="l">
-              <GoATextArea name="message" rows={5} value="" onChange={() => {}}/>
+              <GoATextArea name="message" rows={5} value="" onChange={() => {}} width="auto" />
             </GoAFormItem>
 
             <GoAButton mt="xl" onClick={()=> {}}>Confirm</GoAButton>
