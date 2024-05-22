@@ -80,7 +80,7 @@ export default function DropdownPage() {
     {
       name: "name",
       type: "string",
-      description: "Must be unique in the rendered view and must match the children's name",
+      description: "Identifier for the Dropdown. Should be unique.",
     },
     {
       name: "value",
@@ -122,7 +122,7 @@ export default function DropdownPage() {
     {
       name: "width",
       type: "string",
-      description: "Overrides the autosized menu width.",
+      description: "Overrides the autosized menu width. Non-native only.",
     },
     {
       name: "disabled",
@@ -158,24 +158,9 @@ export default function DropdownPage() {
     },
     {
       name: "ariaLabelledBy",
-      lang: "react",
       type: "string",
       description:
         "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
-    },
-    {
-      name: "arialabelledby",
-      lang: "angular",
-      type: "string",
-      description:
-        "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
-    },
-    {
-      name: "id",
-      type: "string",
-      defaultValue: "Name of the dropdown",
-      description:
-        "Set an id for the dropdown component, should be unique, to associate with form's label 'for' attribute.",
     },
     {
       name: "native",
