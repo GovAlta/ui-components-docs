@@ -75,7 +75,7 @@ export default function RadioPage() {
       name: "name",
       type: "string",
       required: true,
-      description: "Must match the name assigned to the children.",
+      description: "Identifier for the radio group. Should be unique.",
     },
     {
       name: "value",
