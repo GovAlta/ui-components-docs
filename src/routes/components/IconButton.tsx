@@ -49,7 +49,7 @@ export default function IconButtonPage() {
     },
     {
       label: "Icon",
-      type: "dropdown",
+      type: "combobox",
       name: "icon",
       options: [""].concat(ICONS),
       value: "refresh",
