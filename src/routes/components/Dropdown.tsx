@@ -161,6 +161,14 @@ export default function DropdownPage() {
       type: "string",
       description:
         "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+      lang: "react",
+    },
+    {
+      name: "arialabelledby",
+      type: "string",
+      description:
+        "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+      lang: "angular",
     },
     {
       name: "native",
