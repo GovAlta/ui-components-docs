@@ -253,8 +253,9 @@ export default function FormItemPage() {
                   tags="react"
                   allowCopy={true}
                   code={`
-                  <GoAFormItem label="First name"
-                               error={<><i>This is </i> slotted <b>error text</b>.</>}>
+                  <GoAFormItem 
+                    label="First name"
+                    error={<><i>This is </i> slotted <b>error text</b>.</>}>
                     <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
                   </GoAFormItem>
                   `}
