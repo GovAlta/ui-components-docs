@@ -61,6 +61,14 @@ p.small {
   color: var(--goa-color-text-secondary);
 }
 
+.x-small {
+ font-size: var(--goa-typography-body-xs);
+}
+
+.greyscale {
+  color: var(--goa-color-greyscale-600);
+}
+
 .support-info {
   max-width: 700px;
 }
