@@ -11,8 +11,8 @@ import {
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { useContext, useEffect, useState } from "react";
 import { GoAModal as MockModal } from "@components/mock-modal/Modal";
 import {
   ComponentProperties,
@@ -26,24 +26,39 @@ import { useNavigate } from "react-router-dom";
 // == Page props ==
 
 const componentName = "Modal";
-const description = "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
+const description =
+  "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/button-group", name: "Button group" },
-  { link: "/components/callout", name: "Callout" }
+  { link: "/components/callout", name: "Callout" },
 ];
-type ComponentPropsType = Omit<GoAModalProps, "open">;
+type ComponentPropsType = Omit<GoAModalProps, "open"> & { closable?: boolean };
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
 };
 
 export default function TEMPLATE_Page() {
+  const language = useContext(LanguageContext);
   const navigate = useNavigate();
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     heading: "Are you sure you want to exit your application?",
-    role: "alertdialog"
+    role: "alertdialog",
   });
+
+  useEffect(() => {
+    if (language === "react" && "closable" in componentProps) {
+      //Remove 'closable' property when language dropdown changed to React
+      const { closable, ...updatedProps } = componentProps;
+      setComponentProps(updatedProps as CastingType);
+    }
+
+    if (language === "angular" && isClosableChecked(componentBindings)) {
+      //Include 'closable' property when language dropdown changed to Angular
+      setComponentProps({ ...componentProps, closable: true });
+    }
+  }, [language]);
 
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
@@ -68,12 +83,18 @@ export default function TEMPLATE_Page() {
       value: "",
     },
     {
+      label: "Closable",
+      type: "boolean",
+      name: "closable",
+      value: false,
+    },
+    {
       label: "Role",
       type: "list",
       name: "role",
       options: ["", "dialog", "alertdialog"],
       value: "alertdialog",
-      helpText: "Select an ARIA role to determine what is announced by the screen reader."
+      helpText: "Select an ARIA role to determine what is announced by the screen reader.",
     },
     {
       label: "Open",
@@ -82,7 +103,7 @@ export default function TEMPLATE_Page() {
       value: false,
       hidden: true,
       dynamic: true,
-    }
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -135,11 +156,13 @@ export default function TEMPLATE_Page() {
       type: "boolean",
       description: "Show close icon and allow clicking the background to close the modal",
       defaultValue: "false",
+      lang: "angular",
     },
     {
       name: "role",
       type: "dialog | alertdialog",
-      description: "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
+      description:
+        "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
       defaultValue: "dialog",
     },
     {
@@ -168,7 +191,22 @@ export default function TEMPLATE_Page() {
     },
   ];
 
+  function isClosableChecked(bindings: ComponentBinding[]): boolean {
+    const closable = bindings.find(b => b.name == "closable");
+    return closable?.value === true ? true : false;
+  }
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    if (isClosableChecked(bindings)) {
+      if (language === "react" && "closable" in props) {
+        delete props.closable;
+      }
+
+      if (language === "angular" && !("closable" in props)) {
+        props["closable"] = true;
+      }
+    }
+
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
   }
@@ -176,12 +214,12 @@ export default function TEMPLATE_Page() {
   const [open, setOpen] = useState<boolean>(false);
 
   function onClose() {
-    setOpen(false)
+    setOpen(false);
     // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
     resetScrollbars();
   }
 
-  function noop() { }
+  function noop() {}
 
   return (
     <>
@@ -209,9 +247,11 @@ export default function TEMPLATE_Page() {
                     onClick(event: Event) {
                       this.open = true;
                     }
+
                     onClose(event: Event) {
                       this.open = false;
                     }
+                    
                   }
                 `}
               />
@@ -225,6 +265,7 @@ export default function TEMPLATE_Page() {
                    function onClick() {
                     setOpen(true);
                    }
+                   
                    function onClose() {
                     setOpen(false);
                    }
@@ -232,17 +273,30 @@ export default function TEMPLATE_Page() {
               />
 
               <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
-              <GoAModal {...componentProps} open={open} onClose={onClose}>
-                <p>Your progress will not be saved.</p>
-                <GoAButtonGroup alignment="end">
-                  <GoAButton type="tertiary" onClick={() => setOpen(false)}>
-                    Cancel
-                  </GoAButton>
-                  <GoAButton type="primary" onClick={() => setOpen(false)}>
-                    Exit
-                  </GoAButton>
-                </GoAButtonGroup>
-              </GoAModal>
+
+              {!isClosableChecked(componentBindings) && (
+                <GoAModal {...componentProps} open={open}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                  molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
+                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                  <GoAButtonGroup alignment="end">
+                    <GoAButton type="tertiary" onClick={() => setOpen(false)}>
+                      Cancel
+                    </GoAButton>
+                    <GoAButton type="primary" onClick={() => setOpen(false)}>
+                      Exit
+                    </GoAButton>
+                  </GoAButtonGroup>
+                </GoAModal>
+              )}
+
+              {isClosableChecked(componentBindings) && (
+                <GoAModal {...componentProps} open={open} onClose={onClose}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                  molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
+                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                </GoAModal>
+              )}
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
