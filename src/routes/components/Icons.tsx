@@ -38,26 +38,99 @@ export default function IconsPage() {
       value: "",
       defaultValue: "outline",
     },
+    {
+      label: "Opacity",
+      type: "number",
+      name: "opacity",
+      value: 1,
+    },    
+    {
+      label: "Fill Color",
+      type: "string",
+      name: "fillColor",
+      value: "",
+    },
+    {
+      label: "Inverted",
+      type: "boolean",
+      name: "inverted",
+      value: false,
+    },
+    {
+      label: "Title",
+      type: "string",
+      name: "title",
+      value: "",
+    },    
+    {
+      label: "ARIA Label",
+      type: "string",
+      name: "ariaLabel",
+      value: "",
+    },
   ]);
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "GoAIconType",
-      description: "Set the icon",
+      description: "Sets the icon.",
       required: true,
     },
     {
       name: "size",
       type: "small | medium | large",
-      description: "Set the size of icon",
+      description: "Sets the size of icon.",
       defaultValue: "medium",
     },
     {
       name: "theme",
       type: "outline | filled",
-      description: "Style this icon to show outline, or filled",
+      description: "Styles the icon to show outline or filled.",
       defaultValue: "outline",
     },
+    {
+      name: "opacity",
+      type: "number",
+      description: "Sets the opacity of the icon between 0 and 1.",
+      defaultValue: "1",
+    },
+    {
+      name: "fillcolor",
+      type: "string",
+      lang: "angular",
+      description: "Sets the fill colour of the icon.",
+      defaultValue: "false",
+    },
+    {
+      name: "fillColor",
+      type: "string",
+      lang: "react",
+      description: "Sets the fill colour of the icon.",
+      defaultValue: "false",
+    },
+    {
+      name: "inverted",
+      type: "boolean",
+      description: "Colors the icon white for use on dark backgrounds.",
+      defaultValue: "false",
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Sets the title of the icon.",
+    },
+    {
+      name: "arialabel",
+      type: "string",
+      lang: "angular",
+      description: "Sets the accessible name of the icon.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      lang: "react",
+      description: "Sets the accessible name of the icon.",
+    },    
   ];
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
