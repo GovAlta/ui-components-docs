@@ -11,7 +11,7 @@ import {
   GoATabs,
   GoAContainer,
   GoAGrid,
-  GoADivider
+  GoADivider,
 } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
@@ -128,7 +128,7 @@ export default function ButtonPage() {
       description: "Callback function when button is clicked",
     },
   ];
-  const noop = () => { };
+  const noop = () => {};
   const minGridWidth = "36ch";
 
   function SandboxOnChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -149,16 +149,14 @@ export default function ButtonPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
-        
         <GoATabs>
+          {/*Code Examples-----------------------------------------------------------------------*/}
 
-          
-  {/*Code Examples-----------------------------------------------------------------------*/}
-          
           <GoATab heading="Examples">
             {/*Button Sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
               <CodeSnippet
                 lang="typescript"
@@ -181,47 +179,46 @@ export default function ButtonPage() {
             <ComponentProperties properties={componentProperties} />
 
             {/*Button Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             {/*Button Example 1*/}
             <h3 id="component-example-ask-address">Ask a user for an address</h3>
             <Sandbox flags={["reactive"]}>
-              
-            <GoABlock gap="xl" direction="column">
-              <GoAFormItem label="Street Address">
-                <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="Suite or unit #">
-                <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="City/town">
-                <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-
-              <GoABlock direction={"row"}>
-                <GoAFormItem label="Provice/territory">
-                  <GoADropdown onChange={noop} name="province" value="alberta">
-                    <GoADropdownItem label="Alberta" value="alberta" />
-                    <GoADropdownItem label="BC" value="bc" />
-                    <GoADropdownItem label="Manitoba" value="manitoba" />
-                    <GoADropdownItem label="New Brunswick" value="new-brunswick" />
-                    <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
-                    <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
-                    <GoADropdownItem label="Ontario" value="ontario" />
-                    <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
-                    <GoADropdownItem label="Quebec" value="quebec" />
-                    <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-                  </GoADropdown>
+              <GoABlock gap="xl" direction="column">
+                <GoAFormItem label="Street Address">
+                  <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
+                </GoAFormItem>
+                <GoAFormItem label="Suite or unit #">
+                  <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
+                </GoAFormItem>
+                <GoAFormItem label="City/town">
+                  <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
                 </GoAFormItem>
 
-                <GoAFormItem label="Postal Code">
-                  <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
-                </GoAFormItem>
+                <GoABlock direction={"row"}>
+                  <GoAFormItem label="Provice/territory">
+                    <GoADropdown onChange={noop} name="province" value="alberta">
+                      <GoADropdownItem label="Alberta" value="alberta" />
+                      <GoADropdownItem label="BC" value="bc" />
+                      <GoADropdownItem label="Manitoba" value="manitoba" />
+                      <GoADropdownItem label="New Brunswick" value="new-brunswick" />
+                      <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
+                      <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
+                      <GoADropdownItem label="Ontario" value="ontario" />
+                      <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
+                      <GoADropdownItem label="Quebec" value="quebec" />
+                      <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
+                    </GoADropdown>
+                  </GoAFormItem>
+
+                  <GoAFormItem label="Postal Code">
+                    <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+                  </GoAFormItem>
+                </GoABlock>
               </GoABlock>
-              
-             </GoABlock>
-              
+
               <GoAButtonGroup alignment="start" mt="2xl">
                 <GoAButton type="primary" onClick={noop}>
                   Submit and continue
@@ -266,115 +263,140 @@ export default function ButtonPage() {
               </GoAButtonGroup>
             </Sandbox>
           </GoATab>
- 
-          
-  {/*Design guidelines-----------------------------------------------------------------------*/}
-          
-          <GoATab
-            heading={
-              <>Design guidelines</>
-            }>
-      <p>
-        <a
-          href="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810"
-          target="_blank">
-          View component in Figma
-        </a>
-      </p>
-          <h2 id="types">Types</h2>
-            <h3>There are 5 types of buttons: primary, secondary, tertiary, start, and destructive.</h3>
-            
-      <GoAContainer>
-        <GoAButtonGroup alignment="start">
-            <GoAButton type="primary" onClick={noop}>
-              Primary
-            </GoAButton>
-            <GoAButton type="secondary" onClick={noop}>
-              Secondary
-            </GoAButton>
-            <GoAButton type="tertiary" onClick={noop}>
-              Tertiary
-            </GoAButton>
-              <GoAButton type="start" onClick={noop}>
-              Get started
-            </GoAButton>
-              <GoAButton type="primary" variant="destructive" onClick={noop}>
-              Destructive
-            </GoAButton>
-        </GoAButtonGroup>
-      </GoAContainer>
 
-      <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
-          <DoDont
-            type="do"
-            description="Use a primary button for the primary action on the page. For citizen 
+          {/*Design guidelines-----------------------------------------------------------------------*/}
+
+          <GoATab heading={<>Design guidelines</>}>
+            <p>
+              <a
+                href="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810"
+                target="_blank">
+                View component in Figma
+              </a>
+            </p>
+            <h2 id="types">Types</h2>
+            <h3>
+              There are 5 types of buttons: primary, secondary, tertiary, start, and destructive.
+            </h3>
+
+            <GoAContainer>
+              <GoAButtonGroup alignment="start">
+                <GoAButton type="primary" onClick={noop}>
+                  Primary
+                </GoAButton>
+                <GoAButton type="secondary" onClick={noop}>
+                  Secondary
+                </GoAButton>
+                <GoAButton type="tertiary" onClick={noop}>
+                  Tertiary
+                </GoAButton>
+                <GoAButton type="start" onClick={noop}>
+                  Get started
+                </GoAButton>
+                <GoAButton type="primary" variant="destructive" onClick={noop}>
+                  Destructive
+                </GoAButton>
+              </GoAButtonGroup>
+            </GoAContainer>
+
+            <div className="dodont-wrapper">
+              <GoAGrid minChildWidth={minGridWidth} gap="2xl">
+                <DoDont
+                  type="do"
+                  description="Use a primary button for the primary action on the page. For citizen 
             facing applications there should generally only be one primary button on a page.">
-            <p>image</p>
-          </DoDont>
-          
-          <DoDont type="dont" description="Don’t use two primary buttons.">
-            <p>image</p>
-          </DoDont>
-        </GoAGrid>
+                  <iframe
+                    width="100%"
+                    height="390px"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    allowFullScreen></iframe>
+                </DoDont>
 
-      <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="3xl">
-        <DoDont
-          type="do"
-          description="Use a start button for the main call to action on your service’s 
+                <DoDont type="dont" description="Don’t use two primary buttons.">
+                  <iframe
+                    width="100%"
+                    height="390px"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    allowFullScreen></iframe>
+                </DoDont>
+              </GoAGrid>
+
+              <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="3xl">
+                <DoDont
+                  type="do"
+                  description="Use a start button for the main call to action on your service’s 
           start page. This is the “front door” to your service on Alberta.ca.">
-          <p>image</p>
-        </DoDont>
-      </GoAGrid>
-      </div>
-             
-      <GoADivider mt="3xl" mb="3xl"></GoADivider>
+                  <iframe
+                    width="100%"
+                    height="390px"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    allowFullScreen></iframe>
+                </DoDont>
+              </GoAGrid>
+            </div>
 
-      <h2 id="accessibility">Accessibility</h2>
-        <h3>Users with visual impairment often use screen readers and other assistive 
-          technology to help them navigate a service.</h3>
-        <p>
-        <a
-          href="https://w3c.github.io/wcag/understanding/target-size-minimum.html"
-          target="_blank">
-          View more information on web accessibility from WCAG
-        </a>
-      </p>
+            <GoADivider mt="3xl" mb="3xl"></GoADivider>
 
-             <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
-          <DoDont
-            type="do"
-            description="Use a primary button for the primary action on the page. For citizen 
+            <h2 id="accessibility">Accessibility</h2>
+            <h3>
+              Users with visual impairment often use screen readers and other assistive technology
+              to help them navigate a service.
+            </h3>
+            <p>
+              <a
+                href="https://w3c.github.io/wcag/understanding/target-size-minimum.html"
+                target="_blank">
+                View more information on web accessibility from WCAG
+              </a>
+            </p>
+
+            <div className="dodont-wrapper">
+              <GoAGrid minChildWidth={minGridWidth} gap="2xl">
+                <DoDont
+                  type="do"
+                  description="Use a primary button for the primary action on the page. For citizen 
             facing applications there should generally only be one primary button on a page.">
-            <p>image</p>
-          </DoDont>
-          
-          <DoDont type="dont" description="Don’t use two primary buttons.">
-           <p>image</p> 
-          </DoDont>
-        </GoAGrid>
-      </div>
+                  <iframe
+                    width="100%"
+                    height="390px"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    allowFullScreen></iframe>
+                </DoDont>
 
-      <GoADivider mt="3xl" mb="3xl"></GoADivider>
+                <DoDont type="dont" description="Don’t use two primary buttons.">
+                  <iframe
+                    width="100%"
+                    height="390px"
+                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    allowFullScreen></iframe>
+                </DoDont>
+              </GoAGrid>
+            </div>
 
-      <h2 id="contribution">Design contribution</h2>
-      <GoAContainer type="non-interactive" accent="filled" padding="relaxed">
-        <h3>
-          <a
-          href="https://www.figma.com/design/jDsIoiKh5ViZRWJdS0Dgtf/Component---Button?t=Ub6ZLMiI17pE4Rhe-1"
-          target="_blank">
-          Figma contribution file
-        </a>
-        </h3>
-        <p>
-          Propose changes, contribute new ideas, and see the research and iterations 
-          that has gone into the current design.
-        </p>
-    </GoAContainer>
+            <GoADivider mt="3xl" mb="3xl"></GoADivider>
 
-    <GoADivider mt="3xl" mb="xl"></GoADivider>
-            
+            <h2 id="contribution">Design contribution</h2>
+            <GoABlock gap="none" direction="column">
+              <iframe width="100%" height="483px"
+                      src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FjDsIoiKh5ViZRWJdS0Dgtf%2FComponent---Button%3Fnode-id%3D0-1%26t%3D2vqgZvgeckBOYVRn-1"
+                      allowFullScreen></iframe>
+              <GoAContainer type="non-interactive" accent="filled" padding="relaxed">
+                <h3>
+                  <a
+                    href="https://www.figma.com/design/jDsIoiKh5ViZRWJdS0Dgtf/Component---Button?t=Ub6ZLMiI17pE4Rhe-1"
+                    target="_blank">
+                    Figma contribution file
+                  </a>
+                </h3>
+                <p>
+                  Propose changes, contribute new ideas, and see the research and iterations that has
+                  gone into the current design.
+                </p>
+              </GoAContainer>
+
+            </GoABlock>
+
+            <GoADivider mt="3xl" mb="xl"></GoADivider>
           </GoATab>
         </GoATabs>
       </ComponentContent>
