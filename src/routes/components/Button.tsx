@@ -313,11 +313,7 @@ export default function ButtonPage() {
                 </DoDont>
 
                 <DoDont type="dont" description="Don’t use two primary buttons.">
-                  <iframe
-                    width="100%"
-                    height="390px"
-                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
-                    allowFullScreen></iframe>
+                  <img alt="don't use two primary buttons image" src="/images/components/button/do-image1.png" width="80%"/>
                 </DoDont>
               </GoAGrid>
 
@@ -377,9 +373,11 @@ export default function ButtonPage() {
 
             <h2 id="contribution">Design contribution</h2>
             <GoABlock gap="none" direction="column">
-              <iframe width="100%" height="483px"
-                      src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FjDsIoiKh5ViZRWJdS0Dgtf%2FComponent---Button%3Fnode-id%3D0-1%26t%3D2vqgZvgeckBOYVRn-1"
-                      allowFullScreen></iframe>
+              <iframe
+                width="100%"
+                height="483px"
+                src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FjDsIoiKh5ViZRWJdS0Dgtf%2FComponent---Button%3Fnode-id%3D0-1%26t%3D2vqgZvgeckBOYVRn-1"
+                allowFullScreen></iframe>
               <GoAContainer type="non-interactive" accent="filled" padding="relaxed">
                 <h3>
                   <a
@@ -389,11 +387,10 @@ export default function ButtonPage() {
                   </a>
                 </h3>
                 <p>
-                  Propose changes, contribute new ideas, and see the research and iterations that has
-                  gone into the current design.
+                  Propose changes, contribute new ideas, and see the research and iterations that
+                  has gone into the current design.
                 </p>
               </GoAContainer>
-
             </GoABlock>
 
             <GoADivider mt="3xl" mb="xl"></GoADivider>

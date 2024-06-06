@@ -1,9 +1,12 @@
 .do-container {
   font-size: var(--goa-font-size-5);
   border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
-  padding: 3rem;
+  padding: var(--goa-space-2xl);
 }
 
+.do-container:has(> iframe){
+  padding: 0;
+}
 .description {
   font: var(--goa-typography-body-s);
 }

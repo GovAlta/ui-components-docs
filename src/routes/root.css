@@ -81,6 +81,10 @@ code {
   font: var(--goa-typography-number-m);
 }
 
+iframe {
+  border: none;
+}
+
 /*Tablet*/
 @media screen and (max-width: 1231px) {
   .content {
