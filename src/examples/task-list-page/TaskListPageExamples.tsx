@@ -96,7 +96,7 @@ export function TaskListPageExamples() {
         </GoATable>
 
         <h3>3. Schedule service</h3>
-        <p className="small">
+        <p className="small text-secondary">
           You need to complete the previous section before you can start this task.
         </p>
         <GoATable width="100%" mt="l" mb="3xl">

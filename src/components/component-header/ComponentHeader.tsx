@@ -59,9 +59,9 @@ export const ComponentHeader: React.FC<Props> = (props: Props) => {
 
       {props.relatedComponents?.length && (
         <GoABlock mb={"l"} gap={"xs"}>
-          <span>Related: </span>
+          <span className="small">Related: </span>
           {props.relatedComponents.map((relatedComponent, index, array) => (
-            <span key={index}>
+            <span className="small" key={index}>
               <Link to={relatedComponent.link}>{relatedComponent.name}</Link>
               {index < array.length - 1 && ", "}
             </span>
