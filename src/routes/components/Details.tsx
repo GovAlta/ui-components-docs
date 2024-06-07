@@ -160,6 +160,7 @@ export default function DetailsPage() {
                 label="Bank or Institution number"
                 id="bankNumber"
                 helpText={"3-4 digits in length"}
+                mb="xl"
               >
                 <GoAInput
                   maxLength={4}
@@ -174,6 +175,7 @@ export default function DetailsPage() {
                 label="Branch or Transit number"
                 helpText={"5 digits in length"}
                 id="transitNumber"
+                mb="xl"
               >
                 <GoAInput
                   maxLength={5}
