@@ -7,7 +7,7 @@ export default function UserExperienceGuidelinesPage() {
       <div className="max-width-72ch">
 
         <p>
-          Usability testing is our preferred method to understand user needs as they relate to each guideline. Suitable usability testing includes:
+          Usability testing is our preferred method to understand user needs as they relate to each guideline.Suitable usability testing includes:
         </p>
         
         <ul>
