@@ -70,8 +70,12 @@ export const ComponentHeader: React.FC<Props> = (props: Props) => {
       )}
       {props.githubLink && (
         <GoABlock gap="xs">
-          {lastUpdateTime && <span className={"x-small greyscale"}>Last updated on {format(lastUpdateTime, 'MMM dd, yyyy')}</span>}
-          <a href={`${GITHUB_BASE}${props.githubLink}`} target="_blank">
+          {lastUpdateTime && (
+            <span className={"x-small greyscale"}>
+              Last updated on {format(lastUpdateTime, "MMM dd, yyyy")}
+            </span>
+          )}
+          <a className={"x-small"} href={`${GITHUB_BASE}${props.githubLink}`} target="_blank">
             Edit this page
           </a>
         </GoABlock>

@@ -8,6 +8,15 @@
   margin-top: 1.5rem;
 }
 
+.component-header span.small,
+.component-header a.small {
+  font: var(--goa-typography-body-s);
+}
+.component-header span.x-small,
+.component-header a.x-small {
+  font: var(--goa-typography-body-xs);
+}
+
 @media screen and (max-width: 623px) {
   .component-header h1 {
     margin-bottom: 1rem;
