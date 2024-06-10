@@ -115,6 +115,20 @@ export default function RadioPage() {
       type: "string",
     },
     {
+      name: "arialabelledby",
+      lang: "angular",
+      description:
+        "Refers to the element that contains the label of the radio group.",
+      type: "string",
+    },
+    {
+      name: "ariaLabelledBy",
+      lang: "react",
+      description:
+        "Refers to the element that contains the label of the radio group.",
+      type: "string",
+    },
+    {
       name: "onChange",
       lang: "react",
       type: "(name: string, value: string) => void",
@@ -145,6 +159,18 @@ export default function RadioPage() {
       type: "string | ReactNode",
       description: "Additional content shown below the label.",
       lang: "react",
+    },
+    {
+      name: "arialabel",
+      lang: "angular",
+      type: "string",
+      description: "Defines how the radio item will be translated for the screen reader.",
+    },
+    {
+      name: "ariaLabel",
+      lang: "react",
+      type: "string",
+      description: "Defines how the radio item will be translated for the screen reader.",
     },
   ];
 
