@@ -31,7 +31,7 @@ export default function BlockPage() {
       label: "Alignment",
       type: "list",
       name: "alignment",
-      options: ["", "center", "start", "end"],
+      options: ["", "center", "start", "end", "normal"],
       value: "",
       defaultValue: "start",
     },
@@ -52,9 +52,9 @@ export default function BlockPage() {
     },
     {
       name: "alignment",
-      type: "center | start | end",
+      type: "center | start | end | normal",
       description: "Primary axis alignment",
-      defaultValue: "start",
+      defaultValue: "normal",
     },
   ];
 
