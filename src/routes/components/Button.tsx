@@ -32,7 +32,7 @@ export default function ButtonPage() {
       label: "Type",
       type: "list",
       name: "type",
-      options: ["primary", "submit", "secondary", "tertiary", "start"],
+      options: ["", "primary", "submit", "secondary", "tertiary", "start"],
       value: "",
       defaultValue: "primary",
     },
@@ -40,7 +40,7 @@ export default function ButtonPage() {
       label: "Size",
       type: "list",
       name: "size",
-      options: ["—Select—", "normal", "compact"],
+      options: ["", "normal", "compact"],
       value: "",
     },
     {
