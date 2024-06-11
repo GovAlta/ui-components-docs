@@ -184,13 +184,13 @@ export default function ButtonPage() {
             </h2>
 
             {/*Button Example 1*/}
-            <h3 id="component-example-ask-address">Ask a user for an address</h3>
+            <h3 id="component-example-ask-address">Submit a form</h3>
             <Sandbox flags={["reactive"]}>
               <GoABlock gap="xl" direction="column">
                 <GoAFormItem label="Street Address">
                   <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
                 </GoAFormItem>
-                <GoAFormItem label="Suite or unit #">
+                <GoAFormItem label="Suite or unit #" requirement="optional">
                   <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
                 </GoAFormItem>
                 <GoAFormItem label="City/town">
@@ -232,15 +232,15 @@ export default function ButtonPage() {
             {/*Button example 2*/}
             <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
             <Sandbox flags={["reactive"]}>
-              <GoAModal heading="Are you sure you want to delete this record?">
+              <GoAModal heading="Are you sure you want to delete this application?">
                 <p>You cannot undo this action.</p>
 
                 <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
+                  <GoAButton type="tertiary" onClick={noop}>
                     Cancel
                   </GoAButton>
                   <GoAButton type="primary" variant="destructive" onClick={noop}>
-                    Delete record
+                    Delete application
                   </GoAButton>
                 </GoAButtonGroup>
               </GoAModal>
