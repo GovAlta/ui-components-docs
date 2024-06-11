@@ -313,7 +313,7 @@ export default function ButtonPage() {
                 </DoDont>
 
                 <DoDont type="dont" description="Don’t use two primary buttons.">
-                  <img alt="don't use two primary buttons image" src="public/images/components/button/button-dont-2.jpg" width="100%"/>
+                  <img alt="don't use two primary buttons image" src="/images/components/button/button-dont-2.jpg" width="100%"/>
                 </DoDont>
               </GoAGrid>
 
