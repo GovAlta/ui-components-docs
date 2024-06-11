@@ -2,11 +2,11 @@
   font-size: var(--goa-font-size-5);
   border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
   padding: var(--goa-space-2xl);
+  min-height: 398px;
 }
 
 .do-container:has(> iframe){
   padding: 0;
-  height: max-content;
 }
 .description {
   font: var(--goa-typography-body-s);
