@@ -6,6 +6,7 @@
 
 .do-container:has(> iframe){
   padding: 0;
+  height: max-content;
 }
 .description {
   font: var(--goa-typography-body-s);
