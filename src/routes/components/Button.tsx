@@ -308,7 +308,7 @@ export default function ButtonPage() {
                   <iframe
                     width="100%"
                     height="390px"
-                    src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ff3iSPFIdJBdVpllNXQih1T%2FDesign-usage-documentation-concept%3Fnode-id%3D311-175058%26t%3DZ3RygJTYLgZuCSpX-1"
+                    src="https://www.figma.com/file/f3iSPFIdJBdVpllNXQih1T?embed_host=share&kind=file&node-id=320-169611&t=wkMeuzbguGxAiBhM-1&viewer=1"
                     allowFullScreen></iframe>
                 </DoDont>
 
