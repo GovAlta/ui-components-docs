@@ -48,7 +48,7 @@ export default function ButtonPage() {
       type: "list",
       name: "variant",
       options: ["", "normal", "destructive"],
-      value: "",
+      value: "—Select—",
     },
     {
       label: "Leading icon",
