@@ -186,8 +186,8 @@ export default function ButtonPage() {
             {/*Button Example 1*/}
             <h3 id="component-example-ask-address">Submit a form</h3>
             <Sandbox flags={["reactive"]}>
+              <h2>What is your address?</h2>
               <GoABlock gap="xl" direction="column">
-                <h2>What is your address?</h2>
                 <GoAFormItem label="Street Address">
                   <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
                 </GoAFormItem>
