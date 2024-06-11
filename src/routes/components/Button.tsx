@@ -40,7 +40,7 @@ export default function ButtonPage() {
       label: "Size",
       type: "list",
       name: "size",
-      options: ["", "normal", "compact"],
+      options: ["—Select—", "normal", "compact"],
       value: "",
     },
     {
@@ -171,7 +171,7 @@ export default function ButtonPage() {
                 `}
               />
               <GoAButton {...buttonProps} onClick={noop}>
-                Primary Button
+                Button
               </GoAButton>
             </Sandbox>
 
