@@ -267,6 +267,10 @@ export default function ButtonPage() {
           {/*Design guidelines-----------------------------------------------------------------------*/}
 
           <GoATab heading={<>Design guidelines</>}>
+            <h2 id="types">Types</h2>
+            <h3>
+              There are 5 types of buttons: primary, secondary, tertiary, start, and destructive.
+            </h3>
             <p>
               <a
                 href="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810"
@@ -274,11 +278,6 @@ export default function ButtonPage() {
                 View in Figma
               </a>
             </p>
-            <h2 id="types">Types</h2>
-            <h3>
-              There are 5 types of buttons: primary, secondary, tertiary, start, and destructive.
-            </h3>
-
             <GoAContainer mt="xl">
               <GoAButtonGroup alignment="center">
                 <GoAButton type="primary" onClick={noop}>
