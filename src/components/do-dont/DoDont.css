@@ -9,7 +9,7 @@
   padding: 0;
 }
 .description {
-  font: var(--goa-typography-body-s);
+  font: var(--goa-typography-body-m);
 }
 .description.type-generic{
   margin-top: var(--goa-space-m);
