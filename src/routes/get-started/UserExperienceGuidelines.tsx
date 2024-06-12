@@ -20,8 +20,15 @@ export default function UserExperienceGuidelinesPage() {
         
         <p>
           For more details on the process of usability testing, refer to our&nbsp;
-          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/2642346595/Usability+field+guide" target="_blank">
+          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/Understanding-Usability.aspx" target="_blank">
             usability field guide.
+          </a>
+        </p>
+
+        <p>
+          For more details on the process of assessing compliance to each guideline, refer to our&nbsp;
+          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/UX-Review-Process.aspx" target="_blank">
+            Heuristic Worksheet & UX Review Process.
           </a>
         </p>
 
@@ -29,24 +36,11 @@ export default function UserExperienceGuidelinesPage() {
 
         <ol>
           <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments.</li>
-          <li><strong>Modern:&nbsp;</strong>Users can achieve their goals and complete tasks in a manner that is on par with digital products 
-            used in other aspects of users lives.</li>
-          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of users possible regardless of physical 
-            or cognitive limitations, literacy level, or technical capability.</li>
-          <li><strong>Understandable:&nbsp;</strong>Digital products can be broadly understood by the largest user base possible by presenting 
-            information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
-          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy as a government asset 
-            and user expectations of safety and security must be understood and met with experiences that evoke a sense of trust.</li>
-          <li><strong>Learning:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data to 
-            ensure lasting effectiveness, efficiency, and usability.</li>
+          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of intended users, regardless of physical or cognitive limitations, literacy level, or technical capability.</li>
+          <li><strong>Understandable:&nbsp;</strong>Digital products will be understood by the broadest range of intended users by presenting information in plain language, and reducing cognitive load when it comes to understanding the system and making decisions.</li>
+          <li><strong>Compliant:&nbsp;</strong>Digital products will align as much as possible to organizational policies such as brand, information management, cyber security, and other Government of Alberta recommended practices.</li>
+          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with user input and usage data to ensure lasting effectiveness, efficiency, and usability.</li>
         </ol>
-
-        <p>
-          For more details on the process of assessing compliance to each guideline, refer to our&nbsp;
-          <a href="https://goa-dio.atlassian.net/wiki/spaces/DIO/pages/3023569024/Heuristic+Worksheet+UX+Review+Process" target="_blank">
-            Heuristic Worksheet & UX Review Process.
-          </a>
-        </p>
         
       </div>
     </>

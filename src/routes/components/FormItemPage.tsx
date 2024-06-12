@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { useContext, useState } from "react";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -10,9 +10,14 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function FormItemPage() {
+  const language = useContext(LanguageContext);
   const [formItemProps, setFormItemProps] = useState({
     label: "First name",
   });
+
+  const helptextReactNode: React.ReactNode = <><i>This is </i> slotted <b> help text</b>.</>;
+  const errorReactNode: React.ReactNode = <><i>This is </i> slotted <b>error text</b>.</>;
+
   const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
     {
       label: "Label",
@@ -78,21 +83,27 @@ export default function FormItemPage() {
     },
     {
       name: "helpText",
-      type: "string",
+      type: "string | ReactNode",
       lang: "react",
       description: "Help text displayed under the form field to provide additional explanation.",
     },
     {
       name: "helptext",
-      type: "string",
+      type: "string | slot",
       lang: "angular",
       description: "Help text displayed under the form field to provide additional explanation.",
     },
     {
       name: "error",
-      type: "string",
-      description:
-        "Error text displayed under the form field. Leave blank to indicate valid field.",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+    },
+    {
+      name: "error",
+      type: "string | slot",
+      lang: "angular",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
     {
       name: "requirement",
@@ -173,7 +184,8 @@ export default function FormItemPage() {
                 onChange(name: string, value: string) {
                   setValue(value);
                 }
-              `}/>
+              `}
+              />
 
               <GoAFormItem {...formItemProps}>
                 <GoAInput onChange={noop} value="" name="item" />
@@ -181,6 +193,95 @@ export default function FormItemPage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProps} />
+
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
+            <Sandbox skipRender>
+              <GoAFormItem 
+                label="First name" 
+                helpText={helptextReactNode}>
+                <GoAInput onChange={noop} value="" name="item" />
+              </GoAFormItem>
+
+              {language === "react" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <GoAFormItem label="First name"
+                               helpText={<><i>This is </i> slotted <b>help text</b>.</>}>
+                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
+                  </GoAFormItem>
+                  `}
+                />
+              )}
+
+              {language === "angular" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                  <goa-form-item label="First name">
+                    <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
+
+                    <div slot="helptext">
+                      <span>This is </span>
+                      <i>slotted</i>
+                      <b>help text</b>.
+                    </div>
+
+                  </goa-form-item>
+                  `}
+                />
+              )}
+            </Sandbox>
+
+            <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
+            <Sandbox skipRender>
+              <GoAFormItem 
+                label="First name" 
+                error={errorReactNode}>
+                <GoAInput onChange={noop} value="" name="item" />
+              </GoAFormItem>
+
+              {language === "react" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <GoAFormItem 
+                    label="First name"
+                    error={<><i>This is </i> slotted <b>error text</b>.</>}>
+                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
+                  </GoAFormItem>
+                  `}
+                />
+              )}
+
+              {language === "angular" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                  <goa-form-item label="First name">
+                  <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
+
+                    <div slot="error">
+                      <span>This is </span>
+                      <i>slotted </i>
+                      <b>error text.</b>
+                    </div>
+
+                  </goa-form-item>
+                  `}
+                />
+              )}
+            </Sandbox>
           </GoATab>
           <GoATab
             heading={
@@ -188,8 +289,7 @@ export default function FormItemPage() {
                 Design guidelines
                 <GoABadge type="information" content="In progress" />
               </>
-            }
-          >
+            }>
             <p>Coming Soon</p>
           </GoATab>
         </GoATabs>

@@ -56,39 +56,53 @@ export default function ContainerPage() {
       value: "relaxed",
       defaultValue: "relaxed",
     },
+    {
+      label: "Width",
+      type: "radio",
+      name: "width",
+      options: ["full", "content"],
+      value: "full",
+      defaultValue: "full"
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "interactive | info | error | success | important | non-interactive",
-      description: "Choose the type of container the type of the accent bar",
+      description: "Sets the container and accent bar styling.",
       defaultValue: "interactive",
     },
     {
       name: "accent",
       type: "thick | thin | filled",
       defaultValue: "filled",
-      description: "Sets the style of accent on the container",
+      description: "Sets the style of accent on the container.",
     },
     {
       name: "padding",
       type: "relaxed | compact",
       defaultValue: "relaxed",
-      description: "Sets the amount of white space in the container",
+      description: "Sets the amount of white space in the container.",
     },
     {
       name: "title",
       type: "slot",
       description:
-        "Sets the content in the left of the accent bar. To only beused along with accent=thick.",
+        "Sets the content in the left of the accent bar. Can only be used with accent=thick.",
     },
     {
       name: "actions",
       type: "slot",
       description:
-        "Sets the content in the right of the accent bar. To only be used along with accent=thick.",
+        "Sets the content in the right of the accent bar. Can only be used with accent=thick.",
     },
+    {
+      name: "width",
+      type: "full | content",
+      defaultValue: "full",
+      description: "Sets the width of the container."
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
