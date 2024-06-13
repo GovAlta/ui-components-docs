@@ -130,7 +130,7 @@ function SandboxCode(p: SandboxCodeProps) {
       <>
         <h4>Event based</h4>
         <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
-        <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />
+        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
 
         <h4>Reactive forms (FormControl)</h4>
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
