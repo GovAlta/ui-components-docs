@@ -19,7 +19,7 @@ export default function ContributePage() {
         <ol>
           <li>
             <div className="share-ideas">
-              Share your idea or suggestion with us at Design System Drop-in hours. {" "}
+              Share your idea or suggestion with us at Design System Drop-in hours {" "}
               <a
                 href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/"
                 target="_blank">
