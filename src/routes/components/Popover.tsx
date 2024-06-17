@@ -20,6 +20,12 @@ export default function PopoverPage() {
       value: "",
     },
     {
+      label: "Min Width",
+      type: "string",
+      name: "minWidth",
+      value: "",
+    },
+    {
       label: "Position",
       type: "list",
       name: "position",
@@ -38,7 +44,7 @@ export default function PopoverPage() {
     {
       name: "maxWidth",
       type: "string",
-      description: "The maxwidth of the popover container",
+      description: "The max width of the popover container",
       defaultValue: "320px",
       lang: "react",
     },
@@ -47,6 +53,18 @@ export default function PopoverPage() {
       type: "string",
       description: "The maxwidth of the popover container",
       defaultValue: "320px",
+      lang: "angular",
+    },
+    {
+      name: "minWidth",
+      type: "string",
+      description: "The min width of the popover container",
+      lang: "react",
+    },
+    {
+      name: "minwidth",
+      type: "string",
+      description: "The min width of the popover container",
       lang: "angular",
     },
     {
