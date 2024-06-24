@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@abgov/react-components": "4.17.0-alpha.31",
-    "@abgov/web-components": "1.17.0-alpha.68",
+    "@abgov/web-components": "1.17.0-alpha.70",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "react": "^18.2.0",
