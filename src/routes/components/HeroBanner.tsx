@@ -13,6 +13,7 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function HeroBannerPage() {
   const [heroBannerProps, setHeroBannerProps] = useState({
@@ -131,14 +132,20 @@ export default function HeroBannerPage() {
       lang: "react",
       defaultValue: "#333",
     },
+    {
+      name: "actions",
+      type: "slot",
+      description: "Buttons displayed in the bottom left of the hero banner",
+      lang: "angular",
+    },
   ];
 
   function onSandboxChange(heroBannerBindings: ComponentBinding[], props: Record<string, unknown>) {
     setHeroBannerBindings(heroBannerBindings);
-    setHeroBannerProps(props as { heading: string;[key: string]: unknown });
+    setHeroBannerProps(props as { heading: string; [key: string]: unknown });
   }
 
-  function noop() { }
+  function noop() {}
 
   return (
     <>
@@ -149,15 +156,59 @@ export default function HeroBannerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
             {/*Hero Banner Sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={heroBannerBindings} onChange={onSandboxChange}>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
+            <Sandbox properties={heroBannerBindings} fullWidth={true} onChange={onSandboxChange}>
               <GoAHeroBanner {...heroBannerProps}>
-                Resources are available to help Alberta entrepreneurs and small businesses start, grow
-                and succeed.
+                Resources are available to help Alberta entrepreneurs and small businesses start,
+                grow and succeed.
+              </GoAHeroBanner>
+            </Sandbox>
+
+            <ComponentProperties properties={componentProperties} />
+
+            {/* Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
+
+            <h3 id="component-example-actions">Hero Banner with actions</h3>
+            <Sandbox skipRender fullWidth>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-hero-banner heading="Supporting Businesses">
+                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                    <div slot="actions">
+                      <goa-button type="start" (_click)="onClick($event)">Call to action</goa-button>
+                    </div>
+                  </goa-hero-banner>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAHeroBanner heading="Supporting Businesses">
+                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                    <GoAHeroBannerActions>
+                      <GoAButton type="start" onClick={noop}>Call to action</GoAButton>
+                    </GoAHeroBannerActions>
+                  </GoAHeroBanner>
+                `}
+              />
+
+              <GoAHeroBanner heading="Supporting Businesses">
+                Resources are available to help Alberta entrepreneurs and small businesses start,
+                grow and succeed.
                 <GoAHeroBannerActions>
                   <GoAButton type="start" onClick={noop}>
                     Call to action
@@ -165,8 +216,6 @@ export default function HeroBannerPage() {
                 </GoAHeroBannerActions>
               </GoAHeroBanner>
             </Sandbox>
-
-            <ComponentProperties properties={componentProperties} />
           </GoATab>
         </GoATabs>
       </ComponentContent>
