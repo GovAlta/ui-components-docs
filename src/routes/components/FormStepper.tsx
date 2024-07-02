@@ -21,22 +21,31 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-const componentName = "Form Stepper";
-const description =
-  "Provides a visual representation of a form through a series of steps.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/form-item", name: "Form item" },
-];
 type ComponentPropsType = GoAFormStepperProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
 };
 
+const componentName = "Form Stepper";
+const description = "Provides a visual representation of a form through a series of steps.";
+const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/form-item", name: "Form item" },
+];
+
 export default function FormStepperPage() {
   const [formStepProps, setFormStepProps] = useState<ComponentPropsType>();
   const [formStepperBindings, setFormStepperBindings] = useState<ComponentBinding[]>([]);
+  const [step, setStep] = useState(-1);
+  const [controlledStep, setControlledStep] = useState(1);
+  const [statusStep, setStatusStep] = useState(-1);
+  const status:GoAFormStepStatusType[] = [
+    "complete",
+    "complete",
+    "incomplete",
+    "incomplete",
+  ];
 
   const componentProperties: ComponentProperty[] = [
     {
@@ -78,24 +87,16 @@ export default function FormStepperPage() {
     setFormStepProps(props as CastingType);
   }
 
-  const [step, setStep] = useState(-1);
-  const [controlledStep, setControlledStep] = useState(1);
   function setControlledPage(page: number) {
     if (page < 1 || page > 4) return;
     setControlledStep(page);
   }
 
-  const [statusStep, setStatusStep] = useState(-1);
-  const status: GoAFormStepStatusType[] = [
-    "complete",
-    "complete",
-    "incomplete",
-    "incomplete",
-  ];
   function setStatusPage(page: number) {
     if (page < 1 || page > 4) return;
     setStatusStep(page);
   }
+
   return (
     <>
       <ComponentHeader
