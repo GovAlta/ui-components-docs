@@ -57,6 +57,18 @@ export default function FormStepperPage() {
       type: "CustomEvent({detail: {step: number}})",
       description: "Event fired on page change..",
     },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
   ];
 
   const formStepProperties: ComponentProperty[] = [

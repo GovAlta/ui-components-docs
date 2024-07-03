@@ -78,6 +78,18 @@ export default function CalloutPage() {
       description:
         "The medium callout has reduced padding and type size to adjust for a compact area and smaller viewport width when a smaller size is required.",
     },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

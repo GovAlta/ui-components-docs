@@ -65,21 +65,21 @@ export default function FormItemPage() {
     {
       name: "label",
       type: "string",
-      description: "Creates a label for a form item",
+      description: "Creates a label for a form item.",
     },
     {
       name: "labelSize",
       lang: "react",
       type: "regular | large",
       defaultValue: "regular",
-      description: "Set a regular or large label size",
+      description: "Sets a regular or large label size.",
     },
     {
       name: "labelsize",
       lang: "angular",
       type: "regular | large",
       defaultValue: "regular",
-      description: "Set a regular or large label size",
+      description: "Sets a regular or large label size.",
     },
     {
       name: "helpText",
@@ -108,13 +108,25 @@ export default function FormItemPage() {
     {
       name: "requirement",
       type: "optional | required",
-      description: "Marks the field with optional/required label",
+      description: "Marks the field with an optional or required label.",
     },
     {
       name: "id",
       type: "string",
       description:
         "The id of the label, necessary for field's aria-labelledby attribute for the screen reader.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 

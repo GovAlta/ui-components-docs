@@ -130,6 +130,18 @@ export default function IconsPage() {
       type: "string",
       lang: "react",
       description: "Sets the accessible name of the icon.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },    
   ];
 

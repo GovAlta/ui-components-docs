@@ -51,7 +51,7 @@ export default function PopoverPage() {
     {
       name: "maxwidth",
       type: "string",
-      description: "The maxwidth of the popover container",
+      description: "Sets the max width of the popover container.",
       defaultValue: "320px",
       lang: "angular",
     },
@@ -70,34 +70,46 @@ export default function PopoverPage() {
     {
       name: "padded",
       type: "boolean",
-      description: "Whether or not the popover should have padding",
+      description: "Sets if the popover has padding.",
       defaultValue: "true",
     },
     {
       name: "position",
       type: "above | below | auto",
-      description: "Provides control to where the popover content is positioned",
+      description: "Provides control to where the popover content is positioned.",
       defaultValue: "auto",
     },
     {
       name: "target",
       type: "slot",
-      description: "The target UI component to open the popover",
+      description: "The target UI component to open the popover.",
       required: true,
       lang: "angular",
     },
     {
       name: "target",
       type: "ReactNode",
-      description: "The target UI component to open the popover",
+      description: "The target UI component to open the popover.",
       required: true,
       lang: "react",
     },
     {
       name: "relative",
       type: "boolean",
-      description: "Set to true if a parent element has a css position of relative",
+      description: "Set to true if a parent element has a css position of relative.",
       defaultValue: "false",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 

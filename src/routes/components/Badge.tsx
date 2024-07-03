@@ -78,25 +78,37 @@ export default function BadgePage() {
     {
       name: "icon",
       type: "boolean",
-      description: "Include an icon in the badge",
+      description: "Includes an icon in the badge.",
       defaultValue: "false",
     },
     {
       name: "content",
       type: "string",
-      description: "Text label of the badge",
+      description: "Text label of the badge.",
     },
     {
       name: "ariaLabel",
       type: "string",
-      description: "Accessible label",
+      description: "Accessible label.",
       lang: "react",
     },
     {
       name: "arialabel",
       type: "string",
-      description: "Accessible label",
+      description: "Accessible label.",
       lang: "angular",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 
