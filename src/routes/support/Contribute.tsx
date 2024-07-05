@@ -87,7 +87,7 @@ export default function ContributePage() {
 
 <p>Major contributions such as new components or patterns are discouraged due to the complexity and need for our team&#39;s involvement.</p>
 
-<h3 class="null">How to contribute through GitHub</h3>
+<h3>How to contribute through GitHub</h3>
 
 <p><strong>Step one:</strong> Reach out on the design system support channel to let us know you&rsquo;re interested in contributing.</p>
 
@@ -124,7 +124,7 @@ export default function ContributePage() {
 	</li>
 </ol>
 
-<h4 class="null">Where to find React and Web wrappers</h4>
+<h4>Where to find React and Web wrappers</h4>
 
 <p><strong>React wrappers:</strong> <code>/libs/react-components/src/lib</code>. Each folder represents a single component with its associated unit tests and wrapper code</p>
 
@@ -136,7 +136,7 @@ export default function ContributePage() {
 	<li>Documentation as <code>doc.md&nbsp;</code></li>
 </ul>
 
-<h4 class="null">Testing procedures</h4>
+<h4>Testing procedures</h4>
 
 <p>All unit tests must be written in Svelte.</p>
 
@@ -147,7 +147,7 @@ export default function ContributePage() {
 
 <p>Additionally, our QA automation developer will perform a comprehensive series of tests to ensure the components&#39; quality and functionality.</p>
 
-<h4 class="null">Submitting your code</h4>
+<h4>Submitting your code</h4>
 
 <p>Submit your code in a pull request to the alpha branch from your forked repository, include the following as a title:</p>
 
