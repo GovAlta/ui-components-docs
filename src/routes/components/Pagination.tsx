@@ -34,9 +34,7 @@ interface User {
 const componentName = "Pagination";
 const description = "Help users navigation between multiple pages or screens as part of a set.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/table", name: "Table" },
-];
+const relatedComponents = [{ link: "/components/table", name: "Table" }];
 
 export default function PaginationPage() {
   const [paginationProps, setPaginationProps] = useState<ComponentPropsType>({
@@ -133,6 +131,12 @@ export default function PaginationPage() {
     setPageUsers(_users.slice(0, perPageUsers));
   }, [totalUsers]);
 
+  useEffect(() => {
+    // Back to 1st page when 'perPageCount' changes
+    setPage(1);
+    setPageUsers(users.slice(0, perPageUsers));
+  }, [paginationProps.perPageCount, users]);
+
   function changePage(newPage: number) {
     const offset = (newPage - 1) * perPageUsers;
     const _users = users.slice(offset, offset + perPageUsers);
@@ -149,11 +153,16 @@ export default function PaginationPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={paginationBindings} onChange={onSandboxChange} fullWidth skipRender>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
+            <Sandbox
+              properties={paginationBindings}
+              onChange={onSandboxChange}
+              fullWidth
+              skipRender>
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -223,7 +232,10 @@ export default function PaginationPage() {
                       ))}
                     </tbody>
                   </GoATable>
-                  <GoAPagination ${propsToString(paginationProps as unknown as Record<string, string | number>, "react")} 
+                  <GoAPagination ${propsToString(
+                    paginationProps as unknown as Record<string, string | number>,
+                    "react"
+                  )} 
                     pageNumber={page} 
                     onChange={changePage}
                   />

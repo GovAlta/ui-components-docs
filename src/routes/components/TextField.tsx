@@ -382,6 +382,18 @@ export default function TextFieldPage() {
       type: "(name: string, value: string | Date | number) => void",
       description: "Function invoked when an element loses focus",
     },
+    {
+      name: "_keyPress",
+      lang: "angular",
+      type: "() => void",
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "onKeyPress",
+      lang: "react",
+      type: "(name: string, value: string | Date | number) => void",
+      description: "Function invoked when a key is pressed",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
