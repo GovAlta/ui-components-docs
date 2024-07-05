@@ -1,5 +1,4 @@
 import { GoABlock, GoAContainer, GoADivider } from "@abgov/react-components";
-import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function ContributePage() {
