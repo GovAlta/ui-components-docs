@@ -9,11 +9,6 @@
   margin-top: 1rem;
 }
 
-.contribute-page-content>ol>li,
-.contribute-page-content>ul>li {
-  padding-bottom: var(--goa-space-l);
-}
-
 .share-ideas {
   padding-bottom: var(--goa-space-s);
 }
