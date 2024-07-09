@@ -33,7 +33,7 @@ export default function RoadmapPage() {
           <li>
             <strong>Objective:</strong> To simplify the design and development process by offering 
             predefined page layouts and comprehensive guidelines on the structure and workflow of 
-            citizen-facing forms.
+            citizen-facing forms. 
           </li>
           <li>
             <strong>Benefit:</strong> Accelerates delivery, ensures consistency, and maintains 
