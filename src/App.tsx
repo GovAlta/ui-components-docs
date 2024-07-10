@@ -90,6 +90,7 @@ import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverv
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
+import DevelopersBugVerificationProcessPage from "@routes/get-started/developers/BugVerificationProcess";
 
 // Content Pages
 import ContentLayout from '@routes/content/ContentLayout';
@@ -203,6 +204,7 @@ const router = createBrowserRouter(
           <Route path="setup" element={<DevelopersSetupPage />} />
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="vscode" element={<DevelopersVSCodePage />} />
+          <Route path="bug-verification-process" element={<DevelopersBugVerificationProcessPage />} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
@@ -210,7 +212,6 @@ const router = createBrowserRouter(
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
-
 
       <Route path="content" element={<ContentLayout />}>
         <Route path="capitalization">
@@ -223,13 +224,13 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage/>} />
+        <Route path="simple-form" element={<SimpleFormPage />} />
         <Route path="layout" element={<LayoutPage />} />
-        <Route path="start-page" element={<StartPage/>} />
-        <Route path="task-list-page" element={<TaskListPage/>} />
-        <Route path="question-page" element={<QuestionPage/>} />
-        <Route path="review-page" element={<ReviewPage/>} />
-        <Route path="result-page" element={<ResultPage/>} />
+        <Route path="start-page" element={<StartPage />} />
+        <Route path="task-list-page" element={<TaskListPage />} />
+        <Route path="question-page" element={<QuestionPage />} />
+        <Route path="review-page" element={<ReviewPage />} />
+        <Route path="result-page" element={<ResultPage />} />
       </Route>
       <Route path="support" element={<SupportLayout />}>
         <Route index element={<SupportOverviewPage />} />
