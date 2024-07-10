@@ -2,7 +2,7 @@ import { GoACallout } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-export default function DevelopersVSCodePage() {
+export default function DevelopersBugVerificationProcessPage() {
   return (
     <ComponentContent>
       <h1>Developers</h1>
