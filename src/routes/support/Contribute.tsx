@@ -4,12 +4,13 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function ContributePage() {
   return (
     <ComponentContent>
-      <h1>Your contributions make an impact</h1>
+      <h1>Contribute</h1>
       <h3 className="introduction">
-        The design system is a shared resource for internal product teams to use and contribute to.
+        Your contributions make an impact</h3>
+       <p>The design system is a shared resource for internal product teams to use and contribute to.
         We encourage everyone, regardless of their role, to enhance the quality of the design
-        system.
-      </h3>
+        system.</p>
+      
 
       <GoABlock gap="xl">
         <a href="#design">Design</a>
