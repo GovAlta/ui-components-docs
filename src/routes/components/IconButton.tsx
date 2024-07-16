@@ -129,6 +129,18 @@ export default function IconButtonPage() {
       description: "Callback function when button is clicked.",
       lang: "react",
     },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

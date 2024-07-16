@@ -63,42 +63,54 @@ export default function ChipPage() {
     {
       name: "leadingicon",
       type: "GoAIconType",
-      description: "Show an icon to the left of the text",
+      description: "Shows an icon to the left of the text.",
       lang: "angular",
     },
     {
       name: "leadingIcon",
       type: "GoAIconType",
-      description: "Show an icon to the left of the text",
+      description: "Shows an icon to the left of the text.",
       lang: "react",
     },
     {
       name: "error",
       type: "boolean",
-      description: "Show an error state",
+      description: "Shows an error state.",
     },
     {
       name: "deletable",
       type: "boolean",
-      description: "Show a delete icon button on the right of the text label",
+      description: "Shows a delete icon button on the right of the text label.",
     },
     {
       name: "content",
       type: "string",
       required: true,
-      description: "Text label of the chip",
+      description: "Text label of the chip.",
     },
     {
       name: "_click",
       type: "CustomEvent",
-      description: "Callback when deletable and delete icon is clicked",
+      description: "Callback when deletable and delete icon is clicked.",
       lang: "angular",
     },
     {
       name: "onClick",
       type: "() = void",
-      description: "Callback when deletable and delete icon is clicked",
+      description: "Callback when deletable and delete icon is clicked.",
       lang: "react",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
     // ...
   ];

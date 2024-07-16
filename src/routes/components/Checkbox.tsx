@@ -54,7 +54,7 @@ export default function CheckboxPage() {
     {
       name: "checked",
       type: "boolean",
-      description: "Mark the checkbox item as selected.",
+      description: "Marks the checkbox item as selected.",
       required: true,
     },
     {
@@ -90,7 +90,7 @@ export default function CheckboxPage() {
       name: "error",
       type: "boolean",
       defaultValue: "false",
-      description: "Show an error on the checkbox item.",
+      description: "Shows an error on the checkbox item.",
     },
     {
       name: "ariaLabel",
@@ -109,9 +109,21 @@ export default function CheckboxPage() {
     {
       name: "onChange",
       type: "(name: string, checked: boolean, value: string) => void",
-      description: "Callback function when checkbox value is changed",
+      description: "Callback function when checkbox value is changed.",
       lang: "react"
-    }
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
   ];
   const noop = () => { };
 

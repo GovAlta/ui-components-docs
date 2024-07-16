@@ -33,26 +33,38 @@ export default function DividerPage() {
     {
       name: "mt",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Top margin",
+      description: "Sets the top margin.",
       defaultValue: "none",
     },
     {
       name: "mr",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Right margin",
+      description: "Sets the right margin.",
       defaultValue: "none",
     },
     {
       name: "mb",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Bottom margin",
+      description: "Sets the bottom margin.",
       defaultValue: "none",
     },
     {
       name: "ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Left margin",
+      description: "Sets the left margin.",
       defaultValue: "none",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 

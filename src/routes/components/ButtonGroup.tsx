@@ -36,16 +36,28 @@ export default function ButtonGroupPage() {
     {
       name: "alignment",
       type: "start | end | center",
-      description: "Positions the button group in the page layout",
+      description: "Positions the button group in the page layout.",
       required: true,
     },
     {
       name: "gap",
       type: "relaxed | compact",
-      description: "Define the spacing between buttons in the button group",
+      description: "Sets the spacing between buttons in the button group.",
       defaultValue: "relaxed",
     },
-  ];
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+  ]; 
 
   const noop = () => { };
 
