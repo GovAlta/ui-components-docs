@@ -22,12 +22,11 @@ import { LanguageContext } from "@components/sandbox";
 // == Page props ==
 
 const componentName = "Footer";
-const description =
-  "Provides information related your service at the bottom of every page.";
+const description = "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns", name: "Layout" }
+  { link: "/patterns", name: "Layout" },
 ];
 type ComponentPropsType = GoAAppFooterProps;
 type FooterNavPropsType = GoAFooterNavSectionProps;
@@ -105,6 +104,12 @@ export default function AppFooterPage() {
       description: "Sub heading of the navigation links",
       defaultValue: "",
     },
+    {
+      name: "slot",
+      lang: "angular",
+      type: "nav",
+      description: "Links to nav information to display in the footer",
+    },
   ];
 
   function onSandbox1Change(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -128,7 +133,9 @@ export default function AppFooterPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <h3>Basic Footer</h3>
             <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
               <GoAAppFooter {...appFooterProps} />
@@ -140,7 +147,7 @@ export default function AppFooterPage() {
               heading="App Footer Nav Section"
               properties={secondaryNavProperties}
             />
-            
+
             {language === "angular" && (
               <ComponentProperties
                 heading="App Footer Meta Section"
@@ -149,7 +156,9 @@ export default function AppFooterPage() {
             )}
 
             {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-footer-meta">Footer with meta info</h3>
             <Sandbox skipRender fullWidth>
@@ -211,9 +220,14 @@ export default function AppFooterPage() {
               </GoAAppFooter>
             </Sandbox>
 
-            <h3 id="component-example-footer-secondary-nav">Secondary navigation column section and meta section</h3>
-            <Sandbox skipRender properties={appFooterNavBindings} onChange={onSandbox2Change} fullWidth>
-
+            <h3 id="component-example-footer-secondary-nav">
+              Secondary navigation column section and meta section
+            </h3>
+            <Sandbox
+              skipRender
+              properties={appFooterNavBindings}
+              onChange={onSandbox2Change}
+              fullWidth>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
