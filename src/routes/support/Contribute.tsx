@@ -1,12 +1,16 @@
 import { GoABlock, GoAContainer, GoADivider } from "@abgov/react-components";
-import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function ContributePage() {
   return (
     <ComponentContent>
       <h1>Contribute</h1>
-      <h3 className="introduction">Propose a new component or pattern to the design system</h3>
+      <h3 className="introduction">
+        Your contributions make an impact</h3>
+       <p>The design system is a shared resource for internal product teams to use and contribute to.
+        We encourage everyone, regardless of their role, to enhance the quality of the design
+        system.</p>
+      
 
       <GoABlock gap="xl">
         <a href="#design">Design</a>
@@ -19,7 +23,7 @@ export default function ContributePage() {
         <ol>
           <li>
             <div className="share-ideas">
-              Share your idea or suggestion with us at Design System Drop-in hours {" "}
+              Share your idea or suggestion with us at Design System Drop-in hours{" "}
               <a
                 href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/"
                 target="_blank">
@@ -77,77 +81,136 @@ export default function ContributePage() {
       <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <div className="max-width-72ch contribute-page-content">
         <h2 id="development">Code contribution process</h2>
+        <p>
+          The recommended type of code contributions to the design system are viewed as minor, such
+          as:
+        </p>
+        <ul>
+          <li>bug fixes,</li>
+          <li>documentation updates; or</li>
+          <li>enhancements to existing components.</li>
+        </ul>
+        <p>
+          Major contributions such as new components or patterns are discouraged due to the
+          complexity and need for our team&#39;s involvement.
+        </p>
+        <h3>How to contribute through GitHub</h3>
+        <p>
+          <strong>Step one:</strong> Reach out on the design system support channel to let us know
+          you&rsquo;re interested in contributing.
+        </p>
         <ol>
           <li>
-            Make sure your component has already gone through the Design contribution process
-            outline above.
-          </li>
-          <li>
-            Follow the <Link to="/get-started/developers/setup">contributor setup process</Link> to
-            make sure that you're setup to contribute to our repo. Make sure you're forking our
-            repo, not directly cloning our repo
-          </li>
-          <li>
-            When writing your component, please be sure to update the{" "}
+            Find an issue in our{" "}
             <a
-              href="https://github.com/GovAlta/ui-components/tree/alpha/libs/web-components/playground"
+              href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery="
               target="_blank">
-              playground
-            </a>{" "}
-            with examples of your component in use. The design system team uses this for manual
-            testing.
-          </li>
-
-          <GoAContainer type="non-interactive" mb="l">
-            <h3>Tips when writing your own component</h3>
-            <ul>
-              <li>
-                All components are written in Svelte, and can be found in
-                /libs/web-components/src/components
-              </li>
-            </ul>
-          </GoAContainer>
-          <li>Write automated tests for your component</li>
-          <li>Submit your code in a PR to the alpha branch from your forked repository</li>
-          <li>
-            Tag your commit with ‘feat:’ at the start and ensure you are making a draft instead of a
-            PR
-          </li>
-          <li>
-            In the description box of the PR, add in:
-            <ul>
-              <li>The use case of your component</li>
-              <li>Links to the Design System Figma contribution</li>
-              <li>
-                Details on how the component is intended to be worked with (this is a new component
-                to use, so please be detailed so we know how to test and know roughly what we’re
-                looking at)
-              </li>
-            </ul>
-          </li>
-          <li>
-            Post on the{" "}
-            <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">
-              #design-system-support
-            </a>{" "}
-            Slack channel letting Chris Olsen and Dustin Nielsen know about your submission.
-          </li>
-          <li>It is not required to add your component to our documentation.</li>
-          <li>
-            Once a PR is submitted, it needs to pass linting, automated tests, build steps, and QA
-            automation testing. It will then be reviewed by 2 developers on the Design System team,
-            including Dustin Nielsen or Chris Olsen.
-          </li>
-          <li>
-            Once approved, it will be pushed into Alpha, and released in the next production
-            release.
-          </li>
-          <li>
-            If documentation was written, it will be included in the release notes. If there is no
-            documentation provided, it will not be in the release notes, until documentation is
-            written for the component.
+              backlog
+            </a>
+            &nbsp;tagged with &ldquo;ready-for-contribution&rdquo;. Let us know which issue(s)
+            you&rsquo;re picking up.
           </li>
         </ol>
+        <GoAContainer type="non-interactive" mb="l">
+          <p>
+            Avoid leaving comments in the story like &ldquo;I am working on this story&rdquo; as our
+            team does not receive notifications for new comments, and we may miss your message.
+          </p>
+        </GoAContainer>
+        <strong>Step two:</strong> Setup contribution environment
+        <ol>
+          <li>
+            Go to ui-components page and choose the &ldquo;Fork&rdquo; link in the top-right of the
+            page
+          </li>
+          <li>
+            Create a Fork, choose an owner and a repo name
+            <ul>
+              <li>Make sure you&#39;re forking our repo and not directly cloning our repo</li>
+            </ul>
+          </li>
+          <li>Clone the newly created repo</li>
+          <li>Open the repo&rsquo;s folder in your IDE</li>
+          <li>
+            Run the following commands in order:
+            <ol type="a">
+              <li>
+                <code>npm i</code>
+              </li>
+              <li>
+                run a bash script <code>./playground-setup.sh</code>
+              </li>
+              <li>
+                <code>npm run build</code>
+              </li>
+            </ol>
+          </li>
+          <li>
+            The commands above will create a &quot;playground&quot; folder containing both React and
+            Angular environments. Since nothing in this folder is committed to the repository, you
+            can freely make any changes you want. These environments are designed for testing
+            purposes.
+          </li>
+          <li>
+            Use the following commands to run your playground environments:
+            <ol type="a">
+              <li>
+                Angular: <code>npm run dev:angular</code>
+              </li>
+              <li>
+                React: <code>npm run dev:react</code>
+              </li>
+            </ol>
+          </li>
+        </ol>
+        <h4>Where to find React and Web wrappers</h4>
+        <p>
+          <strong>React wrappers:</strong> <code>/libs/react-components/src/lib</code>. Each folder
+          represents a single component with its associated unit tests and wrapper code
+        </p>
+        <p>
+          <strong>Web wrappers:</strong> <code>/libs/web-components/src/components</code>. Each
+          folder represents a single component with:
+        </p>
+        <ul>
+          <li>
+            Unit tests as <code>*.spec.ts</code>
+          </li>
+          <li>
+            Component code as <code>*.ts</code>
+          </li>
+          <li>
+            Documentation as <code>doc.md&nbsp;</code>
+          </li>
+        </ul>
+        <h4>Testing procedures</h4>
+        <p>All unit tests must be written in Svelte.</p>
+        <ul>
+          <li>
+            If you&#39;re updating/modifying React wrappers, you will need to write unit tests in
+            React
+          </li>
+          <li>Manually test in React and Angular</li>
+        </ul>
+        <p>
+          Additionally, our QA automation developer will perform a comprehensive series of tests to
+          ensure the components&#39; quality and functionality.
+        </p>
+        <h4>Submitting your code</h4>
+        <p>
+          Submit your code in a pull request to the alpha branch from your forked repository,
+          include the following as a title:
+        </p>
+        <ul>
+          <li>
+            Bug fix: <code>fix(#storyNumber): short description of issue fixed (7 words max)</code>
+          </li>
+          <li>
+            Feature request:{" "}
+            <code>feat(#storyNumber): short description of feature (7 words max)</code>
+          </li>
+        </ul>
+        <p>Make sure you mark the PR as a draft.</p>
       </div>
     </ComponentContent>
   );

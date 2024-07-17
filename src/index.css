@@ -73,7 +73,7 @@ ol {
   padding: 0 0 0 1.5rem;
 }
 
-li>ul {
+li>ul, li>ol {
   padding-left: 1.5rem;
 }
 
