@@ -1,4 +1,4 @@
-import { GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/react-components";
+import { GoABlock, GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
@@ -23,10 +23,13 @@ export function Components() {
     <LanguageContext.Provider value={language}>
       <section className="content">
         <section className="side-menu">
-          <GoADropdown value={language} onChange={onLanguageChange} mb="m" mt="m" mr="m" ml="m">
-            <GoADropdownItem label="React" value="react" />
-            <GoADropdownItem label="Angular" value="angular" />
-          </GoADropdown>
+          <GoABlock direction="column" mt="m" mb="m" ml="m" mr="m">
+            <GoADropdown value={language} onChange={onLanguageChange}>
+              <GoADropdownItem label="React" value="react" />
+              <GoADropdownItem label="Angular" value="angular" />
+            </GoADropdown>
+          </GoABlock>
+
 
           <GoASideMenu>
             <Link to="">All</Link>
