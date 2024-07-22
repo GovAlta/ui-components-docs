@@ -3,7 +3,8 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function BugVerificationPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <h1>How to resolve issues with design system components</h1>
+  <h1>Bug verification process</h1>
+      <h2>How to resolve issues with design system components</h2>
       <p>Follow these steps when you encounter issues with our design system components. This process helps isolate problems, streamlines investigation, and speeds up resolution.</p>
 
 <p>This process is for Angular or React users only.</p>
@@ -17,7 +18,7 @@ export default function BugVerificationPage() {
 
       <p>If not, upgrade and retest. If yes proceed to step 2.</p>
 
-      <h3>Test with product templates</h3>
+      <h3>2. Test with product templates</h3>
       <p>Use Angular or React product templates from the design system to isolate and verify the bug:</p>
 
       <ul>
@@ -25,14 +26,14 @@ export default function BugVerificationPage() {
       <li><a href="https://github.com/GovAlta/ui-components-react-template">Test with React template</a></li>
       </ul>
 
-      <h3>Recreate the issue</h3>
+      <h3>3. Recreate the issue</h3>
 <ul>
 <li>Set up a minimal test environment</li>
   <li>Use minimal code required for the example to function</li>
   <li>Include only problematic components</li>
   <li>Verify if the issue can be replicated</li>
 </ul>
-      <h3>Sharing and reporting</h3>
+      <h3>4. Sharing and reporting</h3>
       <p>If the issue is replicable:</p>
       <ul>
       <li>Share the template app link in the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-systen-support</a> channel</li>
