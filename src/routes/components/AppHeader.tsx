@@ -60,39 +60,51 @@ export default function AppHeaderPage() {
     {
       name: "url",
       type: "string",
-      description: "Set the URL to link from the alberta.ca logo. A full url is required",
+      description: "Set the URL to link from the alberta.ca logo. A full url is required.",
     },
     {
       name: "heading",
       type: "string",
-      description: "Set the service name to display in the app header",
+      description: "Set the service name to display in the app header.",
     },
     {
       name: "maxContentWidth",
       type: "string",
-      description: "Maximum width of the content area",
+      description: "Maximum width of the content area.",
       defaultValue: "100%",
       lang: "react"
     },
     {
       name: "maxcontentwidth",
       type: "string",
-      description: "Maximum width of the content area",
+      description: "Maximum width of the content area.",
       defaultValue: "100%",
       lang: "angular"
     },
     {
       name: "fullmenubreakpoint",
       type: "number",
-      description: "Set the breakpoint for the full menu to display, ex: 1500 (means 1500px)",
+      description: "Sets the breakpoint in px for the full menu to display.",
       lang: "angular"
     },
     {
       name: "fullMenuBreakpoint",
       type: "number",
-      description: "Set the breakpoint for the full menu to display, ex: 1500 (means 1500px)",
+      description: "Sets the breakpoint in px for the full menu to display.",
       lang: "react"
-    }
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
