@@ -16,7 +16,7 @@ export default function BugVerificationPage() {
       <li> Angular or React</li>
       </ul>
 
-      <p>If not, upgrade and retest. If yes proceed to step 2.</p>
+      <p>If not, upgrade and retest. If yes, proceed to step 2.</p>
 
       <h3>2. Test with product templates</h3>
       <p>Use Angular or React product templates from the design system to isolate and verify the bug:</p>
@@ -40,7 +40,7 @@ export default function BugVerificationPage() {
         <li>Provide a link to your repo where we can quickly view and replicate the issue</li>
       </ul>
 
-      <p>By following these steps, you'll help ensure efficient investigation and quicker resolution of design system component issues.</p>
+      <p>Following these steps will help to ensure efficient investigation and quicker resolution of design system component issues.</p>
     
     </ComponentContent>
   );
