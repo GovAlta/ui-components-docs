@@ -36,7 +36,7 @@ export default function BugVerificationPage() {
       <h3>4. Sharing and reporting</h3>
       <p>If the issue is replicable:</p>
       <ul>
-      <li>Share the template app link in the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-systen-support</a> channel</li>
+      <li>Share the template app link in the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-system-support</a> channel</li>
         <li>Provide a link to your repo where we can quickly view and replicate the issue</li>
       </ul>
 
