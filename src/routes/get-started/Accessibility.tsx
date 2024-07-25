@@ -75,7 +75,7 @@ export default function AccessibilityPage() {
         </ul>
 
         <h2 id="aria">ARIA roles and headings</h2>
-        <p>Proper use of ARIA roles and HTML headings is essential for creating accessible web content. These elements help assistive technologies interpret the structure and function of a webpage, enabling users with disabilities to navigate and interact more effectively. Here’s how to implement basic roles and headings:</p>
+        <p>Proper ARIA roles and HTML headings are essential for creating accessible web content. These elements help assistive technologies interpret the structure and function of a webpage, enabling users with disabilities to navigate and interact more effectively. Here’s how to implement basic roles and headings:</p>
         <h3>ARIA roles</h3>
         <ul>
           <li><strong>Landmark Roles</strong> - Use landmark roles to define areas of the page like banner, navigation, main, complementary, and content info. These roles enable users with assistive technologies to quickly navigate to specific sections of the page.</li>
@@ -85,7 +85,7 @@ export default function AccessibilityPage() {
 
         <h3>HTML Headings</h3>
         <ul>
-          <li><strong>Structure</strong> - Use headings to structure content hierarchically. Begin with an h1 for the main title of the page, followed by h2 for main section titles, and h3 (and so forth) for subsections. This hierarchical use of headings helps users with screen readers understand the layout and navigate the content efficiently.</li>
+          <li><strong>Structure</strong> - Use headings to structure content hierarchically. Begin with an h1 for the page's main title, h2 for main section titles, and h3 (and so forth) for subsections. This hierarchical use of headings helps users with screen readers understand the layout and navigate the content efficiently.</li>
           <li><strong>Consistency</strong> - Maintain consistency in heading usage across pages. This predictability aids users in quickly finding the information they need.</li>
         </ul>
 
@@ -100,7 +100,7 @@ export default function AccessibilityPage() {
 
         <h3>Role attribute</h3>
         <ul>
-          <li><strong>Application</strong> - Assign the role="status" or role="alert" to small regions where simple feedback about an operation in a user interface is needed. role="alert" automatically has an implicit aria-live value of "assertive", and it should be used for critical updates that require immediate attention.</li>
+          <li><strong>Application</strong> - Assign the role="status" or role="alert" to small regions where simple feedback about an operation in a user interface is needed. role="alert" automatically has an implicit aria-live value of "assertive," and it should be used for critical updates that require immediate attention.</li>
         </ul>
 
         <h3>Managing focus</h3>
