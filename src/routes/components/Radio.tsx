@@ -62,6 +62,13 @@ export default function RadioPage() {
       value: false,
     },
     {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
+    {
       label: "ARIA Label",
       name: "ariaLabel",
       type: "string",
@@ -159,6 +166,18 @@ export default function RadioPage() {
       type: "string | ReactNode",
       description: "Additional content shown below the label.",
       lang: "react",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "angular",
     },
     {
       name: "arialabel",

@@ -44,27 +44,27 @@ export default function PopoverPage() {
     {
       name: "maxWidth",
       type: "string",
-      description: "The max width of the popover container",
+      description: "Sets the maximum width of the popover container.",
       defaultValue: "320px",
       lang: "react",
     },
     {
       name: "maxwidth",
       type: "string",
-      description: "Sets the max width of the popover container.",
+      description: "Sets the maximum width of the popover container.",
       defaultValue: "320px",
       lang: "angular",
     },
     {
       name: "minWidth",
       type: "string",
-      description: "The min width of the popover container",
+      description: "Sets the minimum width of the popover container.",
       lang: "react",
     },
     {
       name: "minwidth",
       type: "string",
-      description: "The min width of the popover container",
+      description: "Sets the minimum width of the popover container.",
       lang: "angular",
     },
     {

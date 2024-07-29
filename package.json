@@ -12,8 +12,8 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "4.22.0",
-    "@abgov/web-components": "1.23.1",
+    "@abgov/react-components": "4.17.0-alpha.34",
+    "@abgov/web-components": "1.17.0-alpha.88",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "react": "^18.2.0",

@@ -63,7 +63,14 @@ export default function ContainerPage() {
       options: ["full", "content"],
       value: "full",
       defaultValue: "full"
-    }
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -103,6 +110,18 @@ export default function ContainerPage() {
       defaultValue: "full",
       description: "Sets the width of the container."
     },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the container.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the container.",
+      lang: "angular",
+    },    
     {
       name: "testId",
       type: "string",
