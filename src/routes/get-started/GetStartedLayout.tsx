@@ -13,7 +13,7 @@ export default function GetStartedLayout() {
           <GoASideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>
             <Link to="developers/setup">Setup</Link>
-            <Link to="developers/bug">Bug Verification Process</Link>
+            <Link to="developers/bug">Verify a bug</Link>
             <Link to="developers/vscode">VS Code</Link>
             <Link to="developers/technologies">Technologies</Link>
             <Link to="developers/browsers">Supported Browsers</Link>
