@@ -3,7 +3,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function BugVerificationPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-  <h1>Bug verification process</h1>
+  <h1>Verify a bug</h1>
       <h2>How to resolve issues with design system components</h2>
       <p>Follow these steps when you encounter issues with our design system components. This process helps isolate problems, streamlines investigation, and speeds up resolution.</p>
 
