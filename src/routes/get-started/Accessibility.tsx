@@ -9,7 +9,7 @@ export default function AccessibilityPage() {
       </h3>
       <div className="max-width-72ch">
         <p>
-          Each component is designed and developed to ensure it meets the required accessibility standards of <strong>WCAG AA</strong>. The design system has been designed to be accessible by all users, including those with disabilities.
+          Each component is designed and developed to ensure it meets the required accessibility standards of <b><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG AA</a></b>. The design system has been designed to be accessible by all users, including those with disabilities.
         </p>
 
         <h2 id="wcag">WCAG accessibility compliance</h2>
@@ -21,7 +21,7 @@ export default function AccessibilityPage() {
           <li><strong>Robust</strong> – Content must be robust enough that it can be interpreted reliably by operating systems, web browsers, and assistive technologies.</li>
         </ol>
 
-        <h2>Design considerations</h2>
+        <h2 id="design">Design considerations</h2>
         <h3>Visuals</h3>
         <ul>
           <li><strong>Colour contrast</strong> - Our components all meet <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html">colour contrast</a> ratios following WCAG 2.2 guidance. In Figma, you can use <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility">the Able plugin</a> to check colour contrast in your designs.</li>
