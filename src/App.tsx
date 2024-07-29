@@ -109,6 +109,7 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
+import AccessibilityPage from "@routes/get-started/Accessibility.tsx";
 
 
 interface DeviceWidthProviderProps {
@@ -207,6 +208,7 @@ const router = createBrowserRouter(
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
         </Route>
+        <Route path="accessibility" element={<AccessibilityPage/>} />
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
