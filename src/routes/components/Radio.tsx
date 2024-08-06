@@ -62,13 +62,6 @@ export default function RadioPage() {
       value: false,
     },
     {
-      label: "Max Width",
-      type: "string",
-      name: "maxWidth",
-      requirement: "optional",
-      value: "",
-    },
-    {
       label: "ARIA Label",
       name: "ariaLabel",
       type: "string",
