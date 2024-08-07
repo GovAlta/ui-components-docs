@@ -114,6 +114,7 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
+import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade";
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -208,6 +209,7 @@ const router = createBrowserRouter(
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="vscode" element={<DevelopersVSCodePage />} />
           <Route path="bug" element={<BugVerificationPage />} />
+          <Route path="update" element={<DevelopersUpgradePage/>} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
