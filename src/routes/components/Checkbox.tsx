@@ -20,12 +20,14 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/radio", name: "Radio" }
 ];
+
 type ComponentPropsType = GoACheckboxProps;
 type CastingType = {
   name: string;
   checked: boolean;
   [key: string]: unknown;
 };
+
 export default function CheckboxPage() {
   const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
     name: "item",
@@ -33,6 +35,7 @@ export default function CheckboxPage() {
     text: "Item",
     value: "",
   });
+
   const [checkboxBindings, setCheckboxBindings] = useState<ComponentBinding[]>([
     { label: "Text", type: "string", name: "text", value: "Item" },
     { label: "Description", type: "string", name: "description", value: "" },
@@ -40,6 +43,7 @@ export default function CheckboxPage() {
     { label: "Error", type: "boolean", name: "error", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
+
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
   });
