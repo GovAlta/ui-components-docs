@@ -5,7 +5,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
     "table th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 img label ul li ol hr section dl dt dd strong u".split(
-      " ",
+      " "
     );
 
   constructor(properties: ComponentBinding[]) {
@@ -58,7 +58,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       return this.#dynamicProp(name);
     }
     if (!item) return "";
-    return `[${name.toLowerCase()}]=${item}`;
+    return `${name.toLowerCase()}="${item}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -91,7 +91,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     return props;
   }
 
-  postProcess (children: string): string {
+  postProcess(children: string): string {
     return children;
   }
 }

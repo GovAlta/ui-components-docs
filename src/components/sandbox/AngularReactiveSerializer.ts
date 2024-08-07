@@ -7,7 +7,7 @@ const ReactiveComponents = [
   "goa-dropdown",
   "goa-checkbox",
   "goa-radio-group",
-  "goa-date-picker"
+  "goa-date-picker",
 ];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
@@ -75,7 +75,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return this.#dynamicProp(propName);
     }
     if (!propValue) return "";
-    return `[${propName.toLowerCase()}]=${propValue}`;
+    return `${propName.toLowerCase()}="${propValue}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -117,14 +117,16 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     return props;
   }
 
-  postProcess (children: string): string {
-    if(children.startsWith('<goa-checkbox')) {
-      if (children.includes('goaChecked') && children.includes('goaValue')) {
-        children = children.replace(/\bgoaValue\b\s?/g, '');
+  postProcess(children: string): string {
+    if (children.startsWith("<goa-checkbox")) {
+      if (children.includes("goaChecked") && children.includes("goaValue")) {
+        children = children.replace(/\bgoaValue\b\s?/g, "");
       }
 
-      if(children.includes('disabled=true')) {
-        children = children.replace(/disabled=true/g, '[attr.disabled]="true"').replace(/\bgoaValue\b\s?/g, ''); 
+      if (children.includes("disabled=true")) {
+        children = children
+          .replace(/disabled=true/g, '[attr.disabled]="true"')
+          .replace(/\bgoaValue\b\s?/g, "");
       }
     }
     return children;
