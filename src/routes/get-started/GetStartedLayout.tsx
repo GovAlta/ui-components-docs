@@ -17,6 +17,9 @@ export default function GetStartedLayout() {
             <Link to="developers/vscode">VS Code</Link>
             <Link to="developers/technologies">Technologies</Link>
             <Link to="developers/browsers">Supported Browsers</Link>
+            <GoASideMenuGroup heading="Migrating">
+              <Link to="developers/upgrade">Guide</Link>
+            </GoASideMenuGroup>
           </GoASideMenuGroup>
           <Link to="qa-testing">QA testing</Link>
           <Link to="roadmap">Roadmap</Link>

@@ -110,6 +110,7 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
+import DevelopersUpgradePage from "@routes/get-started/developers/DevelopersUpgrade.tsx";
 
 
 interface DeviceWidthProviderProps {
@@ -205,6 +206,7 @@ const router = createBrowserRouter(
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="vscode" element={<DevelopersVSCodePage />} />
           <Route path="bug" element={<BugVerificationPage />} />
+          <Route path="upgrade" element={<DevelopersUpgradePage/>} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
