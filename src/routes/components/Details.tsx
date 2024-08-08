@@ -29,6 +29,13 @@ export default function DetailsPage() {
       name: "heading",
       value: "Detail Heading",
     },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },    
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -44,6 +51,18 @@ export default function DetailsPage() {
       description: "Controls if details is expanded or not",
       defaultValue: "false",
     },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the details.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the details.",
+      lang: "angular",
+    },    
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

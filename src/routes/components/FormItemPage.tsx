@@ -59,7 +59,14 @@ export default function FormItemPage() {
       value: "",
       hidden: true,
       dynamic: true,
-    }
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
   const componentProps: ComponentProperty[] = [
     {
@@ -116,6 +123,18 @@ export default function FormItemPage() {
       description:
         "The id of the label, necessary for field's aria-labelledby attribute for the screen reader.",
     },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the form item.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the form item.",
+      lang: "angular",
+    },    
     {
       name: "testId",
       type: "string",

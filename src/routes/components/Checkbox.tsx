@@ -39,6 +39,13 @@ export default function CheckboxPage() {
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
     { label: "Error", type: "boolean", name: "error", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
@@ -111,6 +118,18 @@ export default function CheckboxPage() {
       type: "(name: string, checked: boolean, value: string) => void",
       description: "Callback function when checkbox value is changed.",
       lang: "react"
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the checkbox.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the checkbox.",
+      lang: "angular",
     },
     {
       name: "testId",

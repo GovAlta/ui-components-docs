@@ -61,8 +61,19 @@ export default function AccordionPage() {
       requirement: "optional",
       value: "",
     },
-
-    { label: "Open", type: "boolean", name: "open", value: false },
+    {
+      label: "Open",
+      type: "boolean",
+      name: "open", 
+      value: false
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -115,6 +126,18 @@ export default function AccordionPage() {
       type: "slot",
       lang: "angular",
       description: "Add components to the accordion container heading such as badges.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the accordion.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the accordion.",
+      lang: "angular",
     },
     {
       name: "testId",

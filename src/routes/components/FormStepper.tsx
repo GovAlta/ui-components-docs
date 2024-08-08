@@ -10,10 +10,11 @@ import {
   GoASpacer,
   GoATab,
   GoATabs,
+  GoAContainer,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
+import { LanguageContext, Sandbox } from "@components/sandbox";
+import { useContext, useState } from "react";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   ComponentProperties,
@@ -22,21 +23,15 @@ import {
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 const componentName = "Form Stepper";
-const description =
-  "Provides a visual representation of a form through a series of steps.";
+const description = "Provides a visual representation of a form through a series of steps.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/form-item", name: "Form item" },
-];
+const relatedComponents = [{ link: "/components/form-item", name: "Form item" }];
 type ComponentPropsType = GoAFormStepperProps;
-type CastingType = {
-  // add any required props here
-  [key: string]: unknown;
-};
+
 
 export default function FormStepperPage() {
-  const [formStepProps, setFormStepProps] = useState<ComponentPropsType>();
-  const [formStepperBindings, setFormStepperBindings] = useState<ComponentBinding[]>([]);
+  const language = useContext(LanguageContext);
+  const [formStepProps] = useState<ComponentPropsType>();
 
   const componentProperties: ComponentProperty[] = [
     {
@@ -85,29 +80,22 @@ export default function FormStepperPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setFormStepperBindings(bindings);
-    setFormStepProps(props as CastingType);
-  }
-
   const [step, setStep] = useState(-1);
   const [controlledStep, setControlledStep] = useState(1);
+
   function setControlledPage(page: number) {
     if (page < 1 || page > 4) return;
     setControlledStep(page);
   }
 
   const [statusStep, setStatusStep] = useState(-1);
-  const status: GoAFormStepStatusType[] = [
-    "complete",
-    "complete",
-    "incomplete",
-    "incomplete",
-  ];
+  const status: GoAFormStepStatusType[] = ["complete", "complete", "incomplete", "incomplete"];
+
   function setStatusPage(page: number) {
     if (page < 1 || page > 4) return;
     setStatusStep(page);
   }
+
   return (
     <>
       <ComponentHeader
@@ -117,54 +105,102 @@ export default function FormStepperPage() {
         relatedComponents={relatedComponents}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={formStepperBindings} fullWidth={true} onChange={onSandboxChange}>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                export class SomeComponent {
-                  step = -1;
-                  updateStep(event: Event) {
-                    this.step = (event as CustomEvent).detail.step;
-                  }
-                }
-              `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                const [step, setStep] = useState(-1); 
-              `}
-              />
-
-              <GoAFormStepper testId="foo" onChange={step => setStep(step)} {...formStepProps}>
-                <GoAFormStep text="Personal details" />
-                <GoAFormStep text="Employment history" />
-                <GoAFormStep text="References" />
-                <GoAFormStep text="Review" />
-              </GoAFormStepper>
-              <GoAPages current={step} mb="3xl">
-                <div>Page 1 content</div>
-                <div>Page 2 content</div>
-                <div>Page 3 content</div>
-                <div>Page 4 content</div>
-              </GoAPages>
-            </Sandbox>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
+            <GoAContainer mt="m" mb="none">
+              <div style={{ padding: "40px" }}>
+                <GoAFormStepper testId="foo" onChange={step => setStep(step)} {...formStepProps}>
+                  <GoAFormStep text="Personal details" />
+                  <GoAFormStep text="Employment history" />
+                  <GoAFormStep text="References" />
+                  <GoAFormStep text="Review" />
+                </GoAFormStepper>
+                <GoAPages current={step} mb="3xl">
+                  <div>Page 1 content</div>
+                  <div>Page 2 content</div>
+                  <div>Page 3 content</div>
+                  <div>Page 4 content</div>
+                </GoAPages>
+              </div>
+            </GoAContainer>
+            {language === "angular" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                    export class SomeComponent {
+                    step = -1;
+                    
+                    onChange(event: Event) {
+                      this.step = (event as CustomEvent).detail.step;
+                    }
+                  }`}
+                />
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                    <goa-form-stepper testid="foo" [step]="step" (_change)="onChange($event)">
+                      <goa-form-step text="Personal details"></goa-form-step>
+                      <goa-form-step text="Employment history"></goa-form-step>
+                      <goa-form-step text="References"></goa-form-step>
+                      <goa-form-step text="Review"></goa-form-step>
+                    </goa-form-stepper>
+                    <goa-pages [current]="step" mb="3xl">
+                      <div>Page 1 content</div>
+                      <div>Page 2 content</div>
+                      <div>Page 3 content</div>
+                      <div>Page 4 content</div>
+                    </goa-pages>
+                  `}
+                />
+              </>
+            )}
+            {language === "react" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                    const [step, setStep] = useState<number>(-1);
+                  `}
+                />
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                    <GoAFormStepper testId="foo" onChange={setStep}>
+                      <GoAFormStep text="Personal details"></GoAFormStep>
+                      <GoAFormStep text="Employment history"></GoAFormStep>
+                      <GoAFormStep text="References"></GoAFormStep>
+                      <GoAFormStep text="Review"></GoAFormStep>
+                    </GoAFormStepper>
+                    <GoAPages current={step} mb="3xl">
+                      <div>Page 1 content</div>
+                      <div>Page 2 content</div>
+                      <div>Page 3 content</div>
+                      <div>Page 4 content</div>
+                    </GoAPages>
+                  `}
+                />
+              </>
+            )}
             {/*Component properties table*/}
             <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
             <ComponentProperties heading="Step Properties" properties={formStepProperties} />
 
             {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
             {/*Example 1*/}
             <h3 id="component-example-controlled-navigation">Controlled Navigation</h3>
             <p>
@@ -214,7 +250,7 @@ export default function FormStepperPage() {
                   <div><!-- Page 2 content --></div>
                   <div><!-- Page 3 content --></div>
                   <div><!-- Page 4 content --></div>
-                </goa-pagest>
+                </goa-pages>
                 <div style="display: flex; justify-content: space-between">
                   <goa-button (_click)="setPage(step-1)" type="secondary">Previous</goa-button>
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
@@ -293,10 +329,12 @@ export default function FormStepperPage() {
                 </GoAButton>
               </div>
             </Sandbox>
+
             {/*Example 2*/}
             <h3 id="component-example-step-status">Step status</h3>
             The status of each step can be configured to either “complete” or “incomplete” using the
             status property.
+
             <Sandbox fullWidth skipRender allow={["div"]}>
               <CodeSnippet
                 lang="typescript"

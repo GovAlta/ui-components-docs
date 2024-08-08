@@ -84,6 +84,7 @@ import DevelopersOverviewPage from "@routes/get-started/developers/DevelopersOve
 import DevelopersSetupPage from "@routes/get-started/developers/DevelopersSetup";
 import DevelopersTechnologiesPage from "@routes/get-started/developers/DevelopersTechnologies";
 import DevelopersVSCodePage from "@routes/get-started/developers/DevelopersVSCode";
+import BugVerificationPage from "@routes/get-started/developers/BugVerification";
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
@@ -203,6 +204,7 @@ const router = createBrowserRouter(
           <Route path="setup" element={<DevelopersSetupPage />} />
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="vscode" element={<DevelopersVSCodePage />} />
+          <Route path="bug" element={<BugVerificationPage />} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />

@@ -1,82 +1,70 @@
-import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function QATestingOverviewPage() {
   return (
-    <ComponentContent>
-      <h1>QA testing</h1>
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
+      <h1>QA Testing</h1>
       <h3 className="introduction">
-        The QA testing practice involves creating test cases based on user acceptance criteria,
-        conducting functional and cross-browser testing of components, and executing accessibility
-        validations using assistive technologies.
+        This document outlines the testing procedure for the DDD design system. The procedure
+        ensures that all components function correctly and integrate seamlessly within DDD products.
       </h3>
 
       <div className="max-width-72ch">
-
-        <h2>Definition of done for testing activities</h2>
-
-        <ol>
-          <li>Automated unit testing is run.</li>
-          <li>
-            The developed component is validated on all popular browsers leading to cross-browser testing.{" "}
-            <Link to="/get-started/developers/browsers">
-              View cross browser compatibility.
-            </Link>
-          </li>
-          <li>Manual accessibility testing of components using Axe accessibility testing tools.</li>
-          <li>
-            Defects observed are communicated to the development team by logging an issue or comment
-            in Github.
-          </li>
-          <li>
-            Once the development team fixes all the issues/defects raised, retesting will be
-            performed on the component to validate the fixes.
-          </li>
-          <li>The component undergoes a design review to ensure alignment to the design.</li>
-          <li>After QA signoff, the code is deployed to Alpha branch.</li>
-        </ol>
-
-        <h2>Accessibility testing</h2>
-        <p>
-          To perform accessibility testing, NVDA and VoiceOver screen reader software are used to
-          navigate through the application, ensuring proper keyboard accessibility, accurate screen
-          reader feedback, and adherence to accessibility guidelines for elements such as focus
-          management, and semantic markup.
-        </p>
-
-        <h3>We use following tools for accessibility testing:</h3>
+        <h2 id="testingobjectives">Testing Objectives</h2>
         <ul>
-          <li>
-            <strong>NVDA (Windows):</strong> NVDA provides various features to test accessibility,
-            such as Keyboard navigation, Screen reader announcements, ARIA support. Apple VoiceOver
-            (Mac): Apple VoiceOver, the built-in screen reader for Mac and iOS devices, offers a
-            range of features to enhance accessibility such as Spoken Feedback, Navigation and
-            Gestures, Web Page Navigation, Multi-language Support.
-          </li>
-          <li>
-            <strong>Apple VoiceOver (Mac):</strong> Apple VoiceOver, the built-in screen reader for
-            Mac and iOS devices, offers a range of features to enhance accessibility such as Spoken
-            Feedback, Navigation and Gestures, Web Page Navigation, Multi-language Support.
-          </li>
+          <li>Ensure that the coded components match the design specification.</li>
+          <li>Ensure compatibility with both React and Angular frameworks.</li>
+          <li>Validate the responsiveness and accessibility of components.</li>
+          <li>Validate the mobile version of the components.</li>
+          <li>Ensure the documentation on the design system website is accurate.</li>
         </ul>
 
-        <p>
-          The design system team uses{" "}
-          <a href="https://www.lambdatest.com/" target="_blank">
-            Lambda Test
-          </a>{" "}
-          which offers built-in accessibility testing features using NVDA for Windows and VoiceOver
-          for macOS, allowing to easily test the accessibility of our components.
-        </p>
+        <h2 id="testcases">Test Cases</h2>
+        <h3>Component Testing</h3>
+        <ul>
+          <li>Verify that the rendered component is true to the design and styling guidelines.</li>
+          <li>Verify the component reflects the configured properties.</li>
+          <li>Verify the corresponding event is fired when interacting with the component.</li>
+        </ul>
 
-        <p>
-          To see the latest updates, additions, changes, and improvements to our design system, view
-          our{" "}
-          <a href="https://github.com/GovAlta/ui-components/releases" target="_blank">
-            release notes on GitHub
-          </a>
-          .
-        </p>
+        <h3>Responsiveness Testing</h3>
+        <ul>
+          <li>Test components on different screen sizes (mobile, tablet, desktop).</li>
+          <li>Use browser developer tools to simulate different devices.</li>
+        </ul>
+
+        <h3>Accessibility Testing</h3>
+        <ul>
+          <li>Run Lighthouse audits to check accessibility scores.</li>
+          <li>Ensure all components have appropriate ARIA labels and roles.</li>
+          <li>Test keyboard navigation.</li>
+          <li>Test with NVDA for screen reader compatibility.</li>
+        </ul>
+
+        <h3>Cross-browser Testing</h3>
+        <ul>
+          <li>Test components on the latest versions of Chrome, Firefox, Safari, and Edge.</li>
+          <li>Test for mobile compatibility using Chrome's "device mode".</li>
+          <li>Ensure consistency in appearance and behaviour across browsers.</li>
+        </ul>
+
+        <h3>Bug Testing</h3>
+        <ul>
+          <li>
+            Once the issue is fixed, reproduce it with the main branch, then verify the fix on the
+            PR branch.
+          </li>
+          <li>Thoroughly test the component in each aspect.</li>
+        </ul>
+
+        <h2 id="reporting">Reporting</h2>
+        <ul>
+          <li>
+            Document updated testing results, findings, and screenshots in the pull request
+            comments.
+          </li>
+          <li>Any new issues discovered are documented in the GitHub project backlog.</li>
+        </ul>
       </div>
     </ComponentContent>
   );
