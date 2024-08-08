@@ -26,41 +26,46 @@ export default function DevelopersUpgradePage() {
           using the below component names in your project:
           <ul>
             <li>
-              <code className="inline">GoAButton</code> will be <code className="inline">GoABButton</code> in React and{" "}
+              <code className="inline">GoAButton</code> will be <code className="inline">GoABButton</code> in React
+              and{" "}
               <code className="inline">goa-button</code> will be <code className="inline">goab-button</code> in Angular.
             </li>
             <li>
-              <code className="inline">GoAContainer</code> will be <code className="inline">GoABContainer</code> in React and{" "}
-              <code className="inline">goa-container</code> will be <code className="inline">goab-container</code> in Angular.
+              <code className="inline">GoAContainer</code> will be <code className="inline">GoABContainer</code> in
+              React and{" "}
+              <code className="inline">goa-container</code> will be <code className="inline">goab-container</code> in
+              Angular.
             </li>
             <li>And same for other components...</li>
           </ul>
         </p>
-        <p>If you were previously import components props (in React) from <code>@abgov/react-components</code>, components props from DDD Design System
-        v4 packages are available under <code className="inline">@abgov/ui-components-common</code>.</p>
+        <p>If you were previously import components props (in React) from <code>@abgov/react-components</code>,
+          components props from DDD Design System
+          v4 packages are available under <code className="inline">@abgov/ui-components-common</code>.</p>
 
         <h3 id="react">Migrating a React app</h3>
         <p>
           The React components for DDD Design System still live in the{" "}
-          <code className="inline">@abgov/react-components</code> package. However, the component props will be imported from <code className="inline">@abgov/ui-components-common</code> instead of <code className="inline">@abgov/react-components</code>.
+          <code className="inline">@abgov/react-components</code> package. However, the component props will be imported
+          from <code className="inline">@abgov/ui-components-common</code> instead of <code
+          className="inline">@abgov/react-components</code>.
         </p>
         <h4>1. Update Dependencies</h4>
         <p>To get started, update the following packages:</p>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           npm i @abgov/web-components@4.x
           npm i @abgov/react-components@4.x
-          npm i @abgov/ui-components-common@4.x
+          npm i @abgov/ui-components-common@1.x
         `}
         />
 
-        <h4>2. Rename all components name from <code className="inline">GoA-ComponentName</code> to <code className="inline">GoAB-ComponentName</code></h4>
+        <h4>2. Rename all components name from <code className="inline">GoA-name</code> to <code
+          className="inline">GoAB-name</code></h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           // Before
@@ -75,174 +80,180 @@ export default function DevelopersUpgradePage() {
         <h4>3. Update components that have changed</h4>
         <p>In v4, we have updated the APIs of certain components in one of the following ways:</p>
         <ul>
-          <li>Update component's props name from some common names to a specific component name that props belonged to. For example: <code className="inline">GoAHeadingSize</code> will become <code className="inline">GoABAccordionHeadingSize</code></li>
-          <li>Update component's function arguments from multiple arguments to a single component props. For example: <code className="inline">onChange(name: string, checked: boolean, value: string)</code> for <code className="inline">
+          <li>Update component's props name from some common names to a specific component name that props belonged to.
+            For example: <code className="inline">GoAHeadingSize</code> will become <code
+              className="inline">GoABAccordionHeadingSize</code></li>
+          <li>Update component's function arguments from multiple arguments to a single component props. For
+            example: <code className="inline">onChange(name: string, checked: boolean, value: string)</code> for <code
+              className="inline">
               GoABCheckbox
-            </code> will become <code className="inline">onChange(detail: GoABCheckboxOnChangeDetail)</code> </li>
+            </code> will become <code className="inline">onChange(detail: GoABCheckboxOnChangeDetail)</code></li>
         </ul>
         <CodeSnippet
-          lang="typescript"
-          tags="react"
+          lang="html"
           allowCopy={true}
           code={`
-            // Before
+            <!-- Before -->
             <GoACheckbox onChange={(name, checked, value) => handleChange} />
-            // After
-            <GoABCheckbox onChange={(detail) => handleChange} />
+            <!-- After -->
+            <GoABCheckbox onChange={(detail: GoABCheckboxOnChangeDetail) => handleChange} />
         `}
         />
 
-        {/*<h4>4. Add the styles link in the src/styles.css file</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`@import "@abgov/web-components/index.css";`}*/}
-        {/*/>*/}
 
-        {/*<GoADivider mt="2xl" mb="xl" />*/}
+        <h3 id="angular">Migrating an Angular app</h3>
+        <p>Starting in v4, the Angular components for DDD Design System live in the <code className="inline">@abgov/angular-components</code>,
+        while before we don't import any angular components directly from <code className="inline">@abgov/angular-components</code> but import everything
+        from <code className="inline">@abgov/web-components</code> and declare <code className="inline">CUSTOM_ELEMENTS_SCHEMA</code> in order to use
+        DDD Design System web components.</p>
+        <p>Notice that our <code className="inline">@abgov/angular-components</code> supports only Angular v16 and above.</p>
 
-        {/*<h3 id="react">React UI components</h3>*/}
-        {/*<p>*/}
-        {/*  This library contains React components which wrap the Government of Alberta Web*/}
-        {/*  Components.*/}
-        {/*</p>*/}
+        <h4>1. Update Dependencies</h4>
+        <p>To get started, update the following packages:</p>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
+          npm i @abgov/web-components@4.x
+          npm i @abgov/angular-components@4.x
+          npm i @abgov/ui-components-common@1.x
+        `}
+        />
 
-        {/*<h4>1. Add Dependencies</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`*/}
-        {/*  npm i @abgov/react-components*/}
-        {/*  npm i @abgov/web-components*/}
-        {/*`}*/}
-        {/*/>*/}
+        <h4>2. Update angular component dependencies and import paths</h4>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
+          // Before
+          import { Component, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
+          
+          @Component({
+            selector: "app-accordion",
+            standalone: true,
+            templateUrl: "./accordion.component.html",
+            schemas: [CUSTOM_ELEMENTS_SCHEMA]
+          })
+          export class AccordionComponent {}
+          
+          // After
+          import {GoABAccordion, GoABButton, GoABBadge} from '@abgov/angular-components';
+          
+          @Component({
+            selector: "app-accordion",
+            standalone: true,
+            imports: [GoABAccordion, GoABButton, GoABBadge],
+            templateUrl: "./accordion.component.html"
+          })
+          export class AccordionComponent {}
+        `}
+        />
 
-        {/*<h4>2. Link ionicons in app/index.html Add the following to the head element</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`*/}
-        {/*  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>*/}
-        {/*  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>*/}
-        {/*`}*/}
-        {/*/>*/}
+        <h4>3. Update components that have changed</h4>
+        <p>In v4, we have updated the APIs of certain components in one of the following ways:</p>
+        <ul>
+          <li>Update component's name from <code className="inline">goa-name</code> to <code className="inline">goab-name</code>.</li>
+          <li>Update component's function arguments from generic <code className="inline">Event</code> to component's event property. For example: <code className="inline">
+            onChange(event: Event)
+          </code> for <code className="inline">GoABCheckbox</code> will become <code className="inline">onChange(detail: GoABCheckboxOnChangeDetail)</code>, that is imported from <code className="inline">@abgov/ui-components-common</code>.</li>
+          <li>Replace some <code className="inline">slot</code> <code className="inline">div</code> with Angular <code className="inline">ng-template</code> allowing some required <code className="inline">slot</code> to be required. Reference is at <a href="https://angular.dev/api/core/ng-template">Angular ng-template</a>.</li>
+          <li>Remove some Form Control (Reactive forms) directives such as <code className="inline">goaValue</code> or <code className="inline">goaChecked</code>, instead using Angular form control value (import from <code className="inline">FormsModule</code>) or Reactive Forms (import from <code className="inline">ReactiveFormsModule</code>) to make use
+          of Angular forms validation and its API.</li>
+        </ul>
+        <p>Some examples of component name should be changed in HTML files:</p>
+        <CodeSnippet
+          lang="html"
+          allowCopy={true}
+          code={`
+            <!--Before-->
+            <goa-circular-progress variant="inline" size="small" visible="true"></goa-circular-progress>
+            <goa-accordion heading="Heading" [open]="open"> Content 1</goa-accordion>
+            <goa-button (_click)="onClick()" type="tertiary">Tertiary</goa-button>
+            // After
+            <goab-circular-progress variant="inline" size="small" [visible]="true"></goab-circular-progress>
+            <goab-accordion heading="Heading" [open]="open"> Content 1 </goab-accordion>
+            <goab-button (onClick)="onClick()" type="tertiary">Tertiary</goab-button>
+        `}
+        />
 
-        {/*<h4>3. Import the web-component styles in the src/index.css file</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`@import "@abgov/web-components/index.css";`}*/}
-        {/*/>*/}
+        <p>Some examples of changing the component trigger functions:</p>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
+            // Before 
+            selectColor(event: Event) {
+              this.selectedColor = (event as CustomEvent).detail.value;
+            }
+            
+            // After
+            import { GoABDropdownOnChangeDetail } from "@abgov/ui-components-common";
+            ...
+            selectColor(event: GoABDropdownOnChangeDetail) {
+              this.selectedColor = event.value || "";
+            }
+        `}
+        />
 
-        {/*<GoADivider mt="2xl" mb="xl" />*/}
+        <p>Some examples of component properties are more stricter than before that can be only string:</p>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
+            // Before 
+            status = ["incomplete", "incomplete", "incomplete", "incomplete"]; // FormStepper status
+            
+            // After
+            import { GoABFormStepStatus } from "@abgov/ui-components-common";
+            ...
+            status: GoABFormStepStatus[] = ["complete", "complete", "incomplete"];
+        `}
+        />
 
-        {/*<h3 id="vue">Vue web components</h3>*/}
-        {/*<p>This library contains react components from the Government of Alberta.</p>*/}
+        <p>Some examples of component slot content replaced by Angular ng-template:</p>
+        <CodeSnippet
+          lang="html"
+          allowCopy={true}
+          code={`
+            <!--Before-->
+            <goa-popover>
+              <p>This is a popover</p>
+              It can be used for a number of different contexts.
+              <!--Slot target is required but can be forgotten because there are no errors alerted if we miss it-->
+              <div slot="target">
+                <goa-button type="secondary" size="compact">Click me</goa-button>
+              </div>
+            </goa-popover>
+            
+            <!--After-->
+            <!-- target property is required for goab-popover -->
+            <goab-popover target="popOverTarget">
+              <p>This is a popover</p>
+                It can be used for a number of different contexts.
+              <ng-template #popOverTarget>
+                <goab-button type="secondary" size="compact">Click me</goab-button>
+              </ng-template>
+            </goab-popover>
+        `}
+        />
 
-        {/*<h4>1. Add Dependencies</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`npm i @abgov/web-components`}*/}
-        {/*/>*/}
+        <p>Input examples that we can use Angular Forms Control & Reactive Forms:</p>
+        <CodeSnippet
+          lang="html"
+          allowCopy={true}
+          code={`
+            <!--Before-->
+             <goa-input name="item" goaValue [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
+            
+            <!--After-->
+            <form [formGroup]="example2Form">
+             <goab-input name="inputControl" formControlName="inputControl" placeholder="Enter text"></goab-input>
+            </form>
+            <!-- Or using Forms Control (ngModel) -->
+            <goab-input name="inputControl" [(ngModel)]="inputControl" placeholder="Enter text"></goab-input>
+        `}
+        />
 
-        {/*<h4>2. Link ionicons in index.html Add the following in the head element</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`*/}
-        {/*  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>*/}
-        {/*  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>*/}
-        {/*`}*/}
-        {/*/>*/}
-
-        {/*<h4>3. Update vite.config.js with the following:</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`*/}
-        {/*  plugins: [*/}
-        {/*    vue({*/}
-        {/*      template: {*/}
-        {/*       compilerOptions: {*/}
-        {/*         // treat all tags with goa- as custom elements*/}
-        {/*         isCustomElement: (tag) => tag.includes('goa-')*/}
-        {/*       }*/}
-        {/*    }*/}
-        {/*  })],*/}
-        {/*`}*/}
-        {/*/>*/}
-
-        {/*<h4>4. Import the web-components into src/main.js:</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`import "@abgov/web-components";`}*/}
-        {/*/>*/}
-
-        {/*<h4>*/}
-        {/*  5. Add the styles link in the src/assets/main.css file or wherever your main css file is*/}
-        {/*  located:*/}
-        {/*</h4>*/}
-        {/*<CodeSnippet*/}
-        {/*  lang="typescript"*/}
-        {/*  tags="react"*/}
-        {/*  allowCopy={true}*/}
-        {/*  code={`@import "@abgov/web-components/index.css";`}*/}
-        {/*/>*/}
-
-        {/*<GoADivider mt="2xl" mb="xl" />*/}
-
-        {/*<h3 id="templates">Angular/React templates</h3>*/}
-        {/*<GoABlock gap="xl" mb="xl">*/}
-        {/*  <a href="https://github.com/GovAlta/ui-components-angular-template" target="_blank">*/}
-        {/*    Angular template*/}
-        {/*  </a>*/}
-        {/*  <a href="https://github.com/GovAlta/ui-components-react-template" target="_blank">*/}
-        {/*    React template*/}
-        {/*  </a>*/}
-        {/*</GoABlock>*/}
-
-        {/*<p>To use the templates, follow these steps:</p>*/}
-        {/*<ol>*/}
-        {/*  <li>*/}
-        {/*    Click the green <strong>Use this template</strong> button*/}
-        {/*  </li>*/}
-        {/*  <li>*/}
-        {/*    Select <strong>Create a new repository</strong>*/}
-        {/*  </li>*/}
-        {/*  <li>Select an owner and give the repo a suitable name for your project</li>*/}
-        {/*  <li>Select either Public or Private</li>*/}
-        {/*  <li>*/}
-        {/*    Click the button <strong>Create repository from template</strong>*/}
-        {/*  </li>*/}
-        {/*  <li>Clone the repo onto your machine</li>*/}
-        {/*  <li>*/}
-        {/*    Using a terminal of some kind, go into the directory you created and run the following*/}
-        {/*    commands (in order):*/}
-        {/*    <ol>*/}
-        {/*      <li>*/}
-        {/*        <code>npm i</code>*/}
-        {/*      </li>*/}
-        {/*      <li>*/}
-        {/*        <code>npm run build</code>*/}
-        {/*      </li>*/}
-        {/*      <li>*/}
-        {/*        <code>npm run start</code>-- if using Angular, <code>npm run dev</code> --if using*/}
-        {/*        react*/}
-        {/*      </li>*/}
-        {/*    </ol>*/}
-        {/*  </li>*/}
-        {/*  <li>Go to the listed port number of your localhost</li>*/}
-        {/*</ol>*/}
       </ComponentContent>
     </div>
   );
