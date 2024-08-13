@@ -14,7 +14,7 @@ import {
   GoAFormItem,
   GoATab,
   GoATabs,
-  GoATextarea,
+  GoATextArea,
   GoATextAreaProps,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -79,12 +79,6 @@ export default function TextAreaPage() {
       name: "ariaLabel",
       type: "string",
       value: "",
-    },
-    {
-      label: "Show count",
-      name: "showCount",
-      type: "boolean",
-      value: false,
     },
     {
       label: "Count by",
@@ -311,14 +305,14 @@ export default function TextAreaPage() {
                 code={`
                 const [value, setValue] = useState<string>("");
               
-                onChange(name: string, value: string) {
+                function onChange(name: string, value: string) {
                   setValue(value);
                 }
             `}
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoATextarea
+                <GoATextArea
                   {...componentProps}
                   width="60ch"
                   name="item"
@@ -351,7 +345,7 @@ export default function TextAreaPage() {
                 <GoAFormItem
                   label="Program outline"
                   helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextarea name="program" value="Input text" onChange={noop} />
+                  <GoATextArea name="program" value="Input text" onChange={noop} />
                 </GoAFormItem>
 
                 <GoADetails heading="How to write a good outline">
