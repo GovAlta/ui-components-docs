@@ -57,6 +57,13 @@ export default function CalloutPage() {
       options: ["", "medium", "large"],
       value: "",
     },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },    
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -77,6 +84,18 @@ export default function CalloutPage() {
       defaultValue: "large",
       description:
         "The medium callout has reduced padding and type size to adjust for a compact area and smaller viewport width when a smaller size is required.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the callout.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the callout.",
+      lang: "angular",
     },
     {
       name: "testId",

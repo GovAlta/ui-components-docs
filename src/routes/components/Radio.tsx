@@ -161,6 +161,18 @@ export default function RadioPage() {
       lang: "react",
     },
     {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "angular",
+    },
+    {
       name: "arialabel",
       lang: "angular",
       type: "string",
