@@ -1,4 +1,5 @@
 @import "@abgov/web-components/index.css";
+@import "./exploration.css";
 
 body {
   padding: 0;
