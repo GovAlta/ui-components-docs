@@ -101,10 +101,3 @@ code.inline {
     margin: 0;
   }
 }
-
-/*Mobile*/
-@media screen and (max-width: 623px) {
-  h3 {
-    font: var(--goa-typography-body-m);
-  }
-}
