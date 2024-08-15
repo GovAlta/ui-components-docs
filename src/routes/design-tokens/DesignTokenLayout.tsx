@@ -3,7 +3,6 @@ import {
   GoADropdown,
   GoADropdownItem,
   GoASideMenu,
-  GoASideMenuHeading,
 } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo";

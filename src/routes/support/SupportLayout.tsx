@@ -1,4 +1,4 @@
-import {GoASideMenu, GoASideMenuHeading, GoASpacer} from "@abgov/react-components";
+import {GoASideMenu, GoASpacer} from "@abgov/react-components";
 import {SupportInfo} from "@components/support-info/SupportInfo.tsx";
 import {Link, Outlet, useLocation} from "react-router-dom";
 import "./support.css";
