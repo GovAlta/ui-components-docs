@@ -1,4 +1,4 @@
-import { GoASideMenu, GoASideMenuGroup, GoASideMenuHeading } from "@abgov/react-components";
+import { GoASideMenu, GoASideMenuGroup, GoASideMenuHeading, GoASpacer } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 
@@ -7,8 +7,8 @@ export default function GetStartedLayout() {
     <div className="content">
       <section className="side-menu">
         <GoASideMenu>
-          <GoASideMenuHeading>Get Started</GoASideMenuHeading>
-          <Link to="">Overview</Link>
+        <GoASpacer vSpacing="m"></GoASpacer>
+          <Link to="">Use the design system</Link>
           <Link to="designers">UX Designers</Link>
           <GoASideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>

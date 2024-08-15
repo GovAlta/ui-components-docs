@@ -23,7 +23,7 @@ export function Components() {
     <LanguageContext.Provider value={language}>
       <section className="content">
         <section className="side-menu">
-          <GoABlock direction="column" mt="m" mb="m" ml="m" mr="m">
+          <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
             <GoADropdown value={language} onChange={onLanguageChange}>
               <GoADropdownItem label="React" value="react" />
               <GoADropdownItem label="Angular" value="angular" />

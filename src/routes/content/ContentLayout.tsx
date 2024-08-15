@@ -1,4 +1,4 @@
-import { GoASideMenu, GoASideMenuHeading } from "@abgov/react-components";
+import { GoASideMenu, GoASideMenuHeading, GoASpacer } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import "./content.css";
 import { SupportInfo } from "@components/support-info/SupportInfo";
@@ -8,7 +8,7 @@ export default function ContentLayout() {
     <div className="content">
       <section className="side-menu">
         <GoASideMenu>
-          <GoASideMenuHeading>Content</GoASideMenuHeading>
+          <GoASpacer vSpacing="m"></GoASpacer>
           <Link to="capitalization">Capitalization</Link>
           <Link to="date-format">Date format</Link>
           <Link to="error-messages">Error messages</Link>

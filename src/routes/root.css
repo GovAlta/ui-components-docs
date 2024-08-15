@@ -15,7 +15,7 @@
 }
 
 .content {
-  max-width: 1440px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -26,8 +26,9 @@
   Side Menu
 ==================*/
 .side-menu {
-  width: 224px;
+  width: 192px;
   border-right: 1px solid var(--goa-color-greyscale-200);
+  padding-bottom: var(--goa-space-l);
 }
 
 /*==================

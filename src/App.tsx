@@ -67,11 +67,11 @@ import SideMenuPage from '@routes/components/SideMenu';
 
 // Design Tokens
 
+import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
 import BorderRadiusPage from "@routes/design-tokens/border-radius/BorderRadius";
 import BorderWidthPage from "@routes/design-tokens/border-width/BorderWidth";
 import ColorPage from "@routes/design-tokens/color/Color";
 import DesignTokens from "@routes/design-tokens/DesignTokenLayout.tsx";
-import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
 import IconSizePage from "@routes/design-tokens/icon-size/IconSize";
 import OpacityPage from "@routes/design-tokens/opacity/Opacity";
 import ShadowPage from "@routes/design-tokens/shadow/Shadow";
