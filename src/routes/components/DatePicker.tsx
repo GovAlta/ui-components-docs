@@ -90,6 +90,18 @@ export default function DatePickerPage() {
       defaultValue: "5 years forward",
       description: "Maximum date value allowed.",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      lang: "react",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      lang: "angular",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

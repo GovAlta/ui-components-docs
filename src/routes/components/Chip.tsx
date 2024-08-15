@@ -112,6 +112,18 @@ export default function ChipPage() {
       lang: "angular",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      lang: "react",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      lang: "angular",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
     // ...
   ];
 
