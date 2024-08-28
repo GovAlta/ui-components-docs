@@ -31,28 +31,9 @@ export default function DividerPage() {
 
   const componentProperties: ComponentProperty[] = [
     {
-      name: "mt",
+      name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Sets the top margin.",
-      defaultValue: "none",
-    },
-    {
-      name: "mr",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Sets the right margin.",
-      defaultValue: "none",
-    },
-    {
-      name: "mb",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Sets the bottom margin.",
-      defaultValue: "none",
-    },
-    {
-      name: "ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Sets the left margin.",
-      defaultValue: "none",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
     {
       name: "testId",
