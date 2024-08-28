@@ -40,6 +40,14 @@ export default function ChipPage() {
       value: "",
     },
     {
+      label: "Icon Theme",
+      type: "list",
+      name: "iconTheme",
+      options: ["", "outline", "filled", "sharp"],
+      defaultValue: "outline",
+      value: ""
+    },
+    {
       label: "Deletable",
       type: "boolean",
       name: "deletable",
@@ -71,6 +79,20 @@ export default function ChipPage() {
       type: "GoAIconType",
       description: "Shows an icon to the left of the text.",
       lang: "react",
+    },
+    {
+      name: "icontheme",
+      type: "outline | filled | sharp",
+      description: "The style of the leading icon",
+      defaultValue: "outline",
+      lang: "angular"
+    },
+    {
+      name: "iconTheme",
+      type: "outline | filled | sharp",
+      description: "The style of the leading icon",
+      defaultValue: "outline",
+      lang: "react"
     },
     {
       name: "error",
