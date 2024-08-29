@@ -6,6 +6,7 @@ import {
 import { Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 
 // == Page props ==
 const componentName = "Tabs";
@@ -28,6 +29,18 @@ export default function TabsPage() {
       defaultValue: "1",
       description: "Current active tab",
     },
+    {
+      name: "_change",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "Callback function when tab is changed.",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(tabIndex: number) => void",
+      description: "Callback function when tab is changed.",
+    },
   ];
   const tabProperties: ComponentProperty[] = [
     {
@@ -36,29 +49,54 @@ export default function TabsPage() {
       description: "Add components to the tab heading such as badges",
     },
   ];
+  const noop = () => {};
 
   return (
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox fullWidth>
-              <GoATabs>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  
+                  onChange(event: Event) {
+                    const customEvent = event as CustomEvent;
+                    const tabIndex = customEvent.detail.tab;
+                    console.log('Tab changed to ', tabIndex);
+                  } 
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function onChange(tabIndex: number): void {
+                    console.log('Tab changed to ', tabIndex);
+                  }
+                  `}
+              />
+              <GoATabs onChange={noop}>
                 <GoATab heading="Tab Item 1">
-                  Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </GoATab>
                 <GoATab heading="Tab Item 2">
-                  Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </GoATab>
                 <GoATab heading="Tab Item 3">
-                  Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua.
+                  Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
                 </GoATab>
               </GoATabs>
             </Sandbox>
