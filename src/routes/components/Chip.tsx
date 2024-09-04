@@ -43,7 +43,7 @@ export default function ChipPage() {
       label: "Icon Theme",
       type: "list",
       name: "iconTheme",
-      options: ["", "outline", "filled", "sharp"],
+      options: ["", "outline", "filled"],
       defaultValue: "outline",
       value: ""
     },
@@ -82,14 +82,14 @@ export default function ChipPage() {
     },
     {
       name: "icontheme",
-      type: "outline | filled | sharp",
+      type: "outline | filled",
       description: "The style of the leading icon",
       defaultValue: "outline",
       lang: "angular"
     },
     {
       name: "iconTheme",
-      type: "outline | filled | sharp",
+      type: "outline | filled",
       description: "The style of the leading icon",
       defaultValue: "outline",
       lang: "react"
