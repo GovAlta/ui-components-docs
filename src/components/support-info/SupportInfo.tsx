@@ -9,13 +9,14 @@ export const SupportInfo = (props:{hidden?: boolean}) => {
     <div className="support-info">
       <GoACallout
         type="information"
-        heading="Need help? Join us in Drop in hours"
+        heading="Need help building a government service? Join us in Drop in hours"
       >
+        Get feedback on usage of the design system, propose new ideas or components or changes 
+        to existing components, ask any questions, and give feedback to the design system. These sessions are for Government of Alberta product teams.
+        <br></br>
         <a href="https://outlook.office365.com/book/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/" target="_blank">
           Book time with us in drop in hours
         </a>{" "}
-        Get feedback on usage of the design system, propose new ideas or components or changes 
-        to existing components, ask any questions, and give feedback to the design system.
       </GoACallout>
     </div>
   );
