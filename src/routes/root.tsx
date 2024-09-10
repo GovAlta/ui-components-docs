@@ -40,7 +40,7 @@ export default function Root() {
       <GoAOneColumnLayout>
         <section className="header" slot="header">
           <GoAMicrositeHeader
-            type={"alpha"}
+            type={"live"}
             feedbackUrl="https://forms.microsoft.com/r/8Zp7zSJS6W"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />

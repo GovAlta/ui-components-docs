@@ -22,7 +22,7 @@ const HomePage = () => {
         maxContentWidth={MAX_CONTENT_WIDTH}
       >
         Resources for Government of Alberta product teams to build better services. Learn from the research and experience of other 
-        service teams and avoid repeating work that’s already been done.
+        product teams and avoid repeating work that’s already been done.
         <GoAHeroBannerActions>
           <GoAButtonGroup alignment="start">
             <GoAButton onClick={() => {
@@ -70,7 +70,7 @@ const HomePage = () => {
         </GoAGrid>
 
         <GoADivider mb="2xl"></GoADivider>
-        <h2>How to use the design system in your government service</h2>
+        <h2>How to use the design system in your service</h2>
         <div className="max-width-72ch">
           <ol>
             <li>Start by using the design system resources and validate your product through user testing.</li>
