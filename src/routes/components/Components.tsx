@@ -2,7 +2,6 @@ import { GoABlock, GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/reac
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
-import { getCssVarValue } from "../../utils/styling";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 
 export function Components() {
@@ -29,7 +28,6 @@ export function Components() {
               <GoADropdownItem label="Angular" value="angular" />
             </GoADropdown>
           </GoABlock>
-
 
           <GoASideMenu>
             <Link to="">All</Link>
@@ -78,7 +76,6 @@ export function Components() {
           <Outlet />
           <SupportInfo />
         </main>
-
       </section>
     </LanguageContext.Provider>
   );
