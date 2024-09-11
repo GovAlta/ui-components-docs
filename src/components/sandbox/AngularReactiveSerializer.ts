@@ -17,8 +17,8 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       " "
     );
 
-  constructor(properties: ComponentBinding[]) {
-    super(properties);
+  constructor(properties: ComponentBinding[], isOldVersion: boolean) {
+    super(properties, isOldVersion);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -93,9 +93,13 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     if (this.nativeEls.includes(name)) {
       return name;
     }
-    const prefix = "GoA";
-    const tail = name.replace(prefix, "");
-    return `${prefix.toLowerCase()}-${this.dasherize(tail)}`;
+    const currentPrefix = "Goab";
+    const oldPrefix = "goa";
+    const tail = name.replace(currentPrefix, "");
+    if (this.isOldVersion) {
+      return `${oldPrefix}-${this.dasherize(tail)}`;
+    }
+    return `${currentPrefix.toLowerCase()}-${this.dasherize(tail)}`;
   }
 
   componentToString(name: string): string {

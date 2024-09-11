@@ -1,10 +1,10 @@
 import {
-  GoABadge,
-  GoABlock,
-  GoAButton,
-  GoAContainer, GoADropdown, GoADropdownItem, GoAFormItem,
-  GoAGrid, GoARadioGroup, GoARadioItem,
-  GoATable, GoATextArea
+  GoabBadge,
+  GoabBlock,
+  GoabButton,
+  GoabContainer, GoabDropdown, GoabDropdownItem, GoabFormItem,
+  GoabGrid, GoabRadioGroup, GoabRadioItem,
+  GoabTable, GoabTextarea
 } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -177,33 +177,33 @@ export default function ContainerExamples() {
         />
 
         {/*Code Block*/}
-        <GoAContainer>
+        <GoabContainer>
           <span className="container-example-1--sub-header">Housing Advisor</span>
           <p className="container-example-1--header">Tracy Hero</p>
-          <GoABlock direction="row" gap="m">
-            <GoABlock direction="column" gap="m">
+          <GoabBlock direction="row" gap="m">
+            <GoabBlock direction="column" gap="m">
               <span className="container-example-1--contact-label">Email</span>
               <span className="container-example-1--contact-label">Phone</span>
-            </GoABlock>
+            </GoabBlock>
 
-            <GoABlock direction="column" gap="m">
+            <GoabBlock direction="column" gap="m">
               <span className="container-example-1--contact-value">tracyhero@email.com</span>
               <span className="container-example-1--contact-value">283-203-4921</span>
-            </GoABlock>
-          </GoABlock>
-        </GoAContainer>
+            </GoabBlock>
+          </GoabBlock>
+        </GoabContainer>
 
-        <GoAContainer
+        <GoabContainer
           type="non-interactive"
           accent="thick"
           heading="Upcoming important due dates"
           actions={
-            <GoAButton type="tertiary" size="compact" leadingIcon="calendar" onClick={() => {}}>
+            <GoabButton type="tertiary" size="compact" leadingIcon="calendar" onClick={() => {}}>
               Add to calendar
-            </GoAButton>
+            </GoabButton>
           }>
           <div className="container-example-1">
-            <GoATable width="100%">
+            <GoabTable width="100%">
               <tbody className="striped">
                 <tr>
                   <td>Business plan submission</td>
@@ -222,9 +222,9 @@ export default function ContainerExamples() {
                   <td className="align-right">January 3, 2025</td>
                 </tr>
               </tbody>
-            </GoATable>
+            </GoabTable>
           </div>
-        </GoAContainer>
+        </GoabContainer>
       </Sandbox>
 
       <h3 id="component-example-2">Card view of case files</h3>
@@ -263,56 +263,56 @@ export default function ContainerExamples() {
           `}
         />
 
-        <GoAContainer mt="l">
+        <GoabContainer mt="l">
           <div className="container-example-2--container">
-            <GoABlock direction="column" gap="2xs" alignment="start">
+            <GoabBlock direction="column" gap="2xs" alignment="start">
               <strong>Fiscal year: 2021/2022</strong>
               <span className="container-example-2--body-text">Submitted: April 23, 2023</span>
-            </GoABlock>
+            </GoabBlock>
             <div className="container-example-2--right-content">
-              <GoABlock direction="row" alignment="center" gap="l">
-                <GoABadge type="midtone" content="Not started"></GoABadge>
-                <GoAButton type="tertiary" size="compact">
+              <GoabBlock direction="row" alignment="center" gap="l">
+                <GoabBadge type="midtone" content="Not started"></GoabBadge>
+                <GoabButton type="tertiary" size="compact">
                   Edit
-                </GoAButton>
-              </GoABlock>
+                </GoabButton>
+              </GoabBlock>
             </div>
           </div>
-        </GoAContainer>
+        </GoabContainer>
 
-        <GoAContainer>
+        <GoabContainer>
           <div className="container-example-2--container">
-            <GoABlock direction="column" gap="2xs" alignment="start">
+            <GoabBlock direction="column" gap="2xs" alignment="start">
               <strong>Fiscal year: 2020/2021</strong>
               <span className="container-example-2--body-text">Submitted: April 9, 2022</span>
-            </GoABlock>
+            </GoabBlock>
             <div className="container-example-2--right-content">
-              <GoABlock direction="row" alignment="center" gap="l">
-                <GoABadge type="important" content="Information needed"></GoABadge>
-                <GoAButton type="tertiary" size="compact">
+              <GoabBlock direction="row" alignment="center" gap="l">
+                <GoabBadge type="important" content="Information needed"></GoabBadge>
+                <GoabButton type="tertiary" size="compact">
                   View
-                </GoAButton>
-              </GoABlock>
+                </GoabButton>
+              </GoabBlock>
             </div>
           </div>
-        </GoAContainer>
+        </GoabContainer>
 
-        <GoAContainer>
+        <GoabContainer>
           <div className="container-example-2--container">
-            <GoABlock direction="column" gap="2xs" alignment="start">
+            <GoabBlock direction="column" gap="2xs" alignment="start">
               <strong>Fiscal year: 2019/2020</strong>
               <span className="container-example-2--body-text">Submitted: April 14, 2021</span>
-            </GoABlock>
+            </GoabBlock>
             <div className="container-example-2--right-content">
-              <GoABlock direction="row" alignment="center" gap="l">
-                <GoABadge type="success" content="Approved"></GoABadge>
-                <GoAButton type="tertiary" size="compact">
+              <GoabBlock direction="row" alignment="center" gap="l">
+                <GoabBadge type="success" content="Approved"></GoabBadge>
+                <GoabButton type="tertiary" size="compact">
                   View
-                </GoAButton>
-              </GoABlock>
+                </GoabButton>
+              </GoabBlock>
             </div>
           </div>
-        </GoAContainer>
+        </GoabContainer>
       </Sandbox>
 
       <h3 id="component-example-3">Card grid that links to different sections</h3>
@@ -334,55 +334,55 @@ export default function ContainerExamples() {
           `}
         />
 
-        <GoAGrid gap="xl" minChildWidth="320px">
-          <GoAContainer accent="thin" mb="none">
+        <GoabGrid gap="xl" minChildWidth="320px">
+          <GoabContainer accent="thin" mb="none">
             <a href="" className="container-example-3--container-title">Waitlist submission</a>
             <div className="container-example-3--container-content">
               Enter and maintain information about the households waiting for affordable housing
               with your organization.
             </div>
-          </GoAContainer>
+          </GoabContainer>
 
-          <GoAContainer accent="thin" mb="none">
+          <GoabContainer accent="thin" mb="none">
             <a href="" className="container-example-3--container-title">Lodge assistance program</a>
             <div className="container-example-3--container-content">
               Keep track of the individuals who are placed in lodges and may qualify for the Lodge
               Assistance Program subsidy.
             </div>
-          </GoAContainer>
+          </GoabContainer>
 
-          <GoAContainer accent="thin" mb="none">
+          <GoabContainer accent="thin" mb="none">
             <a className="container-example-3--container-title">Education Support</a>
             <div className="container-example-3--container-content">
               Explore educational resources, enroll in courses, and track your academic progress
               effortlessly.
             </div>
-          </GoAContainer>
+          </GoabContainer>
 
-          <GoAContainer accent="thin" mb="none">
+          <GoabContainer accent="thin" mb="none">
             <a href="" className="container-example-3--container-title">Social Assistance</a>
             <div className="container-example-3--container-content">
               Learn about available support programs, apply for financial aid, and access community
               resources.
             </div>
-          </GoAContainer>
+          </GoabContainer>
 
-          <GoAContainer accent="thin" mb="none">
+          <GoabContainer accent="thin" mb="none">
             <a href=""  className="container-example-3--container-title">Employment Opportunity</a>
             <div className="container-example-3--container-content">
               Search for job openings, access career development tools, and receive
               employment-related updates.
             </div>
-          </GoAContainer>
+          </GoabContainer>
 
-          <GoAContainer accent="thin" mb="none">
+          <GoabContainer accent="thin" mb="none">
             <a href="" className="container-example-3--container-title">Housing Assistance</a>
             <div className="container-example-3--container-content">
               Find affordable housing options, apply for housing subsidies, and report maintenance
               issues seamlessly.
             </div>
-          </GoAContainer>
-        </GoAGrid>
+          </GoabContainer>
+        </GoabGrid>
       </Sandbox>
 
       <h3 id="example-4">Review and action</h3>
@@ -421,45 +421,45 @@ export default function ContainerExamples() {
           `}
         />
 
-        <GoAGrid minChildWidth="315px">
-          <GoAContainer accent="thin" type="non-interactive">
+        <GoabGrid minChildWidth="315px">
+          <GoabContainer accent="thin" type="non-interactive">
             <h3 className="container-example-4--h3">Appearance details</h3>
-            <GoAGrid minChildWidth="40%" gap="m">
-              <GoABlock direction="column" gap="xs">
+            <GoabGrid minChildWidth="40%" gap="m">
+              <GoabBlock direction="column" gap="xs">
                 <label className="container-example-4--label">Accused name</label>
                 <span className="container-example-4--container-content">Doe, John Scott</span>
-              </GoABlock>
+              </GoabBlock>
 
-              <GoABlock direction="column" gap="xs">
+              <GoabBlock direction="column" gap="xs">
                 <label className="container-example-4--label">Date of birth</label>
                 <span className="container-example-4--container-content">Mar 14, 2021</span>
-              </GoABlock>
+              </GoabBlock>
 
-              <GoABlock direction="column" gap="xs">
+              <GoabBlock direction="column" gap="xs">
                 <label className="container-example-4--label">Court location</label>
                 <span className="container-example-4--container-content">Calgary</span>
-              </GoABlock>
+              </GoabBlock>
 
-              <GoABlock direction="column" gap="xs">
+              <GoabBlock direction="column" gap="xs">
                 <label className="container-example-4--label">Upcoming appearance date(s)</label>
                 <span className="container-example-4--container-content">Sep 20, 2021</span>
-              </GoABlock>
-            </GoAGrid>
+              </GoabBlock>
+            </GoabGrid>
 
             <h5 className="container-example-4--h5">Docket number(s) $ charges</h5>
-            <GoAContainer type="non-interactive">
+            <GoabContainer type="non-interactive">
               <h6 className="container-example-4--h6">1) 12345678</h6>
               <p className="container-example-4--container-content">CC 334(1) - Theft under $5000</p>
               <p className="container-example-4--container-content">CC 268(1) - Aggravated assult</p>
-            </GoAContainer>
+            </GoabContainer>
 
-            <GoAContainer type="non-interactive">
+            <GoabContainer type="non-interactive">
               <h6 className="container-example-4--h6">2) 12345678</h6>
               <p className="container-example-4--container-content">CC 334(1) - Theft under $5000</p>
               <p className="container-example-4--container-content">CC 268(1) - Aggravated assult</p>
-            </GoAContainer>
+            </GoabContainer>
 
-            <GoAContainer type="non-interactive">
+            <GoabContainer type="non-interactive">
               <h6 className="container-example-4--h6">3) 12345678</h6>
               <p className="container-example-4--container-content">
                 CC 334(1) - Theft under $5000
@@ -467,34 +467,34 @@ export default function ContainerExamples() {
               <p className="container-example-4--container-content">
                 CC 268(1) - Aggravated assult
               </p>
-            </GoAContainer>
-          </GoAContainer>
-          <GoAContainer accent="thin">
+            </GoabContainer>
+          </GoabContainer>
+          <GoabContainer accent="thin">
             <h3 className="container-example-4--h3">Adjournment request</h3>
             <p className="container-example-4--container-content">Keep track of the individuals who are placed in lodges and may qualify for the Lodge Assistance Program subsidy.</p>
 
-            <GoAFormItem label="Case history and new request" mt="l">
-              <GoARadioGroup name="case" onChange={() => {}}>
-                <GoARadioItem value="grant" label="Grant"></GoARadioItem>
-                <GoARadioItem value="deny" label="Deny"></GoARadioItem>
-              </GoARadioGroup>
-            </GoAFormItem>
+            <GoabFormItem label="Case history and new request" mt="l">
+              <GoabRadioGroup name="case" onChange={() => {}}>
+                <GoabRadioItem value="grant" label="Grant"></GoabRadioItem>
+                <GoabRadioItem value="deny" label="Deny"></GoabRadioItem>
+              </GoabRadioGroup>
+            </GoabFormItem>
 
-            <GoAFormItem label="Reason to deny">
-              <GoADropdown name="reason" onChange={() => {}}>
-                <GoADropdownItem value="1" label="Incomplete Application"></GoADropdownItem>
-                <GoADropdownItem value="2" label="Eligibility Criteria Not Met"></GoADropdownItem>
-                <GoADropdownItem value="3" label="Documentation Verification Failure"></GoADropdownItem>
-              </GoADropdown>
-            </GoAFormItem>
+            <GoabFormItem label="Reason to deny">
+              <GoabDropdown name="reason" onChange={() => {}}>
+                <GoabDropdownItem value="1" label="Incomplete Application"></GoabDropdownItem>
+                <GoabDropdownItem value="2" label="Eligibility Criteria Not Met"></GoabDropdownItem>
+                <GoabDropdownItem value="3" label="Documentation Verification Failure"></GoabDropdownItem>
+              </GoabDropdown>
+            </GoabFormItem>
 
-            <GoAFormItem label="Message" mt="l">
-              <GoATextArea name="message" rows={5} value="" onChange={() => {}}/>
-            </GoAFormItem>
+            <GoabFormItem label="Message" mt="l">
+              <GoabTextarea name="message" rows={5} value="" onChange={() => {}}/>
+            </GoabFormItem>
 
-            <GoAButton mt="xl" onClick={()=> {}}>Confirm</GoAButton>
-          </GoAContainer>
-        </GoAGrid>
+            <GoabButton mt="xl" onClick={()=> {}}>Confirm</GoabButton>
+          </GoabContainer>
+        </GoabGrid>
       </Sandbox>
     </>
   );

@@ -6,18 +6,19 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAFormItem,
-  GoAInput,
-  GoAInputProps,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabFormItem,
+  GoabInput,
+  GoabInputProps,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import TextFieldExamples from "@examples/text-field/TextFieldExamples";
+import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 const componentName = "Input";
@@ -27,12 +28,12 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/text-area", name: "Text area" }
 ];
-type ComponentPropsType = GoAInputProps;
+type ComponentPropsType = GoabInputProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, value: string) => void;
+  onChange: (event: GoabInputOnChangeDetail) => void;
 };
 
 export default function TextFieldPage() {
@@ -431,8 +432,8 @@ export default function TextFieldPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Input sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
@@ -480,27 +481,27 @@ export default function TextFieldPage() {
               `}
               />
 
-              <GoAFormItem {...formItemProps}>
-                <GoAInput {...componentProps} name="item" value="" onChange={noop}/>
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabInput {...componentProps} name="item" value="" onChange={noop}/>
+              </GoabFormItem>
             </Sandbox>
 
             {/*Input component properties table*/}
             <ComponentProperties properties={componentProperties} />
             {/*Examples*/}
             <TextFieldExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

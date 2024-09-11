@@ -29,7 +29,7 @@ const relatedComponents = [
   { link: "/components/button-group", name: "Button group" },
   { link: "/components/callout", name: "Callout" },
 ];
-type ComponentPropsType = Omit<GoAModalProps, "open"> & { closable?: boolean };
+type ComponentPropsType = Omit<GoabModalProps, "open"> & { closable?: boolean };
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -224,8 +224,8 @@ export default function ModalPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -256,10 +256,10 @@ export default function ModalPage() {
                 `}
               />
 
-              <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
+              <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
               {!isClosableChecked(componentBindings) && (
-                <GoAModal {...componentProps} open={open}>
+                <GoabModal {...componentProps} open={open}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
@@ -285,16 +285,16 @@ export default function ModalPage() {
 
             <ComponentProperties properties={componentProperties} />
             <ModalExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

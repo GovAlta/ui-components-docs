@@ -6,20 +6,20 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
-  GoADetails,
-  GoAFormItem,
-  GoATab,
-  GoATabs,
-  GoATextArea,
-  GoATextAreaProps,
+  GoabBadge,
+  GoabButton,
+  GoabButtonGroup,
+  GoabContainer,
+  GoabDetails,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs, GoabTextarea,
+  GoabTextAreaProps
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 
@@ -30,11 +30,11 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/input", name: "Input" },
 ];
-type ComponentPropsType = GoATextAreaProps;
+type ComponentPropsType = GoabTextAreaProps;
 type CastingType = {
   name: string;
   value: string;
-  onChange: (name: string, value: string) => void;
+  onChange: (event: GoabTextAreaOnChangeDetail) => void;
   [key: string]: unknown;
 };
 
@@ -258,8 +258,8 @@ export default function TextAreaPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -310,15 +310,15 @@ export default function TextAreaPage() {
             `}
               />
 
-              <GoAFormItem {...formItemProps}>
-                <GoATextArea
+              <GoabFormItem {...formItemProps}>
+                <GoabTextarea
                   {...componentProps}
                   width="60ch"
                   name="item"
                   value=""
                   onChange={noop}
                 />
-              </GoAFormItem>
+              </GoabFormItem>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
@@ -330,10 +330,10 @@ export default function TextAreaPage() {
 
             <h3 id="component-example-1">Ask a question and give more information</h3>
             <Sandbox flags={["reactive"]} fullWidth>
-              <GoAContainer>
-                <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
+              <GoabContainer>
+                <GoabButton type="tertiary" leadingIcon="arrow-back" mb="m">
                   Back
-                </GoAButton>
+                </GoabButton>
 
                 <h2>Description</h2>
                 <p>
@@ -341,38 +341,38 @@ export default function TextAreaPage() {
                   each.
                 </p>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Program outline"
                   helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextArea name="program" value="Input text" onChange={noop} />
-                </GoAFormItem>
+                  <GoabTextarea name="program" value="Input text" onChange={noop} />
+                </GoabFormItem>
 
-                <GoADetails heading="How to write a good outline">
+                <GoabDetails heading="How to write a good outline">
                   <p>
                     Break down your outline into easily digestible sections. This can help to ensure
                     that the document is well-organized and easy to navigate.
                   </p>
-                </GoADetails>
+                </GoabDetails>
 
-                <GoAButtonGroup alignment="start" mt="l">
-                  <GoAButton type="primary" onClick={noop}>
+                <GoabButtonGroup alignment="start" mt="l">
+                  <GoabButton type="primary" onClick={noop}>
                     Continue
-                  </GoAButton>
-                </GoAButtonGroup>
-              </GoAContainer>
+                  </GoabButton>
+                </GoabButtonGroup>
+              </GoabContainer>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

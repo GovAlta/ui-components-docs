@@ -1,8 +1,9 @@
-import { GoABlock, GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/react-components";
+import { GoabBlock, GoabDropdown, GoabDropdownItem, GoabSideMenu } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
 export function Components() {
   const [language, setLanguage] = useState("");
@@ -12,24 +13,24 @@ export function Components() {
     setLanguage(lang);
   }, []);
 
-  function onLanguageChange(_name: string, value: string[] | string) {
-    const lang = Array.isArray(value) ? value[0] : value;
-    setLanguage(lang);
-    localStorage.setItem("goa-docs-lang", lang);
+  function onLanguageChange(event: GoabDropdownOnChangeDetail) {
+    const lang = event.value;
+    setLanguage(lang || "react");
+    localStorage.setItem("goa-docs-lang", lang || "react");
   }
 
   return (
     <LanguageContext.Provider value={language}>
       <section className="content">
         <section className="side-menu">
-          <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
-            <GoADropdown value={language} onChange={onLanguageChange}>
-              <GoADropdownItem label="React" value="react" />
-              <GoADropdownItem label="Angular" value="angular" />
-            </GoADropdown>
-          </GoABlock>
+          <GoabBlock direction="column" mt="m" mb="m" ml="m" mr="m">
+            <GoabDropdown value={language} onChange={onLanguageChange}>
+              <GoabDropdownItem label="React" value="react" />
+              <GoabDropdownItem label="Angular" value="angular" />
+            </GoabDropdown>
+          </GoabBlock>
 
-          <GoASideMenu>
+          <GoabSideMenu>
             <Link to="">All</Link>
             <Link to="accordion">Accordion</Link>
             <Link to="badge">Badge</Link>
@@ -69,7 +70,7 @@ export function Components() {
             <Link to="tabs">Tabs</Link>
             <Link to="text-area">Text area</Link>
             <Link to="tooltip">Tooltip</Link>
-          </GoASideMenu>
+          </GoabSideMenu>
         </section>
 
         <main className="main">

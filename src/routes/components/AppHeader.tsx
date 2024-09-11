@@ -25,7 +25,7 @@ const relatedComponents = [
   { link: "/patterns", name: "Layout" },
   { link: "/components/microsite-header", name: "Microsite header" }
 ];
-type ComponentPropsType = GoAAppHeaderProps;
+type ComponentPropsType = GoabAppHeaderProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -150,7 +150,7 @@ export default function AppHeaderPage() {
               Component
             </h2>
             <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
-              <GoAAppHeader {...appHeaderProps} />
+              <GoabAppHeader {...appHeaderProps} />
             </Sandbox>
 
             {/*Component properties*/}
@@ -197,15 +197,15 @@ export default function AppHeaderPage() {
                 </GoAAppHeader>
               `}
               />
-              <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
+              <GoabAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
                 <a href="">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
                   <a>Cases</a>
                   <a>Payments</a>
                   <a>Outstanding</a>
-                </GoAAppHeaderMenu>
+                </GoabAppHeaderMenu>
                 <a className="interactive">Sign in</a>
-              </GoAAppHeader>
+              </GoabAppHeader>
             </Sandbox>
 
             <h3 id="component-example-with-menu-click">Header with menu click event</h3>
@@ -308,16 +308,16 @@ export default function AppHeaderPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

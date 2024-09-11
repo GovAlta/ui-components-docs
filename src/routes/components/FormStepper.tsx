@@ -1,16 +1,15 @@
 import {
-  GoABadge,
-  GoAButton,
-  GoAFormStep,
-  GoAFormStepStatusType,
-  GoAFormStepper,
-  GoAFormStepperProps,
-  GoAPages,
-  GoASkeleton,
-  GoASpacer,
-  GoATab,
-  GoATabs,
-  GoAContainer,
+  GoabBadge,
+  GoabButton,
+  GoabFormStepper,
+  GoabFormStepperProps,
+  GoabPages,
+  GoabSkeleton,
+  GoabSpacer,
+  GoabTab,
+  GoabTabs,
+  GoabContainer,
+  GoabFormStep,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageContext, Sandbox } from "@components/sandbox";
@@ -21,12 +20,13 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabFormStepStatus } from "@abgov/ui-components-common";
 
 const componentName = "Form Stepper";
 const description = "Provides a visual representation of a form through a series of steps.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [{ link: "/components/form-item", name: "Form item" }];
-type ComponentPropsType = GoAFormStepperProps;
+type ComponentPropsType = GoabFormStepperProps;
 
 
 export default function FormStepperPage() {
@@ -94,7 +94,7 @@ export default function FormStepperPage() {
   }
 
   const [statusStep, setStatusStep] = useState(-1);
-  const status: GoAFormStepStatusType[] = ["complete", "complete", "incomplete", "incomplete"];
+  const status: GoabFormStepStatus[] = ["complete", "complete", "incomplete", "incomplete"];
 
   function setStatusPage(page: number) {
     if (page < 1 || page > 4) return;
@@ -110,27 +110,27 @@ export default function FormStepperPage() {
         relatedComponents={relatedComponents}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
-            <GoAContainer mt="m" mb="none">
+            <GoabContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
-                <GoAFormStepper testId="foo" onChange={step => setStep(step)} {...formStepProps}>
-                  <GoAFormStep text="Personal details" />
-                  <GoAFormStep text="Employment history" />
-                  <GoAFormStep text="References" />
-                  <GoAFormStep text="Review" />
-                </GoAFormStepper>
-                <GoAPages current={step} mb="3xl">
+                <GoabFormStepper testId="foo" onChange={(event) => setStep(+event.step)} {...formStepProps}>
+                  <GoabFormStep text="Personal details" />
+                  <GoabFormStep text="Employment history" />
+                  <GoabFormStep text="References" />
+                  <GoabFormStep text="Review" />
+                </GoabFormStepper>
+                <GoabPages current={step} mb="3xl">
                   <div>Page 1 content</div>
                   <div>Page 2 content</div>
                   <div>Page 3 content</div>
                   <div>Page 4 content</div>
-                </GoAPages>
+                </GoabPages>
               </div>
-            </GoAContainer>
+            </GoabContainer>
             {language === "angular" && (
               <>
                 <CodeSnippet
@@ -296,42 +296,42 @@ export default function FormStepperPage() {
               `}
               />
 
-              <GoAFormStepper step={controlledStep} onChange={step => setControlledStep(step)}>
-                <GoAFormStep text="Personal details" />
-                <GoAFormStep text="Employment history" />
-                <GoAFormStep text="References" />
-                <GoAFormStep text="Review" />
-              </GoAFormStepper>
-              <GoAPages current={controlledStep} mb="3xl" mt="xl" mr="xl" ml="xl">
+              <GoabFormStepper step={controlledStep} onChange={(event) => setControlledStep(event.step)}>
+                <GoabFormStep text="Personal details" />
+                <GoabFormStep text="Employment history" />
+                <GoabFormStep text="References" />
+                <GoabFormStep text="Review" />
+              </GoabFormStepper>
+              <GoabPages current={controlledStep} mb="3xl" mt="xl" mr="xl" ml="xl">
                 <div>
-                  <GoASkeleton type="article" />
+                  <GoabSkeleton type="article" />
                 </div>
                 <div>
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
                 </div>
                 <div>
-                  <GoASkeleton type="text" />
-                  <GoASpacer vSpacing="m" />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="text" />
+                  <GoabSpacer vSpacing="m" />
+                  <GoabSkeleton type="text" />
                 </div>
                 <div>
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
-                  <GoASpacer vSpacing="m" />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
+                  <GoabSpacer vSpacing="m" />
+                  <GoabSkeleton type="text" />
                 </div>
-              </GoAPages>
+              </GoabPages>
 
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <GoAButton type="secondary" onClick={() => setControlledPage(controlledStep - 1)}>
+                <GoabButton type="secondary" onClick={() => setControlledPage(controlledStep - 1)}>
                   Previous
-                </GoAButton>
-                <GoAButton type="primary" onClick={() => setControlledPage(controlledStep + 1)}>
+                </GoabButton>
+                <GoabButton type="primary" onClick={() => setControlledPage(controlledStep + 1)}>
                   Next
-                </GoAButton>
+                </GoabButton>
               </div>
             </Sandbox>
 
@@ -424,55 +424,55 @@ export default function FormStepperPage() {
               `}
               />
 
-              <GoAFormStepper step={statusStep} onChange={step => setStatusStep(step)}>
-                <GoAFormStep text="Personal details" status={status[0]} />
-                <GoAFormStep text="Employment history" status={status[1]} />
-                <GoAFormStep text="References" status={status[2]} />
-                <GoAFormStep text="Review" status={status[3]} />
-              </GoAFormStepper>
-              <GoAPages current={statusStep} mb="3xl" mt="xl" mr="xl" ml="xl">
+              <GoabFormStepper step={statusStep} onChange={(event) => setStatusStep(+event.step)}>
+                <GoabFormStep text="Personal details" status={status[0]} />
+                <GoabFormStep text="Employment history" status={status[1]} />
+                <GoabFormStep text="References" status={status[2]} />
+                <GoabFormStep text="Review" status={status[3]} />
+              </GoabFormStepper>
+              <GoabPages current={statusStep} mb="3xl" mt="xl" mr="xl" ml="xl">
                 <div>
-                  <GoASkeleton type="article" />
+                  <GoabSkeleton type="article" />
                 </div>
                 <div>
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
                 </div>
                 <div>
-                  <GoASkeleton type="text" />
-                  <GoASpacer vSpacing="m" />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="text" />
+                  <GoabSpacer vSpacing="m" />
+                  <GoabSkeleton type="text" />
                 </div>
                 <div>
-                  <GoASkeleton type="header" size={2} />
-                  <GoASkeleton type="text" />
-                  <GoASpacer vSpacing="m" />
-                  <GoASkeleton type="text" />
+                  <GoabSkeleton type="header" size={'2'} />
+                  <GoabSkeleton type="text" />
+                  <GoabSpacer vSpacing="m" />
+                  <GoabSkeleton type="text" />
                 </div>
-              </GoAPages>
+              </GoabPages>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <GoAButton type="secondary" onClick={() => setStatusPage(statusStep - 1)}>
+                <GoabButton type="secondary" onClick={() => setStatusPage(statusStep - 1)}>
                   Previous
-                </GoAButton>
-                <GoAButton type="primary" onClick={() => setStatusPage(statusStep + 1)}>
+                </GoabButton>
+                <GoabButton type="primary" onClick={() => setStatusPage(statusStep + 1)}>
                   Next
-                </GoAButton>
+                </GoabButton>
               </div>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabFormItem, GoabInput, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
@@ -178,8 +178,8 @@ export default function FormItemPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
               <CodeSnippet
@@ -223,9 +223,9 @@ export default function FormItemPage() {
               `}
               />
 
-              <GoAFormItem {...formItemProps}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabInput onChange={noop} value="" name="item" />
+              </GoabFormItem>
             </Sandbox>
 
             <ComponentProperties properties={componentProps} />
@@ -234,11 +234,11 @@ export default function FormItemPage() {
 
             <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
             <Sandbox skipRender>
-              <GoAFormItem 
+              <GoabFormItem
                 label="First name" 
                 helpText={helptextReactNode}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
+                <GoabInput onChange={noop} value="" name="item" />
+              </GoabFormItem>
 
               {language === "react" && (
                 <CodeSnippet
@@ -277,11 +277,11 @@ export default function FormItemPage() {
 
             <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
             <Sandbox skipRender>
-              <GoAFormItem 
+              <GoabFormItem
                 label="First name" 
                 error={errorReactNode}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
+                <GoabInput onChange={noop} value="" name="item" />
+              </GoabFormItem>
 
               {language === "react" && (
                 <CodeSnippet
@@ -318,17 +318,17 @@ export default function FormItemPage() {
                 />
               )}
             </Sandbox>
-          </GoATab>
-          <GoATab
+          </GoabTab>
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

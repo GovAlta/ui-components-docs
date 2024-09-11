@@ -1,10 +1,9 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoANotification,
-  GoATab,
-  GoATabs,
-  NotificationType,
+  GoabBadge,
+  GoabNotification,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -13,6 +12,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabNotificationType } from "@abgov/ui-components-common";
 
 // == Page props ==
 
@@ -23,7 +23,7 @@ const relatedComponents = [
   { link: "/components/callout", name: "Callout" },
 ];
 type ComponentPropsType = {
-  type: NotificationType;
+  type: GoabNotificationType;
   content?: string;
   [key: string]: unknown;
 };
@@ -113,24 +113,24 @@ export default function NotificationBannerPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
-              <GoANotification {...componentProps}>Notification banner message</GoANotification>
+              <GoabNotification {...componentProps}>Notification banner message</GoabNotification>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

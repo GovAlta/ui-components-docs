@@ -6,15 +6,15 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoABlock,
-  GoADetails,
-  GoAFormItem,
-  GoAInput,
-  GoARadioGroup,
-  GoARadioItem,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabBlock,
+  GoabDetails,
+  GoabFormItem,
+  GoabInput,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
@@ -91,11 +91,11 @@ export default function DetailsPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={detailsBindings} onChange={onSandboxChange} fullWidth>
-              <GoADetails {...detailsProps}>
+              <GoabDetails {...detailsProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus, sed
                 sodales lectus. Aliquam sed volutpat velit. Sed in lacus ut dui placerat accumsan
                 malesuada quis erat. Aenean mi diam, rhoncus vitae justo eu, venenatis maximus nunc.
@@ -104,7 +104,7 @@ export default function DetailsPage() {
                 cursus velit vel libero sollicitudin tincidunt. Proin tincidunt, enim et ultrices
                 rhoncus, nibh leo imperdiet sapien, sed porttitor ipsum nulla non massa. Nulla
                 facilisi.
-              </GoADetails>
+              </GoabDetails>
             </Sandbox>
 
             {/*Component properties table*/}
@@ -117,37 +117,37 @@ export default function DetailsPage() {
               Show more information for a basic question
             </h3>
             <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
-              <GoAFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
-                <GoARadioGroup name="pay" onChange={() => { }}>
-                  <GoARadioItem label="Yes" value="yes" name="pay" />
-                  <GoARadioItem label="No" value="no" name="pay" />
-                </GoARadioGroup>
-              </GoAFormItem>
+              <GoabFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
+                <GoabRadioGroup name="pay" onChange={() => { }}>
+                  <GoabRadioItem label="Yes" value="yes" name="pay" />
+                  <GoabRadioItem label="No" value="no" name="pay" />
+                </GoabRadioGroup>
+              </GoabFormItem>
 
-              <GoADetails heading="Why are we asking this question?" mt="l">
+              <GoabDetails heading="Why are we asking this question?" mt="l">
                 <p>
                   This question helps us better understand your situation and ensure that you receive
                   the right information and support.
                 </p>
-              </GoADetails>
+              </GoabDetails>
             </Sandbox>
 
             <h3 id="component-example-additional-information-help">
               Additional information to help a user understand and answer a question
             </h3>
             <Sandbox flags={["reactive"]} fullWidth>
-              <GoAFormItem
+              <GoabFormItem
                 label="Do you have additional education expense?"
                 helpText="You can request this money now or at any time during your program."
               >
-                <GoARadioGroup name="additional" onChange={noop}>
-                  <GoARadioItem label="Yes" value="yes" name="additional" />
-                  <GoARadioItem label="No" value="no" name="additional" />
-                </GoARadioGroup>
-              </GoAFormItem>
+                <GoabRadioGroup name="additional" onChange={noop}>
+                  <GoabRadioItem label="Yes" value="yes" name="additional" />
+                  <GoabRadioItem label="No" value="no" name="additional" />
+                </GoabRadioGroup>
+              </GoabFormItem>
 
-              <GoADetails heading="What is an additional education expense?">
-                <GoABlock gap="m" mt="m">
+              <GoabDetails heading="What is an additional education expense?">
+                <GoabBlock gap="m" mt="m">
                   <div>
                     <strong>Examples of education expenses</strong>
                     <ul className="goa-unordered-list">
@@ -167,8 +167,8 @@ export default function DetailsPage() {
                       <li>School association fees</li>
                     </ul>
                   </div>
-                </GoABlock>
-              </GoADetails>
+                </GoabBlock>
+              </GoabDetails>
             </Sandbox>
 
             <h3 id="component-example-direct-deposit-information">
@@ -180,13 +180,13 @@ export default function DetailsPage() {
                 Find this information on your bank's website or on your personal cheques. Contact your
                 bank if you can't find this information.
               </p>
-              <GoAFormItem
+              <GoabFormItem
                 label="Bank or Institution number"
                 id="bankNumber"
                 helpText={"3-4 digits in length"}
                 mb="xl"
               >
-                <GoAInput
+                <GoabInput
                   maxLength={4}
                   name="bankNumber"
                   onChange={noop}
@@ -194,14 +194,14 @@ export default function DetailsPage() {
                   ariaLabel="bankNumber"
                   width="88px"
                 />
-              </GoAFormItem>
-              <GoAFormItem
+              </GoabFormItem>
+              <GoabFormItem
                 label="Branch or Transit number"
                 helpText={"5 digits in length"}
                 id="transitNumber"
                 mb="xl"
               >
-                <GoAInput
+                <GoabInput
                   maxLength={5}
                   name="transitNumber"
                   onChange={noop}
@@ -209,38 +209,38 @@ export default function DetailsPage() {
                   ariaLabel="transitNumber"
                   width="143px"
                 />
-              </GoAFormItem>
-              <GoAFormItem label="Account number" helpText="3-12 digits in length" id="accountNumber">
-                <GoAInput
+              </GoabFormItem>
+              <GoabFormItem label="Account number" helpText="3-12 digits in length" id="accountNumber">
+                <GoabInput
                   maxLength={12}
                   name="accountNumber"
                   value=""
                   onChange={noop}
                   ariaLabel="accountNumber"
                 />
-              </GoAFormItem>
+              </GoabFormItem>
 
-              <GoADetails heading="Where can I find this information on a personal cheque?" mt="l">
+              <GoabDetails heading="Where can I find this information on a personal cheque?" mt="l">
                 <p>
                   Below is an example of where you can find the required bank information on a
                   personal cheque.
                 </p>
                 <img src="/images/details-demo.jpg" />
-              </GoADetails>
+              </GoabDetails>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
           >
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

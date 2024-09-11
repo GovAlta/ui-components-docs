@@ -1,11 +1,11 @@
 import { Sandbox } from "@components/sandbox";
 import {
-  GoABlock,
-  GoAButton,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
-  GoAInput,
+  GoabBlock,
+  GoabButton,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+  GoabInput,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
@@ -20,55 +20,55 @@ export default function TextFieldExamples() {
 
       <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
       <Sandbox flags={["reactive"]}>
-        <GoAFormItem label="Street Address">
-          <GoAInput name="address" type="text" value="" onChange={noop} width="100%" mb="xl" />
-        </GoAFormItem>
-        <GoAFormItem label="Suite or unit #">
-          <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" mb="xl" />
-        </GoAFormItem>
-        <GoAFormItem label="City/town">
-          <GoAInput name="city" type="text" value="" onChange={noop} width="100%" mb="xl"  />
-        </GoAFormItem>
+        <GoabFormItem label="Street Address">
+          <GoabInput name="address" type="text" value="" onChange={noop} width="100%" />
+        </GoabFormItem>
+        <GoabFormItem label="Suite or unit #">
+          <GoabInput name="suite" type="text" value="" onChange={noop} width="100%" />
+        </GoabFormItem>
+        <GoabFormItem label="City/town">
+          <GoabInput name="city" type="text" value="" onChange={noop} width="100%" />
+        </GoabFormItem>
 
-        <GoABlock direction="row" gap="l">
-          <GoAFormItem label="Provice/territory">
-            <GoADropdown onChange={noop} name="province" value="alberta">
-              <GoADropdownItem label="Alberta" value="alberta" />
-              <GoADropdownItem label="BC" value="bc" />
-              <GoADropdownItem label="Manitoba" value="manitoba" />
-              <GoADropdownItem label="New Brunswick" value="new-brunswick" />
-              <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
-              <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
-              <GoADropdownItem label="Ontario" value="ontario" />
-              <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
-              <GoADropdownItem label="Quebec" value="quebec" />
-              <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-            </GoADropdown>
-          </GoAFormItem>
+        <GoabBlock direction={"row"}>
+          <GoabFormItem label="Provice/territory">
+            <GoabDropdown onChange={noop} name="province" value="alberta">
+              <GoabDropdownItem label="Alberta" value="alberta" />
+              <GoabDropdownItem label="BC" value="bc" />
+              <GoabDropdownItem label="Manitoba" value="manitoba" />
+              <GoabDropdownItem label="New Brunswick" value="new-brunswick" />
+              <GoabDropdownItem label="Newfoundland and Labrador" value="newfoundland" />
+              <GoabDropdownItem label="Nova Scotia" value="nova-scotia" />
+              <GoabDropdownItem label="Ontario" value="ontario" />
+              <GoabDropdownItem label="Prince Edward Island" value="prince-edward-island" />
+              <GoabDropdownItem label="Quebec" value="quebec" />
+              <GoabDropdownItem label="Saskatchewan" value="saskatchewan" />
+            </GoabDropdown>
+          </GoabFormItem>
 
-          <GoAFormItem label="Postal Code">
-            <GoAInput name="postalCode" type="text" value="" onChange={noop} width="14ch" />
-          </GoAFormItem>
-        </GoABlock>
+          <GoabFormItem label="Postal Code">
+            <GoabInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+          </GoabFormItem>
+        </GoabBlock>
       </Sandbox>
 
       <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
       <Sandbox flags={["reactive"]}>
-        <GoAFormItem
-          label="What is your date of birth?"
+        <GoabFormItem
+          label="When is your birthday?"
           labelSize="large"
           helpText={"For example, 27 November 2004"}>
-          <GoABlock gap="m" direction="row">
-            <GoAFormItem label="Day">
-              <GoAInput
+          <GoabBlock gap="m" direction="row">
+            <GoabFormItem label="Day">
+              <GoabInput
                 onChange={noop}
                 value=""
                 name="day"
                 width="6ch"
               />
-            </GoAFormItem>
-            <GoAFormItem label="Month">
-            <GoADropdown onChange={noop} name="month" value="">
+            </GoabFormItem>
+            <GoabFormItem label="Month">
+            <GoabDropdown onChange={noop} name="month" value="">
               <GoADropdownItem label="January" value="January" />
               <GoADropdownItem label="February" value="February" />
               <GoADropdownItem label="March" value="March" />
@@ -81,8 +81,8 @@ export default function TextFieldExamples() {
               <GoADropdownItem label="October" value="October" />
               <GoADropdownItem label="November" value="November" />
               <GoADropdownItem label="December" value="December" />
-            </GoADropdown>
-            </GoAFormItem>
+            </GoabDropdown>
+            </GoabFormItem>
             <GoAFormItem label="Year">
               <GoAInput
                 onChange={noop}
@@ -90,9 +90,9 @@ export default function TextFieldExamples() {
                 name="year"
                 width="10ch"
               />
-            </GoAFormItem>
-          </GoABlock>
-        </GoAFormItem>
+            </GoabFormItem>
+          </GoabBlock>
+        </GoabFormItem>
       </Sandbox>
 
       <h3 id="component-example-search">Search</h3>
@@ -245,10 +245,10 @@ export default function TextFieldExamples() {
         Ask a user for their indian registration number
       </h3>
       <Sandbox flags={["reactive"]}>
-        <GoAFormItem label="Indian registration number" labelSize="large">
-          <GoABlock gap="m" direction="row">
-            <GoAFormItem label="Band #" helpText="3 digits">
-              <GoAInput
+        <GoabFormItem label="Indian registration number" labelSize="large">
+          <GoabBlock gap="m" direction="row">
+            <GoabFormItem label="Band #" helpText="3 digits">
+              <GoabInput
                 onChange={noop}
                 value=""
                 name="bandNo"

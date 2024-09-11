@@ -1,10 +1,8 @@
 import { Sandbox } from "@components/sandbox";
-import {
-  GoABlock,
-  GoACallout,
-} from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./result-page-example.css";
+import { GoabBlock, GoabCallout } from "@abgov/react-components";
+
 
 export function ResultPageExamples() {
 
@@ -85,15 +83,15 @@ export function ResultPageExamples() {
           `}
         />
 
-        <GoABlock direction="column" gap="none">
+        <GoabBlock direction="column" gap="none">
           <div className="page-header">
             <h2>You have completed the application</h2>
-            <GoACallout type="success" heading="Application submitted" mt="xl" mb="2xl">
+            <GoabCallout type="success" heading="Application submitted" mt="xl" mb="2xl">
               <p>You will receive a copy of the confirmation to the email name@email.com</p>
               <p>
                 <span>Your reference number is: </span><strong>1234ABC</strong>
               </p>
-            </GoACallout>
+            </GoabCallout>
             <h3>What happens next</h3>
           </div>
           <p>
@@ -112,7 +110,7 @@ export function ResultPageExamples() {
           <p>
             <span>Phone: </span><a href="tel:780 123 4567">780 123 4567</a>
           </p>
-        </GoABlock>
+        </GoabBlock>
       </Sandbox>
     </div>
   );

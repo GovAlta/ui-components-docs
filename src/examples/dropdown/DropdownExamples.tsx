@@ -14,11 +14,16 @@ import {
 } from "@abgov/react-components";
 import { LanguageContext } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import {
+  GoabDropdownItemMountType,
+  GoabDropdownOnChangeDetail,
+  GoabInputOnChangeDetail
+} from "@abgov/ui-components-common";
 
 type Task = {
   value: string;
   label: string;
-  mount: DropdownItemMountType;
+  mount: GoabDropdownItemMountType;
 };
 
 export const DropdownExamples = () => {
@@ -34,7 +39,7 @@ export const DropdownExamples = () => {
   const [taskError, setTaskError] = useState<boolean>(false);
   const [isReset, setIsReset] = useState<boolean>(false);
 
-  function onMountTypeChange(value: string) {
+  function onMountTypeChange(value: string|undefined) {
     setNewMountType(value);
   }
 
@@ -48,7 +53,7 @@ export const DropdownExamples = () => {
     const task = {
       label: newTask,
       value: newTask.toLowerCase().replace(" ", "-"),
-      mount: mountType as DropdownItemMountType,
+      mount: mountType as GoabDropdownItemMountType,
     };
     setTasks([...tasks, task]);
     setIsReset(false);
@@ -89,10 +94,12 @@ export const DropdownExamples = () => {
       <h2 id="component-examples" className="hidden" aria-hidden="true">
         Examples
       </h2>
+      <h3 id="component-example-with-mount-type">Dynamic options</h3>
+      <GoabContainer mt="m" mb="none">
       <h3 id="component-example-with-mount-type">Dynamically add an item to a dropdown list</h3>
       <GoAContainer mt="m" mb="none">
         <div style={{ padding: "40px" }}>
-          <GoAFormItem
+          <GoabFormItem
             requirement="required"
             mt="m"
             label="Name of item"
@@ -148,7 +155,7 @@ export const DropdownExamples = () => {
             </div>
           </GoAFormItem>
         </div>
-      </GoAContainer>
+      </GoabContainer>
       {language === "angular" && (
         <>
           <CodeSnippet

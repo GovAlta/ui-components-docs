@@ -1,12 +1,12 @@
 import {
-  GoAButton,
-  GoAButtonGroup,
-  GoADivider,
-  GoAGrid,
-  GoAHeroBanner,
-  GoAHeroBannerActions,
-  GoAPageBlock,
-  GoASpacer,
+  GoabButton,
+  GoabButtonGroup,
+  GoabDivider,
+  GoabGrid,
+  GoabHeroBanner,
+  GoabHeroBannerActions,
+  GoabPageBlock,
+  GoabSpacer,
 } from "@abgov/react-components";
 import "./home.css";
 import { MAX_CONTENT_WIDTH } from "@routes/root";
@@ -17,32 +17,32 @@ const HomePage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <GoAHeroBanner
+      <GoabHeroBanner
         heading="Design your government service using reusable patterns, components, design tokens, and content guidelines."
         maxContentWidth={MAX_CONTENT_WIDTH}
       >
         Resources for Government of Alberta product teams to build better services. Learn from the research and experience of other 
         product teams and avoid repeating work that’s already been done.
-        <GoAHeroBannerActions>
-          <GoAButtonGroup alignment="start">
-            <GoAButton onClick={() => {
+        <GoabHeroBannerActions>
+          <GoabButtonGroup alignment="start">
+            <GoabButton onClick={() => {
               navigate("get-started");
               }}
               trailingIcon="arrow-forward"
             >
               Get started
-            </GoAButton>
-            <GoAButton onClick={() => {
+            </GoabButton>
+            <GoabButton onClick={() => {
               window.open("https://github.com/GovAlta/ui-components/releases", "_blank");
             }} type="tertiary">
               Learn about the latest release
-            </GoAButton>
-          </GoAButtonGroup>
-        </GoAHeroBannerActions>
-      </GoAHeroBanner>
+            </GoabButton>
+          </GoabButtonGroup>
+        </GoabHeroBannerActions>
+      </GoabHeroBanner>
 
-      <GoAPageBlock width={MAX_CONTENT_WIDTH}>
-        <GoAGrid minChildWidth="300px" mt="2xl" mb="2xl" gap="xl">
+      <GoabPageBlock width={MAX_CONTENT_WIDTH}>
+        <GoabGrid minChildWidth="300px" mt="2xl" mb="2xl" gap="xl">
           <CardLite
             title="Patterns and templates"
             description="Common patterns and page templates to use as a starting point for a government service."
@@ -67,9 +67,9 @@ const HomePage = () => {
             linkTo="/content/capitalization"
             linkDisplay="Browse Content"
           />
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoADivider mb="2xl"></GoADivider>
+        <GoabDivider mb="2xl"></GoabDivider>
         <h2>How to use the design system in your service</h2>
         <div className="max-width-72ch">
           <ol>
@@ -88,8 +88,8 @@ const HomePage = () => {
           </Link>
           <SupportInfo />
         </div>
-        <GoASpacer vSpacing="xl"></GoASpacer>
-      </GoAPageBlock>
+        <GoabSpacer vSpacing="xl"></GoabSpacer>
+      </GoabPageBlock>
     </>
   );
 };

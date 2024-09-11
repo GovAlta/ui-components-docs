@@ -1,14 +1,14 @@
 import {
-  GoABadge,
-  GoAPagination,
-  GoAPaginationProps,
-  GoATab,
-  GoATable,
-  GoATabs,
-  GoABlock,
-  GoASpacer,
-  GoADropdown,
-  GoADropdownItem,
+  GoabBadge,
+  GoabPagination,
+  GoabPaginationProps,
+  GoabTab,
+  GoabTable,
+  GoabTabs,
+  GoabBlock,
+  GoabSpacer,
+  GoabDropdown,
+  GoabDropdownItem,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -20,8 +20,9 @@ import { faker } from "@faker-js/faker";
 import { useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
-type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
+type ComponentPropsType = Omit<GoabPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
   itemCount: number;
   [key: string]: unknown;
@@ -251,8 +252,8 @@ export default function PaginationPage() {
   }
 
   // @ts-ignore
-  function handlePerPageChangeCustomExample(name: string, values: string | string[]): void {
-    const newPerPageCount = Array.isArray(values) ? parseInt(values[0]) : parseInt(values);
+  function handlePerPageChangeCustomExample(event: GoabDropdownOnChangeDetail): void {
+    const newPerPageCount = parseInt(event.value || '1');
 
     // Update paginationProps
     setpaginationPropsCustomExample(prevProps => ({
@@ -280,8 +281,8 @@ export default function PaginationPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -434,7 +435,7 @@ export default function PaginationPage() {
                 <goa-pagination [itemcount]="users.length" perpagecount="10" [pagenumber]="page" (_change)="handlePageChange($event)"></goa-pagination>
               `}
               />
-              <GoATable width="100%" mb="xl">
+              <GoabTable width="100%" mb="xl">
                 <thead>
                   <tr>
                     <th>First name</th>
@@ -451,9 +452,9 @@ export default function PaginationPage() {
                     </tr>
                   ))}
                 </tbody>
-              </GoATable>
+              </GoabTable>
 
-              <GoAPagination {...paginationProps} pageNumber={page} onChange={changePage} />
+              <GoabPagination {...paginationProps} pageNumber={page} onChange={(event) => changePage(event.page)} />
             </Sandbox>
 
             {/*Component properties table*/}
@@ -709,7 +710,7 @@ export default function PaginationPage() {
               `}
               />
 
-              <GoATable width="100%" mb="xl">
+              <GoabTable width="100%" mb="xl">
                 <thead>
                   <tr>
                     <th>First name</th>
@@ -726,46 +727,46 @@ export default function PaginationPage() {
                     </tr>
                   ))}
                 </tbody>
-              </GoATable>
+              </GoabTable>
 
-              <GoABlock alignment="center">
-                <GoABlock mb="m" alignment="center">
+              <GoabBlock alignment="center">
+                <GoabBlock mb="m" alignment="center">
                   Show
-                  <GoADropdown
+                  <GoabDropdown
                     onChange={handlePerPageChangeCustomExample}
                     value={paginationPropsCustomExample.perPageCount?.toString()}
                     width="8ch">
                     {[10, 20, 30].map(value => (
-                      <GoADropdownItem
+                      <GoabDropdownItem
                         key={value}
                         value={value.toString()}
                         label={value.toString()}
                       />
                     ))}
-                  </GoADropdown>
+                  </GoabDropdown>
                   <span style={{ width: "75px" }}>per page</span>
-                </GoABlock>
-                <GoASpacer hSpacing={"fill"} />
+                </GoabBlock>
+                <GoabSpacer hSpacing={"fill"} />
 
-                <GoAPagination
+                <GoabPagination
                   {...paginationPropsCustomExample}
                   pageNumber={pageCustomExample}
-                  onChange={changePageCustomExample}
+                  onChange={(event) => changePageCustomExample(event.page)}
                 />
-              </GoABlock>
+              </GoabBlock>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

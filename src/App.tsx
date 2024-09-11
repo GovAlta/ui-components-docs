@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
-  createRoutesFromElements,
+  createRoutesFromElements, useParams
 } from "react-router-dom";
 
 import "@abgov/web-components";
@@ -43,11 +43,11 @@ import FormStepperPage from "@routes/components/FormStepper";
 import GridPage from "@routes/components/Grid";
 import HeroBannerPage from "@routes/components/HeroBanner";
 import IconsPage from "@routes/components/Icons";
-import IconButtonPage from '@routes/components/IconButton';
+import IconButtonPage from "@routes/components/IconButton";
 import ListPage from "@routes/components/List";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
-import PaginationPage from '@routes/components/Pagination';
+import PaginationPage from "@routes/components/Pagination";
 import PopoverPage from "@routes/components/Popover";
 import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
 import RadioPage from "@routes/components/Radio";
@@ -58,11 +58,10 @@ import TabsPage from "@routes/components/Tabs.tsx";
 import TooltipPage from "@routes/components/Tooltip";
 import TextFieldPage from "@routes/components/TextField";
 import TextAreaPage from "@routes/components/TextArea";
-import MicrositeHeaderPage from '@routes/components/MicrositeHeader';
-import AppHeaderPage from '@routes/components/AppHeader';
-import AppFooterPage from '@routes/components/AppFooter';
-import SideMenuPage from '@routes/components/SideMenu';
-
+import MicrositeHeaderPage from "@routes/components/MicrositeHeader";
+import AppHeaderPage from "@routes/components/AppHeader";
+import AppFooterPage from "@routes/components/AppFooter";
+import SideMenuPage from "@routes/components/SideMenu";
 
 // Design Tokens
 
@@ -115,73 +114,93 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
+import { VersionProvider } from "@contexts/VersionContext.tsx";
 
+const componentRoutes = {
+  accordion: <AccordionPage />,
+  badge: <BadgePage />,
+  block: <BlockPage />,
+  button: <ButtonPage />,
+  "button-group": <ButtonGroupPage />,
+  callout: <CalloutPage />,
+  checkbox: <CheckboxPage />,
+  chip: <ChipPage />,
+  container: <ContainerPage />,
+  "date-picker": <DatePickerPage />,
+  details: <DetailsPage />,
+  divider: <DividerPage />,
+  dropdown: <DropdownPage />,
+  "file-uploader": <FileUploaderPage />,
+  "form-item": <FormItemPage />,
+  "form-stepper": <FormStepperPage />,
+  grid: <GridPage />,
+  "hero-banner": <HeroBannerPage />,
+  icons: <IconsPage />,
+  "icon-button": <IconButtonPage />,
+  input: <TextFieldPage />,
+  list: <ListPage />,
+  "microsite-header": <MicrositeHeaderPage />,
+  modal: <ModalPage />,
+  "notification-banner": <NotificationBannerPage />,
+  pagination: <PaginationPage />,
+  popover: <PopoverPage />,
+  "progress-indicator": <ProgressIndicatorPage />,
+  radio: <RadioPage />,
+  "side-menu": <SideMenuPage />,
+  "skeleton-loader": <SkeletonPage />,
+  spacer: <SpacerPage />,
+  table: <TablePage />,
+  tabs: <TabsPage />,
+  "text-area": <TextAreaPage />,
+  tooltip: <TooltipPage />,
+  "text-field": <TextFieldPage />,
+  header: <AppHeaderPage />,
+  footer: <AppFooterPage />,
+}
+const supportedVersions = ['v3-angular', 'v4-react'];
 
-interface DeviceWidthProviderProps {
-  children: ReactNode;
+const getComponent = (componentName: keyof typeof componentRoutes) => {
+  return componentRoutes[componentName] || <ComponentNotFoundPage />;
 }
 
-const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({ children }) => {
-  const isDesktop = useMediaQuery("(min-width: 1232px)");
-  const isMobile = useMediaQuery("(max-width: 623px)");
-
-  return (
-    <DeviceWidthContext.Provider value={{ isDesktop, isMobile }}>
-      {children}
-    </DeviceWidthContext.Provider>
-  );
+const ComponentRoute: React.FC = () => {
+  const { component } = useParams<{ component: string }>();
+  const Component = componentRoutes[component as keyof typeof componentRoutes] || <ComponentNotFoundPage />;
+  return Component;
 };
+
+const VersionedComponentRoute: React.FC = () => {
+  const { version, component } = useParams<{ version: string, component: string }>();
+  if (!version || !component) {
+    return <ComponentNotFoundPage />;
+  }
+  if (!supportedVersions.includes(version)) {
+    return <ComponentNotFoundPage/>;
+  }
+  return getComponent(component as keyof typeof componentRoutes);
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Root />}>
+      <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
+
+      {/*// user copy and paste the URL: /v5/components/accordion but they choose angular ==> 404*/}
       <Route
         path="components"
         element={<ComponentsPage />}
         errorElement={<ComponentNotFoundPage />}>
+        {/* Non-versioned paths components */}
         <Route index element={<AllComponentsPage />} />
-        <Route path="accordion" element={<AccordionPage />} />
-        <Route path="header" element={<AppHeaderPage />} />
-        <Route path="footer" element={<AppFooterPage />} />
-        <Route path="badge" element={<BadgePage />} />
-        <Route path="block" element={<BlockPage />} />
-        <Route path="button" element={<ButtonPage />} />
-        <Route path="button-group" element={<ButtonGroupPage />} />
-        <Route path="callout" element={<CalloutPage />} />
-        <Route path="checkbox" element={<CheckboxPage />} />
-        <Route path="chip" element={<ChipPage />} />
-        <Route path="container" element={<ContainerPage />} />
-        <Route path="date-picker" element={<DatePickerPage />} />
-        <Route path="details" element={<DetailsPage />} />
-        <Route path="divider" element={<DividerPage />} />
-        <Route path="dropdown" element={<DropdownPage />} />
-        <Route path="file-uploader" element={<FileUploaderPage />} />
-        <Route path="form-item" element={<FormItemPage />} />
-        <Route path="form-stepper" element={<FormStepperPage />} />
-        <Route path="grid" element={<GridPage />} />
-        <Route path="hero-banner" element={<HeroBannerPage />} />
-        <Route path="icons" element={<IconsPage />} />
-        <Route path="icon-button" element={<IconButtonPage />} />
-        <Route path="input" element={<TextFieldPage />} />
-        <Route path="list" element={<ListPage />} />
-        <Route path="microsite-header" element={<MicrositeHeaderPage />} />
-        <Route path="modal" element={<ModalPage />} />
-        <Route path="notification-banner" element={<NotificationBannerPage />} />
-        <Route path="pagination" element={<PaginationPage />} />
-        <Route path="popover" element={<PopoverPage />} />
-        <Route path="progress-indicator" element={<ProgressIndicatorPage />} />
-        <Route path="radio" element={<RadioPage />} />
-        <Route path="side-menu" element={<SideMenuPage />} />
-        <Route path="skeleton-loader" element={<SkeletonPage />} />
-        <Route path="spacer" element={<SpacerPage />} />
-        <Route path="table" element={<TablePage />} />
-        <Route path="tabs" element={<TabsPage />} />
-        <Route path="text-area" element={<TextAreaPage />} />
-        <Route path="tooltip" element={<TooltipPage />} />
-        <Route path="text-field" element={<TextFieldPage />} />
-        <Route path="*" element={<ComponentNotFoundPage />} />
+        <Route
+          path=":component"
+          element={<ComponentRoute/>}
+        />
+        {/* Versioned paths components */}
+        <Route path=":version/:component" element={<VersionedComponentRoute />} />
       </Route>
+
+
 
       <Route
         path="design-tokens"
@@ -226,7 +245,6 @@ const router = createBrowserRouter(
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
 
-
       <Route path="content" element={<ContentLayout />}>
         <Route path="capitalization">
           <Route index element={<CapitalizationPage />} />
@@ -238,13 +256,28 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage/>} />
+        <Route path="simple-form" element={<SimpleFormPage />} />
         <Route path="layout" element={<LayoutPage />} />
         <Route path="start-page" element={<StartPage/>} />
         <Route path="task-list-page" element={<TaskListPage/>} />
         <Route path="question-page" element={<QuestionPage/>} />
         <Route path="review-page" element={<ReviewPage/>} />
         <Route path="result-page" element={<ResultPage/>} />
+        <Route path="start-page" element={<StartPage />} />
+        <Route path="task-list-page" element={<TaskListPage />} />
+        <Route path="question-page" element={<QuestionPage />} />
+        <Route path="review-page" element={<ReviewPage />} />
+        <Route path="result-page" element={<ResultPage />} />
+      </Route>
+      <Route path="support" element={<SupportLayout />}>
+        <Route index element={<SupportOverviewPage />} />
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
+        <Route path="drop-in-hours">
+          <Route index element={<DropInHoursPage />} />
+        </Route>
+        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )
@@ -252,8 +285,12 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <DeviceWidthProvider>
-      <RouterProvider router={router} />
-    </DeviceWidthProvider>
+    <VersionProvider>
+      <DeviceWidthProvider>
+        <VersionProvider>
+          <RouterProvider router={router} />
+        </VersionProvider>
+      </DeviceWidthProvider>
+    </VersionProvider>
   </React.StrictMode>
 );

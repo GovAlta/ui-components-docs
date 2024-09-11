@@ -1,7 +1,7 @@
 import { FC, useContext, useState } from "react";
 
 import "./TokenSnippet.css";
-import { GoAIcon } from "@abgov/react-components";
+import { GoabIcon } from "@abgov/react-components";
 import { DesignTokensLanguageContext } from "@components/sandbox";
 
 interface Props {
@@ -29,7 +29,7 @@ export const TokenSnippet: FC<Props> = ({ code }) => {
             {code}
           </u>
           <span style={{ marginTop: "5px", marginLeft: "10px" }}>
-            <GoAIcon type="copy" />
+            <GoabIcon type="copy" />
           </span>
         </a>
       </pre>

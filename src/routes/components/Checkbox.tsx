@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabCheckbox, GoabCheckboxProps, GoabFormItem, GoabTab, GoabTabs } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -20,7 +20,7 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/radio", name: "Radio" }
 ];
-type ComponentPropsType = GoACheckboxProps;
+type ComponentPropsType = GoabCheckboxProps;
 type CastingType = {
   name: string;
   checked: boolean;
@@ -168,8 +168,8 @@ export default function CheckboxPage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
               properties={checkboxBindings}
@@ -203,23 +203,23 @@ export default function CheckboxPage() {
                   }
                 `}
               />
-              <GoAFormItem {...formItemProps}>
-                <GoACheckbox {...checkboxProps} onChange={noop} />
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabCheckbox {...checkboxProps} onChange={noop} />
+              </GoabFormItem>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
             <CheckboxExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

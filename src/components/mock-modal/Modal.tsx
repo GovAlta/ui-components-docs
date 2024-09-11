@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import css from "./Modal.module.css";
-import { GoAIcon, GoAIconType } from "@abgov/react-components";
+import { GoabIcon } from "@abgov/react-components";
+import { GoabIconType } from "@abgov/ui-components-common";
 
 type Variant = "information" | "important" | "emergency" | "success" | "event";
 
@@ -15,7 +16,7 @@ export function GoAModal({ heading, calloutVariant, children }: Props) {
     <div className={css.modal}>
       {calloutVariant && (
         <div className={`${css.variant} ${css[calloutVariant]}`}>
-          <GoAIcon type={`${calloutVariant}-circle` as GoAIconType} />
+          <GoabIcon type={`${calloutVariant}-circle` as GoabIconType} />
         </div>
       )}
       <div className={css.content}>

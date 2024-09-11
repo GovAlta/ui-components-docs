@@ -10,13 +10,14 @@ export default function GetStartedLayout() {
         <GoASpacer vSpacing="m"></GoASpacer>
           <Link to="">Start with the design system</Link>
           <Link to="designers">UX Designers</Link>
-          <GoASideMenuGroup heading="Developers">
+          <GoabSideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>
             <Link to="developers/setup">Setup</Link>
             <Link to="developers/bug">Verify a bug</Link>
             <Link to="developers/vscode">VS Code</Link>
             <Link to="developers/technologies">Technologies</Link>
             <Link to="developers/browsers">Supported Browsers</Link>
+          </GoabSideMenuGroup>
           </GoASideMenuGroup>
             <Link to="qa-testing">QA testing</Link>
             <Link to="contribute">Contribute</Link>

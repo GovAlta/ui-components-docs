@@ -1,4 +1,4 @@
-import { GoACheckbox, GoAFormItem } from "@abgov/react-components";
+import { GoabCheckbox, GoabFormItem } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
@@ -41,16 +41,16 @@ export default function CheckboxExamples () {
               </GoAFormItem>
             `}
         />
-        <GoAFormItem label="Select one or more options">
-          <GoACheckbox
+        <GoabFormItem label="Select one or more options">
+          <GoabCheckbox
             checked={true}
             name="optionOne"
             text="Option one"
             description={<span>Help text with a <a href="#">link</a>.</span>}
             />
-          <GoACheckbox checked={false} name="optionTwo" text="Option two" />
-          <GoACheckbox checked={false} name="optionThree" text="Option three" />
-        </GoAFormItem>
+          <GoabCheckbox checked={false} name="optionTwo" text="Option two" />
+          <GoabCheckbox checked={false} name="optionThree" text="Option three" />
+        </GoabFormItem>
       </Sandbox>
     </>
   );

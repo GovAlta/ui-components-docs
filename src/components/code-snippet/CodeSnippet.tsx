@@ -1,7 +1,7 @@
 import { FC, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
 
 import "./CodeSnippet.css";
-import { GoAButton, GoAIconButton, GoATooltip } from "@abgov/react-components";
+import { GoabButton, GoabIconButton, GoabTooltip } from "@abgov/react-components";
 import { renderToString } from "react-dom/server";
 
 import hljs from "highlight.js/lib/core";
@@ -115,21 +115,21 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
       {showMore && !isExpanded && <div className={"gradient"}></div>}
       {showMore && (
         <div className={"goa-code-snippet-actions--show-more"}>
-          <GoAButton
+          <GoabButton
             type="tertiary"
             size="compact"
             trailingIcon={isExpanded ? "chevron-up" : "chevron-down"}
             onClick={() => setIsExpanded(!isExpanded)}>
             Show {isExpanded ? "less" : "more"}
-          </GoAButton>
+          </GoabButton>
         </div>
       )}
 
       {allowCopy && (
         <div className="goa-code-snippet-actions--copy">
-          <GoATooltip content={isCopied ? `Copied` : `Copy?`} position="left">
-            <GoAIconButton icon="copy" onClick={copyCode}/>
-          </GoATooltip>
+          <GoabTooltip content={isCopied ? `Copied` : `Copy?`} position="left">
+            <GoabIconButton icon="copy" onClick={copyCode}/>
+          </GoabTooltip>
         </div>
       )}
     </div>

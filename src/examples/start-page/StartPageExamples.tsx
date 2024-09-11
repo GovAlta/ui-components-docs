@@ -1,6 +1,6 @@
 import { Sandbox } from "@components/sandbox";
 import {
-  GoAButton,
+  GoabButton,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./start-page-example.css";
@@ -129,9 +129,9 @@ export function StartPageExamples() {
         <ul>
           <li>government issued ID for the person applying</li>
         </ul>
-        <GoAButton mt="m" mb="xl" type="start" onClick={() => {}}>
+        <GoabButton mt="m" mb="xl" type="start" onClick={() => {}}>
           Get started
-        </GoAButton>
+        </GoabButton>
 
         <h2>Other information about the service</h2>
         <p>

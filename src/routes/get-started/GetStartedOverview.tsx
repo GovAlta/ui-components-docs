@@ -1,4 +1,4 @@
-import { GoAButton, GoAButtonGroup, GoAContainer, GoAGrid } from "@abgov/react-components";
+import { GoabButton, GoabButtonGroup, GoabContainer, GoabGrid } from "@abgov/react-components";
 import { useNavigate } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
@@ -13,36 +13,36 @@ export default function GetStartedOverviewPage() {
         </h3>
 
         <div className="max-width-72ch">
-          <GoAGrid minChildWidth="32ch" mb="xl">
+          <GoabGrid minChildWidth="32ch" mb="xl">
             <h4 className="heading">Using the design system by role:</h4>
-            <GoAButtonGroup alignment="start">
-              <GoAButton
+            <GoabButtonGroup alignment="start">
+              <GoabButton
                 type="tertiary"
                 size="compact"
                 onClick={() => navigate("/get-started/designers")}>
                 Designers
-              </GoAButton>
-              <GoAButton
+              </GoabButton>
+              <GoabButton
                 type="tertiary"
                 size="compact"
                 onClick={() => navigate("/get-started/developers")}>
                 Developers
-              </GoAButton>
-              <GoAButton
+              </GoabButton>
+              <GoabButton
                 type="tertiary"
                 size="compact"
                 onClick={() => navigate("/get-started/qa-testing")}>
                 QA Testers
-              </GoAButton>
-            </GoAButtonGroup>
-          </GoAGrid>
+              </GoabButton>
+            </GoabButtonGroup>
+          </GoabGrid>
 
-          <GoAContainer type="non-interactive" mb="l">
+          <GoabContainer type="non-interactive" mb="l">
             Start with the design system. You don't need to reinvent the wheel. The design system is
             the floor, not the ceiling. Start with it to save time building the common parts of a
             service, so that you can spend time on the unique challenges within your service
             context.
-          </GoAContainer>
+          </GoabContainer>
 
           <h3>The value of starting with the design system components</h3>
           <p>

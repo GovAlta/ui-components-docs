@@ -6,7 +6,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 
-import { GoABadge, GoATab, GoATabs, GoACalloutProps } from "@abgov/react-components";
+import { GoabBadge, GoabTab, GoabTabs, GoabCalloutProps } from "@abgov/react-components";
 
 // == Page props ==
 
@@ -16,7 +16,7 @@ const relatedComponents = [
   { link: "/components/callout", name: "Callout" },
   { link: "/components/notification-banner", name: "Notification banner" }
 ];
-type ComponentPropsType = GoACalloutProps;
+type ComponentPropsType = GoabCalloutProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -59,24 +59,24 @@ export default function TEMPLATE_Page() {
         relatedComponents={relatedComponents}
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
+      <GoabTabs>
+        <GoabTab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>
             <></>
             {/* <GoABadge {...componentProps} /> */}
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        </GoabTab>
 
-        <GoATab
+        <GoabTab
           heading={
             <>
               Design guidelines
-              <GoABadge type="information" content="In progress" />
+              <GoabBadge type="information" content="In progress" />
             </>
           }
-        ></GoATab>
-      </GoATabs>
+        ></GoabTab>
+      </GoabTabs>
     </>
   );
 }

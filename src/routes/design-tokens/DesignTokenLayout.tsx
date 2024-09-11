@@ -9,6 +9,7 @@ import { SupportInfo } from "@components/support-info/SupportInfo";
 import { useEffect, useState } from "react";
 import { DesignTokensLanguageContext } from "@components/sandbox";
 import "./DesignToken.css";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
 export function DesignTokenLayout() {
   const [tokenLanguage, setLanguage] = useState("");
@@ -18,8 +19,8 @@ export function DesignTokenLayout() {
     setLanguage(lang || "scss");
   }, []);
 
-  function designTokenLanguageChange(_name: string, value: string[] | string) {
-    const lang = Array.isArray(value) ? value[0] : value;
+  function designTokenLanguageChange(event: GoabDropdownOnChangeDetail) {
+    const lang = event.value || "react6";
     setLanguage(lang);
     localStorage.setItem("goa-docs-design-tokens-lang", lang);
   }
@@ -46,7 +47,7 @@ export function DesignTokenLayout() {
               <Link to="shadow">Shadow</Link>
               <Link to="spacing">Spacing</Link>
               <Link to="typography">Typography</Link>
-            </GoASideMenu>
+            </GoabSideMenu>
           </section>
 
           <main className="main">

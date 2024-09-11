@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabButton, GoabPopover, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -139,8 +139,8 @@ export default function PopoverPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Popover sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
@@ -186,32 +186,32 @@ export default function PopoverPage() {
               `}
               />
 
-              <GoAPopover
+              <GoabPopover
                 {...popoverProps}
                 target={
-                  <GoAButton type="secondary" size="compact">
+                  <GoabButton type="secondary" size="compact">
                     Click me
-                  </GoAButton>
+                  </GoabButton>
                 }
               >
                 <p>This is a popover</p>
                 It can be used for a number of different contexts.
-              </GoAPopover>
+              </GoabPopover>
             </Sandbox>
 
             {/*Popover table properties*/}
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

@@ -3,6 +3,7 @@ import {Link, Outlet} from "react-router-dom";
 import {SupportInfo} from "@components/support-info/SupportInfo.tsx";
 import {useEffect, useState} from "react";
 import { LanguageContext } from "@components/sandbox";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
 export default function PatternsLayout() {
   const [language, setLanguage] = useState("");
@@ -12,8 +13,8 @@ export default function PatternsLayout() {
     setLanguage(lang);
   }, []);
 
-  function onLanguageChange(_name: string, value: string[] | string) {
-    const lang = Array.isArray(value) ? value[0] : value;
+  function onLanguageChange(onChangeDetail: GoabDropdownOnChangeDetail) {
+    const lang = Array.isArray(onChangeDetail.value) ? onChangeDetail.value[0] : onChangeDetail.value;
     setLanguage(lang);
     localStorage.setItem("goa-docs-lang", lang);
   }
@@ -40,7 +41,7 @@ export default function PatternsLayout() {
             <Link to="question-page">Question pages</Link>
             <Link to="review-page">Review page</Link>
             <Link to="result-page">Results page</Link>
-          </GoASideMenu>
+          </GoabSideMenu>
         </section>
         <main className="main">
           <Outlet />

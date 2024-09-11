@@ -7,11 +7,11 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 
 import {
-  GoABadge,
-  GoATab,
-  GoATabs,
-  GoACircularProgress,
-  GoACircularProgressProps,
+  GoabBadge,
+  GoabTab,
+  GoabTabs,
+  GoabCircularProgress,
+  GoabCircularProgressProps,
 } from "@abgov/react-components";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -25,7 +25,7 @@ const relatedComponents = [
   { link: "/components/file-uploader", name: "File uploader" },
   { link: "/components/skeleton-loader", name: "Skeleton loading" }
 ];
-type ComponentPropsType = GoACircularProgressProps;
+type ComponentPropsType = GoabCircularProgressProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -121,24 +121,24 @@ export default function ProgressIndicatorPage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-              <GoACircularProgress {...componentProps} />
+              <GoabCircularProgress {...componentProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

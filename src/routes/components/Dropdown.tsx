@@ -1,11 +1,11 @@
 import { useState } from "react";
 import {
-  GoABadge,
-  GoADropdown,
-  GoADropdownItem, GoADropdownProps,
-  GoAFormItem,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabDropdown,
+  GoabDropdownItem, GoabDropdownProps,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
@@ -18,6 +18,7 @@ import {
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -29,12 +30,12 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" },
   { link: "/components/radio", name: "Radio" },
 ];
-type ComponentPropsType = GoADropdownProps;
+type ComponentPropsType = GoabDropdownProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, values: string[] | string) => void;
+  onChange: (event: GoabDropdownOnChangeDetail) => void;
 }
 
 export default function DropdownPage() {
@@ -246,9 +247,9 @@ export default function DropdownPage() {
   // Demo
   const [color, setColor] = useState<string>("");
 
-  function onChange(_name: string, value: string | string[]) {
-    setColor(value as string);
-    setDropdownProps({ ...dropdownProps, value: value as string } as CastingType);
+  function onChange(event: GoabDropdownOnChangeDetail) {
+    setColor(event.value || "");
+    setDropdownProps({ ...dropdownProps, value: event.value || "" } as CastingType);
   }
 
   return (
@@ -256,8 +257,8 @@ export default function DropdownPage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
               properties={dropdownBindings}
@@ -304,13 +305,13 @@ export default function DropdownPage() {
               `}
               />
 
-              <GoAFormItem {...formItemProps}>
-                <GoADropdown name="item" value={color} {...dropdownProps}>
-                  <GoADropdownItem value="red" label="Red" />
-                  <GoADropdownItem value="green" label="Green" />
-                  <GoADropdownItem value="blue" label="Blue" />
-                </GoADropdown>
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabDropdown name="item" value={color} {...dropdownProps}>
+                  <GoabDropdownItem value="red" label="Red" />
+                  <GoabDropdownItem value="green" label="Green" />
+                  <GoabDropdownItem value="blue" label="Blue" />
+                </GoabDropdown>
+              </GoabFormItem>
             </Sandbox>
 
             <ComponentProperties properties={dropdownProperties} />
@@ -321,19 +322,19 @@ export default function DropdownPage() {
             />
 
             <DropdownExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
           >
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );
