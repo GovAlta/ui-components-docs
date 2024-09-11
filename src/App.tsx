@@ -7,6 +7,8 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 
+import "@abgov/web-components";
+
 import Root from "@routes/root";
 import { useMediaQuery } from "@hooks/useMediaQuery";
 import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
