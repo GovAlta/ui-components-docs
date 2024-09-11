@@ -6,11 +6,11 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoAButton,
-  GoAHeroBanner,
-  GoAHeroBannerActions,
-  GoATab,
-  GoATabs,
+  GoabButton,
+  GoabHeroBanner,
+  GoabHeroBannerActions,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -156,17 +156,17 @@ export default function HeroBannerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Hero Banner Sandbox*/}
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
             <Sandbox properties={heroBannerBindings} fullWidth={true} onChange={onSandboxChange}>
-              <GoAHeroBanner {...heroBannerProps}>
+              <GoabHeroBanner {...heroBannerProps}>
                 Resources are available to help Alberta entrepreneurs and small businesses start,
                 grow and succeed.
-              </GoAHeroBanner>
+              </GoabHeroBanner>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
@@ -206,18 +206,18 @@ export default function HeroBannerPage() {
                 `}
               />
 
-              <GoAHeroBanner heading="Supporting Businesses">
+              <GoabHeroBanner heading="Supporting Businesses">
                 Resources are available to help Alberta entrepreneurs and small businesses start,
                 grow and succeed.
-                <GoAHeroBannerActions>
-                  <GoAButton type="start" onClick={noop}>
+                <GoabHeroBannerActions>
+                  <GoabButton type="start" onClick={noop}>
                     Call to action
-                  </GoAButton>
-                </GoAHeroBannerActions>
-              </GoAHeroBanner>
+                  </GoabButton>
+                </GoabHeroBannerActions>
+              </GoabHeroBanner>
             </Sandbox>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

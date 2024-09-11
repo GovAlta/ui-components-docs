@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABlock, GoASpacer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBlock, GoabSpacer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { CSSProperties, useState } from "react";
 import {
@@ -96,44 +96,44 @@ export default function SpacerPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
-              <GoABlock gap="none">
+              <GoabBlock gap="none">
                 <div style={styles}>
                   Item 1
                 </div>
-                <GoASpacer {...hSpacerProps} />
+                <GoabSpacer {...hSpacerProps} />
                 <div style={styles}>
                   Item 1
                 </div>
-                <GoASpacer {...hSpacerProps} />
+                <GoabSpacer {...hSpacerProps} />
                 <div style={styles}>
                   Item 1
                 </div>
-              </GoABlock>
+              </GoabBlock>
             </Sandbox>
 
             <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange}>
-              <GoABlock direction="column" gap="none">
+              <GoabBlock direction="column" gap="none">
                 <div style={styles}>
                   Item 1
                 </div>
-                <GoASpacer {...vSpacerProps} />
+                <GoabSpacer {...vSpacerProps} />
                 <div style={styles}>
                   Item 1
                 </div>
-                <GoASpacer {...vSpacerProps} />
+                <GoabSpacer {...vSpacerProps} />
                 <div style={styles}>
                   Item 1
                 </div>
-              </GoABlock>
+              </GoabBlock>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

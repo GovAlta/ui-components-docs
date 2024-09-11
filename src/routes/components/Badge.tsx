@@ -1,6 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps } from "@abgov/react-components";
-import { Sandbox, ComponentBinding } from "@components/sandbox";
+import { GoabBadge, GoabTab, GoabTabs, GoabBadgeProps } from "@abgov/react-components";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import {
   ComponentProperties,
@@ -8,6 +8,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
+import { GoabBadgeType } from "@abgov/ui-components-common";
 
 // == Page props ==
 
@@ -27,10 +28,10 @@ const relatedComponents = [
   }
 ];
 
-type ComponentPropsType = GoABadgeProps;
+type ComponentPropsType = GoabBadgeProps;
 type CastingType = {
   // add any required props here
-  type: GoABadgeType;
+  type: GoabBadgeType;
   content: string;
   [key: string]: unknown;
 };
@@ -128,26 +129,25 @@ export default function BadgePage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
-              <GoABadge {...badgeProps} />
+              <GoabBadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
             <BadgeExamples />
+          </GoabTab>
 
-          </GoATab>
-
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

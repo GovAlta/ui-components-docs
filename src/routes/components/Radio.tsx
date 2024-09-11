@@ -6,17 +6,18 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAFormItem,
-  GoARadioGroup, GoARadioGroupProps,
-  GoARadioItem,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabFormItem,
+  GoabRadioGroup, GoabRadioGroupProps,
+  GoabRadioItem,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import RadioExamples from "@examples/radio/RadioExamples.tsx";
+import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 const componentName = "Radio";
@@ -27,19 +28,19 @@ const relatedComponents = [
   { link: "/components/dropdown", name: "Dropdown" },
   { link: "/components/form-item", name: "Form item" }
 ];
-type ComponentPropsType = GoARadioGroupProps;
+type ComponentPropsType = GoabRadioGroupProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, value: string) => void;
+  onChange: (_: GoabRadioGroupOnChangeDetail) => void;
 }
 
 export default function RadioPage() {
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => { },
+    onChange: (_: GoabRadioGroupOnChangeDetail) => { },
   });
   const [radioBindings, setRadioBindings] = useState<ComponentBinding[]>([
     {
@@ -209,8 +210,8 @@ export default function RadioPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Radio sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
@@ -257,13 +258,13 @@ export default function RadioPage() {
             `}
               />
 
-              <GoAFormItem {...formItemProps}>
-                <GoARadioGroup {...radioProps} name="item" value="1" onChange={noop}>
-                  <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                  <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                  <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                </GoARadioGroup>
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabRadioGroup {...radioProps} name="item" value="1" onChange={noop}>
+                  <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                  <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                  <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                </GoabRadioGroup>
+              </GoabFormItem>
             </Sandbox>
 
             {/*Radio Group properties*/}
@@ -271,17 +272,17 @@ export default function RadioPage() {
             {/*Radio Item properties*/}
             <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
             <RadioExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

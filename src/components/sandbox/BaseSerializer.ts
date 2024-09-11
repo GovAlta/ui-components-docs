@@ -36,7 +36,7 @@ export class BaseSerializer {
   protected isRoot = false;
   protected state: SerializerState = { element: "", props: { name: "" } };
 
-  constructor(protected properties: ComponentBinding[]) {}
+  constructor(protected properties: ComponentBinding[], protected isOldVersion: boolean = false) {}
 
   getProperty(name: string): ComponentBinding | undefined {
     return this.properties.find(p => p.name === name);

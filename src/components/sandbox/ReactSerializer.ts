@@ -4,8 +4,8 @@ import { BaseSerializer, Serializer } from "./BaseSerializer";
 export class ReactSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
 
-  constructor(properties: ComponentBinding[]) {
-    super(properties);
+  constructor(properties: ComponentBinding[], isOldVersion: boolean) {
+    super(properties, isOldVersion);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -64,6 +64,9 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   }
 
   componentNameToString(name: string): string {
+    if (this.isOldVersion) {
+      return name.replace(/^Goab/, "GoA");
+    }
     return name;
   }
 

@@ -3,12 +3,12 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import { propsToString } from "@components/sandbox/BaseSerializer"
 import {
-  GoAFileUploadCard,
-  GoAFileUploadInput,
-  GoAFileUploadInputProps,
-  GoAFormItem,
-  GoATab,
-  GoATabs,
+  GoabFileUploadCard,
+  GoabFileUploadInput,
+  GoabFileUploadInputProps,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -61,7 +61,7 @@ const relatedComponents = [
   { link: "/components/container", name: "Container" },
   { link: "/components/progress-indicator", name: "Progress indicator" }
 ];
-type ComponentPropsType = Omit<GoAFileUploadInputProps, "onSelectFile">;
+type ComponentPropsType = Omit<GoabFileUploadInputProps, "onSelectFile">;
 type CastingType = {
   maxFileSize: string;
   [key: string]: unknown;
@@ -230,8 +230,8 @@ export default function FileUploaderPage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
 
@@ -388,11 +388,12 @@ export default function FileUploaderPage() {
               `}
               />
 
-              <GoAFormItem label="Upload a file">
-                <GoAFileUploadInput onSelectFile={uploadFile} {...fileUploaderProps} />
+              <GoabFormItem label="Upload a file">
+                <GoabFileUploadInput onSelectFile={(e) => uploadFile(e.file)} {...fileUploaderProps} />
                 {uploads.map(upload => (
-                  <GoAFileUploadCard
+                  <GoabFileUploadCard
                     key={upload.file.name}
+                    testId={"file-upload-card"}
                     filename={upload.file.name}
                     type={upload.file.type}
                     size={upload.file.size}
@@ -401,7 +402,7 @@ export default function FileUploaderPage() {
                     onCancel={() => deleteFile(upload)}
                   />
                 ))}
-              </GoAFormItem>
+              </GoabFormItem>
             </Sandbox>
 
             <ComponentProperties
@@ -414,8 +415,8 @@ export default function FileUploaderPage() {
               properties={fileUploadCardProperties}
             />
 
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

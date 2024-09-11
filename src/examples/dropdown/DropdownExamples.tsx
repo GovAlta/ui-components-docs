@@ -1,24 +1,24 @@
 import { useContext, useState } from "react";
 import {
-  DropdownItemMountType,
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
-  GoADivider,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
-  GoAInput,
-  GoARadioGroup,
-  GoARadioItem,
+  GoabContainer, GoabFormItem, GoabInput, GoabRadioGroup,
+  GoabButton,
+  GoabButtonGroup,
+  GoabDivider,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabRadioItem
 } from "@abgov/react-components";
 import { LanguageContext } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import {
+  GoabDropdownItemMountType, GoabDropdownOnChangeDetail,
+  GoabInputOnChangeDetail, GoabRadioGroupOnChangeDetail
+} from "@abgov/ui-components-common";
 
 type Task = {
   value: string;
   label: string;
-  mount: DropdownItemMountType;
+  mount: GoabDropdownItemMountType;
 };
 
 export const DropdownExamples = () => {
@@ -26,7 +26,7 @@ export const DropdownExamples = () => {
   const [tasks, setTasks] = useState<Task[]>([
     { label: "Finish Report", value: "finish-report", mount: "append" },
     { label: "Attend Meeting", value: "attend-meeting", mount: "append" },
-    { label: "Reply Emails", value: "reply-emails", mount: "append" },
+    { label: "Reply Emails", value: "reply-emails", mount: "append" }
   ]);
   const [newTask, setNewTask] = useState<string>("");
   const [mountType, setNewMountType] = useState<string>("append");
@@ -34,8 +34,8 @@ export const DropdownExamples = () => {
   const [taskError, setTaskError] = useState<boolean>(false);
   const [isReset, setIsReset] = useState<boolean>(false);
 
-  function onMountTypeChange(value: string) {
-    setNewMountType(value);
+  function onMountTypeChange(value: string | undefined) {
+    setNewMountType(value as string);
   }
 
   function addTask() {
@@ -48,7 +48,7 @@ export const DropdownExamples = () => {
     const task = {
       label: newTask,
       value: newTask.toLowerCase().replace(" ", "-"),
-      mount: mountType as DropdownItemMountType,
+      mount: mountType as GoabDropdownItemMountType
     };
     setTasks([...tasks, task]);
     setIsReset(false);
@@ -89,73 +89,75 @@ export const DropdownExamples = () => {
       <h2 id="component-examples" className="hidden" aria-hidden="true">
         Examples
       </h2>
-      <h3 id="component-example-with-mount-type">Dynamically add an item to a dropdown list</h3>
-      <GoAContainer mt="m" mb="none">
-        <div style={{ padding: "40px" }}>
-          <GoAFormItem
-            requirement="required"
-            mt="m"
-            label="Name of item"
-            error={taskError ? "Please enter item name" : undefined}
-            helpText="Add an item to the dropdown list below">
-            <GoAInput
-              onChange={(_, value: string) => setNewTask(value)}
-              name="item"
-              placeholder=""
-              value={newTask}></GoAInput>
-          </GoAFormItem>
+      <h3 id="component-example-with-mount-type">Dynamic options</h3>
+      <GoabContainer mt="m" mb="none">
+        <h3 id="component-example-with-mount-type">Dynamically add an item to a dropdown list</h3>
+        <GoabContainer mt="m" mb="none">
+          <div style={{ padding: "40px" }}>
+            <GoabFormItem
+              requirement="required"
+              mt="m"
+              label="Name of item"
+              error={taskError ? "Please enter item name" : undefined}
+              helpText="Add an item to the dropdown list below">
+              <GoabInput
+                onChange={(event: GoabInputOnChangeDetail) => setNewTask(event.value)}
+                name="item"
+                placeholder=""
+                value={newTask}></GoabInput>
+            </GoabFormItem>
 
-          <GoAFormItem mt="m" label="Add to">
-            <GoARadioGroup
-              name="mountType"
-              onChange={(_name, value) => onMountTypeChange(value)}
-              value={mountType}
-              orientation="horizontal">
-              <GoARadioItem value="prepend" label="Start" />
-              <GoARadioItem value="append" label="End" />
-            </GoARadioGroup>
-          </GoAFormItem>
+            <GoabFormItem mt="m" label="Add to">
+              <GoabRadioGroup
+                name="mountType"
+                onChange={(event: GoabRadioGroupOnChangeDetail) => onMountTypeChange(event.value)}
+                value={mountType}
+                orientation="horizontal">
+                <GoabRadioItem value="prepend" label="Start" />
+                <GoabRadioItem value="append" label="End" />
+              </GoabRadioGroup>
+            </GoabFormItem>
 
-          <GoAButtonGroup alignment={"start"} gap="relaxed">
-            <GoAButton mt="m" type="primary" onClick={addTask}>
-              Add new item
-            </GoAButton>
-            <GoAButton mt="m" type="tertiary" onClick={reset}>
-              Reset list
-            </GoAButton>
-          </GoAButtonGroup>
+            <GoabButtonGroup alignment={"start"} gap="relaxed">
+              <GoabButton mt="m" type="primary" onClick={addTask}>
+                Add new item
+              </GoabButton>
+              <GoabButton mt="m" type="tertiary" onClick={reset}>
+                Reset list
+              </GoabButton>
+            </GoabButtonGroup>
 
-          <GoADivider mt="m"></GoADivider>
+            <GoabDivider mt="m"></GoabDivider>
 
-          <GoAFormItem mt="m" label="All items">
-            <div
-              style={{
-                width: isReset ? "320px" : "auto",
-              }}>
-              <GoADropdown
-                key={tasks.length}
-                onChange={(_, values: string[] | string) => setSelectedTask(values as string)}
-                value={selectedTask}
-                name="selectedTask">
-                {tasks.map(task => (
-                  <GoADropdownItem
-                    key={task.value}
-                    value={task.value}
-                    mountType={task.mount}
-                    label={task.label}></GoADropdownItem>
-                ))}
-              </GoADropdown>
-            </div>
-          </GoAFormItem>
-        </div>
-      </GoAContainer>
-      {language === "angular" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+            <GoabFormItem mt="m" label="All items">
+              <div
+                style={{
+                  width: isReset ? "320px" : "auto"
+                }}>
+                <GoabDropdown
+                  key={tasks.length}
+                  onChange={(event: GoabDropdownOnChangeDetail) => setSelectedTask(event.value as string)}
+                  value={selectedTask}
+                  name="selectedTask">
+                  {tasks.map(task => (
+                    <GoabDropdownItem
+                      key={task.value}
+                      value={task.value}
+                      mountType={task.mount}
+                      label={task.label}></GoabDropdownItem>
+                  ))}
+                </GoabDropdown>
+              </div>
+            </GoabFormItem>
+          </div>
+        </GoabContainer>
+        {language === "angular" && (
+          <>
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
                   type DropdownItemMountType = "append" | "prepend" | "reset";
                   interface Task {
                     value: string;
@@ -217,12 +219,12 @@ export const DropdownExamples = () => {
                       return item.value;
                     }
                   }`}
-          />
-          <CodeSnippet
-            lang="html"
-            tags="angular"
-            allowCopy={true}
-            code={`
+            />
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <goa-container mt="m" mb="none">
                 <div style="padding: 40px;">
                   <goa-form-item
@@ -275,16 +277,16 @@ export const DropdownExamples = () => {
                 </div>
               </goa-container>
             `}
-          />
-        </>
-      )}
-      {language === "react" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+            />
+          </>
+        )}
+        {language === "react" && (
+          <>
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
               type Task = {
                 value: string;
                 label: string;
@@ -325,13 +327,13 @@ export const DropdownExamples = () => {
                 setTaskError(false);
               }                
             `}
-          />
+            />
 
-          <CodeSnippet
-            lang="html"
-            tags="react"
-            allowCopy={true}
-            code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <GoAContainer mt="m" mb="none">
                 <div style={{ padding: "40px" }}>
                   <GoAFormItem
@@ -383,51 +385,52 @@ export const DropdownExamples = () => {
                 </div>
               </GoAContainer>
             `}
-          />
-        </>
-      )}
+            />
+          </>
+        )}
 
-      {/* ---------------------------------------- */}
-      {/* Parent child edge case */}
-      {/* ---------------------------------------- */}
-      <h3 id="component-parent-child-common-items" style={{ marginTop: "48px" }}>
-        Dynamically change items in a dropdown
-      </h3>
-      <GoAContainer>
-        <div style={{ padding: "40px" }}>
-          <GoAFormItem
-            label="Size"
-            requirement="optional"
-            helpText="Choose the type to change the list below">
-            <GoADropdown name="parent" placeholder="Select a value" onChange={loadSchemas}>
-              {parents.map(parent => (
-                <GoADropdownItem key={parent} value={parent} label={parent} />
-              ))}
-            </GoADropdown>
-          </GoAFormItem>
-          <GoAFormItem label="Items" requirement="optional" mt="l">
-            <GoADropdown name="children" placeholder="Select a value" onChange={log}>
-              {" "}
-              {children.map((child, _index) => (
-                <GoADropdownItem
-                  key={crypto.randomUUID()}
-                  value={child}
-                  label={child}
-                  mountType={"reset"}
-                />
-              ))}
-            </GoADropdown>
-          </GoAFormItem>
-        </div>
-      </GoAContainer>
+        {/* ---------------------------------------- */}
+        {/* Parent child edge case */}
+        {/* ---------------------------------------- */}
+        <h3 id="component-parent-child-common-items" style={{ marginTop: "48px" }}>
+          Dynamically change items in a dropdown
+        </h3>
+        <GoabContainer>
+          <div style={{ padding: "40px" }}>
+            <GoabFormItem
+              label="Size"
+              requirement="optional"
+              helpText="Choose the type to change the list below">
+              <GoabDropdown name="parent" placeholder="Select a value"
+                            onChange={(event: GoabDropdownOnChangeDetail) => loadSchemas(event.name as string, event.value as string)}>
+                {parents.map(parent => (
+                  <GoabDropdownItem key={parent} value={parent} label={parent} />
+                ))}
+              </GoabDropdown>
+            </GoabFormItem>
+            <GoabFormItem label="Items" requirement="optional" mt="l">
+              <GoabDropdown name="children" placeholder="Select a value" onChange={log}>
+                {" "}
+                {children.map((child, _index) => (
+                  <GoabDropdownItem
+                    key={crypto.randomUUID()}
+                    value={child}
+                    label={child}
+                    mountType={"reset"}
+                  />
+                ))}
+              </GoabDropdown>
+            </GoabFormItem>
+          </div>
+        </GoabContainer>
 
-      {language === "react" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+        {language === "react" && (
+          <>
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
                 const parents = ["All", "Big", "Small"];
                 const childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
                 const childrenBig = ["Elephant", "Truck", "Bus"];
@@ -446,13 +449,13 @@ export const DropdownExamples = () => {
                   console.log("Children Changed");
                 };
             `}
-          />
+            />
 
-          <CodeSnippet
-            lang="html"
-            tags="react"
-            allowCopy={true}
-            code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <GoAFormItem label="Parent" requirement="optional" helpText="Choose the type to change the list below">
                 <GoADropdown name="parent" placeholder="Select a value" 
                   onChange={loadSchemas}>
@@ -475,17 +478,17 @@ export const DropdownExamples = () => {
                 </GoADropdown>
               </GoAFormItem>
             `}
-          />
-        </>
-      )}
+            />
+          </>
+        )}
 
-      {language === "angular" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+        {language === "angular" && (
+          <>
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
               export class DropdownComponent {
                 changeForm = new FormGroup({
                   parentDropdown: new FormControl(""),
@@ -516,12 +519,12 @@ export const DropdownExamples = () => {
                 }
               }
             `}
-          />
-          <CodeSnippet
-            lang="html"
-            tags="angular"
-            allowCopy={true}
-            code={`
+            />
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <div [formGroup]="changeForm">
                 <goa-form-item label="Size" requirement="optional" helptext="Choose the type to change the list below">
                   <goa-dropdown goaValue formControlName="parentDropdown" 
@@ -545,9 +548,10 @@ export const DropdownExamples = () => {
                 </goa-form-item>
               </div>
             `}
-          />
-        </>
-      )}
+            />
+          </>
+        )}
+      </GoabContainer>
     </>
-  );
-};
+    );
+}

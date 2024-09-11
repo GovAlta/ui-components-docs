@@ -1,12 +1,12 @@
 import {
-  GoAAppFooter,
-  GoAAppFooterMetaSection,
-  GoAFooterNavSectionProps,
-  GoAAppFooterNavSection,
-  GoAAppFooterProps,
-  GoABadge,
-  GoATab,
-  GoATabs,
+  GoabAppFooter,
+  GoabAppFooterMetaSection,
+  GoabFooterNavSectionProps,
+  GoabAppFooterNavSection,
+  GoabAppFooterProps,
+  GoabBadge,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -28,8 +28,8 @@ const relatedComponents = [
   { link: "/components/header", name: "Header" },
   { link: "/patterns", name: "Layout" },
 ];
-type ComponentPropsType = GoAAppFooterProps;
-type FooterNavPropsType = GoAFooterNavSectionProps;
+type ComponentPropsType = GoabAppFooterProps;
+type FooterNavPropsType = GoabFooterNavSectionProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -131,14 +131,14 @@ export default function AppFooterPage() {
         relatedComponents={relatedComponents}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
             <h3>Basic Footer</h3>
             <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
-              <GoAAppFooter {...appFooterProps} />
+              <GoabAppFooter {...appFooterProps} />
             </Sandbox>
 
             {/*Component properties table*/}
@@ -210,14 +210,14 @@ export default function AppFooterPage() {
               `}
               />
 
-              <GoAAppFooter {...appFooterProps}>
-                <GoAAppFooterMetaSection>
+              <GoabAppFooter {...appFooterProps}>
+                <GoabAppFooterMetaSection>
                   <a href="privacy.html">Privacy</a>
                   <a href="disclaimer.html">Disclaimer</a>
                   <a href="accessibility.html">Accessibility</a>
                   <a href="using-alberta.html">Using Alberta.ca</a>
-                </GoAAppFooterMetaSection>
-              </GoAAppFooter>
+                </GoabAppFooterMetaSection>
+              </GoabAppFooter>
             </Sandbox>
 
             <h3 id="component-example-footer-secondary-nav">
@@ -340,8 +340,8 @@ export default function AppFooterPage() {
               `}
               />
 
-              <GoAAppFooter {...appFooterProps}>
-                <GoAAppFooterNavSection {...appFooterNavProps}>
+              <GoabAppFooter {...appFooterProps}>
+                <GoabAppFooterNavSection {...appFooterNavProps}>
                   <a href="a.html">Arts and culture</a>
                   <a href="b.html">Education and training</a>
                   <a href="c.html">Family and social supports</a>
@@ -352,27 +352,27 @@ export default function AppFooterPage() {
                   <a href="h.html">Government</a>
                   <a href="i.html">Jobs and employment</a>
                   <a href="j.html">Moving to Alberta</a>
-                </GoAAppFooterNavSection>
-                <GoAAppFooterMetaSection>
+                </GoabAppFooterNavSection>
+                <GoabAppFooterMetaSection>
                   <a href="privacy.html">Privacy</a>
                   <a href="disclaimer.html">Disclaimer</a>
                   <a href="accessibility.html">Accessibility</a>
                   <a href="using-alberta.html">Using Alberta.ca</a>
-                </GoAAppFooterMetaSection>
-              </GoAAppFooter>
+                </GoabAppFooterMetaSection>
+              </GoabAppFooter>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

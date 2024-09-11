@@ -5,13 +5,13 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
-import { GoAButtonGroupAlignment } from "@abgov/react-components";
+import { GoabBadge, GoabButton, GoabButtonGroup, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabButtonGroupAlignment } from "@abgov/ui-components-common";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
-    alignment: "center" as GoAButtonGroupAlignment,
+    alignment: "center" as GoabButtonGroupAlignment,
   });
 
   const [buttonGroupBindings, setButtonGroupBindings] = useState<ComponentBinding[]>([
@@ -68,7 +68,7 @@ export default function ButtonGroupPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setButtonGroupBindings(bindings);
-    setButtonGroupProps(props as { alignment: GoAButtonGroupAlignment;[key: string]: unknown });
+    setButtonGroupProps(props as { alignment: GoabButtonGroupAlignment;[key: string]: unknown });
   }
 
   return (
@@ -90,35 +90,35 @@ export default function ButtonGroupPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Button Group Sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={buttonGroupBindings} onChange={onSandboxChange} fullWidth>
-              <GoAButtonGroup {...buttonGroupProps}>
-                <GoAButton type="primary" onClick={noop}>
+              <GoabButtonGroup {...buttonGroupProps}>
+                <GoabButton type="primary" onClick={noop}>
                   Button
-                </GoAButton>
-                <GoAButton type="secondary" onClick={noop}>
+                </GoabButton>
+                <GoabButton type="secondary" onClick={noop}>
                   Button
-                </GoAButton>
-                <GoAButton type="tertiary" onClick={noop}>
+                </GoabButton>
+                <GoabButton type="tertiary" onClick={noop}>
                   Button
-                </GoAButton>
-              </GoAButtonGroup>
+                </GoabButton>
+              </GoabButtonGroup>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
-          <GoATab
+          </GoabTab>
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

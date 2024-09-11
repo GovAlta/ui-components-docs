@@ -6,10 +6,10 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
-  GoABadge,
-  GoAContainer, GoAContainerProps,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabContainer, GoabContainerProps,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import ContainerExamples from "@examples/container/ContainerExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -23,7 +23,7 @@ const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/divider", name: "Divider" }
 ];
-type ComponentPropsType = GoAContainerProps;
+type ComponentPropsType = GoabContainerProps;
 type CastingType = {
   [key: string]: unknown;
 };
@@ -157,32 +157,32 @@ export default function ContainerPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading={"Code examples"}>
+        <GoabTabs>
+          <GoabTab heading={"Code examples"}>
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={containerBindings} onChange={onSandboxChange} fullWidth>
-              <GoAContainer {...containerProps}>
+              <GoabContainer {...containerProps}>
                 <h2>Detach to use</h2>
                 <p>Add things inside me</p>
-              </GoAContainer>
+              </GoabContainer>
             </Sandbox>
 
             {/*Container Table Properties*/}
             <ComponentProperties properties={componentProperties} />
             <ContainerExamples />
 
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

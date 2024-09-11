@@ -1,10 +1,10 @@
 import {
-  GoABadge,
-  GoASideMenu,
-  GoASideMenuGroup,
-  GoASideMenuHeading,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabSideMenuHeading,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
@@ -75,8 +75,8 @@ export default function SideMenuPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
               <CodeSnippet
@@ -136,23 +136,23 @@ export default function SideMenuPage() {
                 `}
               />
               <div style={{ maxWidth: "250px" }}>
-                <GoASideMenu>
-                  <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
+                <GoabSideMenu>
+                  <GoabSideMenuHeading>Nav section 1</GoabSideMenuHeading>
                   <a>Home</a>
                   <a>Profile</a>
-                  <GoASideMenuHeading
-                    meta={<GoABadge type="midtone" content="Details"></GoABadge>}
+                  <GoabSideMenuHeading
+                    meta={<GoabBadge type="midtone" content="Details"></GoabBadge>}
                     icon="home">
                     Nav section 2
-                  </GoASideMenuHeading>
+                  </GoabSideMenuHeading>
                   <a>About</a>
                   <a>Contact</a>
-                  <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                  <GoASideMenuGroup heading="Group heading" icon="person">
+                  <GoabSideMenuHeading>Nav with sub nav</GoabSideMenuHeading>
+                  <GoabSideMenuGroup heading="Group heading" icon="person">
                     <a>Foo</a>
                     <a>Bar</a>
-                  </GoASideMenuGroup>
-                </GoASideMenu>
+                  </GoabSideMenuGroup>
+                </GoabSideMenu>
               </div>
             </Sandbox>
 
@@ -165,18 +165,18 @@ export default function SideMenuPage() {
               heading="Side menu heading properties"
               properties={sideMenuHeadingProperties}
             />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

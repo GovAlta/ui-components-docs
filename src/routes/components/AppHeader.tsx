@@ -1,10 +1,10 @@
 import {
-  GoAAppHeader,
-  GoAAppHeaderMenu,
-  GoAAppHeaderProps,
-  GoABadge, GoARadioGroup, GoARadioItem,
-  GoATab,
-  GoATabs
+  GoabAppHeader,
+  GoabAppHeaderMenu,
+  GoabAppHeaderProps,
+  GoabBadge, GoabRadioGroup, GoabRadioItem,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -15,6 +15,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 const componentName = "Header";
 const description =
@@ -25,7 +26,7 @@ const relatedComponents = [
   { link: "/patterns", name: "Layout" },
   { link: "/components/microsite-header", name: "Microsite header" }
 ];
-type ComponentPropsType = GoAAppHeaderProps;
+type ComponentPropsType = GoabAppHeaderProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -144,13 +145,13 @@ export default function AppHeaderPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
             <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
-              <GoAAppHeader {...appHeaderProps} />
+              <GoabAppHeader {...appHeaderProps} />
             </Sandbox>
 
             {/*Component properties*/}
@@ -197,38 +198,38 @@ export default function AppHeaderPage() {
                 </GoAAppHeader>
               `}
               />
-              <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
+              <GoabAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
                 <a href="">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
                   <a>Cases</a>
                   <a>Payments</a>
                   <a>Outstanding</a>
-                </GoAAppHeaderMenu>
+                </GoabAppHeaderMenu>
                 <a className="interactive">Sign in</a>
-              </GoAAppHeader>
+              </GoabAppHeader>
             </Sandbox>
 
             <h3 id="component-example-with-menu-click">Header with menu click event</h3>
             <Sandbox fullWidth skipRender>
-              <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
-                <GoARadioItem value="600" label="Desktop"></GoARadioItem>
-                <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
-              </GoARadioGroup>
-              <GoAAppHeader
+              <GoabRadioGroup name="device" value={deviceWidth} onChange={(event: GoabRadioGroupOnChangeDetail) => setDeviceWidth(event.value)}>
+                <GoabRadioItem value="600" label="Desktop"></GoabRadioItem>
+                <GoabRadioItem value="5000" label="Mobile"></GoabRadioItem>
+              </GoabRadioGroup>
+              <GoabAppHeader
                 url="https://example.com"
                 heading="Design System"
                 onMenuClick={handleMenuClick}
                 fullMenuBreakpoint={+deviceWidth}>
                 <a href="#">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
                   <a href="#">Cases</a>
                   <a href="#">Payments</a>
                   <a href="#">Outstanding</a>
-                </GoAAppHeaderMenu>
+                </GoabAppHeaderMenu>
                 <a href="#" className="interactive">
                   Sign in
                 </a>
-              </GoAAppHeader>
+              </GoabAppHeader>
 
               <CodeSnippet
                 lang="typescript"
@@ -306,18 +307,18 @@ export default function AppHeaderPage() {
               `}
               />
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

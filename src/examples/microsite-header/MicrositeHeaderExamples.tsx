@@ -1,4 +1,4 @@
-import { GoAMicrositeHeader } from "@abgov/react-components";
+import { GoabMicrositeHeader } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
@@ -13,7 +13,7 @@ export default function MicrositeHeaderExamples () {
       <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
       <h3 id="component-example-feedbackclick">Custom click event handler (for feedback)</h3>
             <Sandbox skipRender fullWidth>
-              <GoAMicrositeHeader type="alpha" onFeedbackClick={onClick} />
+              <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />
 
               <CodeSnippet
                 lang="typescript"
@@ -99,7 +99,7 @@ export default function MicrositeHeaderExamples () {
           ></GoAMicrositeHeader>
         `}
         />
-        <GoAMicrositeHeader
+        <GoabMicrositeHeader
           type="alpha"
           version={<><span>Slotted <b>version text</b>.</span><span>v1.23</span></>}
         />

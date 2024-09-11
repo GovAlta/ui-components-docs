@@ -1,12 +1,10 @@
 import {
-  GoABadge,
-  GoABlock,
-  GoAIconButton,
-  GoAIconButtonProps,
-  GoAIconType,
-  GoATab,
-  GoATable,
-  GoATabs,
+  GoabBadge,
+  GoabBlock,
+  GoabIconButton, GoabIconButtonProps,
+  GoabTab,
+  GoabTable,
+  GoabTabs
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -17,19 +15,20 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import ICONS from "./icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabIconType } from "@abgov/ui-components-common";
 
 const componentName = "Icon button";
 const description = "A compact button with an icon and no text.";
 const componentCategory = Category.INPUTS_AND_ACTIONS;
-type ComponentPropsType = GoAIconButtonProps;
+type ComponentPropsType = GoabIconButtonProps;
 type CastingType = {
   // add any required props here
-  icon: GoAIconType;
+  icon: GoabIconType;
   [key: string]: unknown;
 };
 export default function IconButtonPage() {
   const [iconButtonProps, setIconButtonProps] = useState<ComponentPropsType>({
-    icon: "refresh",
+    icon: "refresh" as GoabIconType,
     ariaLabel: "Refresh icon",
   });
   const [iconButtonBindings, setIconButtonBindings] = useState<ComponentBinding[]>([
@@ -162,11 +161,11 @@ export default function IconButtonPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
-              <GoAIconButton {...iconButtonProps} />
+              <GoabIconButton {...iconButtonProps} />
             </Sandbox>
 
             {/*Component properties table*/}
@@ -177,7 +176,7 @@ export default function IconButtonPage() {
 
             <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
             <Sandbox fullWidth>
-              <GoATable width="100%">
+              <GoabTable width="100%">
                 <thead>
                   <tr>
                     <th>Status</th>
@@ -189,109 +188,109 @@ export default function IconButtonPage() {
                 <tbody>
                   <tr>
                     <td>
-                      <GoABadge type="information" content="In progress"></GoABadge>
+                      <GoabBadge type="information" content="In progress"></GoabBadge>
                     </td>
                     <td>Darlene Robertson</td>
                     <td className="goa-table-number-column">45904</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>
-                      <GoABadge type="dark" content="Inactive"></GoABadge>
+                      <GoabBadge type="dark" content="Inactive"></GoabBadge>
                     </td>
                     <td>Floyd Miles</td>
                     <td className="goa-table-number-column">47838</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>
-                      <GoABadge type="success" content="Active"></GoABadge>
+                      <GoabBadge type="success" content="Active"></GoabBadge>
                     </td>
                     <td>Kathryn Murphy</td>
                     <td className="goa-table-number-column">34343</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>
-                      <GoABadge type="important" content="Recent"></GoABadge>
+                      <GoabBadge type="important" content="Recent"></GoabBadge>
                     </td>
                     <td>Annette Black</td>
                     <td className="goa-table-number-column">89897</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>
-                      <GoABadge type="success" content="Active"></GoABadge>
+                      <GoabBadge type="success" content="Active"></GoabBadge>
                     </td>
                     <td>Esther Howard</td>
                     <td className="goa-table-number-column">12323</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                   <tr>
                     <td>
-                      <GoABadge type="success" content="Active"></GoABadge>
+                      <GoabBadge type="success" content="Active"></GoabBadge>
                     </td>
                     <td>Jane Cooper</td>
                     <td className="goa-table-number-column">56565</td>
                     <td>
-                      <GoABlock>
-                        <GoAIconButton size="small" icon="pencil" ariaLabel="Edit"></GoAIconButton>
-                        <GoAIconButton size="small" icon="flag" ariaLabel="Flag"></GoAIconButton>
-                        <GoAIconButton size="small" icon="mail" ariaLabel="Send"></GoAIconButton>
-                      </GoABlock>
+                      <GoabBlock>
+                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
+                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
+                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
+                      </GoabBlock>
                     </td>
                     <td></td>
                   </tr>
                 </tbody>
-              </GoATable>
+              </GoabTable>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

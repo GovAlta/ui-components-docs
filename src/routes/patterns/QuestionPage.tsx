@@ -1,6 +1,6 @@
 import {
-  GoATab,
-  GoATabs
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import QuestionPageExamples from "@examples/question-page/QuestionPageExamples";
@@ -17,12 +17,12 @@ export default function QuestionPage() {
       <ComponentContent
         contentClassName="question-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <QuestionPageExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab heading="Design guidelines">
+          <GoabTab heading="Design guidelines">
             <figure className={css.imageContainer}>
               <img
                 alt="question page overview image"
@@ -201,8 +201,8 @@ export default function QuestionPage() {
             <p>
               Make it clear which tasks a user has completed and which they still need to complete.
             </p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

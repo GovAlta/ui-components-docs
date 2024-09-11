@@ -1,9 +1,9 @@
 import {
-  GoAAccordion,
-  GoAAccordionProps,
-  GoABadge,
-  GoATab,
-  GoATabs
+  GoabAccordion,
+  GoabAccordionProps,
+  GoabBadge,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -13,8 +13,9 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
-import { GoAHeadingSize } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
+import { useVersion } from "@contexts/VersionContext.tsx";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -25,15 +26,16 @@ const relatedComponents = [
   { link: "/components/tabs", name: "Tabs" },
 ];
 
-type ComponentPropsType = GoAAccordionProps;
+type ComponentPropsType = GoabAccordionProps;
 type CastingType = {
   heading: string;
-  headingSize: GoAHeadingSize;
+  headingSize: GoabAccordionHeadingSize;
   children: React.ReactNode;
   [key: string]: unknown;
 };
 
-export default function AccordionPage() {  
+export default function AccordionPage() {
+  const version = useVersion();
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Heading",
     headingSize: "medium",
@@ -64,8 +66,8 @@ export default function AccordionPage() {
     {
       label: "Open",
       type: "boolean",
-      name: "open", 
-      value: false
+      name: "open",
+      value: false,
     },
     {
       label: "Max Width",
@@ -76,7 +78,7 @@ export default function AccordionPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -170,6 +172,54 @@ export default function AccordionPage() {
     }
   ];
 
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      description: "Sets the heading text.",
+    },
+    {
+      name: "secondaryText",
+      type: "string",
+      description: "Sets secondary text.",
+    },
+    {
+      name: "open",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the state of the accordion container open or closed.",
+    },
+    {
+      name: "headingSize",
+      type: "GoabAccordionHeadingSize (small | medium)",
+      defaultValue: "small",
+      description: "Sets the heading size of the accordion container heading.",
+    },
+    {
+      name: "headingContent",
+      type: "ReactNode",
+      lang: "react",
+      description: "Add components to the accordion container heading such as badges.",
+    },
+    {
+      name: "headingContent",
+      type: "TemplateRef<any>",
+      lang: "angular",
+      description: "Add components to the accordion container heading such as badges.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the accordion.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+  ];
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setAccordionBindings(bindings);
     setAccordionProps(props as CastingType);
@@ -177,31 +227,38 @@ export default function AccordionPage() {
 
   return (
     <div className="accordion-page">
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={`${componentName} - ${version}`}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs>
+          <GoabTab heading="Code examples">
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
-              <GoAAccordion {...accordionProps}>
+              <GoabAccordion {...accordionProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation ullamco laboris nisi
-              </GoAAccordion>
+              </GoabAccordion>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={version?.length ? oldComponentProperties : componentProperties} />
             <AccordionExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
-            heading={<>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
-            </>}
-          >
-            </GoATab>
-        </GoATabs>
+          <GoabTab
+            heading={
+              <>
+                Design guidelines
+                <GoabBadge type="information" content="In progress" />
+              </>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </div>
   );

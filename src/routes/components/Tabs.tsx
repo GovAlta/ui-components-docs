@@ -1,4 +1,4 @@
-import { GoABadge, GoATab, GoATabs, GoATable, GoAButton } from "@abgov/react-components";
+import { GoabBadge, GoabTab, GoabTabs } from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -57,8 +57,8 @@ export default function TabsPage() {
       <ComponentHeader name={componentName} category={category} description={description} />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -86,25 +86,26 @@ export default function TabsPage() {
                   }
                   `}
               />
-              <GoATabs onChange={noop}>
-                <GoATab heading="Tab Item 1">
+              <GoabTabs onChange={noop}>
+                <GoabTab heading="Tab Item 1">
                   Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoATab>
-                <GoATab heading="Tab Item 2">
+                </GoabTab>
+                <GoabTab heading="Tab Item 2">
                   Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoATab>
-                <GoATab heading="Tab Item 3">
+                </GoabTab>
+                <GoabTab heading="Tab Item 3">
                   Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                   eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoATab>
-              </GoATabs>
+                </GoabTab>
+              </GoabTabs>
             </Sandbox>
 
             {/*GoATabs Table Properties*/}
             <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
             <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
+          </GoabTab>
 
             {/*Tabs Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
@@ -410,7 +411,7 @@ export default function TabsPage() {
                 </GoATab>
               </GoATabs>
             </Sandbox>
-          
+
             <h3 id="component-example-set-specific-tab-active">Set a specific tab to be active</h3>
             <Sandbox fullWidth skipRender>
               <CodeSnippet
@@ -713,14 +714,14 @@ export default function TabsPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

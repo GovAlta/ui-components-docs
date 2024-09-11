@@ -1,4 +1,4 @@
-import { GoAAccordion, GoABadge, GoAButton } from "@abgov/react-components";
+import { GoabAccordion, GoabBadge, GoabButton } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import "./accordion-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -87,7 +87,7 @@ export default function AccordionExamples() {
           code={`
                 <h3>Review your application</h3>
                 
-                <GoAAccordion heading="Referral details" headingContent={headingContent}>
+                <GoabAccordion heading="Referral details" headingContent={headingContent}>
                   <dl className="accordion-example">
                     <dt>Date of referral</dt>
                     <dd>January 27, 2021</dd>
@@ -98,23 +98,23 @@ export default function AccordionExamples() {
                     <dt>Intake received from another site</dt>
                     <dd>Yes</dd>
                   </dl>
-                </GoAAccordion>
+                </GoabAccordion>
                 
-                <GoAAccordion heading="Contact information">
+                <GoabAccordion heading="Contact information">
                   <dl className="accordion-example">
                     <dt>Name</dt>
                     <dd>Joan Smith</dd>
                     <dt>Contact preference</dt>
                     <dd>Text message</dd>
                   </dl>
-                </GoAAccordion>
+                </GoabAccordion>
               `}
         />
 
         <h3>Review your application</h3>
-        <GoAAccordion
+        <GoabAccordion
           heading="Referral details"
-          headingContent={<GoABadge type="important" content="Updated" />}>
+          headingContent={<GoabBadge type="important" content="Updated" />}>
           <dl className="accordion-example">
             <dt>Date of referral</dt>
             <dd>January 27, 2021</dd>
@@ -125,16 +125,16 @@ export default function AccordionExamples() {
             <dt>Intake received from another site</dt>
             <dd>Yes</dd>
           </dl>
-        </GoAAccordion>
+        </GoabAccordion>
 
-        <GoAAccordion heading="Contact information">
+        <GoabAccordion heading="Contact information">
           <dl className="accordion-example">
             <dt>Name</dt>
             <dd>Joan Smith</dd>
             <dt>Contact preference</dt>
             <dd>Text message</dd>
           </dl>
-        </GoAAccordion>
+        </GoabAccordion>
       </Sandbox>
 
       <h3 id="component-example-faq">Hide and show many sections of information (FAQ)</h3>
@@ -224,28 +224,28 @@ export default function AccordionExamples() {
               `}
         />
 
-        <GoAButton type="tertiary" mb="m" onClick={() => onClick()}>
+        <GoabButton type="tertiary" mb="m" onClick={() => onClick()}>
           { accordionStatus }
-        </GoAButton>
+        </GoabButton>
 
-        <GoAAccordion open={open} heading="How do I create an account?" headingSize="medium">
+        <GoabAccordion open={open} heading="How do I create an account?" headingSize="medium">
           To create an account you will need to contact your office admin.
-        </GoAAccordion>
+        </GoabAccordion>
 
-        <GoAAccordion open={open} heading="What verification is needed to sign documents digitally?" headingSize="medium">
+        <GoabAccordion open={open} heading="What verification is needed to sign documents digitally?" headingSize="medium">
           You will need to verify your identity through our two factor authentication in addition to
           the digital signature.
-        </GoAAccordion>
+        </GoabAccordion>
 
-        <GoAAccordion open={open} heading="Can I track the status of my service requests online?" headingSize="medium">
+        <GoabAccordion open={open} heading="Can I track the status of my service requests online?" headingSize="medium">
           Yes, you can see the status of your application on the main service dashboard when you
           login. You will receive updates and notifications in your email as your request
           progresses.
-        </GoAAccordion>
+        </GoabAccordion>
 
-        <GoAAccordion open={open} heading="Are there accessibility features for people with disabilities?" headingSize="medium">
+        <GoabAccordion open={open} heading="Are there accessibility features for people with disabilities?" headingSize="medium">
           Yes, our digital service is designed with accessibility in mind. <a href="">More information on accessibility.</a>
-        </GoAAccordion>
+        </GoabAccordion>
       </Sandbox>
     </>
   );

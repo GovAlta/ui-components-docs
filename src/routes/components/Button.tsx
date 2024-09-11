@@ -1,15 +1,15 @@
 import { useState } from "react";
 import {
-  GoABadge,
-  GoABlock,
-  GoAButton,
-  GoAButtonGroup,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
-  GoAInput,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabBlock,
+  GoabButton,
+  GoabButtonGroup,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+  GoabInput,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
@@ -167,8 +167,8 @@ export default function ButtonPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Button Sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
@@ -184,9 +184,9 @@ export default function ButtonPage() {
                   }
                 `}
               />
-              <GoAButton {...buttonProps} onClick={noop}>
+              <GoabButton {...buttonProps} onClick={noop}>
                 Primary Button
-              </GoAButton>
+              </GoabButton>
             </Sandbox>
 
             {/*Button Table Properties*/}
@@ -200,48 +200,48 @@ export default function ButtonPage() {
             <h3 id="component-example-ask-address">Ask a user for an address</h3>
             <Sandbox flags={["reactive"]}>
               
-            <GoABlock gap="xl" direction="column">
-              <GoAFormItem label="Street Address">
-                <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="Suite or unit #">
-                <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="City/town">
-                <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
+            <GoabBlock gap="xl" direction="column">
+              <GoabFormItem label="Street Address">
+                <GoabInput name="address" type="text" value="" onChange={noop} width="100%" />
+              </GoabFormItem>
+              <GoabFormItem label="Suite or unit #">
+                <GoabInput name="suite" type="text" value="" onChange={noop} width="100%" />
+              </GoabFormItem>
+              <GoabFormItem label="City/town">
+                <GoabInput name="city" type="text" value="" onChange={noop} width="100%" />
+              </GoabFormItem>
 
-              <GoABlock direction={"row"}>
-                <GoAFormItem label="Provice/territory">
-                  <GoADropdown onChange={noop} name="province" value="alberta">
-                    <GoADropdownItem label="Alberta" value="alberta" />
-                    <GoADropdownItem label="BC" value="bc" />
-                    <GoADropdownItem label="Manitoba" value="manitoba" />
-                    <GoADropdownItem label="New Brunswick" value="new-brunswick" />
-                    <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
-                    <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
-                    <GoADropdownItem label="Ontario" value="ontario" />
-                    <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
-                    <GoADropdownItem label="Quebec" value="quebec" />
-                    <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-                  </GoADropdown>
-                </GoAFormItem>
+              <GoabBlock direction={"row"}>
+                <GoabFormItem label="Provice/territory">
+                  <GoabDropdown onChange={noop} name="province" value="alberta">
+                    <GoabDropdownItem label="Alberta" value="alberta" />
+                    <GoabDropdownItem label="BC" value="bc" />
+                    <GoabDropdownItem label="Manitoba" value="manitoba" />
+                    <GoabDropdownItem label="New Brunswick" value="new-brunswick" />
+                    <GoabDropdownItem label="Newfoundland and Labrador" value="newfoundland" />
+                    <GoabDropdownItem label="Nova Scotia" value="nova-scotia" />
+                    <GoabDropdownItem label="Ontario" value="ontario" />
+                    <GoabDropdownItem label="Prince Edward Island" value="prince-edward-island" />
+                    <GoabDropdownItem label="Quebec" value="quebec" />
+                    <GoabDropdownItem label="Saskatchewan" value="saskatchewan" />
+                  </GoabDropdown>
+                </GoabFormItem>
 
-                <GoAFormItem label="Postal Code">
-                  <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
-                </GoAFormItem>
-              </GoABlock>
+                <GoabFormItem label="Postal Code">
+                  <GoabInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+                </GoabFormItem>
+              </GoabBlock>
               
-             </GoABlock>
+             </GoabBlock>
               
-              <GoAButtonGroup alignment="start" mt="2xl">
-                <GoAButton type="primary" onClick={noop}>
+              <GoabButtonGroup alignment="start" mt="2xl">
+                <GoabButton type="primary" onClick={noop}>
                   Submit and continue
-                </GoAButton>
-                <GoAButton type="secondary" onClick={noop}>
+                </GoabButton>
+                <GoabButton type="secondary" onClick={noop}>
                   Cancel
-                </GoAButton>
-              </GoAButtonGroup>
+                </GoabButton>
+              </GoabButtonGroup>
             </Sandbox>
 
             {/*Button example 2*/}
@@ -250,45 +250,45 @@ export default function ButtonPage() {
               <GoAModal heading="Are you sure you want to delete this record?">
                 <p>You cannot undo this action.</p>
 
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
+                <GoabButtonGroup alignment="end" mt="l">
+                  <GoabButton type="secondary" onClick={noop}>
                     Cancel
-                  </GoAButton>
-                  <GoAButton type="primary" variant="destructive" onClick={noop}>
+                  </GoabButton>
+                  <GoabButton type="primary" variant="destructive" onClick={noop}>
                     Delete record
-                  </GoAButton>
-                </GoAButtonGroup>
+                  </GoabButton>
+                </GoabButtonGroup>
               </GoAModal>
             </Sandbox>
 
             {/*Button example 3*/}
             <h3 id="component-example-disabled-button">Disabled button with a required field</h3>
             <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Name" requirement="required">
-                <GoAInput name="input" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
+              <GoabFormItem label="Name" requirement="required">
+                <GoabInput name="input" type="text" value="" onChange={noop} width="100%" />
+              </GoabFormItem>
 
-              <GoAButtonGroup alignment="start" mt="l">
-                <GoAButton disabled={true} onClick={noop}>
+              <GoabButtonGroup alignment="start" mt="l">
+                <GoabButton disabled={true} onClick={noop}>
                   Confirm
-                </GoAButton>
-                <GoAButton type="secondary" onClick={noop}>
+                </GoabButton>
+                <GoabButton type="secondary" onClick={noop}>
                   Cancel
-                </GoAButton>
-              </GoAButtonGroup>
+                </GoabButton>
+              </GoabButtonGroup>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

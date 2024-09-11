@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { GoABadge, GoAGrid, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabGrid, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function GridPage() {
@@ -76,12 +76,12 @@ export default function GridPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Grid sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
-              <GoAGrid {...gridProps}>
+              <GoabGrid {...gridProps}>
                 <div
                   style={{
                     padding: "1rem",
@@ -127,21 +127,21 @@ export default function GridPage() {
                 >
                   5
                 </div>
-              </GoAGrid>
+              </GoabGrid>
             </Sandbox>
             {/*Grid component properties*/}
             <ComponentProperties properties={componentProperties} />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

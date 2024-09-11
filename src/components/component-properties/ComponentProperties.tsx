@@ -1,9 +1,8 @@
-import { GoAAccordion, GoABadge } from "@abgov/react-components";
+import { GoabAccordion, GoabBadge } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@components/sandbox";
 
 import css from "./ComponentProperties.module.css";
-
 export type ComponentProperty = {
   name: string;
   type?: string | string[];
@@ -46,13 +45,14 @@ export const ComponentProperties = (props: Props) => {
       >
         {props.heading || "Properties"}
       </h3>
-      <GoAAccordion heading={props.heading || "Properties"} mt="l" mb="none">
+      <GoabAccordion heading={props.heading || "Properties"} mt="l" mb="none">
         <div>
           {filteredProperties.map((props, index) => (
+
             <ComponentProperty key={index} props={props} />
           ))}
         </div>
-      </GoAAccordion>
+      </GoabAccordion>
     </>
   );
 };
@@ -67,7 +67,7 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       <div className={css.details}>
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
-        {props.required && <GoABadge type="important" content="Required" />}
+        {props.required && <GoabBadge type="important" content="Required" />}
 
         {props.type && (
           <code className={`${css.code} ${css.type}`}>

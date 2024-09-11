@@ -7,18 +7,17 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 
 import {
-  GoABadge,
-  GoATab,
-  GoATabs,
-  GoADatePickerProps,
-  GoADatePicker,
-  GoAFormItem,
-  GoAButton,
-  GoAButtonGroup,
+  GoabBadge,
+  GoabTab,
+  GoabTabs,
+  GoabDatePickerProps,
+  GoabDatePicker,
+  GoabFormItem, GoabButtonGroup, GoabButton
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 
@@ -30,10 +29,10 @@ const relatedComponents = [
 ];
 const description =
   "Lets users select a date through a calendar without the need to manually type it in a field.";
-type ComponentPropsType = GoADatePickerProps;
+type ComponentPropsType = GoabDatePickerProps;
 type CastingType = {
   [key: string]: unknown;
-  onChange: (name: string, value: Date | undefined) => void;
+  onChange: (event: GoabDatePickerOnChangeDetail)=> void;
 };
 
 export default function DatePickerPage() {
@@ -151,11 +150,10 @@ export default function DatePickerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{ display: "none" }}>
-              Component
-            </h2>
+
+        <GoabTabs>
+          <GoabTab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
@@ -201,11 +199,12 @@ export default function DatePickerPage() {
                 }
               `}
               />
-              <GoAFormItem {...formItemProps}>
-                <GoADatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
-              </GoAFormItem>
+              <GoabFormItem {...formItemProps}>
+                <GoabDatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
+              </GoabFormItem>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+          </GoabTab>
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples
@@ -334,31 +333,30 @@ export default function DatePickerPage() {
               `}
               />
 
-              <GoAFormItem label="Date Picker">
-                <GoADatePicker
+              <GoabFormItem label="Date Picker">
+                <GoabDatePicker
                   name="item"
                   value={date}
-                  onChange={(_, value) => setNewDate(value)}
-                  mb="xl"></GoADatePicker>
-              </GoAFormItem>
+                  onChange={(e: GoabDatePickerOnChangeDetail) => setNewDate(e.value as Date)}
+                  mb="xl"></GoabDatePicker>
+              </GoabFormItem>
 
-              <GoAButtonGroup mt={"xs"} alignment={"start"}>
-                <GoAButton onClick={setValue} mr="l">
+              <GoabButtonGroup mt={"xs"} alignment={"start"}>
+                <GoabButton onClick={setValue} mr="l">
                   Set Value
-                </GoAButton>
-                <GoAButton onClick={clearValue}>Clear Value</GoAButton>
-              </GoAButtonGroup>
+                </GoabButton>
+                <GoabButton onClick={clearValue}>Clear Value</GoabButton>
+              </GoabButtonGroup>
             </Sandbox>
-          </GoATab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

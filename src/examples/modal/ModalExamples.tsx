@@ -1,20 +1,20 @@
 import { LanguageContext, Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
-  GoADatePicker,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
-  GoAInput,
-  GoAModal,
-  GoATextArea,
+  GoabButton,
+  GoabButtonGroup,
+  GoabContainer,
+  GoabDatePicker,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+  GoabInput,
+  GoabModal, GoabTextarea
 } from "@abgov/react-components";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./modal-examples.css";
+import { GoabDropdownOnChangeDetail, GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
 
 export default function ModalExamples() {
   // hooks
@@ -32,23 +32,20 @@ export default function ModalExamples() {
   const navigate = useNavigate();
   const language = useContext(LanguageContext);
   // @ts-ignore
-  const onChangeEffectiveDate = (name: string, value: Date | undefined) => {
-    setEffectiveDate(value);
+  const onChangeEffectiveDate = (detail: GoabDatePickerOnChangeDetail) => {
+    setEffectiveDate(detail.value);
   };
 
-  // @ts-ignore
-  const onChangeType = (name: string, value: string[] | string) => {
-    setType(value as string);
+  const onChangeType = (event: GoabDropdownOnChangeDetail) => {
+    setType(event.value);
   };
 
-  // @ts-ignore
-  const onChangeName = (name: string, value: string) => {
+  const onChangeName = (value: string) => {
     setName(value);
   }
 
-  // @ts-ignore
-  const onChangeDescription = (name: string, value: string) => {
-    setDescription(value);
+  const onChangeDescription = (event: GoabTextAreaOnChangeDetail) => {
+    setDescription(event.value);
   }
 
   return (
@@ -58,24 +55,24 @@ export default function ModalExamples() {
       </h2>
       <h3 id="component-example-basic">Basic Modal</h3>
       <Sandbox skipRender>
-        <GoAButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoAButton>
-        <GoAModal
+        <GoabButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoabButton>
+        <GoabModal
           heading="Heading"
           role="dialog"
           open={basicModalOpen}
           onClose={() => setBasicModalOpen(false)}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="secondary" onClick={() => setBasicModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="secondary" onClick={() => setBasicModalOpen(false)}>
                 Secondary
-              </GoAButton>
-              <GoAButton type="primary" onClick={() => setBasicModalOpen(false)}>
+              </GoabButton>
+              <GoabButton type="primary" onClick={() => setBasicModalOpen(false)}>
                 Primary
-              </GoAButton>
-            </GoAButtonGroup>
+              </GoabButton>
+            </GoabButtonGroup>
           }>
           <p>Content</p>
-        </GoAModal>
+        </GoabModal>
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -144,31 +141,31 @@ export default function ModalExamples() {
 
       <h3 id="component-example-destructive">Confirm a destructive action</h3>
       <Sandbox skipRender>
-        <GoAButton
+        <GoabButton
           type="tertiary"
           leadingIcon="trash"
           onClick={() => setDestructiveModalOpen(true)}>
           Delete my application
-        </GoAButton>
-        <GoAModal
+        </GoabButton>
+        <GoabModal
           heading="Are you sure you want to delete this application?"
           open={destructiveModalOpen}
           role="alertdialog"
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="tertiary" onClick={() => setDestructiveModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="tertiary" onClick={() => setDestructiveModalOpen(false)}>
                 Cancel
-              </GoAButton>
-              <GoAButton
+              </GoabButton>
+              <GoabButton
                 type="primary"
                 variant="destructive"
                 onClick={() => setDestructiveModalOpen(false)}>
                 Delete application
-              </GoAButton>
-            </GoAButtonGroup>
+              </GoabButton>
+            </GoabButtonGroup>
           }>
           <p>This action cannot be undone.</p>
-        </GoAModal>
+        </GoabModal>
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -239,28 +236,28 @@ export default function ModalExamples() {
 
       <h3 id="component-example-warning">Warn a user of a deadline</h3>
       <Sandbox skipRender>
-        <GoAButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
+        <GoabButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
           Save for later
-        </GoAButton>
-        <GoAModal
+        </GoabButton>
+        <GoabModal
           heading="Complete submission prior to 1PM"
           calloutVariant="important"
           role="alertdialog"
           open={warnCalloutModalOpen}
           onClose={() => setWarnCalloutModalOpen(false)}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="primary" onClick={() => setWarnCalloutModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="primary" onClick={() => setWarnCalloutModalOpen(false)}>
                 I understand
-              </GoAButton>
-            </GoAButtonGroup>
+              </GoabButton>
+            </GoabButtonGroup>
           }>
           <p>
             You’ve selected to adjourn a matter that is required to appear today. This Calgary court
             location does not accept adjournment requests past 1PM MST. Please submit your
             adjournment request as soon as possible.
           </p>
-        </GoAModal>
+        </GoabModal>
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -327,26 +324,26 @@ export default function ModalExamples() {
 
       <h3 id="component-example-with-input">Confirm record change</h3>
       {/*Don't use a Sandbox because Datepicker inside a modal will make the modal shifts everytime we click on datepicker*/}
-      <GoAContainer mt="m" mb="none">
-        <GoAButtonGroup alignment="center">
-          <GoAButton onClick={() => setInputModalOpen(true)}>Save and continue</GoAButton>
-        </GoAButtonGroup>
+      <GoabContainer mt="m" mb="none">
+        <GoabButtonGroup alignment="center">
+          <GoabButton onClick={() => setInputModalOpen(true)}>Save and continue</GoabButton>
+        </GoabButtonGroup>
 
-        <GoAModal
+        <GoabModal
           heading="Address has changed"
           role="dialog"
           open={inputModalOpen}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="secondary" onClick={() => setInputModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="secondary" onClick={() => setInputModalOpen(false)}>
                 Undo address change
-              </GoAButton>
-              <GoAButton type="primary" onClick={() => setInputModalOpen(false)}>
+              </GoabButton>
+              <GoabButton type="primary" onClick={() => setInputModalOpen(false)}>
                 Confirm
-              </GoAButton>
-            </GoAButtonGroup>
+              </GoabButton>
+            </GoabButtonGroup>
           }>
-          <GoAContainer type="non-interactive" accent="filled" padding="compact" width="full">
+          <GoabContainer type="non-interactive" accent="filled" padding="compact" width="full">
             <dl className="address-change-example--description">
               <dt>Before</dt>
               <dd>123456 78 Ave NW, Edmonton, Alberta</dd>
@@ -355,15 +352,15 @@ export default function ModalExamples() {
               <dt>After</dt>
               <dd>881 12 Ave NW, Edmonton, Alberta</dd>
             </dl>
-          </GoAContainer>
-          <GoAFormItem label="Effective date">
-            <GoADatePicker
+          </GoabContainer>
+          <GoabFormItem label="Effective date">
+            <GoabDatePicker
               onChange={onChangeEffectiveDate}
               name="effectiveDate"
-              value={effectiveDate}></GoADatePicker>
-          </GoAFormItem>
-        </GoAModal>
-      </GoAContainer>
+              value={effectiveDate}></GoabDatePicker>
+          </GoabFormItem>
+        </GoabModal>
+      </GoabContainer>
       <CodeSnippet
         lang="css"
         allowCopy={true}
@@ -500,47 +497,47 @@ export default function ModalExamples() {
 
       <h3 id="component-example-add-item">Add another item</h3>
       {/*Don't use a Sandbox because the Dropdown inside a modal will make the modal shifts everytime we tab from the dropdown*/}
-      <GoAContainer mt="m" mb="none">
-        <GoAButtonGroup alignment="center">
-          <GoAButton type="tertiary" leadingIcon="add" onClick={() => setAddItemModalOpen(true)}>
+      <GoabContainer mt="m" mb="none">
+        <GoabButtonGroup alignment="center">
+          <GoabButton type="tertiary" leadingIcon="add" onClick={() => setAddItemModalOpen(true)}>
             Add another item
-          </GoAButton>
-        </GoAButtonGroup>
+          </GoabButton>
+        </GoabButtonGroup>
 
-        <GoAModal
+        <GoabModal
           heading="Add a new item"
           role="dialog"
           open={addItemModalOpen}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="tertiary" onClick={() => setAddItemModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="tertiary" onClick={() => setAddItemModalOpen(false)}>
                 Cancel
-              </GoAButton>
-              <GoAButton type="primary" onClick={() => setAddItemModalOpen(false)}>
+              </GoabButton>
+              <GoabButton type="primary" onClick={() => setAddItemModalOpen(false)}>
                 Save new item
-              </GoAButton>
-            </GoAButtonGroup>
+              </GoabButton>
+            </GoabButtonGroup>
           }>
           <p>Fill in the information to create a new item</p>
-          <GoAFormItem label="Type" mt="xs">
-            <GoADropdown onChange={onChangeType} value={type}>
-              <GoADropdownItem value="1" label="Option 1"></GoADropdownItem>
-              <GoADropdownItem value="2" label="Option 2"></GoADropdownItem>
-            </GoADropdown>
-          </GoAFormItem>
-          <GoAFormItem label="Name" mt="xs">
-            <GoAInput onChange={onChangeName} value={name} name="name"></GoAInput>
-          </GoAFormItem>
-          <GoAFormItem label="Description" mt="xs">
-            <GoATextArea
+          <GoabFormItem label="Type" mt="xs">
+            <GoabDropdown onChange={onChangeType} value={type}>
+              <GoabDropdownItem value="1" label="Option 1"></GoabDropdownItem>
+              <GoabDropdownItem value="2" label="Option 2"></GoabDropdownItem>
+            </GoabDropdown>
+          </GoabFormItem>
+          <GoabFormItem label="Name" mt="xs">
+            <GoabInput onChange={(event) => onChangeName(event.value)} value={name} name="name"></GoabInput>
+          </GoabFormItem>
+          <GoabFormItem label="Description" mt="xs">
+            <GoabTextarea
               name="description"
               width="80%"
               rows={2}
               onChange={onChangeDescription}
-              value={description}></GoATextArea>
-          </GoAFormItem>
-        </GoAModal>
-      </GoAContainer>
+              value={description}></GoabTextarea>
+          </GoabFormItem>
+        </GoabModal>
+      </GoabContainer>
 
       {language === "angular" && (
         <>
@@ -762,26 +759,26 @@ export default function ModalExamples() {
                   ></GoAModal>
                 `}
         />
-        <GoAButton onClick={() => setOnRouteChangeModalOpen(true)}>Open</GoAButton>
-        <GoAModal
+        <GoabButton onClick={() => setOnRouteChangeModalOpen(true)}>Open</GoabButton>
+        <GoabModal
           heading="Are you sure you want to change route?"
           open={onRouteChangeModalOpen}
           onClose={() => setOnRouteChangeModalOpen(false)}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="secondary" onClick={() => setOnRouteChangeModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="secondary" onClick={() => setOnRouteChangeModalOpen(false)}>
                 Cancel
-              </GoAButton>
-              <GoAButton
+              </GoabButton>
+              <GoabButton
                 type="primary"
                 onClick={() => {
                   setOnRouteChangeModalOpen(false);
                   navigate("/components");
                 }}>
                 Change route
-              </GoAButton>
-            </GoAButtonGroup>
-          }></GoAModal>
+              </GoabButton>
+            </GoabButtonGroup>
+          }></GoabModal>
       </Sandbox>
     </>
   );

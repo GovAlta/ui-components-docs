@@ -1,4 +1,4 @@
-import { GoAContainer } from "@abgov/react-components";
+import { GoabContainer } from "@abgov/react-components";
 import "./Overview.css";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 export default function DesignTokensOverviewPage() {
@@ -27,14 +27,14 @@ export default function DesignTokensOverviewPage() {
         product teams.
       </p>
 
-      <GoAContainer type="non-interactive" mt="2xl" mb="xs">
+      <GoabContainer type="non-interactive" mt="2xl" mb="xs">
         <h4>Design token example</h4>
         <p>
           The GoA’s colour for a hover interaction is #004F84. This property is defined as a design
           token called <code className="inline">--goa-color-interactive-hover</code>. This token is used in Figma as a
           style and used in code as CSS or SASS variables
         </p>
-      </GoAContainer>
+      </GoabContainer>
 
       <h3>What this means for...</h3>
       <h4>Developers</h4>

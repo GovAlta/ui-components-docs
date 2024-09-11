@@ -1,4 +1,4 @@
-import { GoACheckbox, GoAContainer, GoATable } from "@abgov/react-components";
+import { GoabCheckbox, GoabContainer, GoabTable } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function SupportedBrowsersPage() {
@@ -10,7 +10,7 @@ export default function SupportedBrowsersPage() {
         The design system components are tested on the following browsers and devices:
       </h3>
 
-      <GoATable width="564px">
+      <GoabTable width="564px">
         <thead>
           <tr>
             <th>Browser</th>
@@ -24,64 +24,64 @@ export default function SupportedBrowsersPage() {
           <tr>
             <td>Google Chrome</td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Microsoft Edge</td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked={false} name="browser" disabled={true} />
+              <GoabCheckbox checked={false} name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked={false} name="browser" disabled={true} />
+              <GoabCheckbox checked={false} name="browser" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Mozilla Firefox</td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>
-              <GoACheckbox checked={false} name="browser" disabled={true} />
+              <GoabCheckbox checked={false} name="browser" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Apple Safari</td>
             <td>N/A</td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
             <td>N/A</td>
             <td>
-              <GoACheckbox checked name="browser" disabled={true} />
+              <GoabCheckbox checked name="browser" disabled={true} />
             </td>
           </tr>
         </tbody>
-      </GoATable>
+      </GoabTable>
 
       <div className="max-width-72ch">
-        <GoAContainer type="non-interactive" mt="2xl">
+        <GoabContainer type="non-interactive" mt="2xl">
           <h3>Representative mobile OS used in testing</h3>
           <p>
             <strong>Android OS:</strong> 10+
@@ -89,7 +89,7 @@ export default function SupportedBrowsersPage() {
           <p>
             <strong>iOS: </strong> 15+
           </p>
-        </GoAContainer>
+        </GoabContainer>
       </div>
     </ComponentContent>
   );

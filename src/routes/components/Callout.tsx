@@ -1,14 +1,10 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoACallout,
-  GoACalloutProps,
-  GoACalloutType,
-  GoASpacer,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabTab,
+  GoabTabs,
+  GoabCallout,
+  GoabCalloutProps
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -18,6 +14,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabCalloutType } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 // == Page props ==
@@ -28,9 +25,9 @@ const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/Notification-banner", name: "Notification banner" },
 ];
-type ComponentPropsType = GoACalloutProps;
+type ComponentPropsType = GoabCalloutProps;
 type CastingType = {
-  type: GoACalloutType;
+  type: GoabCalloutType;
   [key: string]: unknown;
 };
 
@@ -148,18 +145,18 @@ export default function CalloutPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-              <GoACallout {...componentProps}>
+              <GoabCallout {...componentProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </GoACallout>
+              </GoabCallout>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-            
+
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
             <h3 id="component-example-confirm-application-submitted">Confirm that an application was submitted</h3>
@@ -235,14 +232,14 @@ export default function CalloutPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

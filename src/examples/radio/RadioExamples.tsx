@@ -1,6 +1,6 @@
-import { GoARadioGroup, GoARadioItem, GoAFormItem } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from "@abgov/react-components";
 
 const noop = () => { };
 
@@ -46,17 +46,17 @@ export default function RadioExamples () {
             </GoAFormItem> 
             `}
         />
-        <GoAFormItem label="Select one option">
-          <GoARadioGroup name="selectOne" value="1" onChange={noop}>
-            <GoARadioItem
+        <GoabFormItem label="Select one option">
+          <GoabRadioGroup name="selectOne" value="1" onChange={noop}>
+            <GoabRadioItem
                 value="1"
                 label="Option one"
                 description={<span>Help text with a <a href="#">link</a>.</span>}
                 />
-            <GoARadioItem value="2" label="Option two" />
-            <GoARadioItem value="3" label="Option three" />
-          </GoARadioGroup>
-        </GoAFormItem>        
+            <GoabRadioItem value="2" label="Option two" />
+            <GoabRadioItem value="3" label="Option three" />
+          </GoabRadioGroup>
+        </GoabFormItem>
       </Sandbox>
       <h3 id="component-example-max-width">Radio item with max width</h3>
       <Sandbox fullWidth skipRender>
@@ -98,17 +98,17 @@ export default function RadioExamples () {
             </GoAFormItem> 
             `}
         />
-        <GoAFormItem label="Select one option">
-          <GoARadioGroup name="selectOne" value="1" onChange={noop}>
-            <GoARadioItem
+        <GoabFormItem label="Select one option">
+          <GoabRadioGroup name="selectOne" value="1" onChange={noop}>
+            <GoabRadioItem
                 value="1"
                 label="Option one which has a very long label with lots of text"
                 maxWidth="300px"
                 />
-            <GoARadioItem value="2" label="Option two" />
-            <GoARadioItem value="3" label="Option three" />
-          </GoARadioGroup>
-        </GoAFormItem>        
+            <GoabRadioItem value="2" label="Option two" />
+            <GoabRadioItem value="3" label="Option three" />
+          </GoabRadioGroup>
+        </GoabFormItem>
       </Sandbox>
     </>
   );

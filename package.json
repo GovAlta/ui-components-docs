@@ -12,8 +12,9 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "5.4.0",
-    "@abgov/web-components": "1.29.0",
+    "@abgov/react-components": "/Users/thytran142/WebstormProjects/ui-components/dist/libs/react-components",
+    "@abgov/web-components": "/Users/thytran142/WebstormProjects/ui-components/dist/libs/web-components",
+    "@abgov/ui-components-common": "/Users/thytran142/WebstormProjects/ui-components/dist/libs/common",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "octokit": "^4.0.2",
