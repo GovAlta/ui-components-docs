@@ -136,17 +136,17 @@ export default function TextFieldExamples() {
           allowCopy={true}
           code={`
                   <goa-form-item label="Tuition">
-                    <goa-input (_change)="onChangeTuitionAmount($event)" value="" name="tuition" leadingcontent="$">
+                    <goa-input (_change)="onChangeTuitionAmount($event)" value="" name="tuition" mb="xl">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
                   <goa-form-item label="Books/Supplies/Instruments">
-                    <goa-input (_change)="onChangeSuppliesAmount($event)" value="" name="book" leadingcontent="$">
+                    <goa-input (_change)="onChangeSuppliesAmount($event)" value="" name="book" mb="xl">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
                   <goa-form-item label="Other costs">
-                    <goa-input (_change)="onChangeOthersAmount($event)" value="" name="others" leadingcontent="$">
+                    <goa-input (_change)="onChangeOthersAmount($event)" value="" name="others">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
