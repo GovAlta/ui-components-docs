@@ -1,4 +1,9 @@
-import {GoABlock} from "@abgov/react-components";
+import {
+  GoABlock, 
+  GoASpacer,
+  GoADivider,
+  GoABadge,
+} from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
@@ -7,13 +12,14 @@ export default function SupportOverviewPage() {
     <ComponentContent>
       <h1>Support</h1>
       <h3>
-        Get support from the design system team using the component library, design and usage guidelines, design system best practices, and accessibility.
+        Get support building government services. The design system team can help Government of Alberta product teams use the components, patterns, documentation, and more.
       </h3>
 
       <div className="max-width-72ch">
         <h2>
           Drop in hours
         </h2>
+        <GoABadge type="information" content="For Government of Alberta product teams"></GoABadge>
         <h3>(every Tuesday and Friday 1:00 - 3:00pm MST)</h3>
         <p>
           For designers and developers to get feedback on their usage of the design system, propose new components or changes to existing components, ask any questions, and give feedback to the design system.
@@ -23,49 +29,39 @@ export default function SupportOverviewPage() {
           <a
             href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/"
             target="_blank">
-            Book a time
+            Book a time (GoA email required)
           </a>
         </GoABlock>
         <h2>Submit an issue</h2>
         <h3>Report a bug</h3>
+        <GoABadge type="information" content="For Government of Alberta product teams" mb="m"></GoABadge>
         <p>
           If an issue or inconsistency is encountered within the design system, please use GitHub to
           report a bug. Doing so notifies the design system team of a problem requiring immediate
           attention and resolution. Ensure that the bug report is fully filled out; this ensures
           that the team has all the necessary information to investigate, prioritize, and fix the
-          issue effectively. <br />
+          issue effectively.<br />
           <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-            Report a bug
+            Report a bug on Github
           </a>
         </p>
-
+        <GoASpacer vSpacing="2xs"></GoASpacer>
         <h3>Request a feature</h3>
+        <GoABadge type="information" content="For Government of Alberta product teams" mb="m"></GoABadge>
         <p>
           Use GitHub to submit well-defined requests for new features. Submitting a feature request
           implies that the contribution process has been followed, providing the design system team
           with actionable items to evaluate and prioritize.
-          <GoABlock gap="m">
-            <Link to="/support/contribute">Learn more about about the contribution process</Link>
+          <GoABlock gap="l">
             <a href="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-              Request a feature
+              Request a feature on Github
             </a>
+            <Link to="/support/contribute">View our contribution process</Link>
           </GoABlock>
         </p>
-
-        <h3>Take part in a Discussion on Github</h3>
-        <p>
-          “Discussions” are a place for sharing research, idea exploration, or open-ended
-          conversations. You should start a discussion when the topic you're bringing up is more
-          about sharing information, having a conversation, or asking a question. <br />
-          <GoABlock mb="3xl">
-            <a
-              href="https://github.com/GovAlta/ui-components/discussions"
-              target="_blank">
-              Start a discussion
-            </a>
-          </GoABlock>
-        </p>
-
+        
+        <GoADivider mt="2xl" mb="2xl"></GoADivider>        
+        
         <h2>Design system team</h2>
         <div className="ds-team-title">Product Owner</div>
         <div className="ds-team">

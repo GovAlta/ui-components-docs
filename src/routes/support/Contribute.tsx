@@ -6,8 +6,8 @@ export default function ContributePage() {
     <ComponentContent>
       <h1>Contribute</h1>
       <h3 className="introduction">
-        Your contributions make an impact</h3>
-       <p>The design system is a shared resource for internal product teams to use and contribute to.
+        Contributions from product teams help improve the system.</h3>
+       <p>The design system is a shared resource for Government of Alberta product teams to use and contribute to.
         We encourage everyone, regardless of their role, to enhance the quality of the design
         system.</p>
       

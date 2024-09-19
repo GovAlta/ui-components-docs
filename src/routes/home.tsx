@@ -6,6 +6,7 @@ import {
   GoAHeroBanner,
   GoAHeroBannerActions,
   GoAPageBlock,
+  GoASpacer,
 } from "@abgov/react-components";
 import "./home.css";
 import { MAX_CONTENT_WIDTH } from "@routes/root";
@@ -17,11 +18,11 @@ const HomePage = () => {
   return (
     <>
       <GoAHeroBanner
-        heading="Design your service using reusable patterns, components, tokens, and content guidelines."
+        heading="Design your government service using reusable patterns, components, design tokens, and content guidelines."
         maxContentWidth={MAX_CONTENT_WIDTH}
       >
-        Use these resources to build your service. Learn from the research and experience of other 
-        service teams and avoid repeating work that’s already been done.
+        Resources for Government of Alberta product teams to build better services. Learn from the research and experience of other 
+        product teams and avoid repeating work that’s already been done.
         <GoAHeroBannerActions>
           <GoAButtonGroup alignment="start">
             <GoAButton onClick={() => {
@@ -69,24 +70,25 @@ const HomePage = () => {
         </GoAGrid>
 
         <GoADivider mb="2xl"></GoADivider>
-        <h2>Using the design system in your service</h2>
-        <div className="home__using-design-system">
+        <h2>How to use the design system in your service</h2>
+        <div className="max-width-72ch">
           <ol>
-            <li>Start with the design system and validate your design through user testing.</li>
+            <li>Start by using the design system resources and validate your product through user testing.</li>
             <li>
-              If usability issues arise or a problem cannot be resolved within the system, then
-              consider a custom solution or extending a component.
+            If a component or pattern doesn’t exist in production or doesn’t meet the needs of your users,
+            {' '}<Link to="/support">contact the design system team</Link>. We’ll discuss the issue to understand it better and decide on the next steps together.
             </li>
           </ol>
           <p>
             <strong>Remember:</strong> Avoid custom solutions without a genuine user need. Leverage the existing resources from the design system first to prevent
-            unnecessary rework and iterate on your service faster.
+            unnecessary work and iterate on your service faster.
           </p>
           <Link to="/get-started">
             Learn more about starting with the design system
           </Link>
           <SupportInfo />
         </div>
+        <GoASpacer vSpacing="xl"></GoASpacer>
       </GoAPageBlock>
     </>
   );

@@ -16,7 +16,6 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-
 // == Page props ==
 
 const componentName = "Callout";
@@ -63,7 +62,7 @@ export default function CalloutPage() {
       name: "maxWidth",
       requirement: "optional",
       value: "",
-    },    
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -114,6 +113,20 @@ export default function CalloutPage() {
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
+    {
+      name: "arialive",
+      lang: "angular",
+      type: ["off", "polite", "assertive"],
+      description: "Indicates how assistive technology should handle updates to the live region.",
+      defaultValue: "off",
+    },
+    {
+      name: "ariaLive",
+      lang: "react",
+      type: ["off", "polite", "assertive"],
+      description: "Indicates how assistive technology should handle updates to the live region.",
+      defaultValue: "off",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -123,13 +136,19 @@ export default function CalloutPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoACallout {...componentProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -144,8 +163,7 @@ export default function CalloutPage() {
                 Design guidelines
                 <GoABadge type="information" content="In progress" />
               </>
-            }
-          ></GoATab>
+            }></GoATab>
         </GoATabs>
       </ComponentContent>
     </>
