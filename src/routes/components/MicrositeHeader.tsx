@@ -14,6 +14,7 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
 
 const componentName = "Microsite header";
 const description =
@@ -82,7 +83,15 @@ export default function MicrositeHeaderPage() {
     },
     {
       name: "version",
-      type: "string",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Displayed on the right-hand side of the header.",
+    },
+    {
+      name: "version",
+      type: "string | slot",
+      lang: "angular",
+      description: "Displayed on the right-hand side of the header.",
     },
     {
       name: "feedbackUrl",
@@ -134,6 +143,7 @@ export default function MicrositeHeaderPage() {
 
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
+            <MicrositeHeaderExamples />
           </GoATab>
 
           <GoATab
