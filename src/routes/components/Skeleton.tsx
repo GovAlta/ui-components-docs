@@ -79,18 +79,35 @@ export default function SkeletonPage() {
       defaultValue: "1",
     },
     {
-      name: "Line Count",
+      name: "linecount",
       type: "number",
       description:
         "Used within components that contain multiple lines. Currently only used in card skeleton type",
       defaultValue: "3",
+      lang: "angular",
     },
     {
-      name: "Max Width",
+      name: "maxwidth",
       type: "string",
       description: "Set component maximum width. Currently only used in card skeleton type",
       defaultValue: "320px",
+      lang: "angular",
     },
+    {
+      name: "lineCount",
+      type: "number",
+      description:
+        "Used within components that contain multiple lines. Currently only used in card skeleton type",
+      defaultValue: "3",
+      lang: "react",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Set component maximum width. Currently only used in card skeleton type",
+      defaultValue: "320px",
+      lang: "react",
+    },    
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
