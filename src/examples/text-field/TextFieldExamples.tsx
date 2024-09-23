@@ -21,16 +21,16 @@ export default function TextFieldExamples() {
       <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
       <Sandbox flags={["reactive"]}>
         <GoAFormItem label="Street Address">
-          <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
+          <GoAInput name="address" type="text" value="" onChange={noop} width="100%" mb="xl" />
         </GoAFormItem>
         <GoAFormItem label="Suite or unit #">
-          <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
+          <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" mb="xl" />
         </GoAFormItem>
         <GoAFormItem label="City/town">
-          <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
+          <GoAInput name="city" type="text" value="" onChange={noop} width="100%" mb="xl"  />
         </GoAFormItem>
 
-        <GoABlock direction={"row"}>
+        <GoABlock direction="row" gap="l">
           <GoAFormItem label="Provice/territory">
             <GoADropdown onChange={noop} name="province" value="alberta">
               <GoADropdownItem label="Alberta" value="alberta" />
@@ -47,7 +47,7 @@ export default function TextFieldExamples() {
           </GoAFormItem>
 
           <GoAFormItem label="Postal Code">
-            <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+            <GoAInput name="postalCode" type="text" value="" onChange={noop} width="14ch" />
           </GoAFormItem>
         </GoABlock>
       </Sandbox>
@@ -55,41 +55,40 @@ export default function TextFieldExamples() {
       <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
       <Sandbox flags={["reactive"]}>
         <GoAFormItem
-          label="When is your birthday?"
+          label="What is your date of birth?"
           labelSize="large"
-          helpText={"For example, 27 11 2007"}>
+          helpText={"For example, 27 November 2004"}>
           <GoABlock gap="m" direction="row">
             <GoAFormItem label="Day">
               <GoAInput
                 onChange={noop}
                 value=""
-                name="bandNo"
-                type="number"
-                width="60px"
-                min={1}
-                max={31}
+                name="day"
+                width="6ch"
               />
             </GoAFormItem>
             <GoAFormItem label="Month">
-              <GoAInput
-                onChange={noop}
-                value=""
-                name="family"
-                type="number"
-                width="60px"
-                min={1}
-                max={12}
-              />
+            <GoADropdown onChange={noop} name="month" value="">
+              <GoADropdownItem label="January" value="January" />
+              <GoADropdownItem label="February" value="February" />
+              <GoADropdownItem label="March" value="March" />
+              <GoADropdownItem label="April" value="April" />
+              <GoADropdownItem label="May" value="May" />
+              <GoADropdownItem label="June" value="June" />
+              <GoADropdownItem label="July" value="July" />
+              <GoADropdownItem label="August" value="August" />
+              <GoADropdownItem label="September" value="September" />
+              <GoADropdownItem label="October" value="October" />
+              <GoADropdownItem label="November" value="November" />
+              <GoADropdownItem label="December" value="December" />
+            </GoADropdown>
             </GoAFormItem>
             <GoAFormItem label="Year">
               <GoAInput
                 onChange={noop}
                 value=""
-                name="position"
-                type="number"
-                width="88px"
-                min={1900}
-                max={2023}
+                name="year"
+                width="10ch"
               />
             </GoAFormItem>
           </GoABlock>
@@ -98,7 +97,7 @@ export default function TextFieldExamples() {
 
       <h3 id="component-example-search">Search</h3>
       <Sandbox flags={["reactive"]}>
-        <GoABlock gap="m" direction="row">
+        <GoABlock gap="xs" direction="row">
           <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
           <GoAButton type="primary" onClick={noop}>
             Search
@@ -137,17 +136,17 @@ export default function TextFieldExamples() {
           allowCopy={true}
           code={`
                   <goa-form-item label="Tuition">
-                    <goa-input (_change)="onChangeTuitionAmount($event)" value="" name="tuition" leadingcontent="$">
+                    <goa-input (_change)="onChangeTuitionAmount($event)" value="" name="tuition" mb="xl">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
                   <goa-form-item label="Books/Supplies/Instruments">
-                    <goa-input (_change)="onChangeSuppliesAmount($event)" value="" name="book" leadingcontent="$">
+                    <goa-input (_change)="onChangeSuppliesAmount($event)" value="" name="book" mb="xl">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
                   <goa-form-item label="Other costs">
-                    <goa-input (_change)="onChangeOthersAmount($event)" value="" name="others" leadingcontent="$">
+                    <goa-input (_change)="onChangeOthersAmount($event)" value="" name="others">
                       <div slot="leadingContent">$</div>
                     </goa-input>
                   </goa-form-item>
@@ -232,10 +231,10 @@ export default function TextFieldExamples() {
         />
 
         <GoAFormItem label="Tuition">
-          <GoAInput onChange={noop} value="" name="tuitionAmount" leadingContent="$" />
+          <GoAInput onChange={noop} value="" name="tuitionAmount" leadingContent="$" mb="xl" />
         </GoAFormItem>
-        <GoAFormItem label="Books/Supplies/Instruments">
-          <GoAInput onChange={noop} value="" name="suppliesAmount" leadingContent="$" />
+        <GoAFormItem label="Supplies">
+          <GoAInput onChange={noop} value="" name="suppliesAmount" leadingContent="$" mb="xl" />
         </GoAFormItem>
         <GoAFormItem label="Other costs">
           <GoAInput onChange={noop} value="" name="othersAmount" leadingContent="$" />
@@ -253,9 +252,6 @@ export default function TextFieldExamples() {
                 onChange={noop}
                 value=""
                 name="bandNo"
-                min={1}
-                max={999}
-                type="number"
                 width="88px"
               />
             </GoAFormItem>
@@ -264,9 +260,6 @@ export default function TextFieldExamples() {
                 onChange={noop}
                 value=""
                 name="family"
-                min={1}
-                max={99999}
-                type="number"
                 width="105px"
               />
             </GoAFormItem>
@@ -275,9 +268,6 @@ export default function TextFieldExamples() {
                 onChange={noop}
                 value=""
                 name="position"
-                min={1}
-                max={99}
-                type="number"
                 width="71px"
               />
             </GoAFormItem>

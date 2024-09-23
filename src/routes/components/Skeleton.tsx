@@ -79,25 +79,43 @@ export default function SkeletonPage() {
       defaultValue: "1",
     },
     {
-      name: "Line Count",
+      name: "linecount",
       type: "number",
       description:
         "Used within components that contain multiple lines. Currently only used in card skeleton type",
       defaultValue: "3",
+      lang: "angular",
     },
     {
-      name: "Max Width",
+      name: "maxwidth",
       type: "string",
       description: "Set component maximum width. Currently only used in card skeleton type",
       defaultValue: "320px",
+      lang: "angular",
     },
     {
+
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
+    {
+      name: "lineCount",
+      type: "number",
+      description:
+        "Used within components that contain multiple lines. Currently only used in card skeleton type",
+      defaultValue: "3",
+      lang: "react",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Set component maximum width. Currently only used in card skeleton type",
+      defaultValue: "320px",
+      lang: "react",
+    },    
   ];
-
+{
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
     setSkeletonBindings(bindings);
     setSkeletonProps(props as CastingType);
