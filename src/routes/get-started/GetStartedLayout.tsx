@@ -8,7 +8,7 @@ export default function GetStartedLayout() {
       <section className="side-menu">
         <GoASideMenu>
         <GoASpacer vSpacing="m"></GoASpacer>
-          <Link to="">Use the design system</Link>
+          <Link to="">Start with the design system</Link>
           <Link to="designers">UX Designers</Link>
           <GoASideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>
