@@ -115,7 +115,7 @@ export default function SkeletonPage() {
       lang: "react",
     },    
   ];
-{
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
     setSkeletonBindings(bindings);
     setSkeletonProps(props as CastingType);
