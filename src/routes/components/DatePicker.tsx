@@ -31,7 +31,7 @@ const description =
 type ComponentPropsType = GoADatePickerProps;
 type CastingType = {
   [key: string]: unknown;
-  onChange: (name: string, value: Date) => void;
+  onChange: (name: string, value: Date|undefined) => void;
 };
 
 export default function DatePickerPage() {
@@ -56,6 +56,12 @@ export default function DatePickerPage() {
       name: "error",
       value: false,
     },
+    {
+      label: "Disabled",
+      type: "boolean",
+      name: "disabled",
+      value: false
+    }
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Item",
@@ -90,6 +96,12 @@ export default function DatePickerPage() {
       defaultValue: "5 years forward",
       description: "Maximum date value allowed.",
     },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Disables the date picker.",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
