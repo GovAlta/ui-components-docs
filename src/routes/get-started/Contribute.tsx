@@ -32,7 +32,7 @@ export default function ContributePage() {
       <GoAContainer type="interactive" mb="l" mt="m">
         <h3>Did you know…</h3>
         <p>
-        There are open <a href="https://www.figma.com/design-system/components" target="_blank">contribution files</a> in Figma for every component and pattern in the design system, including unpublished ideas and experiments.
+        There are open <a href="https://www.figma.com/files/1352057334427203708/team/1365458889622139826" target="_blank">contribution files</a> in Figma for every component and pattern in the design system, including unpublished ideas and experiments.
         </p>
       </GoAContainer>
 
