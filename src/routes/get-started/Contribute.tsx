@@ -65,9 +65,8 @@ export default function ContributePage() {
           </li>
         </ul> 
         <GoASpacer vSpacing="xs"></GoASpacer>
+        <h3 id="contribution-criteria" style={{visibility: "hidden", height: "0px"}}>Contribution criteria</h3>
          <h3>2. Your contribution will be evaluated against the following contribution criteria:</h3>
-         
-         <h3 id="contribution-criteria" style={{visibility: "hidden", height: "0px"}}>Contribution criteria</h3>
          <h4>Proposing a component or pattern</h4>
          <p>For something to be added or changed in the design system, it needs to be:</p>
          <GoATable width="100%" mb="xl">
