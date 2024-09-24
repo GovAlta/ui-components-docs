@@ -42,17 +42,17 @@ export default function AccordionPage() {
 
   const [accordionBindings, setAccordionBindings] = useState<ComponentBinding[]>([
     {
+      label: "Heading",
+      type: "string",
+      name: "heading",
+      value: "Accordion heading",
+    },
+    {
       label: "Heading Size",
       type: "radio",
       name: "headingSize",
       options: ["small", "medium"],
       value: "medium",
-    },
-    {
-      label: "Heading",
-      type: "string",
-      name: "heading",
-      value: "Accordion heading",
     },
     {
       label: "Secondary Text",

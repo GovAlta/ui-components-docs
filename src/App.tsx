@@ -14,10 +14,11 @@ import { useMediaQuery } from "@hooks/useMediaQuery";
 import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
+// Support
+
 import HomePage from "@routes/home";
 import SupportOverviewPage from '@routes/support/SupportOverview';
 import SupportLayout from '@routes/support/SupportLayout';
-import ContributePage from '@routes/support/Contribute';
 import DropInHoursPage from '@routes/support/DropInHours';
 import ReleaseNotesPage from '@routes/support/ReleaseNotes.tsx';
 
@@ -90,6 +91,7 @@ import BugVerificationPage from "@routes/get-started/developers/BugVerification"
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
+import ContributePage from '@routes/get-started/Contribute';
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
@@ -211,6 +213,9 @@ const router = createBrowserRouter(
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
         </Route>
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
@@ -237,9 +242,6 @@ const router = createBrowserRouter(
       </Route>
       <Route path="support" element={<SupportLayout />}>
         <Route index element={<SupportOverviewPage />} />
-        <Route path="contribute">
-          <Route index element={<ContributePage />} />
-        </Route>
         <Route path="drop-in-hours">
           <Route index element={<DropInHoursPage />} />
         </Route>

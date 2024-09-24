@@ -33,3 +33,6 @@ devenv.local.nix
 # pre-commit
 .pre-commit-config.yaml
 
+src/index.css
+package-lock.json
+src/routes/dark-mode.css

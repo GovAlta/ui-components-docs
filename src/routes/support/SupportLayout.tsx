@@ -11,7 +11,6 @@ export default function SupportLayout() {
         <GoASideMenu>
           <GoASideMenuHeading>Support</GoASideMenuHeading>
           <Link to="">Overview</Link>
-          <Link to="contribute">Contribute</Link>
           <Link to="drop-in-hours">Drop-in hours</Link>
           <Link to="release-notes">Release notes</Link>
         </GoASideMenu>
