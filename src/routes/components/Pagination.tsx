@@ -150,6 +150,11 @@ export default function PaginationPage() {
       type: "(e: { detail: { page: number }}) => void",
       description: "Callback function for page change events.",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

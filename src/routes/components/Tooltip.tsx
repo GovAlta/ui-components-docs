@@ -78,6 +78,11 @@ export default function TEMPLATE_Page() {
       description: "Horizontal alignment to the child element",
       defaultValue: "center",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
