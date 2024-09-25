@@ -31,7 +31,7 @@ const description =
 type ComponentPropsType = GoADatePickerProps;
 type CastingType = {
   [key: string]: unknown;
-  onChange: (name: string, value: Date) => void;
+  onChange: (name: string, value: Date|undefined) => void;
 };
 
 export default function DatePickerPage() {
@@ -56,6 +56,12 @@ export default function DatePickerPage() {
       name: "error",
       value: false,
     },
+    {
+      label: "Disabled",
+      type: "boolean",
+      name: "disabled",
+      value: false
+    }
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Item",
@@ -95,6 +101,12 @@ export default function DatePickerPage() {
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Disables the date picker.",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

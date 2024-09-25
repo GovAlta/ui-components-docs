@@ -12,8 +12,8 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "5.0.0",
-    "@abgov/web-components": "1.25.0",
+    "@abgov/react-components": "5.0.0-alpha.5",
+    "@abgov/web-components": "1.17.0-alpha.105",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "react": "^18.2.0",
@@ -32,6 +32,6 @@
     "eslint-plugin-react-refresh": "^0.3.5",
     "prettier": "2.4.1",
     "typescript": "^5.4.2",
-    "vite": "^5.2.6"
+    "vite": "^5.4.6"
   }
 }
