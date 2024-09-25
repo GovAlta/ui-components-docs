@@ -106,7 +106,7 @@ export default function DatePickerPage() {
       type: "boolean",
       defaultValue: "false",
       description: "Disables the date picker.",
-    }
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
