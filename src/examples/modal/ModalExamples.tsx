@@ -22,7 +22,7 @@ export default function ModalExamples() {
   const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>();
   const [warnCalloutModalOpen, setWarnCalloutModalOpen] = useState<boolean>();
   const [inputModalOpen, setInputModalOpen] = useState<boolean>();
-  const [effectiveDate, setEffectiveDate] = useState<Date>(new Date());
+  const [effectiveDate, setEffectiveDate] = useState<Date|undefined>(new Date());
   const [onRouteChangeModalOpen, setOnRouteChangeModalOpen] = useState<boolean>();
   const [addItemModalOpen, setAddItemModalOpen] = useState<boolean>();
   const [type, setType] = useState<string>();
@@ -32,7 +32,7 @@ export default function ModalExamples() {
   const navigate = useNavigate();
   const language = useContext(LanguageContext);
   // @ts-ignore
-  const onChangeEffectiveDate = (name: string, value: Date) => {
+  const onChangeEffectiveDate = (name: string, value: Date | undefined) => {
     setEffectiveDate(value);
   };
 

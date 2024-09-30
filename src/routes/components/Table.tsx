@@ -73,6 +73,11 @@ export default function TablePage() {
       type: "(sortBy: string, sortDir: number) => void",
       description: "Sort event fired when a GoATableSortHeader component is used.",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(tableBindings: ComponentBinding[], props: Record<string, unknown>) {

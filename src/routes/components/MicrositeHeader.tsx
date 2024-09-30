@@ -14,14 +14,12 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 const componentName = "Microsite header";
 const description =
   "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/header", name: "Header" },
-];
+const relatedComponents = [{ link: "/components/header", name: "Header" }];
 type ComponentPropsType = GoAHeaderProps;
 type CastingType = {
   // add any required props here
@@ -107,12 +105,37 @@ export default function MicrositeHeaderPage() {
       description: "For internal header urls sets target='_self'",
       defaultValue: "blank",
     },
+    {
+      name: "hasfeedbackhandler",
+      type: "boolean",
+      lang: "angular",
+      defaultValue: "false",
+      description:
+        "Set to true to handle the feedback click via _feedbackClick custom event handler.",
+    },
+    {
+      name: "_feedbackClick",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "_feedbackClick function invoked when feedback is clicked.",
+    },
+    {
+      name: "onFeedbackClick",
+      lang: "react",
+      type: "() => void",
+      description: "onFeedbackClick function invoked when feedback is clicked.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setMicrositeHeaderProps(props as CastingType);
     setMicrositeHeaderBindings(bindings);
   }
+
+  const onClick = () => {
+    console.log("Feedback clicked");
+    alert("Thank you for your feedback!");
+  };
 
   return (
     <>
@@ -124,16 +147,78 @@ export default function MicrositeHeaderPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
 
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
+
+            <h3 id="component-feedbackclick">Custom click event handler (for feedback)</h3>
+            <Sandbox skipRender fullWidth>
+              <GoAMicrositeHeader type="alpha" onFeedbackClick={onClick} />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  @Component({
+                    selector: "abgov-microsite-header",
+                    templateUrl: "./microsite-header.component.html",
+                  })
+                  export class MicrositeHeaderComponent {
+                    constructor() {}
+
+                    handleFeedbackClick(event: Event) {
+                      console.log("Feedback clicked");
+                      alert("Thank you for your feedback!");
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-microsite-header
+                    type="alpha"
+                    [hasfeedbackhandler]="true"
+                    (_feedbackClick)="handleFeedbackClick($event)"
+                  ></goa-microsite-header>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  export default function MicrositeHeader() {
+                    function onClick() {
+                      console.log("Feedback clicked");
+                      alert("Thank you for your feedback!");
+                    }
+
+                    return (
+                      <>
+                        <GoAMicrositeHeader
+                          type="alpha"
+                          onFeedbackClick={() => onClick()}
+                        />
+                      </>
+                    );
+                  }
+                `}
+              />
+            </Sandbox>
           </GoATab>
 
           <GoATab

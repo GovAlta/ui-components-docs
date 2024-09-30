@@ -89,7 +89,7 @@ export default function UxDesignerPage() {
       <p>
         A{" "}
         <a
-          href="https://www.figma.com/file/7xRtDWqMrJi2msuxgzyU79/DDD-Figma-file-template?type=design&node-id=53-350&mode=design&t=xrLI0oN7vgLk0HXQ-0"
+          href="https://www.figma.com/design/l5kjG0bfltQFqPpK2uorC0/DDD-Figma-file-template?m=auto&t=1Stq1DIiLM6zOVqf-6"
           target="_blank"
         >
           starter template file
@@ -102,7 +102,7 @@ export default function UxDesignerPage() {
       <p>
         In addition to these templates ,{" "}
         <a
-          href="https://www.figma.com/file/LTUW8lBTgtTJKOFrLE93zP/%E2%9D%96-Design-file-utilities-(Figma-helper-components)?type=design&node-id=52-7&mode=design&t=GrjjCo71z9UFWoUO-0"
+          href="https://www.figma.com/design/TDbVPfpFxcUj4iuaJf7a0V/%E2%9D%96-Low-Fi-Prototyping-%26-Annotation-Kit-%7C-DDD?node-id=1101-7241&t=bnms7IudBx2gX3Rx-1"
           target="_blank"
         >
           helper components

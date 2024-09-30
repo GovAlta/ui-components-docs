@@ -59,7 +59,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
     onChange([...properties]);
   }
 
-  function onDateChange(name: string, value: Date): void {
+  function onDateChange(name: string, value: Date | undefined): void {
     const prop = properties.find(p => p.type === "date" && p.name === name);
     if (!prop || prop.type !== "date") return;
     prop.value = value;
