@@ -13,6 +13,8 @@ import {
   GoADatePickerProps,
   GoADatePicker,
   GoAFormItem,
+  GoAButton,
+  GoAButtonGroup,
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -24,19 +26,19 @@ const componentName = "Date picker";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   // { link: "/content/date-format", name: "Date format" },
-  { link: "/components/form-item", name: "Form item" }
+  { link: "/components/form-item", name: "Form item" },
 ];
 const description =
   "Lets users select a date through a calendar without the need to manually type it in a field.";
 type ComponentPropsType = GoADatePickerProps;
 type CastingType = {
   [key: string]: unknown;
-  onChange: (name: string, value: Date|undefined) => void;
+  onChange: (name: string, value: Date | undefined) => void;
 };
 
 export default function DatePickerPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    onChange: () => { },
+    onChange: () => {},
   });
 
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
@@ -60,8 +62,8 @@ export default function DatePickerPage() {
       label: "Disabled",
       type: "boolean",
       name: "disabled",
-      value: false
-    }
+      value: false,
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Item",
@@ -75,7 +77,7 @@ export default function DatePickerPage() {
     },
     {
       name: "value",
-      type: "string",
+      type: "string | undefined",
       description: "Value of the calendar date.",
     },
     {
@@ -107,6 +109,12 @@ export default function DatePickerPage() {
       defaultValue: "false",
       description: "Disables the date picker.",
     },
+    {
+      name: "relative",
+      type: "boolean",
+      description: "Set to true if a parent element has a css position of relative.",
+      defaultValue: "false",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -114,17 +122,40 @@ export default function DatePickerPage() {
     setComponentProps(props as CastingType);
   }
 
-  const noop = () => { };
+  const noop = () => {};
+
+  const [date, setDate] = useState<Date | undefined>();
+
+  const setNewDate = (value: Date | undefined) => {
+    setDate(value);
+  };
+
+  function setValue() {
+    const d = new Date();
+    d.setDate(d.getDate() - 7);
+
+    setDate(d);
+  }
+
+  function clearValue() {
+    setDate(undefined);
+  }
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
@@ -175,6 +206,149 @@ export default function DatePickerPage() {
               </GoAFormItem>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
+
+            <h3 id="component-example-1">Reset example</h3>
+            <Sandbox fullWidth skipRender onChange={onSandboxChange} flags={["reactive"]}>
+              <CodeSnippet
+                tags="react"
+                lang="typescript"
+                allowCopy={true}
+                code={`
+                  export function Datepicker() {
+                    const [date, setDate] = useState<Date | undefined>();
+
+                    const setNewDate = (value: Date | undefined) => {
+                      setDate(value);
+                    };
+
+                    function setValue() {
+                      const d = new Date();
+                      d.setDate(d.getDate() - 7);
+
+                      setDate(d);
+                    }
+
+                    function clearValue() {
+                      setDate(undefined);
+                    }
+
+                    return (
+                      <>
+                        <GoAFormItem label="Item">
+                          <GoADatePicker
+                            name="item"
+                            value={date}
+                            onChange={(_, value) => setNewDate(value)}
+                            mb="xl"
+                          ></GoADatePicker>
+                        </GoAFormItem>
+                        
+                        <GoAButtonGroup mt={"xs"} alignment={"start"}>
+                          <GoAButton onClick={setValue} mr="l">Set Value</GoAButton>
+                          <GoAButton onClick={clearValue}>Clear Value</GoAButton>
+                        </GoAButtonGroup>
+                      </>
+                    );
+                  }
+              `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class DatePickerComponent {
+                    item = "";
+                    onChange(event: Event) {
+                      const value = (event as CustomEvent).detail.value;
+                      this.item = value;
+                    }
+
+                    setValue() {
+                      const today = new Date().toDateString();
+                      this.item = today;
+                    }
+
+                    clearValue() {
+                      this.item = "";
+                    }
+                  }
+                `}
+              />
+              <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-form-item label="Item">
+                    <goa-date-picker (_change)="onChange($event)" name="item" [value]="item"></goa-date-picker>
+                  </goa-form-item>
+
+                  <goa-button-group alignment="start" mt="xs">
+                    <goa-button (_click)="setValue()" mr="l">Set Value</goa-button>
+                    <goa-button (_click)="clearValue()">Clear Value</goa-button>
+                  </goa-button-group>
+                `}
+              />
+
+              <CodeSnippet
+                tags={["angular", "reactive"]}
+                lang="typescript"
+                allowCopy={true}
+                code={`
+                  export class DatePickerComponent {
+                    dateCtrl = new FormControl();
+
+                    setValue() {
+                      const d = new Date();
+                      d.setDate(d.getDate() - 7);
+                      this.dateCtrl.patchValue(d);
+                      console.log("setValue called: ", this.dateCtrl.value);
+                    }
+
+                    clearValue() {
+                      this.dateCtrl.reset();
+                      console.log("reset called: ", this.dateCtrl.value);
+                    }
+                  }
+              `}
+              />
+              <CodeSnippet
+                tags={["angular", "reactive"]}
+                lang="typescript"
+                allowCopy={true}
+                code={`
+                  <goa-form-item label="Input Label" helptext="Helper text" mb="3xl">
+                    <goa-date-picker [formControl]="dateCtrl" [value]="dateCtrl.value" ngDefaultControl />
+                  </goa-form-item>
+                  
+                  <goa-button-group alignment="start" mt="xs">
+                    <goa-button (_click)="setValue()" mr="l">Set Value</goa-button>
+                    <goa-button (_click)="clearValue()">Clear Value</goa-button>
+                  </goa-button-group>
+              `}
+              />
+
+              <GoAFormItem label="Date Picker">
+                <GoADatePicker
+                  name="item"
+                  value={date}
+                  onChange={(_, value) => setNewDate(value)}
+                  mb="xl"></GoADatePicker>
+              </GoAFormItem>
+
+              <GoAButtonGroup mt={"xs"} alignment={"start"}>
+                <GoAButton onClick={setValue} mr="l">
+                  Set Value
+                </GoAButton>
+                <GoAButton onClick={clearValue}>Clear Value</GoAButton>
+              </GoAButtonGroup>
+            </Sandbox>
           </GoATab>
 
           <GoATab
