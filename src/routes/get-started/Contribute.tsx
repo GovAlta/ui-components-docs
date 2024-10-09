@@ -12,13 +12,6 @@ export default function ContributePage() {
       <GoAContainer type="non-interactive" mb="l" mt="m">
         <b>Start by using what's in the design system to design and build services easier</b>
         <GoADetails heading="What happens when I need a new or different component or pattern?" mt="m">
-          <p>If a component or pattern doesn’t exist in production or doesn’t meet the needs of your users, talk to the design system team:
-            <ul>
-              <li><a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> on slack</li>
-              <li><a href="https://design.alberta.ca/support/drop-in-hours" target="_blank">Design system Drop-in hours</a></li>
-            </ul>
-          </p>
-          <GoASpacer vSpacing="s"></GoASpacer> 
           <img src="/images/Contribution/contribution-process.png" width="100%" alt="Contribute" />
           <GoASpacer vSpacing="m"></GoASpacer> 
           <p>
@@ -40,11 +33,11 @@ export default function ContributePage() {
       
       <div className="max-width-72ch contribute-page-content">
         <p>
-        If a component or pattern doesn’t exist in production or doesn’t meet the needs of your users, please contact the design system team. We’ll discuss the issue to understand it better and decide on the next steps together.
+        If a <a href="https://design.alberta.ca/components" target="_blank">component</a> or <a href="https://design.alberta.ca/patterns" target="_blank">pattern</a> doesn’t exist in production or doesn’t meet the needs of your users, please contact the design system team. We’ll discuss the issue to understand it better and decide on the next steps together.
         </p>
         <GoASpacer vSpacing="2xs"></GoASpacer>
         <h3>1. Come talk to us:</h3>
-        <ul>
+        <ul className="goa-unordered-list">
           <li>
             <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> on slack
           </li>
@@ -53,7 +46,7 @@ export default function ContributePage() {
           </li>
         </ul>
         <h4>Be prepared to:</h4>
-        <ul>
+        <ul className="goa-unordered-list">
           <li>
             Describe the component or pattern and its purpose
           </li>
@@ -64,7 +57,6 @@ export default function ContributePage() {
             Share any options and iterations that were explored with and without the Design System
           </li>
         </ul> 
-        <GoASpacer vSpacing="xs"></GoASpacer>
         <h3 id="contribution-criteria" style={{visibility: "hidden", height: "0px"}}>Contribution criteria</h3>
          <h3>2. Your contribution will be evaluated against the following contribution criteria:</h3>
          <h4>Proposing a component or pattern</h4>
@@ -134,16 +126,15 @@ export default function ContributePage() {
           </GoATable>  
           <GoASpacer vSpacing="3xs"></GoASpacer> 
             <h3>3. Once approved, it will be added to the <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">Design System's backlog</a> </h3>
-            <ul>
+            <ul className="goa-unordered-list">
               <li>
-              When work starts, we will collaborate with you and your team to ensure the component meets your specific needs. 
+                When work starts, we will collaborate with you and your team to ensure the component meets your specific needs. 
               </li>
             </ul>
-            <GoASpacer vSpacing="xs"></GoASpacer>
             <h3>4. Contribute code to the component or pattern</h3>
-            <ul>
+            <ul className="goa-unordered-list">
               <li>
-              To help build or contribute code to the component or pattern in the design system, follow the <a href="#development">code contribution process</a> below. 
+                To help build or contribute code to the component or pattern in the design system, follow the <a href="#development">code contribution process</a> below. 
               </li>
             </ul>
       </div>
@@ -153,61 +144,54 @@ export default function ContributePage() {
         <h2 id="development">Code contribution process</h2>
         <p>In order to support all of the development frameworks that service teams use, we build and support a library of web components. Contributing entire components can be challenging and time-consuming, so we recommend and encourage smaller-scale contributions instead.</p>
         <h4>Recommended ways to contribute:</h4>
-        <ul>
+        <ul className="goa-unordered-list">
           <li>bug fixes</li>
           <li>documentation updates</li>
           <li>enhancements to existing components</li>
         </ul>
-        <ol>
-        <GoASpacer vSpacing="s"></GoASpacer>
+        <ol className="goa-ordered-list">
           <li>Start by reaching out on the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> channel on slack to let us know you’re interested in contributing.</li>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <li>Find an issue in our <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">backlog</a> tagged with &ldquo;ready-for-contribution&rdquo;. Let us know which issue(s) you&rsquo;re picking up.</li>
-
-          <GoACallout type="information" mt="xl" mb="xl">
-          Since our repository is “public”, you'll need to use a different GitHub account than the Enterprise Managed User (EMU) account you use for your product team work.
-          </GoACallout>
-
-          <h4>Setup contribution environment</h4>
           <li>
-          Go to ui-components page and choose the “Fork” link in the top-right of the page
+            Find an issue in our <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">backlog</a> tagged with &ldquo;ready-for-contribution&rdquo;. Let us know which issue(s) you&rsquo;re picking up.
+            <GoACallout type="information" mt="xl">
+              Since our repository is “public”, you'll need to use a different GitHub account than the Enterprise Managed User (EMU) account you use for your product team work.
+            </GoACallout>
           </li>
-          <GoASpacer vSpacing="l"></GoASpacer>
+        </ol>
+        <h4>Setup contribution environment</h4>
+        <ol className="goa-ordered-list" start={ 3 }>
+          <li>
+            Go to ui-components page and choose the “Fork” link in the top-right of the page
+          </li>
           <li>Create a Fork, choose an owner and a repo name</li>
-          <ul>
+          <ul className="goa-unordered-list">
             <li>Make sure you&#39;re forking our repo and not directly cloning our repo</li>
           </ul>
-          <GoASpacer vSpacing="l"></GoASpacer>
           <li>Clone the newly created repo</li>
-          <GoASpacer vSpacing="l"></GoASpacer>
           <li>Open the repo&rsquo;s folder in your IDE</li>
-          <GoASpacer vSpacing="l"></GoASpacer>
           <li>
             Run the following commands in order:
-           
-            <CodeSnippet lang="css" allowCopy={true} code={`npm i`}/>
-            <CodeSnippet lang="css" allowCopy={true} code={`run a bash script./playground-setup.sh`}/>
-            <CodeSnippet lang="css" allowCopy={true} code={`npm run build`}/>
-           
-                
-            <GoASpacer vSpacing="l"></GoASpacer>
-            
+            <CodeSnippet lang="css" allowCopy={true} code={`npm i`} />
+            <CodeSnippet lang="css" allowCopy={true} code={`npm run build`} />
+          </li>
+          <li>
+            Run the bash script:
+            <CodeSnippet lang="css" allowCopy={true} code={`./playground-setup.sh`} />
           </li>
           <li>The commands above will create a “playground” folder containing both React and Angular environments. Since nothing in this folder is committed to the repository, you can freely make any changes you want. These environments are designed for testing purposes.</li>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <li>Use the following commands to run your playground environments:</li>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <b>Angular</b>
-          <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:angular`}/>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <b>React</b>
-          <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:react`}/>
+          <li>
+            Use the following commands to run your playground environments:
+            <br />
+            <b>Angular</b>
+            <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:angular`}/>
+            <GoASpacer vSpacing="s" />
+            <b>React</b>
+            <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:react`}/>
+          </li>
         </ol>
-        <GoASpacer vSpacing="l"></GoASpacer>
-        
-        
+        <GoASpacer vSpacing="l" />
         <h3 id="react-and-web-wrappers">React and Web wrappers</h3>
-        <GoASpacer vSpacing="s"></GoASpacer>
+        <GoASpacer vSpacing="s" />
         <p>
           <strong>React wrappers</strong> <br/>
           <CodeSnippet lang="css" allowCopy={true} code={`/libs/react-components/src/lib`}/>
@@ -221,7 +205,7 @@ export default function ContributePage() {
           <GoASpacer vSpacing="s"></GoASpacer>
           Each folder represents a single component with:
         </p>
-        <ul>
+        <ul className="goa-unordered-list">
           <li>
             Unit tests as <code>*.spec.ts</code>
           </li>
@@ -235,7 +219,7 @@ export default function ContributePage() {
         <GoASpacer vSpacing="s"></GoASpacer>
         <h3 id="testing-procedures">Testing procedures</h3>
         <p>All unit tests must be written in Svelte.</p>
-        <ul>
+        <ul className="goa-unordered-list">
           <li>
             If you&#39;re updating/modifying React wrappers, you will need to write unit tests in
             React
@@ -249,26 +233,21 @@ export default function ContributePage() {
         <GoASpacer vSpacing="s"></GoASpacer>
 
         <h3 id="submitting-your-code">Submitting your code</h3>
-        <p>
-          Submit your code in a pull request to the alpha branch from your forked repository,
-          include the following as a title:
-        </p>
-        <GoAContainer type="non-interactive" mb="l" mt="xs" maxWidth="640px"> 
-        <p>
-            <b>Bug fix</b> <br/>
-            fix(#storyNumber): short description of issue fixed (7 words max)
-          <br/>
-            <b>Feature request</b>{" "}<br/>
-            feat(#storyNumber): short description of feature (7 words max)
-        </p>
-        </GoAContainer>
-        <GoASpacer vSpacing="s"></GoASpacer>
-
-
-        <p>Make sure you mark the PR as a draft.</p>
-        <GoASpacer vSpacing="m"></GoASpacer>
-
-        
+        <ol className="goa-ordered-list">
+          <li>
+            Submit a commit using the following as your commit message:
+            <dl>
+              <dt><strong>Bug Fix:</strong></dt>
+              <dd>fix(#storyNumber): short description of issue fixed (7 words max)</dd>
+            </dl>
+            <dl>
+              <dt><strong>Feature Request:</strong></dt>
+              <dd>feat(#storyNumber): short description of feature (7 words max)</dd>
+            </dl>
+          </li>
+          <li>Create a pull request to the alpha branch from your branch</li>
+          <li>Mark the PR as a draft</li>
+        </ol>
       </div>
     </ComponentContent>
   );
