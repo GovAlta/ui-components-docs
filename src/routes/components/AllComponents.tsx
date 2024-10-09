@@ -175,6 +175,12 @@ export default function AllComponentsPage() {
       description: "A compact button with an icon and no text.",
     },
     {
+      name: "input",
+      groups: ["inputs"],
+      tags: ["inputs and actions", "text field", "text box"],
+      description: "A single-line field where users can input and edit text.",
+    },
+    {
       name: "radio",
       groups: ["inputs"],
       tags: ["inputs and actions", "option button", "radio button group", "radio buttons"],
@@ -192,12 +198,6 @@ export default function AllComponentsPage() {
         "text input area",
       ],
       description: "A multi-line field where users can input and edit text.",
-    },
-    {
-      name: "input",
-      groups: ["inputs"],
-      tags: ["inputs and actions", "text field", "text box"],
-      description: "A single-line field where users can input and edit text.",
     },
     {
       name: "footer",
