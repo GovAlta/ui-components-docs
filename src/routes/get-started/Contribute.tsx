@@ -37,7 +37,7 @@ export default function ContributePage() {
         </p>
         <GoASpacer vSpacing="2xs"></GoASpacer>
         <h3>1. Come talk to us:</h3>
-        <ul className="goa-unordered-list">
+        <ul>
           <li>
             <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> on slack
           </li>
@@ -46,7 +46,7 @@ export default function ContributePage() {
           </li>
         </ul>
         <h4>Be prepared to:</h4>
-        <ul className="goa-unordered-list">
+        <ul>
           <li>
             Describe the component or pattern and its purpose
           </li>
@@ -126,13 +126,13 @@ export default function ContributePage() {
           </GoATable>  
           <GoASpacer vSpacing="3xs"></GoASpacer> 
             <h3>3. Once approved, it will be added to the <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">Design System's backlog</a> </h3>
-            <ul className="goa-unordered-list">
+            <ul>
               <li>
                 When work starts, we will collaborate with you and your team to ensure the component meets your specific needs. 
               </li>
             </ul>
             <h3>4. Contribute code to the component or pattern</h3>
-            <ul className="goa-unordered-list">
+            <ul>
               <li>
                 To help build or contribute code to the component or pattern in the design system, follow the <a href="#development">code contribution process</a> below. 
               </li>
@@ -144,12 +144,12 @@ export default function ContributePage() {
         <h2 id="development">Code contribution process</h2>
         <p>In order to support all of the development frameworks that service teams use, we build and support a library of web components. Contributing entire components can be challenging and time-consuming, so we recommend and encourage smaller-scale contributions instead.</p>
         <h4>Recommended ways to contribute:</h4>
-        <ul className="goa-unordered-list">
+        <ul>
           <li>bug fixes</li>
           <li>documentation updates</li>
           <li>enhancements to existing components</li>
         </ul>
-        <ol className="goa-ordered-list">
+        <ol>
           <li>Start by reaching out on the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> channel on slack to let us know you’re interested in contributing.</li>
           <li>
             Find an issue in our <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">backlog</a> tagged with &ldquo;ready-for-contribution&rdquo;. Let us know which issue(s) you&rsquo;re picking up.
@@ -159,12 +159,12 @@ export default function ContributePage() {
           </li>
         </ol>
         <h4>Setup contribution environment</h4>
-        <ol className="goa-ordered-list" start={ 3 }>
+        <ol start={ 3 }>
           <li>
             Go to ui-components page and choose the “Fork” link in the top-right of the page
           </li>
           <li>Create a Fork, choose an owner and a repo name</li>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Make sure you&#39;re forking our repo and not directly cloning our repo</li>
           </ul>
           <li>Clone the newly created repo</li>
@@ -205,7 +205,7 @@ export default function ContributePage() {
           <GoASpacer vSpacing="s"></GoASpacer>
           Each folder represents a single component with:
         </p>
-        <ul className="goa-unordered-list">
+        <ul>
           <li>
             Unit tests as <code>*.spec.ts</code>
           </li>
@@ -219,7 +219,7 @@ export default function ContributePage() {
         <GoASpacer vSpacing="s"></GoASpacer>
         <h3 id="testing-procedures">Testing procedures</h3>
         <p>All unit tests must be written in Svelte.</p>
-        <ul className="goa-unordered-list">
+        <ul>
           <li>
             If you&#39;re updating/modifying React wrappers, you will need to write unit tests in
             React
@@ -233,17 +233,19 @@ export default function ContributePage() {
         <GoASpacer vSpacing="s"></GoASpacer>
 
         <h3 id="submitting-your-code">Submitting your code</h3>
-        <ol className="goa-ordered-list">
+        <ol>
           <li>
             Submit a commit using the following as your commit message:
-            <dl>
-              <dt><strong>Bug Fix:</strong></dt>
-              <dd>fix(#storyNumber): short description of issue fixed (7 words max)</dd>
-            </dl>
-            <dl>
-              <dt><strong>Feature Request:</strong></dt>
-              <dd>feat(#storyNumber): short description of feature (7 words max)</dd>
-            </dl>
+            <GoAContainer type="non-interactive" mt="m">
+              <dl>
+                <dt><strong>Bug Fix:</strong></dt>
+                <dd>fix(#storyNumber): short description of issue fixed (7 words max)</dd>
+              </dl>
+              <dl>
+                <dt><strong>Feature Request:</strong></dt>
+                <dd>feat(#storyNumber): short description of feature (7 words max)</dd>
+              </dl>
+            </GoAContainer>
           </li>
           <li>Create a pull request to the alpha branch from your branch</li>
           <li>Mark the PR as a draft</li>
