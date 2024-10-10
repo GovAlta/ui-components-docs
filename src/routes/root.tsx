@@ -46,6 +46,7 @@ export default function Root() {
           />
           <GoAAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"} fullMenuBreakpoint={1140}>
             <Link to="/get-started">Get started</Link>
+            <Link to="/foundations">Foundations</Link>
             <Link to="/patterns">Patterns</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
