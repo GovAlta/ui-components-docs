@@ -11,7 +11,6 @@ export default function SupportLayout() {
         <GoASideMenu>
           <GoASpacer vSpacing="m"></GoASpacer>
           <Link to="">Overview</Link>
-          <Link to="contribute">Contribute</Link>
           <Link to="drop-in-hours">Drop-in hours</Link>
           <Link to="release-notes">Release notes</Link>
         </GoASideMenu>

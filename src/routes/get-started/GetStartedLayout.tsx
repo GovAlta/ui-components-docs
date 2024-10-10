@@ -18,9 +18,10 @@ export default function GetStartedLayout() {
             <Link to="developers/technologies">Technologies</Link>
             <Link to="developers/browsers">Supported Browsers</Link>
           </GoASideMenuGroup>
-          <Link to="qa-testing">QA testing</Link>
-          <Link to="roadmap">Roadmap</Link>
-          <Link to="user-experience-guidelines">User experience guidelines</Link>
+            <Link to="qa-testing">QA testing</Link>
+            <Link to="contribute">Contribute</Link>
+            <Link to="roadmap">Roadmap</Link>
+            <Link to="user-experience-guidelines">User experience guidelines</Link>
         </GoASideMenu>
       </section>
 
