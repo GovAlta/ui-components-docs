@@ -5,9 +5,9 @@ export default function FoundationsColorPage() {
   return (
       <ComponentContent>
         <h1>Color</h1>
-        <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity. Our palette is divided into these categories: brand, interactive, text, status, greyscale, extended colors, to ensure flexibility and consistency in our digital services.</h3>
+        <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
         <GoADivider mt="xl" mb="xl"></GoADivider>
-        <p>Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
+        <p>Our palette is divided into these categories: brand, interactive, text, status, greyscale, extended colors, to ensure flexibility and consistency in our digital services. Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
         <h2>Brand colors</h2>
         <p>These colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
 
@@ -29,9 +29,11 @@ export default function FoundationsColorPage() {
             <tr>
               <td>
                 <div
-                  className="token-block"
                   style={{
                     backgroundColor: "#0081A2",
+                    height: "35px",
+                    width: "35px",
+                    borderRadius: "4px",
                   }}
                 />
               </td>
@@ -45,9 +47,11 @@ export default function FoundationsColorPage() {
             <tr>
               <td>
                 <div
-                  className="token-block"
                   style={{
                     backgroundColor: "#005072",
+                    height: "35px",
+                    width: "35px",
+                    borderRadius: "4px",
                   }}
                 />
               </td>
@@ -61,9 +65,11 @@ export default function FoundationsColorPage() {
             <tr>
               <td>
                 <div
-                  className="token-block"
                   style={{
                     backgroundColor: "#C8EEFA",
+                    height: "35px",
+                    width: "35px",
+                    borderRadius: "4px",
                   }}
                 />
               </td>
