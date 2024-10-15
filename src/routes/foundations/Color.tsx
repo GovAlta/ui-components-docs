@@ -28,7 +28,12 @@ export default function FoundationsColorPage() {
           <tbody>
             <tr>
               <td>
-                <div class="token-block" style="background-color: rgb(0, 129, 162);"></div>
+                <div
+                  className="token-block"
+                  style={{
+                    backgroundColor: #0081A2,
+                  }}
+                />
               </td>
               <td>
                 Brand (Default) 
@@ -39,7 +44,12 @@ export default function FoundationsColorPage() {
             </tr>
             <tr>
               <td>
-                <div class="token-block" style="background-color: rgb(0, 80, 114);"></div>
+                <div
+                  className="token-block"
+                  style={{
+                    backgroundColor: #005072,
+                  }}
+                />
               </td>
               <td>
                 Brand (Dark) 
@@ -50,7 +60,12 @@ export default function FoundationsColorPage() {
             </tr>
             <tr>
               <td>
-                <div class="token-block" style="background-color: rgb(200, 238, 250);"></div>
+                <div
+                  className="token-block"
+                  style={{
+                    backgroundColor: #C8EEFA,
+                  }}
+                />
               </td>
               <td>
                 Brand (Light)
