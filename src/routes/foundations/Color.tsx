@@ -34,7 +34,7 @@ export default function FoundationsColorPage() {
                 Brand (Default) 
               </td>
               <td>
-                &#x23;0081A2
+                #0081A2
               </td>
             </tr>
             <tr>
@@ -45,7 +45,7 @@ export default function FoundationsColorPage() {
                 Brand (Dark) 
               </td>
               <td>
-                &#x23;005072
+                #005072
               </td>
             </tr>
             <tr>
@@ -56,7 +56,7 @@ export default function FoundationsColorPage() {
                 Brand (Light)
               </td>
               <td>
-                &#x23;C8EEFA
+                #C8EEFA
               </td>
             </tr>
           </tbody>
