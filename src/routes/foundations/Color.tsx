@@ -31,7 +31,7 @@ export default function FoundationsColorPage() {
                 <div
                   className="token-block"
                   style={{
-                    backgroundColor: #0081A2,
+                    backgroundColor: "#0081A2",
                   }}
                 />
               </td>
@@ -47,7 +47,7 @@ export default function FoundationsColorPage() {
                 <div
                   className="token-block"
                   style={{
-                    backgroundColor: #005072,
+                    backgroundColor: "#005072",
                   }}
                 />
               </td>
@@ -63,7 +63,7 @@ export default function FoundationsColorPage() {
                 <div
                   className="token-block"
                   style={{
-                    backgroundColor: #C8EEFA,
+                    backgroundColor: "#C8EEFA",
                   }}
                 />
               </td>
