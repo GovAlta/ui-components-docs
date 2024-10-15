@@ -7,7 +7,7 @@ export default function FoundationsColorPage() {
         <h1>Color</h1>
         <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity. Our palette is divided into these categories: brand, interactive, text, status, greyscale, extended colors, to ensure flexibility and consistency in our digital services.</h3>
         <GoADivider mt="xl" mb="xl"></GoADivider>
-         <p>Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
+        <p>Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
         <h2>Brand colors</h2>
         <p>These colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
 
@@ -31,10 +31,10 @@ export default function FoundationsColorPage() {
                 <div class="token-block" style="background-color: rgb(0, 129, 162);"></div>
               </td>
               <td>
-                Brand - Default 
+                Brand (Default) 
               </td>
               <td>
-                #0081A2
+                &#x23;0081A2
               </td>
             </tr>
             <tr>
@@ -42,10 +42,10 @@ export default function FoundationsColorPage() {
                 <div class="token-block" style="background-color: rgb(0, 80, 114);"></div>
               </td>
               <td>
-                Brand - Dark 
+                Brand (Dark) 
               </td>
               <td>
-                #005072
+                &#x23;005072
               </td>
             </tr>
             <tr>
@@ -53,10 +53,10 @@ export default function FoundationsColorPage() {
                 <div class="token-block" style="background-color: rgb(200, 238, 250);"></div>
               </td>
               <td>
-                Brand - Light
+                Brand (Light)
               </td>
               <td>
-                #C8EEFA
+                &#x23;C8EEFA
               </td>
             </tr>
           </tbody>
