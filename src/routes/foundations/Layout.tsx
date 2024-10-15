@@ -1,4 +1,4 @@
-import { GoABlock, GoADivider, GoAFormItem, GoAGrid, GoASideMenu } from "@abgov/react-components";
+import { GoADivider } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsLayoutPage() {
