@@ -10,7 +10,7 @@ export default function AccessibilityPage() {
         <p>Though our design system comes with accessibility features, there are some additional considerations to keep in mind while building a consistent and accessible experience across all products and platforms. </p>
 
         <h2>WCAG accessibility compliance</h2>
-        <p>We follow <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro#understanding-the-four-principles-of-accessibility">4 principles of web accessibility</a> upon which WCAG is based:</p>
+        <p>We follow <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro#understanding-the-four-principles-of-accessibility" target=_blank>4 principles of web accessibility</a> upon which WCAG is based:</p>
         <ol>
           <li><strong>Perceivable:</strong> Information and user interface components must be presentable to users in ways they can perceive. This means: 
             <ol>
@@ -48,7 +48,7 @@ export default function AccessibilityPage() {
         <h2>Design considerations</h2>
         <h3>Visuals</h3>
         <ul>
-          <li><strong>Color contrast</strong> - We follow the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html">WCAG 2.2</a> guidelines for our design system components to achieve the minimum recommended color contrast between the foreground and the background elements. For text, we ensure a ratio of 4.5:1 for normal text and 3:1 for large text.You can use plugins like <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility">the Able plugin</a> or the <a href="https://www.figma.com/community/plugin/732603254453395948/stark-contrast-accessibility-checker">Stark Accessibility plugin</a> in Figma, or an online tool like the <a href="https://webaim.org/resources/contrastchecker/">WebAIM’s contrast checker</a> to check color contrast in your designs.</li>
+          <li><strong>Color contrast</strong> - We follow the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target=_blank>WCAG 2.2</a> guidelines for our design system components to achieve the minimum recommended color contrast between the foreground and the background elements. For text, we ensure a ratio of 4.5:1 for normal text and 3:1 for large text.You can use plugins like <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target=_blank>the Able plugin</a> or the <a href="https://www.figma.com/community/plugin/732603254453395948/stark-contrast-accessibility-checker" target=_blank>Stark Accessibility plugin</a> in Figma, or an online tool like the <a href="https://webaim.org/resources/contrastchecker/" target=_blank>WebAIM’s contrast checker</a> to check color contrast in your designs.</li>
           <li><strong>Avoid using color as the sole indicator of information</strong> - In addition to color, always supply an icon or text to communicate. Color-only information or changes are hard to distinguish for users with color blindness or limited vision.</li>
           <li><strong>Semantic colors</strong> - Semantic colors help reinforce the interface and available interaction to the user. By using appropriate colors, you can highlight positive, negative, neutral, or critical information and convey its level of severity. For example, in user interfaces, green typically indicates positive statuses like "on" or "complete," while red signifies "off," "alert," "warning," "error," or "failure."</li>
           <li><strong>Text size</strong> - We recommend using text no smaller than 16px for adequate readability for all users. Smaller fonts should be used sparingly and only for less important information.</li>
@@ -63,7 +63,7 @@ export default function AccessibilityPage() {
         
         <h3>Content</h3>
         <ul>
-          <li><strong>Plain, clear and inclusive language</strong> - Ensure that the content is simple, straightforward and easy to understand. We recommend following the <a href="https://www.w3.org/TR/WCAG22/#reading-level">WCAG 2.2 guidelines for reading level</a>, i.e., lower secondary education level. This helps in avoiding jargon and technical terms unless necessary and clearly defined and makes your content accessible to a broad audience.</li>
+          <li><strong>Plain, clear and inclusive language</strong> - Ensure that the content is simple, straightforward and easy to understand. We recommend following the <a href="https://www.w3.org/TR/WCAG22/#reading-level" target=_blank>WCAG 2.2 guidelines for reading level</a>, i.e., lower secondary education level. This helps in avoiding jargon and technical terms unless necessary and clearly defined and makes your content accessible to a broad audience.</li>
           <li><strong>Headings and labels</strong> - Organizing content using hierarchical labels provides a clear structure and makes information easy to understand and navigate. This is especially important for those with cognitive disabilities or those using screen readers.</li>
         </ul>
         
@@ -103,7 +103,7 @@ export default function AccessibilityPage() {
 
         <h5>HTML headings</h5>
         <p><strong>Structure:</strong> Use headings to structure content hierarchically. Begin with an H1 for main title of the page, followed by H2 for main section titles, and H3 (and so forth) for subsections. This hierarchical use of headings helps users with screen readers understand the layout and navigate the content efficiently.</p>
-        <p>The H tags can be independent of the actual size of the text. For example, if you only have a Large Heading (which is the second largest heading in our typescale), it can be labeled as H1 on the page.</p>
+        <p>The H tags can be independent of the actual size of the text. For example, if you only have a Large Heading (which is the second largest heading in <a href="#">our typescale</a>), it can be labeled as H1 on the page.</p>
         <p><strong>Consistency:</strong> Maintain consistency in headings across pages. This predictability aids users in quickly finding the information they need.</p>
         
         <h3>Dynamic content</h3>
