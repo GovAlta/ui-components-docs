@@ -869,14 +869,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Cerulean - Default</br>
-                Cerulean - Mid</br>
-                Cerulean - Light</br>
+                Cerulean - Default<br/>
+                Cerulean - Mid<br/>
+                Cerulean - Light<br/>
               </td>
               <td>
-                #4046CA</br>
-                #575CC3</br>
-                #7F84EB</br>
+                #4046CA<br/>
+                #575CC3<br/>
+                #7F84EB<br/>
               </td>
             </tr>
             <tr>
@@ -907,14 +907,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Orange - Default</br>
-                Orange - Mid</br>
-                Orange - Light</br>
+                Orange - Default<br/>
+                Orange - Mid<br/>
+                Orange - Light<br/>
               </td>
               <td>
-                #F68511</br>
-                #F89F45</br>
-                #FFC76D</br>
+                #F68511<br/>
+                #F89F45<br/>
+                #FFC76D<br/>
               </td>
             </tr>
             <tr>
@@ -945,14 +945,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Pink - Default</br>
-                Pink - Mid</br>
-                Pink - Light</br>
+                Pink - Default<br/>
+                Pink - Mid<br/>
+                Pink - Light<br/>
               </td>
               <td>
-                #DE3D82</br>
-                #E5679D</br>
-                #FF8FC5</br>
+                #DE3D82<br/>
+                #E5679D<br/>
+                #FF8FC5<br/>
               </td>
             </tr>
             <tr>
@@ -983,14 +983,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Go-Green - Default</br>
-                Go-Green - Mid</br>
-                Go-Green - Light</br>
+                Go-Green - Default<br/>
+                Go-Green - Mid<br/>
+                Go-Green - Light<br/>
               </td>
               <td>
-                #72E06A</br>
-                #8CFA84</br>
-                #BBFCB4</br>
+                #72E06A<br/>
+                #8CFA84<br/>
+                #BBFCB4<br/>
               </td>
             </tr>
             <tr>
@@ -1021,14 +1021,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Violet - Default</br>
-                Violet - Mid</br>
-                Violet - Light</br>
+                Violet - Default<br/>
+                Violet - Mid<br/>
+                Violet - Light<br/>
               </td>
               <td>
-                #7E84FA</br>
-                #9A9EFB</br>
-                #C2C6FF</br>
+                #7E84FA<br/>
+                #9A9EFB<br/>
+                #C2C6FF<br/>
               </td>
             </tr>
             <tr>
@@ -1059,14 +1059,14 @@ export default function FoundationsColorPage() {
                 />
               </td>
               <td>
-                Turquoise - Default</br>
-                Turquoise - Mid</br>
-                Turquoise - Light</br>
+                Turquoise - Default<br/>
+                Turquoise - Mid<br/>
+                Turquoise - Light<br/>
               </td>
               <td>
-                #0FB5AE</br>
-                #29CFC8</br>
-                #7FEBE6</br>
+                #0FB5AE<br/>
+                #29CFC8<br/>
+                #7FEBE6<br/>
               </td>
             </tr>
           </tbody>
