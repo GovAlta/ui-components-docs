@@ -1075,7 +1075,7 @@ export default function FoundationsColorPage() {
         <h2>Color usage</h2>
         <p>All government of Alberta products are designed to meet the Web Content and Accessibility Guidelines (WCAG) standards. Level AA compliance is the minimum requirement for accessible design.</p>
 
-        <ul>
+        <ul className="goa-unordered-list">
           <li>Use a light background on dark text and vice versa, with a <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html#dfn-contrast-ratio" target="_blank">contrast ratio</a> of at least 4.5:1 for normal text. </li>
           <li>When a text is 18 points or larger, it must have a contrast ratio of at least 3:1.</li>
           <li>Check color combinations using an accessibility checker. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</li>
