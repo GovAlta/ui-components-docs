@@ -848,7 +848,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#4046CA",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -856,7 +856,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#575CC3",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -864,7 +864,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#7F84EB",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
@@ -886,7 +886,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#F68511",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -894,7 +894,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#F89F45",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -902,7 +902,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#FFC76D",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
@@ -924,7 +924,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#DE3D82",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -932,7 +932,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#E5679D",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -940,7 +940,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#FF8FC5",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
@@ -962,7 +962,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#72E06A",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -970,7 +970,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#8CFA84",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -978,7 +978,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#BBFCB4",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
@@ -1000,7 +1000,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#7E84FA",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -1008,7 +1008,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#9A9EFB",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -1016,7 +1016,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#C2C6FF",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
@@ -1038,7 +1038,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#0FB5AE",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "4px 4px 0 0",
                   }}
                 />
                 <div
@@ -1046,7 +1046,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#29CFC8",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0",
                   }}
                 />
                 <div
@@ -1054,7 +1054,7 @@ export default function FoundationsColorPage() {
                     backgroundColor: "#7FEBE6",
                     height: "35px",
                     width: "35px",
-                    borderRadius: "4px",
+                    borderRadius: "0 0 4px 4px",
                   }}
                 />
               </td>
