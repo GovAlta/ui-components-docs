@@ -14,7 +14,8 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
+
 const componentName = "Microsite header";
 const description =
   "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
@@ -80,7 +81,15 @@ export default function MicrositeHeaderPage() {
     },
     {
       name: "version",
-      type: "string",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Displayed on the right-hand side of the header.",
+    },
+    {
+      name: "version",
+      type: "string | slot",
+      lang: "angular",
+      description: "Displayed on the right-hand side of the header.",
     },
     {
       name: "feedbackUrl",
@@ -163,11 +172,6 @@ export default function MicrositeHeaderPage() {
     setMicrositeHeaderBindings(bindings);
   }
 
-  const onClick = () => {
-    console.log("Feedback clicked");
-    alert("Thank you for your feedback!");
-  };
-
   return (
     <>
       <ComponentHeader
@@ -189,67 +193,7 @@ export default function MicrositeHeaderPage() {
 
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
-
-            <h3 id="component-feedbackclick">Custom click event handler (for feedback)</h3>
-            <Sandbox skipRender fullWidth>
-              <GoAMicrositeHeader type="alpha" onFeedbackClick={onClick} />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  @Component({
-                    selector: "abgov-microsite-header",
-                    templateUrl: "./microsite-header.component.html",
-                  })
-                  export class MicrositeHeaderComponent {
-                    constructor() {}
-
-                    handleFeedbackClick(event: Event) {
-                      console.log("Feedback clicked");
-                      alert("Thank you for your feedback!");
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-microsite-header
-                    type="alpha"
-                    [hasfeedbackhandler]="true"
-                    (_feedbackClick)="handleFeedbackClick($event)"
-                  ></goa-microsite-header>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  export default function MicrositeHeader() {
-                    function onClick() {
-                      console.log("Feedback clicked");
-                      alert("Thank you for your feedback!");
-                    }
-
-                    return (
-                      <>
-                        <GoAMicrositeHeader
-                          type="alpha"
-                          onFeedbackClick={() => onClick()}
-                        />
-                      </>
-                    );
-                  }
-                `}
-              />
-            </Sandbox>
+            <MicrositeHeaderExamples />
           </GoATab>
 
           <GoATab
