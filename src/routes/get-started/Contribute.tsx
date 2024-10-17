@@ -41,9 +41,6 @@ export default function ContributePage() {
           <li>
             <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> on slack
           </li>
-          <li>
-          <a href="https://design.alberta.ca/support/drop-in-hours" target="_blank">Design system Drop-in hours</a>
-          </li>
         </ul>
         <h4>Be prepared to:</h4>
         <ul>
