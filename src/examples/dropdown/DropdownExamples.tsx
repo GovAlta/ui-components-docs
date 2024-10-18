@@ -49,6 +49,27 @@ export const DropdownExamples = () => {
     setTasks([...tasks, task]);
   }
 
+  // ------------------------------------------------------------------
+  // Parent child edge case
+  // ------------------------------------------------------------------
+  const parents = ["All", "Big", "Small"];
+  const childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
+  const childrenBig = ["Elephant", "Truck", "Bus"];
+  const childrenSmall = ["Key", "Pen", "Watch"];
+  const [children, setChildren] = useState<string[]>([]);
+
+  const loadSchemas = (_name: string, values: string[] | string) => {
+    if (typeof values === "string") {
+      if (values === "All") setChildren(childrenAll);
+      else if (values === "Big") setChildren(childrenBig);
+      else setChildren(childrenSmall);
+    }
+  };
+
+  const log = () => {
+    console.log("Children Changed");
+  };
+
   return (
     <>
       <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -89,9 +110,7 @@ export const DropdownExamples = () => {
           </GoAButton>
 
           <GoADivider mt="m"></GoADivider>
-          <GoAFormItem
-            mt="m"
-            label="Select a task to work today">
+          <GoAFormItem mt="m" label="Select a task to work today">
             <GoADropdown
               onChange={(_, values: string[] | string) => setSelectedTask(values as string)}
               value={selectedTask}
@@ -279,6 +298,168 @@ export const DropdownExamples = () => {
               ))}
             </GoADropdown>
           </GoAFormItem>
+            `}
+          />
+        </>
+      )}
+
+      {/* ---------------------------------------- */}
+      {/* Parent child edge case */}
+      {/* ---------------------------------------- */}
+      <h3 id="component-parent-child-common-items" style={{ marginTop: "48px" }}>
+        Dynamically change items in a dropdown
+      </h3>
+      <GoAContainer>
+        <div style={{ padding: "40px" }}>
+          <GoAFormItem
+            label="Size"
+            requirement="optional"
+            helpText="Choose the type to change the list below">
+            <GoADropdown name="parent" placeholder="Select a value" onChange={loadSchemas}>
+              {parents.map(parent => (
+                <GoADropdownItem key={parent} value={parent} label={parent} />
+              ))}
+            </GoADropdown>
+          </GoAFormItem>
+          <GoAFormItem label="Items" requirement="optional" mt="l">
+            <GoADropdown name="children" placeholder="Select a value" onChange={log}>
+              {" "}
+              {children.map((child, _index) => (
+                <GoADropdownItem
+                  key={crypto.randomUUID()}
+                  value={child}
+                  label={child}
+                  mountType={"reset"}
+                />
+              ))}
+            </GoADropdown>
+          </GoAFormItem>
+        </div>
+      </GoAContainer>
+
+      {language === "react" && (
+        <>
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+                const parents = ["All", "Big", "Small"];
+                const childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
+                const childrenBig = ["Elephant", "Truck", "Bus"];
+                const childrenSmall = ["Key", "Pen", "Watch"];
+                const [children, setChildren] = useState<string[]>([]);
+
+                const loadSchemas = (name: string, values: string[] | string) => {
+                  if (typeof values === "string") {
+                    if (values === "All") setChildren(childrenAll);
+                    else if (values === "Big") setChildren(childrenBig);
+                    else setChildren(childrenSmall);
+                  }
+                };
+
+                const log = () => {
+                  console.log("Children Changed");
+                };
+            `}
+          />
+
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              <GoAFormItem label="Parent" requirement="optional" helpText="Choose the type to change the list below">
+                <GoADropdown name="parent" placeholder="Select a value" 
+                  onChange={loadSchemas}>
+                  {parents.map((parent) => (
+                    <GoADropdownItem key={parent} value={parent} label={parent} />
+                  ))}
+                </GoADropdown>
+              </GoAFormItem>
+              <GoAFormItem label="Children" requirement="optional">
+                <GoADropdown name="children" placeholder="Select a value" onChange={log}>
+                  {" "}
+                  {children.map((child, index) => (
+                    <GoADropdownItem
+                      key={crypto.randomUUID()}
+                      value={child}
+                      label={child}
+                      mountType={"reset"}
+                    />
+                  ))}
+                </GoADropdown>
+              </GoAFormItem>
+            `}
+          />
+        </>
+      )}
+
+      {language === "angular" && (
+        <>
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              export class DropdownComponent {
+                changeForm = new FormGroup({
+                  parentDropdown: new FormControl(""),
+                  childDropdown: new FormControl(""),
+                });
+                parents = ["All", "Big", "Small"];
+                children = [""];
+
+                childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
+                childrenBig = ["Elephant", "Truck", "Bus"];
+                childrenSmall = ["Key", "Pen", "Watch"];
+
+                ngOnInit() {
+                  this.onChange();
+                }
+
+                onChange() {
+                  this.changeForm.get("parentDropdown")?.valueChanges
+                  .subscribe((value) => {
+                    if (value === "All") this.children = this.childrenAll;
+                    else if (value === "Big") this.children = this.childrenBig;
+                    else this.children = this.childrenSmall;
+                  });
+                }
+
+                generateUniqueKey(index: number, item: string): string {
+                  return \`$\{item}_$\{index}_$\{Math.random()}\`;
+                }
+              }
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              <div [formGroup]="changeForm">
+                <goa-form-item label="Size" requirement="optional" helptext="Choose the type to change the list below">
+                  <goa-dropdown goaValue formControlName="parentDropdown" 
+                    placeholder="Select a value" name="parent">
+                    <goa-dropdown-item *ngFor="let parent of parents" 
+                        [value]="parent" [label]="parent" />
+                  </goa-dropdown>
+                </goa-form-item>
+                <goa-form-item label="Items" requirement="optional">
+                  <goa-dropdown formControlName="childDropdown" 
+                      placeholder="Select a value" goaValue name="children">
+                    <ng-container *ngIf="children.length > 0">
+                    <goa-dropdown-item
+                      *ngFor="let child of children; trackBy: generateUniqueKey"
+                      [value]="child"
+                      [label]="child"
+                      [mount]="'reset'"
+                    />
+                  </ng-container>
+                  </goa-dropdown>
+                </goa-form-item>
+              </div>
             `}
           />
         </>
