@@ -40,7 +40,7 @@ export default function ReportBugPage() {
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [issueSelection, setIssueSelection] = useState<string>("")
 
-  function bugOrFeature(name: string, value: string) {
+  function bugOrFeature(_: string, value: string) {
     setIssueSelection(value);
   }
 
