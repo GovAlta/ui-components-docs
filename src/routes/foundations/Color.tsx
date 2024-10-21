@@ -1,4 +1,4 @@
-import { GoADivider, GoATable } from "@abgov/react-components";
+import { GoADivider, GoATable, GoAGrid, GoABlock } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsColorPage() {
@@ -12,77 +12,44 @@ export default function FoundationsColorPage() {
         <h2>Brand colors</h2>
         <p>These colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
 
-        <GoATable width="100%" variant="relaxed">
-          <thead>
-            <tr>
-              <th>
-                Sample
-              </th>
-              <th>
-                Color type
-              </th>
-              <th>
-                Hex code
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#0081A2",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Brand - Default
-              </td>
-              <td>
-                #0081A2
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#005072",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Brand - Dark
-              </td>
-              <td>
-                #005072
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#C8EEFA",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Brand - Light
-              </td>
-              <td>
-                #C8EEFA
-              </td>
-            </tr>
-          </tbody>
-        </GoATable>
+        <GoAGrid gap="s" minChildWidth="150px">
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#0081A2",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Brand - Default</div>
+            <div>#0081A2</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#005072",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Brand - Dark</div>
+            <div>#005072</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#C8EEFA",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Brand - Light</div>
+            <div>#C8EEFA</div>
+          </GoABlock>
+        </GoAGrid>
         
         <h2>Interactive colors</h2>
         <p>Assigned to specific actions and states such as buttons and links, these colors are used to enhance usability and promote user engagement in our digital services.</p>
