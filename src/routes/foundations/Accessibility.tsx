@@ -4,11 +4,11 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 export default function AccessibilityPage() {
   return (
-      <ComponentContent tocCssQuery="h2[id], h3[id]>
+      <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Accessibility</h1>
         <h3>We are committed to developing digital services that are inclusive, equitable, and valuable for all users. Our design philosophy centers on creating experiences that are both usable and beneficial to everyone, regardless of their abilities or circumstances.</h3>
         
-         <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <p>Each component in our design system is designed and developed to meet the WCAG 2 Level AA standards ensuring that our digital services are accessible to a wide range of users, including those with disabilities.</p>
         <p>Though our design system comes with accessibility features, there are some additional considerations to keep in mind while building a consistent and accessible experience across all products and platforms.</p>
 
