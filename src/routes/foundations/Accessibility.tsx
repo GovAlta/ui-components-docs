@@ -1,55 +1,58 @@
+import { GoADivider } from "@abgov/react-components";
+import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function AccessibilityPage() {
   return (
-      <ComponentContent>
+      <ComponentContent tocCssQuery="h2[id], h3[id]>
         <h1>Accessibility</h1>
         <h3>We are committed to developing digital services that are inclusive, equitable, and valuable for all users. Our design philosophy centers on creating experiences that are both usable and beneficial to everyone, regardless of their abilities or circumstances.</h3>
-
-        <p>Each component in our design system is designed and developed to meet the required accessibility standards by <strong>WCAG AA</strong> ensuring that our digital services are accessible to all citizens, including those with disabilities.</p>
-        <p>Though our design system comes with accessibility features, there are some additional considerations to keep in mind while building a consistent and accessible experience across all products and platforms. </p>
+        
+         <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <p>Each component in our design system is designed and developed to meet the WCAG 2 Level AA standards ensuring that our digital services are accessible to a wide range of users, including those with disabilities.</p>
+        <p>Though our design system comes with accessibility features, there are some additional considerations to keep in mind while building a consistent and accessible experience across all products and platforms.</p>
 
         <h2>WCAG accessibility compliance</h2>
-        <p>We follow <a href="https://www.w3.org/WAI/WCAG21/Understanding/intro#understanding-the-four-principles-of-accessibility" target="_blank">4 principles of web accessibility</a> upon which WCAG is based:</p>
+        <p>We follow <a href="https://www.w3.org/WAI/WCAG22/Understanding/intro" target="_blank">4 principles of web accessibility</a> upon which WCAG is based:</p>
         <ol>
-          <li><strong>Perceivable:</strong> Information and user interface components must be presentable to users in ways they can perceive. This means: 
-            <ol>
+          <li><strong>Perceivable:</strong> Information and user interface components must be presentable to users in ways they can perceive. This means:
+            <ul>
               <li>Providing text alternatives for non-text content</li>
               <li>Creating content that can be presented in different ways without losing meaning</li>
               <li>Making it easier for users to see and hear content</li>
-            </ol>
+            </ul>
           </li>
           
           <li><strong>Operable:</strong> User interface components and navigation must be operable. This includes:
-            <ol>
+            <ul>
               <li>Making all functionality available from a keyboard</li>
               <li>Providing users enough time to read and use content</li>
               <li>Helping users navigate and find content</li>
-            </ol>
+            </ul>
           </li>
 
           <li><strong>Understandable:</strong> Information and the operation of the user interface must be understandable. This involves:
-            <ol>
+            <ul>
               <li>Making text readable and understandable</li>
               <li>Making content appear and operate in predictable ways</li>
               <li>Helping users avoid and correct mistakes</li>
-            </ol>
+            </ul>
           </li>
           
           <li><strong>Robust:</strong> Content must be robust enough to be interpreted reliably by operating systems, web browsers and assistive technologies. This means:
-            <ol>
+            <ul>
               <li>Maximizing compatibility with current and future user tools</li>
               <li>Ensuring that content is parsed correctly by different browsers and assistive technologies</li>
               <li>Providing clear and consistent structure to content</li>
-            </ol>
+            </ul>
           </li>
         </ol>
 
         <h2>Design considerations</h2>
         <h3>Visuals</h3>
         <ul>
-          <li><strong>Color contrast</strong> - We follow the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank">WCAG 2.2</a> guidelines for our design system components to achieve the minimum recommended color contrast between the foreground and the background elements. For text, we ensure a ratio of 4.5:1 for normal text and 3:1 for large text.You can use plugins like <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">the Able plugin</a> or the <a href="https://www.figma.com/community/plugin/732603254453395948/stark-contrast-accessibility-checker" target="_blank">Stark Accessibility plugin</a> in Figma, or an online tool like the <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM’s contrast checker</a> to check color contrast in your designs.</li>
-          <li><strong>Avoid using color as the sole indicator of information</strong> - In addition to color, always supply an icon or text to communicate. Color-only information or changes are hard to distinguish for users with color blindness or limited vision.</li>
+          <li><strong>Color contrast</strong> - We follow the <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank">WCAG 2.2</a> guidelines for our design system components to achieve the minimum recommended color contrast between the foreground and the background elements. For text, we ensure a ratio of 4.5:1 for normal text and 3:1 for large text. You can use plugins like <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">the Able plugin</a> or the <a href="https://www.figma.com/community/plugin/732603254453395948/stark-contrast-accessibility-checker" target="_blank">Stark Accessibility plugin</a> in Figma, or an online tool like the <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM’s contrast checker</a> to check color contrast in your designs.</li>
+          <li><strong>Avoid using color as the sole indicator of information</strong> - In addition to color, always supply an icon or text to communicate. Color-only information or changes are hard to distinguish for users with color blindness or limited vision. </li>
           <li><strong>Semantic colors</strong> - Semantic colors help reinforce the interface and available interaction to the user. By using appropriate colors, you can highlight positive, negative, neutral, or critical information and convey its level of severity. For example, in user interfaces, green typically indicates positive statuses like "on" or "complete," while red signifies "off," "alert," "warning," "error," or "failure."</li>
           <li><strong>Text size</strong> - We recommend using text no smaller than 16px for adequate readability for all users. Smaller fonts should be used sparingly and only for less important information.</li>
         </ul>
@@ -57,7 +60,7 @@ export default function AccessibilityPage() {
         <h3>Interactions</h3>
         <ul>
           <li><strong>Component states</strong> - To help users navigate the interface, relevant component states should be included such as focus, hover, active, selected, disabled.</li>
-          <li><strong>Target size</strong> - We recommend keeping the minimum interactive target size as 24X24 pixels including the white space around the target, and provide additional space when needed.  This ensures that the touch target is large enough for people with limited mobility to accurately tap what they are aiming for.</li>
+          <li><strong>Target size</strong> - We recommend keeping a minimum interactive target size of 24X24 pixels including the white space around the target and provide additional space when needed.  This ensures that the touch target is large enough for people with motor impairments to accurately tap what they are aiming for.</li>
           <li><strong>Avoid displaying disabled elements</strong> - We suggest hiding an element on a page rather than showing it in a disabled state. If you need to keep a disabled element, provide information on why it is disabled and how to enable it. For instance, do not disable the button to submit a form, instead allow the users to submit and then provide validation and errors to help users recover or correct their input accordingly.</li>
         </ul>
         
@@ -69,7 +72,7 @@ export default function AccessibilityPage() {
         
         <h3>Accessibility text</h3>
         <ul>
-          <li><strong>Alternative text</strong> - Screen readers and other text to speech tools rely on alternative text to convey information and actions in the user journey.  Supporting images, icons, buttons and links with alternative text makes the service usable for people relying on assistive technology.</li>
+          <li><strong>Alternative text</strong> - Screen readers and other text-to-speech tools rely on alternative text for images and accessible labels for interactive elements to convey information and actions. Providing alt text for images and icons, and ensuring that buttons and links have descriptive labels or accessible names, makes the service usable for people relying on assistive technology.</li>
           <li><strong>Audio descriptions, transcripts and captions</strong> - Any prerecorded or live audio or video content should be supported with audio descriptions, transcripts or captions to provide an alternative way of accessing content for users with hearing loss, low vision or blindness.</li>
         </ul>
         
@@ -86,7 +89,7 @@ export default function AccessibilityPage() {
         
         <h3>Device agnostic</h3>
         <ul>
-          <li><strong>Text resizing</strong> - Make sure that text resizing does not result in losing content or functionalities.</li>
+          <li><strong>Text resizing</strong> - Ensure that when users adjust the text size, no content is lost and all functionality remains fully accessible.</li>
           <li><strong>Responsiveness</strong> - While adapting a design for different screens, also consider how users access content on different devices. For instance, playing videos on mobile could automatically switch to a landscape alignment if the device orientation settings allow it. Similarly, scanning a cheque on mobile devices could also allow scanning in a landscape mode for better usability and output.</li>
         </ul>
 
@@ -103,33 +106,33 @@ export default function AccessibilityPage() {
 
         <h5>HTML headings</h5>
         <p><strong>Structure:</strong> Use headings to structure content hierarchically. Begin with an H1 for main title of the page, followed by H2 for main section titles, and H3 (and so forth) for subsections. This hierarchical use of headings helps users with screen readers understand the layout and navigate the content efficiently.</p>
-        <p>The H tags can be independent of the actual size of the text. For example, if you only have a Large Heading (which is the second largest heading in <a href="#">our typescale</a>), it can be labeled as H1 on the page.</p>
+        <p>The H tags can be independent of the actual size of the text. For example, if you only have a Large Heading (which is the second largest heading in <Link to="/foundations/typography">our typescale</Link>), it can be labeled as H1 on the page.</p>
         <p><strong>Consistency:</strong> Maintain consistency in headings across pages. This predictability aids users in quickly finding the information they need.</p>
         
         <h3>Dynamic content</h3>
-        <p>Dynamic content, which updates or changes without a full page reload, poses specific challenges for accessibility. Ensuring that these updates are perceivable and manageable by all users, especially those using assistive technologies, is crucial for maintaining an inclusive web environment. </p>
+        <p>Dynamic content, which updates or changes without a full page reload, poses specific challenges for accessibility. Ensuring that these updates are perceivable and manageable by all users, especially those using assistive technologies, is crucial for maintaining an inclusive web environment.</p>
         <p>Here are some key strategies for handling dynamic content accessibility:</p>
 
         <h4>Use of ARIA live regions</h4>
         <ul>
           <li><strong>Purpose:</strong> ARIA live regions provide a way to programmatically notify assistive technologies of content changes without requiring user focus to shift to that content.</li>
           <li><strong>Implementation:</strong> Utilize attributes like aria-live (with values such as “polite”, “assertive”, or “off”) to manage how updates are announced. For example, use “polite” for updates that are not urgent, so that they do not interrupt what the user is currently doing.</li>
-          <li><strong>Examples:</strong> Common applications include updating an error summary, notification messages, or the status of ongoing processes.</li>
+          <li><strong>Examples:</strong> The <Link to="/components/callout">Callout</Link> and <Link to="/components/notification-banner">Notification Banner</Link> components include properties to set how assistive technology should treat updates to their content.</li>
         </ul>
 
-        <h4>Role attribute</h4>
+        <h4>Form updates</h4>
         <ul>
-          <li><strong>Application:</strong> Assign the role=”status” or role=”alert” to small regions where simple feedback about an operation in a user interface is needed. role=”alert” automatically has an implicit aria-live value of “assertive”, and it should only be used for critical updates that require immediate attention.</li>
+          <li><strong>Scenario:</strong> Adding fields to a form based on user input.</li>
+          <li><strong>Implementation:</strong> Use ARIA role=”alert” or live regions to notify users about new questions are shown.</li>
         </ul>
         
-        <h4>Use of ARIA live regions</h4>
+        <h4>Managing focus</h4>
         <ul>
           <li><strong>Focus handling:</strong> In Single Page Applications (SPAs), manage focus to ensure that users understand where they are after dynamic content loads. For example, when opening a modal or navigating in a single-page application, move focus to the new content or back to a logical starting point after the content is dismissed or changed.</li>
-          <li><strong>Navigation:</strong> Use ARIA roles like role=”navigation” and techniques such as updating the browser’s history API to improve the usability of dynamically changing content.</li>
         </ul>
         
         <h3>Skip to content link</h3>
-        <p>Skip to content links allow users, especially those using screen readers or keyboard navigation, to bypass repetitive navigation links and directly access the main content of a page. Implementing skip navigation links enhances the website's usability for users with disabilities by reducing the effort required to reach actionable content. </p>
+        <p>Skip to content links allow users, especially those using screen readers or keyboard navigation, to bypass repetitive navigation links and directly access the main content of a page. Implementing skip navigation links enhances the website's usability for users with disabilities by reducing the effort required to reach actionable content.</p>
         <ul>
           <li>Skip navigation links are typically positioned at the very top of the webpage, making them the first focusable element.</li>
           <li>When activated, these links allow users to jump straight to a designated section of the page, usually the main content area, which helps avoid the frustration of tabbing through lengthy navigation menus.</li>
@@ -137,21 +140,21 @@ export default function AccessibilityPage() {
         </ul>
 
         <h3>Keyboard navigation</h3>
-        <p>Keyboard navigation is essential for users who rely on keyboard-only interactions to support navigational controls and actions using a keyboard.</p>
+        <p>Keyboard navigation is essential for users who rely solely on a keyboard to interact with digital interfaces. It enables them to perform navigational actions without the use of a mouse or touch input.</p>
         <p>All interactive elements in our design system are accessible through logical tab sequences with visible focus indicators present.</p>
         
         <h3>Performance optimization</h3>
-        <p>Optimizing speed, loading time, refresh time, real-time updates and responsiveness ensures that people with older technology or slower internet connections can use our services.</p>
+        <p>Optimizing speed, loading time, and responsiveness ensures that people using older devices, slower internet connections, or exclusively mobile phones can effectively access our services.</p>
         
         <h2>Accessibility testing</h2>
         <p>Though all the GoA components come with accessibility features, it is important to make sure that the components are integrated in a way that makes the service fully accessible. Accessibility testing helps in identifying some unforeseen issues.</p>
-        <p>We recommend a mix of automated, semi-automated, and manual testing in addition to actual tests with real people who need assistive accommodation to interact with services effectively.</p>
+        <p>We recommend using a mix of testing tools with real people who need assistive technologies to interact with services effectively.</p>
+        <p>Below are some of the tools and ways you could test your product for accessibility.</p>
         
         <h3>Screen reader tools</h3>
         <ul>
           <li><strong>NVDA (Non-Visual Desktop Access):</strong> A free and open-source screen reader for windows.</li>
           <li><strong>VoiceOver:</strong> An integrated screen reader found in all Apple operating systems.</li>
-          <li><strong>JAWS (Job Access With Speech):</strong> A comprehensive screen reader for Windows. <a href="#">Request a license</a></li>
         </ul>
         
         <h3>Automated testing tools</h3>
