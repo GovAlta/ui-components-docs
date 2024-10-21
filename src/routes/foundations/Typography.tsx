@@ -1,5 +1,6 @@
-import { GoADivider } from "@abgov/react-components";
+import { GoADivider, GoABlock } from "@abgov/react-components";
 import { Link } from "react-router-dom";
+import { getCssVarValue } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsTypographyPage() {
@@ -23,11 +24,22 @@ export default function FoundationsTypographyPage() {
 
         <h3>Roboto</h3>
         <p>We use the open-sourced monospaced typeface, <a href="https://fonts.google.com/specimen/Roboto+Mono?subset=cyrillic-ext&selection.family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900|Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900|Arimo:ital,wght@0,400;0,700;1,400;1,700|Arsenal:ital,wght@0,400;0,700;1,400;1,700|Comfortaa|Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700|Cousine:ital,wght@0,400;0,700;1,400;1,700|Cuprum|Didact+Gothic|Fira+Mono:wght@400;500;700|Fira+Sans+Condensed|Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&preview.text=te&preview.text_type=custom" target="_blank">Roboto Mono</a> for numbers in places where comparing numbers is important. This enhances readability and alignment when displaying numerical data, making it easier to compare figures accurately.</p>
-
         
         <h2>Text styles</h2>
-
-        <p>img here</p>
+        <GoABlock mt="xl" mb="xl">
+          <div style={{ font: getCssVarValue(`--$goa-typography-heading-xl`) }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
+          <div style={{ font: getCssVarValue(`--$goa-typography-heading-l`) }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
+          <div style={{ font: getCssVarValue(`--$goa-typography-heading-m`) }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: getCssVarValue(`--$goa-typography-heading-s`) }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: getCssVarValue(`--$goa-typography-heading-xs`) }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
+          <div style={{ font: getCssVarValue(`--$goa-typography-body-l`) }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-body-m`) }}>Medium text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-body-s`) }}>Small text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-body-xs`) }}>XSmall text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-number-l`) }}>Large number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-number-m`) }}>Medium number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: getCssVarValue(`--$goa-typography-number-s`) }}>Small number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+        </GoABlock>
 
         <h3>Headings</h3>
         <p>We use headings consistently throughout a digital service to create a clear content structure and predictable pattern for the users.</p>
