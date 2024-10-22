@@ -1,4 +1,4 @@
-import { GoADivider, GoABlock } from "@abgov/react-components";
+import { GoADivider, GoABlock, GoATable } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { getCssVarValue } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
@@ -80,7 +80,89 @@ export default function FoundationsTypographyPage() {
         <p>We recommended using the defined text styles which include their respective font weights. Text should not be underlined unless it is a link.</p>
 
         <h2>Specifications</h2>
-        <p>img here</p>
+        <GoATable width="100%" variant="relaxed">
+          <thead>
+            <tr>
+              <th>Figma type style</th>
+              <th>Type family</th>
+              <th>Weight</th>
+              <th>Font size</th>
+              <th>Line height</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-xl`) }}>XLarge heading</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Bold</td>
+              <td>48px | 3rem</td>
+              <td>56px | 3.5rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-l`) }}>Large heading</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>36px | 2.25rem</td>
+              <td>44px | 2.75rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-m`) }}>Medium heading</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>24px | 1.5rem</td>
+              <td>32px | 2rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-s`) }}>Small heading</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Bold</td>
+              <td>18px | 1.125rem</td>
+              <td>28px | 1.75rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-xs`) }}>XSmall heading</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Bold</td>
+              <td>16px | 1rem</td>
+              <td>24px | 1.5rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-body-l`) }}>Large text</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>24px | 1.5rem</td>
+              <td>32px | 2rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-body-m`) }}>Medium text</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>18px | 1.125rem</td>
+              <td>28px | 1.75rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-body-s`) }}>Small text</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>16px | 1rem</td>
+              <td>24px | 1.5rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-body-xs`) }}>XSmall text</div></td>
+              <td>Acumin Pro SemiCondensed</td>
+              <td>Regular</td>
+              <td>14px | 0.875rem</td>
+              <td>20px | 1.25rem</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-number-m`) }}>Medium number</div></td>
+              <td>Roboto Mono</td>
+              <td>Regular</td>
+              <td>18px | 1.125rem</td>
+              <td>28px | 1.75rem</td>
+            </tr>
+          </tbody>
+        </GoATable>
         
         <h3>Size</h3>
         <p>Our available text sizes range from 14px to 48px, giving you sufficient type scales to work with as per your requirement. </p>
@@ -105,7 +187,30 @@ export default function FoundationsTypographyPage() {
         
         <h2>Alternate heading styles</h2>
         <p>For greater flexibility within the type scale, Large headings and Medium headings can be bolded to create more emphasis and additional hierarchy as needed.</p>
-        <p>img here</p>
+        <GoATable width="100%" variant="relaxed">
+          <thead>
+            <tr>
+              <th>Figma type style</th>
+              <th>Font size</th>
+              <th>Line height</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-l`), fontWeight: getCssVarValue(`--goa-font-weight-bold`) }}>Heading 2</div></td>
+              <td>36px | 2.25rem</td>
+              <td>44px | 2.75rem</td>
+              <td>Bold</td>
+            </tr>
+            <tr>
+              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-m`), fontWeight: getCssVarValue(`--goa-font-weight-bold`) }}>Heading 3</div></td>
+              <td>24px | 1.5rem</td>
+              <td>32px | 2rem</td>
+              <td>Bold</td>
+            </tr
+          </tbody>
+        </GoATable>
         
         <h2>Best practices</h2>
         <h3>Accessibility</h3>
