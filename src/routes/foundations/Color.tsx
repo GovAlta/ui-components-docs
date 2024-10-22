@@ -53,150 +53,93 @@ export default function FoundationsColorPage() {
         
         <h2>Interactive colors</h2>
         <p>Assigned to specific actions and states such as buttons and links, these colors are used to enhance usability and promote user engagement in our digital services.</p>
-        <GoATable width="100%" variant="relaxed">
-          <thead>
-            <tr>
-              <th>
-                Sample
-              </th>
-              <th>
-                Color type
-              </th>
-              <th>
-                Hex code
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#0070C4",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Default 
-              </td>
-              <td>
-                #0070C4
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#004F84",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Hover
-              </td>
-              <td>
-                #004F84
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#FEBA35",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Focus
-              </td>
-              <td>
-                #FEBA35
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#EC040B",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Error
-              </td>
-              <td>
-                #EC040B
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#80B7E1",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Disabled
-              </td>
-              <td>
-                #80B7E1
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#BA0000",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Error Hover
-              </td>
-              <td>
-                #BA0000
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div
-                  style={{
-                    backgroundColor: "#F58185",
-                    height: "35px",
-                    width: "35px",
-                    borderRadius: "4px",
-                  }}
-                />
-              </td>
-              <td>
-                Interactive - Error Disabled
-              </td>
-              <td>
-                #F58185
-              </td>
-            </tr>
-            
-          </tbody>
-        </GoATable>
+        
+        <GoAGrid gap="s" minChildWidth="150px">
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#0070C4",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Default</div>
+            <div>#0070C4</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#004F84",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Hover</div>
+            <div>#004F84</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#FEBA35",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Focus</div>
+            <div>#FEBA35</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#EC040B",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Error</div>
+            <div>#EC040B</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#80B7E1",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Disabled</div>
+            <div>#80B7E1</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#BA0000",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Error Hover</div>
+            <div>#BA0000</div>
+          </GoABlock>
+          <GoABlock>
+            <div
+              style={{
+                backgroundColor: "#F58185",
+                height: "35px",
+                width: "100%",
+                borderRadius: "4px",
+              }}
+            />
+            <div>Interactive - Error Disabled</div>
+            <div>#F58185</div>
+          </GoABlock>
+        </GoAGrid>
         
         <h2>Text colors</h2>
         <p>Headings, body text, and labels adopt these colours to ensure visual hierarchy in our layouts and readability across various contexts.</p>
