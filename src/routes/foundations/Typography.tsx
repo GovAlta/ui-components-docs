@@ -208,7 +208,7 @@ export default function FoundationsTypographyPage() {
               <td>24px | 1.5rem</td>
               <td>32px | 2rem</td>
               <td>Bold</td>
-            </tr
+            </tr>
           </tbody>
         </GoATable>
         
