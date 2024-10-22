@@ -27,18 +27,18 @@ export default function FoundationsTypographyPage() {
         
         <h2>Text styles</h2>
         <GoABlock mt="xl" mb="xl">
-          <div style={{ font: getCssVarValue(`--goa-typography-heading-xl`) }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
-          <div style={{ font: getCssVarValue(`--goa-typography-heading-l`) }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
-          <div style={{ font: getCssVarValue(`--goa-typography-heading-m`) }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-          <div style={{ font: getCssVarValue(`--goa-typography-heading-s`) }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-          <div style={{ font: getCssVarValue(`--goa-typography-heading-xs`) }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
-          <div style={{ font: getCssVarValue(`--goa-typography-body-l`) }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-body-m`) }}>Medium text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-body-s`) }}>Small text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-body-xs`) }}>XSmall text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-number-l`) }}>Large number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-number-m`) }}>Medium number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
-           <div style={{ font: getCssVarValue(`--goa-typography-number-s`) }}>Small number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+          <div style={{ font: "var(--goa-typography-heading-xl)" }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
+          <div style={{ font: "var(--goa-typography-heading-l)" }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
+          <div style={{ font: "var(--goa-typography-heading-m)" }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: "var(--goa-typography-heading-s)" }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: "var(--goa-typography-heading-xs)" }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
+          <div style={{ font: "var(--goa-typography-body-l)" }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: "var(--goa-typography-body-m)" }}>Medium text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: "var(--goa-typography-body-s)" }}>Small text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: "var(--goa-typography-body-xs)" }}>XSmall text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: "var(--goa-typography-number-l)" }}>Large number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: "var(--goa-typography-number-m)" }}>Medium number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: "var(--goa-typography-number-s)" }}>Small number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
         </GoABlock>
 
         <h3>Headings</h3>
@@ -92,70 +92,70 @@ export default function FoundationsTypographyPage() {
           </thead>
           <tbody>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-xl`) }}>XLarge heading</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-xl)" }}>XLarge heading</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Bold</td>
               <td>48px | 3rem</td>
               <td>56px | 3.5rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-l`) }}>Large heading</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-l)" }}>Large heading</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>36px | 2.25rem</td>
               <td>44px | 2.75rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-m`) }}>Medium heading</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-m)" }}>Medium heading</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>24px | 1.5rem</td>
               <td>32px | 2rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-s`) }}>Small heading</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-s)" }}>Small heading</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Bold</td>
               <td>18px | 1.125rem</td>
               <td>28px | 1.75rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-xs`) }}>XSmall heading</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-xs)" }}>XSmall heading</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Bold</td>
               <td>16px | 1rem</td>
               <td>24px | 1.5rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-body-l`) }}>Large text</div></td>
+              <td><div style={{ font: "var(--goa-typography-body-l)" }}>Large text</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>24px | 1.5rem</td>
               <td>32px | 2rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-body-m`) }}>Medium text</div></td>
+              <td><div style={{ font: "var(--goa-typography-body-m)" }}>Medium text</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>18px | 1.125rem</td>
               <td>28px | 1.75rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-body-s`) }}>Small text</div></td>
+              <td><div style={{ font: "var(--goa-typography-body-s)" }}>Small text</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>16px | 1rem</td>
               <td>24px | 1.5rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-body-xs`) }}>XSmall text</div></td>
+              <td><div style={{ font: "var(--goa-typography-body-xs)" }}>XSmall text</div></td>
               <td>Acumin Pro SemiCondensed</td>
               <td>Regular</td>
               <td>14px | 0.875rem</td>
               <td>20px | 1.25rem</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-number-m`) }}>Medium number</div></td>
+              <td><div style={{ font: "var(--goa-typography-number-m)" }}>Medium number</div></td>
               <td>Roboto Mono</td>
               <td>Regular</td>
               <td>18px | 1.125rem</td>
@@ -198,13 +198,13 @@ export default function FoundationsTypographyPage() {
           </thead>
           <tbody>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-l`), fontWeight: getCssVarValue(`--goa-font-weight-bold`) }}>Heading 2</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-l)", fontWeight: "var(--goa-font-weight-bold)" }}>Heading 2</div></td>
               <td>36px | 2.25rem</td>
               <td>44px | 2.75rem</td>
               <td>Bold</td>
             </tr>
             <tr>
-              <td><div style={{ font: getCssVarValue(`--goa-typography-heading-m`), fontWeight: getCssVarValue(`--goa-font-weight-bold`) }}>Heading 3</div></td>
+              <td><div style={{ font: "var(--goa-typography-heading-m)", fontWeight: "var(--goa-font-weight-bold)" }}>Heading 3</div></td>
               <td>24px | 1.5rem</td>
               <td>32px | 2rem</td>
               <td>Bold</td>
