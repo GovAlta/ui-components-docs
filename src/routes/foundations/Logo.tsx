@@ -1,4 +1,4 @@
-import { GoADivider, GoABlock } from "@abgov/react-components"
+import { GoADivider, GoABlock, GoAGrid } from "@abgov/react-components"
 import { DoDont } from "@components/do-dont/DoDont";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
@@ -68,7 +68,7 @@ export default function LogoPage() {
         <GoABlock mt="xl" mb="xl">
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
-              <img src="/images/logo/logo.png" width="80%"></img>
+              <img src="/images/logo/logo-service-name.png" width="80%"></img>
             </div>
           </DoDont>
         </GoABlock>
