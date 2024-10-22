@@ -27,18 +27,18 @@ export default function FoundationsTypographyPage() {
         
         <h2>Text styles</h2>
         <GoABlock mt="xl" mb="xl">
-          <div style={{ font: getCssVarValue(`--$goa-typography-heading-xl`) }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
-          <div style={{ font: getCssVarValue(`--$goa-typography-heading-l`) }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
-          <div style={{ font: getCssVarValue(`--$goa-typography-heading-m`) }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-          <div style={{ font: getCssVarValue(`--$goa-typography-heading-s`) }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
-          <div style={{ font: getCssVarValue(`--$goa-typography-heading-xs`) }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
-          <div style={{ font: getCssVarValue(`--$goa-typography-body-l`) }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-body-m`) }}>Medium text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-body-s`) }}>Small text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-body-xs`) }}>XSmall text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-number-l`) }}>Large number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-number-m`) }}>Medium number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
-           <div style={{ font: getCssVarValue(`--$goa-typography-number-s`) }}>Small number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-heading-xl`) }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-heading-l`) }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-heading-m`) }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-heading-s`) }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-heading-xs`) }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
+          <div style={{ font: getCssVarValue(`--goa-typography-body-l`) }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-body-m`) }}>Medium text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-body-s`) }}>Small text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-body-xs`) }}>XSmall text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-number-l`) }}>Large number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-number-m`) }}>Medium number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
+           <div style={{ font: getCssVarValue(`--goa-typography-number-s`) }}>Small number text - 12345678910 1111 2222 3333 4444 5555 6666 7777 8888 9999 0000</div>
         </GoABlock>
 
         <h3>Headings</h3>
