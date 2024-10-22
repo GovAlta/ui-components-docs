@@ -25,7 +25,7 @@ export default function IconographyPage() {
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <p>img here</p>
-              <p {{ font: getCssVarValue(`--goa-typography-body-xs`) }}>Alert and messaging</p>
+              <p {{ font: "var(--goa-typography-body-xs)" }}>Alert and messaging</p>
             </div>
           </DoDont>
         </GoABlock>
@@ -34,7 +34,7 @@ export default function IconographyPage() {
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <p>img here</p>
-              <p {{ font: getCssVarValue(`--goa-typography-body-xs`) }}>Basic</p>
+              <p {{ font: "var(--goa-typography-body-xs)" }}>Basic</p>
             </div>
           </DoDont>
         </GoABlock>
@@ -43,7 +43,7 @@ export default function IconographyPage() {
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <p>img here</p>
-              <p {{ font: getCssVarValue(`--goa-typography-body-xs`) }}>Direction</p>
+              <p {{ font: "var(--goa-typography-body-xs)" }}>Direction</p>
             </div>
           </DoDont>
         </GoABlock>
@@ -52,7 +52,7 @@ export default function IconographyPage() {
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <p>img here</p>
-              <p {{ font: getCssVarValue(`--goa-typography-body-xs`) }}>Interactions</p>
+              <p {{ font: "var(--goa-typography-body-xs)" }}>Interactions</p>
             </div>
           </DoDont>
         </GoABlock>
@@ -61,7 +61,7 @@ export default function IconographyPage() {
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <p>img here</p>
-              <p {{ font: getCssVarValue(`--goa-typography-body-xs`) }}>Accounts</p>
+              <p {{ font: "var(--goa-typography-body-xs)" }}>Accounts</p>
             </div>
           </DoDont>
         </GoABlock>
