@@ -95,7 +95,7 @@ export default function FoundationsTypographyPage() {
   };
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoAGrid minChildWidth="22rem" gap="xs">
         <GoAContainer>
           <dl className="design-tokens">
             <dd style={{ margin:"0 0 24px", }}><div style={{ font: "var(--goa-typography-heading-xl)", }}>XLarge heading</div></dd>
@@ -219,7 +219,7 @@ export default function FoundationsTypographyPage() {
   };
   const secondRenderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="m">
+      <GoAGrid minChildWidth="22rem" gap="xs">
           <GoAContainer>
             <dl className="design-tokens">
               <dd style={{ margin:"0 0 24px", }}><div style={{ font: "var(--goa-typography-heading-l)", fontWeight: "var(--goa-font-weight-bold)" }}>Heading 2</div></dd>
@@ -331,6 +331,7 @@ export default function FoundationsTypographyPage() {
           <p>We recommended using the defined text styles which include their respective font weights. Text should not be underlined unless it is a link.</p>
 
           <h2 id="specifications">Specifications</h2>
+          <GoASpacer vSpacing="s"></GoASpacer>
           {isDesktop ? renderDesktop() : renderMobile()}
           
           <h3 id="size">Size</h3>
@@ -357,6 +358,7 @@ export default function FoundationsTypographyPage() {
           <h2 id="alternate-heading-styles">Alternate heading styles</h2>
           <p>For greater flexibility within the type scale, Large headings and Medium headings can be bolded to create more emphasis and additional hierarchy as needed.</p>
           
+          <GoASpacer vSpacing="m"></GoASpacer>
           {isDesktop ? secondRenderDesktop() : secondRenderMobile()}
           
           <h2 id="best-practices">Best practices</h2>
