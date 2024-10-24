@@ -57,9 +57,19 @@ h4.heading {
   margin-bottom: 0;
 }
 
-p.small {
+.small {
   font-size: var(--goa-typography-body-s);
+}
+.text-secondary {
   color: var(--goa-color-text-secondary);
+}
+
+.x-small {
+ font-size: var(--goa-typography-body-xs);
+}
+
+.greyscale {
+  color: var(--goa-color-greyscale-600);
 }
 
 .support-info {
@@ -72,6 +82,10 @@ p.small {
 
 code {
   font: var(--goa-typography-number-m);
+}
+
+iframe {
+  border: none;
 }
 
 /*Tablet*/
