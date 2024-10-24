@@ -17,10 +17,6 @@ import "./index.css";
 // Support
 
 import HomePage from "@routes/home";
-import SupportOverviewPage from '@routes/support/SupportOverview';
-import SupportLayout from '@routes/support/SupportLayout';
-import DropInHoursPage from '@routes/support/DropInHours';
-import ReleaseNotesPage from '@routes/support/ReleaseNotes.tsx';
 
 // Components
 
@@ -92,11 +88,15 @@ import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
 import ContributePage from '@routes/get-started/Contribute';
+import SupportPage from '@routes/get-started/Support';
+import RequestFeaturePage from "@routes/get-started/RequestFeature";
+import ReportBugPage from "@routes/get-started/ReportBug";
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 
 // Content Pages
+
 import ContentLayout from '@routes/content/ContentLayout';
 import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
@@ -105,6 +105,7 @@ import HelperTextPage from '@routes/content/HelperText';
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
 // Patterns Pages
+
 import PatternsLayout from "@routes/patterns/PatternsLayout";
 import LayoutPage from "@routes/patterns/LayoutPage";
 import PatternsOverviewPage from "@routes/patterns/PatternsOverview";
@@ -216,6 +217,11 @@ const router = createBrowserRouter(
         <Route path="contribute">
           <Route index element={<ContributePage />} />
         </Route>
+        <Route path="support">
+          <Route index element={<SupportPage />} />
+          <Route path="report-bug" element={<ReportBugPage />} />
+          <Route path="request-feature" element={<RequestFeaturePage />} />
+        </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
@@ -239,13 +245,6 @@ const router = createBrowserRouter(
         <Route path="question-page" element={<QuestionPage/>} />
         <Route path="review-page" element={<ReviewPage/>} />
         <Route path="result-page" element={<ResultPage/>} />
-      </Route>
-      <Route path="support" element={<SupportLayout />}>
-        <Route index element={<SupportOverviewPage />} />
-        <Route path="drop-in-hours">
-          <Route index element={<DropInHoursPage />} />
-        </Route>
-        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )

@@ -25,6 +25,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - run: npm ci
       - name: Build
+        env:
+          VITE_AUTH_TOKEN: ${{ secrets.VITE_AUTH_TOKEN }}
         run: |
           npm run build
           cp nginx.conf dist/
