@@ -50,9 +50,6 @@ export default function Root() {
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
             <Link to="/content/capitalization">Content</Link>
-            <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-              Report a bug
-            </Link>
           </GoAAppHeader>
         </section>
 

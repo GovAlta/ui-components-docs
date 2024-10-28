@@ -1,9 +1,10 @@
 import {
-  GoABlock,
   GoAButton,
-  GoADivider,
+  GoAFormItem,
   GoARadioGroup,
-  GoARadioItem
+  GoARadioItem,
+  GoASpacer,
+  GoAText,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 import { useState } from "react";
@@ -27,12 +28,11 @@ export default function SupportPage() {
   }
 
   return (
-    <ComponentContent tocCssQuery="h2[id], h3[id]">
+    <ComponentContent tocCssQuery="h2[id]">
       <h1>Support</h1>
       <h3>
         Get help from our team with using the design system, including components, guidelines, best practices, and accessibility.
       </h3>
-
       <div className="max-width-72ch">
         <h2 id="raise-issue">
           Raise an issue
@@ -40,13 +40,14 @@ export default function SupportPage() {
         <p>
           Let us know if you find a problem in the design system or if you need a new component or pattern.
         </p>
-        <h4>What would you like to do?</h4>
-        <GoARadioGroup name="bug-or-feature" onChange={bugOrFeature}>
-          <GoARadioItem value="bug" label="Report a bug" />
-          <GoARadioItem value="feature" label="Request a new feature" />
-        </GoARadioGroup>
+        <GoAFormItem label="What would you like to do?" mt="xs">
+          <GoARadioGroup name="bug-or-feature" onChange={bugOrFeature}>
+            <GoARadioItem value="bug" label="Report a bug" />
+            <GoARadioItem value="feature" label="Request a new feature" />
+          </GoARadioGroup>
+        </GoAFormItem>
         <br />
-        <GoAButton onClick={openPage} mt="m">Raise an issue</GoAButton>
+        <GoAButton onClick={openPage} mb="xl">Raise an issue</GoAButton>
         <h2 id="talk">Talk to us</h2>
         <h3>Slack</h3>
         <p>
@@ -59,50 +60,45 @@ export default function SupportPage() {
           <br />
           A place for any Figma discussion. Share tips, tricks, techniques, ask questions, report issues.
         </p>
-        <GoABlock gap="m" alignment="center">
+        <div className="hours">
           <h3 id="drop-in">Drop in Hours</h3>
-          <span className="grey-text">(every Friday 1:00 - 3:00pm MST)</span>
-        </GoABlock>
+          <span className="grey-text">(Tuesday and Friday 1:00 - 3:00pm MST)</span>
+        </div>
         <p>
           For service teams to get feedback on their usage of the design system, propose new components or changes
           to existing components, ask any questions, and give feedback to the design system.
           <br />
           <a href="https://outlook.office365.com/book/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/" target="_blank">Book a time</a>
         </p>
-        
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>        
-        
+        <GoASpacer vSpacing="m" /> 
         <h2 id="team">Design system team</h2>
-        <h3 id="po">Product Owner</h3>
+        <GoAText as="h3" mb="2xs">Product Owner</GoAText>
         <p>
           Mark Elamatha | <a href="mailto:mark.elamatha@gov.ab.ca">mark.elamatha@gov.ab.ca</a>
         </p>
-
-        <h3 id="architect">Digital architect and scrum master</h3>
+        <GoAText as="h3" mb="2xs">Scrum master and DevOps</GoAText>
         <p>
           Dustin Nielsen | <a href="mailto:dustin.nielsen@gov.ab.ca">dustin.nielsen@gov.ab.ca</a>
         </p>
-
-        <h3 id="developers">Developers</h3>
+        <GoAText as="h3" mb="2xs">Digital architect and Lead developer</GoAText>
         <p>
           Chris Olsen | <a href="mailto:chris.olsen@gov.ab.ca">chris.olsen@gov.ab.ca</a>
-          <br />
+        </p>
+        <GoAText as="h3" mb="2xs">Developers</GoAText>
+        <p>
           Vanessa Tran | <a href="mailto:vanessa.m.tran@gov.ab.ca">vanessa.m.tran@gov.ab.ca</a>
           <br />
           Syed Zeeshan | <a href="mailto:syed.zeeshan@gov.ab.ca">syed.zeeshan@gov.ab.ca</a>
         </p>
-
-        <h3 id="qa">QA Automation Developer</h3>
+        <GoAText as="h3" mb="2xs">QA Automation Developer</GoAText>
         <p>
           Ken Li | <a href="mailto:ken.li@gov.ab.ca">ken.li@gov.ab.ca</a>
         </p>
-
-        <h3 id="service">Service designer</h3>
+        <GoAText as="h3" mb="2xs">Service designer</GoAText>
         <p>
           Ali Nicholls Asikinack | <a href="mailto:ali.nicholls-asikinack@gov.ab.ca">ali.nicholls-asikinack@gov.ab.ca</a>
         </p>
-
-        <h3 id="ux">UX designers</h3>
+        <GoAText as="h3" mb="2xs">UX designers</GoAText>
         <p>
           Thomas Jeffery | <a href="mailto:thomas.jeffery@gov.ab.ca">thomas.jeffery@gov.ab.ca</a>
           <br />

@@ -1,5 +1,6 @@
 import { GoASpacer } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
+import { Link } from "react-router-dom";
   
 export default function RequestFeaturePage() {
   return (
@@ -29,7 +30,7 @@ export default function RequestFeaturePage() {
         <li>Share any options and iterations that were explored with and without the Design System</li>
       </ul>
       <GoASpacer vSpacing="2xs" />
-      <a href="https://design.alberta.ca/get-started/contribute" target="_blank">View our contribution process</a>
+      <Link to="/get-started/contribute">View our contribution process</Link>
     </ComponentContent>
   );
 }

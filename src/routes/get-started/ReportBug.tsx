@@ -35,7 +35,8 @@ export default function ReportBugPage() {
   const [expectedError, setExpectedError] = useState<string>();
   const [actualError, setActualError] = useState<string>();
   const [replicationError, setReplicationError] = useState<string>();
-  const [valid, setValid] = useState<boolean>(true);
+  const [stackblitzError, setStackblitzError] = useState<string>();
+  const [jamError, setJamError] = useState<string>();
   const [responseURL, setResponseURL] = useState<string>("");
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const [issueSelection, setIssueSelection] = useState<string>("")
@@ -118,48 +119,62 @@ export default function ReportBugPage() {
   }
 
   function validateInputs() {
-    setValid(true);
+    let valid = true;
 
     if (formValues.email.length == 0) {
-      setValid(false);
+      valid = false;
       setEmailError("An email address is required");
     } else {
       setEmailError(undefined);
     }
 
     if (formValues.webVersion.length == 0) {
-      setValid(false);
+      valid = false;
       setWebVersionError("We require the version of web components you are using");
     } else {
       setWebVersionError(undefined);
     }
 
     if (formValues.otherVersion.length == 0) {
-      setValid(false);
+      valid = false;
       setOtherVersionError("We require the version of wrapper components you are using");
     } else {
       setOtherVersionError(undefined);
     }
 
     if (formValues.expected.length == 0) {
-      setValid(false);
+      valid = false;
       setExpectedError("We need to know what the expected behaviour is");
     } else {
       setExpectedError(undefined);
     }
 
     if (formValues.actual.length == 0) {
-      setValid(false);
+      valid = false;
       setActualError("We need to know what the actual behaviour is");
     } else {
       setActualError(undefined);
     }
 
     if (formValues.replication.length == 0) {
-      setValid(false);
+      valid = false;
       setReplicationError("We need to know the replication steps for the issue");
     } else {
       setReplicationError(undefined);
+    }
+
+    if (formValues.stackblitz.length !== 0 && !/^https:\/\/stackblitz\.com\/[-a-zA-Z0-9%\+.?\/[\],=]*/.test(formValues.stackblitz)) {
+      valid = false;
+      setStackblitzError("The URL needs to be to Stackblitz");
+    } else {
+      setStackblitzError(undefined);
+    }
+  
+    if (formValues.jam.length !== 0 && !/^https:\/\/jam\.dev\/([-a-z0-9[\-\/]*)/.test(formValues.jam)) {
+      valid = false;
+      setJamError("The URL needs to be to jam.dev")
+    } else {
+      setJamError(undefined);
     }
 
     return valid;
@@ -174,7 +189,7 @@ export default function ReportBugPage() {
           Let us know if you find a problem or inconsistency in the design system. Providing complete details in your bug report
           helps our team understand, prioritize, and fix the issue faster.
         </h3>
-        <GoACallout type="information" heading="Ensure you're using the latest package versions">
+        <GoACallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
           <ul>
             <li>Web Components - 1.27.0</li>
             <li>Angular Components - 3.2.0</li>
@@ -182,7 +197,7 @@ export default function ReportBugPage() {
           </ul>
         </GoACallout>
         <GoAFormItem label="Your email" mb="xl" error={ emailError }>
-          <GoAInput name="email" value={ formValues.email } onChange={ handleChange } trailingContent="@gov.ab.ca" width="90%" error={ !!emailError } />
+          <GoAInput name="email" value={ formValues.email } onChange={ handleChange } trailingContent="@gov.ab.ca" width="30ch" error={ !!emailError } />
         </GoAFormItem>
         <GoABlock gap="3xl" mb="xl">
           <GoAFormItem label="Web components version" error={ webVersionError }>
@@ -201,23 +216,23 @@ export default function ReportBugPage() {
         <GoAFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
           <GoATextArea name="replication" value={ formValues.replication } onChange={ handleChange } rows={ 6 } width="90%" error={ !!replicationError } />
         </GoAFormItem>
-        <GoAFormItem label="StackBlitz URL" mb="xl" helpText="Share your code with us in an isolated environment." requirement="optional">
-          <GoAInput name="stackblitz" value={ formValues.stackblitz } onChange={ handleChange } width="90%" />
+        <GoAFormItem label="StackBlitz URL" mb="s" helpText="Share your code with us in an isolated environment." requirement="optional" error={ stackblitzError }>
+          <GoAInput name="stackblitz" value={ formValues.stackblitz } onChange={ handleChange } width="90%" error={ !!stackblitzError } />
         </GoAFormItem>
-        <GoADetails heading="Why stackblitz?" maxWidth="90%" mb="xl">
+        <GoADetails heading="Why stackblitz?" maxWidth="90%" mb="s">
           The design system team uses <a href="https://stackblitz.com/" target="_blank">StackBlitz</a> to create and share live code
           examples. It allows us to easily see your code in an environment that is unaffected by the rest of your project. Create a free
           account and share your work directly with the team.
         </GoADetails>
-        <GoAFormItem label="Jam.dev URL" mb="xl" helpText="Show us the bug" requirement="optional">
-          <GoAInput name="jam" value={ formValues.jam } onChange={ handleChange } width="90%" />
+        <GoAFormItem label="Jam.dev URL" mb="s" helpText="Show us the bug." requirement="optional" error={ jamError }>
+          <GoAInput name="jam" value={ formValues.jam } onChange={ handleChange } width="90%" error={ !!jamError } />
         </GoAFormItem>
-        <GoADetails heading="Why jam.dev" maxWidth="90%" mb="xl">
+        <GoADetails heading="Why jam.dev" maxWidth="90%" mb="s">
           The design system team uses <a href="https://jam.dev/" target="_blank">jam.dev</a> to share and report bugs. This gives us
           a lot of the information we need to understand what's happening and how to fix it. Create a free account and record and share
           the issue.        
         </GoADetails>
-        <GoAFormItem label="Any additional information" mb="xl" helpText="Add any other relevant context." requirement="optional">
+        <GoAFormItem label="Any additional information" mb="2xl" helpText="Add any other relevant context." requirement="optional">
           <GoATextArea name="additional" value={ formValues.additional } onChange={ handleChange } rows={ 6 } width="90%" />
         </GoAFormItem>
         <GoAButton onClick={ submitBug }>Submit bug</GoAButton>
