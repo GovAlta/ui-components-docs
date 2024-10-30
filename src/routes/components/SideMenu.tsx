@@ -32,6 +32,16 @@ export default function SideMenuPage() {
       required: true,
       description: "Group header text",
     },
+    {
+      name: "icon",
+      type: "GoAIconType",
+      description: "Icon placed left of the heading",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   const sideMenuHeadingProperties: ComponentProperty[] = [
@@ -89,7 +99,7 @@ export default function SideMenuPage() {
                     <goa-side-menu-heading>
                       Nav with sub nav
                     </goa-side-menu-heading>
-                    <goa-side-menu-group heading="Group heading">
+                    <goa-side-menu-group heading="Group heading" icon="person">
                       <a href="#">Foo</a>
                       <a href="#">Bar</a>
                     </goa-side-menu-group>
@@ -117,7 +127,7 @@ export default function SideMenuPage() {
                     <GoASideMenuHeading>
                       Nav with sub nav
                     </GoASideMenuHeading>
-                    <GoASideMenuGroup heading="Group heading">
+                    <GoASideMenuGroup heading="Group heading" icon="person">
                       <a href="#">Foo</a>
                       <a href="#">Bar</a>
                     </GoASideMenuGroup>
@@ -138,7 +148,7 @@ export default function SideMenuPage() {
                   <a>About</a>
                   <a>Contact</a>
                   <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                  <GoASideMenuGroup heading="Group heading">
+                  <GoASideMenuGroup heading="Group heading" icon="person">
                     <a>Foo</a>
                     <a>Bar</a>
                   </GoASideMenuGroup>
