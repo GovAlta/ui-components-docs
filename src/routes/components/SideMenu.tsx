@@ -15,7 +15,7 @@ import {
 import { Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-const componentName = "Side menu";
+const componentName = "Side menu Test";
 const description =
   "A side navigation that helps the user navigate between pages.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
