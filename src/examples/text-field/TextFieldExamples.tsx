@@ -69,22 +69,22 @@ export default function TextFieldExamples() {
             </GoabFormItem>
             <GoabFormItem label="Month">
             <GoabDropdown onChange={noop} name="month" value="">
-              <GoADropdownItem label="January" value="January" />
-              <GoADropdownItem label="February" value="February" />
-              <GoADropdownItem label="March" value="March" />
-              <GoADropdownItem label="April" value="April" />
-              <GoADropdownItem label="May" value="May" />
-              <GoADropdownItem label="June" value="June" />
-              <GoADropdownItem label="July" value="July" />
-              <GoADropdownItem label="August" value="August" />
-              <GoADropdownItem label="September" value="September" />
-              <GoADropdownItem label="October" value="October" />
-              <GoADropdownItem label="November" value="November" />
-              <GoADropdownItem label="December" value="December" />
+              <GoabDropdownItem label="January" value="January" />
+              <GoabDropdownItem label="February" value="February" />
+              <GoabDropdownItem label="March" value="March" />
+              <GoabDropdownItem label="April" value="April" />
+              <GoabDropdownItem label="May" value="May" />
+              <GoabDropdownItem label="June" value="June" />
+              <GoabDropdownItem label="July" value="July" />
+              <GoabDropdownItem label="August" value="August" />
+              <GoabDropdownItem label="September" value="September" />
+              <GoabDropdownItem label="October" value="October" />
+              <GoabDropdownItem label="November" value="November" />
+              <GoabDropdownItem label="December" value="December" />
             </GoabDropdown>
             </GoabFormItem>
-            <GoAFormItem label="Year">
-              <GoAInput
+            <GoabFormItem label="Year">
+              <GoabInput
                 onChange={noop}
                 value=""
                 name="year"
@@ -97,12 +97,12 @@ export default function TextFieldExamples() {
 
       <h3 id="component-example-search">Search</h3>
       <Sandbox flags={["reactive"]}>
-        <GoABlock gap="xs" direction="row">
-          <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
-          <GoAButton type="primary" onClick={noop}>
+        <GoabBlock gap="xs" direction="row">
+          <GoabInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
+          <GoabButton type="primary" onClick={noop}>
             Search
-          </GoAButton>
-        </GoABlock>
+          </GoabButton>
+        </GoabBlock>
       </Sandbox>
 
       <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
@@ -230,15 +230,15 @@ export default function TextFieldExamples() {
                 `}
         />
 
-        <GoAFormItem label="Tuition">
-          <GoAInput onChange={noop} value="" name="tuitionAmount" leadingContent="$" mb="xl" />
-        </GoAFormItem>
-        <GoAFormItem label="Supplies">
-          <GoAInput onChange={noop} value="" name="suppliesAmount" leadingContent="$" mb="xl" />
-        </GoAFormItem>
-        <GoAFormItem label="Other costs">
-          <GoAInput onChange={noop} value="" name="othersAmount" leadingContent="$" />
-        </GoAFormItem>
+        <GoabFormItem label="Tuition">
+          <GoabInput onChange={noop} value="" name="tuitionAmount" leadingContent="$" mb="xl" />
+        </GoabFormItem>
+        <GoabFormItem label="Supplies">
+          <GoabInput onChange={noop} value="" name="suppliesAmount" leadingContent="$" mb="xl" />
+        </GoabFormItem>
+        <GoabFormItem label="Other costs">
+          <GoabInput onChange={noop} value="" name="othersAmount" leadingContent="$" />
+        </GoabFormItem>
       </Sandbox>
 
       <h3 id="component-example-registration-number">
@@ -254,25 +254,25 @@ export default function TextFieldExamples() {
                 name="bandNo"
                 width="88px"
               />
-            </GoAFormItem>
-            <GoAFormItem label="Family" helpText="Up to 5 digits">
-              <GoAInput
+            </GoabFormItem>
+            <GoabFormItem label="Family" helpText="Up to 5 digits">
+              <GoabInput
                 onChange={noop}
                 value=""
                 name="family"
                 width="105px"
               />
-            </GoAFormItem>
-            <GoAFormItem label="Position" helpText="2 digits">
-              <GoAInput
+            </GoabFormItem>
+            <GoabFormItem label="Position" helpText="2 digits">
+              <GoabInput
                 onChange={noop}
                 value=""
                 name="position"
                 width="71px"
               />
-            </GoAFormItem>
-          </GoABlock>
-        </GoAFormItem>
+            </GoabFormItem>
+          </GoabBlock>
+        </GoabFormItem>
       </Sandbox>
     </>
   );

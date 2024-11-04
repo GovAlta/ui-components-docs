@@ -13,7 +13,6 @@ import "./root.css";
 
 import { useLocation } from "react-router-dom";
 import { useVersion } from "@contexts/VersionContext.tsx";
-import { LanguageContext } from "@components/sandbox";
 
 
 export const MAX_CONTENT_WIDTH = "1360px";

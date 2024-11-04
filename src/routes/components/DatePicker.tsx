@@ -12,9 +12,7 @@ import {
   GoabTabs,
   GoabDatePickerProps,
   GoabDatePicker,
-  GoabFormItem,
-  GoabButton,
-  GoabButtonGroup,
+  GoabFormItem, GoabButtonGroup, GoabButton
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -335,22 +333,21 @@ export default function DatePickerPage() {
               `}
               />
 
-              <GoAFormItem label="Date Picker">
-                <GoADatePicker
+              <GoabFormItem label="Date Picker">
+                <GoabDatePicker
                   name="item"
                   value={date}
-                  onChange={(_, value) => setNewDate(value)}
-                  mb="xl"></GoADatePicker>
-              </GoAFormItem>
+                  onChange={(e: GoabDatePickerOnChangeDetail) => setNewDate(e.value as Date)}
+                  mb="xl"></GoabDatePicker>
+              </GoabFormItem>
 
-              <GoAButtonGroup mt={"xs"} alignment={"start"}>
-                <GoAButton onClick={setValue} mr="l">
+              <GoabButtonGroup mt={"xs"} alignment={"start"}>
+                <GoabButton onClick={setValue} mr="l">
                   Set Value
-                </GoAButton>
-                <GoAButton onClick={clearValue}>Clear Value</GoAButton>
-              </GoAButtonGroup>
+                </GoabButton>
+                <GoabButton onClick={clearValue}>Clear Value</GoabButton>
+              </GoabButtonGroup>
             </Sandbox>
-          </GoATab>
 
           <GoabTab
             heading={

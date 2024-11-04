@@ -183,7 +183,7 @@ export default function MicrositeHeaderPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTab>
+        <GoabTabs>
           <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
