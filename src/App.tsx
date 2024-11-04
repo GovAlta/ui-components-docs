@@ -14,12 +14,9 @@ import { useMediaQuery } from "@hooks/useMediaQuery";
 import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
+// Support
+
 import HomePage from "@routes/home";
-import SupportOverviewPage from '@routes/support/SupportOverview';
-import SupportLayout from '@routes/support/SupportLayout';
-import ContributePage from '@routes/support/Contribute';
-import DropInHoursPage from '@routes/support/DropInHours';
-import ReleaseNotesPage from '@routes/support/ReleaseNotes.tsx';
 
 // Components
 
@@ -69,11 +66,11 @@ import SideMenuPage from '@routes/components/SideMenu';
 
 // Design Tokens
 
+import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
 import BorderRadiusPage from "@routes/design-tokens/border-radius/BorderRadius";
 import BorderWidthPage from "@routes/design-tokens/border-width/BorderWidth";
 import ColorPage from "@routes/design-tokens/color/Color";
 import DesignTokens from "@routes/design-tokens/DesignTokenLayout.tsx";
-import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
 import IconSizePage from "@routes/design-tokens/icon-size/IconSize";
 import OpacityPage from "@routes/design-tokens/opacity/Opacity";
 import ShadowPage from "@routes/design-tokens/shadow/Shadow";
@@ -90,11 +87,16 @@ import BugVerificationPage from "@routes/get-started/developers/BugVerification"
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
+import ContributePage from '@routes/get-started/Contribute';
+import SupportPage from '@routes/get-started/Support';
+import RequestFeaturePage from "@routes/get-started/RequestFeature";
+import ReportBugPage from "@routes/get-started/ReportBug";
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 
 // Content Pages
+
 import ContentLayout from '@routes/content/ContentLayout';
 import CapitalizationPage from '@routes/content/Capitalization';
 import DateFormatPage from '@routes/content/DateFormat';
@@ -103,6 +105,7 @@ import HelperTextPage from '@routes/content/HelperText';
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
 // Patterns Pages
+
 import PatternsLayout from "@routes/patterns/PatternsLayout";
 import LayoutPage from "@routes/patterns/LayoutPage";
 import PatternsOverviewPage from "@routes/patterns/PatternsOverview";
@@ -211,6 +214,14 @@ const router = createBrowserRouter(
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
         </Route>
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
+        <Route path="support">
+          <Route index element={<SupportPage />} />
+          <Route path="report-bug" element={<ReportBugPage />} />
+          <Route path="request-feature" element={<RequestFeaturePage />} />
+        </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
@@ -234,16 +245,6 @@ const router = createBrowserRouter(
         <Route path="question-page" element={<QuestionPage/>} />
         <Route path="review-page" element={<ReviewPage/>} />
         <Route path="result-page" element={<ResultPage/>} />
-      </Route>
-      <Route path="support" element={<SupportLayout />}>
-        <Route index element={<SupportOverviewPage />} />
-        <Route path="contribute">
-          <Route index element={<ContributePage />} />
-        </Route>
-        <Route path="drop-in-hours">
-          <Route index element={<DropInHoursPage />} />
-        </Route>
-        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )

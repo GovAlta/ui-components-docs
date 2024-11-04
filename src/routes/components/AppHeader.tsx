@@ -2,7 +2,7 @@ import {
   GoAAppHeader,
   GoAAppHeaderMenu,
   GoAAppHeaderProps,
-  GoABadge,
+  GoABadge, GoARadioGroup, GoARadioItem,
   GoATab,
   GoATabs
 } from "@abgov/react-components";
@@ -105,6 +105,24 @@ export default function AppHeaderPage() {
       lang: "angular",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
+    {
+      name: "hasmenuclickhandler",
+      type: "boolean",
+      lang: "angular",
+      description: "Set to true to handle the menu click event via _menuClick event custom event handler. Defaults to false.",
+    },
+    {
+      name: "_menuClick",
+      type: "CustomEvent",
+      lang: "angular",
+      description: "Function invoked when the menu hamburger button (on mobile/tablet device) is clicked."
+    },
+    {
+      name: "onMenuClick",
+      type: "() => void",
+      lang: "react",
+      description: "Function invoked when the menu hamburger button (on mobile/tablet device) is clicked."
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -112,6 +130,10 @@ export default function AppHeaderPage() {
     setAppHeaderBindings(bindings);
   }
 
+  const [deviceWidth, setDeviceWidth] = useState("5000");
+  function handleMenuClick() {
+    alert("Menu not being displayed and you can do anything");
+  }
   return (
     <>
       <ComponentHeader
@@ -124,7 +146,9 @@ export default function AppHeaderPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAAppHeader {...appHeaderProps} />
             </Sandbox>
@@ -133,7 +157,9 @@ export default function AppHeaderPage() {
             <ComponentProperties properties={componentProperties} />
 
             {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-header-navigation">Header with navigation</h3>
             <Sandbox fullWidth skipRender>
@@ -180,6 +206,105 @@ export default function AppHeaderPage() {
                 </GoAAppHeaderMenu>
                 <a className="interactive">Sign in</a>
               </GoAAppHeader>
+            </Sandbox>
+
+            <h3 id="component-example-with-menu-click">Header with menu click event</h3>
+            <Sandbox fullWidth skipRender>
+              <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
+                <GoARadioItem value="600" label="Desktop"></GoARadioItem>
+                <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
+              </GoARadioGroup>
+              <GoAAppHeader
+                url="https://example.com"
+                heading="Design System"
+                onMenuClick={handleMenuClick}
+                fullMenuBreakpoint={+deviceWidth}>
+                <a href="#">Support</a>
+                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                  <a href="#">Cases</a>
+                  <a href="#">Payments</a>
+                  <a href="#">Outstanding</a>
+                </GoAAppHeaderMenu>
+                <a href="#" className="interactive">
+                  Sign in
+                </a>
+              </GoAAppHeader>
+
+              <CodeSnippet
+                lang="typescript"
+                tags={"angular"}
+                allowCopy={true}
+                code={`
+                export class MyComponent {
+                  deviceWidth = '5000';
+                  changeDeviceWidth(event: Event) {
+                    this.deviceWidth = (event as CustomEvent).detail.value;
+                  }
+                  
+                  handleMenuClick() {
+                    alert("Menu not being displayed and you can do anything");
+                  }
+                }
+              `}/>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                 <goa-radio-group name="device" value="deviceWidth" (_change)="changeDeviceWidth($event)">
+                  <goa-radio-item value="600" label="Desktop"></goa-radio-item>
+                  <goa-radio-item value="5000" label="Mobile"></goa-radio-item>
+                 </goa-radio-group>
+                  
+                 <goa-app-header url="https://example.com" heading="Design System" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
+                  <a href="#">Support</a>
+                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
+                    <a href="#">Cases</a>
+                    <a href="#">Payments</a>
+                    <a href="#">Outstanding</a>
+                  </goa-app-header-menu>
+                  <a href="#" className="interactive">Sign in</a>
+                </goa-app-header>
+              `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags={"react"}
+                allowCopy={true}
+                code={`
+                const [deviceWidth, setDeviceWidth] = useState("5000");
+                function handleMenuClick() {
+                  alert("Menu not being displayed and you can do anything");
+                }
+              `}/>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
+                    <GoARadioItem value="600" label="Desktop"></GoARadioItem>
+                    <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
+                  </GoARadioGroup>
+                  
+                  <GoAAppHeader
+                    url="https://example.com"
+                    heading="Design System"
+                    onMenuClick={handleMenuClick}
+                    fullMenuBreakpoint={+deviceWidth}>
+                    <a href="#">Support</a>
+                    <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                      <a href="#">Cases</a>
+                      <a href="#">Payments</a>
+                      <a href="#">Outstanding</a>
+                    </GoAAppHeaderMenu>
+                    <a href="#" className="interactive">Sign in</a>
+                  </GoAAppHeader>
+              `}
+              />
             </Sandbox>
           </GoATab>
 
