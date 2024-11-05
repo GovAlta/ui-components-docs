@@ -1,4 +1,4 @@
-import { GoABlock, GoADropdown, GoADropdownItem, GoASideMenu, GoASideMenuHeading, GoASpacer } from "@abgov/react-components";
+import { GoabBlock, GoabDropdown, GoabDropdownItem, GoabSideMenu, GoabSideMenuHeading, GoabSpacer } from "@abgov/react-components";
 import {Link, Outlet} from "react-router-dom";
 import {SupportInfo} from "@components/support-info/SupportInfo.tsx";
 import {useEffect, useState} from "react";
@@ -23,18 +23,18 @@ export default function PatternsLayout() {
     <LanguageContext.Provider value={language}>
       <div className="content">
         <section className="side-menu">
-          <GoASideMenu>
-          <GoASpacer vSpacing="m"></GoASpacer>
+          <GoabSideMenu>
+          <GoabSpacer vSpacing="m"></GoabSpacer>
             <Link to="">All</Link>
             <Link to="simple-form">Simple form</Link>
-            <GoASpacer vSpacing="m"></GoASpacer>
-            <GoASideMenuHeading>Pages</GoASideMenuHeading>
-            <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
-              <GoADropdown value={language} onChange={onLanguageChange}>
-                <GoADropdownItem label="React" value="react" />
-                <GoADropdownItem label="Angular" value="angular" />
-              </GoADropdown>
-            </GoABlock>
+            <GoabSpacer vSpacing="m"></GoabSpacer>
+            <GoabSideMenuHeading>Pages</GoabSideMenuHeading>
+            <GoabBlock direction="column" mt="s" mb="s" ml="l" mr="l">
+              <GoabDropdown value={language} onChange={onLanguageChange}>
+                <GoabDropdownItem label="React" value="react" />
+                <GoabDropdownItem label="Angular" value="angular" />
+              </GoabDropdown>
+            </GoabBlock>
             <Link to="layout">Basic page layout</Link>
             <Link to="start-page">Start page</Link>
             <Link to="task-list-page">Task list page</Link>

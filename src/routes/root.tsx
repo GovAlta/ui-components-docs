@@ -1,10 +1,10 @@
 import {
-  GoAAppFooter,
-  GoAAppFooterMetaSection,
-  GoAAppFooterNavSection,
-  GoAAppHeader,
-  GoAMicrositeHeader,
-  GoAOneColumnLayout,
+  GoabAppFooter,
+  GoabAppFooterMetaSection,
+  GoabAppFooterNavSection,
+  GoabAppHeader, GoabDropdown, GoabDropdownItem,
+  GoabMicrositeHeader,
+  GoabOneColumnLayout
 } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
@@ -107,7 +107,7 @@ export default function Root() {
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
             <Link to="/content/capitalization">Content</Link>
-          </GoAAppHeader>
+          </GoabAppHeader>
         </section>
 
         <Outlet />
@@ -120,19 +120,19 @@ export default function Root() {
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Styles</Link>
               <Link to="/content/capitalization">Content</Link>
-            </GoAAppFooterNavSection>
-            <GoAAppFooterNavSection heading="Get support">
+            </GoabAppFooterNavSection>
+            <GoabAppFooterNavSection heading="Get support">
               <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
-            </GoAAppFooterNavSection>
-            <GoAAppFooterMetaSection>
+            </GoabAppFooterNavSection>
+            <GoabAppFooterMetaSection>
               <Link to="support/contribute">Contribute to the design system</Link>
               <Link to="https://forms.microsoft.com/pages/responsepage.aspx?id=Bhy1K5uvxUKL9Tw7exCFCy-G9FVGUGFMnXc6L30n_ANUM0dTOFg4UU01VVY2QzJPT0k1Qzg2RUJMUy4u" target="_blank">Give feedback</Link>
               <Link to="/support/release-notes">Release notes</Link>
-            </GoAAppFooterMetaSection>
-          </GoAAppFooter>
+            </GoabAppFooterMetaSection>
+          </GoabAppFooter>
         </section>
-      </GoAOneColumnLayout>
+      </GoabOneColumnLayout>
     </div>
   );
 }

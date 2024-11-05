@@ -1,16 +1,15 @@
 import { LanguageContext, Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
-  GoADatePicker,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
-  GoAInput,
-  GoAModal,
-  GoATextArea,
+  GoabButton,
+  GoabButtonGroup,
+  GoabContainer,
+  GoabDatePicker,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+  GoabInput,
+  GoabModal, GoabTextarea
 } from "@abgov/react-components";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -247,8 +246,8 @@ export default function ModalExamples() {
           open={warnCalloutModalOpen}
           onClose={() => setWarnCalloutModalOpen(false)}
           actions={
-            <GoAButtonGroup alignment="end">
-              <GoAButton type="primary" onClick={() => setWarnCalloutModalOpen(false)}>
+            <GoabButtonGroup alignment="end">
+              <GoabButton type="primary" onClick={() => setWarnCalloutModalOpen(false)}>
                 I understand
               </GoabButton>
             </GoabButtonGroup>

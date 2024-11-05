@@ -1,12 +1,12 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoAModal,
-  GoAModalProps,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabButton,
+  GoabButtonGroup,
+  GoabModal,
+  GoabModalProps,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
@@ -263,23 +263,23 @@ export default function ModalPage() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoAButtonGroup alignment="end" mt="xl">
-                    <GoAButton type="tertiary" onClick={() => setOpen(false)}>
+                  <GoabButtonGroup alignment="end" mt="xl">
+                    <GoabButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
-                    </GoAButton>
-                    <GoAButton type="primary" onClick={() => setOpen(false)}>
+                    </GoabButton>
+                    <GoabButton type="primary" onClick={() => setOpen(false)}>
                       Exit
-                    </GoAButton>
-                  </GoAButtonGroup>
-                </GoAModal>
+                    </GoabButton>
+                  </GoabButtonGroup>
+                </GoabModal>
               )}
 
               {isClosableChecked(componentBindings) && (
-                <GoAModal {...componentProps} open={open} onClose={onClose}>
+                <GoabModal {...componentProps} open={open} onClose={onClose}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                </GoAModal>
+                </GoabModal>
               )}
             </Sandbox>
 

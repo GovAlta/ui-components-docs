@@ -10,8 +10,7 @@ import {
 import "@abgov/web-components";
 
 import Root from "@routes/root";
-import { useMediaQuery } from "@hooks/useMediaQuery";
-import { DeviceWidthContext } from "@contexts/DeviceWidthContext";
+import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
 // Support
@@ -256,28 +255,13 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage />} />
+        <Route path="simple-form" element={<SimpleFormPage/>} />
         <Route path="layout" element={<LayoutPage />} />
         <Route path="start-page" element={<StartPage/>} />
         <Route path="task-list-page" element={<TaskListPage/>} />
         <Route path="question-page" element={<QuestionPage/>} />
         <Route path="review-page" element={<ReviewPage/>} />
         <Route path="result-page" element={<ResultPage/>} />
-        <Route path="start-page" element={<StartPage />} />
-        <Route path="task-list-page" element={<TaskListPage />} />
-        <Route path="question-page" element={<QuestionPage />} />
-        <Route path="review-page" element={<ReviewPage />} />
-        <Route path="result-page" element={<ResultPage />} />
-      </Route>
-      <Route path="support" element={<SupportLayout />}>
-        <Route index element={<SupportOverviewPage />} />
-        <Route path="contribute">
-          <Route index element={<ContributePage />} />
-        </Route>
-        <Route path="drop-in-hours">
-          <Route index element={<DropInHoursPage />} />
-        </Route>
-        <Route path="release-notes" element={<ReleaseNotesPage />} />
       </Route>
     </Route>
   )

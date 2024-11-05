@@ -25,8 +25,7 @@ export default function DateFormatPage() {
         </div>
       </GoabContainer>
 
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
-      <GoADivider mb="2xl" mt="l"></GoADivider>
+      <GoabDivider mb="2xl" mt="l"></GoabDivider>
 
       <h2 id="conversational-long-form">Conversational and long-form</h2>
       <p>

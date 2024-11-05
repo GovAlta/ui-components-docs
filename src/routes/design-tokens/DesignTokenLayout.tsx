@@ -1,8 +1,8 @@
 import {
-  GoABlock,
-  GoADropdown,
-  GoADropdownItem,
-  GoASideMenu,
+  GoabBlock,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabSideMenu,
 } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo";
@@ -30,13 +30,13 @@ export function DesignTokenLayout() {
       <DesignTokensLanguageContext.Provider value={tokenLanguage}>
         <div className="content design-tokens">
           <section className="side-menu">
-            <GoASideMenu>
-              <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
-                <GoADropdown value={tokenLanguage} onChange={designTokenLanguageChange}>
-                  <GoADropdownItem label="SCSS" value="scss" />
-                  <GoADropdownItem label="CSS" value="css" />
-                </GoADropdown>
-              </GoABlock>
+            <GoabSideMenu>
+              <GoabBlock direction="column" mt="s" mb="s" ml="l" mr="l">
+                <GoabDropdown value={tokenLanguage} onChange={designTokenLanguageChange}>
+                  <GoabDropdownItem label="SCSS" value="scss" />
+                  <GoabDropdownItem label="CSS" value="css" />
+                </GoabDropdown>
+              </GoabBlock>
 
               <Link to="">All</Link>
               <Link to="border-radius">Border Radius</Link>

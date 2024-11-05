@@ -1,10 +1,9 @@
 import {
-  GoABadge,
-  GoAHeaderProps,
-  GoAMicrositeHeader,
-  GoAServiceLevel,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabHeaderProps,
+  GoabMicrositeHeader,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -15,6 +14,7 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
+import { GoabServiceLevel } from "@abgov/ui-components-common";
 
 const componentName = "Microsite header";
 const description =
@@ -193,7 +193,7 @@ export default function MicrositeHeaderPage() {
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
             <MicrositeHeaderExamples />
-          </GoATab>
+          </GoabTab>
 
           <GoabTab
             heading={

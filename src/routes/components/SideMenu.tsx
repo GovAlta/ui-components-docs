@@ -1,10 +1,10 @@
 import {
-  GoABadge,
-  GoASideMenu,
-  GoASideMenuGroup,
-  GoASideMenuHeading,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabSideMenuHeading,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
@@ -147,8 +147,8 @@ export default function SideMenuPage() {
                   </GoabSideMenuHeading>
                   <a>About</a>
                   <a>Contact</a>
-                  <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                  <GoASideMenuGroup heading="Group heading" icon="person">
+                  <GoabSideMenuHeading>Nav with sub nav</GoabSideMenuHeading>
+                  <GoabSideMenuGroup heading="Group heading" icon="person">
                     <a>Foo</a>
                     <a>Bar</a>
                   </GoabSideMenuGroup>
