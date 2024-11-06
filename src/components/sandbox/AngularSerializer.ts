@@ -1,5 +1,6 @@
 import { ComponentBinding } from "./ComponentBinding";
 import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
@@ -8,8 +9,8 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       " "
     );
 
-  constructor(properties: ComponentBinding[], isOldVersion: boolean) {
-    super(properties, isOldVersion);
+  constructor(properties: ComponentBinding[], version: LanguageVersion) {
+    super(properties, version);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -39,7 +40,8 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (name === "value" && item === "") return `value=""`;
     if (item === "") return "";
     if (name === "className") name = "class";
-    return `${name.toLowerCase()}="${item}"`;
+
+    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 
   dateToProp(name: string, item: Date): string {
@@ -50,7 +52,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 
   booleanToProp(name: string, item: boolean): string {
@@ -58,7 +60,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       return this.#dynamicProp(name);
     }
     if (!item) return "";
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -69,20 +71,15 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return delimit ? `${name.toLowerCase()}=[${items}]` : `${name.toLowerCase()}=${items}`;
+    return delimit ? `${this.version === "old" ? name.toLowerCase() : name}=[${items}]` : `${this.version === "old" ? name.toLowerCase(): name}=${items}`;
   }
 
   componentNameToString(name: string): string {
     if (this.nativeEls.includes(name)) {
       return name;
     }
-    const currentPrefix = "Goab";
-    const oldPrefix = "goa";
-    const tail = name.replace(currentPrefix, "");
-    if (this.isOldVersion) {
-      return `${oldPrefix}-${this.dasherize(tail)}`;
-    }
-    return `${currentPrefix.toLowerCase()}-${this.dasherize(tail)}`;
+    const tail = name.replace("Goab", "");
+    return `${this.version === "old" ? "goa" : "goab"}-${this.dasherize(tail)}`;
   }
 
   componentToString(name: string): string {

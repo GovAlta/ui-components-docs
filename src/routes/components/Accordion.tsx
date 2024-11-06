@@ -15,7 +15,6 @@ import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
-import { useVersion } from "@contexts/VersionContext.tsx";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -35,7 +34,7 @@ type CastingType = {
 };
 
 export default function AccordionPage() {
-  const version = useVersion();
+
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Heading",
     headingSize: "medium",
@@ -228,7 +227,7 @@ export default function AccordionPage() {
   return (
     <div className="accordion-page">
       <ComponentHeader
-        name={`${componentName} - ${version}`}
+        name={`${componentName}`}
         category={category}
         description={description}
         relatedComponents={relatedComponents}
@@ -247,7 +246,10 @@ export default function AccordionPage() {
                 exercitation ullamco laboris nisi
               </GoabAccordion>
             </Sandbox>
-            <ComponentProperties properties={version?.length ? oldComponentProperties : componentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
             <AccordionExamples />
           </GoabTab>
 

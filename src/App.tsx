@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider,
   createBrowserRouter,
-  createRoutesFromElements, useParams
+  createRoutesFromElements,
 } from "react-router-dom";
 
 import "@abgov/web-components";
@@ -16,52 +16,6 @@ import "./index.css";
 // Support
 
 import HomePage from "@routes/home";
-
-// Components
-
-import ComponentsPage from "@routes/components/Components";
-
-import AllComponentsPage from "@routes/components/AllComponents";
-import AccordionPage from "@routes/components/Accordion.tsx";
-import BadgePage from "@routes/components/Badge";
-import BlockPage from "@routes/components/Block";
-import ButtonGroupPage from "@routes/components/ButtonGroup";
-import ButtonPage from "@routes/components/Button";
-import CalloutPage from "@routes/components/Callout";
-import CheckboxPage from "@routes/components/Checkbox";
-import ComponentNotFoundPage from "@routes/not-found/NotFound";
-import ContainerPage from "@routes/components/Container";
-import DatePickerPage from "@routes/components/DatePicker";
-import DetailsPage from "@routes/components/Details";
-import DividerPage from "@routes/components/Divider";
-import DropdownPage from "@routes/components/Dropdown";
-import FileUploaderPage from "@routes/components/FileUploader";
-import FilterChipPage from "@routes/components/FilterChip";
-import FormItemPage from "@routes/components/FormItemPage.tsx";
-import FormStepperPage from "@routes/components/FormStepper";
-import GridPage from "@routes/components/Grid";
-import HeroBannerPage from "@routes/components/HeroBanner";
-import IconsPage from "@routes/components/Icons";
-import IconButtonPage from "@routes/components/IconButton";
-import ListPage from "@routes/components/List";
-import ModalPage from "@routes/components/Modal";
-import NotificationBannerPage from "@routes/components/Notificationbanner";
-import PaginationPage from "@routes/components/Pagination";
-import PopoverPage from "@routes/components/Popover";
-import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
-import RadioPage from "@routes/components/Radio";
-import SkeletonPage from "@routes/components/Skeleton.tsx";
-import SpacerPage from "@routes/components/Spacer";
-import TablePage from "@routes/components/Table";
-import TabsPage from "@routes/components/Tabs.tsx";
-import TooltipPage from "@routes/components/Tooltip";
-import TextPage from "@routes/components/Text";
-import TextFieldPage from "@routes/components/TextField";
-import TextAreaPage from "@routes/components/TextArea";
-import MicrositeHeaderPage from "@routes/components/MicrositeHeader";
-import AppHeaderPage from "@routes/components/AppHeader";
-import AppFooterPage from "@routes/components/AppFooter";
-import SideMenuPage from "@routes/components/SideMenu";
 
 // Design Tokens
 
@@ -114,101 +68,17 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
-import { VersionProvider } from "@contexts/VersionContext.tsx";
-
-const componentRoutes = {
-  accordion: <AccordionPage />,
-  badge: <BadgePage />,
-  block: <BlockPage />,
-  button: <ButtonPage />,
-  "button-group": <ButtonGroupPage />,
-  callout: <CalloutPage />,
-  checkbox: <CheckboxPage />,
-  container: <ContainerPage />,
-  "date-picker": <DatePickerPage />,
-  details: <DetailsPage />,
-  divider: <DividerPage />,
-  dropdown: <DropdownPage />,
-  "file-uploader": <FileUploaderPage />,
-  "filter-chip": <FilterChipPage/>,
-  "form-item": <FormItemPage />,
-  "form-stepper": <FormStepperPage />,
-  grid: <GridPage />,
-  "hero-banner": <HeroBannerPage />,
-  icons: <IconsPage />,
-  "icon-button": <IconButtonPage />,
-  input: <TextFieldPage />,
-  list: <ListPage />,
-  "microsite-header": <MicrositeHeaderPage />,
-  modal: <ModalPage />,
-  "notification-banner": <NotificationBannerPage />,
-  pagination: <PaginationPage />,
-  popover: <PopoverPage />,
-  "progress-indicator": <ProgressIndicatorPage />,
-  radio: <RadioPage />,
-  "side-menu": <SideMenuPage />,
-  "skeleton-loader": <SkeletonPage />,
-  spacer: <SpacerPage />,
-  table: <TablePage />,
-  tabs: <TabsPage />,
-  text: <TextPage/>,
-  "text-area": <TextAreaPage />,
-  tooltip: <TooltipPage />,
-  "text-field": <TextFieldPage />,
-  header: <AppHeaderPage />,
-  footer: <AppFooterPage />,
-}
-const supportedVersions = ['v3-angular', 'v4-react'];
-
-const getComponent = (componentName: keyof typeof componentRoutes) => {
-  return componentRoutes[componentName] || <ComponentNotFoundPage />;
-interface DeviceWidthProviderProps {
-  children: ReactNode;
-}
-
-const ComponentRoute: React.FC = () => {
-  const { component } = useParams<{ component: string }>();
-  const Component = componentRoutes[component as keyof typeof componentRoutes] || <ComponentNotFoundPage />;
-  return Component;
-};
-
-const VersionedComponentRoute: React.FC = () => {
-  const { version, component } = useParams<{ version: string, component: string }>();
-  if (!version || !component) {
-    return <ComponentNotFoundPage />;
-  }
-  if (!supportedVersions.includes(version)) {
-    return <ComponentNotFoundPage/>;
-  }
-  return getComponent(component as keyof typeof componentRoutes);
-}
+import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
+import { ComponentsRouter } from "@components/components-router.tsx";
+import ComponentNotFound from "@routes/not-found/NotFound.tsx";
+import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-      <Route path="/" element={<Root />}>
+    <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
-
-      {/*// user copy and paste the URL: /v5/components/accordion but they choose angular ==> 404*/}
-      <Route
-        path="components"
-        element={<ComponentsPage />}
-        errorElement={<ComponentNotFoundPage />}>
-        {/* Non-versioned paths components */}
-        <Route index element={<AllComponentsPage />} />
-        <Route
-          path=":component"
-          element={<ComponentRoute/>}
-        />
-        {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute />} />
-      </Route>
-
-
-
-      <Route
-        path="design-tokens"
-        element={<DesignTokens />}
-        errorElement={<ComponentNotFoundPage />}>
+      <Route path="/components/*" element={<ComponentsRouter />}></Route>
+      <Route path="design-tokens" element={<DesignTokens />} errorElement={<ComponentNotFound />}>
         <Route index element={<DesignTokensOverviewPage />} />
         <Route path="border-width" element={<BorderWidthPage />} />
         <Route path="border-radius" element={<BorderRadiusPage />} />
@@ -257,9 +127,9 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
+      <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFound />}>
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage/>} />
+        <Route path="simple-form" element={<SimpleFormPage />} />
         <Route path="layout" element={<LayoutPage />} />
         <Route path="start-page" element={<StartPage />} />
         <Route path="task-list-page" element={<TaskListPage />} />
@@ -273,12 +143,12 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <VersionProvider>
-      <DeviceWidthProvider>
-        <VersionProvider>
+    <LanguageVersionProvider>
+      <VersionFromUrlProvider>
+        <DeviceWidthProvider>
           <RouterProvider router={router} />
-        </VersionProvider>
-      </DeviceWidthProvider>
-    </VersionProvider>
+        </DeviceWidthProvider>
+      </VersionFromUrlProvider>
+    </LanguageVersionProvider>
   </React.StrictMode>
 );
