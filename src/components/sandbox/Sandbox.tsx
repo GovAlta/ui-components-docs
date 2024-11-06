@@ -3,7 +3,6 @@ import { ReactElement, ReactNode, useContext, useEffect, useState } from "react"
 import SandboxProperties from "./SandboxProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding } from "./ComponentBinding";
-import { LanguageContext } from "./LanguageContext";
 import { ReactSerializer } from "./ReactSerializer";
 import { AngularSerializer } from "./AngularSerializer";
 import { AngularReactiveSerializer } from "./AngularReactiveSerializer";
@@ -11,7 +10,7 @@ import ComponentSerializer from "./ComponentSerializer";
 
 import "./Sandbox.css";
 import React from "react";
-import { useVersion } from "@contexts/VersionContext.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 type Flag = "reactive";
 type ComponentType = "goa" | "goab" | "codesnippet";
@@ -37,8 +36,7 @@ type SandboxViewProps = {
 };
 
 export const Sandbox = (props: SandboxProps) => {
-  const lang = useContext(LanguageContext);
-  const version = useVersion();
+  const {language, version} = useContext(LanguageVersionContext);
   const [formatLang, setFormatLang] = useState<string>("");
 
   const serializers: Record<string, Serializer> = {
@@ -69,8 +67,8 @@ export const Sandbox = (props: SandboxProps) => {
     if (!props.properties) return;
     if (!props.children) return;
 
-    setFormatLang(formatMap[lang]);
-  }, [lang, props.children, props.properties]);
+    setFormatLang(formatMap[language]);
+  }, [language, props.children, props.properties]);
 
   // Functions
 
@@ -117,7 +115,7 @@ export const Sandbox = (props: SandboxProps) => {
       {props.properties && props.properties.length > 0 && (
         <SandboxProperties properties={props.properties} onChange={onChange} />
       )}
-      <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} />
+      <SandboxCode props={props} formatLang={formatLang} lang={language} serializers={serializers} />
       {props.note && <div className="sandbox-note">{props.note}</div>}
     </>
   );

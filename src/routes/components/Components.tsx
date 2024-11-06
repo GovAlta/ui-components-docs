@@ -1,35 +1,12 @@
-import { GoabBlock, GoabDropdown, GoabDropdownItem, GoabSideMenu } from "@abgov/react-components";
-import { useEffect, useState } from "react";
+import { GoabSideMenu } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
-import { LanguageContext } from "@components/sandbox";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
-import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 
 export function Components() {
-  const [language, setLanguage] = useState("");
-
-  useEffect(() => {
-    const lang = localStorage.getItem("goa-docs-lang") || "react";
-    setLanguage(lang);
-  }, []);
-
-  function onLanguageChange(event: GoabDropdownOnChangeDetail) {
-    const lang = event.value;
-    setLanguage(lang || "react");
-    localStorage.setItem("goa-docs-lang", lang || "react");
-  }
 
   return (
-    <LanguageContext.Provider value={language}>
       <section className="content">
         <section className="side-menu">
-          <GoabBlock direction="column" mt="m" mb="m" ml="m" mr="m">
-            <GoabDropdown value={language} onChange={onLanguageChange}>
-              <GoabDropdownItem label="React" value="react" />
-              <GoabDropdownItem label="Angular" value="angular" />
-            </GoabDropdown>
-          </GoabBlock>
-
           <GoabSideMenu>
             <Link to="">All</Link>
             <Link to="accordion">Accordion</Link>
@@ -78,7 +55,6 @@ export function Components() {
           <SupportInfo />
         </main>
       </section>
-    </LanguageContext.Provider>
   );
 }
 

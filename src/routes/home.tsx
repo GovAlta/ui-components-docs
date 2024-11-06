@@ -9,10 +9,11 @@ import {
   GoabSpacer,
 } from "@abgov/react-components";
 import "./home.css";
-import { MAX_CONTENT_WIDTH } from "@routes/root";
 import CardLite from "../components/card-lite/CardLite";
 import { Link, useNavigate } from "react-router-dom";
 import { SupportInfo } from '../components/support-info/SupportInfo';
+import { MAX_CONTENT_WIDTH } from "../global-constants.ts";
+
 const HomePage = () => {
   const navigate = useNavigate();
   return (

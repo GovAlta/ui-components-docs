@@ -1,8 +1,8 @@
 import { GoabAccordion, GoabBadge } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
-import { LanguageContext } from "@components/sandbox";
 
 import css from "./ComponentProperties.module.css";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 export type ComponentProperty = {
   name: string;
   type?: string | string[];
@@ -14,23 +14,41 @@ export type ComponentProperty = {
 
 interface Props {
   properties: ComponentProperty[];
+  oldProperties?: ComponentProperty[];
   heading?: string;
 }
 
 export const ComponentProperties = (props: Props) => {
-  const lang = useContext(LanguageContext);
+  const {language, version} = useContext(LanguageVersionContext);
+
   const [filteredProperties, setFilteredProperties] = useState<ComponentProperty[]>([]);
 
   const filterBy = (properties: ComponentProperty[]) => {
     const result = properties.filter((child: ComponentProperty) => {
-      return !child.lang || child.lang === lang;
+      return !child.lang || child.lang === language;
     });
+    console.log("filter by ", properties, " and lang ", language);
     return result;
   };
 
   useEffect(() => {
+    console.log("ComponentProperties ---- ", language, " and version ", version);
+    if (version === "old") {
+      setFilteredProperties([...filterBy(props.oldProperties || props.properties)]); // If no old properties are provided, use the current properties
+      return;
+    }
     setFilteredProperties([...filterBy(props.properties)]);
-  }, [lang]);
+  }, [language, version]);
+
+  // useEffect(() => {
+  //   console.log("useEffect under ComponentProperties ", localVersion, " and lang ", localLanguage);
+  //   if (localVersion === "old") {
+  //     setFilteredProperties([...filterBy(props.oldProperties || props.properties)]); // If no old properties are provided, use the current properties
+  //     return;
+  //   }
+  //   setFilteredProperties([...filterBy(props.properties)]);
+  // }, [localLanguage, localVersion]);
+
 
   function dasherize(str: string): string {
     return str.replace(" ", "-").toLowerCase();
