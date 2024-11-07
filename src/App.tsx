@@ -38,16 +38,17 @@ import DetailsPage from "@routes/components/Details";
 import DividerPage from "@routes/components/Divider";
 import DropdownPage from "@routes/components/Dropdown";
 import FileUploaderPage from "@routes/components/FileUploader";
+import FilterChipPage from "@routes/components/FilterChip";
 import FormItemPage from "@routes/components/FormItemPage.tsx";
 import FormStepperPage from "@routes/components/FormStepper";
 import GridPage from "@routes/components/Grid";
 import HeroBannerPage from "@routes/components/HeroBanner";
 import IconsPage from "@routes/components/Icons";
-import IconButtonPage from '@routes/components/IconButton';
+import IconButtonPage from "@routes/components/IconButton";
 import ListPage from "@routes/components/List";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
-import PaginationPage from '@routes/components/Pagination';
+import PaginationPage from "@routes/components/Pagination";
 import PopoverPage from "@routes/components/Popover";
 import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
 import RadioPage from "@routes/components/Radio";
@@ -58,11 +59,10 @@ import TabsPage from "@routes/components/Tabs.tsx";
 import TooltipPage from "@routes/components/Tooltip";
 import TextFieldPage from "@routes/components/TextField";
 import TextAreaPage from "@routes/components/TextArea";
-import MicrositeHeaderPage from '@routes/components/MicrositeHeader';
-import AppHeaderPage from '@routes/components/AppHeader';
-import AppFooterPage from '@routes/components/AppFooter';
-import SideMenuPage from '@routes/components/SideMenu';
-
+import MicrositeHeaderPage from "@routes/components/MicrositeHeader";
+import AppHeaderPage from "@routes/components/AppHeader";
+import AppFooterPage from "@routes/components/AppFooter";
+import SideMenuPage from "@routes/components/SideMenu";
 
 // Design Tokens
 
@@ -87,8 +87,8 @@ import BugVerificationPage from "@routes/get-started/developers/BugVerification"
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
-import ContributePage from '@routes/get-started/Contribute';
-import SupportPage from '@routes/get-started/Support';
+import ContributePage from "@routes/get-started/Contribute";
+import SupportPage from "@routes/get-started/Support";
 import RequestFeaturePage from "@routes/get-started/RequestFeature";
 import ReportBugPage from "@routes/get-started/ReportBug";
 import RoadmapPage from "@routes/get-started/Roadmap";
@@ -97,11 +97,11 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 
 // Content Pages
 
-import ContentLayout from '@routes/content/ContentLayout';
-import CapitalizationPage from '@routes/content/Capitalization';
-import DateFormatPage from '@routes/content/DateFormat';
-import ErrorMessagesPage from '@routes/content/ErrorMessages';
-import HelperTextPage from '@routes/content/HelperText';
+import ContentLayout from "@routes/content/ContentLayout";
+import CapitalizationPage from "@routes/content/Capitalization";
+import DateFormatPage from "@routes/content/DateFormat";
+import ErrorMessagesPage from "@routes/content/ErrorMessages";
+import HelperTextPage from "@routes/content/HelperText";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
 // Patterns Pages
@@ -115,7 +115,6 @@ import TaskListPage from "@routes/patterns/TaskListPage";
 import QuestionPage from "@routes/patterns/QuestionPage";
 import ReviewPage from "@routes/patterns/ReviewPage";
 import ResultPage from "@routes/patterns/ResultPage";
-
 
 interface DeviceWidthProviderProps {
   children: ReactNode;
@@ -157,6 +156,7 @@ const router = createBrowserRouter(
         <Route path="divider" element={<DividerPage />} />
         <Route path="dropdown" element={<DropdownPage />} />
         <Route path="file-uploader" element={<FileUploaderPage />} />
+        <Route path="filter-chip" element={<FilterChipPage />} />
         <Route path="form-item" element={<FormItemPage />} />
         <Route path="form-stepper" element={<FormStepperPage />} />
         <Route path="grid" element={<GridPage />} />
@@ -226,7 +226,6 @@ const router = createBrowserRouter(
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
 
-
       <Route path="content" element={<ContentLayout />}>
         <Route path="capitalization">
           <Route index element={<CapitalizationPage />} />
@@ -238,13 +237,13 @@ const router = createBrowserRouter(
 
       <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage/>} />
+        <Route path="simple-form" element={<SimpleFormPage />} />
         <Route path="layout" element={<LayoutPage />} />
-        <Route path="start-page" element={<StartPage/>} />
-        <Route path="task-list-page" element={<TaskListPage/>} />
-        <Route path="question-page" element={<QuestionPage/>} />
-        <Route path="review-page" element={<ReviewPage/>} />
-        <Route path="result-page" element={<ResultPage/>} />
+        <Route path="start-page" element={<StartPage />} />
+        <Route path="task-list-page" element={<TaskListPage />} />
+        <Route path="question-page" element={<QuestionPage />} />
+        <Route path="review-page" element={<ReviewPage />} />
+        <Route path="result-page" element={<ResultPage />} />
       </Route>
     </Route>
   )
