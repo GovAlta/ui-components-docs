@@ -1,60 +1,70 @@
 import { GoabSideMenu } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { getVersionedUrlPath } from "@components/version-language-switcher/version-language-constants.ts";
 
 export function Components() {
+  const { language, version } = useContext(LanguageVersionContext);
+
+  const prefixUrl = getVersionedUrlPath(version, language);
+
+  const getUrl = (path: string) => {
+    return prefixUrl.length > 0 ? `${prefixUrl}/${path}` : path;
+  };
 
   return (
-      <section className="content">
-        <section className="side-menu">
-          <GoabSideMenu>
-            <Link to="">All</Link>
-            <Link to="accordion">Accordion</Link>
-            <Link to="badge">Badge</Link>
-            <Link to="block">Block</Link>
-            <Link to="button">Button</Link>
-            <Link to="button-group">Button group</Link>
-            <Link to="callout">Callout</Link>
-            <Link to="checkbox">Checkbox</Link>
-            <Link to="chip">Chip</Link>
-            <Link to="container">Container</Link>
-            <Link to="date-picker">Date picker</Link>
-            <Link to="details">Details</Link>
-            <Link to="divider">Divider</Link>
-            <Link to="dropdown">Dropdown</Link>
-            <Link to="file-uploader">File uploader</Link>
-            <Link to="footer">Footer</Link>
-            <Link to="form-item">Form item</Link>
-            <Link to="form-stepper">Form stepper</Link>
-            <Link to="grid">Grid</Link>
-            <Link to="header">Header</Link>
-            <Link to="hero-banner">Hero banner</Link>
-            <Link to="icons">Icons</Link>
-            <Link to="icon-button">Icon button</Link>
-            <Link to="input">Input</Link>
-            <Link to="list">List</Link>
-            <Link to="microsite-header">Microsite header</Link>
-            <Link to="modal">Modal</Link>
-            <Link to="notification-banner">Notification banner</Link>
-            <Link to="pagination">Pagination</Link>
-            <Link to="popover">Popover</Link>
-            <Link to="progress-indicator">Progress indicator</Link>
-            <Link to="radio">Radio</Link>
-            <Link to="side-menu">Side menu</Link>
-            <Link to="skeleton-loader">Skeleton loading</Link>
-            <Link to="spacer">Spacer</Link>
-            <Link to="table">Table</Link>
-            <Link to="tabs">Tabs</Link>
-            <Link to="text-area">Text area</Link>
-            <Link to="tooltip">Tooltip</Link>
-          </GoabSideMenu>
-        </section>
-
-        <main className="main">
-          <Outlet />
-          <SupportInfo />
-        </main>
+    <section className="content">
+      <section className="side-menu">
+        <GoabSideMenu>
+          <Link to="">All</Link>
+          <Link to={getUrl("accordion")}>Accordion</Link>
+          <Link to={getUrl("badge")}>Badge</Link>
+          <Link to={getUrl("block")}>Block</Link>
+          <Link to={getUrl("button")}>Button</Link>
+          <Link to={getUrl("button-group")}>Button group</Link>
+          <Link to={getUrl("callout")}>Callout</Link>
+          <Link to={getUrl("checkbox")}>Checkbox</Link>
+          <Link to={getUrl("chip")}>Chip</Link>
+          <Link to={getUrl("container")}>Container</Link>
+          <Link to={getUrl("date-picker")}>Date picker</Link>
+          <Link to={getUrl("details")}>Details</Link>
+          <Link to={getUrl("divider")}>Divider</Link>
+          <Link to={getUrl("dropdown")}>Dropdown</Link>
+          <Link to={getUrl("file-uploader")}>File uploader</Link>
+          <Link to={getUrl("footer")}>Footer</Link>
+          <Link to={getUrl("form-item")}>Form item</Link>
+          <Link to={getUrl("form-stepper")}>Form stepper</Link>
+          <Link to={getUrl("grid")}>Grid</Link>
+          <Link to={getUrl("header")}>Header</Link>
+          <Link to={getUrl("hero-banner")}>Hero banner</Link>
+          <Link to={getUrl("icons")}>Icons</Link>
+          <Link to={getUrl("icon-button")}>Icon button</Link>
+          <Link to={getUrl("input")}>Input</Link>
+          <Link to={getUrl("list")}>List</Link>
+          <Link to={getUrl("microsite-header")}>Microsite header</Link>
+          <Link to={getUrl("modal")}>Modal</Link>
+          <Link to={getUrl("notification-banner")}>Notification banner</Link>
+          <Link to={getUrl("pagination")}>Pagination</Link>
+          <Link to={getUrl("popover")}>Popover</Link>
+          <Link to={getUrl("progress-indicator")}>Progress indicator</Link>
+          <Link to={getUrl("radio")}>Radio</Link>
+          <Link to={getUrl("side-menu")}>Side menu</Link>
+          <Link to={getUrl("skeleton-loader")}>Skeleton loading</Link>
+          <Link to={getUrl("spacer")}>Spacer</Link>
+          <Link to={getUrl("table")}>Table</Link>
+          <Link to={getUrl("tabs")}>Tabs</Link>
+          <Link to={getUrl("text-area")}>Text area</Link>
+          <Link to={getUrl("tooltip")}>Tooltip</Link>
+        </GoabSideMenu>
       </section>
+
+      <main className="main">
+        <Outlet />
+        <SupportInfo />
+      </main>
+    </section>
   );
 }
 

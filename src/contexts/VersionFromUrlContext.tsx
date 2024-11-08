@@ -1,9 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import useLocalStorage from "@hooks/useLocalStorage.ts";
 import {
-  ANGULAR_VERSIONS,
   LOCAL_STORAGE_LANGUAGE_KEY,
-  LOCAL_STORAGE_VERSION_KEY, REACT_VERSIONS
+  LOCAL_STORAGE_VERSION_KEY,
 } from "@components/version-language-switcher/version-language-constants.ts";
 
 interface VersionFromUrlContextProps {
@@ -20,8 +18,6 @@ interface VersionProviderProps {
 
 export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ children }) => {
   const [versionFromPath, setVersionFromPath] = useState<string | null>(null);
-  const [language] = useLocalStorage(LOCAL_STORAGE_LANGUAGE_KEY, "react");
-  const [_version, setVersion] = useLocalStorage(LOCAL_STORAGE_VERSION_KEY, "");
 
   useEffect(() => {
     const updateVersion = () => {
@@ -31,8 +27,10 @@ export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ childre
         setVersionFromPath(versionSegment);
        localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, versionSegment.includes("angular") ? "angular" : "react");
       } else {
+        console.log("Reach versionFromUrl ", pathSegments);
         setVersionFromPath(null);
-        setVersion(language === "angular" ? ANGULAR_VERSIONS.NEW.value : REACT_VERSIONS.NEW.value);
+        // Fresh, new version
+        localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, "new");
       }
     };
 
