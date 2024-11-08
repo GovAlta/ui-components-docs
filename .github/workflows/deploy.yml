@@ -28,7 +28,7 @@ jobs:
         env:
           VITE_AUTH_TOKEN: ${{ secrets.VITE_AUTH_TOKEN }}
         run: |
-          npm run build
+          VITE_AUTH_TOKEN=${{secrets.VITE_AUTH_TOKEN}} npm run build
           cp nginx.conf dist/
       - name: Oc login
         uses: redhat-actions/oc-login@v1
