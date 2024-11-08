@@ -1,3 +1,4 @@
+export type LanguageVersion = "old" | "new";
 export const ANGULAR_VERSIONS = {
   OLD: {
     label: "v3",
@@ -18,6 +19,7 @@ export const REACT_VERSIONS = {
     value: "new"
   }
 }
+
 export const LOCAL_STORAGE_LANGUAGE_KEY = "goa-docs-lang";
 export const LOCAL_STORAGE_VERSION_KEY = "goa-docs-version";
 

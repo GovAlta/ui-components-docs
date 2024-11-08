@@ -1,5 +1,6 @@
 import { ComponentBinding } from "./ComponentBinding";
 import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 const ReactiveComponents = [
   "goa-input",
@@ -17,8 +18,8 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       " "
     );
 
-  constructor(properties: ComponentBinding[], isOldVersion: boolean) {
-    super(properties, isOldVersion);
+  constructor(properties: ComponentBinding[], version: LanguageVersion) {
+    super(properties, version);
   }
 
   setIsRoot(isRoot: boolean) {
@@ -96,7 +97,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     const currentPrefix = "Goab";
     const oldPrefix = "goa";
     const tail = name.replace(currentPrefix, "");
-    if (this.isOldVersion) {
+    if (this.version === "old") {
       return `${oldPrefix}-${this.dasherize(tail)}`;
     }
     return `${currentPrefix.toLowerCase()}-${this.dasherize(tail)}`;
