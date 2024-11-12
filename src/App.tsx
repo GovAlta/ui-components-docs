@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-
+import "@abgov/ui-components-common";
 import "@abgov/web-components";
 
 import Root from "@routes/root";
@@ -57,19 +57,8 @@ import ErrorMessagesPage from "@routes/content/ErrorMessages";
 import HelperTextPage from "@routes/content/HelperText";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
-// Patterns Pages
-
-import PatternsLayout from "@routes/patterns/PatternsLayout";
-import LayoutPage from "@routes/patterns/LayoutPage";
-import PatternsOverviewPage from "@routes/patterns/PatternsOverview";
-import SimpleFormPage from "@routes/patterns/SimpleFormPage";
-import StartPage from "@routes/patterns/StartPage";
-import TaskListPage from "@routes/patterns/TaskListPage";
-import QuestionPage from "@routes/patterns/QuestionPage";
-import ReviewPage from "@routes/patterns/ReviewPage";
-import ResultPage from "@routes/patterns/ResultPage";
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
-import { ComponentsRouter } from "@components/components-router.tsx";
+import { ComponentsRouter, PatternsRouter } from "./versioned-router";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 
@@ -127,16 +116,18 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFound />}>
-        <Route index element={<PatternsOverviewPage />} />
-        <Route path="simple-form" element={<SimpleFormPage />} />
-        <Route path="layout" element={<LayoutPage />} />
-        <Route path="start-page" element={<StartPage />} />
-        <Route path="task-list-page" element={<TaskListPage />} />
-        <Route path="question-page" element={<QuestionPage />} />
-        <Route path="review-page" element={<ReviewPage />} />
-        <Route path="result-page" element={<ResultPage />} />
-      </Route>
+      <Route path="/patterns/*" element={<PatternsRouter />}></Route>
+
+      {/*<Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFound />}>*/}
+      {/*  <Route index element={<PatternsOverviewPage />} />*/}
+      {/*  <Route path="simple-form" element={<SimpleFormPage />} />*/}
+      {/*  <Route path="layout" element={<LayoutPage />} />*/}
+      {/*  <Route path="start-page" element={<StartPage />} />*/}
+      {/*  <Route path="task-list-page" element={<TaskListPage />} />*/}
+      {/*  <Route path="question-page" element={<QuestionPage />} />*/}
+      {/*  <Route path="review-page" element={<ReviewPage />} />*/}
+      {/*  <Route path="result-page" element={<ResultPage />} />*/}
+      {/*</Route>*/}
     </Route>
   )
 );

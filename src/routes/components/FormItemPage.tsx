@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -8,9 +8,10 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoabBadge, GoabFormItem, GoabInput, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function FormItemPage() {
-  const language = useContext(LanguageContext);
+  const {version} = useContext(LanguageVersionContext);
   const [formItemProps, setFormItemProps] = useState({
     label: "First name",
   });
@@ -68,7 +69,7 @@ export default function FormItemPage() {
       value: "",
     },
   ]);
-  const componentProps: ComponentProperty[] = [
+  const oldComponentProps: ComponentProperty[] = [
     {
       name: "label",
       type: "string",
@@ -153,6 +154,69 @@ export default function FormItemPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProps: ComponentProperty[] = [
+    {
+      name: "label",
+      type: "string",
+      description: "Creates a label for a form item.",
+    },
+    {
+      name: "labelSize",
+      type: "GoabFormItemLabelSize (regular | large)",
+      defaultValue: "regular",
+      description: "Sets a regular or large label size.",
+    },
+    {
+      name: "helpText",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Help text displayed under the form field to provide additional explanation.",
+    },
+    {
+      name: "helpText",
+      type: "string",
+      lang: "angular",
+      description: "Help text displayed under the form field to provide additional explanation.",
+    },
+    {
+      name: "error",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+    },
+    {
+      name: "error",
+      type: "string",
+      lang: "angular",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+    },
+    {
+      name: "requirement",
+      type: "GoabFormItemRequirement (optional | required)",
+      description: "Marks the field with an optional or required label.",
+    },
+    {
+      name: "id",
+      type: "string",
+      description:
+        "The id of the label, necessary for field's aria-labelledby attribute for the screen reader.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the form item."
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFormItemBindings(bindings);
@@ -177,16 +241,18 @@ export default function FormItemPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs>
           <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
-              <CodeSnippet
-                lang="typescript"
-                tags={["angular"]}
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular"]}
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                   value: string = "";
@@ -197,18 +263,58 @@ export default function FormItemPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular"]}
+                  allowCopy={true}
+                  code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value: string = "";
+                  
+                 inputOnChange(event: GoabInputOnChangeDetail) {
+                  this.value = event.value;
+                  }
+                }
+              `}
+                />
+              )}
+
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />
+                />
+              )}
+
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
+                // reactive code
+                export class SomeComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: [""]
+                    });
+                  }
+                }
+              `}
+                />
+              )}
 
               <CodeSnippet
                 lang="typescript"
@@ -228,38 +334,52 @@ export default function FormItemPage() {
               </GoabFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={componentProps} />
+            <ComponentProperties properties={componentProps} oldProperties={oldComponentProps} />
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
             <Sandbox skipRender>
-              <GoabFormItem
-                label="First name" 
-                helpText={helptextReactNode}>
+              <GoabFormItem label="First name" helpText={helptextReactNode}>
                 <GoabInput onChange={noop} value="" name="item" />
               </GoabFormItem>
-
-              {language === "react" && (
+              {/*React*/}
+              {version === "old" && (
                 <CodeSnippet
                   lang="typescript"
                   tags="react"
                   allowCopy={true}
                   code={`
-                  <GoAFormItem label="First name"
+                        <GoAFormItem label="First name"
                                helpText={<><i>This is </i> slotted <b>help text</b>.</>}>
-                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
-                  </GoAFormItem>
-                  `}
+                          <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
+                        </GoAFormItem>
+                      `}
                 />
               )}
 
-              {language === "angular" && (
+              {version === "new" && (
                 <CodeSnippet
                   lang="typescript"
-                  tags="angular"
+                  tags="react"
                   allowCopy={true}
                   code={`
+                        <GoabFormItem label="First name"
+                               helpText={<><i>This is </i> slotted <b>help text</b>.</>}>
+                          <GoabInput onChange={onChange} value={value} name="item"></GoabInput>
+                        </GoabFormItem>
+                      `}
+                />
+              )}
+
+              {/*Angular*/}
+              {version === "old" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                   <goa-form-item label="First name">
                     <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
 
@@ -271,39 +391,60 @@ export default function FormItemPage() {
 
                   </goa-form-item>
                   `}
-                />
-              )}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-form-item label="First name" [formGroup]="form">
+                    <goab-input name="item" formControlName="item"></goab-input>
+                    <goab-form-item-slot slot="helptext">
+                      <span>This is </span>
+                      <i>slotted</i>
+                      <b>help text</b>.
+                    </goab-form-item-slot>
+                  </goab-form-item>
+                `}
+              />}
             </Sandbox>
 
             <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
             <Sandbox skipRender>
-              <GoabFormItem
-                label="First name" 
-                error={errorReactNode}>
+              <GoabFormItem label="First name" error={errorReactNode}>
                 <GoabInput onChange={noop} value="" name="item" />
               </GoabFormItem>
 
-              {language === "react" && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
+              {version === "old" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
                   <GoAFormItem 
                     label="First name"
                     error={<><i>This is </i> slotted <b>error text</b>.</>}>
                     <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
                   </GoAFormItem>
                   `}
-                />
-              )}
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoabFormItem label="First name"
+                                error={<><i>This is </i> slotted <b>error text</b>.</>}>
+                    <GoabInput onChange={onChange} value={value} name="item"></GoabInput>
+                  </GoabFormItem>
+                  `}
+              />}
 
-              {language === "angular" && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
+              {version === "old" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
                   <goa-form-item label="First name">
                   <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
 
@@ -315,8 +456,22 @@ export default function FormItemPage() {
 
                   </goa-form-item>
                   `}
-                />
-              )}
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-form-item label="First name" [formGroup]="form">
+                    <goab-input name="item" formControlName="item"></goab-input>
+                    <goab-form-item-slot slot="error">
+                      <span>This is </span>
+                      <i>slotted </i>
+                      <b>error text.</b>
+                    </goab-form-item-slot>
+                  </goab-form-item>
+                `}
+              />}
             </Sandbox>
           </GoabTab>
           <GoabTab

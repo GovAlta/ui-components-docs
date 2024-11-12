@@ -11,8 +11,9 @@ import ComponentSerializer from "./ComponentSerializer";
 import "./Sandbox.css";
 import React from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { AngularTemplateDrivenSerializer } from "@components/sandbox/AngularTemplateDrivenSerializer.ts";
 
-type Flag = "reactive";
+type Flag = "reactive" | "template-driven";
 type ComponentType = "goa" | "codesnippet";
 type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
@@ -54,6 +55,11 @@ export const Sandbox = (props: SandboxProps) => {
       const serializer = new ComponentSerializer(new AngularReactiveSerializer(properties, version));
       return serializer.componentsToString(els);
     },
+
+    "angular-template-driven": (els: ReactElement[], properties) => {
+      const serializer = new ComponentSerializer(new AngularTemplateDrivenSerializer(properties, version));
+      return serializer.componentsToString(els);
+    }
   };
 
   const formatMap: Record<string, string> = {
@@ -135,6 +141,16 @@ function SandboxCode(p: SandboxCodeProps) {
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
 
         {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-reactive" sandboxProps={p.props} serializer={p.serializers["angular-reactive"]} />}
+
+        {/*If flags have reactive, it means that the possibility we have template-driven as well*/}
+
+        {p.props.flags?.includes("template-driven") && (
+          <>
+          <h4>Template driven (ngModel)</h4>
+          <AdditionalCodeSnippets tags={["angular", "template-driven"]} sandboxProps={p.props} />
+          {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-template-driven" sandboxProps={p.props} serializer={p.serializers["angular-template-driven"]} />}
+          </>
+        )}
       </>
     );
   }
@@ -209,7 +225,7 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
 // This allows
 type ComponentOutputProps = {
   formatLang: string;
-  type: "angular" | "angular-reactive" | "react";
+  type: "angular" | "angular-reactive" | "angular-template-driven" | "react";
   sandboxProps: SandboxProps;
   serializer: Serializer;
 }
@@ -230,6 +246,7 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
   return (
     <CodeSnippet
       lang={props.formatLang}
+      tags={props.type}
       allowCopy={true}
       code={code}
     />

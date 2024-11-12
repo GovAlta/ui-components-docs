@@ -33,7 +33,7 @@ export default function SpacerPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "hSpacing",
       type: "fill | none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -61,6 +61,25 @@ export default function SpacerPage() {
       description: "Vertical spacing",
       lang: "react",
       defaultValue: "none",
+    },
+  ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "hSpacing",
+      type: "GoabSpacerHorizontalSpacing (fill | none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Horizontal spacing",
+      defaultValue: "none",
+    },
+    {
+      name: "vSpacing",
+      type: "GoabSpacerVerticalSpacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Vertical spacing",
+      defaultValue: "none",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 
@@ -131,7 +150,7 @@ export default function SpacerPage() {
               </GoabBlock>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -14,8 +14,10 @@ import {
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function HeroBannerPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [heroBannerProps, setHeroBannerProps] = useState({
     heading: "Heading",
   });
@@ -57,7 +59,7 @@ export default function HeroBannerPage() {
       value: "",
     },
   ]);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -139,6 +141,55 @@ export default function HeroBannerPage() {
       lang: "angular",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      description: "Main heading text",
+    },
+    {
+      name: "backgroundUrl",
+      type: "string",
+      description: "Background image url",
+    },
+    {
+      name: "minHeight",
+      type: "string",
+      description: "Sets the height of the Hero Banner",
+      lang: "react",
+      defaultValue: "600px",
+    },
+    {
+      name: "maxContentWidth",
+      type: "string",
+      description: "Maximum width of the content area",
+      defaultValue: "100%",
+    },
+    {
+      name: "backgroundColor",
+      type: "string",
+      description: "Hero Banner background color when no background image is provided",
+      defaultValue: "#f8f8f8",
+    },
+    {
+      name: "textColor",
+      type: "string",
+      description: "Text color within the hero banner",
+      defaultValue: "#333",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Test ID for the component",
+    },
+    {
+      name: "actions",
+      type: "slot",
+      description: "Buttons displayed in the bottom left of the hero banner",
+      lang: "angular",
+    },
+  ];
+
 
   function onSandboxChange(heroBannerBindings: ComponentBinding[], props: Record<string, unknown>) {
     setHeroBannerBindings(heroBannerBindings);
@@ -169,7 +220,7 @@ export default function HeroBannerPage() {
               </GoabHeroBanner>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             {/* Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -178,8 +229,8 @@ export default function HeroBannerPage() {
 
             <h3 id="component-example-actions">Hero Banner with actions</h3>
             <Sandbox skipRender fullWidth>
-              <CodeSnippet
-                lang="typescript"
+              {version === "old" && <CodeSnippet
+                lang="html"
                 tags="angular"
                 allowCopy={true}
                 code={`
@@ -190,10 +241,24 @@ export default function HeroBannerPage() {
                     </div>
                   </goa-hero-banner>
                 `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-hero-banner heading="Supporting Businesses" [actions]="heroBannerActionTemplate">
+                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                    <ng-template #heroBannerActionTemplate>
+                      <goab-button type="start" (onClick)="onClick()">Call to action</goab-button>
+                    </ng-template>
+                  </goab-hero-banner>
+                `}
+              />}
 
-              <CodeSnippet
-                lang="typescript"
+              {/*React code*/}
+              {version === "old" && <CodeSnippet
+                lang="html"
                 tags="react"
                 allowCopy={true}
                 code={`
@@ -204,7 +269,20 @@ export default function HeroBannerPage() {
                     </GoAHeroBannerActions>
                   </GoAHeroBanner>
                 `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoabHeroBanner heading="Supporting Businesses">
+                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                    <GoabHeroBannerActions>
+                      <GoabButton type="start" onClick={noop}>Call to action</GoabButton>
+                    </GoabHeroBannerActions>
+                  </GoabHeroBanner>
+                `}
+              />}
 
               <GoabHeroBanner heading="Supporting Businesses">
                 Resources are available to help Alberta entrepreneurs and small businesses start,

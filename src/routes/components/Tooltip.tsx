@@ -34,7 +34,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function TEMPLATE_Page() {
+export default function TooltipPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
   });
@@ -62,7 +62,7 @@ export default function TEMPLATE_Page() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "content",
       type: "string",
@@ -83,6 +83,35 @@ export default function TEMPLATE_Page() {
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "content",
+      type: "string",
+      description: "The content of the tooltip",
+    },
+    {
+      name: "position",
+      type: "GoabTooltipPosition (top | bottom | left | right)",
+      description: "Position wrt the child element",
+      defaultValue: "top",
+    },
+    {
+      name: "hAlign",
+      type: "GoabTooltipHorizontalAlignment (left | center | right)",
+      description: "Horizontal alignment to the child element",
+      defaultValue: "center",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
@@ -121,7 +150,7 @@ export default function TEMPLATE_Page() {
                 <GoabIcon type="information-circle" />
               </GoabTooltip>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples

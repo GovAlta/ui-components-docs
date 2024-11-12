@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -20,6 +20,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -39,6 +40,7 @@ type CastingType = {
 };
 
 export default function TextAreaPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -98,7 +100,8 @@ export default function TextAreaPage() {
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
   });
-  const componentProperties: ComponentProperty[] = [
+
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "name",
       lang: "angular",
@@ -240,6 +243,100 @@ export default function TextAreaPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "name",
+      type: "string",
+      description: "Name of the input value that is received in the _change event",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "Bound to value",
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      description: "Text displayed within the input when no value is set.",
+    },
+    {
+      name: "id",
+      type: "string",
+      description: "Set the id of the textarea",
+    },
+    {
+      name: "rows",
+      type: "number",
+      description: "Set the number of rows",
+      defaultValue: "3",
+    },
+    {
+      name: "width",
+      type: "string",
+      description: "Width of the text area",
+      defaultValue: "60ch",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      description: "Sets the input to an error state",
+      defaultValue: "false",
+    },
+    {
+      name: "readOnly",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to a read only state.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to a disabled state. Use [attr.disabled] with [formControl]",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description:
+        "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+    },
+    {
+      name: "countBy",
+      type: "GoabTextAreaCountBy (character | word)",
+      description:
+        "Counting interval for characters or words, specifying whether to count every character or word.",
+    },
+    {
+      name: "maxCount",
+      type: "number",
+      description: "Maximum number of characters or words allowed",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Maximum width of the text area",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabTextAreaOnChangeDetail) => void",
+      description: "Callback function when textarea value is changed",
+    },
+    {
+      name: "onKeyPress",
+      type: "(event: GoabTextAreaOnKeyPressDetail) => void",
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setTextAreaBindings(bindings);
@@ -268,9 +365,11 @@ export default function TextAreaPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}
               fullWidth>
-              <CodeSnippet
+
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -280,8 +379,26 @@ export default function TextAreaPage() {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                // reactive code
+                export class SomeComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: '',
+                  });
+                }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -295,9 +412,42 @@ export default function TextAreaPage() {
                   }
                 }
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value = '';
+                  textareaOnChange(event: GoabTextAreaOnChangeDetail) {
+                    // handle change
+                    this.value = event.value;
+                  }
+                }
+              `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "template-driven"]}
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                   item = "";
+                   textareaOnChange(event: GoabTextAreaOnChangeDetail) {
+                    // handle change
+                    this.item = event.value;
+                   }
+                }
+              `}
+              />}
+
+              {/*React code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -308,7 +458,20 @@ export default function TextAreaPage() {
                   setValue(value);
                 }
             `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const [value, setValue] = useState<string>("");
+              
+                function onChange(event: GoabTextAreaOnChangeDetail) {
+                  setValue(event.value);
+                }
+            `}
+              />}
 
               <GoabFormItem {...formItemProps}>
                 <GoabTextarea
@@ -321,7 +484,7 @@ export default function TextAreaPage() {
               </GoabFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             {/*Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">

@@ -70,7 +70,7 @@ export default function ProgressIndicatorPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "variant",
       type: "inline | fullscreen",
@@ -97,6 +97,40 @@ export default function ProgressIndicatorPage() {
       type: "boolean",
       description:
         "Show/hide the page loader. This allows for fade transition to be applied in each transition.",
+    },
+  ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "variant",
+      type: "GoabCircularProgressVariant (inline | fullscreen)",
+      description: "Stretch across the full screen or use it inline",
+    },
+    {
+      name: "size",
+      type: "GoabCircularProgressSize (large | small)",
+      description: "Size of the progress indicator",
+    },
+    {
+      name: "progress",
+      type: "number",
+      description:
+        "Set the progress value. Setting this value will change the type from infinite to progress",
+    },
+    {
+      name: "message",
+      type: "string",
+      description: "Loading message displayed under the progress indicator",
+    },
+    {
+      name: "visible",
+      type: "boolean",
+      description:
+        "Show/hide the page loader. This allows for fade transition to be applied in each transition.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
   ];
 
@@ -127,7 +161,7 @@ export default function ProgressIndicatorPage() {
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoabCircularProgress {...componentProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab

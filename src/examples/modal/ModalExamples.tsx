@@ -1,4 +1,4 @@
-import { LanguageContext, Sandbox } from "@components/sandbox";
+import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabButton,
@@ -9,12 +9,17 @@ import {
   GoabDropdownItem,
   GoabFormItem,
   GoabInput,
-  GoabModal, GoabTextarea
+  GoabModal,
+  GoabTextarea,
 } from "@abgov/react-components";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./modal-examples.css";
-import { GoabDropdownOnChangeDetail, GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
+import {
+  GoabDropdownOnChangeDetail,
+  GoabTextAreaOnChangeDetail,
+} from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function ModalExamples() {
   // hooks
@@ -22,15 +27,15 @@ export default function ModalExamples() {
   const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>();
   const [warnCalloutModalOpen, setWarnCalloutModalOpen] = useState<boolean>();
   const [inputModalOpen, setInputModalOpen] = useState<boolean>();
-  const [effectiveDate, setEffectiveDate] = useState<Date|undefined>(new Date());
+  const [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());
   const [onRouteChangeModalOpen, setOnRouteChangeModalOpen] = useState<boolean>();
   const [addItemModalOpen, setAddItemModalOpen] = useState<boolean>();
   const [type, setType] = useState<string>();
   const [name, setName] = useState<string>();
   const [description, setDescription] = useState<string>();
+  const { version } = useContext(LanguageVersionContext);
 
   const navigate = useNavigate();
-  const language = useContext(LanguageContext);
   // @ts-ignore
   const onChangeEffectiveDate = (detail: GoabDatePickerOnChangeDetail) => {
     setEffectiveDate(detail.value);
@@ -42,11 +47,11 @@ export default function ModalExamples() {
 
   const onChangeName = (value: string) => {
     setName(value);
-  }
+  };
 
   const onChangeDescription = (event: GoabTextAreaOnChangeDetail) => {
     setDescription(event.value);
-  }
+  };
 
   return (
     <>
@@ -73,6 +78,7 @@ export default function ModalExamples() {
           }>
           <p>Content</p>
         </GoabModal>
+        {/*Angular*/}
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -86,11 +92,13 @@ export default function ModalExamples() {
                   }
                 `}
         />
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                   <goa-button (_click)="toggleModal();">Open Basic Modal</goa-button>
                   <goa-modal [open]="open" (_close)="toggleModal()" heading="Heading">
                       <p>Content</p>
@@ -102,7 +110,30 @@ export default function ModalExamples() {
                     </div>
                   </goa-modal>
                 `}
-        />
+          />
+        )}
+
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
+                  <goab-button (onClick)="toggleModal();">Open Basic Modal</goab-button>
+                  <goab-modal [open]="open" (close)="toggleModal()" heading="Heading" [actions]="actions">
+                    <p>Content</p>
+                    <ng-template #actions>
+                      <goab-button-group alignment="end">
+                        <goab-button type="secondary" (onClick)="toggleModal()">Secondary</goab-button>
+                        <goab-button type="primary" (onClick)="toggleModal()">Primary</goab-button>
+                      </goab-button-group>
+                    </ng-template>
+                  </goab-modal>
+                `}
+          />
+        )}
+
+        {/*React code*/}
         <CodeSnippet
           lang="typescript"
           tags="react"
@@ -112,14 +143,16 @@ export default function ModalExamples() {
                 `}
         />
 
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                   <GoAButton onClick={() => setOpen(true)}>Open Basic Modal</GoAButton>
                   <GoAModal
                     heading="Heading"
+                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
@@ -136,7 +169,37 @@ export default function ModalExamples() {
                     <p>Content</p>
                   </GoAModal>
                 `}
-        />
+          />
+        )}
+
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+                  <GoabButton onClick={() => setOpen(true)}>Open Basic Modal</GoabButton>
+                  <GoabModal
+                    heading="Heading"
+                    role="dialog"
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="secondary" onClick={() => setOpen(false)}>
+                          Secondary
+                        </GoabButton>
+                        <GoabButton type="primary" onClick={() => setOpen(false)}>
+                          Primary
+                        </GoabButton>
+                      </GoabButtonGroup>
+                    }
+                  >
+                    <p>Content</p>
+                  </GoabModal>
+                `}
+          />
+        )}
       </Sandbox>
 
       <h3 id="component-example-destructive">Confirm a destructive action</h3>
@@ -166,6 +229,8 @@ export default function ModalExamples() {
           }>
           <p>This action cannot be undone.</p>
         </GoabModal>
+
+        {/*Angular code*/}
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -180,11 +245,12 @@ export default function ModalExamples() {
                 `}
         />
 
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                   <goa-button type="tertiary" leadingIcon="trash" (_click)="toggleModal()">Delete my application</goa-button>
                   <goa-modal [open]="open" role="alertdialog" (_close)="toggleModal()" heading="Are you sure you want to delete this application?">
                       <p>This action cannot be undone.</p>
@@ -196,7 +262,29 @@ export default function ModalExamples() {
                     </div>
                   </goa-modal>
                 `}
-        />
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
+            <goab-button type="tertiary" leadingIcon="trash" (onClick)="toggleModal()">Delete my application</goab-button>
+            <goab-modal [open]="open" role="alertdialog" (onClose)="toggleModal()" heading="Are you sure you want to delete this application?" [actions]="actions">
+              <p>This action cannot be undone.</p>
+              <ng-template #actions>
+                <goab-button-group alignment="end">
+                <goab-button type="tertiary" (onClick)="toggleModal()">Cancel</goab-button>
+                <goab-button type="primary" variant="destructive" (onClick)="toggleModal()">Delete application</goab-button>
+                </goab-button-group>
+              </ng-template>
+            </goab-modal>
+                `}
+          />
+        )}
+
+        {/*React code*/}
         <CodeSnippet
           lang="typescript"
           tags="react"
@@ -206,11 +294,12 @@ export default function ModalExamples() {
                 `}
         />
 
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                   <GoAButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete my application</GoAButton>
                   <GoAModal
                     heading="Are you sure you want to delete this application?"
@@ -231,7 +320,37 @@ export default function ModalExamples() {
                     <p>This action cannot be undone.</p>
                   </GoAModal>
                 `}
-        />
+          />
+        )}
+
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+                  <GoabButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete my application</GoabButton>
+                  <GoabModal
+                    heading="Are you sure you want to delete this application?"
+                    open={open}
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="tertiary" onClick={() => setOpen(false)}>
+                          Cancel
+                        </GoabButton>
+                        <GoabButton type="primary" variant="destructive" onClick={() => setOpen(false)}>
+                           Delete application
+                        </GoabButton>
+                      </GoabButtonGroup>
+                    }
+                  >
+                    <p>This action cannot be undone.</p>
+                  </GoabModal>
+                `}
+          />
+        )}
       </Sandbox>
 
       <h3 id="component-example-warning">Warn a user of a deadline</h3>
@@ -258,6 +377,8 @@ export default function ModalExamples() {
             adjournment request as soon as possible.
           </p>
         </GoabModal>
+
+        {/*Angular code*/}
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -271,11 +392,12 @@ export default function ModalExamples() {
                   }
                 `}
         />
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                   <goa-button type="secondary" (_click)="toggleModal()">Save for later</goa-button>
                   <goa-modal [open]="open" role="alertdialog" calloutvariant="important"
                     (_close)="toggleModal()" heading="Complete submission prior to 1PM">
@@ -289,7 +411,31 @@ export default function ModalExamples() {
                     </div>
                   </goa-modal>
                 `}
-        />
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
+          <goab-button type="secondary" (onClick)="toggleModal()">Save for later</goab-button>
+          <goab-modal [open]="open" role="alertdialog" calloutVariant="important"
+            (onClose)="toggleModal()" heading="Complete submission prior to 1PM" [actions]="actions">
+            <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
+            <ng-template #actions>
+              <goab-button-group alignment="end">
+                <goab-button type="primary" (onClick)="toggleModal()">
+                   I understand
+                </goab-button>
+              </goab-button-group>
+            </ng-template>
+          </goab-modal>
+                `}
+          />
+        )}
+
+        {/*React code*/}
         <CodeSnippet
           lang="typescript"
           tags="react"
@@ -298,11 +444,13 @@ export default function ModalExamples() {
                   const [open, setOpen] = useState(false);
                 `}
         />
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                   <GoAButton type="secondary" onClick={() => setOpen(true)}>Save for later</GoAButton>
                   <GoAModal
                     heading="Complete submission prior to 1PM"
@@ -319,7 +467,33 @@ export default function ModalExamples() {
                     <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
                   </GoAModal>
                 `}
-        />
+          />
+        )}
+
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+                  <GoabButton type="secondary" onClick={() => setOpen(true)}>Save for later</GoabButton>
+                  <GoabModal
+                    heading="Complete submission prior to 1PM"
+                    open={open}
+                    calloutVariant="important"
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="primary" onClick={() => setOpen(false)}>I understand</GoabButton>
+                      </GoabButtonGroup>
+                    }
+                  >
+                    <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
+                  </GoabModal>
+                `}
+          />
+        )}
       </Sandbox>
 
       <h3 id="component-example-with-input">Confirm record change</h3>
@@ -375,13 +549,12 @@ export default function ModalExamples() {
           `}
       />
 
-      {language === "angular" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+      {/*Angular code*/}
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
                   export class SomeOtherComponent {
                     open = false;
                     effectiveDate = new Date(); 
@@ -395,13 +568,33 @@ export default function ModalExamples() {
                     }
                   }
                 `}
-          />
+      />}
 
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    effectiveDate = new Date(); 
+                    
+                    toggleModal() {
+                      this.open = !this.open;
+                    }
+                    
+                    onChangeEffectiveDate(event: GoabDatePickerOnChangeDetail) {
+                      this.effectiveDate = event.value as Date;
+                    }
+                  }
+                `}
+      />}
+
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
                   <goa-button (_click)="toggleModal()">Save and continue</goa-button>
                   <goa-modal [open]="open" role="dialog"
                     (_close)="toggleModal()" heading="Address has changed">
@@ -431,17 +624,49 @@ export default function ModalExamples() {
                     </div>
                   </goa-modal>
                 `}
-          />
-        </>
-      )}
+      />}
 
-      {language === "react" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
+          <goab-button (onClick)="toggleModal()">Save and continue</goab-button>
+          <goab-modal [open]="open" role="dialog"
+           (onClose)="toggleModal()" heading="Address has changed" [actions]="actions">
+            <goab-container type="non-interactive" accent="filled" padding="compact" width="full">
+              <dl class="address-change-example--description">
+                <dt>Before</dt>
+                <dd>123456 78 Ave NW, Edmonton, Alberta</dd>
+              </dl>
+              <dl class="address-change-example--description">
+                <dt>After</dt>
+                <dd>881 12 Ave NW, Edmonton, Alberta</dd>
+              </dl>
+            </goab-container>
+            <goab-form-item label="Effective date">
+              <goab-date-picker (onChange)="onChangeEffectiveDate($event)" name="effectiveDate" [value]="effectiveDate"></goab-date-picker>
+            </goab-form-item>
+            <ng-template #actions>
+              <goab-button-group alignment="end">
+                <goab-button type="secondary" (onClick)="toggleModal()">
+                  Undo address change
+                </goab-button>
+                <goab-button type="primary" (onClick)="toggleModal()">
+                  Confirm
+                </goab-button>
+              </goab-button-group>
+            </ng-template>
+          </goab-modal>
+                `}
+      />}
+
+      {/*React code*/}
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
                   const [open, setOpen] = useState(false);
                   const [effectiveDate, setEffectiveDate] = useState<Date>(new Date());
                   
@@ -449,13 +674,26 @@ export default function ModalExamples() {
                     setEffectiveDate(value);
                   }
                 `}
-          />
+      />}
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
+                  const [open, setOpen] = useState(false);
+                  const [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());
+                  
+                  const onChangeEffectiveDate = (detail: GoabDatePickerOnChangeDetail) => {
+                    setEffectiveDate(detail.value);
+                  }
+                `}
+      />}
 
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
                   <GoAButton onClick={() => setOpen(true)}>Save and continue</GoAButton>
                   <GoAModal
                     heading="Address has changed"
@@ -491,9 +729,48 @@ export default function ModalExamples() {
                     </GoAFormItem>
                   </GoAModal>
                 `}
-          />
-        </>
-      )}
+      />}
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
+                  <GoabButton onClick={() => setOpen(true)}>Save and continue</GoabButton>
+                  <GoabModal
+                    heading="Address has changed"
+                    role="dialog"
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="secondary" onClick={() => setOpen(false)}>
+                          Undo address change
+                        </GoabButton>
+                        <GoabButton type="primary" onClick={() => setOpen(false)}>
+                          Confirm
+                        </GoabButton>
+                      </GoabButtonGroup>
+                    }
+                  >
+                   <GoabContainer type="non-interactive" accent="filled" padding="compact" width="full">
+                      <dl className="address-change-example--description">
+                        <dt>Before</dt>
+                        <dd>123456 78 Ave NW, Edmonton, Alberta</dd>
+                      </dl>
+                      <dl className="address-change-example--description">
+                        <dt>After</dt>
+                        <dd>881 12 Ave NW, Edmonton, Alberta</dd>
+                      </dl>
+                    </GoabContainer>
+                    <GoabFormItem label="Effective date">
+                      <GoabDatePicker
+                        onChange={onChangeEffectiveDate}
+                        name="effectiveDate"
+                        value={effectiveDate}></GoabDatePicker>
+                    </GoabFormItem>
+                  </GoabModal>
+                `}
+      />}
 
       <h3 id="component-example-add-item">Add another item</h3>
       {/*Don't use a Sandbox because the Dropdown inside a modal will make the modal shifts everytime we tab from the dropdown*/}
@@ -526,7 +803,10 @@ export default function ModalExamples() {
             </GoabDropdown>
           </GoabFormItem>
           <GoabFormItem label="Name" mt="xs">
-            <GoabInput onChange={(event) => onChangeName(event.value)} value={name} name="name"></GoabInput>
+            <GoabInput
+              onChange={event => onChangeName(event.value)}
+              value={name}
+              name="name"></GoabInput>
           </GoabFormItem>
           <GoabFormItem label="Description" mt="xs">
             <GoabTextarea
@@ -539,13 +819,12 @@ export default function ModalExamples() {
         </GoabModal>
       </GoabContainer>
 
-      {language === "angular" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+      {/*Angular code*/}
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
                   export class SomeOtherComponent {
                     open = false;
                     type = "";
@@ -567,15 +846,45 @@ export default function ModalExamples() {
                     updateDescription(event: Event) {
                       this.description = (event as CustomEvent).detail.value;
                     }
-                    
                   }
                 `}
-          />
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
+      />}
+
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
+                  export class SomeOtherComponent {
+                    open = false;
+                    type: string|undefined = "";
+                    name = "";
+                    description = "";
+
+                    toggleModal() {
+                      this.open = !this.open;
+                    }
+
+                    updateType(event: GoabDropdownOnChangeDetail) {
+                      this.type = event.value;
+                    }
+
+                    updateName(event: GoabInputOnChangeDetail) {
+                      this.name = event.value;
+                    }
+
+                    updateDescription(event: GoabTextAreaOnChangeDetail) {
+                      this.description = event.value;
+                    }
+                  }
+                `}
+      />}
+
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
                   <goa-button type="tertiary" leadingicon="add" (_click)="toggleModal()">Add another item</goa-button>
                   <goa-modal [open]="open" role="dialog"
                     (_close)="toggleModal()" heading="Add a new item">
@@ -600,17 +909,45 @@ export default function ModalExamples() {
                       </div>
                   </goa-modal>
                 `}
-          />
-        </>
-      )}
+      />}
 
-      {language === "react" && (
-        <>
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
+        <goab-button type="tertiary" leadingIcon="add" (onClick)="toggleModal()">Add another item</goab-button>
+        <goab-modal [open]="open" role="dialog"
+           (onClose)="toggleModal()" heading="Add a new item" [actions]="actions">
+          <p>Fill in the information to create a new item</p>
+          <goab-form-item label="Type" mt="xs">
+            <goab-dropdown (onChange)="updateType($event)" [value]="type">
+              <goab-dropdown-item value="1" label="Option 1"></goab-dropdown-item>
+              <goab-dropdown-item value="2" label="Option 2"></goab-dropdown-item>
+            </goab-dropdown>
+          </goab-form-item>
+          <goab-form-item label="Name" mt="xs">
+            <goab-input name="name" (onChange)="updateName($event)" [value]="name"></goab-input>
+          </goab-form-item>
+          <goab-form-item label="Description" mt="xs">
+            <goab-textarea name="description" width="80%" [rows]="2" (onChange)="updateDescription($event)" [value]="description"></goab-textarea>
+          </goab-form-item>
+          <ng-template #actions>
+            <goab-button-group alignment="end">
+              <goab-button type="tertiary" (onClick)="toggleModal()">Cancel</goab-button>
+              <goab-button type="primary" (onClick)="toggleModal()">Save new item</goab-button>
+            </goab-button-group>
+          </ng-template>
+        </goab-modal>
+        `}
+      />}
+
+      {/*React code*/}
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
                   const [open, setOpen] = useState(false);
                   const [type, setType] = useState<string>();
                   const [name, setName] = useState<string>();
@@ -629,12 +966,37 @@ export default function ModalExamples() {
                   };
                   
                 `}
-          />
-          <CodeSnippet
-            lang="typescript"
-            tags="react"
-            allowCopy={true}
-            code={`
+      />}
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
+                  const [open, setOpen] = useState(false);
+                  const [type, setType] = useState<string>();
+                  const [name, setName] = useState<string>();
+                  const [description, setDescription] = useState<string>();
+                  
+                  function onChangeName(value: string) {
+                    setName(value);
+                  }
+                  
+                  function onChangeDescription(event: GoabTextAreaOnChangeDetail) {
+                    setDescription(event.value);
+                  }
+                  
+                  function onChangeType(event: GoabDropdownOnChangeDetail) {
+                    setType(event.value);
+                  };
+                  
+                `}
+      />}
+
+      {version === "old" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
                   <GoAButton type="tertiary" leadingIcon="add" onClick={() => setOpen(true)}>
                     Add another item
                   </GoAButton>
@@ -667,12 +1029,51 @@ export default function ModalExamples() {
                       </GoAFormItem>
                    </GoAModal>
                 `}
-          />
-        </>
-      )}
+      />}
+
+      {version === "new" && <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
+                  <GoabButton type="tertiary" leadingIcon="add" onClick={() => setOpen(true)}>
+                    Add another item
+                  </GoabButton>
+                   <GoabModal
+                    heading="Add a new item"
+                    role="dialog"
+                    open={open}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="tertiary" onClick={() => setOpen(false)}>
+                          Cancel
+                        </GoabButton>
+                        <GoabButton type="primary" onClick={() => setOpen(false)}>
+                          Save new item
+                        </GoabButton>
+                      </GoabButtonGroup>
+                    }>
+                      <p>Fill in the information to create a new item</p>
+                      <GoabFormItem label="Type" mt="xs">
+                        <GoabDropdown onChange={onChangeType} value={type}>
+                          <GoabDropdownItem value="1" label="Option 1"></GoabDropdownItem>
+                          <GoabDropdownItem value="2" label="Option 2"></GoabDropdownItem>
+                        </GoabDropdown>
+                      </GoabFormItem>
+                      <GoabFormItem label="Name" mt="xs">
+                        <GoabInput onChange={event => onChangeName(event.value)} value={name} name="name"></GoabInput>
+                      </GoabFormItem>
+                      <GoabFormItem label="Description" mt="xs">
+                        <GoabTextArea name="description" width="80%" rows={2} onChange={onChangeDescription} value={description}></GoabTextArea>
+                      </GoabFormItem>
+                   </GoabModal>
+                `}
+      />}
 
       <h3 id="component-example-route-change">Route changes</h3>
       <Sandbox skipRender>
+
+        {/*Angular code*/}
         <CodeSnippet
           lang="typescript"
           tags="angular"
@@ -697,7 +1098,7 @@ export default function ModalExamples() {
                 `}
         />
 
-        <CodeSnippet
+        {version === "old" && <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -712,7 +1113,24 @@ export default function ModalExamples() {
                     </div>
                   </goa-modal>
                 `}
-        />
+        />}
+
+        {version === "new" && <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                  <goab-button (onClick)="onOpen();">Open</goab-button>
+                  <goab-modal [open]="open" role="alertdialog" heading="Are you sure you want to change route?" [actions]="actions">
+                    <ng-template #actions>
+                      <goab-button-group alignment="end">
+                        <goab-button type="secondary" (onClick)="onClose()">Cancel</goab-button>
+                        <goab-button type="primary" (onClick)="onChangeRoute()">Change route</goab-button>
+                      </goab-button-group>
+                    </ng-template>
+                  </goab-modal>
+                `}
+        />}
 
         <CodeSnippet
           lang="typescript"
@@ -730,7 +1148,7 @@ export default function ModalExamples() {
           `}
         />
 
-        <CodeSnippet
+        {version === "old" && <CodeSnippet
           lang="typescript"
           tags="react"
           allowCopy={true}
@@ -758,7 +1176,38 @@ export default function ModalExamples() {
                     }
                   ></GoAModal>
                 `}
-        />
+        />}
+
+        {version === "new" && <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+                  <GoabButton onClick={() => setOpen(true)}>Open</GoabButton>
+                  <GoabModal
+                    heading="Are you sure you want to change route?"
+                    open={open}
+                    role="alertdialog"
+                    onClose={() => setOpen(false)}
+                    actions={
+                      <GoabButtonGroup alignment="end">
+                        <GoabButton type="secondary" onClick={() => setOpen(false)}>
+                          Cancel
+                        </GoabButton>
+                        <GoabButton
+                          size="medium"
+                          onClick={() => {
+                            setOpen(false);
+                            // setTimeout will allow any modal transitions to be run
+                            // setTimeout(() => navigate("/some-path"), 300) }
+                            navigate("/components")
+                        }}>Change route</GoabButton>
+                      </GoabButtonGroup>
+                    }
+                  ></GoabModal>
+                `}
+        />}
+
         <GoabButton onClick={() => setOnRouteChangeModalOpen(true)}>Open</GoabButton>
         <GoabModal
           heading="Are you sure you want to change route?"

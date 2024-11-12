@@ -56,7 +56,7 @@ export default function NotificationBannerPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "success | important | information | emergency",
@@ -101,6 +101,30 @@ export default function NotificationBannerPage() {
       lang: "react",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabNotificationType(success | important | information | emergency)",
+      description: "Define the context and colour of the badge",
+      defaultValue: "information"
+    },
+    {
+      name: "maxContentWidth",
+      type: "string",
+      description: "Maximum width of the content area",
+    },
+    {
+      name: "ariaLive",
+      type: "GoabAriaLiveType (polite | assertive | off)",
+      description: "Indicates how assistive technology should handle updates to the live region",
+      defaultValue: "polite",
+    },
+    {
+      name: "onDismiss",
+      type: "() => void",
+      description: "Dispatched when notification banner is closed.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
@@ -119,7 +143,7 @@ export default function NotificationBannerPage() {
             <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
               <GoabNotification {...componentProps}>Notification banner message</GoabNotification>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
           </GoabTab>
 
           <GoabTab

@@ -17,7 +17,7 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { useState, useContext } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
-import { LanguageContext } from "@components/sandbox";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -36,7 +36,7 @@ type CastingType = {
 };
 
 export default function AppFooterPage() {
-  const language = useContext(LanguageContext);
+  const {version, language} = useContext(LanguageVersionContext);
 
   const [appFooterProps, setAppFooterProps] = useState<ComponentPropsType>({
     maxContentWidth: "100%",
@@ -107,6 +107,7 @@ export default function AppFooterPage() {
     {
       name: "slot",
       lang: "angular",
+      required: true,
       type: "nav",
       description: "Links to nav information to display in the footer",
     },
@@ -162,7 +163,7 @@ export default function AppFooterPage() {
 
             <h3 id="component-example-footer-meta">Show quick links</h3>
             <Sandbox skipRender fullWidth>
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -184,9 +185,33 @@ export default function AppFooterPage() {
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
                `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-app-footer maxContentWidth="100%">
+                  <goab-app-footer-meta-section slot="meta">
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </goab-app-footer-meta-section>
+                </goab-app-footer>
+               `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -208,7 +233,30 @@ export default function AppFooterPage() {
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
               `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                 <GoabAppFooter maxContentWidth="100%">
+                  <GoabAppFooterMetaSection>
+                    <a href="privacy.html">
+                      Privacy
+                    </a>
+                    <a href="disclaimer.html">
+                      Disclaimer
+                    </a>
+                    <a href="accessibility.html">
+                      Accessibility
+                    </a>
+                    <a href="using-alberta.html">
+                      Using Alberta.ca
+                    </a>
+                  </GoabAppFooterMetaSection>
+                </GoabAppFooter>
+              `}
+              />}
 
               <GoabAppFooter {...appFooterProps}>
                 <GoabAppFooterMetaSection>
@@ -228,7 +276,7 @@ export default function AppFooterPage() {
               properties={appFooterNavBindings}
               onChange={onSandbox2Change}
               fullWidth>
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -282,9 +330,65 @@ export default function AppFooterPage() {
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
                `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-app-footer maxContentWidth="100%">
+                  <goab-app-footer-nav-section slot="nav" [maxColumnCount]="1">
+                  <a href="a.html">
+                    Arts and culture
+                  </a>
+                  <a href="b.html">
+                    Education and training
+                  </a>
+                  <a href="c.html">
+                    Family and social supports
+                  </a>  
+                  <a href="d.html">
+                    Housing and community
+                  </a>
+                  <a href="e.html">
+                    Life events
+                  </a>
+                  <a href="f.html">
+                    Business and economy
+                  </a>
+                  <a href="g.html">
+                    Emergencies and public safety
+                  </a>
+                  <a href="h.html">
+                    Government
+                  </a>
+                  <a href="i.html">
+                    Jobs and employment
+                  </a>
+                  <a href="j.html">
+                    Moving to Alberta
+                  </a>
+                </goab-app-footer-nav-section>
+                <goab-app-footer-meta-section slot="meta">
+                  <a href="privacy.html">
+                    Privacy
+                  </a>
+                  <a href="disclaimer.html">
+                    Disclaimer
+                  </a>
+                  <a href="accessibility.html">
+                    Accessibility
+                  </a>
+                  <a href="using-alberta.html">
+                    Using Alberta.ca
+                  </a>
+                </goab-app-footer-meta-section>
+              </goab-app-footer>
+               `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -338,7 +442,35 @@ export default function AppFooterPage() {
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                 <GoabAppFooter maxContentWidth="100%">
+                  <GoabAppFooterNavSection maxColumnCount=1>
+                    <a href="a.html">Arts and culture</a>
+                    <a href="b.html">Education and training</a>
+                    <a href="c.html">Family and social supports</a>
+                    <a href="d.html">Housing and community</a>
+                    <a href="e.html">Life events</a>
+                    <a href="f.html">Business and economy</a>
+                    <a href="g.html">Emergencies and public safety</a>
+                    <a href="h.html">Government</a>
+                    <a href="i.html">Jobs and employment</a>
+                    <a href="j.html">Moving to Alberta</a>
+                  </GoabAppFooterNavSection>
+                  <GoAAppFooterMetaSection>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="accessibility.html">Accessibility</a>
+                    <a href="using-alberta.html">Using Alberta.ca</a>
+                  </GoAAppFooterMetaSection>
+                </GoabAppFooter>
+              `}
+              />}
 
               <GoabAppFooter {...appFooterProps}>
                 <GoabAppFooterNavSection {...appFooterNavProps}>

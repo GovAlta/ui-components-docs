@@ -10,9 +10,11 @@ import {
   GoabRadioGroup,
   GoabRadioItem
 } from "@abgov/react-components";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { useContext } from "react";
 
 export default function QuestionPageExamples() {
-
+  const {version} = useContext(LanguageVersionContext);
   return (
     <div className="question-page-example">
       <div className="component-example-header">
@@ -473,7 +475,8 @@ export default function QuestionPageExamples() {
         />
 
         {/*Angular Code Snippet - need for leadingContent slot*/}
-        <CodeSnippet
+
+        {version === "old" && <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -502,10 +505,41 @@ export default function QuestionPageExamples() {
               Save and continue
             </goa-button>
           `}
-        />
+        />}
+
+        {version === "new" && <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+            <a href="#" class="back-link">
+              Back
+            </a>
+            <h3 class="section-title text-secondary">
+              Step 1 of 5
+            </h3>
+            <h2>
+              Personal information
+            </h2>
+            <goab-form-item label="What is your name?" mt="xl">
+              <goab-input (onChange)="onChange($event)" name="name" ariaLabel="what is your name?" width="50ch"></goab-input>
+            </goab-form-item>
+            <goab-form-item label="What is your phone number?" mt="xl">
+              <goab-input (onChange)="onChange($event)" name="phone-number" ariaLabel="what is your phone number?">
+                <div slot="leadingContent">+1</div>
+              </goab-input>
+            </goab-form-item>
+            <goab-form-item label="What is your home postal code?" mt="xl">
+              <goab-input (onChange)="onChange($event)" name="postal-code" width="14ch" ariaLabel="what is your home postal code"></goab-input>
+            </goab-form-item>
+            <goab-button type="submit" mt="2xl">
+              Save and continue
+            </goab-button>
+          `}
+        />}
 
         {/*React Code Snippet - need for leadingContent slot*/}
-        <CodeSnippet
+        {version === "old" && <CodeSnippet
           lang="typescript"
           tags="react"
           allowCopy={true}
@@ -537,7 +571,41 @@ export default function QuestionPageExamples() {
               Save and continue
             </GoAButton>
           `}
-        />
+        />}
+
+        {version === "new" && <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+            <a href="#" className="back-link">
+              Back
+            </a>
+            <h3 className="section-title text-secondary">Step 1 of 5</h3>
+            <h2>Personal information</h2>
+            <GoabFormItem label="What is your name?" mt="xl">
+              <GoabInput onChange={() => {}} name="name" ariaLabel="what is your name?" width="50ch" />
+            </GoabFormItem>
+            <GoabFormItem label="What is your phone number?" mt="xl">
+              <GoabInput
+                onChange={() => {}}
+                name="phone-number"
+                ariaLabel="what is your phone number?"
+                leadingContent="+1"
+              />
+            </GoabFormItem>
+            <GoabFormItem label="What is your home postal code?" mt="xl">
+              <GoabInput
+              onChange={() => {}}
+              name="postal-code"
+              width="14ch"
+              ariaLabel="what is your home postal code"></GoabInput>
+            </GoabFormItem>
+            <GoabButton type="submit" mt="2xl">
+              Save and continue
+            </GoabButton>
+          `}
+        />}
 
         <a href="#" className="back-link">
           Back

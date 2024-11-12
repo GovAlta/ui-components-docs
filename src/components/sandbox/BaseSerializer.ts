@@ -67,5 +67,10 @@ export class BaseSerializer {
     return this.getProperty(name)?.dynamic || false;
   }
 
+  protected getNewVersionFunctionName(functionName: string): string {
+    const componentName = (this.state.element || 'goab-').split('-')[1];
+    functionName = functionName[0].toUpperCase() + functionName.slice(1);
+    return `${componentName}${functionName}`;
+  }
 
 }

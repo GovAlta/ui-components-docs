@@ -1,13 +1,9 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { useContext } from "react";
-import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function ListPage() {
-  const language = useContext(LanguageContext);
-
   return (
     <>
       <ComponentHeader
@@ -53,12 +49,11 @@ export default function ListPage() {
               </ol>
             </GoabContainer>
 
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ol className="goa-ordered-list">
               <li>
                 An ordered item
@@ -91,15 +86,12 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
-
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            />
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ol class="goa-ordered-list">
               <li>
                 An ordered item
@@ -132,8 +124,7 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
+            />
             {/* Examples*/}
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -153,13 +144,11 @@ export default function ListPage() {
                 </li>
               </ul>
             </GoabContainer>
-
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -171,15 +160,13 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
+            />
 
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ul class="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -191,8 +178,7 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
+            />
           </GoabTab>
 
           <GoabTab

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -9,8 +9,10 @@ import { GoabBadge, GoabButton, GoabPopover, GoabTab, GoabTabs } from "@abgov/re
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function PopoverPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [popoverProps, setPopoverProps] = useState({});
   const [popoverBindings, setPopoverBindings] = useState<ComponentBinding[]>([
     {
@@ -40,7 +42,7 @@ export default function PopoverPage() {
       value: true,
     },
   ]);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "maxWidth",
       type: "string",
@@ -117,6 +119,61 @@ export default function PopoverPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the popover container.",
+      defaultValue: "320px"
+    },
+    {
+      name: "minWidth",
+      type: "string",
+      description: "Sets the minimum width of the popover container.",
+    },
+    {
+      name: "padded",
+      type: "boolean",
+      description: "Sets if the popover has padding.",
+      defaultValue: "true",
+    },
+    {
+      name: "position",
+      type: "GoabPopoverPosition (above | below | auto)",
+      description: "Provides control to where the popover content is positioned.",
+      defaultValue: "auto",
+    },
+    {
+      name: "target",
+      type: "TemplateRef",
+      description: "The target UI component to open the popover.",
+      required: true,
+      lang: "angular",
+    },
+    {
+      name: "target",
+      type: "ReactNode",
+      description: "The target UI component to open the popover.",
+      required: true,
+      lang: "react",
+    },
+    {
+      name: "relative",
+      type: "boolean",
+      description: "Set to true if a parent element has a css position of relative.",
+      defaultValue: "false",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(baseBinding: ComponentBinding[], props: Record<string, unknown>) {
     setPopoverBindings(baseBinding);
@@ -146,7 +203,7 @@ export default function PopoverPage() {
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
 
               {/*Angular*/}
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="html"
                 tags="angular"
                 allowCopy={true}
@@ -159,10 +216,25 @@ export default function PopoverPage() {
                   </div>
                 </goa-popover>
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-popover ${propsToString(popoverProps, "angular")} [target]="target">
+                  <p>This is a popover</p>
+                  It can be used for a number of different contexts.
+                  <ng-template #target>
+                    <goab-button type="secondary" size="compact">Click me</goab-button>
+                  </ng-template>
+                </goab-popover>
+              `}
+              />}
 
               {/*React*/}
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -173,8 +245,22 @@ export default function PopoverPage() {
                   </GoAButton>
                 );
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const target = (
+                  <GoabButton type="secondary" size="compact">
+                    Click me
+                  </GoabButton>
+                );
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -184,7 +270,19 @@ export default function PopoverPage() {
                   It can be used for a number of different contexts.
                 </GoAPopover>
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                <GoabPopover target={target} ${propsToString(popoverProps, "react")}>
+                  <p>This is a popover</p>
+                  It can be used for a number of different contexts.
+                </GoabPopover>
+              `}
+              />}
 
               <GoabPopover
                 {...popoverProps}
@@ -200,7 +298,7 @@ export default function PopoverPage() {
             </Sandbox>
 
             {/*Popover table properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab

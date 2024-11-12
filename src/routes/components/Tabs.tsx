@@ -7,6 +7,8 @@ import { Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { useContext } from "react";
 
 // == Page props ==
 const componentName = "Tabs";
@@ -14,7 +16,8 @@ const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
 export default function TabsPage() {
-  const componentProperties: ComponentProperty[] = [
+  const {version} = useContext(LanguageVersionContext);
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "initialtab",
       type: "number",
@@ -42,10 +45,43 @@ export default function TabsPage() {
       description: "Callback function when tab is changed.",
     },
   ];
-  const tabProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "initialTab",
+      type: "number",
+      defaultValue: "1",
+      description: "Current active tab",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabTabsOnChangeDetail) => void",
+      description: "Callback function when tab is changed.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+  ];
+
+  const oldTabProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "slot",
+      description: "Add components to the tab heading such as badges",
+    },
+  ];
+  const tabProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "ReactNode|string",
+      lang: "react",
+      description: "Add components to the tab heading such as badges",
+    },
+    {
+      name: "heading",
+      type: "TemplateRef|string",
+      lang: "angular",
       description: "Add components to the tab heading such as badges",
     },
   ];
@@ -63,20 +99,35 @@ export default function TabsPage() {
               Component
             </h2>
             <Sandbox fullWidth>
-              <CodeSnippet
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
-                  
                   onChange(event: Event) {
                     const customEvent = event as CustomEvent;
                     const tabIndex = customEvent.detail.tab;
                     console.log('Tab changed to ', tabIndex);
                   } 
                 `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  tabsOnChange(event: GoabTabsOnChangeDetail) {
+                    const tabIndex = event.tab;
+                    console.log('Tab changed to ', tabIndex);
+                  } 
+                `}
+              />}
+
+              {/*React Code*/}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -85,7 +136,19 @@ export default function TabsPage() {
                     console.log('Tab changed to ', tabIndex);
                   }
                   `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function onChange(event: GoabTabsOnChangeDetail): void {
+                    console.log('Tab changed to ', event.tab);
+                  }
+                  `}
+              />}
+
               <GoabTabs onChange={noop}>
                 <GoabTab heading="Tab Item 1">
                   Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -103,8 +166,8 @@ export default function TabsPage() {
             </Sandbox>
 
             {/*GoATabs Table Properties*/}
-            <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
-            <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
+            <ComponentProperties heading="GoATabs Properties" properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties heading="GoATab Properties" properties={tabProperties} oldProperties={oldTabProperties} />
           </GoabTab>
 
             {/*Tabs Examples*/}

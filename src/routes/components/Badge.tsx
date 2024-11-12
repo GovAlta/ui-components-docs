@@ -70,7 +70,7 @@ export default function BadgePage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "success | important | information | emergency | dark | midtone | light",
@@ -119,6 +119,41 @@ export default function BadgePage() {
     },
   ];
 
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabBadgeType(success | important | information | emergency | dark | midtone | light)",
+      description: "Define the context and colour of the badge",
+      required: true,
+    },
+    {
+      name: "icon",
+      type: "boolean",
+      description: "Includes an icon in the badge.",
+      defaultValue: "false",
+    },
+    {
+      name: "content",
+      type: "string",
+      description: "Text label of the badge.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Accessible label.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ]
+
   function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
     setBadgeBindings(badgeBindings);
     setBadgeProps(props as CastingType);
@@ -135,7 +170,7 @@ export default function BadgePage() {
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoabBadge {...badgeProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             <BadgeExamples />
           </GoabTab>
 

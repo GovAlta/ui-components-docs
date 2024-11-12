@@ -66,7 +66,7 @@ export default function CalloutPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: ["success", "important", "information", "emergency", "event"],
@@ -127,6 +127,54 @@ export default function CalloutPage() {
       type: ["off", "polite", "assertive"],
       description: "Indicates how assistive technology should handle updates to the live region.",
       defaultValue: "off",
+    },
+  ];
+
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabCalloutType (success | important | information | emergency | event)",
+      description: "Define the context and colour of the callout",
+      required: true,
+    },
+    {
+      name: "heading",
+      type: "string",
+      description: "Callout heading text",
+    },
+    {
+      name: "size",
+      type: "GoabCalloutSize (medium | large)",
+      defaultValue: "large",
+      description:
+        "The medium callout has reduced padding and type size to adjust for a compact area and smaller viewport width when a smaller size is required.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the callout.",
+    },
+    {
+      name: "ariaLive",
+      type: "GoabCalloutAriaLive (off | polite | assertive)",
+      description: "Indicates how assistive technology should handle updates to the live region.",
+      defaultValue: "off",
+    },
+    {
+      name: "iconTheme",
+      type: "GoabCalloutIconTheme (outline | filled)",
+      description: "Indicates how assistive technology should handle updates to the live region.",
+      defaultValue: "off",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 
@@ -231,6 +279,8 @@ export default function CalloutPage() {
               </GoAButtonGroup>
             </Sandbox>
           </GoATab>
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+          </GoabTab>
 
           <GoabTab
             heading={

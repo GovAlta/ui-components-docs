@@ -71,7 +71,7 @@ export default function SkeletonPage() {
       value: "",
     },
   ]);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "image | text | title | text-small | avatar | header | paragraph | thumbnail | card | profile",
@@ -121,6 +121,44 @@ export default function SkeletonPage() {
       lang: "react",
     },    
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabSkeletonType (image | text | title | text-small | avatar | header | paragraph | thumbnail | card | profile)",
+      required: true,
+      description: "re-set skeleton shapes to represent your content",
+    },
+    {
+      name: "size",
+      type: "GoabSkeletonSize (1 | 2 | 3 | 4)",
+      description: "Size can affect either the height, width or both for different skeleton types.",
+      defaultValue: "1",
+    },
+    {
+      name: "lineCount",
+      type: "number",
+      description:
+        "Used within components that contain multiple lines. Currently only used in card skeleton type",
+      defaultValue: "3",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Set component maximum width. Currently only used in card skeleton type",
+      defaultValue: "300px",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {
     setSkeletonBindings(bindings);
@@ -148,7 +186,7 @@ export default function SkeletonPage() {
             </Sandbox>
 
             {/*Skeleton Properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab
