@@ -156,6 +156,18 @@ export default function AccordionPage() {
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
+    {
+      name: "_change",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "Callback function when accordion heading is clicked.",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(open: boolean) => void",
+      description: "Callback function when accordion heading is clicked.",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
