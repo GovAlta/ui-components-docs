@@ -11,7 +11,7 @@ interface Props {
   children: ReactNode;
 }
 
-export function GoAModal({ heading, calloutVariant, children }: Props) {
+export function GoabModal({ heading, calloutVariant, children }: Props) {
   return (
     <div className={css.modal}>
       {calloutVariant && (
@@ -27,4 +27,4 @@ export function GoAModal({ heading, calloutVariant, children }: Props) {
   );
 }
 
-export default GoAModal;
+export default GoabModal;

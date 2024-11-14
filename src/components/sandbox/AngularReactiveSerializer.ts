@@ -3,18 +3,18 @@ import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
 import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 const ReactiveComponents = [
-  "goa-input",
-  "goa-textarea",
-  "goa-dropdown",
-  "goa-checkbox",
-  "goa-radio-group",
-  "goa-date-picker",
+  "goab-input",
+  "goab-textarea",
+  "goab-dropdown",
+  "goab-checkbox",
+  "goab-radio-group",
+  "goab-date-picker",
 ];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "div span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dt dl dd".split(
+    "div form span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dt dl dd".split(
       " "
     );
 
@@ -39,6 +39,10 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return "";
     }
 
+    if (this.version === "new" && name === "onClick") {
+      return `(${name})="${name}()"`;
+    }
+
     let _name = name.replace(/^on/, "");
     _name = _name.substring(0, 1).toLowerCase() + _name.substring(1);
 
@@ -46,7 +50,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   stringToProp(name: string, item: string): string {
-    if (ReactiveComponents.includes(this.state.element) && name === "value") {
+    if (ReactiveComponents.includes(this.state.element) && name === "value" && this.version === "old") {
       return `goaValue`;
     }
     if (this.isDynamic(name)) {
@@ -76,7 +80,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       return this.#dynamicProp(propName);
     }
     if (!propValue) return "";
-    return `${propName.toLowerCase()}="${propValue}"`;
+    return this.version === "old" ? `${propName.toLowerCase()}="${propValue}"` : `[${propName.toLowerCase()}]="${propValue}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -108,21 +112,22 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     return `<${name} />`;
   }
 
-  addReactiveProperties(props: string, propName: string): string {
-    const additionalProps = `[formControl]="${propName}FormCtrl" [value]="${propName}FormCtrl.value"`;
-    props = props ? `${props} ${additionalProps}` : additionalProps;
-    return props;
-  }
-
   modifyProps(props: string, propName: string, elementType: string): string {
     if (ReactiveComponents.includes(elementType)) {
-      const additionalProps = `[formControl]="${propName}FormCtrl" [value]="${propName}FormCtrl.value"`;
+      const additionalProps =
+        this.version === "old"
+          ? `[formControl]="${propName}FormCtrl" [value]="${propName}FormCtrl.value"`
+          : `formControlName="${propName}"`;
       props = props ? `${props} ${additionalProps}` : additionalProps;
     }
     return props;
   }
 
   postProcess(children: string): string {
+    // New version, reactive form will include [formGroup]
+    if (this.version === "new" && children.includes("<form")) {
+      children = children.replace(/<form/g, '<form [formGroup]="form"');
+    }
     if (children.startsWith("<goa-checkbox")) {
       if (children.includes("goaChecked") && children.includes("goaValue")) {
         children = children.replace(/\bgoaValue\b\s?/g, "");
