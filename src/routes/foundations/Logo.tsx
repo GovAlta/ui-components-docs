@@ -81,7 +81,7 @@ export default function LogoPage() {
           </div>
 
           <h2 id="best-practices">Best Practices</h2>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Avoid modifying the logo and always use the appropriate version from our asset library.</li>
             <li>Do not alter the spacing around the 'wordmark' and the 'wordmark and service name'. This spacing ensures that sufficient protective space is kept around them to maintain their impact.</li>
             <li>Use the provided logo variations only for their specific purposes.</li>
