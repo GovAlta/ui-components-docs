@@ -158,7 +158,7 @@ export default function IconographyPage() {
           <p>A good size range is usually between 16px to 24px. When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>. This ensures icon sizes are perceivable to a wide range of users including those with disabilities.</p>
 
           <h2 id="best-practices">Best Practices</h2>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Whenever possible, combine icons with text for clear communication</li>
             <li>When placing icons next to text elements, ensure they are vertically aligned to create visual balance</li>
             <li>Do not create icons that are overly complex</li>
@@ -167,7 +167,7 @@ export default function IconographyPage() {
 
           <h2 id="creating-icons">Creating Icons</h2>
           <p>Before creating an icon, check if it already exists in the icon library. If not, you can follow these steps:</p>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Consult the do's and don'ts section in best practices.</li>
             <li>Ensure the icon aligns to the style of our icon sets.</li>
             <li>Choose a clear and descriptive name.</li>
