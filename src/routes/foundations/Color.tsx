@@ -7,7 +7,7 @@ export default function FoundationsColorPage() {
         
         <h1>Color</h1>
         <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
-        <GoADivider mt="xl" mb="xl"></GoADivider>
+        <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <p>Our palette is divided into these categories: brand, interactive, text, status, greyscale, extended colors, to ensure flexibility and consistency in our digital services.</p>
           <p>Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
