@@ -250,7 +250,7 @@ export default function FoundationsTypographyPage() {
         <div className="max-width-72ch">
           <h2 id="visual-hierarchy">Importance of visual hierarchy</h2>
           <p>Defining a visual hierarchy in text design is essential for shaping the visual narrative, enhancing legibility, and conveying the importance of content by arranging it at different levels.</p>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Visual hierarchy</strong>: Our typography scale helps in creating a clear structure by distinguishing different levels of information, guiding users through the content based on importance and flow.</li>
             <li><strong>Emphasis</strong>: Using font variations like size, weight and style, we can draw attention to key elements or actions and prioritize certain information over others.</li>
             <li><strong>Purpose</strong>: Our typeface supports the message by aligning the text's style with the intended meaning of the content.</li>
@@ -365,14 +365,14 @@ export default function FoundationsTypographyPage() {
           
           <h2 id="best-practices">Best practices</h2>
           <h3 id="accessibility">Accessibility</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Use a font size of at least 16px-18px for most of the text on your interface, especially long-form content like paragraphs to make the content more accessible to users including those with low vision. Use text size less than 16px sparingly only for content that is less important and very brief, like UI controls, microcopy text, etc.</li>
             <li>Maintain a logical order for headings on a page from H1 to H5. Always begin the page with an H1 heading at the top of the content hierarchy. This ensures that content is optimized for SEO and screen readers.</li>
             <li>Do not deviate from the defined text styles and <Link to="/design-tokens/typography">design tokens</Link> as the colors are set to follow a recommended contrast ratio of 4.5:1 between the foreground and background and ensure better readability for our users.</li>
           </ul>
 
           <h3 id="style">Style</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Use left alignment for all the text including headings, body text, links, and text within tables.</li>
             <li>Wrap text to multiple lines when the width of the area is fixed to ensure that the user can see the full text. Avoid truncating the text as it may lose context and present information in a misleading way. Alternative approaches like progressive disclosure, accordions, or other relevant components or patterns can be used to prevent text truncation.</li>
           </ul>
