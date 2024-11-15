@@ -14,9 +14,9 @@ export default function AccessibilityPage() {
 
           <h2 id="wcag-accessibility-compliance">WCAG accessibility compliance</h2>
           <p>We follow <a href="https://www.w3.org/WAI/WCAG22/Understanding/intro" target="_blank">4 principles of web accessibility</a> upon which WCAG is based:</p>
-          <ol className="goa-ordered-list">
+          <ol>
             <li><strong>Perceivable:</strong> Information and user interface components must be presentable to users in ways they can perceive. This means:
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Providing text alternatives for non-text content</li>
                 <li>Creating content that can be presented in different ways without losing meaning</li>
                 <li>Making it easier for users to see and hear content</li>
@@ -24,7 +24,7 @@ export default function AccessibilityPage() {
             </li>
             
             <li><strong>Operable:</strong> User interface components and navigation must be operable. This includes:
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Making all functionality available from a keyboard</li>
                 <li>Providing users enough time to read and use content</li>
                 <li>Helping users navigate and find content</li>
@@ -32,7 +32,7 @@ export default function AccessibilityPage() {
             </li>
 
             <li><strong>Understandable:</strong> Information and the operation of the user interface must be understandable. This involves:
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Making text readable and understandable</li>
                 <li>Making content appear and operate in predictable ways</li>
                 <li>Helping users avoid and correct mistakes</li>
@@ -40,7 +40,7 @@ export default function AccessibilityPage() {
             </li>
             
             <li><strong>Robust:</strong> Content must be robust enough to be interpreted reliably by operating systems, web browsers and assistive technologies. This means:
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Maximizing compatibility with current and future user tools</li>
                 <li>Ensuring that content is parsed correctly by different browsers and assistive technologies</li>
                 <li>Providing clear and consistent structure to content</li>
@@ -50,45 +50,45 @@ export default function AccessibilityPage() {
 
           <h2 id="design-considerations">Design considerations</h2>
           <h3 id="visuals">Visuals</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Color contrast</strong> - We follow the <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank">WCAG 2.2</a> guidelines for our design system components to achieve the minimum recommended color contrast between the foreground and the background elements. For text, we ensure a ratio of 4.5:1 for normal text and 3:1 for large text. You can use plugins like <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">the Able plugin</a> or the <a href="https://www.figma.com/community/plugin/732603254453395948/stark-contrast-accessibility-checker" target="_blank">Stark Accessibility plugin</a> in Figma, or an online tool like the <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM’s contrast checker</a> to check color contrast in your designs.</li>
-            <li><strong>Avoid using color as the sole indicator of information</strong> - In addition to color, always supply an icon or text to communicate. Color-only information or changes are hard to distinguish for users with color blindness or limited vision. </li>
+            <li><strong>Avoid using color as the sole indicator of information</strong> - In addition to color, always supply an icon or text to communicate. Color-only information or changes are hard to distinguish for users with color blindness or limited vision.</li>
             <li><strong>Semantic colors</strong> - Semantic colors help reinforce the interface and available interaction to the user. By using appropriate colors, you can highlight positive, negative, neutral, or critical information and convey its level of severity. For example, in user interfaces, green typically indicates positive statuses like "on" or "complete," while red signifies "off," "alert," "warning," "error," or "failure."</li>
             <li><strong>Text size</strong> - We recommend using text no smaller than 16px for adequate readability for all users. Smaller fonts should be used sparingly and only for less important information.</li>
           </ul>
 
           <h3 id="interactions">Interactions</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Component states</strong> - To help users navigate the interface, relevant component states should be included such as focus, hover, active, selected, disabled.</li>
             <li><strong>Target size</strong> - We recommend keeping a minimum interactive target size of 24X24 pixels including the white space around the target and provide additional space when needed.  This ensures that the touch target is large enough for people with motor impairments to accurately tap what they are aiming for.</li>
             <li><strong>Avoid displaying disabled elements</strong> - We suggest hiding an element on a page rather than showing it in a disabled state. If you need to keep a disabled element, provide information on why it is disabled and how to enable it. For instance, do not disable the button to submit a form, instead allow the users to submit and then provide validation and errors to help users recover or correct their input accordingly.</li>
           </ul>
           
           <h3 id="content">Content</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Plain, clear and inclusive language</strong> - Ensure that the content is simple, straightforward and easy to understand. We recommend following the <a href="https://www.w3.org/TR/WCAG22/#reading-level" target="_blank">WCAG 2.2 guidelines for reading level</a>, i.e., lower secondary education level. This helps in avoiding jargon and technical terms unless necessary and clearly defined and makes your content accessible to a broad audience.</li>
             <li><strong>Headings and labels</strong> - Organizing content using hierarchical labels provides a clear structure and makes information easy to understand and navigate. This is especially important for those with cognitive disabilities or those using screen readers.</li>
           </ul>
           
           <h3 id="accessibility-text">Accessibility text</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Alternative text</strong> - Screen readers and other text-to-speech tools rely on alternative text for images and accessible labels for interactive elements to convey information and actions. Providing alt text for images and icons, and ensuring that buttons and links have descriptive labels or accessible names, makes the service usable for people relying on assistive technology.</li>
             <li><strong>Audio descriptions, transcripts and captions</strong> - Any prerecorded or live audio or video content should be supported with audio descriptions, transcripts or captions to provide an alternative way of accessing content for users with hearing loss, low vision or blindness.</li>
           </ul>
           
           <h3 id="time-on-task">Time on task</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Adequate time for completing tasks</strong> - Allocate enough time for tasks like one-time-password (OTP) validation, verification using CAPTCHA and other sessions that may expire. Providing ample time allows users with disabilities to navigate and complete these tasks effectively.</li>
-            <li><strong>Saving progress for time–sensitive task sessions</strong> - Allow users to save their progress during time-sensitive sessions. This enables them to preserve their inputs and continue later without losing any progress or data.</li>
+            <li><strong>Saving progress for time-sensitive task sessions</strong> - Allow users to save their progress during time-sensitive sessions. This enables them to preserve their inputs and continue later without losing any progress or data.</li>
           </ul>
           
           <h3 id="input-assistance-system-feedback">Input assistance and system feedback</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Feedback and error messages</strong> - Most users depend on the feedback from the system when making a decision or performing a task. Providing clear and concise help text, instructions, feedback and error messages allows users to navigate and move forward effectively.</li>
           </ul>
           
           <h3 id="device-agnostic">Device agnostic</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Text resizing</strong> - Ensure that when users adjust the text size, no content is lost and all functionality remains fully accessible.</li>
             <li><strong>Responsiveness</strong> - While adapting a design for different screens, also consider how users access content on different devices. For instance, playing videos on mobile could automatically switch to a landscape alignment if the device orientation settings allow it. Similarly, scanning a cheque on mobile devices could also allow scanning in a landscape mode for better usability and output.</li>
           </ul>
@@ -114,29 +114,29 @@ export default function AccessibilityPage() {
           <p>Here are some key strategies for handling dynamic content accessibility:</p>
 
           <h4>Use of ARIA live regions</h4>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Purpose:</strong> ARIA live regions provide a way to programmatically notify assistive technologies of content changes without requiring user focus to shift to that content.</li>
             <li><strong>Implementation:</strong> Utilize attributes like aria-live (with values such as “polite”, “assertive”, or “off”) to manage how updates are announced. For example, use “polite” for updates that are not urgent, so that they do not interrupt what the user is currently doing.</li>
             <li><strong>Examples:</strong> The <Link to="/components/callout">Callout</Link> and <Link to="/components/notification-banner">Notification Banner</Link> components include properties to set how assistive technology should treat updates to their content.</li>
           </ul>
 
           <h4>Form updates</h4>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Scenario:</strong> Adding fields to a form based on user input.</li>
             <li><strong>Implementation:</strong> Use ARIA role=”alert” or live regions to notify users about new questions are shown.</li>
           </ul>
           
           <h4>Managing focus</h4>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Focus handling:</strong> In Single Page Applications (SPAs), manage focus to ensure that users understand where they are after dynamic content loads. For example, when opening a modal or navigating in a single-page application, move focus to the new content or back to a logical starting point after the content is dismissed or changed.</li>
           </ul>
           
           <h3 id="skip-to-content">Skip to content link</h3>
           <p>Skip to content links allow users, especially those using screen readers or keyboard navigation, to bypass repetitive navigation links and directly access the main content of a page. Implementing skip navigation links enhances the website's usability for users with disabilities by reducing the effort required to reach actionable content.</p>
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Skip navigation links are typically positioned at the very top of the webpage, making them the first focusable element.</li>
             <li>When activated, these links allow users to jump straight to a designated section of the page, usually the main content area, which helps avoid the frustration of tabbing through lengthy navigation menus.</li>
-            <li>For sighted keyboard users, it’s crucial that these links become visible on first focus so that the users can immediately skip the navigation links.</li>
+            <li>For sighted keyboard users, it's crucial that these links become visible on first focus so that the users can immediately skip the navigation links.</li>
           </ul>
 
           <h3 id="keyboard-navigation">Keyboard navigation</h3>
@@ -152,20 +152,20 @@ export default function AccessibilityPage() {
           <p>Below are some of the tools and ways you could test your product for accessibility.</p>
           
           <h3 id="screen-reader-tools">Screen reader tools</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>NVDA (Non-Visual Desktop Access):</strong> A free and open-source screen reader for windows.</li>
             <li><strong>VoiceOver:</strong> An integrated screen reader found in all Apple operating systems.</li>
           </ul>
           
           <h3 id="automated-testing-tools">Automated testing tools</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Axe:</strong> An accessibility testing tool that works both as a browser extension and within development testing environments.</li>
             <li><strong>Wave:</strong> A suite of evaluation tools that help authors make their web content more accessible to individuals with disabilities.</li>
             <li><strong>Lighthouse:</strong> An open-source, automated tool for improving the quality of web pages, with audits for performance, accessibility, progressive web apps, and more.</li>
           </ul>
           
           <h3 id="usability-testing-disabilities">Usability testing with people with disabilities</h3>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Disability Employee Resource Group:</strong> A team within GoA that is committed to improving the accessibility of our digital products through direct involvement in user testing. Contact <a href="mailto:pamela.klebanov@gov.ab.ca">pamela.klebanov@gov.ab.ca</a> and <a href="mailto:corinna.sales@gov.ab.ca">corinna.sales@gov.ab.ca</a> for more information or to recruit users for testing.</li>
           </ul>
         </div>
