@@ -1,5 +1,6 @@
 import { GoASideMenu, GoASideMenuHeading } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
+import "./foundations.css";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 
 export default function GetStartedLayout() {
