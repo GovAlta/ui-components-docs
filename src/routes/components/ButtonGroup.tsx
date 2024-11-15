@@ -32,7 +32,7 @@ export default function ButtonGroupPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "alignment",
       type: "start | end | center",
@@ -62,7 +62,32 @@ export default function ButtonGroupPage() {
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
-  ]; 
+  ];
+
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "alignment",
+      type: "GoabButtonGroupAlignment (start | end | center)",
+      description: "Positions the button group in the page layout.",
+      required: true,
+    },
+    {
+      name: "gap",
+      type: "GoabButtonGroupGap (relaxed | compact)",
+      description: "Sets the spacing between buttons in the button group.",
+      defaultValue: "relaxed",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   const noop = () => { };
 
@@ -108,7 +133,7 @@ export default function ButtonGroupPage() {
               </GoabButtonGroup>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
           </GoabTab>
           <GoabTab
             heading={
