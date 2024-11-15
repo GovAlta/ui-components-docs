@@ -8,7 +8,7 @@ export default function IconographyPage() {
         <h1>Iconography</h1>
         <h3>Icons are simple and universal graphic symbols that communicate enhance both the aesthetic and functional aspects of our services. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot.</h3>
 
-        <GoADivider mt="xl" mb="xl"></GoADivider>
+        <GoADivider mt="2xl" mb="2xl"></GoADivider>
 
         <div className="max-width-72ch">
           <h2 id="style">Style</h2>
@@ -19,7 +19,7 @@ export default function IconographyPage() {
 
           <h4>Core Icon Set</h4>
           <p>This is the main icon library in the design system, helping us maintain consistency with other teams.</p>
-
+          <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="s" minChildWidth="250px">
             <GoAContainer mb="3xs">
               <div style={{ textAlign: "center" }}>
@@ -129,6 +129,7 @@ export default function IconographyPage() {
           </GoAContainer>
 
           <h2 id="icon-size">Icon Size</h2>
+          <GoASpacer vSpacing="m"></GoASpacer>
           <GoATable width="100%" variant="relaxed">
             <thead>
               <tr>
