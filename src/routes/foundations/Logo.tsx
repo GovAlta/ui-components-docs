@@ -1,4 +1,4 @@
-import { GoADivider, GoAGrid, GoAContainer } from "@abgov/react-components"
+import { GoADivider, GoAGrid, GoAContainer, GoASpacer } from "@abgov/react-components"
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function LogoPage() {
@@ -10,25 +10,22 @@ export default function LogoPage() {
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <h2 id="anatomy">Anatomy</h2>
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ width: "100%", textAlign: "center" }}>
-                <img src="/images/logo/logo-anatomy.png" width="100%"></img>
-              </div>
-          </GoAContainer>
+            <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>
+              <img src="/images/logo/logo-anatomy.png" width="60%"></img>
+            </div>
 
           <p>The Alberta logo consists of two elements— the Wordmark and symbol.</p>
 
           <h3 id="primary">Primary Usage</h3>
           <p>The primary Alberta logo is the preferred choice for all our digital services. The default colour combination for the signature is the grey (stone) and blue (sky) colour.</p>
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ width: "100%", textAlign: "center" }}>
-                <img src="/images/logo/logo.png" width="100%"></img>
+              <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>
+                <img src="/images/logo/logo.png" width="50%" style={{minWidth: "270px"}}></img>
               </div>
-          </GoAContainer>
           <p>The Alberta signature should be placed in prominent positions in the interface, such as the header and footer.</p>
           
           <h3 id="alternate">Alternate Usage</h3>
           <p>Alternate versions of the logo may be used in contexts where the default version isn't suitable. These are the only alternate usage allowed:</p>
+          <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="l" minChildWidth="150px">
             <GoAContainer>
                 <div style={{ width: "100%", textAlign: "center" }}>
@@ -54,19 +51,15 @@ export default function LogoPage() {
           </GoAGrid>
 
           <h2 id="alberta-service-logo">Alberta Service Logo</h2>
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/logo/logo-service-name.png" width="100%"></img>
-              </div>
-          </GoAContainer>
+          <div style={{ textAlign: "center", padding:"var(--goa-space-l) 0"  }}>
+            <img src="/images/logo/logo-service-name.png" width="100%" style={{maxWidth: "400px"}}></img>
+          </div>
 
           <p>When the Alberta Logo is accompanied by a service name, a protective space is applied around it to enhance its impact. This space indicated by x below is equal to the height and the width of the period symbol. When adding text or other elements, it is important to stay outside of this space.</p>
           
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/logo/alberta-service-logo.png" width="100%"></img>
-              </div>
-          </GoAContainer>
+          <div style={{ textAlign: "center", padding:"var(--goa-space-l) 0"  }}>
+            <img src="/images/logo/alberta-service-logo.png" width="100%" style={{maxWidth: "400px"}}></img>
+          </div>
 
           <p>For accuracy and consistency, refer to the component in the Figma Asset library.</p>
 
@@ -76,20 +69,16 @@ export default function LogoPage() {
           <h3 id="circle">Circle</h3>
           <p>The circular logo is used in place of our primary logo when space is limited, such as on mobile devices. This ensures that our services are branded and remains identifiable.</p>
           
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/logo/circle.png"></img>
-              </div>
-          </GoAContainer>
+          <div style={{  width: "auto", textAlign: "left", padding:"var(--goa-space-l) 0" }}>
+            <img src="/images/logo/circle.png" width="60px"></img>
+          </div>
           
           <h3 id="favicon">Favicon</h3>
           <p>The favicon is a simplified version of our logo. Often used in browser tabs, it helps users identify our service when multiple tabs are open.  </p>
           
-          <GoAContainer mt="xl" mb="xl">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/logo/favicon.png"></img>
-              </div>
-          </GoAContainer>
+          <div style={{ textAlign: "left", padding:"var(--goa-space-l) 0"  }}>
+            <img src="/images/logo/favicon.png" width="60px"></img>
+          </div>
 
           <h2 id="best-practices">Best Practices</h2>
           <ul className="goa-unordered-list">
