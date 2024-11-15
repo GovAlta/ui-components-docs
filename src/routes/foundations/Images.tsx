@@ -7,7 +7,7 @@ export default function ImagesPage() {
         <h1>Photography</h1>
         <h3>The Government of Alberta (GoA) maintains a library of photos shot for government use that meets the criteria we follow to make our photos relevant to our citizens.</h3>
 
-        <GoADivider mt="xl" mb="xl"></GoADivider>
+        <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <p>Our photography reflects the diversity of the province and its people. We use photos that are thought-provoking and inspiring, with a distinct sense of place.</p>
           <p>All our photos are professionally shot and edited keeping in mind color, contrast, clarity, sharpness, and how it resonates with the intended audience.</p>
