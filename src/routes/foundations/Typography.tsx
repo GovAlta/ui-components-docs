@@ -244,7 +244,8 @@ export default function FoundationsTypographyPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Typography</h1>
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <h3>Our typography enables us to maintain clear information hierarchy, and consistent structure across all government services. It provides accessible and easy to navigate content, enabling citizens find information quickly while fostering familiarity and trust.</h3>
+        <GoADivider mt="2xl" mb="xl"></GoADivider>
 
         <div className="max-width-72ch">
           <h2 id="visual-hierarchy">Importance of visual hierarchy</h2>
@@ -264,6 +265,7 @@ export default function FoundationsTypographyPage() {
           <p>We use the open-sourced monospaced typeface, <a href="https://fonts.google.com/specimen/Roboto+Mono?subset=cyrillic-ext&selection.family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900|Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900|Arimo:ital,wght@0,400;0,700;1,400;1,700|Arsenal:ital,wght@0,400;0,700;1,400;1,700|Comfortaa|Cormorant+Infant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700|Cousine:ital,wght@0,400;0,700;1,400;1,700|Cuprum|Didact+Gothic|Fira+Mono:wght@400;500;700|Fira+Sans+Condensed|Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&preview.text=te&preview.text_type=custom" target="_blank">Roboto Mono</a> for numbers in places where comparing numbers is important. This enhances readability and alignment when displaying numerical data, making it easier to compare figures accurately.</p>
           
           <h2 id="text-styles">Text styles</h2>
+          <GoASpacer vSpacing="xl"></GoASpacer>
           <GoAContainer accent="filled" padding="relaxed" width="full">
             <GoASpacer vSpacing="xl"></GoASpacer>
             <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-xl)" }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
@@ -331,7 +333,7 @@ export default function FoundationsTypographyPage() {
           <p>We recommended using the defined text styles which include their respective font weights. Text should not be underlined unless it is a link.</p>
 
           <h2 id="specifications">Specifications</h2>
-          <GoASpacer vSpacing="s"></GoASpacer>
+          <GoASpacer vSpacing="l"></GoASpacer>
           {isDesktop ? renderDesktop() : renderMobile()}
           
           <h3 id="size">Size</h3>
@@ -358,7 +360,7 @@ export default function FoundationsTypographyPage() {
           <h2 id="alternate-heading-styles">Alternate heading styles</h2>
           <p>For greater flexibility within the type scale, Large headings and Medium headings can be bolded to create more emphasis and additional hierarchy as needed.</p>
           
-          <GoASpacer vSpacing="m"></GoASpacer>
+          <GoASpacer vSpacing="l"></GoASpacer>
           {isDesktop ? secondRenderDesktop() : secondRenderMobile()}
           
           <h2 id="best-practices">Best practices</h2>
