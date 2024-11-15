@@ -24,7 +24,7 @@ export default function ImagesPage() {
             <li>Visit the <a href="https://secureaccess2.gov.ab.ca/Citrix/access2Web/" target="_blank">Citrix VPN Portal</a> to enable the VPN. In case you do not have access to the link above, you can make a request through <a href="https://bernie.gov.ab.ca/" target="_blank">Bernie</a> to get Citrix virtual desktop.</li>
             <li>Navigate to the <a href="https://standards.alberta.ca/standards/photo-and-icon-libraries.aspx" target="_blank">photo and icon libraries</a> page.</li>
             <li>Enter your credentials including the username and password in the format shown below: 
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Username: <strong>goa\firstname.lastname</strong></li>
                 <li>Password: <strong>[your-goa-password]</strong></li>
               </ul>  
@@ -33,7 +33,7 @@ export default function ImagesPage() {
             <li>Use the filters or the keyword search to find an image you need.</li>
             <li>Click on “Additional information” below the thumbnail of the image that you choose to use for your project.</li>
             <li>You will see a few details of the photo listed on the Photo information page that opens.<br/>To request this photo, write an email to <a href="mailto:visual@gov.ab.ca">visual@gov.ab.ca</a> sharing the following details that you can find under Photo information section of the selected photo.
-              <ul className="goa-unordered-list">
+              <ul>
                 <li>Photo name</li>
                 <li>Photo filename</li>
                 <li>Reason for request</li>
@@ -53,7 +53,7 @@ export default function ImagesPage() {
 
           <h3 id="photo-selection">Photo selection guidelines</h3>
           <p>If you are required to use a stock photo, ensure to carefully select the image that meet the following criteria:</p>
-          <ul className="goa-unordered-list">
+          <ul>
             <li><strong>Regional authenticity</strong>: The photos should be shot in Alberta or should not depict any identifying elements from a location outside Alberta.</li>
             <li><strong>Location specific</strong>: While referencing a specific location, e.g. a specific town, provincial park or geographic location, the photo should be of that location.</li>
             <li><strong>Generic photos</strong>: Photos like a person writing or typing, food, person receiving an injection, etc. do not need to be from Alberta.</li>
@@ -70,7 +70,7 @@ export default function ImagesPage() {
           <h2 id="best-practices">Best practices</h2>
           <h3 id="accessibility">Accessibility</h3>
 
-          <ul className="goa-unordered-list">
+          <ul>
             <li>Support your images with alternative text or captions to enable people with disabilities using screen readers or assistive technologies to access your images.</li>
             <li>Avoid presenting essential readable text inside an image as it cannot be accessed with assistive technologies. If you need to do so, make sure the same text is included in the alternative text or caption.</li>
             <li>We recommend not to place text or icons on images. If you need to do so, ensure that the image used as a background provides sufficient contrast to make it legible and easily readable.</li>
