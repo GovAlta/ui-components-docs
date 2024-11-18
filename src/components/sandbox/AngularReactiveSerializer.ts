@@ -73,7 +73,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   booleanToProp(propName: string, propValue: boolean): string {
-    if (ReactiveComponents.includes(this.state.element) && propName === "checked") {
+    if (this.version === "old" && ReactiveComponents.includes(this.state.element) && propName === "checked") {
       return `goaChecked`;
     }
     if (this.isDynamic(propName)) {
@@ -128,15 +128,20 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     if (this.version === "new" && children.includes("<form")) {
       children = children.replace(/<form/g, '<form [formGroup]="form"');
     }
+    if (this.version === "new" && children.startsWith("<goab-form-item")) {
+      children = children.replace(/<goab-form-item/g, '<goab-form-item [formGroup]="form"');
+    }
     if (children.startsWith("<goa-checkbox")) {
-      if (children.includes("goaChecked") && children.includes("goaValue")) {
-        children = children.replace(/\bgoaValue\b\s?/g, "");
-      }
+      if (this.version === "old") {
+        if (children.includes("goaChecked") && children.includes("goaValue")) {
+          children = children.replace(/\bgoaValue\b\s?/g, "");
+        }
 
-      if (children.includes("disabled=true")) {
-        children = children
-          .replace(/disabled=true/g, '[attr.disabled]="true"')
-          .replace(/\bgoaValue\b\s?/g, "");
+        if (children.includes("disabled=true")) {
+          children = children
+            .replace(/disabled=true/g, '[attr.disabled]="true"')
+            .replace(/\bgoaValue\b\s?/g, "");
+        }
       }
     }
     return children;
