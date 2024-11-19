@@ -67,7 +67,7 @@ export default function ChipPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "leadingicon",
       type: "GoAIconType",
@@ -142,6 +142,50 @@ export default function ChipPage() {
     // ...
   ];
 
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "leadingIcon",
+      type: "GoabIconType",
+      description: "Shows an icon to the left of the text.",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      description: "Shows an error state.",
+    },
+    {
+      name: "deletable",
+      type: "boolean",
+      description: "Shows a delete icon button on the right of the text label.",
+    },
+    {
+      name: "content",
+      type: "string",
+      description: "Text label of the chip.",
+    },
+    {
+      name: "iconTheme",
+      type: "GoabChipTheme (outline | filled)",
+      description: "The style of the leading icon",
+      defaultValue: "outline",
+    },
+    {
+      name: "onClick",
+      type: "() = void",
+      description: "Callback when deletable and delete icon is clicked.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
@@ -158,7 +202,7 @@ export default function ChipPage() {
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoabChip {...componentProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab
