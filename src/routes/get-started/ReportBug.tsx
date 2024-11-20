@@ -22,7 +22,7 @@ export default function ReportBugPage() {
 
   let navigate = useNavigate();
   
-  const [packages, setPackages] = useState<IPackage[]>(
+  const [packages] = useState<IPackage[]>(
     [
       {
         name: "web",
