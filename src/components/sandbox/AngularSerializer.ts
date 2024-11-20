@@ -5,7 +5,7 @@ import { LanguageVersion } from "@components/version-language-switcher/version-l
 export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "table form th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 img label ul li ol hr section dl dt dd strong u".split(
+    "table form th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 h5 h6 img label ul li ol hr section dl dt dd strong u".split(
       " "
     );
 
@@ -62,7 +62,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : `[${name}]`}="${item}"`;
   }
 
   booleanToProp(name: string, item: boolean): string {

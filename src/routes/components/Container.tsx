@@ -73,7 +73,7 @@ export default function ContainerPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "interactive | info | error | success | important | non-interactive",
@@ -140,6 +140,75 @@ export default function ContainerPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabContainerType (interactive | info | error | success | important | non-interactive)",
+      description: "Sets the container and accent bar styling.",
+      defaultValue: "interactive",
+    },
+    {
+      name: "accent",
+      type: "GoabContainerAccent (thick | thin | filled)",
+      defaultValue: "filled",
+      description: "Sets the style of accent on the container.",
+    },
+    {
+      name: "padding",
+      type: "GoabContainerPadding (relaxed | compact)",
+      defaultValue: "relaxed",
+      description: "Sets the amount of white space in the container.",
+    },
+    {
+      name: "width",
+      type: "GoabContainerWidth (full | content)",
+      defaultValue: "full",
+      description: "Sets the width of the container."
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the container.",
+    },
+    {
+      name: "title",
+      lang: "angular",
+      type: "TemplateRef<any>",
+      description:
+        "Sets the content in the left of the accent bar. Can only be used with accent=thick.",
+    },
+    {
+      name: "actions",
+      type: "TemplateRef<any>",
+      lang: "angular",
+      description:
+        "Sets the content in the right of the accent bar. Can only be used with accent=thick.",
+    },
+    {
+      name: "title",
+      lang: "react",
+      type: "ReactNode",
+      description:
+        "Sets the content in the left of the accent bar. Can only be used with accent=thick.",
+    },
+    {
+      name: "actions",
+      type: "ReactNode",
+      lang: "react",
+      description:
+        "Sets the content in the right of the accent bar. Can only be used with accent=thick.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setContainerBindings(bindings);
@@ -168,7 +237,7 @@ export default function ContainerPage() {
             </Sandbox>
 
             {/*Container Table Properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
             <ContainerExamples />
 
           </GoabTab>

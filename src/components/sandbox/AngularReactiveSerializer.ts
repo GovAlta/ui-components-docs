@@ -14,7 +14,7 @@ const ReactiveComponents = [
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "div form span p br header footer blockquote input textarea a button h2 h2 h3 h4 img label ul li ol hr section dt dl dd".split(
+    "div form span p br header footer blockquote input textarea a button h2 h2 h3 h4 h5 h6 img label ul li ol hr section dt dl dd".split(
       " "
     );
 
@@ -58,7 +58,8 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     }
     if (item === "") return "";
     if (name === "className") name = "class";
-    return `${name.toLowerCase()}="${item}"`;
+
+    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 
   dateToProp(name: string, item: Date): string {
@@ -69,7 +70,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : `[${name}]`}="${item}"`;
   }
 
   booleanToProp(propName: string, propValue: boolean): string {
@@ -125,7 +126,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
   postProcess(children: string): string {
     // New version, reactive form will include [formGroup]
-    if (this.version === "new" && children.includes("<form")) {
+    if (this.version === "new" && children.includes("<form") && !children.includes("[formGroup]=")) {
       children = children.replace(/<form/g, '<form [formGroup]="form"');
     }
     if (this.version === "new" && children.startsWith("<goab-form-item")) {
