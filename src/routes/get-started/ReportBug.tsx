@@ -15,29 +15,27 @@ import { Octokit } from "octokit";
 import { useNavigate } from "react-router-dom";
   
 export default function ReportBugPage() {
-  interface IPackage {
+  interface Package {
     name: string;
     location: string;
   }
 
   let navigate = useNavigate();
   
-  const [packages] = useState<IPackage[]>(
-    [
-      {
-        name: "web",
-        location: "/@abgov/web-components"
-      },
-      {
-        name: "angular",
-        location: "/@abgov/angular-components"
-      },
-      {
-        name: "react",
-        location: "/@abgov/react-components"
-      }
-    ],
-  )
+  const packages: Package[] = [
+    {
+      name: "web",
+      location: "/@abgov/web-components"
+    },
+    {
+      name: "angular",
+      location: "/@abgov/angular-components"
+    },
+    {
+      name: "react",
+      location: "/@abgov/react-components"
+    }
+  ]
   const [formValues, setFormValues] = useState({
     email: "",
     webVersion: "",
