@@ -68,7 +68,7 @@ export default function DatePickerPage() {
     label: "Item",
   });
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "name",
       type: "string",
@@ -114,6 +114,59 @@ export default function DatePickerPage() {
       description: "Set to true if a parent element has a css position of relative.",
       defaultValue: "false",
     },
+  ];
+
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "name",
+      type: "string",
+      description: "Name of the date field.",
+    },
+    {
+      name: "value",
+      type: "Date | string | null | undefined",
+      description: "Value of the calendar date.",
+    },
+    {
+      name: "min",
+      type: "Date | string",
+      defaultValue: "5 year previous",
+      description: "Minimum date value allowed.",
+    },
+    {
+      name: "max",
+      type: "Date | string",
+      defaultValue: "5 years forward",
+      description: "Maximum date value allowed.",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to an error state.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Disables the date picker.",
+    },
+    {
+      name: "relative",
+      type: "boolean",
+      description: "Set to true if a parent element has a css position of relative.",
+      defaultValue: "false",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabDatePickerOnChangeDetail) => void",
+      description: "Function to call when the date changes.",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -203,7 +256,7 @@ export default function DatePickerPage() {
                 <GoabDatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
               </GoabFormItem>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
