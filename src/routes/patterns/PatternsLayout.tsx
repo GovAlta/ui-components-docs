@@ -25,7 +25,7 @@ export default function PatternsLayout() {
           <GoASideMenu>
           <GoASpacer vSpacing="m"></GoASpacer>
             <Link to="">All</Link>
-            <Link to="simple-form">Simple form</Link>
+            <Link to="simple-form">Public form</Link>
             <GoASpacer vSpacing="m"></GoASpacer>
             <GoASideMenuHeading>Pages</GoASideMenuHeading>
             <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
