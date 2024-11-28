@@ -58,7 +58,6 @@ export function Components() {
             <Link to="microsite-header">Microsite header</Link>
             <Link to="modal">Modal</Link>
             <Link to="notification-banner">Notification banner</Link>
-            <Link to="pagination">Pagination</Link>
             <Link to="popover">Popover</Link>
             <Link to="progress-indicator">Progress indicator</Link>
             <Link to="radio">Radio</Link>

@@ -47,7 +47,6 @@ import IconButtonPage from '@routes/components/IconButton';
 import ListPage from "@routes/components/List";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
-import PaginationPage from '@routes/components/Pagination';
 import PopoverPage from "@routes/components/Popover";
 import ProgressIndicatorPage from "@routes/components/ProgressIndicator";
 import RadioPage from "@routes/components/Radio";
@@ -168,7 +167,6 @@ const router = createBrowserRouter(
         <Route path="microsite-header" element={<MicrositeHeaderPage />} />
         <Route path="modal" element={<ModalPage />} />
         <Route path="notification-banner" element={<NotificationBannerPage />} />
-        <Route path="pagination" element={<PaginationPage />} />
         <Route path="popover" element={<PopoverPage />} />
         <Route path="progress-indicator" element={<ProgressIndicatorPage />} />
         <Route path="radio" element={<RadioPage />} />

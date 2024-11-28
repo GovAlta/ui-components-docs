@@ -131,7 +131,6 @@ export default function TablePage() {
         relatedComponents={[
           { link: "/components/button", name: "Button" },
           { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
       />
