@@ -50,6 +50,7 @@ export default function Root() {
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
             <Link to="/content/capitalization">Content</Link>
+            <Link to="/get-started/support">Support</Link>
           </GoAAppHeader>
         </section>
 
@@ -65,8 +66,8 @@ export default function Root() {
               <Link to="/content/capitalization">Content</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
-              <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">Submit an issue</Link>
-              <Link to="/support">#design-system-support</Link>
+              <Link to="https://design.alberta.ca/get-started/support/report-bug" target="_blank">Submit an issue</Link>
+              <Link to="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-system-support</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
               <Link to="support/contribute">Contribute to the design system</Link>
