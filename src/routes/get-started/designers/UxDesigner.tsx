@@ -12,7 +12,7 @@ export default function UxDesignerPage() {
       <h2 id="overview">Overview</h2>
       <p>
         The design system provides designers with a library of{" "}
-        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>,
+        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>,{" "}
         <a href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?type=design&node-id=1101-7241&mode=design" target="_blank">components</a>, and{" "}
         <a href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-and-Templates-library-%7C-DDD?type=design&node-id=101-4112&mode=design" target="_blank">patterns</a>
         in Figma that are also available to developers in code.
@@ -35,8 +35,7 @@ export default function UxDesignerPage() {
         The design system tokens, styles, components and page templates are all available to pull
         into your file in Figma.
       </p>
-
-      <h4>Design system library - Figma</h4>
+    <goa-callout heading="Design with development in mind" type="information" size="large" arialive="off">When selecting components, prioritize those with a “goa-” prefix in the name such as “goa-input.” These components are available in both design and development, which means that developers can avoid unnecessary custom development.</goa-callout>
       <p>
         <a
           href="https://www.figma.com/files/project/36119371/%E2%9D%96-Design-System-libraries?fuid=997916706634348976"
