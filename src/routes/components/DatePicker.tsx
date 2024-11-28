@@ -1,6 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -18,6 +18,7 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -36,6 +37,7 @@ type CastingType = {
 };
 
 export default function DatePickerPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     onChange: () => {},
   });
@@ -212,24 +214,41 @@ export default function DatePickerPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}>
-              <CodeSnippet
+              flags={version === "old" ? ["reactive"]: ["reactive", "template-driven"]}>
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
                 // non-reactive code
                 export class MyComponent {
-                  const item = new Date();
+                  item = new Date();
                   onChange(event: Event) {
-                    // handle change
+                  // handle change
                     console.log((event as CustomEvent).detail.value);
                   }
                 }  
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class MyComponent {
+                  item = new Date();
+                  dateOnChange(event: GoabDatePickerOnChangeDetail) {
+                  // handle change
+                    console.log(event.value);
+                  }
+                }  
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -240,7 +259,25 @@ export default function DatePickerPage() {
                   itemFormCtrl = new FormControl(new Date());
                 }  
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                // reactive code
+                import { FormControl } from "@angular/forms";
+                export class MyComponent {
+                   form!: FormGroup;
+                   constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: [new Date()],
+                    })
+                  }
+                }
+              `}
+              />}
 
               <CodeSnippet
                 lang="typescript"

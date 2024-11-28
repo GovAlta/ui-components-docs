@@ -1,6 +1,6 @@
 import { GoabDropdown, GoabDropdownItem } from "@abgov/react-components";
 import {
-  ANGULAR_VERSIONS, getVersionedUrlPath,
+  ANGULAR_VERSIONS, getVersionedUrlPath, Language, LanguageVersion,
   OLD_ANGULAR_URL_SEGMENT,
   OLD_REACT_URL_SEGMENT, REACT_VERSIONS
 } from "./version-language-constants.ts";
@@ -13,14 +13,14 @@ export const VersionLanguageSwitcher = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const updateURL = (key: "language" | "version", newValue: "old" | "new" | "react" | "angular") => {
+  const updateURL = (key: "language" | "version", newValue: LanguageVersion | Language) => {
     const isComponentRoute =
       location.pathname.startsWith("/components/") && location.pathname.split("/").length > 2;
     let newLanguageValue = language; // fallback value from localStorage
     let newVersionValue = version; // fallback value from localStorage
 
-    if (key === "language") newLanguageValue = newValue;
-    if (key === "version") newVersionValue = newValue;
+    if (key === "language") newLanguageValue = newValue as Language;
+    if (key === "version") newVersionValue = newValue as LanguageVersion;
 
     const combineSegment = getVersionedUrlPath(newVersionValue, newLanguageValue);
     if (isComponentRoute) {
