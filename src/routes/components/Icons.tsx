@@ -43,7 +43,7 @@ export default function IconsPage() {
       type: "number",
       name: "opacity",
       value: 1,
-    },    
+    },
     {
       label: "Fill Color",
       type: "string",
@@ -61,7 +61,7 @@ export default function IconsPage() {
       type: "string",
       name: "title",
       value: "",
-    },    
+    },
     {
       label: "ARIA Label",
       type: "string",
@@ -130,12 +130,29 @@ export default function IconsPage() {
       type: "string",
       lang: "react",
       description: "Sets the accessible name of the icon.",
-    },    
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },  
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },  
   ];
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
-    setIconsProps(props as { type: GoAIconType;[key: string]: unknown });
+    setIconsProps(props as { type: GoAIconType; [key: string]: unknown });
   }
 
   return (
@@ -153,11 +170,12 @@ export default function IconsPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
             {/*Icons Sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
               <GoAIcon {...iconsProps} />
             </Sandbox>
@@ -166,10 +184,12 @@ export default function IconsPage() {
             <ComponentProperties properties={componentProperties} />
 
             {/*Icons example*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-alert-messaging">Alert and messaging</h3>
-            <GoAGrid minChildWidth="230px" gap="l">
+            <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"information-circle"} />
               <IconSnippet type={"warning"} />
               <IconSnippet type={"add-circle"} />
@@ -181,7 +201,7 @@ export default function IconsPage() {
             </GoAGrid>
 
             <h3 id="component-example-basic">Basic</h3>
-            <GoAGrid minChildWidth="230px" gap="l">
+            <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"close"} />
               <IconSnippet type={"checkmark"} />
               <IconSnippet type={"add"} />
@@ -189,7 +209,7 @@ export default function IconsPage() {
             </GoAGrid>
 
             <h3 id="component-example-direction">Direction</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"chevron-down"} />
               <IconSnippet type={"chevron-up"} />
               <IconSnippet type={"chevron-back"} />
@@ -205,7 +225,7 @@ export default function IconsPage() {
             </GoAGrid>
 
             <h3 id="component-example-interaction">Interactions</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"menu"} />
               <IconSnippet type={"reload"} />
               <IconSnippet type={"search"} />
@@ -227,7 +247,7 @@ export default function IconsPage() {
             </GoAGrid>
 
             <h3 id="component-example-accounts">Accounts</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"}>
+            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"person-circle"} />
               <IconSnippet type={"settings"} />
               <IconSnippet type={"mail"} />

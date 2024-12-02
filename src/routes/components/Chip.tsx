@@ -40,6 +40,14 @@ export default function ChipPage() {
       value: "",
     },
     {
+      label: "Icon Theme",
+      type: "list",
+      name: "iconTheme",
+      options: ["", "outline", "filled"],
+      defaultValue: "outline",
+      value: ""
+    },
+    {
       label: "Deletable",
       type: "boolean",
       name: "deletable",
@@ -63,42 +71,73 @@ export default function ChipPage() {
     {
       name: "leadingicon",
       type: "GoAIconType",
-      description: "Show an icon to the left of the text",
+      description: "Shows an icon to the left of the text.",
       lang: "angular",
     },
     {
       name: "leadingIcon",
       type: "GoAIconType",
-      description: "Show an icon to the left of the text",
+      description: "Shows an icon to the left of the text.",
       lang: "react",
+    },
+    {
+      name: "icontheme",
+      type: "outline | filled",
+      description: "The style of the leading icon",
+      defaultValue: "outline",
+      lang: "angular"
+    },
+    {
+      name: "iconTheme",
+      type: "outline | filled",
+      description: "The style of the leading icon",
+      defaultValue: "outline",
+      lang: "react"
     },
     {
       name: "error",
       type: "boolean",
-      description: "Show an error state",
+      description: "Shows an error state.",
     },
     {
       name: "deletable",
       type: "boolean",
-      description: "Show a delete icon button on the right of the text label",
+      description: "Shows a delete icon button on the right of the text label.",
     },
     {
       name: "content",
       type: "string",
       required: true,
-      description: "Text label of the chip",
+      description: "Text label of the chip.",
     },
     {
       name: "_click",
       type: "CustomEvent",
-      description: "Callback when deletable and delete icon is clicked",
+      description: "Callback when deletable and delete icon is clicked.",
       lang: "angular",
     },
     {
       name: "onClick",
       type: "() = void",
-      description: "Callback when deletable and delete icon is clicked",
+      description: "Callback when deletable and delete icon is clicked.",
       lang: "react",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
     // ...
   ];

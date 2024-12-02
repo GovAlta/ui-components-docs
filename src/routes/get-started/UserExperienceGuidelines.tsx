@@ -36,16 +36,10 @@ export default function UserExperienceGuidelinesPage() {
 
         <ol>
           <li><strong>Usable:&nbsp;</strong>Using human-centered design to understand users’ context of use, goals, tasks, and environments.</li>
-          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of users possible regardless of physical 
-            or cognitive limitations, literacy level, or technical capability.</li>
-          <li><strong>Understandable:&nbsp;</strong>Digital products can be broadly understood by the largest user base possible by presenting 
-            information in plain language, absent of organizational speak, industry jargon, and complex legalese.</li>
-          <li><strong>Compliant:&nbsp;</strong>The product must leverage the brand and convey authority and legitimacy as a government asset 
-            and user expectations of safety and security must be understood and met with experiences that evoke a sense of trust. Digital products 
-            will be designed for integration into the broader eco-system of the government reducing the need for new and separate destinations that fracture the experience. </li>
-          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with users input and usage data to 
-            ensure lasting effectiveness, efficiency, and usability. Digital products will offer clearly visible channels for technical support 
-            and allow users to submit feedback on product performance, bugs, or suggest improvements. </li>
+          <li><strong>Accessible:&nbsp;</strong>Digital products will be usable for the broadest range of intended users, regardless of physical or cognitive limitations, literacy level, or technical capability.</li>
+          <li><strong>Understandable:&nbsp;</strong>Digital products will be understood by the broadest range of intended users by presenting information in plain language, and reducing cognitive load when it comes to understanding the system and making decisions.</li>
+          <li><strong>Compliant:&nbsp;</strong>Digital products will align as much as possible to organizational policies such as brand, information management, cyber security, and other Government of Alberta recommended practices.</li>
+          <li><strong>Iterative:&nbsp;</strong>Products are continuously tested, resourced, and improved upon with user input and usage data to ensure lasting effectiveness, efficiency, and usability.</li>
         </ol>
         
       </div>

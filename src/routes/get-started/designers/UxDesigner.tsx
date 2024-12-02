@@ -12,7 +12,7 @@ export default function UxDesignerPage() {
       <h2 id="overview">Overview</h2>
       <p>
         The design system provides designers with a library of{" "}
-        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>,
+        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>,{" "}
         <a href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?type=design&node-id=1101-7241&mode=design" target="_blank">components</a>, and{" "}
         <a href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-and-Templates-library-%7C-DDD?type=design&node-id=101-4112&mode=design" target="_blank">patterns</a>
         in Figma that are also available to developers in code.
@@ -35,8 +35,7 @@ export default function UxDesignerPage() {
         The design system tokens, styles, components and page templates are all available to pull
         into your file in Figma.
       </p>
-
-      <h4>Design system library - Figma</h4>
+    <goa-callout heading="Design with development in mind" type="information" size="large" arialive="off">When selecting components, prioritize those with a “goa-” prefix in the name such as “goa-input.” These components are available in both design and development, which means that developers can avoid unnecessary custom development.</goa-callout>
       <p>
         <a
           href="https://www.figma.com/files/project/36119371/%E2%9D%96-Design-System-libraries?fuid=997916706634348976"
@@ -89,7 +88,7 @@ export default function UxDesignerPage() {
       <p>
         A{" "}
         <a
-          href="https://www.figma.com/file/7xRtDWqMrJi2msuxgzyU79/DDD-Figma-file-template?type=design&node-id=53-350&mode=design&t=xrLI0oN7vgLk0HXQ-0"
+          href="https://www.figma.com/design/l5kjG0bfltQFqPpK2uorC0/DDD-Figma-file-template?m=auto&t=1Stq1DIiLM6zOVqf-6"
           target="_blank"
         >
           starter template file
@@ -102,7 +101,7 @@ export default function UxDesignerPage() {
       <p>
         In addition to these templates ,{" "}
         <a
-          href="https://www.figma.com/file/LTUW8lBTgtTJKOFrLE93zP/%E2%9D%96-Design-file-utilities-(Figma-helper-components)?type=design&node-id=52-7&mode=design&t=GrjjCo71z9UFWoUO-0"
+          href="https://www.figma.com/design/TDbVPfpFxcUj4iuaJf7a0V/%E2%9D%96-Low-Fi-Prototyping-%26-Annotation-Kit-%7C-DDD?node-id=1101-7241&t=bnms7IudBx2gX3Rx-1"
           target="_blank"
         >
           helper components

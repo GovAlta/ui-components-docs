@@ -7,20 +7,17 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
-  GoAButton,
-  GoADropdown,
-  GoADropdownItem,
   GoAFormItem,
   GoAInput,
   GoAInputProps,
   GoATab,
-  GoATabs,
+  GoATabs
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import TextFieldExamples from "@examples/text-field/TextFieldExamples";
 
 // == Page props ==
 const componentName = "Input";
@@ -131,7 +128,7 @@ export default function TextFieldPage() {
       name: "type",
       type: "text | number | password | email | search | tel | date | datetime-local | time | url | week",
       defaultValue: "text",
-      description: "Sets the type of the input field",
+      description: "Sets the type of the input field.",
     },
     {
       name: "name",
@@ -151,56 +148,56 @@ export default function TextFieldPage() {
       lang: "react",
       type: "string",
       required: true,
-      description: "Bound to value",
+      description: "Bound to value.",
     },
     {
       name: "value",
       lang: "angular",
       type: "string",
-      description: "Bound to value",
+      description: "Bound to value.",
     },
     {
       name: "placeholder",
       type: "string",
-      description: "Text displayed within the input when no value is set",
+      description: "Text displayed within the input when no value is set.",
     },
     {
       name: "leadingIcon",
       lang: "react",
       type: "GoAIconType",
-      description: "Icon shown to the left of the text",
+      description: "Icon shown to the left of the text.",
     },
     {
       name: "leadingicon",
       lang: "angular",
       type: "GoAIconType",
-      description: "Icon shown to the left of the text",
+      description: "Icon shown to the left of the text.",
     },
     {
       name: "trailingIcon",
       lang: "react",
       type: "GoAIconType",
-      description: "Icon shown to the right of the text",
+      description: "Icon shown to the right of the text.",
     },
     {
       name: "trailingicon",
       lang: "angular",
       type: "GoAIconType",
-      description: "Icon shown to the right of the text",
+      description: "Icon shown to the right of the text.",
     },
     {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
       description:
-        "Disables this input. The input will not receive focus or events. Use [attr.disabled] with [formControl]",
+        "Disables this input. The input will not receive focus or events. Use [attr.disabled] with [formControl].",
     },
     {
       name: "handleTrailingIconClick",
       type: "boolean",
       defaultValue: "false",
       description:
-        "Flag that will result in an icon button component being rendered instead of an icon",
+        "Flag that will result in an icon button component being rendered instead of an icon.",
       lang: "react",
     },
     {
@@ -208,70 +205,70 @@ export default function TextFieldPage() {
       type: "boolean",
       defaultValue: "false",
       description:
-        "Flag that will result in an icon button component being rendered instead of an icon",
+        "Flag that will result in an icon button component being rendered instead of an icon.",
       lang: "angular",
     },
     {
       name: "focused",
       type: "boolean",
       defaultValue: "false",
-      description: "Sets the cursor focus to the input",
+      description: "Sets the cursor focus to the input.",
     },
     {
       name: "readOnly",
       lang: "react",
       type: "boolean",
-      description: "Makes the input readonly",
+      description: "Makes the input readonly.",
       defaultValue: "false",
     },
     {
       name: "readonly",
       lang: "angular",
       type: "boolean",
-      description: "Makes the input readonly",
+      description: "Makes the input readonly.",
       defaultValue: "false",
     },
     {
       name: "error",
       type: "boolean",
       defaultValue: "false",
-      description: "Sets the input to an error state",
+      description: "Sets the input to an error state.",
     },
     {
       name: "width",
       type: "string",
       defaultValue: "30ch",
-      description: "Sets the width of the text input area",
+      description: "Sets the width of the text input area.",
     },
     {
       name: "min",
       type: "string|date",
       description:
-        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type",
+        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type.",
     },
     {
       name: "max",
       type: "string|date",
       description:
-        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type",
+        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type.",
     },
     {
       name: "step",
       type: "number",
-      description: "How much a number or date should changed by",
+      description: "How much a number or date should changed by.",
     },
     {
       name: "arialabel",
       type: "string",
       description:
-        "Defines how the input will be translated for the screen reader. If not specified it will fall back to the name. If both arialabel and arialabelledby are specified, arialabelledby will be used",
+        "Defines how the input will be translated for the screen reader. If not specified it will fall back to the name. If both arialabel and arialabelledby are specified, arialabelledby will be used.",
       lang: "angular",
     },
     {
       name: "ariaLabel",
       type: "string",
       description:
-        "Defines how the input will be translated for the screen reader. If not specified it will fall back to the name. If both arialabel and arialabelledby are specified, arialabelledby will be used",
+        "Defines how the input will be translated for the screen reader. If not specified it will fall back to the name. If both arialabel and arialabelledby are specified, arialabelledby will be used.",
       lang: "react",
     },
     {
@@ -322,68 +319,97 @@ export default function TextFieldPage() {
       name: "_trailingIconClick",
       lang: "angular",
       type: "CustomEvent",
-      description: "onclick function invoked when trailing icon is clicked",
+      description: "onclick function invoked when trailing icon is clicked.",
     },
     {
       name: "onTrailingIconClick",
       lang: "react",
       type: "() => void",
-      description: "onclick function invoked when trailing icon is clicked",
+      description: "onclick function invoked when trailing icon is clicked.",
     },
     {
-      name: "leadingcontent",
+      name: "leadingContent",
       lang: "angular",
       type: "slot",
-      description: "Sets the content to the left of the input field",
+      description: "Sets the content to the left of the input field.",
     },
     {
       name: "leadingContent",
       lang: "react",
       type: "ReactNode",
-      description: "Sets the content to the left of the input field",
+      description: "Sets the content to the left of the input field.",
     },
     {
-      name: "trailingcontent",
+      name: "trailingContent",
       lang: "angular",
       type: "slot",
-      description: "Sets the content to the right of the input field",
+      description: "Sets the content to the right of the input field.",
     },
     {
       name: "trailingContent",
       lang: "react",
       type: "ReactNode",
-      description: "Sets the content to the right of the input field",
+      description: "Sets the content to the right of the input field.",
     },
     {
       name: "onChange",
       lang: "react",
       type: "(name: string, value: string[] | string | null) => void",
       required: true,
-      description: "Callback function when input value is changed",
+      description: "Callback function when input value is changed.",
     },
     {
       name: "_focus",
       lang: "angular",
       type: "() => void",
-      description: "Function invoked when an element receives focus",
+      description: "Function invoked when an element receives focus.",
     },
     {
       name: "onFocus",
       lang: "react",
       type: "(name: string, value: string | Date | number) => void",
-      description: "Function invoked when an element receives focus",
+      description: "Function invoked when an element receives focus.",
     },
     {
       name: "_blur",
       lang: "angular",
       type: "() => void",
-      description: "Function invoked when an element loses focus",
+      description: "Function invoked when an element loses focus.",
     },
     {
       name: "onBlur",
       lang: "react",
       type: "(name: string, value: string | Date | number) => void",
-      description: "Function invoked when an element loses focus",
+      description: "Function invoked when an element loses focus.",
+    },
+    {
+      name: "_keyPress",
+      lang: "angular",
+      type: "() => void",
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "onKeyPress",
+      lang: "react",
+      type: "(name: string, value: string | Date | number) => void",
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 
@@ -461,158 +487,8 @@ export default function TextFieldPage() {
 
             {/*Input component properties table*/}
             <ComponentProperties properties={componentProperties} />
-
             {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
-            <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
-            <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Street Address">
-                <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="Suite or unit #">
-                <GoAInput name="suite" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-              <GoAFormItem label="City/town">
-                <GoAInput name="city" type="text" value="" onChange={noop} width="100%" />
-              </GoAFormItem>
-
-              <GoABlock direction={"row"}>
-                <GoAFormItem label="Provice/territory">
-                  <GoADropdown onChange={noop} name="province" value="alberta">
-                    <GoADropdownItem label="Alberta" value="alberta" />
-                    <GoADropdownItem label="BC" value="bc" />
-                    <GoADropdownItem label="Manitoba" value="manitoba" />
-                    <GoADropdownItem label="New Brunswick" value="new-brunswick" />
-                    <GoADropdownItem label="Newfoundland and Labrador" value="newfoundland" />
-                    <GoADropdownItem label="Nova Scotia" value="nova-scotia" />
-                    <GoADropdownItem label="Ontario" value="ontario" />
-                    <GoADropdownItem label="Prince Edward Island" value="prince-edward-island" />
-                    <GoADropdownItem label="Quebec" value="quebec" />
-                    <GoADropdownItem label="Saskatchewan" value="saskatchewan" />
-                  </GoADropdown>
-                </GoAFormItem>
-
-                <GoAFormItem label="Postal Code">
-                  <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
-                </GoAFormItem>
-              </GoABlock>
-            </Sandbox>
-
-            <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
-            <Sandbox flags={["reactive"]}>
-              <GoAFormItem
-                label="When is your birthday?"
-                labelSize="large"
-                helpText={"For example, 27 11 2007"}>
-                <GoABlock gap="m" direction="row">
-                  <GoAFormItem label="Day">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="bandNo"
-                      type="number"
-                      width="60px"
-                      min={1}
-                      max={31}
-                    />
-                  </GoAFormItem>
-                  <GoAFormItem label="Month">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="family"
-                      type="number"
-                      width="60px"
-                      min={1}
-                      max={12}
-                    />
-                  </GoAFormItem>
-                  <GoAFormItem label="Year">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="position"
-                      type="number"
-                      width="88px"
-                      min={1900}
-                      max={2023}
-                    />
-                  </GoAFormItem>
-                </GoABlock>
-              </GoAFormItem>
-            </Sandbox>
-
-            <h3 id="component-example-search">Search</h3>
-            <Sandbox flags={["reactive"]}>
-              <GoABlock gap="m" direction="row">
-                <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
-                <GoAButton type="primary" onClick={noop}>
-                  Search
-                </GoAButton>
-              </GoABlock>
-            </Sandbox>
-
-            <h3 id="component-example-phone">Phone number</h3>
-            <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Phone number">
-                <GoAInput onChange={noop} value="" name="phone" leadingContent="+1" />
-              </GoAFormItem>
-            </Sandbox>
-
-            <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
-            <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Tuition">
-                <GoAInput onChange={noop} value="" name="tuition" leadingContent="$" />
-              </GoAFormItem>
-              <GoAFormItem label="Books/Supplies/Instruments">
-                <GoAInput onChange={noop} value="" name="book" leadingContent="$" />
-              </GoAFormItem>
-              <GoAFormItem label="Other costs">
-                <GoAInput onChange={noop} value="" name="others" leadingContent="$" />
-              </GoAFormItem>
-            </Sandbox>
-
-            <h3 id="component-example-registration-number">Ask a user for their indian registration number</h3>
-            <Sandbox flags={["reactive"]}>
-              <GoAFormItem label="Indian registration number" labelSize="large">
-                <GoABlock gap="m" direction="row">
-                  <GoAFormItem label="Band #" helpText="3 digits">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="bandNo"
-                      min={1}
-                      max={999}
-                      type="number"
-                      width="88px"
-                    />
-                  </GoAFormItem>
-                  <GoAFormItem label="Family" helpText="Up to 5 digits">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="family"
-                      min={1}
-                      max={99999}
-                      type="number"
-                      width="105px"
-                    />
-                  </GoAFormItem>
-                  <GoAFormItem label="Position" helpText="2 digits">
-                    <GoAInput
-                      onChange={noop}
-                      value=""
-                      name="position"
-                      min={1}
-                      max={99}
-                      type="number"
-                      width="71px"
-                    />
-                  </GoAFormItem>
-                </GoABlock>
-              </GoAFormItem>
-            </Sandbox>
+            <TextFieldExamples/>
           </GoATab>
 
           <GoATab

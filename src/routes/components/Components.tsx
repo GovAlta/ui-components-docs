@@ -1,8 +1,7 @@
-import { GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/react-components";
+import { GoABlock, GoADropdown, GoADropdownItem, GoASideMenu } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { LanguageContext } from "@components/sandbox";
-import { getCssVarValue } from "../../utils/styling";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 
 export function Components() {
@@ -23,10 +22,12 @@ export function Components() {
     <LanguageContext.Provider value={language}>
       <section className="content">
         <section className="side-menu">
-          <GoADropdown value={language} onChange={onLanguageChange} mb="m" mt="m" mr="m" ml="m">
-            <GoADropdownItem label="React" value="react" />
-            <GoADropdownItem label="Angular" value="angular" />
-          </GoADropdown>
+          <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
+            <GoADropdown value={language} onChange={onLanguageChange}>
+              <GoADropdownItem label="React" value="react" />
+              <GoADropdownItem label="Angular" value="angular" />
+            </GoADropdown>
+          </GoABlock>
 
           <GoASideMenu>
             <Link to="">All</Link>
@@ -73,29 +74,8 @@ export function Components() {
 
         <main className="main">
           <Outlet />
-
           <SupportInfo />
-
-          <div style={{ marginTop: getCssVarValue("--goa-space-2xl") }}>
-            <h2>Help improve this component</h2>
-            <p>To help make sure that this page is useful, relevant, and up to date, you can:</p>
-
-            <ul style={{ marginLeft: "1.875rem" }}>
-              <li>
-                <a
-                  href="https://github.com/GovAlta/ui-components/issues/new/choose"
-                  target="_blank">
-                  Propose a change or report a bug on Github
-                </a>
-                <span> - Read more about </span>
-                <a href="/support/contribute" target="_blank">
-                  our contribution process
-                </a>
-              </li>
-            </ul>
-          </div>
         </main>
-
       </section>
     </LanguageContext.Provider>
   );

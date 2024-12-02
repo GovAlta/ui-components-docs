@@ -14,7 +14,7 @@ import {
   GoAFormItem,
   GoATab,
   GoATabs,
-  GoATextarea,
+  GoATextArea,
   GoATextAreaProps,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -28,7 +28,7 @@ const description = "A multi-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
-  { link: "/components/input", name: "Input" }
+  { link: "/components/input", name: "Input" },
 ];
 type ComponentPropsType = GoATextAreaProps;
 type CastingType = {
@@ -42,19 +42,13 @@ export default function TextAreaPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => { },
+    onChange: () => {},
   });
   const [textAreaBindings, setTextAreaBindings] = useState<ComponentBinding[]>([
     {
       label: "Rows",
       name: "rows",
       type: "number",
-    },
-    {
-      label: "Width",
-      name: "width",
-      type: "string",
-      value: "60ch",
     },
     {
       label: "Placeholder",
@@ -81,12 +75,6 @@ export default function TextAreaPage() {
       value: "",
     },
     {
-      label: "Show count",
-      name: "showCount",
-      type: "boolean",
-      value: false,
-    },
-    {
       label: "Count by",
       name: "countBy",
       type: "dropdown",
@@ -107,7 +95,9 @@ export default function TextAreaPage() {
       label: "Value",
     },
   ]);
-  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
+    label: "Basic",
+  });
   const componentProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -200,6 +190,55 @@ export default function TextAreaPage() {
       required: true,
       description: "Callback function when textarea value is changed",
     },
+    {
+      name: "countby",
+      lang: "angular",
+      type: "character | word",
+      required: false,
+      description:
+        "Counting interval for characters or words, specifying whether to count every character or word.",
+    },
+    {
+      name: "maxcount",
+      lang: "angular",
+      type: "number",
+      required: false,
+      description: "Maximum number of characters or words allowed",
+    },
+    {
+      name: "countBy",
+      lang: "react",
+      type: "character | word",
+      required: false,
+      description:
+        "Counting interval for characters or words, specifying whether to count every character or word.",
+    },
+    {
+      name: "maxCount",
+      lang: "react",
+      type: "number",
+      required: false,
+      description: "Maximum number of characters or words allowed",
+    },
+    {
+      name: "onKeyPress",
+      lang: "react",
+      type: "(name: string, value: string | Date | number) => void",
+      required: false,
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "_keyPress",
+      lang: "angular",
+      type: "() => void",
+      required: false,
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -207,17 +246,23 @@ export default function TextAreaPage() {
     setComponentProps(props as CastingType);
   }
 
-  const noop = () => { };
+  const noop = () => {};
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox
               properties={textAreaBindings}
               formItemProperties={formItemBindings}
@@ -259,21 +304,29 @@ export default function TextAreaPage() {
                 code={`
                 const [value, setValue] = useState<string>("");
               
-                onChange(name: string, value: string) {
+                function onChange(name: string, value: string) {
                   setValue(value);
                 }
             `}
               />
 
               <GoAFormItem {...formItemProps}>
-                <GoATextarea {...componentProps} width="60ch" name="item" value="" onChange={noop} />
+                <GoATextArea
+                  {...componentProps}
+                  width="60ch"
+                  name="item"
+                  value=""
+                  onChange={noop}
+                />
               </GoAFormItem>
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
 
             {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-1">Ask a question and give more information</h3>
             <Sandbox flags={["reactive"]} fullWidth>
@@ -291,7 +344,7 @@ export default function TextAreaPage() {
                 <GoAFormItem
                   label="Program outline"
                   helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextarea name="program" value="Input text" onChange={noop} />
+                  <GoATextArea name="program" value="Input text" onChange={noop} />
                 </GoAFormItem>
 
                 <GoADetails heading="How to write a good outline">

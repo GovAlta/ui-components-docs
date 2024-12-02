@@ -15,7 +15,7 @@
 }
 
 .content {
-  max-width: 1440px;
+  max-width: 1360px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -26,8 +26,9 @@
   Side Menu
 ==================*/
 .side-menu {
-  width: 224px;
+  width: 192px;
   border-right: 1px solid var(--goa-color-greyscale-200);
+  padding-bottom: var(--goa-space-l);
 }
 
 /*==================
@@ -59,6 +60,38 @@ h4.heading {
 p.small {
   font-size: var(--goa-typography-body-s);
   color: var(--goa-color-text-secondary);
+}
+
+span.grey-text {
+  margin-left: var(--goa-space-s);
+  font: var(--goa-typography-body-m);
+  color: var(--goa-color-greyscale-700);
+}
+
+div.hours {
+  align-items: center;
+  display: flex;
+  height: var(--goa-space-xl);
+  margin-bottom: var(--goa-space-2xs);
+}
+
+a.back {
+  display: inline-block;
+  margin-top: var(--goa-space-xl);
+}
+
+a.back::before {
+  content: "";
+  display: inline-block;
+  width: 28px;
+  height: 22px;
+  vertical-align: middle;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 2 20 22" fill="none" stroke="%230070C4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') left center no-repeat;
+}
+
+a.back:visited::before,
+a.back:hover::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 2 20 22" fill="none" stroke="%23004f84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>') left center no-repeat;
 }
 
 .support-info {

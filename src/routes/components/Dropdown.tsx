@@ -17,6 +17,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -196,6 +197,11 @@ export default function DropdownPage() {
       type: "(name: string, value: string[] | string | null) => void",
       description: "Callback function when dropdown value is changed.",
     },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
   const dropdownItemProperties: ComponentProperty[] = [
     {
@@ -216,6 +222,20 @@ export default function DropdownPage() {
       description:
         "In case of the filterable dropdown, this property is for us to set what we want to search the option with different keywords. The label or value property is the fallback value.",
     },
+    {
+      name: "mountType",
+      lang: "react",
+      type: "append | prepend | reset",
+      description: "The mount type for the dropdown item.",
+      defaultValue: "append"
+    },
+    {
+      name:"mount",
+      lang: "angular",
+      type: "append | prepend | reset",
+      description: "The mount type for the dropdown item.",
+      defaultValue: "append"
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -299,6 +319,8 @@ export default function DropdownPage() {
               heading="Dropdown item properties"
               properties={dropdownItemProperties}
             />
+
+            <DropdownExamples/>
           </GoATab>
 
           <GoATab

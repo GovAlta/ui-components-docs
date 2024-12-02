@@ -42,17 +42,17 @@ export default function AccordionPage() {
 
   const [accordionBindings, setAccordionBindings] = useState<ComponentBinding[]>([
     {
+      label: "Heading",
+      type: "string",
+      name: "heading",
+      value: "Accordion heading",
+    },
+    {
       label: "Heading Size",
       type: "radio",
       name: "headingSize",
       options: ["small", "medium"],
       value: "medium",
-    },
-    {
-      label: "Heading",
-      type: "string",
-      name: "heading",
-      value: "Accordion heading",
     },
     {
       label: "Secondary Text",
@@ -61,8 +61,19 @@ export default function AccordionPage() {
       requirement: "optional",
       value: "",
     },
-
-    { label: "Open", type: "boolean", name: "open", value: false },
+    {
+      label: "Open",
+      type: "boolean",
+      name: "open", 
+      value: false
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -70,52 +81,93 @@ export default function AccordionPage() {
       name: "heading",
       type: "string",
       required: true,
-      description: "Sets the heading text",
+      description: "Sets the heading text.",
     },
     {
       name: "secondaryText",
       type: "string",
       lang: "react",
-      description: "Sets secondary text",
+      description: "Sets secondary text.",
     },
     {
       name: "secondarytext",
       type: "string",
       lang: "angular",
-      description: "Sets secondary text",
+      description: "Sets secondary text.",
     },
     {
       name: "open",
       type: "boolean",
       defaultValue: "false",
-      description: "Sets the state of the accordion container open or closed",
+      description: "Sets the state of the accordion container open or closed.",
     },
     {
       name: "headingSize",
       type: "small | medium",
       defaultValue: "small",
       lang: "react",
-      description: "Sets the heading size of the accordion container heading",
+      description: "Sets the heading size of the accordion container heading.",
     },
     {
       name: "headingsize",
       type: "small | medium",
       defaultValue: "small",
       lang: "angular",
-      description: "Sets the heading size of the accordion container heading",
+      description: "Sets the heading size of the accordion container heading.",
     },
     {
       name: "headingContent",
       type: "ReactNode",
       lang: "react",
-      description: "Add components to the accordion container heading such as badges",
+      description: "Add components to the accordion container heading such as badges.",
     },
     {
       name: "headingcontent",
       type: "slot",
       lang: "angular",
-      description: "Add components to the accordion container heading such as badges",
+      description: "Add components to the accordion container heading such as badges.",
     },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the accordion.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the accordion.",
+      lang: "angular",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "_change",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "Callback function when accordion heading is clicked.",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(open: boolean) => void",
+      description: "Callback function when accordion heading is clicked.",
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

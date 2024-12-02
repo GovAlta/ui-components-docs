@@ -13,7 +13,7 @@ import "./root.css";
 
 import { useLocation } from "react-router-dom";
 
-export const MAX_CONTENT_WIDTH = "1500px";
+export const MAX_CONTENT_WIDTH = "1360px";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -40,7 +40,7 @@ export default function Root() {
       <GoAOneColumnLayout>
         <section className="header" slot="header">
           <GoAMicrositeHeader
-            type={"alpha"}
+            type={"live"}
             feedbackUrl="https://forms.microsoft.com/r/8Zp7zSJS6W"
             maxContentWidth={MAX_CONTENT_WIDTH}
           />
@@ -50,10 +50,6 @@ export default function Root() {
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Styles</Link>
             <Link to="/content/capitalization">Content</Link>
-            <Link to="/support">Support</Link>
-            <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">
-              Report a bug
-            </Link>
           </GoAAppHeader>
         </section>
 
@@ -66,12 +62,11 @@ export default function Root() {
               <Link to="/patterns">Patterns</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Styles</Link>
-              {/*Removed until content pages added <Link to="/content">Content</Link> */}
+              <Link to="/content/capitalization">Content</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterNavSection heading="Get support">
               <Link to="https://github.com/GovAlta/ui-components/issues/new/choose" target="_blank">Submit an issue</Link>
               <Link to="/support">#design-system-support</Link>
-              <Link to="/support/drop-in-hours">Drop-in hours</Link>
             </GoAAppFooterNavSection>
             <GoAAppFooterMetaSection>
               <Link to="support/contribute">Contribute to the design system</Link>

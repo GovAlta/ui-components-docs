@@ -59,27 +59,34 @@ export default function FormItemPage() {
       value: "",
       hidden: true,
       dynamic: true,
-    }
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
   const componentProps: ComponentProperty[] = [
     {
       name: "label",
       type: "string",
-      description: "Creates a label for a form item",
+      description: "Creates a label for a form item.",
     },
     {
       name: "labelSize",
       lang: "react",
       type: "regular | large",
       defaultValue: "regular",
-      description: "Set a regular or large label size",
+      description: "Sets a regular or large label size.",
     },
     {
       name: "labelsize",
       lang: "angular",
       type: "regular | large",
       defaultValue: "regular",
-      description: "Set a regular or large label size",
+      description: "Sets a regular or large label size.",
     },
     {
       name: "helpText",
@@ -108,13 +115,42 @@ export default function FormItemPage() {
     {
       name: "requirement",
       type: "optional | required",
-      description: "Marks the field with optional/required label",
+      description: "Marks the field with an optional or required label.",
     },
     {
       name: "id",
       type: "string",
       description:
         "The id of the label, necessary for field's aria-labelledby attribute for the screen reader.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the form item.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the form item.",
+      lang: "angular",
+    },    
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 

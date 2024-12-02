@@ -29,6 +29,13 @@ export default function DetailsPage() {
       name: "heading",
       value: "Detail Heading",
     },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },    
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -43,6 +50,23 @@ export default function DetailsPage() {
       type: "boolean",
       description: "Controls if details is expanded or not",
       defaultValue: "false",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the details.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the details.",
+      lang: "angular",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 
@@ -160,6 +184,7 @@ export default function DetailsPage() {
                 label="Bank or Institution number"
                 id="bankNumber"
                 helpText={"3-4 digits in length"}
+                mb="xl"
               >
                 <GoAInput
                   maxLength={4}
@@ -174,6 +199,7 @@ export default function DetailsPage() {
                 label="Branch or Transit number"
                 helpText={"5 digits in length"}
                 id="transitNumber"
+                mb="xl"
               >
                 <GoAInput
                   maxLength={5}

@@ -104,14 +104,28 @@ export default function RadioPage() {
       name: "ariaLabel",
       lang: "react",
       description:
-        "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+        "Defines how the text will be translated for the screen reader.",
       type: "string",
     },
     {
       name: "arialabel",
       lang: "angular",
       description:
-        "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+        "Defines how the text will be translated for the screen reader.",
+      type: "string",
+    },
+    {
+      name: "arialabelledby",
+      lang: "angular",
+      description:
+        "Refers to the element that contains the label of the radio group.",
+      type: "string",
+    },
+    {
+      name: "ariaLabelledBy",
+      lang: "react",
+      description:
+        "Refers to the element that contains the label of the radio group.",
       type: "string",
     },
     {
@@ -120,6 +134,11 @@ export default function RadioPage() {
       type: "(name: string, value: string) => void",
       required: true,
       description: "Callback function when radio value is changed.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
   const radioItemProperties: ComponentProperty[] = [
@@ -145,6 +164,35 @@ export default function RadioPage() {
       type: "string | ReactNode",
       description: "Additional content shown below the label.",
       lang: "react",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the radio.",
+      lang: "angular",
+    },
+    {
+      name: "arialabel",
+      lang: "angular",
+      type: "string",
+      description: "Defines how the radio item will be translated for the screen reader.",
+    },
+    {
+      name: "ariaLabel",
+      lang: "react",
+      type: "string",
+      description: "Defines how the radio item will be translated for the screen reader.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 

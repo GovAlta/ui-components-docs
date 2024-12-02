@@ -39,6 +39,13 @@ export default function CheckboxPage() {
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
     { label: "Error", type: "boolean", name: "error", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
@@ -54,7 +61,7 @@ export default function CheckboxPage() {
     {
       name: "checked",
       type: "boolean",
-      description: "Mark the checkbox item as selected.",
+      description: "Marks the checkbox item as selected.",
       required: true,
     },
     {
@@ -90,7 +97,7 @@ export default function CheckboxPage() {
       name: "error",
       type: "boolean",
       defaultValue: "false",
-      description: "Show an error on the checkbox item.",
+      description: "Shows an error on the checkbox item.",
     },
     {
       name: "ariaLabel",
@@ -109,9 +116,38 @@ export default function CheckboxPage() {
     {
       name: "onChange",
       type: "(name: string, checked: boolean, value: string) => void",
-      description: "Callback function when checkbox value is changed",
+      description: "Callback function when checkbox value is changed.",
       lang: "react"
-    }
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the checkbox.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the checkbox.",
+      lang: "angular",
+    },
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
   const noop = () => { };
 

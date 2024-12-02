@@ -63,7 +63,14 @@ export default function ContainerPage() {
       options: ["full", "content"],
       value: "full",
       defaultValue: "full"
-    }
+    },
+    {
+      label: "Max Width",
+      type: "string",
+      name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -102,7 +109,36 @@ export default function ContainerPage() {
       type: "full | content",
       defaultValue: "full",
       description: "Sets the width of the container."
-    }
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the container.",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the maximum width of the container.",
+      lang: "angular",
+    },    
+    {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

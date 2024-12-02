@@ -73,7 +73,7 @@ ol {
   padding: 0 0 0 1.5rem;
 }
 
-li>ul {
+li>ul, li>ol {
   padding-left: 1.5rem;
 }
 
@@ -99,12 +99,5 @@ code.inline {
 @media screen and (max-width: 1231px) {
   .content {
     margin: 0;
-  }
-}
-
-/*Mobile*/
-@media screen and (max-width: 623px) {
-  h3 {
-    font: var(--goa-typography-body-m);
   }
 }

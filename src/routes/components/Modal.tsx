@@ -3,9 +3,6 @@ import {
   GoABadge,
   GoAButton,
   GoAButtonGroup,
-  GoADropdown,
-  GoADropdownItem,
-  GoAFormItem,
   GoAModal,
   GoAModalProps,
   GoATab,
@@ -13,7 +10,6 @@ import {
 } from "@abgov/react-components";
 import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
-import { GoAModal as MockModal } from "@components/mock-modal/Modal";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -21,7 +17,7 @@ import {
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { useNavigate } from "react-router-dom";
+import ModalExamples from "@examples/modal/ModalExamples.tsx";
 
 // == Page props ==
 
@@ -39,9 +35,8 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function TEMPLATE_Page() {
+export default function ModalPage() {
   const language = useContext(LanguageContext);
-  const navigate = useNavigate();
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     heading: "Are you sure you want to exit your application?",
     role: "alertdialog",
@@ -219,8 +214,6 @@ export default function TEMPLATE_Page() {
     resetScrollbars();
   }
 
-  function noop() {}
-
   return (
     <>
       <ComponentHeader
@@ -245,13 +238,8 @@ export default function TEMPLATE_Page() {
                   export class SomeOtherComponent {
                     open = false;
                     onClick(event: Event) {
-                      this.open = true;
+                      this.open = !this.open;
                     }
-
-                    onClose(event: Event) {
-                      this.open = false;
-                    }
-                    
                   }
                 `}
               />
@@ -263,11 +251,7 @@ export default function TEMPLATE_Page() {
                 code={`
                   const [open, setOpen] = useState(false);
                    function onClick() {
-                    setOpen(true);
-                   }
-                   
-                   function onClose() {
-                    setOpen(false);
+                    setOpen(!open);
                    }
                 `}
               />
@@ -279,7 +263,7 @@ export default function TEMPLATE_Page() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoAButtonGroup alignment="end">
+                  <GoAButtonGroup alignment="end" mt="xl">
                     <GoAButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
                     </GoAButton>
@@ -300,492 +284,7 @@ export default function TEMPLATE_Page() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
-            <h3 id="component-example-basic">Basic Modal</h3>
-            <Sandbox skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onOpen() {
-                      this.open = true;
-                    }
-                    onClose() {
-                      this.open = false;
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open"
-                    (_close)="onClose()" heading="Heading">
-                      <p>Content</p>
-                    <div slot="actions">
-                      <goa-button-group alignment="end">
-                        <goa-button type="secondary" (_click)="onClose()">Secondary</goa-button>
-                        <goa-button type="primary" (_click)="onClose()">Primary</goa-button>
-                      </goa-button-group>
-                    </div>
-                  </goa-modal>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const [open, setOpen] = useState(false);
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
-                  <GoAModal
-                    heading="Heading"
-                    open={open}
-                    onClose={() => setOpen(false)}
-                    actions={
-                      <GoAButtonGroup alignment="end">
-                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
-                          Secondary
-                        </GoAButton>
-                        <GoAButton type="primary" onClick={() => setOpen(false)}>
-                          Primary
-                        </GoAButton>
-                      </GoAButtonGroup>
-                    }
-                  >
-                    <p>Content</p>
-                  </GoAModal>
-                `}
-              />
-
-              <MockModal heading="Heading">
-                <p>Content</p>
-
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
-                    Secondary
-                  </GoAButton>
-                  <GoAButton type="primary" onClick={noop}>
-                    Primary
-                  </GoAButton>
-                </GoAButtonGroup>
-              </MockModal>
-            </Sandbox>
-
-            <h3 id="component-example-destructive">Confirm a destructive action</h3>
-            <Sandbox skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onOpen() {
-                      this.open = true;
-                    }
-                    onClose() {
-                      this.open = false;
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open" role="alertdialog"
-                    (_close)="onClose()" heading="Are you sure you want to withdraw this assessment?">
-                      <p>This action cannot be undone.</p>
-                    <div slot="actions">
-                      <goa-button-group alignment="end">
-                        <goa-button type="secondary" (_click)="onClose()">Cancel</goa-button>
-                        <goa-button type="primary" variant="destructive" (_click)="onClose()">Withdraw assessment</goa-button>
-                      </goa-button-group>
-                    </div>
-                  </goa-modal>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const [open, setOpen] = useState(false);
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
-                  <GoAModal
-                    heading="Are you sure you want to withdraw this assessment?"
-                    open={open}
-                    role="alertdialog"
-                    onClose={() => setOpen(false)}
-                    actions={
-                      <GoAButtonGroup alignment="end">
-                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
-                          Cancel
-                        </GoAButton>
-                        <GoAButton type="primary" variant="destructive" onClick={() => setOpen(false)}>
-                           Withdraw assessment
-                        </GoAButton>
-                      </GoAButtonGroup>
-                    }
-                  >
-                    <p>This action cannot be undone.</p>
-                  </GoAModal>
-                `}
-              />
-
-              <MockModal heading="Are you sure you want to withdraw this assessment?">
-                <p>This action cannot be undone.</p>
-
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
-                    Cancel
-                  </GoAButton>
-                  <GoAButton type="primary" variant="destructive" onClick={noop}>
-                    Withdraw assessment
-                  </GoAButton>
-                </GoAButtonGroup>
-              </MockModal>
-            </Sandbox>
-
-            <h3 id="component-example-warning">Warning callout modal</h3>
-            <Sandbox skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onOpen() {
-                      this.open = true;
-                    }
-                    onClose() {
-                      this.open = false;
-                    }
-                    onClick(event: Event) {
-                      console.log("clicked", event);
-                      this.open = false;
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" calloutvariant="information"
-                    (_close)="onClose()" heading="Complete submission prior to 1PM">
-                      <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
-                    <div slot="actions">
-                      <goa-button-group alignment="end" mt="l">
-                        <goa-button type="primary" (_click)="onClick($event)">
-                          I understand
-                        </goa-button>
-                      </goa-button-group>
-                    </div>
-                  </goa-modal>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const [open, setOpen] = useState(false);
-                  function onClick(event: Event) {
-                      console.log("clicked", event);
-                      setOpen(false);
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
-                  <GoAModal
-                    heading="Complete submission prior to 1PM"
-                    open={open}
-                    calloutVariant="information"
-                    role="alertdialog"
-                    onClose={() => setOpen(false)}
-                    actions={
-                      <GoAButtonGroup alignment="end" mt="l">
-                        <GoAButton type="primary" onClick={onClick}>I understand</GoAButton>
-                      </GoAButtonGroup>
-                    }
-                  >
-                    <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
-                  </GoAModal>
-                `}
-              />
-
-              <MockModal heading="Complete submission prior to 1PM" calloutVariant="information">
-                <p>
-                  You’ve selected to adjourn a matter that is required to appear today. This Calgary
-                  court location does not accept adjournment requests past 1PM MST. Please submit
-                  your adjournment request as soon as possible.
-                </p>
-
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="primary" onClick={noop}>
-                    I understand
-                  </GoAButton>
-                </GoAButtonGroup>
-              </MockModal>
-            </Sandbox>
-
-            <h3 id="component-example-with-input">Modal with input</h3>
-            <Sandbox skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onOpen() {
-                      this.open = true;
-                    }
-                    onClose() {
-                      this.open = false;
-                    }
-                    
-                    onChange($event) {
-                      console.log($event);
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open"
-                    (_close)="onClose()" heading="Why was this adjusted?">
-                      <goa-form-item label="Reason for adjustment">
-                        <goa-dropdown (_change)="onChange($event)">
-                          <goa-dropdown-item value="Correction"></goa-dropdown-item>
-                          <goa-dropdown-item value="Late submission"></goa-dropdown-item>
-                          <goa-dropdown-item value="It's Friday 🎉"></goa-dropdown-item>
-                        </goa-dropdown>
-                      </goa-form-item>
-                    <div slot="actions">
-                      <goa-button-group alignment="end" mt="l">
-                        <goa-button type="secondary" (_click)="onClose()">
-                          Cancel
-                        </goa-button>
-                        <goa-button type="primary" (_click)="onClose()">
-                          Choose
-                        </goa-button>
-                      </goa-button-group>
-                    </div>
-                  </goa-modal>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const [open, setOpen] = useState(false);
-                  
-                  onChange(event: Event) {
-                    console.log("onChange", e);
-                  }
-                  
-                  onClick(event: Event) {
-                    console.log("onClick", e);
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
-                  <GoAModal
-                    heading="Why was this adjusted?"
-                    open={open}
-                    onClose={() => setOpen(false)}
-                    actions={
-                      <GoAButtonGroup alignment="end">
-                        <GoAButton type="secondary" onClick={onClick}>
-                          Cancel
-                        </GoAButton>
-                        <GoAButton type="primary" onClick={onClick}>
-                          Choose
-                        </GoAButton>
-                      </GoAButtonGroup>
-                    }
-                  >
-                    <GoAFormItem label="Reason for adjustment">
-                      <GoADropdown onChange={onChange}>
-                        <GoADropdownItem value="Correction"></GoADropdownItem>
-                        <GoADropdownItem value="Late submission"></GoADropdownItem>
-                        <GoADropdownItem value="It's Friday 🎉"></GoADropdownItem>
-                      </GoADropdown>
-                    </GoAFormItem>
-                  </GoAModal>
-                `}
-              />
-              <MockModal heading="Why was this adjusted?">
-                <GoAFormItem label="Reason for adjustment">
-                  <GoADropdown onChange={noop}>
-                    <GoADropdownItem value="Correction" />
-                    <GoADropdownItem value="Late submission" />
-                    <GoADropdownItem value="It's Friday 🎉" />
-                  </GoADropdown>
-                </GoAFormItem>
-
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
-                    Cancel
-                  </GoAButton>
-                  <GoAButton type="primary" onClick={noop}>
-                    Choose
-                  </GoAButton>
-                </GoAButtonGroup>
-              </MockModal>
-            </Sandbox>
-
-            <h3 id="component-example-route-change">Route changes</h3>
-            <Sandbox skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onOpen() {
-                      this.open = true;
-                    }
-                    onClose() {
-                      this.open = false;
-                    }
-                    onChangeRoute() {
-                      this.open = false;
-                      setTimeout(() => this.router.navigate(["/components"]), 0)
-                    }
-                  }
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" heading="Are you sure you want to change route?">
-                    <div slot="actions">
-                      <goa-button-group alignment="end">
-                        <goa-button type="secondary" (_click)="onClose()">Cancel</goa-button>
-                        <goa-button type="primary" (_click)="onChangeRoute()">Change route</goa-button>
-                      </goa-button-group>
-                    </div>
-                  </goa-modal>
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const [open, setOpen] = useState(false);
-                `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAButton onClick={() => setOpen(true)}>Open</GoAButton>
-                  <GoAModal
-                    heading="Are you sure you want to change route?"
-                    open={open}
-                    role="alertdialog"
-                    onClose={() => setOpen(false)}
-                    actions={
-                      <GoAButtonGroup alignment="end">
-                        <GoAButton type="secondary" onClick={() => setOpen(false)}>
-                          Cancel
-                        </GoAButton>
-                        <GoAButton
-                          size="medium"
-                          onClick={() => {
-                            setOpen(false);
-                            // setTimeout will allow any modal transitions to be run
-                            // setTimeout(() => navigate("/some-path"), 300) }
-                            navigate("/components")
-                        }}>Change route</GoAButton>
-                      </GoAButtonGroup>
-                    }
-                  ></GoAModal>
-                `}
-              />
-              <MockModal heading="Are you sure you want to change route?">
-                <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
-                    Cancel
-                  </GoAButton>
-                  <GoAButton
-                    type="primary"
-                    onClick={() => {
-                      navigate("/components");
-                    }}>
-                    Change route
-                  </GoAButton>
-                </GoAButtonGroup>
-              </MockModal>
-            </Sandbox>
+            <ModalExamples/>
           </GoATab>
 
           <GoATab

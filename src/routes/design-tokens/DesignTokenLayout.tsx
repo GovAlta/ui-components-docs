@@ -1,8 +1,8 @@
 import {
+  GoABlock,
   GoADropdown,
   GoADropdownItem,
   GoASideMenu,
-  GoASideMenuHeading,
 } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo";
@@ -26,42 +26,35 @@ export function DesignTokenLayout() {
 
   return (
     <>
-    <DesignTokensLanguageContext.Provider value={tokenLanguage}>
-      <div className="content design-tokens">
-        <section className="side-menu">
-          <GoASideMenu>
-            <GoASideMenuHeading>Styles</GoASideMenuHeading>
+      <DesignTokensLanguageContext.Provider value={tokenLanguage}>
+        <div className="content design-tokens">
+          <section className="side-menu">
+            <GoASideMenu>
+              <GoABlock direction="column" mt="s" mb="s" ml="l" mr="l">
+                <GoADropdown value={tokenLanguage} onChange={designTokenLanguageChange}>
+                  <GoADropdownItem label="SCSS" value="scss" />
+                  <GoADropdownItem label="CSS" value="css" />
+                </GoADropdown>
+              </GoABlock>
 
-            <GoADropdown
-              value={tokenLanguage}
-              mb="m"
-              ml="m"
-              mr="m"
-              mt="m"
-              onChange={designTokenLanguageChange}
-            >
-              <GoADropdownItem label="SCSS" value="scss" />
-              <GoADropdownItem label="CSS" value="css" />
-            </GoADropdown>
+              <Link to="">All</Link>
+              <Link to="border-radius">Border Radius</Link>
+              <Link to="border-width">Border Width</Link>
+              <Link to="color">Color</Link>
+              <Link to="icon-size">Icon Size</Link>
+              <Link to="opacity">Opacity</Link>
+              <Link to="shadow">Shadow</Link>
+              <Link to="spacing">Spacing</Link>
+              <Link to="typography">Typography</Link>
+            </GoASideMenu>
+          </section>
 
-            <Link to="">Overview</Link>
-            <Link to="border-radius">Border Radius</Link>
-            <Link to="border-width">Border Width</Link>
-            <Link to="color">Color</Link>
-            <Link to="icon-size">Icon Size</Link>
-            <Link to="opacity">Opacity</Link>
-            <Link to="shadow">Shadow</Link>
-            <Link to="spacing">Spacing</Link>
-            <Link to="typography">Typography</Link>
-          </GoASideMenu>
-        </section>
-        
-        <main className="main">
-          <Outlet />
-          <SupportInfo />
-        </main>
-      </div>
-    </DesignTokensLanguageContext.Provider>
+          <main className="main">
+            <Outlet />
+            <SupportInfo />
+          </main>
+        </div>
+      </DesignTokensLanguageContext.Provider>
     </>
   );
 }

@@ -6,6 +6,12 @@ import { useState } from "react";
 
 export default function AccordionExamples() {
   const [open, setOpen] = useState<boolean>(false); // for accordion group
+  const [accordionStatus, setAccordionStatus] = useState<string>("Show all sections");
+  const onClick = () => {
+    setOpen(!open);
+    const status = !open ? "Hide all sections" : "Show all sections";
+    setAccordionStatus(status);
+  }
   return (
     <>
       <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
@@ -141,8 +147,11 @@ export default function AccordionExamples() {
           code={`
                 export class SomeOtherComponent {
                   open = false;
+                  accordionStatus = "Show all sections";
+
                   onClick() {
                     this.open = !this.open;
+                    this.accordionStatus = (this.open) ? "Hide all sections" : "Show all sections";
                   }
                 }
               `}
@@ -153,7 +162,7 @@ export default function AccordionExamples() {
           allowCopy={true}
           code={`
                 <goa-button type="tertiary" mb="m" (_click)="onClick()">
-                  Show all sections
+                  {{ accordionStatus }}
                 </goa-button>
                 
                 <goa-accordion heading="How do I create an account?" headingsize="medium" [open]="open">
@@ -180,7 +189,12 @@ export default function AccordionExamples() {
           allowCopy={true}
           code={`
                 const [open, setOpen] = useState<boolean>(false);
-                const onClick = () => setOpen(!open);
+                const [accordionStatus, setAccordionStatus] = useState<string>("Show all sections");
+                const onClick = () => {
+                  setOpen(!open);
+                  const status = !open ? "Hide all sections" : "Show all sections";
+                  setAccordionStatus(status);
+                }
               `}
         />
         <CodeSnippet
@@ -188,8 +202,8 @@ export default function AccordionExamples() {
           tags="react"
           allowCopy={true}
           code={`
-               <GoAButton type="tertiary" mb="m" onClick={() => setOpen(!open)}>
-                  Show all sections
+               <GoAButton type="tertiary" mb="m" onClick={() => onClick()}>
+                  { accordionStatus }
                </GoAButton>
                
                <GoAAccordion open={open} heading="How do I create an account?" headingSize="medium">
@@ -210,8 +224,8 @@ export default function AccordionExamples() {
               `}
         />
 
-        <GoAButton type="tertiary" mb="m" onClick={() => setOpen(!open)}>
-          Show all sections
+        <GoAButton type="tertiary" mb="m" onClick={() => onClick()}>
+          { accordionStatus }
         </GoAButton>
 
         <GoAAccordion open={open} heading="How do I create an account?" headingSize="medium">

@@ -14,14 +14,13 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
 
 const componentName = "Microsite header";
 const description =
   "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/header", name: "Header" },
-];
+const relatedComponents = [{ link: "/components/header", name: "Header" }];
 type ComponentPropsType = GoAHeaderProps;
 type CastingType = {
   // add any required props here
@@ -82,30 +81,89 @@ export default function MicrositeHeaderPage() {
     },
     {
       name: "version",
-      type: "string",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Displayed on the right-hand side of the header.",
+    },
+    {
+      name: "version",
+      type: "string | slot",
+      lang: "angular",
+      description: "Displayed on the right-hand side of the header.",
     },
     {
       name: "feedbackUrl",
       type: "string",
+      lang: "react",
+      description: "Url to feedback page that will be displayed when provided.",
+    },
+    {
+      name: "feedbackurl",
+      type: "string",
+      lang: "angular",
       description: "Url to feedback page that will be displayed when provided.",
     },
     {
       name: "maxContentWidth",
       type: "string",
+      lang: "react",
+      description: "Maximum width of the content area",
+      defaultValue: "100%",
+    },
+    {
+      name: "maxcontentwidth",
+      type: "string",
+      lang: "angular",
       description: "Maximum width of the content area",
       defaultValue: "100%",
     },
     {
       name: "feedbackUrlTarget",
       type: "self | blank",
+      lang: "react",
+      description: "For internal feedback urls sets target='_self'",
+      defaultValue: "blank",
+    },
+    {
+      name: "feedbackurltarget",
+      type: "self | blank",
+      lang: "angular",
       description: "For internal feedback urls sets target='_self'",
       defaultValue: "blank",
     },
     {
       name: "headerUrlTarget",
       type: "self | blank",
+      lang: "react",
       description: "For internal header urls sets target='_self'",
       defaultValue: "blank",
+    },
+    {
+      name: "headerurltarget",
+      type: "self | blank",
+      lang: "angular",
+      description: "For internal header urls sets target='_self'",
+      defaultValue: "blank",
+    },
+    {
+      name: "hasfeedbackhandler",
+      type: "boolean",
+      lang: "angular",
+      defaultValue: "false",
+      description:
+        "Set to true to handle the feedback click via _feedbackClick custom event handler.",
+    },
+    {
+      name: "_feedbackclick",
+      lang: "angular",
+      type: "CustomEvent",
+      description: "Function invoked when feedback link is clicked.",
+    },
+    {
+      name: "onFeedbackClick",
+      lang: "react",
+      type: "() => void",
+      description: "Function invoked when feedback link is clicked.",
     },
   ];
 
@@ -124,16 +182,18 @@ export default function MicrositeHeaderPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
           <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
 
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
+            <MicrositeHeaderExamples />
           </GoATab>
 
           <GoATab
