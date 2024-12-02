@@ -5,7 +5,7 @@ import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 
 export default function GetStartedLayout() {
   return (
-    <div className="content">
+    <div className="content foundations-content">
       <section className="side-menu">
         <GoASideMenu>
           <GoASideMenuHeading>Foundations</GoASideMenuHeading>
