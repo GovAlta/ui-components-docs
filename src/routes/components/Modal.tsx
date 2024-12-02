@@ -263,7 +263,7 @@ export default function ModalPage() {
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoAButtonGroup alignment="end">
+                  <GoAButtonGroup alignment="end" mt="xl">
                     <GoAButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
                     </GoAButton>

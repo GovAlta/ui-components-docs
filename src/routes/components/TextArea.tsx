@@ -51,12 +51,6 @@ export default function TextAreaPage() {
       type: "number",
     },
     {
-      label: "Width",
-      name: "width",
-      type: "string",
-      value: "60ch",
-    },
-    {
       label: "Placeholder",
       type: "string",
       name: "placeholder",

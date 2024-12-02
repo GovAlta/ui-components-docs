@@ -13,19 +13,19 @@ export default function DateFormatPage() {
         and structure of the date data within the date format in different scenarios.
       </h3>
 
-      <GoAContainer type="non-interactive" mb="2xl">
+      <GoAContainer type="non-interactive" mb="xl">
         <div
           className="example"
           style={{
-            margin: "2rem auto",
-            width: "50%",
+           
+            
             textAlign: "center",
           }}>
           March 14, 2021
         </div>
       </GoAContainer>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoADivider mb="2xl" mt="l"></GoADivider>
 
       <h2 id="conversational-long-form">Conversational and long-form</h2>
       <p>
@@ -38,8 +38,6 @@ export default function DateFormatPage() {
         <div
           className="example"
           style={{
-            margin: "2rem auto",
-            width: "50%",
             textAlign: "center",
           }}>
           <strong>Month date, Year</strong> (e.g., March 14, 2021)
