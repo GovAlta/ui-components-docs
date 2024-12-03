@@ -1,24 +1,82 @@
 import { GoADivider, GoAContainer, GoATable, GoASpacer, GoAIcon, GoABlock, GoAGrid } from "@abgov/react-components";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { DeviceWidthContext } from "../../contexts/DeviceWidthContext";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function IconographyPage() {
+  const { isDesktop } = useContext(DeviceWidthContext);
+  const renderDesktop = () => {
+    return (
+      <GoATable width="100%" variant="relaxed">
+        <thead>
+          <tr>
+            <th>Example</th>
+            <th>Icon size</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><img src="/images/iconography/Icon-small.png"></img></td>
+            <td>Small: icon-size-s</td>
+            <td>Used in compact spaces</td>
+          </tr>
+          <tr>
+            <td><img src="/images/iconography/Icon-Medium.jpg"></img></td>
+            <td>Medium: icon-size-m</td>
+            <td>Suitable for slightly larger spaces</td>
+          </tr>
+          <tr>
+            <td><img src="/images/iconography/Icon-Large.jpg"></img></td>
+            <td>Large: icon-size-l</td>
+            <td>Used in dense spaces where an icon is required</td>
+          </tr>
+        </tbody>
+      </GoATable>
+    );  
+  };
+  const renderMobile = () => {
+    return (
+      <GoAGrid minChildWidth="22rem" gap="xs">
+        <GoAContainer>
+          <dl className="design-tokens">
+            <dd><img src="/images/iconography/Icon-small.png"></img></dd>
+            <dt>Icon size</dt><dd>Small: icon-size-s</dd>
+            <dt>Description</dt><dd>Used in compact spaces</dd>
+          </dl>
+        </GoAContainer>
+        <GoAContainer>
+          <dl className="design-tokens">
+            <dd><img src="/images/iconography/Icon-Medium.jpg"></img></dd>
+            <dt>Icon size</dt><dd>Medium: icon-size-m</dd>
+            <dt>Description</dt><dd>Suitable for slightly larger spaces</dd>
+          </dl>
+        </GoAContainer>
+        <GoAContainer>
+          <dl className="design-tokens">
+            <dd><img src="/images/iconography/Icon-Large.jpg"></img></dd>
+            <dt>Icon size</dt><dd>Large: icon-size-l</dd>
+            <dt>Description</dt><dd>Used in dense spaces where an icon is required</dd>
+          </dl>
+        </GoAContainer>
+      </GoAGrid>
+    );
+  };
+
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Iconography</h1>
-        <h3>Icons are simple and universal graphic symbols that communicate enhance both the aesthetic and functional aspects of our services. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot.</h3>
+        <h3>Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional aspects of our services. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot. </h3>
 
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
 
         <div className="max-width-72ch">
           <h2 id="style">Style</h2>
-          <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they are integrated seamlessly into various interface sizes.</p>
+          <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they are integrated seamlessly into various interface sizes. They are divided into three categories: Core, Extended and Logo icon set.</p>
 
-          <h3 id="categories">Categories</h3>
-          <p>They are divided into three categories: Core, Extended and Logo icon set.</p>
-
-          <h4>Core Icon Set</h4>
-          <p>This is the main icon library in the design system, helping us maintain consistency with other teams.</p>
+          <h3>Core Icon Set</h3>
+          <p>This is the main icon library in the design system, helping you maintain consistency with other teams.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="s" minChildWidth="250px">
             <GoAContainer mb="3xs">
@@ -110,8 +168,8 @@ export default function IconographyPage() {
           <GoASpacer vSpacing="l"></GoASpacer>
           <p>Explore core icons set and their properties <Link to="/components/icons#tab-0">here</Link>.</p>
 
-          <h4>Extended Icon Set</h4>
-          <p>To avoid re-inventing the wheel, we utilize an open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>. Use these icons when you need additional icons outside the core icon set.</p>
+          <h3>Extended Icon Set</h3>
+          <p>We use the open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>, which provides a wide variety of high-quality icons. Use these icons when you need options beyond the core icon set.</p>
 
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
@@ -119,8 +177,8 @@ export default function IconographyPage() {
               </div>
           </GoAContainer>
 
-          <h4>Logo Icons</h4>
-          <p>These icons set contain popular logos and are kept in accordance with their respective logo usage guidelines.</p>
+          <h3>Logo Icons</h3>
+          <p>This icon set contains popular logos and are kept in accordance with their respective logo usage guidelines.</p>
 
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
@@ -130,32 +188,11 @@ export default function IconographyPage() {
 
           <h2 id="icon-size">Icon Size</h2>
           <GoASpacer vSpacing="m"></GoASpacer>
-          <GoATable width="100%" variant="relaxed">
-            <thead>
-              <tr>
-                <th>Example</th>
-                <th>Icon size</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><img src="/images/iconography/Icon-small.png"></img></td>
-                <td>Small - used in compact spaces</td>
-              </tr>
-              <tr>
-                <td><img src="/images/iconography/Icon-Medium.jpg"></img></td>
-                <td>Medium - suitable for slightly larger spaces</td>
-              </tr>
-              <tr>
-                <td><img src="/images/iconography/Icon-Large.jpg"></img></td>
-                <td>Large - suitable for dense spaces where an icon is required</td>
-              </tr>
-            </tbody>
-          </GoATable>
+          {isDesktop ? renderDesktop() : renderMobile()}
           <GoASpacer vSpacing="l"></GoASpacer>
           <p>You can access the design tokens for icon sizes <Link to="/design-tokens/icon-size">here</Link>.</p>
           
-          <p>A good size range is usually between 16px to 24px. When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>. This ensures icon sizes are perceivable to a wide range of users including those with disabilities.</p>
+          <p>When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>.</p>
 
           <h2 id="best-practices">Best Practices</h2>
           <ul>
