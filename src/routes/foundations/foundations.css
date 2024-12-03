@@ -2,7 +2,9 @@
     margin: var(--goa-space-2xl) 0 0 0;
 }
 
-.foundations-content h3, h4, h5 {
+.foundations-content h3, 
+.foundations-content h4, 
+.foundations-content h5 {
     margin: var(--goa-space-l) 0 0 0;
 }
 
