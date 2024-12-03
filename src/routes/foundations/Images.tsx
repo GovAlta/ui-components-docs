@@ -5,50 +5,19 @@ export default function ImagesPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Photography</h1>
-        <h3>The Government of Alberta (GoA) maintains a library of photos shot for government use that meets the criteria we follow to make our photos relevant to our citizens.</h3>
+        <h3>The Government of Alberta (GoA) maintains a library of photos specifically taken for government use, ensuring they are relevant to our citizens. This collection meets our established criteria for quality and accessibility.</h3>
 
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
-          <p>Our photography reflects the diversity of the province and its people. We use photos that are thought-provoking and inspiring, with a distinct sense of place.</p>
-          <p>All our photos are professionally shot and edited keeping in mind color, contrast, clarity, sharpness, and how it resonates with the intended audience.</p>
 
           <h2 id="goa-photo-library">GoA photo library</h2>
           <p>Our photo library offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta (GoA) brand and content guidelines and are free to use for all our projects.</p>
-          <p>The library can be accessed by all GoA staff and contractors.</p>
-
-          <h3 id="accessing-photo-gallery">Accessing the GoA photo library</h3>
-          <p>Please follow the steps below if you are a contractor or staff, and need to access the government's photo library to request a photo:</p>
-
-          <ol className="goa-ordered-list">
-            <li>Connect to GoA network. Ensure your Citrix VPN is active if you are not in a GoA office premises.</li>
-            <li>Visit the <a href="https://secureaccess2.gov.ab.ca/Citrix/access2Web/" target="_blank">Citrix VPN Portal</a> to enable the VPN. In case you do not have access to the link above, you can make a request through <a href="https://bernie.gov.ab.ca/" target="_blank">Bernie</a> to get Citrix virtual desktop.</li>
-            <li>Navigate to the <a href="https://standards.alberta.ca/standards/photo-and-icon-libraries.aspx" target="_blank">photo and icon libraries</a> page.</li>
-            <li>Enter your credentials including the username and password in the format shown below: 
-              <ul>
-                <li>Username: <strong>goa\firstname.lastname</strong></li>
-                <li>Password: <strong>[your-goa-password]</strong></li>
-              </ul>  
-            </li>
-            <li>Once you see the Photo and icon libraries page, click the external link labeled "Browse the photo library" on the page. You may need to re-enter your GoA credentials in the same format as in the previous step.</li>
-            <li>Use the filters or the keyword search to find an image you need.</li>
-            <li>Click on “Additional information” below the thumbnail of the image that you choose to use for your project.</li>
-            <li>You will see a few details of the photo listed on the Photo information page that opens.<br/>To request this photo, write an email to <a href="mailto:visual@gov.ab.ca">visual@gov.ab.ca</a> sharing the following details that you can find under Photo information section of the selected photo.
-              <ul>
-                <li>Photo name</li>
-                <li>Photo filename</li>
-                <li>Reason for request</li>
-                <li>The intended use of the image</li>
-              </ul>
-            </li>
-          </ol>
-          <p>Once you have sent out the request for a photo, you may be asked more questions about its intended use. This allows ensuring that the photo is contextually appropriate to be used in a product and aligns with the ministry's messaging.</p>
-          <p>The Communications office is typically quick to respond depending on how busy they are. In case your request is rejected, you can work with Communications to find an appropriate photo for your use case.</p>
-          <p><a href="https://corporateidentity.alberta.ca/GOAaccess/photolibrary/PhotoSearch.cfm" target="_blank">Browse the GoA photo library</a></p>
+          <p>The library can be accessed by all GoA staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a></p>
 
           <h3 id="photos-sensitive-subjects">Photos for sensitive subjects</h3>
           <p>Before using any image for a sensitive subject like homelessness or child abuse, we recommend that you consult with Communications and Public Engagement (CPE) to ensure that the person in the image can be used for sensitive matters.</p>
 
-          <h2 id="stock-photos">Stock photos</h2>
+          <h2 id="stock-photos">When to use stock photos</h2>
           <p>When an appropriate photo is unavailable in the government's photo library, stock photos can be used as an alternative to find photos that fit the needs of your project.</p>
 
           <h3 id="photo-selection">Photo selection guidelines</h3>
