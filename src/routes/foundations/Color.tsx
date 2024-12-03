@@ -1,4 +1,4 @@
-import { GoADivider, GoAGrid, GoAContainer, GoASpacer } from "@abgov/react-components";
+import { GoADivider, GoAGrid, GoAContainer, GoASpacer, GoATable } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsColorPage() {
@@ -9,8 +9,16 @@ export default function FoundationsColorPage() {
         <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
-          <p>Our palette is divided into these categories: brand, interactive, text, status, greyscale, extended colors, to ensure flexibility and consistency in our digital services.</p>
-          <p>Grab our tokens <a href="https://design.alberta.ca/design-tokens/color">here</a> to start using our colors.</p>
+          <p>Our palette is divided into these categories:</p>
+          <ul>
+            <li>Brand colors</li>
+            <li>Interactive colors</li>
+            <li>Text colors</li>
+            <li>Status colors</li>
+            <li>Greyscale colors</li>
+            <li>Extended colors</li>
+          </ul>
+          <p>For more information about how to use our colors in your service, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
           <h2>Brand colors</h2>
           <p>These colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
@@ -847,12 +855,38 @@ export default function FoundationsColorPage() {
           <h2 id="usage">Color usage</h2>
           <p>All government of Alberta products are designed to meet the Web Content and Accessibility Guidelines (WCAG) standards. Level AA compliance is the minimum requirement for accessible design.</p>
 
-          <ul className="goa-unordered-list">
-            <li>Use a light background on dark text and vice versa, with a <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html#dfn-contrast-ratio" target="_blank">contrast ratio</a> of at least 4.5:1 for normal text. </li>
-            <li>When a text is 18 points or larger, it must have a contrast ratio of at least 3:1.</li>
-            <li>Check color combinations using an accessibility checker. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</li>
-            <li>Refer to our guide on good color combinations.</li>
-          </ul>
+          <GoATable width="100%" variant="relaxed" mt="l" mb="xl">
+            <thead>
+              <tr>
+                <th>
+                  Type of content 
+                </th>
+                <th>
+                  Minimum ratio (AA rating) 
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Body text - 18px
+                </td>
+                <td>
+                  4.5:1
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  Large-scale text - 24px
+                </td>
+                <td>
+                  3:1
+                </td>
+              </tr>
+            </tbody>
+          </GoATable>
+
+          <p><em style={{color: "var(--goa-color-greyscale-black)", fontSize: "var(--goa-font-size-3)"}}>Use an <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">accessibility contrast checker</a> contrast checker to check color combinations or use our guide below. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</em></p>
 
           <h3 id="accessible">Accessible combinations</h3>
           <GoASpacer vSpacing="l"></GoASpacer>
@@ -860,42 +894,42 @@ export default function FoundationsColorPage() {
           <GoAGrid gap="m" minChildWidth="250px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-default.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Default passes the minimum color contrast ratio with 4.5:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Default</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-Dark.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-Dark.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Dark passes the minimum color contrast ratio with of 8.78:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Dark</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-hover.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-hover.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and interactive Hover passes the minimum color contrast ratio with 8.56:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Interactive - Hover</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-Info-Default.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-Info-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and info default passes the minimum color contrast ratio with 8.84:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Info - Default</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-Interactive-Default.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-Interactive-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and interactive default passes the minimum color contrast ratio with 5.1:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Interactive - Default</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Accessible-White-Interactive-Hover.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Accessible-White-Interactive-Hover.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Greyscale Black passes the minimum color contrast ratio with 8.84:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Greyscale - Black</strong></div>
@@ -908,42 +942,42 @@ export default function FoundationsColorPage() {
           <GoAGrid gap="m" minChildWidth="250px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-White-Light.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-White-Light.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Light fails the minimum color contrast ratio with 1.23:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Light</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-White-Info-Light.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-White-Info-Light.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Info light fails the minimum color contrast ratio with 1.72:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Info - Light</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-White-Warning.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-White-Warning.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Warning Dark fails the minimum color contrast ratio with 2.97:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Warning - Dark</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-White-warning-def.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-White-warning-def.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Warning Default fails the minimum color contrast ratio with 1.51:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Warning - Default</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-Light-Default.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-Light-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Brand Light and Warning Default fails the minimum color contrast ratio with 1.23:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Brand - Light</strong></div>
               <div><strong>Warning - Default</strong></div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/color/Inaccessible-Dark-Default.png" style={{margin: "0 0 24px" }} width="100%"></img>
+                <img src="/images/color/Inaccessible-Dark-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Brand Default and Brand Dark fails the minimum color contrast ratio with 1.95:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Brand - Default</strong></div>
               <div><strong>Brand - Dark</strong></div>
