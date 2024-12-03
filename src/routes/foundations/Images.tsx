@@ -12,7 +12,7 @@ export default function ImagesPage() {
 
           <h2 id="goa-photo-library">GoA photo library</h2>
           <p>Our photo library offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta (GoA) brand and content guidelines and are free to use for all our projects.</p>
-          <p>The library can be accessed by all GoA staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a></p>
+          <p>The library can be accessed by all GoA staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a>.</p>
 
           <h3 id="photos-sensitive-subjects">Photos for sensitive subjects</h3>
           <p>Before using any image for a sensitive subject like homelessness or child abuse, we recommend that you consult with Communications and Public Engagement (CPE) to ensure that the person in the image can be used for sensitive matters.</p>
