@@ -16,14 +16,14 @@ export default function LogoPage() {
 
           <p>The Alberta logo consists of two elements— the Wordmark and symbol.</p>
 
-          <h3 id="primary">Primary Usage</h3>
+          <h3 id="primary">Primary usage</h3>
           <p>The primary Alberta logo is the preferred choice for all our digital services. The default colour combination for the signature is the grey (stone) and blue (sky) colour.</p>
               <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>
                 <img src="/images/logo/logo.png" width="50%" style={{minWidth: "270px"}}></img>
               </div>
-          <p>The Alberta signature should be placed in prominent positions in the interface, such as the header and footer.</p>
+          <p>The Alberta logo should be prominently displayed in the interface, particularly in the header and footer. As a product team utilizing our design system, you will find that the Alberta logo is already integrated into our design components and readily available for your use.</p>
           
-          <h3 id="alternate">Alternate Usage</h3>
+          <h3 id="alternate">Alternate usage</h3>
           <p>Alternate versions of the logo may be used in contexts where the default version isn't suitable. These are the only alternate usage allowed:</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="l" minChildWidth="150px">
@@ -50,7 +50,7 @@ export default function LogoPage() {
             </GoAContainer>
           </GoAGrid>
 
-          <h2 id="alberta-service-logo">Alberta Service Logo</h2>
+          <h2 id="alberta-service-logo">Alberta service logo</h2>
           <div style={{ textAlign: "center", padding:"var(--goa-space-l) 0"  }}>
             <img src="/images/logo/logo-service-name.png" width="100%" style={{maxWidth: "400px"}}></img>
           </div>
@@ -74,18 +74,18 @@ export default function LogoPage() {
           </div>
           
           <h3 id="favicon">Favicon</h3>
-          <p>The favicon is a simplified version of our logo. Often used in browser tabs, it helps users identify our service when multiple tabs are open.  </p>
+          <p>The favicon is a simplified version of our logo. It is commonly used in browser tabs to help users easily identify our service when multiple tabs are open.</p>
           
           <div style={{ textAlign: "left", padding:"var(--goa-space-l) 0"  }}>
             <img src="/images/logo/favicon.png" width="60px"></img>
           </div>
 
-          <h2 id="best-practices">Best Practices</h2>
+          <h2 id="best-practices">Logo usage guidelines</h2>
           <ul>
             <li>Avoid modifying the logo and always use the appropriate version from our asset library.</li>
             <li>Do not alter the spacing around the 'wordmark' and the 'wordmark and service name'. This spacing ensures that sufficient protective space is kept around them to maintain their impact.</li>
             <li>Use the provided logo variations only for their specific purposes.</li>
-            <li>Do not use the logo for commercial purposes unless granted permission. Please see the Government Identity Policy <a href="https://open.alberta.ca/publications/government-identity-policy" target="_blank">here</a>.</li>
+            <li>Do not use the logo for commercial purposes unless granted permission. For more information, please review the <a href="https://open.alberta.ca/publications/government-identity-policy" target="_blank">Government Identity Policy</a>.</li>
           </ul>
         </div>
       </ComponentContent>
