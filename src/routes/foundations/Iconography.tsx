@@ -75,7 +75,7 @@ export default function IconographyPage() {
           <h2 id="style">Style</h2>
           <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they are integrated seamlessly into various interface sizes. They are divided into three categories: Core, Extended and Logo icon set.</p>
 
-          <h3>Core Icon Set</h3>
+          <h3>Core icon set</h3>
           <p>This is the main icon library in the design system, helping you maintain consistency with other teams.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="s" minChildWidth="250px">
@@ -168,7 +168,7 @@ export default function IconographyPage() {
           <GoASpacer vSpacing="l"></GoASpacer>
           <p>Explore core icons set and their properties <Link to="/components/icons#tab-0">here</Link>.</p>
 
-          <h3>Extended Icon Set</h3>
+          <h3>Extended icon set</h3>
           <p>We use the open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>, which provides a wide variety of high-quality icons. Use these icons when you need options beyond the core icon set.</p>
 
           <GoAContainer mt="xl" mb="m">
@@ -177,7 +177,7 @@ export default function IconographyPage() {
               </div>
           </GoAContainer>
 
-          <h3>Logo Icons</h3>
+          <h3>Logo icons</h3>
           <p>This icon set contains popular logos and are kept in accordance with their respective logo usage guidelines.</p>
 
           <GoAContainer mt="xl" mb="m">
@@ -186,7 +186,7 @@ export default function IconographyPage() {
               </div>
           </GoAContainer>
 
-          <h2 id="icon-size">Icon Size</h2>
+          <h2 id="icon-size">Icon size</h2>
           <GoASpacer vSpacing="m"></GoASpacer>
           {isDesktop ? renderDesktop() : renderMobile()}
           <GoASpacer vSpacing="l"></GoASpacer>
@@ -194,7 +194,7 @@ export default function IconographyPage() {
           
           <p>When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>.</p>
 
-          <h2 id="best-practices">Best Practices</h2>
+          <h2 id="best-practices">Best practices</h2>
           <ul>
             <li>Whenever possible, combine icons with text for clear communication</li>
             <li>When placing icons next to text elements, ensure they are vertically aligned to create visual balance</li>
@@ -202,7 +202,7 @@ export default function IconographyPage() {
             <li>Apply color to an icon using our <Link to="/design-tokens/color">design tokens</Link>. Ensure color combinations meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html" target="_blank">WCAG standards</a> of at least a 3:1 contrast ratio between foreground and background. </li>
           </ul>
 
-          <h2 id="creating-icons">Creating Icons</h2>
+          <h2 id="creating-icons">Creating icons</h2>
           <p>Before creating an icon, check if it already exists in the icon library. If not, you can follow these steps:</p>
           <ul>
             <li>Consult the do's and don'ts section in best practices.</li>
