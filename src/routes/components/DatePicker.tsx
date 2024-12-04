@@ -12,7 +12,7 @@ import {
   GoabTabs,
   GoabDatePickerProps,
   GoabDatePicker,
-  GoabFormItem, GoabButtonGroup, GoabButton
+  GoabFormItem, GoabButtonGroup, GoabButton,
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -208,14 +208,15 @@ export default function DatePickerPage() {
 
         <GoabTabs>
           <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>Component</h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"]: ["reactive", "template-driven"]}>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
 
+              {/*Angular*/}
               {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -279,30 +280,60 @@ export default function DatePickerPage() {
               `}
               />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "template-driven"]}
+                allowCopy={true}
+                code={`
+                  export class MyComponent {
+                   item = new Date();
+                   dateOnChange(event: GoabDatePickerOnChangeDetail) {
+                      // handle change
+                      console.log(event.value);
+                      this.item = event.value;
+                   }
+                  }
+                }
+              `}
+              />}
+
+              {/*React*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
                 function onChange(name: string, value: Date) {
-                  setValue(value);
+                  console.log(name, value);
                 }
               `}
-              />
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                function onChange(event: GoabDatePickerOnChangeDetail) {
+                  console.log(event.value);
+                }
+              `}
+              />}
+
               <GoabFormItem {...formItemProps}>
                 <GoabDatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
               </GoabFormItem>
             </Sandbox>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-          </GoabTab>
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples
             </h2>
 
             <h3 id="component-example-1">Reset example</h3>
-            <Sandbox fullWidth skipRender onChange={onSandboxChange} flags={["reactive"]}>
-              <CodeSnippet
+            <Sandbox fullWidth skipRender onChange={onSandboxChange} flags={version === "old" ? ["reactive"]: undefined}>
+              {/*React*/}
+              {version === "old" && <CodeSnippet
                 tags="react"
                 lang="typescript"
                 allowCopy={true}
@@ -344,9 +375,56 @@ export default function DatePickerPage() {
                     );
                   }
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                tags="react"
+                lang="typescript"
+                allowCopy={true}
+                code={`
+                  export function Datepicker() {
+                    const [date, setDate] = useState<Date | undefined>();
+
+                    const setNewDate = (value: Date | undefined) => {
+                      setDate(value);
+                    };
+
+                    function setValue() {
+                      const d = new Date();
+                      d.setDate(d.getDate() - 7);
+
+                      setDate(d);
+                    }
+
+                    function clearValue() {
+                      setDate(undefined);
+                    }
+
+                    return (
+                      <>
+                        <GoabFormItem label="Date Picker">
+                          <GoabDatePicker
+                            name="item"
+                            value={date}
+                            onChange={(e: GoabDatePickerOnChangeDetail) => setNewDate(e.value as Date)}
+                            mb="xl"></GoabDatePicker>
+                        </GoabFormItem>
+
+                        <GoabButtonGroup mt={"xs"} alignment={"start"}>
+                          <GoabButton onClick={setValue} mr="l">
+                            Set Value
+                          </GoabButton>
+                          <GoabButton onClick={clearValue}>Clear Value</GoabButton>
+                        </GoabButtonGroup>
+                      </>
+                    );
+                  }
+              `}
+              />}
+
+              {/*Angular*/}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -368,8 +446,9 @@ export default function DatePickerPage() {
                     }
                   }
                 `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="html"
                 tags="angular"
                 allowCopy={true}
@@ -383,9 +462,9 @@ export default function DatePickerPage() {
                     <goa-button (_click)="clearValue()">Clear Value</goa-button>
                   </goa-button-group>
                 `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 tags={["angular", "reactive"]}
                 lang="typescript"
                 allowCopy={true}
@@ -406,8 +485,8 @@ export default function DatePickerPage() {
                     }
                   }
               `}
-              />
-              <CodeSnippet
+              />}
+              {version === "old" && <CodeSnippet
                 tags={["angular", "reactive"]}
                 lang="typescript"
                 allowCopy={true}
@@ -421,7 +500,45 @@ export default function DatePickerPage() {
                     <goa-button (_click)="clearValue()">Clear Value</goa-button>
                   </goa-button-group>
               `}
-              />
+              />}
+
+              {/*New version*/}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class DatePickerComponent {
+                    item: Date|undefined = new Date();
+                    onChange(event: GoabDatePickerOnChangeDetail) {
+                      console.log(event.value);
+                      this.item = event.value as Date;
+                    }
+                    setValue() {
+                      this.item = new Date();
+                    }
+                    clearValue() {
+                      this.item = undefined;
+                    }
+                  }
+                `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-form-item label="Item">
+                    <goab-date-picker (onChange)="onChange($event)" name="item" [value]="item"></goab-date-picker>
+                  </goab-form-item>
+
+                  <goab-button-group alignment="start" mt="xs">
+                    <goab-button (onClick)="setValue()" mr="l">Set Value</goab-button>
+                    <goab-button (onClick)="clearValue()">Clear Value</goab-button>
+                  </goab-button-group>
+                `}
+              />}
 
               <GoabFormItem label="Date Picker">
                 <GoabDatePicker
@@ -438,6 +555,9 @@ export default function DatePickerPage() {
                 <GoabButton onClick={clearValue}>Clear Value</GoabButton>
               </GoabButtonGroup>
             </Sandbox>
+
+          </GoabTab>
+
 
           <GoabTab
             heading={

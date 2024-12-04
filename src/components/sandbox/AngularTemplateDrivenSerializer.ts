@@ -14,8 +14,9 @@ export class AngularTemplateDrivenSerializer extends AngularSerializer {
     if (TemplateDrivenComponents.includes(elementType)) {
       const additionalProps = `[(ngModel)]="${propName}"`;
       props = props ? `${props} ${additionalProps}` : additionalProps;
-      if (props.includes(`value=""`)) {
-        props = props.replace(`value=""`, "");
+      console.log("templateDriven", props);
+      if (props.match(/value="[^"]*"/)) {
+        props = props.replace(/value="[^"]*"/, "");
       }
       return props;
     }
