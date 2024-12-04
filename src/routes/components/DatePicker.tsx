@@ -186,7 +186,7 @@ export default function DatePickerPage() {
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
-                  reactiveFormCtrl = new FormControl(new Date());
+                  itemFormCtrl = new FormControl(new Date());
                 }  
               `}
               />
