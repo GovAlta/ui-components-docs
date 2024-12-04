@@ -1,4 +1,4 @@
-import { GoABadge, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoATab, GoATabs, GoATable, GoAButton } from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -104,6 +104,601 @@ export default function TabsPage() {
             {/*GoATabs Table Properties*/}
             <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
             <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
+
+            {/*Tabs Examples*/}
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-different-views-data-table">Show different views of data in a table</h3>
+            <Sandbox fullWidth>
+              <GoATabs onChange={noop}>
+                <GoATab heading="All">
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+                <GoATab heading={<>Review pending<GoABadge type="important" content="4"></GoABadge></>}>
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+                <GoATab heading={<>Complete<GoABadge type="information" content="338"></GoABadge></>}>
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+              </GoATabs>
+            </Sandbox>
+          
+            <h3 id="component-example-set-specific-tab-active">Set a specific tab to be active</h3>
+            <Sandbox fullWidth>
+              <GoATabs initialTab={2} onChange={noop}>
+                <GoATab heading="All">
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+                <GoATab heading={<>Review pending<GoABadge type="important" content="4"></GoABadge></>}>
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="important" content="Review pending"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+                <GoATab heading={<>Complete<GoABadge type="information" content="338"></GoABadge></>}>
+                  <GoATable width="100%">
+                    <thead>
+                      <tr>
+                        <th>
+                          Status
+                        </th>
+                        <th>
+                          Text
+                        </th>
+                        <th>
+                          Number
+                        </th>
+                        <th>
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <GoABadge type="information" content="Complete"></GoABadge>
+                        </td>
+                        <td>
+                          Lorem ipsum
+                        </td>
+                        <td>
+                          1234567890
+                        </td>
+                        <td>
+                          <GoAButton type="tertiary">
+                            Action
+                          </GoAButton>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </GoATable>
+                </GoATab>
+              </GoATabs>
+            </Sandbox>
           </GoATab>
 
           <GoATab
