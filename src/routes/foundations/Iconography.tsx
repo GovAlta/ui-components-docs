@@ -166,7 +166,7 @@ export default function IconographyPage() {
           </GoAGrid>
 
           <GoASpacer vSpacing="l"></GoASpacer>
-          <p>Explore core icons set and their properties <Link to="/components/icons#tab-0">here</Link>.</p>
+          <p>Explore core icons set and their properties <Link to="/components/icons">here</Link>.</p>
 
           <h3>Extended icon set</h3>
           <p>We use the open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>, which provides a wide variety of high-quality icons. Use these icons when you need options beyond the core icon set.</p>
