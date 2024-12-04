@@ -38,7 +38,7 @@ export default function DetailsPage() {
     },    
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -66,6 +66,36 @@ export default function DetailsPage() {
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      description: "The title heading",
+    },
+    {
+      name: "open",
+      type: "boolean",
+      description: "Controls if details is expanded or not",
+      defaultValue: "false",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the details.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "A unique identifier for the component.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
@@ -108,7 +138,7 @@ export default function DetailsPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
 
             {/* Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
