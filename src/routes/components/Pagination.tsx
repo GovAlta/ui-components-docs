@@ -16,7 +16,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { faker } from "@faker-js/faker";
+import { randUuid, randFirstName, randLastName, randNumber } from "@ngneat/falso";
 import { useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -173,10 +173,10 @@ export default function PaginationPage() {
     const _users = [];
     for (let i = 1; i < totalUsers + 1; i++) {
       _users.push({
-        id: faker.string.uuid(),
-        firstName: faker.person.firstName(),
-        lastName: faker.person.lastName(),
-        age: faker.number.int({ min: 18, max: 60 }),
+        id: randUuid(),
+        firstName: randFirstName(),
+        lastName: randLastName(),
+        age: randNumber({ min: 18, max: 60 }),
       });
     }
     setUsers(_users);
@@ -215,10 +215,10 @@ export default function PaginationPage() {
     const _users = [];
     for (let i = 1; i < totalUsersCustomExample + 1; i++) {
       _users.push({
-        id: faker.string.uuid(),
-        firstName: faker.person.firstName(),
-        lastName: faker.person.lastName(),
-        age: faker.number.int({ min: 18, max: 60 }),
+        id: randUuid(),
+        firstName: randFirstName(),
+        lastName: randLastName(),
+        age: randNumber({ min: 18, max: 60 }),
       });
     }
     setUsersCustomExample(_users);
@@ -295,7 +295,7 @@ export default function PaginationPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                import { faker } from "@faker-js/faker";
+                import { randUuid, randFirstName, randLastName, randNumber } from "@ngneat/falso";;
                 interface User {
                   id: string;
                   firstName: string;
@@ -315,10 +315,10 @@ export default function PaginationPage() {
                   const _users = []
                   for (let i = 0; i < 100; i++) {
                     _users.push({
-                      id: faker.datatype.uuid(),
-                      firstName: faker.name.firstName(),
-                      lastName: faker.name.lastName(),
-                      age: faker.datatype.number({min: 18, max: 60}),
+                      id: randUuid(),
+                      firstName: randFirstname(),
+                      lastName: randLastname(),
+                      age: randNumber({ min: 18, max: 60 }),
                     });
                   }
 
@@ -374,7 +374,7 @@ export default function PaginationPage() {
                 tags="angular"
                 allowCopy={true}
                 code={`
-                import { faker } from "@faker-js/faker";
+                import { randUuid, randFirstName, randLastName, randNumber } from "@ngneat/falso";
                 interface User {
                   id: string;
                   firstName: string;
@@ -399,10 +399,10 @@ export default function PaginationPage() {
                   constructor() {
                     for (let i = 0; i < 100; i++) {
                       this.users.push({
-                        id: faker.datatype.uuid(),
-                        firstName: faker.name.firstName(),
-                        lastName: faker.name.lastName(),
-                        age: faker.datatype.number({min: 18, max: 60}),
+                        id: randUuid(),
+                        firstName: randFirstname(),
+                        lastName: randLastname(),
+                        age: randNumber({ min: 18, max: 60 }),
                       });
                     }
                     this.pageUsers = this.users.slice(0, this.perPage)
@@ -484,7 +484,7 @@ export default function PaginationPage() {
                   GoASpacer,
                 } from "@abgov/react-components";
                 import { useEffect, useState } from "react";
-                import { faker } from "@faker-js/faker";
+                import { randUuid, randFirstName, randLastName, randNumber } from "@ngneat/falso";
 
                 interface User {
                   id: string;
@@ -503,10 +503,10 @@ export default function PaginationPage() {
                     const _users = [];
                     for (let i = 1; i <= 100; i++) {
                       _users.push({
-                        id: faker.datatype.uuid(),
-                        firstName: faker.name.firstName(),
-                        lastName: faker.name.lastName(),
-                        age: faker.datatype.number({ min: 18, max: 60 }),
+                        id: randUuid(),
+                        firstName: randFirstname(),
+                        lastName: randLastname(),
+                        age: randNumber({ min: 18, max: 60 }),
                       });
                     }
                     setUsers(_users);
@@ -586,7 +586,7 @@ export default function PaginationPage() {
                 allowCopy={true}
                 code={`
                 import { Component } from "@angular/core";
-                import { faker } from "@faker-js/faker";
+                import { randUuid, randFirstName, randLastName, randNumber } from "@ngneat/falso";
 
                 interface User {
                   id: string;
@@ -637,10 +637,10 @@ export default function PaginationPage() {
                   prepareUsers() {
                     for (let i = 0; i < this.total; i++) {
                       this.users.push({
-                        id: faker.datatype.uuid(),
-                        firstName: faker.name.firstName(),
-                        lastName: faker.name.lastName(),
-                        age: faker.datatype.number({ min: 18, max: 60 }),
+                        id: randUuid(),
+                        firstName: randFirstname(),
+                        lastName: randLastname(),
+                        age: randNumber({ min: 18, max: 60 }),
                       });
                     }
 
