@@ -8,12 +8,12 @@ import {
   GoabDropdownItem,
   GoabRadioItem
 } from "@abgov/react-components";
-import { LanguageContext } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabDropdownItemMountType, GoabDropdownOnChangeDetail,
   GoabInputOnChangeDetail, GoabRadioGroupOnChangeDetail
 } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 type Task = {
   value: string;
@@ -22,7 +22,7 @@ type Task = {
 };
 
 export const DropdownExamples = () => {
-  const language = useContext(LanguageContext);
+  const {version, language} = useContext(LanguageVersionContext);
   const [tasks, setTasks] = useState<Task[]>([
     { label: "Finish Report", value: "finish-report", mount: "append" },
     { label: "Attend Meeting", value: "attend-meeting", mount: "append" },
@@ -151,9 +151,10 @@ export const DropdownExamples = () => {
             </GoabFormItem>
           </div>
         </GoabContainer>
+
         {language === "angular" && (
           <>
-            <CodeSnippet
+            {version === "old" && <CodeSnippet
               lang="typescript"
               tags="angular"
               allowCopy={true}
@@ -219,8 +220,76 @@ export const DropdownExamples = () => {
                       return item.value;
                     }
                   }`}
-            />
-            <CodeSnippet
+            />}
+
+            {version === "new" && <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                  interface Task {
+                    value: string;
+                    label: string;
+                    mount: GoabDropdownItemMountType;
+                  }    
+                         
+                  export class SomeComponent {
+                    tasks: Task[] = [
+                      { label: "Finish Report", value: "finish-report", mount: "append" },
+                      { label: "Attend Meeting", value: "attend-meeting", mount: "append" },
+                      { label: "Reply Emails", value: "reply-emails", mount: "append" },
+                    ];
+                    newTask = "";
+                    mountType: GoabDropdownItemMountType = "append";
+                    selectedTask = "";
+                    taskError = false;
+                    renderTrigger = true;
+                    constructor() {}
+                    onMountTypeChange(event: GoabDropdownOnChangeDetail): void {
+                      this.mountType = event.value as GoabDropdownItemMountType;
+                    }
+                    onNewTaskChange(event: GoabInputOnChangeDetail): void {
+                      this.newTask = event.value;
+                      this.taskError = false;
+                    }
+                    onSelectedTaskChange(event: GoabDropdownOnChangeDetail): void {
+                      this.selectedTask = event.value as string;
+                    }
+                    addTask(): void {
+                      if (this.newTask === "") {
+                        this.taskError = true;
+                        return;
+                      }
+                      this.taskError = false;
+                      const task: Task = {
+                        label: this.newTask,
+                        value: this.newTask.toLowerCase().replace(" ", "-"),
+                        mount: this.mountType,
+                      };
+                      this.tasks =
+                        this.mountType === "prepend" ? [task, ...this.tasks] : [...this.tasks, task];
+                      this.newTask = "";
+                    }
+                    reset(): void {
+                      this.newTask = "";
+                      this.selectedTask = "";
+                      this.taskError = false;
+                      this.tasks = [];
+                      this.forceRerender();
+                    }
+                    forceRerender(): void {
+                      this.renderTrigger = false;
+                      setTimeout(() => {
+                        this.renderTrigger = true;
+                      }, 0);
+                    }
+                    trackByFn(index: number, item: Task): string {
+                      return item.value;
+                    }
+                  }`}
+            />}
+
+            {version === "old" && <CodeSnippet
               lang="html"
               tags="angular"
               allowCopy={true}
@@ -277,12 +346,70 @@ export const DropdownExamples = () => {
                 </div>
               </goa-container>
             `}
-            />
+            />}
+
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
+              <goab-container mt="m" mb="none">
+                <div style="padding: 40px;">
+                  <goab-form-item
+                    requirement="required"
+                    mt="m"
+                    label="Name of item"
+                    [error]="taskError ? 'Please enter item name' : undefined"
+                    helpText="Add an item to the dropdown list below">
+                      <goab-input
+                        name="item"
+                        placeholder=""
+                        [value]="newTask"
+                        (onChange)="onNewTaskChange($event)">
+                      </goab-input>
+                  </goab-form-item>
+                  <goab-form-item mt="m" label="Add to">
+                    <goab-radio-group
+                      name="mountType"
+                      [value]="mountType"
+                      orientation="horizontal"
+                      (onChange)="onMountTypeChange($event)">
+                      <goab-radio-item value="prepend" label="Start"></goab-radio-item>
+                      <goab-radio-item value="append" label="End"></goab-radio-item>
+                    </goab-radio-group>
+                  </goab-form-item>
+                <goab-button-group alignment="start" gap="relaxed">
+                  <goab-button mt="m" type="primary" (onClick)="addTask()">
+                    Add new item
+                  </goab-button>
+                  <goab-button mt="m" type="tertiary" (onClick)="reset()">
+                    Reset list
+                  </goab-button>
+                </goab-button-group>
+            <goab-divider mt="m"></goab-divider>
+              <goab-form-item mt="m" label="All items">
+                <ng-container *ngIf="renderTrigger">
+                  <goab-dropdown
+                    [value]="selectedTask"
+                    name="selectedTask"
+                    (onChange)="onSelectedTaskChange($event)">
+                    <goab-dropdown-item
+                      *ngFor="let task of tasks; trackBy: trackByFn"
+                      [value]="task.value"
+                      [mountType]="task.mount"
+                      [label]="task.label">
+                    </goab-dropdown-item>
+                  </goab-dropdown>
+                </ng-container>
+              </goab-form-item>
+          </div>
+        </goab-container>`}
+            />}
           </>
         )}
         {language === "react" && (
           <>
-            <CodeSnippet
+            {version === "old" && <CodeSnippet
               lang="typescript"
               tags="react"
               allowCopy={true}
@@ -327,9 +454,55 @@ export const DropdownExamples = () => {
                 setTaskError(false);
               }                
             `}
-            />
+            />}
+            {version === "new" && <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
+              type Task = {
+                value: string;
+                label: string;
+                mount: GoabDropdownItemMountType;
+              };
+              const [tasks, setTasks] = useState<Task[]>([
+                  { label: "Finish Report", value: "finish-report", mount: "append" },
+                  { label: "Attend Meeting", value: "attend-meeting", mount: "append" },
+                  { label: "Reply Emails", value: "reply-emails", mount: "append" }
+              ]);
+              const [newTask, setNewTask] = useState<string>("");
+              const [mountType, setNewMountType] = useState<string>("append");
+              const [selectedTask, setSelectedTask] = useState<string>("");
+              const [taskError, setTaskError] = useState<boolean>(false);
+                
+              function onMountTypeChange(value: string | undefined) {
+                setNewMountType(value as string);
+              }
+              function addTask() {
+                if (newTask === "") {
+                  setTaskError(true);
+                  return;
+                }
+                setTaskError(false);
+                const task = {
+                  label: newTask,
+                  value: newTask.toLowerCase().replace(" ", "-"),
+                  mount: mountType as GoabDropdownItemMountType
+                };
+                setTasks([...tasks, task]);
+              }
+              
+              function reset() {
+                setTasks([]);
+                setNewMountType("append");
+                setNewTask("");
+                setSelectedTask("");
+                setTaskError(false);
+              }                
+            `}
+            />}
 
-            <CodeSnippet
+            {version === "old" && <CodeSnippet
               lang="html"
               tags="react"
               allowCopy={true}
@@ -385,7 +558,64 @@ export const DropdownExamples = () => {
                 </div>
               </GoAContainer>
             `}
-            />
+            />}
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
+              <GoabContainer mt="m" mb="none">
+                <div style={{ padding: "40px" }}>
+                  <GoabFormItem
+                    requirement="required"
+                    mt="m"
+                    label="Name of item"
+                    error={taskError ? "Please enter item name" : undefined}
+                    helpText="Add an item to the dropdown list below">
+                    <GoabInput
+                      onChange={(event: GoabInputOnChangeDetail) => setNewTask(event.value)}
+                      name="item"
+                      placeholder=""
+                      value={newTask}></GoabInput>
+                  </GoabFormItem>
+                  <GoabFormItem mt="m" label="Add to">
+                    <GoabRadioGroup
+                      name="mountType"
+                      onChange={(event: GoabRadioGroupOnChangeDetail) => onMountTypeChange(event.value)}
+                      value={mountType}
+                      orientation="horizontal">
+                      <GoabRadioItem value="prepend" label="Start" />
+                      <GoabRadioItem value="append" label="End" />
+                    </GoabRadioGroup>
+                  </GoabFormItem>
+                  <GoabButtonGroup alignment={"start"} gap="relaxed">
+                    <GoabButton mt="m" type="primary" onClick={addTask}>
+                      Add new item
+                    </GoabButton>
+                    <GoabButton mt="m" type="tertiary" onClick={reset}>
+                      Reset list
+                    </GoabButton>
+                  </GoabButtonGroup>
+                  <GoabDivider mt="m"></GoabDivider>
+                  <GoabFormItem mt="m" label="All items">
+                    <GoabDropdown
+                      key={tasks.length}
+                      onChange={(event: GoabDropdownOnChangeDetail) => setSelectedTask(event.value as string)}
+                      value={selectedTask}
+                      name="selectedTask">
+                      {tasks.map(task => (
+                        <GoabDropdownItem
+                          key={task.value}
+                          value={task.value}
+                          mountType={task.mount}
+                          label={task.label}></GoabDropdownItem>
+                      ))}
+                    </GoabDropdown>
+                  </GoabFormItem>
+                </div>
+              </GoabContainer>
+            `}
+            />}
           </>
         )}
 
@@ -451,7 +681,7 @@ export const DropdownExamples = () => {
             `}
             />
 
-            <CodeSnippet
+            {version === "old" && <CodeSnippet
               lang="html"
               tags="react"
               allowCopy={true}
@@ -478,7 +708,7 @@ export const DropdownExamples = () => {
                 </GoADropdown>
               </GoAFormItem>
             `}
-            />
+            />}
           </>
         )}
 

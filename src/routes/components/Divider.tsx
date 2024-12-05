@@ -29,7 +29,7 @@ export default function DividerPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -47,6 +47,19 @@ export default function DividerPage() {
       lang: "angular",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
+  ];
+
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    }
   ];
 
   function onSandboxChange(utilityBindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -74,7 +87,7 @@ export default function DividerPage() {
               <GoabDivider {...dividerProps} />
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab
