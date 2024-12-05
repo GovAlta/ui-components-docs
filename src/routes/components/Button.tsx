@@ -61,6 +61,7 @@ export default function ButtonPage() {
       options: [""].concat(ICONS),
       value: "",
     },
+    {label: "Width", type: "string", name: "width", value: ""},
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
   ]);
   const componentProperties: ComponentProperty[] = [
@@ -111,6 +112,11 @@ export default function ButtonPage() {
       type: "GoAIconType",
       lang: "angular",
       description: "Shows an icon to the right of the text.",
+    },
+    {
+      name: "width",
+      type: "string",
+      description: "Sets the width of the button.",
     },
     {
       name: "_click",
