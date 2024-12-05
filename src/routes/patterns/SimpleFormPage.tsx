@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 export default function SimpleFormPage() {
   return (
     <ComponentContent contentClassName="simple-form-page" tocCssQuery={":is(h2[id], h3[id])"}>
-      <h1>Simple form</h1>
+      <h1>Public form</h1>
       <h3>
         Design forms that help Albertan citizens understand the task, focus on the question and its
         answer, and complete the form.
       </h3>
-      <GoADetails mt="xl" heading={"Who are the primary users for the simple form pattern?"}>
+      <GoADetails mt="xl" heading={"Who are the primary users for the public form pattern?"}>
         <p>
           <strong>Primary users:</strong> citizens, public, external
           <br />
@@ -26,7 +26,7 @@ export default function SimpleFormPage() {
 
       <h2 id="toc-1">Form structure</h2>
       <p>
-        Use a simple form structure focused on content, and asking the right questions to your user
+        Use the public form structure focused on content, and asking the right questions to your user
         to keep the interaction as simple as possible.
       </p>
 
@@ -131,7 +131,7 @@ export default function SimpleFormPage() {
       <h2 id="toc-5">Pages</h2>
       <figure className={css.imageContainer}>
         <img
-          alt="simple form pages overview image"
+          alt="public form pages overview image"
           src="/images/patterns/form-pattern_overview.png"
         />
       </figure>
