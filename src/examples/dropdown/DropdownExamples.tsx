@@ -692,7 +692,7 @@ export const DropdownExamples = () => {
                   {parents.map((parent) => (
                     <GoADropdownItem key={parent} value={parent} label={parent} />
                   ))}
-                </GoADropdown>
+                </GoADropdown> 
               </GoAFormItem>
               <GoAFormItem label="Children" requirement="optional">
                 <GoADropdown name="children" placeholder="Select a value" onChange={log}>
@@ -709,8 +709,40 @@ export const DropdownExamples = () => {
               </GoAFormItem>
             `}
             />}
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
+              <GoabFormItem
+              label="Size"
+              requirement="optional"
+              helpText="Choose the type to change the list below">
+                <GoabDropdown name="parent" placeholder="Select a value"
+                            onChange={(event: GoabDropdownOnChangeDetail) => loadSchemas(event.name as string, event.value as string)}>
+                {parents.map(parent => (
+                    <GoabDropdownItem key={parent} value={parent} label={parent} />
+                ))}
+              </GoabDropdown>
+            </GoabFormItem>
+            <GoabFormItem label="Items" requirement="optional" mt="l">
+              <GoabDropdown name="children" placeholder="Select a value" onChange={log}>
+                {" "}
+                {children.map((child, _index) => (
+                  <GoabDropdownItem
+                    key={crypto.randomUUID()}
+                    value={child}
+                    label={child}
+                    mountType={"reset"}
+                  />
+                ))}
+              </GoabDropdown>
+            </GoabFormItem>
+            `}
+            />}
           </>
         )}
+
 
         {language === "angular" && (
           <>
@@ -750,7 +782,7 @@ export const DropdownExamples = () => {
               }
             `}
             />
-            <CodeSnippet
+            {version === "old" && <CodeSnippet
               lang="html"
               tags="angular"
               allowCopy={true}
@@ -778,7 +810,37 @@ export const DropdownExamples = () => {
                 </goa-form-item>
               </div>
             `}
-            />
+            />}
+
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
+              <div [formGroup]="changeForm">
+                <goab-form-item label="Size" requirement="optional" helpText="Choose the type to change the list below">
+                  <goab-dropdown formControlName="parentDropdown"
+                      placeholder="Select a value" name="parent">
+                    <goab-dropdown-item *ngFor="let parent of parents"
+                         [value]="parent" [label]="parent" />
+                  </goab-dropdown>
+                </goab-form-item>
+                <goab-form-item label="Items" requirement="optional">
+                  <goab-dropdown formControlName="childDropdown"
+                    placeholder="Select a value" name="children">
+                      <ng-container *ngIf="children.length > 0">
+                        <goab-dropdown-item
+                          *ngFor="let child of children; trackBy: generateUniqueKey"
+                          [value]="child"
+                          [label]="child"
+                          [mountType]="'reset'"
+                        />
+                      </ng-container>
+                  </goab-dropdown>
+                </goab-form-item>
+              </div>
+            `}
+            />}
           </>
         )}
       </GoabContainer>
