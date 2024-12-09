@@ -160,7 +160,7 @@ export default function AppFooterPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-footer-meta">Footer with meta info</h3>
+            <h3 id="component-example-footer-meta">Show quick links</h3>
             <Sandbox skipRender fullWidth>
               <CodeSnippet
                 lang="typescript"
@@ -221,7 +221,7 @@ export default function AppFooterPage() {
             </Sandbox>
 
             <h3 id="component-example-footer-secondary-nav">
-              Secondary navigation column section and meta section
+              Show links to navigation items
             </h3>
             <Sandbox
               skipRender
