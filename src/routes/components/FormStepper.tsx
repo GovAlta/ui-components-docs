@@ -2,17 +2,15 @@ import {
   GoabBadge,
   GoabButton,
   GoabFormStepper,
-  GoabFormStepperProps,
   GoabPages,
   GoabSkeleton,
   GoabSpacer,
   GoabTab,
   GoabTabs,
   GoabContainer,
-  GoabFormStep,
+  GoabFormStep, GoabFormStepperProps
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
-import { LanguageContext, Sandbox } from "@components/sandbox";
 import { useContext, useState } from "react";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
@@ -21,6 +19,8 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabFormStepStatus } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { Sandbox } from "@components/sandbox";
 
 const componentName = "Form Stepper";
 const description = "Provides a visual representation of a form through a series of steps.";
@@ -30,10 +30,10 @@ type ComponentPropsType = GoabFormStepperProps;
 
 
 export default function FormStepperPage() {
-  const language = useContext(LanguageContext);
+  const {version} = useContext(LanguageVersionContext);
   const [formStepProps] = useState<ComponentPropsType>();
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "step",
       type: "number",
@@ -70,8 +70,32 @@ export default function FormStepperPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "step",
+      type: "number",
+      description:
+        "The current step state value. Leaving it blank will allow any step to be accessed.",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabFormStepperOnChangeDetail) => void",
+      description: "Event fired on page change.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
-  const formStepProperties: ComponentProperty[] = [
+
+  const oldFormStepProperties: ComponentProperty[] = [
     {
       name: "text",
       type: "string",
@@ -81,6 +105,19 @@ export default function FormStepperPage() {
     {
       name: "status",
       type: "complete | incomplete",
+      description: "The status of the step.",
+    },
+  ];
+  const formStepProperties: ComponentProperty[] = [
+    {
+      name: "text",
+      type: "string",
+      required: true,
+      description: "Text naming or briefly describing the step.",
+    },
+    {
+      name: "status",
+      type: "GoabFormStepStatus (complete | incomplete)",
       description: "The status of the step.",
     },
   ];
@@ -131,9 +168,9 @@ export default function FormStepperPage() {
                 </GoabPages>
               </div>
             </GoabContainer>
-            {language === "angular" && (
-              <>
-                <CodeSnippet
+
+            {/*Angular code*/}
+            {version === "old" && <CodeSnippet
                   lang="typescript"
                   tags="angular"
                   allowCopy={true}
@@ -145,8 +182,23 @@ export default function FormStepperPage() {
                       this.step = (event as CustomEvent).detail.step;
                     }
                   }`}
-                />
-                <CodeSnippet
+            />}
+            {version === "new" && <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                    export class SomeComponent {
+                    step = -1;
+
+                    onChange(event: GoabFormStepperOnChangeDetail) {
+                      console.log("onChange event ", event);
+                      this.step = event.step;
+                    }
+                  }`}
+            />}
+
+            {version === "old" && <CodeSnippet
                   lang="html"
                   tags="angular"
                   allowCopy={true}
@@ -164,24 +216,42 @@ export default function FormStepperPage() {
                       <div>Page 4 content</div>
                     </goa-pages>
                   `}
-                />
-              </>
-            )}
-            {language === "react" && (
-              <>
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
+            />}
+
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                    <goab-form-stepper testId="foo" [step]="step" (onChange)="onChange($event)">
+                      <goab-form-step text="Personal details"></goab-form-step>
+                      <goab-form-step text="Employment history"></goab-form-step>
+                      <goab-form-step text="References"></goab-form-step>
+                      <goab-form-step text="Review"></goab-form-step>
+                    </goab-form-stepper>
+                    <goab-pages [current]="step" mb="3xl">
+                      <div>Page 1 content</div>
+                      <div>Page 2 content</div>
+                      <div>Page 3 content</div>
+                      <div>Page 4 content</div>
+                    </goab-pages>
+              `}
+            />}
+
+            {/*React code*/}
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
                     const [step, setStep] = useState<number>(-1);
                   `}
-                />
-                <CodeSnippet
-                  lang="html"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
+            />
+            {version === "old" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
                     <GoAFormStepper testId="foo" onChange={setStep}>
                       <GoAFormStep text="Personal details"></GoAFormStep>
                       <GoAFormStep text="Employment history"></GoAFormStep>
@@ -195,12 +265,30 @@ export default function FormStepperPage() {
                       <div>Page 4 content</div>
                     </GoAPages>
                   `}
-                />
-              </>
-            )}
+            />}
+
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
+                    <GoabFormStepper testId="foo" onChange={(event) => setStep(+event.step)}>
+                      <GoabFormStep text="Personal details"></GoabFormStep>
+                      <GoabFormStep text="Employment history"></GoabFormStep>
+                      <GoabFormStep text="References"></GoabFormStep>
+                      <GoabFormStep text="Review"></GoabFormStep>
+                    </GoabFormStepper>
+                    <GoabPages current={step} mb="3xl">
+                      <div>Page 1 content</div>
+                      <div>Page 2 content</div>
+                      <div>Page 3 content</div>
+                      <div>Page 4 content</div>
+                    </GoabPages>
+                  `}
+            />}
             {/*Component properties table*/}
-            <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
-            <ComponentProperties heading="Step Properties" properties={formStepProperties} />
+            <ComponentProperties heading="Stepper Properties" properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties heading="Step Properties" properties={formStepProperties} oldProperties={oldFormStepProperties} />
 
             {/* Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -222,7 +310,8 @@ export default function FormStepperPage() {
               To use the controlled type you must set a step value ≥ 1
             </p>
             <Sandbox fullWidth skipRender allow={["div"]}>
-              <CodeSnippet
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -238,9 +327,27 @@ export default function FormStepperPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+              {version === "new" && <CodeSnippet
                 lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                export class SomeComponent {
+                  step = 1;  // set to first step
+                  updateStep(event: GoabFormStepperOnChangeDetail) {
+                    this.step = event.step;
+                  }
+                  setPage(page: number) {
+                    if (page < 1 || page > 4) return;
+                    this.step = page
+                  }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
+                lang="html"
                 tags="angular"
                 allowCopy={true}
                 code={`
@@ -261,8 +368,32 @@ export default function FormStepperPage() {
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
                 </div>
               `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-form-stepper ml="s" mr="s" [step]="step" (onChange)="updateStep($event)">
+                  <goab-form-step text="Personal details"></goab-form-step>
+                  <goab-form-step text="Employment history"></goab-form-step>
+                  <goab-form-step text="References"></goab-form-step>
+                  <goab-form-step text="Review"></goab-form-step>
+                </goab-form-stepper>
+                <goab-pages [current]="step">
+                  <div><!-- Page 1 content --></div>
+                  <div><!-- Page 2 content --></div>
+                  <div><!-- Page 3 content --></div>
+                  <div><!-- Page 4 content --></div>
+                </goab-pages>
+                <div style="display: flex; justify-content: space-between">
+                  <goab-button (onClick)="setPage(step-1)" type="secondary">Previous</goab-button>
+                  <goab-button (onClick)="setPage(step+1)" type="primary">Next</goab-button>
+                </div>
+              `}
+              />}
 
+              {/*React code*/}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -272,8 +403,14 @@ export default function FormStepperPage() {
                 function setPage(page) {
                   if (page < 1 || page > 4) return;
                   setStep(page);
-                }
-                return (
+                } 
+              `}
+              />
+              {version === "old" && <CodeSnippet
+                lang="html"
+                tags="react"
+                allowCopy={true}
+                code={`
                   <>
                     <GoAFormStepper step={step} onChange={(step) => setStep(step)}>
                       <GoAFormStep text="Personal details" />
@@ -292,9 +429,33 @@ export default function FormStepperPage() {
                       <GoAButton type="primary" onClick={() => setPage(step + 1)}>Next</GoAButton>
                     </div>
                   </>
-                ) 
               `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <>
+                    <GoabFormStepper step={step} onChange={(event) => setStep(event.step)}>
+                      <GoabFormStep text="Personal details" />
+                      <GoabFormStep text="Employment history" />
+                      <GoabFormStep text="References" />
+                      <GoabFormStep text="Review" />
+                    </GoabFormStepper>
+                    <GoabPages current={step} mb="3xl" mt="xl" mr="xl" ml="xl">
+                      <div><!-- Page 1 content --></div>
+                      <div><!-- Page 2 content --></div>
+                      <div><!-- Page 3 content --></div>
+                      <div><!-- Page 4 content --></div>
+                    </GoabPages>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <GoabButton type="secondary" onClick={() => setPage(step - 1)}>Previous</GoAButton>
+                      <GoabButton type="primary" onClick={() => setPage(step + 1)}>Next</GoAButton>
+                    </div>
+                  </>
+              `}
+              />}
 
               <GoabFormStepper step={controlledStep} onChange={(event) => setControlledStep(event.step)}>
                 <GoabFormStep text="Personal details" />
@@ -341,7 +502,8 @@ export default function FormStepperPage() {
             status property.
 
             <Sandbox fullWidth skipRender allow={["div"]}>
-              <CodeSnippet
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -359,9 +521,28 @@ export default function FormStepperPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+              {version === "new" && <CodeSnippet
                 lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                export class SomeComponent {
+                  step = -1;
+                  // controlled by the user based on form completion
+                  status: GoabFormStepStatus[] = ["complete", "complete", "incomplete", "incomplete"]
+                  updateStep(event: GoabFormStepperOnChangeDetail) {
+                    this.step = event.step;
+                  }
+                  setPage(page: number) {
+                    if (page < 1 || page > 4) return;
+                    this.step = page
+                  }
+                }
+              `}
+              />}
+              {version === "old" && <CodeSnippet
+                lang="html"
                 tags="angular"
                 allowCopy={true}
                 code={`
@@ -382,9 +563,32 @@ export default function FormStepperPage() {
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
                 </div>
               `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-form-stepper ml="s" mr="s" [step]="step" (onChange)="updateStep($event)">
+                  <goab-form-step text="Personal details" [status]="status[0]"></goab-form-step>
+                  <goab-form-step text="Employment history" [status]="status[1]"></goab-form-step>
+                  <goab-form-step text="References" [status]="status[2]"></goab-form-step>
+                  <goab-form-step text="Review" [status]="status[3]"></goab-form-step>
+                </goab-form-stepper>
+                <goab-pages [current]="step">
+                  <div><!-- Page 1 content --></div>
+                  <div><!-- Page 2 content --></div>
+                  <div><!-- Page 3 content --></div>
+                  <div><!-- Page 4 content --></div>
+                </goab-pages>
+              <div style="display: flex; justify-content: space-between">
+                <goab-button (onClick)="setPage(step-1)" type="secondary">Previous</goab-button>
+                <goab-button (onClick)="setPage(step+1)" type="primary">Next</goab-button>
+              </div>
+            `}
+              />}
 
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -422,7 +626,46 @@ export default function FormStepperPage() {
                   </>
                 )
               `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const [step, setStep] = useState<number>(-1);
+                // controlled by the user based on form completion
+                const [status, setStatus] = useState<GoabFormStepStatus[]>([
+                        "complete",
+                        "complete",
+                        "incomplete",
+                        "incomplete"
+                    ])
+                function setPage(page) {
+                  if (page < 1 || page > 4) return;
+                  setStep(page);
+                }
+                return (
+                  <>
+                    <GoabFormStepper step={step} onChange={(event) => setStep(event.step)}>
+                      <GoabFormStep text="Personal details" status={status[0]} />
+                      <GoabFormStep text="Employment history" status={status[1]} />
+                      <GoabFormStep text="References" status={status[2]} />
+                      <GoabFormStep text="Review" status={status[3]} />
+                    </GoabFormStepper>
+                    <GoabPages current={step} mb="3xl" mt="xl" mr="xl" ml="xl">
+                      <div><!-- Page 1 content --></div>
+                      <div><!-- Page 2 content --></div>
+                      <div><!-- Page 3 content --></div>
+                      <div><!-- Page 4 content --></div>
+                    </GoabPages>
+                    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                      <GoabButton type="secondary" onClick={() => setPage(step - 1)}>Previous</GoabButton>
+                      <GoabButton type="primary" onClick={() => setPage(step + 1)}>Next</GoabButton>
+                    </div>
+                  </>
+                )
+              `}
+              />}
 
               <GoabFormStepper step={statusStep} onChange={(event) => setStatusStep(+event.step)}>
                 <GoabFormStep text="Personal details" status={status[0]} />
