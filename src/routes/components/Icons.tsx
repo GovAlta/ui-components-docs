@@ -70,7 +70,7 @@ export default function IconsPage() {
       value: "",
     },
   ]);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "GoAIconType",
@@ -150,6 +150,65 @@ export default function IconsPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },  
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabIconType",
+      description: "Sets the icon.",
+      required: true,
+    },
+    {
+      name: "size",
+      type: "GoabIconSize (small | medium | large)",
+      description: "Sets the size of icon.",
+      defaultValue: "medium",
+    },
+    {
+      name: "theme",
+      type: "GoabIconTheme (outline | filled)",
+      description: "Styles the icon to show outline or filled.",
+      defaultValue: "outline",
+    },
+    {
+      name: "inverted",
+      type: "boolean",
+      description: "Colors the icon white for use on dark backgrounds.",
+      defaultValue: "false",
+    },
+    {
+      name: "fillColor",
+      type: "string",
+      description: "Sets the fill colour of the icon.",
+      defaultValue: "false",
+    },
+    {
+      name: "opacity",
+      type: "number",
+      description: "Sets the opacity of the icon between 0 and 1.",
+      defaultValue: "1",
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Sets the title of the icon.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Sets the accessible name of the icon.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
@@ -182,7 +241,7 @@ export default function IconsPage() {
             </Sandbox>
 
             {/*Icons Properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             {/*Icons example*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">
