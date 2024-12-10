@@ -73,7 +73,7 @@ export default function IconButtonPage() {
     }
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "icon",
       type: "GoAIconType",
@@ -123,7 +123,7 @@ export default function IconButtonPage() {
       lang: "angular",
     },
     {
-      name: "_click",
+      name: "onClick",
       type: "(e: any) => void",
       description: "Callback function when button is clicked.",
       lang: "react",
@@ -143,6 +143,58 @@ export default function IconButtonPage() {
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "icon",
+      type: "GoabIconType",
+      required: true,
+      description: "Sets the icon.",
+    },
+    {
+      name: "size",
+      type: "GoabIconSize (small | medium | large)",
+      description: "Sets the size of button.",
+      defaultValue: "medium",
+    },
+    {
+      name: "variant",
+      type: "GoabIconButtonVariant (color | light | dark | destructive)",
+      description: "Styles the button to show color, light, dark or destructive action.",
+      defaultValue: "color",
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Sets the title of the button.",
+      defaultValue: "",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      description: "Disables the button.",
+      defaultValue: "false",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Sets the aria-label of the button.",
+    },
+    {
+      name: "onClick",
+      type: "() => void",
+      description: "Callback function when button is clicked.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
@@ -169,7 +221,7 @@ export default function IconButtonPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
 
             {/* Examples */}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
