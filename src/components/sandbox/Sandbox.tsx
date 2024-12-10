@@ -246,6 +246,7 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
   return (
     <CodeSnippet
       lang={props.formatLang}
+      tags={props.type}
       allowCopy={true}
       code={code}
     />
