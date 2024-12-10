@@ -45,6 +45,7 @@ export function Components() {
             <Link to="divider">Divider</Link>
             <Link to="dropdown">Dropdown</Link>
             <Link to="file-uploader">File uploader</Link>
+            <Link to="filter-chip">Filter chip</Link>
             <Link to="footer">Footer</Link>
             <Link to="form-item">Form item</Link>
             <Link to="form-stepper">Form stepper</Link>
