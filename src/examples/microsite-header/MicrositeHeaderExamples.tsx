@@ -81,8 +81,7 @@ export default function MicrositeHeaderExamples () {
         code={`
           <goa-microsite-header type="alpha">
             <div slot="version">
-              <span>Slotted <b>version text</b>.</span>
-              <span>v1.23</span>
+              v1.23
             </div>
           </goa-microsite-header>
         `}
@@ -95,13 +94,13 @@ export default function MicrositeHeaderExamples () {
         code={`
           <GoAMicrositeHeader
             type="alpha"
-            version={<><span>Slotted <b>version text</b>.</span><span>v1.23</span></>}
+            version="v1.23"
           ></GoAMicrositeHeader>
         `}
         />
         <GoAMicrositeHeader
           type="alpha"
-          version={<><span>Slotted <b>version text</b>.</span><span>v1.23</span></>}
+          version="v1.23"
         />
       </Sandbox>
     </>
