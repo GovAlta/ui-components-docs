@@ -2,11 +2,11 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
-import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function ListPage() {
-  const language = useContext(LanguageContext);
+  const {language} = useContext(LanguageVersionContext);
 
   return (
     <>
