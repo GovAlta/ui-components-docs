@@ -9,7 +9,6 @@ import {
   GoABadge,
   GoAButton,
   GoAButtonGroup,
-  GoAContainer,
   GoADetails,
   GoAFormItem,
   GoATab,
