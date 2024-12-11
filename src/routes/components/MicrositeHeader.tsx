@@ -73,7 +73,7 @@ export default function MicrositeHeaderPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "alpha | beta | live",
@@ -166,6 +166,54 @@ export default function MicrositeHeaderPage() {
       description: "Function invoked when feedback link is clicked.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabServiceLevel (alpha | beta | live)",
+      required: true,
+    },
+    {
+      name: "version",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Displayed on the right-hand side of the header.",
+    },
+    {
+      name: "version",
+      type: "string | TemplateRef",
+      lang: "angular",
+      description: "Displayed on the right-hand side of the header.",
+    },
+    {
+      name: "feedbackUrl",
+      type: "string",
+      description: "Url to feedback page that will be displayed when provided.",
+    },
+    {
+      name: "maxContentWidth",
+      type: "string",
+      description: "Maximum width of the content area",
+      defaultValue: "100%",
+    },
+    {
+      name: "feedbackUrlTarget",
+      type: "GoabLinkTarget(self | blank)",
+      description: "For internal feedback urls sets target='_self'",
+      defaultValue: "blank",
+    },
+    {
+      name: "headerUrlTarget",
+      type: "GoabLinkTarget (self | blank)",
+      description: "For internal header urls sets target='_self'",
+      defaultValue: "blank",
+    },
+    {
+      name: "onFeedbackClick",
+      type: "() => void",
+      description: "Function invoked when feedback link is clicked.",
+    },
+  ];
+
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setMicrositeHeaderProps(props as CastingType);
@@ -191,7 +239,7 @@ export default function MicrositeHeaderPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             <MicrositeHeaderExamples />
           </GoabTab>
 
