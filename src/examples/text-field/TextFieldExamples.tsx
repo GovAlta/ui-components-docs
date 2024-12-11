@@ -8,8 +8,11 @@ import {
   GoabInput,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export default function TextFieldExamples() {
+  const {version} = useContext(LanguageVersionContext)
   const noop = () => {};
   return (
     <>
@@ -19,7 +22,7 @@ export default function TextFieldExamples() {
       </h2>
 
       <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
-      <Sandbox flags={["reactive"]}>
+      <Sandbox flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
         <GoabFormItem label="Street Address">
           <GoabInput name="address" type="text" value="" onChange={noop} width="100%" />
         </GoabFormItem>
@@ -53,7 +56,7 @@ export default function TextFieldExamples() {
       </Sandbox>
 
       <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
-      <Sandbox flags={["reactive"]}>
+      <Sandbox flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
         <GoabFormItem
           label="When is your birthday?"
           labelSize="large"
@@ -96,7 +99,7 @@ export default function TextFieldExamples() {
       </Sandbox>
 
       <h3 id="component-example-search">Search</h3>
-      <Sandbox flags={["reactive"]}>
+      <Sandbox flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
         <GoabBlock gap="xs" direction="row">
           <GoabInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
           <GoabButton type="primary" onClick={noop}>
@@ -244,7 +247,7 @@ export default function TextFieldExamples() {
       <h3 id="component-example-registration-number">
         Ask a user for their indian registration number
       </h3>
-      <Sandbox flags={["reactive"]}>
+      <Sandbox flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
         <GoabFormItem label="Indian registration number" labelSize="large">
           <GoabBlock gap="m" direction="row">
             <GoabFormItem label="Band #" helpText="3 digits">
