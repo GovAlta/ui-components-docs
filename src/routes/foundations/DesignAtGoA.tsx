@@ -17,10 +17,10 @@ export default function DesignAtGoAPage() {
           <li><strong>Modern</strong> - Digital experiences will meet present-day user expectations and preferences for aesthetics and interaction.</li>
         </ul>
 
-        <p>To assist in delivering an experience aligned with the guidelines, download the <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/UX-Review-Process.aspx" target="_blank">User Experience Guideline Worksheet</a>.</p>
+        <p>To assist in delivering an experience aligned with the guidelines, download the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/user-experience-worksheet.aspx?csf=1&web=1&e=zkHJVs" target="_blank">User Experience Guideline Worksheet</a>.</p>
 
         <h2>How to conduct effective usability testing</h2>
-        <p>Usability testing is our preferred method to check if digital products meet the guidelines set in the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/UX-Review-Process.aspx?csf=1&web=1&e=j4Eopa" target="_blank">User Experience Worksheet</a>.</p>
+        <p>Usability testing is our preferred method to check if digital products meet the guidelines set in the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/user-experience-worksheet.aspx?csf=1&web=1&e=zkHJVs" target="_blank">User Experience Worksheet</a>.</p>
         <p>A good usability testing should include:</p>
         <ul>
           <li><strong>Diverse user group</strong>: Real users from different demographic, behavioural backgrounds, and geographical regions within Alberta that will experience the problem or benefit of the product.</li>
