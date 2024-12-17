@@ -169,6 +169,7 @@ export default function IconographyPage() {
           <p>Explore core icons set and their properties <Link to="/components/icons">here</Link>.</p>
 
           <h3>Extended icon set</h3>
+          <h4>Ionicons</h4>
           <p>We use the open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>, which provides a wide variety of high-quality icons. Use these icons when you need options beyond the core icon set.</p>
 
           <GoAContainer mt="xl" mb="m">
@@ -177,8 +178,17 @@ export default function IconographyPage() {
               </div>
           </GoAContainer>
 
+          <h4>Icon generator</h4>
+          <p>Alberta.ca uses an <a href="https://corporateidentity.alberta.ca/goaaccess/icongen/" target="_blank">icon generator</a> that is accessible to all Government of Alberta employees. Staff and contractors can access this library using their GoA credentials.</p>
+          
+          <GoAContainer mt="xl" mb="m">
+              <div style={{ textAlign: "center" }}>
+                <img src="/images/iconography/IonIcons.jpg" width="100%"></img>
+              </div>
+          </GoAContainer>
+
           <h3>Logo icons</h3>
-          <p>This icon set contains popular logos and are kept in accordance with their respective logo usage guidelines.</p>
+          <p>This icon set, located in our Figma Component library contains popular logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
 
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
