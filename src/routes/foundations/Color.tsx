@@ -34,7 +34,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Default</strong></div>
-              <div>#0081A2</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -47,7 +46,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Dark</strong></div>
-              <div>#005072</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -60,7 +58,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Light</strong></div>
-              <div>#C8EEFA</div>
             </GoAContainer>
           </GoAGrid>
           
@@ -79,7 +76,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Default</strong></div>
-              <div>#0070C4</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -92,7 +88,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Hover</strong></div>
-              <div>#004F84</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -105,7 +100,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Focus</strong></div>
-              <div>#FEBA35</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -118,7 +112,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error</strong></div>
-              <div>#EC040B</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -131,7 +124,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Disabled</strong></div>
-              <div>#80B7E1</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -144,7 +136,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error Hover</strong></div>
-              <div>#BA0000</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -157,7 +148,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error Disabled</strong></div>
-              <div>#F58185</div>
             </GoAContainer>
           </GoAGrid>
           
@@ -176,7 +166,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Default</strong></div>
-              <div>#333333</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -189,7 +178,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Secondary</strong></div>
-              <div>#666666</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -203,7 +191,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Light</strong></div>
-              <div>#FFFFFF</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -216,7 +203,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Disabled</strong></div>
-              <div>#666666</div>
             </GoAContainer>
           </GoAGrid>
           
@@ -235,7 +221,6 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Info - Default</strong></div>
-              <div>#004A8F</div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -249,9 +234,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Info - Light</strong>
-              </div>
-              <div>
-                #AAC9E7
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -267,9 +249,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Info - Dark</strong>
               </div>
-              <div>
-                #003B70
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -283,9 +262,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Info - Background</strong>
-              </div>
-              <div>
-                #EFF8FF
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -301,9 +277,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Default</strong> 
               </div>
-              <div>
-                #F9CE2D
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -317,9 +290,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Warning - Light</strong>
-              </div>
-              <div>
-                #FFEAB6
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -335,9 +305,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Dark</strong>
               </div>
-              <div>
-                #BF8D23
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -351,9 +318,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Warning - Background</strong>
-              </div>
-              <div>
-                #FFF6E5
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -369,9 +333,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Default</strong>
               </div>
-              <div>
-                #DA291C
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -385,9 +346,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Emergency - Light</strong>
-              </div>
-              <div>
-                #FBD1CE
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -404,9 +362,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Dark</strong>
               </div>
-              <div>
-                #A91A10
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -420,9 +375,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Emergency - Background</strong>
-              </div>
-              <div>
-                #FFF1F2
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -438,9 +390,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Default</strong> 
               </div>
-              <div>
-                #006F4C
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -454,9 +403,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Success - Light</strong>
-              </div>
-              <div>
-                #CCE4DC
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -473,9 +419,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Dark</strong>
               </div>
-              <div>
-                #00563A
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -490,9 +433,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Background</strong>
               </div>
-              <div>
-                #EEF9F3
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
@@ -506,9 +446,6 @@ export default function FoundationsColorPage() {
               />
               <div>
                 <strong>Critical</strong>
-              </div>
-              <div>
-                #171D23
               </div>
             </GoAContainer>
           </GoAGrid>          
@@ -529,9 +466,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - White</strong>
               </div>
-              <div>
-                #FFFFFF
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
                 <div
@@ -544,9 +478,6 @@ export default function FoundationsColorPage() {
                 />
               <div>
                 <strong>Greyscale - 100</strong>
-              </div>
-              <div>
-                #F1F1F1
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -561,9 +492,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 200</strong>
               </div>
-              <div>
-                #DCDCDC
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
                 <div
@@ -576,9 +504,6 @@ export default function FoundationsColorPage() {
                 />
               <div>
                 <strong>Greyscale - 400</strong>
-              </div>
-              <div>
-                #ADADAD
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -594,9 +519,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 500</strong>
               </div>
-              <div>
-                #949494
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
                 <div
@@ -609,9 +531,6 @@ export default function FoundationsColorPage() {
                 />
               <div>
                 <strong>Greyscale - 600</strong>
-              </div>
-              <div>
-                #858585
               </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -626,9 +545,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 800</strong>
               </div>
-              <div>
-                #666666
-              </div>
             </GoAContainer>
             <GoAContainer accent="filled" padding="relaxed" width="full">
                 <div
@@ -642,213 +558,6 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - Black</strong>
               </div>
-              <div>
-                #333333
-              </div>
-            </GoAContainer>
-          </GoAGrid>
-
-          <h2 id="extended">Extended colors</h2>
-          <p>These colors are designated for data visualization to differentiate between data categories in charts.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="220px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#4046CA",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#575CC3",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#7F84EB",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Cerulean - Default</strong></div>
-              <div>#4046CA</div><br/>
-              <div><strong>Cerulean - Mid</strong></div>
-              <div>#575CC3</div><br/>
-              <div><strong>Cerulean - Light</strong></div>
-              <div>#7F84EB</div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#F68511",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#F89F45",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#FFC76D",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Orange - Default</strong></div>
-              <div>#F68511</div><br/>
-              <div><strong>Orange - Mid</strong></div>
-              <div>#F89F45</div><br/>
-              <div><strong>Orange - Light</strong></div>
-              <div>#FFC76D</div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#DE3D82",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#E5679D",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#FF8FC5",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Pink - Default</strong></div>
-              <div>#DE3D82</div><br/>
-              <div><strong>Pink - Mid</strong></div>
-              <div>#E5679D</div><br/>
-              <div><strong>Pink - Light</strong></div>
-              <div>#FF8FC5</div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#72E06A",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#8CFA84",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#BBFCB4",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Go-Green - Default</strong></div>
-              <div>#72E06A</div><br/>
-              <div><strong>Go-Green - Mid</strong></div>
-              <div>#8CFA84</div><br/>
-              <div><strong>Go-Green - Light</strong></div>
-              <div>#BBFCB4</div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#7E84FA",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#9A9EFB",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#C2C6FF",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Violet - Default</strong></div>
-              <div>#7E84FA</div><br/>
-              <div><strong>Violet - Mid</strong></div>
-              <div>#9A9EFB</div><br/>
-              <div><strong>Violet - Light</strong></div>
-              <div>#C2C6FF</div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#0FB5AE",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#29CFC8",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#7FEBE6",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Turquoise - Default</strong></div>
-              <div>#0FB5AE</div><br/>
-              <div><strong>Turquoise - Mid</strong></div>
-              <div>#29CFC8</div><br/>
-              <div><strong>Turquoise - Light</strong></div>
-              <div>#7FEBE6</div>
             </GoAContainer>
           </GoAGrid>
       

@@ -6,7 +6,7 @@ export default function AccessibilityPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Accessibility</h1>
-        <h3>We aim to create digital services that everyone can use, no matter their abilities or situation. This guide outlines key principles, design tips, and tools to help create accessible and inclusive experiences.</h3>
+        <h3>We aim to create digital products that everyone can use, no matter their abilities or situation. This guide outlines key principles, design tips, and tools to help create accessible and inclusive experiences.</h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <p>Every component in our design system meets WCAG 2 Level AA standards. While the system has accessibility features, teams should take extra steps to ensure consistent and accessible experiences across all products and platforms.</p>
@@ -153,14 +153,8 @@ export default function AccessibilityPage() {
             <li><strong>Screen readers</strong> - <a href="https://www.nvaccess.org/" target="_blank">NVDA</a> (Windows), <a href="https://www.apple.com/accessibility/" target="_blank">VoiceOver</a> (Apple). </li>
             <li><strong>Automated tools</strong> - <a href="https://www.deque.com/axe/" target="_blank">Axe</a>, <a href="https://wave.webaim.org/" target="_blank">Wave</a>, <a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Lighthouse</a>. </li>
           </ul>
-          
-          <h3>How to recruit testers</h3>
-          <p>A team within government, called the Disability Employee Resource Group, is committed to improving the accessibility of our digital products through direct involvement in user testing.</p>
-          <p>For more information on accessibility testing or to recruit users, contact:</p>
-          <ul>
-            <li><strong>Pamela Klebanov</strong> - <a href="mailto:pamela.klebanov@gov.ab.ca" target="_blank">pamela.klebanov@gov.ab.ca</a></li>
-            <li><strong>Corinna Sales</strong> - <a href="mailto:corinna.sales@gov.ab.ca" target="_blank">corinna.sales@gov.ab.ca</a></li>
-          </ul>
+
+          <p>For more information on accessibility testing or to recruit users, please check out our internal guidance for <a href="https://goa-dio.atlassian.net/l/cp/M136kgku" target="_blank">accessibility testing recruitment</a>.</p>
           
           <h3>Additional resources</h3>
           <ul>
