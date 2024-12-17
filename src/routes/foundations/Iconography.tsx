@@ -166,7 +166,7 @@ export default function IconographyPage() {
           </GoAGrid>
 
           <GoASpacer vSpacing="l"></GoASpacer>
-          <p>Explore core icons set and their properties <Link to="/components/icons">here</Link>.</p>
+          <p>Explore core icons set and their properties <Link to="/components/icons">on the component page</Link>.</p>
 
           <h3>Extended icon set</h3>
           <h4>Ionicons</h4>
@@ -180,7 +180,7 @@ export default function IconographyPage() {
 
           <h4>Icon generator</h4>
           <p>Alberta.ca uses an <a href="https://corporateidentity.alberta.ca/goaaccess/icongen/" target="_blank">icon generator</a> that is accessible to all Government of Alberta employees. Staff and contractors can access this library using their GoA credentials.</p>
-          
+
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/iconography/IonIcons.jpg" width="100%"></img>
@@ -200,7 +200,7 @@ export default function IconographyPage() {
           <GoASpacer vSpacing="m"></GoASpacer>
           {isDesktop ? renderDesktop() : renderMobile()}
           <GoASpacer vSpacing="l"></GoASpacer>
-          <p>You can access the design tokens for icon sizes <Link to="/design-tokens/icon-size">here</Link>.</p>
+          <p>You can access the <Link to="/design-tokens/icon-size">design tokens for icon sizes here</Link>.</p>
           
           <p>When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>.</p>
 
