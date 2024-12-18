@@ -1,7 +1,7 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { ComponentBinding, Sandbox, DesignTokensLanguageContext } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { getCssVarValue } from "../../utils/styling";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
