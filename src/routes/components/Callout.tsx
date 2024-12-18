@@ -133,8 +133,6 @@ export default function CalloutPage() {
     },
   ];
 
-  const noop = () => {};
-
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
