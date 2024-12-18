@@ -1,8 +1,41 @@
-import { GoABadge, GoABlock, GoAContainer, GoAButton, GoATable } from "@abgov/react-components";
+import { GoABadge, GoABadgeType, GoABlock, GoAContainer, GoAButton, GoATable } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { Sandbox } from "@components/sandbox";
 
 const noop = () => {};
+const badgeValues = [
+    {
+        key: 1,
+        type: "important",
+        content: "Pending"
+    },
+    {
+        key: 2,
+        type: "emergency",
+        content: "Failed"
+    },
+    {
+        key: 3,
+        type: "success",
+        content: "Complete"
+    },
+    {
+        key: 4,
+        type: "information",
+        content: "In progress"
+    },
+    {
+        key: 5,
+        type: "midtone",
+        content: "Closed"
+    },
+    {
+        key: 6,
+        type: "success",
+        content: "Complete"
+    }
+]
+
 export default function CheckboxExamples () {
     return (
         <> 
@@ -10,7 +43,157 @@ export default function CheckboxExamples () {
         <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
         <h3 id="component-example-show-status-table">Show status in a table</h3>
-        <Sandbox fullWidth>
+        <Sandbox fullWidth skipRender>
+            <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                    onClick($event: Event) {
+                        console.log("clicked");
+                    } 
+
+                    badgeValues = [
+                        {
+                            type: "important",
+                            content: "Pending",
+                        },
+                        {
+                            type: "emergency",
+                            content: "Failed",
+                        },
+                        {
+                            type: "success",
+                            content: "Complete",
+                        },
+                        {
+                            type: "information",
+                            content: "In progress",
+                        },
+                        {
+                            type: "midtone",
+                            content: "Closed",
+                        },
+                        {
+                            type: "success",
+                            content: "Complete",
+                        },
+                    ];
+                `}
+            />
+
+            <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                    <goa-table width="100%">
+                        <thead>
+                            <tr>
+                                <th>Status</th>
+                                <th>Name</th>
+                                <th class="goa-table-number-header">File number</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let badge of badgeValues">
+                                <td>
+                                    <goa-badge [type]="badge.type" [content]="badge.content" />
+                                </td>
+                                <td>Lorem ipsum dolor sit amet consectetur.</td>
+                                <td class="goa-table-number-column">1234567890</td>
+                                <td>
+                                    <goa-button type="tertiary" (_click)="onClick($event)">Assign</goa-button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    <goa-table>
+                `}
+            />
+            
+            <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                    function onClick() {
+                        console.log("clicked");
+                    }
+
+                    const badgeValues = [
+                        {
+                            key: 1,
+                            type: "important",
+                            content: "Pending"
+                        },
+                        {
+                            key: 2,
+                            type: "emergency",
+                            content: "Failed"
+                        },
+                        {
+                            key: 3,
+                            type: "success",
+                            content: "Complete"
+                        },
+                        {
+                            key: 4,
+                            type: "information",
+                            content: "In progress"
+                        },
+                        {
+                            key: 5,
+                            type: "midtone",
+                            content: "Closed"
+                        },
+                        {
+                            key: 6,
+                            type: "success",
+                            content: "Complete"
+                        }
+                    ]
+                `}
+            />
+
+            <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                    <GoATable width="100%">
+                        <thead>
+                        <tr>
+                            <th>Status</th>
+                            <th>Name</th>
+                            <th className="goa-table-number-header">File number</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {badgeValues.map((badge) => (
+                                <tr key={badge.key}>
+                                    <td>
+                                        <GoABadge type={badge.type as GoABadgeType} content={badge.content} />
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor sit amet consectetur
+                                    </td>
+                                    <td className="goa-table-number-column">
+                                        1234567890
+                                    </td>
+                                    <td>
+                                        <GoAButton type="tertiary" onClick={onClick}}>
+                                            Assign
+                                        </GoAButton>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </GoATable>
+                `}
+            />
             <GoATable width="100%">
                 <thead>
                   <tr>
@@ -21,66 +204,24 @@ export default function CheckboxExamples () {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><GoABadge type="important" content="Pending"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><GoABadge type="emergency" content="Failed"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><GoABadge type="success" content="Complete"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><GoABadge type="information" content="In progress"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><GoABadge type="midtone" content="Closed"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><GoABadge type="success" content="Complete"/></td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td>1234567890</td>
-                    <td className="goa-table-number-column">
-                        <GoAButton type="tertiary" onClick={noop}>
-                            Assign
-                        </GoAButton>
-                    </td>
-                  </tr>
+                    {badgeValues.map((badge) => (
+                        <tr key={badge.key}>
+                            <td>
+                                <GoABadge type={badge.type as GoABadgeType} content={badge.content} />
+                            </td>
+                            <td>
+                                Lorem ipsum dolor sit amet consectetur
+                            </td>
+                            <td className="goa-table-number-column">
+                                1234567890
+                            </td>
+                            <td>
+                                <GoAButton type="tertiary" onClick={noop}>
+                                    Assign
+                                </GoAButton>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </GoATable>
         </Sandbox>
