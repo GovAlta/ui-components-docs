@@ -82,7 +82,7 @@ export default function FoundationsLayoutPage() {
           <h2 id="common-layouts">Common layouts</h2>
           <h3 id="basic-form-layout">Basic form layout</h3>
           <p>See <Link to="/patterns/simple-form">Public form pattern</Link> for more information</p>
-          <p>The default layout for a form page uses a maximum page width of 960px. This ensures optimal line length (50-75 characters) and simplifies the content for the user. This layout is often used for public facing forms.</p>
+          <p>The default layout for a form page uses a maximum page width of 960px. This ensures optimal line length (50-75 characters) and simplifies the content for the user. This layout is often used for public-facing forms.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
@@ -91,7 +91,7 @@ export default function FoundationsLayoutPage() {
           </GoAContainer>
           
           <h3 id="basic-form-template">Basic form layout example</h3>
-          <p>This layout is recommended for public facing forms where the content needs to be simple, accessible, and often broken down into simple one question pages.</p>
+          <p>This layout is recommended for public-facing forms where the content needs to be simple, accessible, and often broken down into simple one question pages.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
@@ -102,7 +102,7 @@ export default function FoundationsLayoutPage() {
           <GoADivider mt="m" mb="2xl"></GoADivider>
           
           <h3 id="side-nav-layout">Side navigation layout</h3>
-          <p>A 2 column layout that has a fixed side navigation and a fluid content container.</p>
+          <p>A 2-column layout that has a fixed side navigation and a fluid content container.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
@@ -118,7 +118,7 @@ export default function FoundationsLayoutPage() {
           </GoAContainer>
           
           <h3 id="side-nav-example">Side navigation layout example</h3>
-          <p>A 2 column layout is often used for internal applications, where there is a need for a side navigation.</p>
+          <p>A 2-column layout is often used for internal applications, where there is a need for a side navigation.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
@@ -129,7 +129,7 @@ export default function FoundationsLayoutPage() {
           <GoADivider mt="m" mb="2xl"></GoADivider>
           
           <h3 id="side-nav-side-bar">Side navigation and side bar layout</h3>
-          <p>A 3 column layout that has a fixed side navigation as well as a second side panel on the right hand side. The third column is often used to show tertiary information, comments, or other documents alongside the main content area. Depending on your content, for large viewports it is recommended to use a max content width of 1176px on the main content area.</p>
+          <p>A 3-column layout that has a fixed side navigation as well as a second side panel on the right hand side. The third column is often used to show tertiary information, comments, or other documents alongside the main content area. Depending on your content, for large viewports it is recommended to use a max content width of 1176px on the main content area.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
