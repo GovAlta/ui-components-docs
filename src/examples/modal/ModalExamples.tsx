@@ -249,7 +249,7 @@ export default function ModalExamples() {
           open={warnCalloutModalOpen}
           onClose={() => setWarnCalloutModalOpen(false)}
           actions={
-            <GoAButtonGroup alignment="end" mt="l">
+            <GoAButtonGroup alignment="end">
               <GoAButton type="primary" onClick={() => setWarnCalloutModalOpen(false)}>
                 I understand
               </GoAButton>
@@ -284,7 +284,7 @@ export default function ModalExamples() {
                     (_close)="toggleModal()" heading="Complete submission prior to 1PM">
                       <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
                     <div slot="actions">
-                      <goa-button-group alignment="end" mt="l">
+                      <goa-button-group alignment="end">
                         <goa-button type="primary" (_click)="toggleModal()">
                           I understand
                         </goa-button>
@@ -314,7 +314,7 @@ export default function ModalExamples() {
                     role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
-                      <GoAButtonGroup alignment="end" mt="l">
+                      <GoAButtonGroup alignment="end">
                         <GoAButton type="primary" onClick={() => setOpen(false)}>I understand</GoAButton>
                       </GoAButtonGroup>
                     }
