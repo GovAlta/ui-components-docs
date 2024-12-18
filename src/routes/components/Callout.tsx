@@ -176,7 +176,7 @@ export default function CalloutPage() {
 
                       <goa-callout type="success">
                         <span slot="heading">Your application was successful</span>
-                        <p>You will receive a copy of the confirmation to the email person@email.com</p>
+                        <p>You will receive a copy of the confirmation to the email person&#64;email.com</p>
                         <p>Confirmation number: <strong>1234ABC</strong></p>
                       </goa-callout>
 
@@ -184,12 +184,12 @@ export default function CalloutPage() {
                       <p>
                         Other information about what was just completed, other tertiary information, and/or contact information.
                         Phone: <a href="tel:7801234567">780 123 4567</a>
-                        Email: <a href="mailto:information@gov.ab.ca">information@gov.ab.ca</a>
+                        Email: <a href="mailto:information&#64;gov.ab.ca">information&#64;gov.ab.ca</a>
                       </p>
 
                       <goa-button-group alignment="start">
-                        <goa-button type="primary" (_click)="onClick($event)>Go to application</goa-button>
-                        <goa-button type="secondary" (_click)="onClick($event)>Back to dashboard</goa-button>
+                        <goa-button type="primary">Go to application</goa-button>
+                        <goa-button type="secondary">Back to dashboard</goa-button>
                       </goa-button-group>
                     `}
               />
@@ -213,8 +213,8 @@ export default function CalloutPage() {
                     </p>
 
                     <GoAButtonGroup alignment="start">
-                      <GoAButton type="primary" onClick={onClick}>Go to application</GoAButton>
-                      <GoAButton type="secondary" onClick={onClick}>Back to dashboard</GoAButton>
+                      <GoAButton type="primary">Go to application</GoAButton>
+                      <GoAButton type="secondary">Back to dashboard</GoAButton>
                     </GoAButtonGroup>
                   `}
               />
@@ -231,8 +231,8 @@ export default function CalloutPage() {
               </p>
               <GoASpacer vSpacing="l"></GoASpacer>
               <GoAButtonGroup alignment="start">
-                <GoAButton type="primary" onClick={noop}>Go to application</GoAButton>
-                <GoAButton type="secondary" onClick={noop}>Back to dashboard</GoAButton>
+                <GoAButton type="primary">Go to application</GoAButton>
+                <GoAButton type="secondary">Back to dashboard</GoAButton>
               </GoAButtonGroup>
             </Sandbox>
           </GoATab>
