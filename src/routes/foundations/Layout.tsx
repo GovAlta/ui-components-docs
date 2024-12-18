@@ -9,7 +9,7 @@ export default function FoundationsLayoutPage() {
         <h1>Layout</h1>
         <h3>We use the layout as a structural template to support consistency across our products. By defining visual grids, spacing, and sections, we create intuitive products for our users.</h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
-        <div className="max-width-72ch">
+        <div className="maximum-width-72ch">
           <h3 id="spacing-scale">The spacing scale</h3>
           <p>The Design System uses a spacing scale with a 16px base value to be used within layout spacing and spacing within components. <Link to="/design-tokens/spacing">See spacing for more information</Link>.</p>
 
@@ -110,7 +110,7 @@ export default function FoundationsLayoutPage() {
               </div>
           </GoAContainer>
           
-          <p>When designing for large screens, consider a max content width to prevent the content from getting too wide.</p>
+          <p>When designing for large screens, consider a maximum content width to prevent the content from getting too wide.</p>
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/layout/side-nav-layout-example-2.jpg" width="100%"></img>
@@ -129,7 +129,7 @@ export default function FoundationsLayoutPage() {
           <GoADivider mt="m" mb="2xl"></GoADivider>
           
           <h3 id="side-nav-side-bar">Side navigation and side bar layout</h3>
-          <p>A 3-column layout that has a fixed side navigation as well as a second side panel on the right hand side. The third column is often used to show tertiary information, comments, or other documents alongside the main content area. Depending on your content, for large viewports it is recommended to use a max content width of 1176px on the main content area.</p>
+          <p>A 3-column layout that has a fixed side navigation as well as a second side panel on the right hand side. The third column is often used to show tertiary information, comments, or other documents alongside the main content area. Depending on your content, for large viewports it is recommended to use a maximum content width of 1176px on the main content area.</p>
           
           <GoAContainer mt="m" mb="2xl">
               <div style={{ textAlign: "center" }}>

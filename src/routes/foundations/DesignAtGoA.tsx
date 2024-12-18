@@ -17,7 +17,7 @@ export default function DesignAtGoAPage() {
           <li><strong>Modern</strong> - Digital experiences will meet present-day user expectations and preferences for aesthetics and interaction.</li>
         </ul>
 
-        <p>To assist in delivering an experience aligned with the guidelines, download the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/user-experience-worksheet.aspx?csf=1&web=1&e=zkHJVs" target="_blank">User Experience Worksheet</a>.</p>
+        <p>To get guidance on how to deliver an experience aligned with the guidelines, download the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/user-experience-worksheet.aspx?csf=1&web=1&e=zkHJVs" target="_blank">User Experience Worksheet</a>.</p>
 
         <h2>How to conduct effective usability testing</h2>
         <p>Usability testing is our preferred method to check if digital products meet the guidelines set in the <a href="https://abgov.sharepoint.com/:u:/r/sites/S600D27-DDDUXT/SitePages/user-experience-worksheet.aspx?csf=1&web=1&e=zkHJVs" target="_blank">User Experience Worksheet</a>.</p>
