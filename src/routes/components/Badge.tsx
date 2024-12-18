@@ -1,12 +1,13 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps } from "@abgov/react-components";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
 
 // == Page props ==
 
@@ -134,6 +135,8 @@ export default function BadgePage() {
               <GoABadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+            <BadgeExamples />
+
           </GoATab>
 
           <GoATab
