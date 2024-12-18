@@ -25,13 +25,13 @@ export default function FoundationsTypographyPage() {
             <GoASpacer vSpacing="xl"></GoASpacer>
             <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-xl)" }}>XLarge heading - Perspiciatis unde omnis iste natus error sit.</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
-            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-l)" }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</div>
+            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-l)" }}>Large heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
-            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-m)" }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-m)" }}>Medium heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium laudantium</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
-            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-s)" }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</div>
+            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-s)" }}>Small heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium laudantium.</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
-            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-xs)" }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunto.</div>
+            <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-heading-xs)" }}>XSmall heading - Perspiciatis unde omnis iste natus error sit voluptatem accusantium laudantium</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
             <div style={{ maxWidth:"570px", width:"100%", margin:"0 auto", font: "var(--goa-typography-body-l)" }}>Large text - Perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</div>
             <GoASpacer vSpacing="xl"></GoASpacer>
