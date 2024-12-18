@@ -16,10 +16,10 @@ export default function FoundationsColorPage() {
             <li>Text colors</li>
             <li>Status colors</li>
             <li>Greyscale colors</li>
-            <li>Extended colors</li>
+            <li>Data visualization colors</li>
           </ul>
           <p>For more information about how to use our colors in your digital product, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
-          <h2>Brand colors</h2>
+          <h2 id="brand">Brand colors</h2>
           <p>Brand colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">
@@ -449,7 +449,7 @@ export default function FoundationsColorPage() {
               </div>
             </GoAContainer>
           </GoAGrid>          
-          <h2 id="greyscale">Greyscale</h2>
+          <h2 id="greyscale">Greyscale colors</h2>
           <p>Greyscale are neutral colors that range from black to white and provide a base for accents, backgrounds and layouts.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">  

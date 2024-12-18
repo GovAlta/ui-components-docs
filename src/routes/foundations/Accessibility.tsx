@@ -10,6 +10,25 @@ export default function AccessibilityPage() {
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <p>Every component in our design system meets WCAG 2 Level AA standards. While the system has accessibility features, teams should take extra steps to ensure consistent and accessible experiences across all products and platforms.</p>
+          
+          <h2 id="accessibility-inclusion">Accessibility and inclusion</h2>
+          <p>Inclusive design enables us to make experiences usable and open to as many people as possible, regardless of ability or circumstance. Meeting accessibility standards is just a part of inclusive design.</p>
+          <p>Disabilities are not always visible in obvious forms. For example, someone with a permanent vision impairment, temporary blindness due to an eye infection, or a situational challenge such as using a device in bright sunlight may all encounter similar barriers.</p>
+          <p>Inclusive design helps us to create products that work across the following spectrum of needs:</p>
+          <ul>
+            <li><strong>Permanent</strong>: Long-term conditions that require ongoing accessibility considerations, such as a person with no arm, or someone with ADHD.</li>
+            <li><strong>Temporary</strong>: Short-term conditions that can be recovered from but still require accessibility features, such as a person with a fractured arm, or someone experiencing stress from lack of sleep.</li>
+            <li><strong>Situational</strong>: Conditions that occur due to specific situation or surroundings, such as a person carrying groceries, wearing gloves in cold weather, or someone interacting with our product in a noisy environment. </li>
+          </ul>
+          <p>We must ensure that we design experiences considering these wide range of user needs. In many cases, designing for a permanent disability can also benefit users with temporary disabilities and situational limitations.</p>
+
+          <h3 id="making-digital-products-accessible-inclusive">Making digital products accessible and inclusive </h3>
+          <ul>
+            <li><strong>WCAG compliance</strong>: The Government of Alberta follows <a href="https://www.w3.org/TR/WCAG22/" target="_blank">Web Content Accessibility Guidelines (WCAG)</a>, the most widely used resource for web accessibility. Product teams should leverage this resource to incorporate design and development features necessary to make products accessible.</li>
+            <li><strong>Design system components</strong>: Every component in our design system meets WCAG 2 Level AA standards. While the WCAG and our design system provide a good foundation for accessibility considerations and features, teams should take extra steps to ensure consistent and accessible experiences across all products and platforms.</li>
+            <li><strong>Usability testing</strong>: Usability testing is our preferred method to check if our products are user-friendly. We highly recommend all DDD product teams to conduct inclusive usability testing with diverse groups of users to validate if their products meet the users' expectations.</li>
+            <li><strong>Accessibility testing</strong>: Involving people with disabilities in testing can help in identifying specific challenges faced by people with different abilities and needs. These challenges could make digital experiences unusable, even if they technically comply with WCAG. Product teams must learn from accessibility testing and iterate based on insights to make our products usable to those with disabilities.</li>
+          </ul>
 
           <h2 id="wcag-accessibility-compliance">Key principles of accessibility</h2>
           <p>We follow <a href="https://www.w3.org/WAI/WCAG22/Understanding/intro" target="_blank">the four WCAG principles</a>:</p>
