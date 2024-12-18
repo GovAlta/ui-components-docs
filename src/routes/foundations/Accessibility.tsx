@@ -145,10 +145,10 @@ export default function AccessibilityPage() {
           <p>Keyboard navigation is important for users who only use a keyboard to interact with websites and apps. It allows them to move around and do things without a mouse or touch screen.</p>
           
           <h3>Optimizing performance</h3>
-          <p>Improving speed, loading time, and responsiveness helps users with older devices, slower internet connections, or mobile phones access our services effectively.</p>
+          <p>Improving speed, loading time, and responsiveness helps users with older devices, slower internet connections, or mobile phones access our digital products effectively.</p>
           
           <h2 id="accessibility-testing">Accessibility testing</h2>
-          <p>Testing ensures components are used in ways that make services fully accessible. Recommended tools include:</p>
+          <p>Testing ensures components are used in ways that make digital products fully accessible. Recommended tools include:</p>
           <ul>
             <li><strong>Screen readers</strong> - <a href="https://www.nvaccess.org/" target="_blank">NVDA</a> (Windows), <a href="https://www.apple.com/accessibility/" target="_blank">VoiceOver</a> (Apple). </li>
             <li><strong>Automated tools</strong> - <a href="https://www.deque.com/axe/" target="_blank">Axe</a>, <a href="https://wave.webaim.org/" target="_blank">Wave</a>, <a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Lighthouse</a>. </li>

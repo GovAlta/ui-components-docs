@@ -8,7 +8,7 @@ export default function DesignAtGoAPage() {
         <h3>Citizens expect digital products that are modern, consistent, and intuitive. To meet these expectations, our digital products must adhere to user experience guidelines and undergo regular testing to ensure continuous improvement and relevance. </h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <h2>User experience guidelines</h2>
-        <p>The Government of Alberta (GoA) digital products should deliver an experience to users that align to the following guidelines:</p>
+        <p>The Government of Alberta digital products should deliver an experience to users that align to the following guidelines:</p>
         <ul>
           <li><strong>User-centered</strong> - Designed with a clear understanding of users, their goals, tasks, environments, and context of use, using user-centered design methods.</li>
           <li><strong>Usable</strong> - Interfaces will be easy to use, enabling users to find the information they need and complete tasks successfully.</li>

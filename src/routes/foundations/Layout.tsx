@@ -7,7 +7,7 @@ export default function FoundationsLayoutPage() {
     
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Layout</h1>
-        <h3>We use the layout as a structural template to support consistency across our services. By defining visual grids, spacing, and sections, we create intuitive services for our users.</h3>
+        <h3>We use the layout as a structural template to support consistency across our products. By defining visual grids, spacing, and sections, we create intuitive products for our users.</h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <h3 id="spacing-scale">The spacing scale</h3>

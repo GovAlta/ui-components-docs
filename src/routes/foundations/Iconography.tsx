@@ -73,10 +73,10 @@ export default function IconographyPage() {
 
         <div className="max-width-72ch">
           <h2 id="style">Style</h2>
-          <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they are integrated seamlessly into various interface sizes. They are divided into three categories: Core, Extended and Logo icon set.</p>
+          <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they integrate seamlessly into various interface sizes. They are divided into three categories: Core, Extended and Logo icon set.</p>
 
           <h3>Core icon set</h3>
-          <p>This is the main icon library in the design system, helping you maintain consistency with other teams.</p>
+          <p>Our core icon set is the main icon library in the design system, helping you maintain visual consistency across all our digital products.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="s" minChildWidth="250px">
             <GoAContainer mb="3xs">
@@ -179,7 +179,7 @@ export default function IconographyPage() {
           </GoAContainer>
 
           <h4>Icon generator</h4>
-          <p>Alberta.ca uses an <a href="https://corporateidentity.alberta.ca/goaaccess/icongen/" target="_blank">icon generator</a> that is accessible to all Government of Alberta employees. Staff and contractors can access this library using their GoA credentials.</p>
+          <p>Alberta.ca uses an <a href="https://corporateidentity.alberta.ca/goaaccess/icongen/" target="_blank">icon generator</a> that is accessible to all Government of Alberta employees. Staff and contractors can access this library using their government credentials.</p>
 
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
@@ -206,10 +206,10 @@ export default function IconographyPage() {
 
           <h2 id="best-practices">Best practices</h2>
           <ul>
-            <li>Whenever possible, combine icons with text for clear communication</li>
-            <li>When placing icons next to text elements, ensure they are vertically aligned to create visual balance</li>
-            <li>Do not create icons that are overly complex</li>
-            <li>Apply color to an icon using our <Link to="/design-tokens/color">design tokens</Link>. Ensure color combinations meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html" target="_blank">WCAG standards</a> of at least a 3:1 contrast ratio between foreground and background. </li>
+            <li>Whenever possible, combine icons with text for clear communication.</li>
+            <li>When placing icons next to text elements, ensure they are vertically aligned to create visual balance.</li>
+            <li>Do not create icons that are overly complex.</li>
+            <li>Apply color to an icon using our <Link to="/design-tokens/color">design tokens</Link>. Ensure color combinations meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html" target="_blank">WCAG standards</a> of at least a 3:1 contrast ratio between foreground and background.</li>
           </ul>
 
           <h2 id="creating-icons">Creating icons</h2>

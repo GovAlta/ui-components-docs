@@ -7,7 +7,7 @@ export default function FoundationsTypographyPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Typography</h1>
-        <h3>Our typography system is designed to create a consistent and accessible experience across all Government of Alberta digital services. When paired with an effective content strategy, it enhances accessibility and makes content easy to navigate, enabling citizens to find information quickly.</h3>
+        <h3>Our typography system is designed to create a consistent and accessible experience across all Government of Alberta digital products. When paired with an effective content strategy, it enhances accessibility and makes content easy to navigate, enabling citizens to find information quickly.</h3>
         <GoADivider mt="2xl" mb="xl"></GoADivider>
 
         <div className="max-width-72ch">

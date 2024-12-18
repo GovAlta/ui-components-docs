@@ -5,14 +5,14 @@ export default function ImagesPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Photography</h1>
-        <h3>The Government of Alberta (GoA) maintains a library of photos specifically taken for government use, ensuring they are relevant to our citizens. This collection meets our established criteria for quality and accessibility.</h3>
+        <h3>The Government of Alberta maintains a library of photos specifically taken for government use, ensuring they are relevant to our citizens. This collection meets our established criteria for quality and accessibility.</h3>
 
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
 
-          <h2 id="goa-photo-library">GoA photo library</h2>
-          <p>Our photo library offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta (GoA) brand and content guidelines and are free to use for all our projects.</p>
-          <p>The library can be accessed by all GoA staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a>.</p>
+          <h2 id="goa-photo-library">Government of Alberta photo library</h2>
+          <p>Our photo library offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta brand and content guidelines and are free to use for all our projects.</p>
+          <p>The library can be accessed by all Government of Alberta staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a>.</p>
 
           <h3 id="photos-sensitive-subjects">Photos for sensitive subjects</h3>
           <p>Before using any image for a sensitive subject like homelessness or child abuse, we recommend that you consult with Communications and Public Engagement (CPE) to ensure that the person in the image can be used for sensitive matters.</p>
@@ -28,7 +28,7 @@ export default function ImagesPage() {
             <li><strong>Generic photos</strong>: Photos like a person writing or typing, food, person receiving an injection, etc. do not need to be from Alberta.</li>
             <li><strong>Local elements</strong>: Photos depicting safety equipment, vegetation, plants, and animals should be appropriate or native to Alberta.</li>
           </ul>
-          <p>Read about copyright law and usage guidelines in the <a href="https://open.alberta.ca/dataset/afb907e6-eb1b-4bb6-a4bc-659582a1038e/resource/3a1b9758-d3b2-46ef-be59-cc07351ee59c/download/cpe-goa-identitypolicy-2019-reissue.pdf" target="_blank">GoA's Identity Policy manual</a>.</p>
+          <p>Read about copyright law and usage guidelines in the <a href="https://open.alberta.ca/dataset/afb907e6-eb1b-4bb6-a4bc-659582a1038e/resource/3a1b9758-d3b2-46ef-be59-cc07351ee59c/download/cpe-goa-identitypolicy-2019-reissue.pdf" target="_blank">Government of Alberta's Identity Policy manual</a>.</p>
 
           <h2 id="resolution">Resolution</h2>
           <p>When resizing images for the web, we advise adjusting the image dimensions to keep the file sizes small enough to load quickly while maintaining a good image quality to provide clarity.</p>

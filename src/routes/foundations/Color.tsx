@@ -6,7 +6,7 @@ export default function FoundationsColorPage() {
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         
         <h1>Color</h1>
-        <h3>Colors play a big role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
+        <h3>Colors play a major role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
         <div className="max-width-72ch">
           <p>Our palette is divided into these categories:</p>
@@ -18,9 +18,9 @@ export default function FoundationsColorPage() {
             <li>Greyscale colors</li>
             <li>Extended colors</li>
           </ul>
-          <p>For more information about how to use our colors in your service, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
+          <p>For more information about how to use our colors in your digital product, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
           <h2>Brand colors</h2>
-          <p>These colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
+          <p>Brand colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -62,7 +62,7 @@ export default function FoundationsColorPage() {
           </GoAGrid>
           
           <h2 id="interactive">Interactive colors</h2>
-          <p>Assigned to specific actions and states such as buttons and links, these colors are used to enhance usability and promote user engagement in our digital services.</p>
+          <p>Interactive colors are used to assign colors to specific actions and states, such as buttons and links. This helps in enhancing usability and promoting user engagement in our digital products.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -152,7 +152,7 @@ export default function FoundationsColorPage() {
           </GoAGrid>
           
           <h2 id="text">Text colors</h2>
-          <p>Headings, body text, and labels adopt these colours to ensure visual hierarchy in our layouts and readability across various contexts.</p>
+          <p>Headings, body text, and labels adopt our text colors to ensure visual hierarchy in our layouts and readability across various contexts.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -207,7 +207,7 @@ export default function FoundationsColorPage() {
           </GoAGrid>
           
           <h2 id="status">Status colors</h2>
-          <p>These colors are used to show various states such as success, warning, error and critical, helping users easily interpret the messages in our services.</p>
+          <p>Status colors are used to show various states such as success, warning, error and critical, helping users easily interpret the messages in our products.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">     
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -450,7 +450,7 @@ export default function FoundationsColorPage() {
             </GoAContainer>
           </GoAGrid>          
           <h2 id="greyscale">Greyscale</h2>
-          <p>Ranging from black to white, these neutral colors provide a base for accents, backgrounds and layouts.</p>
+          <p>Greyscale are neutral colors that range from black to white and provide a base for accents, backgrounds and layouts.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">  
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -560,6 +560,192 @@ export default function FoundationsColorPage() {
               </div>
             </GoAContainer>
           </GoAGrid>
+
+          <h2 id="extended">Data visualization colors</h2>
+          <p>Data visualization colors are used for differentiating between data categories in charts.</p>
+          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoAGrid gap="m" minChildWidth="220px"> 
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#4046CA",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#575CC3",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#7F84EB",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Cerulean - Default</strong></div>
+              <div><strong>Cerulean - Mid</strong></div>
+              <div><strong>Cerulean - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#F68511",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#F89F45",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#FFC76D",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Orange - Default</strong></div>
+              <div><strong>Orange - Mid</strong></div>
+              <div><strong>Orange - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#DE3D82",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#E5679D",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#FF8FC5",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Pink - Default</strong></div>
+              <div><strong>Pink - Mid</strong></div>
+              <div><strong>Pink - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#72E06A",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#8CFA84",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#BBFCB4",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Go-Green - Default</strong></div>
+              <div><strong>Go-Green - Mid</strong></div>
+              <div><strong>Go-Green - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#7E84FA",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#9A9EFB",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#C2C6FF",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Violet - Default</strong></div>
+              <div><strong>Violet - Mid</strong></div>
+              <div><strong>Violet - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#0FB5AE",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#29CFC8",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#7FEBE6",
+                  height: "45px",
+                  width: "100%",
+                  marginBottom: "24px",
+                  borderRadius: "0 0 4px 4px",
+                }}
+              />
+              <div><strong>Turquoise - Default</strong></div>
+              <div><strong>Turquoise - Mid</strong></div>
+              <div><strong>Turquoise - Light</strong></div>
+            </GoAContainer>
+          </GoAGrid>
       
           <h2 id="usage">Color usage</h2>
           <p>All government of Alberta products are designed to meet the Web Content and Accessibility Guidelines (WCAG) standards. Level AA compliance is the minimum requirement for accessible design.</p>
@@ -595,7 +781,7 @@ export default function FoundationsColorPage() {
             </tbody>
           </GoATable>
 
-          <p><em style={{color: "var(--goa-color-greyscale-black)", fontSize: "var(--goa-font-size-3)"}}>Use an <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">accessibility contrast checker</a> contrast checker to check color combinations or use our guide below. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</em></p>
+          <p><em style={{color: "var(--goa-color-greyscale-black)", fontSize: "var(--goa-font-size-3)"}}>Use an <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">accessibility contrast checker</a> to check color combinations or use our guide below. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</em></p>
 
           <h3 id="accessible">Accessible combinations</h3>
           <GoASpacer vSpacing="l"></GoASpacer>
