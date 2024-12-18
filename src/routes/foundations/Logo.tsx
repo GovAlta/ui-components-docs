@@ -39,7 +39,7 @@ export default function LogoPage() {
                   <img src="/images/logo/white-version.png" width="100%"></img>
                 </div>
               <div style={{ margin: "12px 0" }}><strong>White version</strong></div>
-              <div>This version can be used in cases where simplicity is needed. The chosen background color must be one of the official brand colours. </div>
+              <div>This version can be used in cases where simplicity is needed. The chosen background color must be one of the official brand colors. </div>
             </GoAContainer>
             <GoAContainer>
                 <div style={{ textAlign: "center"}}>
