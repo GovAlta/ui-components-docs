@@ -67,7 +67,7 @@ export default function IconographyPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Iconography</h1>
-        <h3>Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional aspects of our services. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot. </h3>
+        <h3>Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional aspects of our products. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot. </h3>
 
         <GoADivider mt="2xl" mb="2xl"></GoADivider>
 
