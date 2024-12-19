@@ -13,6 +13,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 
 // == Page props ==
 
@@ -120,6 +121,39 @@ export default function NotificationBannerPage() {
               <GoANotification {...componentProps}>Notification banner message</GoANotification>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+            
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
+            <h3 id="component-example-1">Show X per page</h3>
+
+            <Sandbox fullWidth skipRender>
+              
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoANotification type="important">
+                    Our system will be under maintenance from Thursday, September 15, 2022 at 10 pm to Friday, September 16, 2022 at 10 am. If you have questions or concerns, contact us at <a href="mailto:cidos-support@gov.ab.ca">cidos-support@gov.ab.ca</a>.
+                  </GoANotification>
+                `}
+              />
+              
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-notification type="important">
+                    Our system will be under maintenance from Thursday, September 15, 2022 at 10 pm to Friday, September 16, 2022 at 10 am. If you have questions or concerns, contact us at <a href="mailto:cidos-support&#64;gov.ab.ca">cidos-support&#64;gov.ab.ca</a>.
+                  </goa-notification>
+                `}
+              />
+              <GoANotification type="important">
+                Our system will be under maintenance from Thursday, September 15, 2022 at 10 pm to Friday, September 16, 2022 at 10 am. If you have questions or concerns, contact us at <a href="mailto:cidos-support@gov.ab.ca">cidos-support@gov.ab.ca</a>.
+              </GoANotification>
+            </Sandbox>
           </GoATab>
 
           <GoATab
