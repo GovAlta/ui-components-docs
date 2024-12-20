@@ -264,109 +264,109 @@
       {
         "code": "goa-color-cerulean-default",
         "value": "#4046CA",
-        "figmaColorStyle": "Cerulean - Default",
+        "figmaColorStyle": "Cerulean/Default",
         "description": ""
       },
       {
         "code": "goa-color-cerulean-mid",
         "value": "#575CC3",
-        "figmaColorStyle": "Cerulean - Mid",
+        "figmaColorStyle": "Cerulean/Mid",
         "description": ""
       },
       {
         "code": "goa-color-cerulean-light",
         "value": "#7F84EB",
-        "figmaColorStyle": "Cerulean - Light",
+        "figmaColorStyle": "Cerulean/Light",
         "description": ""
       },
       {
         "code": "goa-color-orange-default",
         "value": "#F68511",
-        "figmaColorStyle": "Orange - Default",
+        "figmaColorStyle": "Orange/Default",
         "description": ""
       },
       {
         "code": "goa-color-orange-mid",
         "value": "#F89F45",
-        "figmaColorStyle": "Orange - Mid",
+        "figmaColorStyle": "Orange/Mid",
         "description": ""
       },
       {
         "code": "goa-color-orange-light",
         "value": "#FFC76D",
-        "figmaColorStyle": "Orange - Light",
+        "figmaColorStyle": "Orange/Light",
         "description": ""
       },
       {
         "code": "goa-color-pink-default",
         "value": "#DE3D82",
-        "figmaColorStyle": "Pink - Default",
+        "figmaColorStyle": "Pink/Default",
         "description": ""
       },
       {
         "code": "goa-color-pink-mid",
         "value": "#E5679D",
-        "figmaColorStyle": "Pink - Mid",
+        "figmaColorStyle": "Pink/Mid",
         "description": ""
       },
       {
         "code": "goa-color-pink-light",
         "value": "#FF8FC5",
-        "figmaColorStyle": "Pink - Light",
+        "figmaColorStyle": "Pink/Light",
         "description": ""
       },
       {
         "code": "goa-color-go-green-default",
         "value": "#72E06A",
-        "figmaColorStyle": "Go-Green - Default",
+        "figmaColorStyle": "Go-Green/Default",
         "description": ""
       },
       {
         "code": "goa-color-go-green-mid",
         "value": "#8CFA84",
-        "figmaColorStyle": "Go-Green - Mid",
+        "figmaColorStyle": "Go-Green/Mid",
         "description": ""
       },
       {
         "code": "goa-color-go-green-light",
         "value": "#BBFCB4",
-        "figmaColorStyle": "Go-Green - Light",
+        "figmaColorStyle": "Go-Green/Light",
         "description": ""
       },
       {
         "code": "goa-color-violet-default",
         "value": "#7E84FA",
-        "figmaColorStyle": "Violet - Default",
+        "figmaColorStyle": "Violet/Default",
         "description": ""
       },
       {
         "code": "goa-color-violet-mid",
         "value": "#9A9EFB",
-        "figmaColorStyle": "Violet - Mid",
+        "figmaColorStyle": "Violet/Mid",
         "description": ""
       },
       {
         "code": "goa-color-violet-light",
         "value": "#C2C6FF",
-        "figmaColorStyle": "Violet - Light",
+        "figmaColorStyle": "Violet/Light",
         "description": ""
       },
       {
         "code": "goa-color-turquoise-default",
         "value": "#0FB5AE",
-        "figmaColorStyle": "Turquoise - Default",
+        "figmaColorStyle": "Turquoise/Default",
         "description": ""
       },
       {
         "code": "goa-color-turquoise-mid",
         "value": "#29CFC8",
-        "figmaColorStyle": "Turquoise - Mid",
+        "figmaColorStyle": "Turquoise/Mid",
         "description": ""
       },
       {
         "code": "goa-color-turquoise-light",
         "value": "#7FEBE6",
-        "figmaColorStyle": "Turquoise - Light",
+        "figmaColorStyle": "Turquoise/Light",
         "description": ""
       }
     ]
