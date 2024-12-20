@@ -61,8 +61,6 @@ export default function LogoPage() {
             <img src="/images/logo/alberta-service-logo.png" width="100%" style={{maxWidth: "400px"}}></img>
           </div>
 
-          <p>For accuracy and consistency, refer to the component in the Figma Asset library.</p>
-
           <h2 id="variations">Variations</h2>
           <p>The Alberta logo includes a few variations to suit different design requirements and spacing constraints. Each version maintains our brand identity while adapting to its specific use case.</p>
           
@@ -79,6 +77,8 @@ export default function LogoPage() {
           <div style={{ textAlign: "left", padding:"var(--goa-space-l) 0"  }}>
             <img src="/images/logo/favicon.png" width="60px"></img>
           </div>
+
+          <p>For accuracy and consistency, refer to our logo components in the <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=12132-379669" target="_blank">Figma Asset library</a>.</p>
 
           <h2 id="best-practices">Logo usage guidelines</h2>
           <ul>
