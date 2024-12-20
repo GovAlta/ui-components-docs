@@ -30,7 +30,6 @@ import ButtonGroupPage from "@routes/components/ButtonGroup";
 import ButtonPage from "@routes/components/Button";
 import CalloutPage from "@routes/components/Callout";
 import CheckboxPage from "@routes/components/Checkbox";
-import ChipPage from "@routes/components/Chip";
 import ComponentNotFoundPage from "@routes/not-found/NotFound";
 import ContainerPage from "@routes/components/Container";
 import DatePickerPage from "@routes/components/DatePicker";
@@ -149,7 +148,6 @@ const router = createBrowserRouter(
         <Route path="button-group" element={<ButtonGroupPage />} />
         <Route path="callout" element={<CalloutPage />} />
         <Route path="checkbox" element={<CheckboxPage />} />
-        <Route path="chip" element={<ChipPage />} />
         <Route path="container" element={<ContainerPage />} />
         <Route path="date-picker" element={<DatePickerPage />} />
         <Route path="details" element={<DetailsPage />} />
