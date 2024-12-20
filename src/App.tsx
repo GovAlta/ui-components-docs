@@ -122,7 +122,7 @@ import DesignAtGoAPage from "@routes/foundations/DesignAtGoA";
 import AccessibilityPage from "@routes/foundations/Accessibility";
 import FoundationsColorPage from "@routes/foundations/Color";
 import IconographyPage from "@routes/foundations/Iconography";
-import ImagesPage from "@routes/foundations/Images";
+import ImagesPage from "@routes/foundations/Photography";
 import LogoPage from "@routes/foundations/Logo";
 import FoundationsTypographyPage from "@routes/foundations/Typography";
 import FoundationsLayoutPage from "@routes/foundations/Layout";
@@ -241,7 +241,7 @@ const router = createBrowserRouter(
         <Route path="accessibility" element={<AccessibilityPage />} />
         <Route path="color" element={<FoundationsColorPage />} />
         <Route path="iconography" element={<IconographyPage />} />
-        <Route path="images" element={<ImagesPage />} />
+        <Route path="photography" element={<ImagesPage />} />
         <Route path="logo" element={<LogoPage />} />
         <Route path="typography" element={<FoundationsTypographyPage />} />
         <Route path="layout" element={<FoundationsLayoutPage />} />

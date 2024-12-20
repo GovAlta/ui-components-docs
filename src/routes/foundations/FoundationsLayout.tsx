@@ -14,7 +14,7 @@ export default function GetStartedLayout() {
           <GoASideMenuHeading>Style Guide</GoASideMenuHeading>
           <Link to="color">Color</Link>
           <Link to="iconography">Iconography</Link>
-          <Link to="images">Photography</Link>
+          <Link to="photography">Photography</Link>
           <Link to="logo">Logo</Link>
           <Link to="typography">Typography</Link>
           <Link to="layout">Layout</Link>
