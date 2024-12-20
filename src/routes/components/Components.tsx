@@ -38,13 +38,13 @@ export function Components() {
             <Link to="button-group">Button group</Link>
             <Link to="callout">Callout</Link>
             <Link to="checkbox">Checkbox</Link>
-            <Link to="chip">Chip</Link>
             <Link to="container">Container</Link>
             <Link to="date-picker">Date picker</Link>
             <Link to="details">Details</Link>
             <Link to="divider">Divider</Link>
             <Link to="dropdown">Dropdown</Link>
             <Link to="file-uploader">File uploader</Link>
+            <Link to="filter-chip">Filter chip</Link>
             <Link to="footer">Footer</Link>
             <Link to="form-item">Form item</Link>
             <Link to="form-stepper">Form stepper</Link>
