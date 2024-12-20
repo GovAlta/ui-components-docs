@@ -38,7 +38,6 @@ export function Components() {
             <Link to="button-group">Button group</Link>
             <Link to="callout">Callout</Link>
             <Link to="checkbox">Checkbox</Link>
-            <Link to="chip">Chip</Link>
             <Link to="container">Container</Link>
             <Link to="date-picker">Date picker</Link>
             <Link to="details">Details</Link>

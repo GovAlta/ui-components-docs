@@ -21,7 +21,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 // Page props
 const componentName = "Filter Chip";
-const description = "Allow the user to enter information, filter content, and make selections.";
+const description = "Allow the user to filter content.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
@@ -160,57 +160,6 @@ export default function FilterChipPage() {
               <GoAFilterChip {...componentProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-
-            <h3 id="component-example-un-filled">
-              Unfilled Close Icon (Default) / Filled Close Icon (On Hover)
-            </h3>
-            <Sandbox skipRender>
-              <GoAFilterChip content="Hover Me" />
-
-              <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-filter-chip content="Hover Me"></goa-filter-chip>
-                `}
-              />
-
-              <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                 <GoAFilterChip content="Hover Me" />
-                `}
-              />
-            </Sandbox>
-
-            <h3 id="component-example-no-bg">No Background Fill on Hover</h3>
-            <Sandbox skipRender>
-              <GoAFilterChip content="No Background 1" mr="s" />
-              <GoAFilterChip content="No Background 2" />
-
-              <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-filter-chip content="No Background 1" mr="s"></goa-filter-chip>
-                  <goa-filter-chip content="No Background 2"></goa-filter-chip>
-                `}
-              />
-
-              <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAFilterChip content="No Background 1" mr="s"/>
-                  <GoAFilterChip content="No Background 2" />
-                `}
-              />
-            </Sandbox>
 
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
