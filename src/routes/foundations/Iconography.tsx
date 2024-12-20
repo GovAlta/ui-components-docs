@@ -183,18 +183,12 @@ export default function IconographyPage() {
 
           <GoAContainer mt="xl" mb="m">
               <div style={{ textAlign: "center" }}>
-                <img src="/images/iconography/IonIcons.jpg" width="100%"></img>
+                <img src="/images/iconography/goa-icon-generator.jpg" width="100%"></img>
               </div>
           </GoAContainer>
 
           <h3>Logo icons</h3>
-          <p>This icon set, located in our Figma Component library contains popular logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
-
-          <GoAContainer mt="xl" mb="m">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/iconography/Logo-Icons.jpg" width="100%"></img>
-              </div>
-          </GoAContainer>
+          <p>Our <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=36-7">Figma component library</a> contains popular brand logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
 
           <h2 id="icon-size">Icon size</h2>
           <GoASpacer vSpacing="m"></GoASpacer>
