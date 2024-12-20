@@ -21,7 +21,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 // Page props
 const componentName = "Filter Chip";
-const description = "Allow the user to enter information, filter content, and make selections.";
+const description = "Allow the user to filter content.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
