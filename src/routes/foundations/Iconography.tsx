@@ -188,7 +188,7 @@ export default function IconographyPage() {
           </GoAContainer>
 
           <h3>Logo icons</h3>
-          <p>Our <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=36-7">Figma component library</a> contains popular brand logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
+          <p>Our <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=36-7" target="_blank">Figma component library</a> contains popular brand logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
 
           <h2 id="icon-size">Icon size</h2>
           <GoASpacer vSpacing="m"></GoASpacer>
