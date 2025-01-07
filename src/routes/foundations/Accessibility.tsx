@@ -172,8 +172,6 @@ export default function AccessibilityPage() {
             <li><strong>Screen readers</strong> - <a href="https://www.nvaccess.org/" target="_blank">NVDA</a> (Windows), <a href="https://www.apple.com/accessibility/" target="_blank">VoiceOver</a> (Apple). </li>
             <li><strong>Automated tools</strong> - <a href="https://www.deque.com/axe/" target="_blank">Axe</a>, <a href="https://wave.webaim.org/" target="_blank">Wave</a>, <a href="https://developers.google.com/web/tools/lighthouse" target="_blank">Lighthouse</a>. </li>
           </ul>
-
-          <p>For more information on accessibility testing or to recruit users, please check out our internal guidance for <a href="https://goa-dio.atlassian.net/l/cp/M136kgku" target="_blank">accessibility testing recruitment</a>.</p>
           
           <h3>Additional resources</h3>
           <ul>
