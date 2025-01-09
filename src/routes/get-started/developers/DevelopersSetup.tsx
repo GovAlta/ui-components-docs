@@ -24,7 +24,7 @@ export default function DevelopersSetupPage() {
           allowCopy={true}
           code={`
           npm i @abgov/web-components
-          npm i @abgov/angular-components
+          npm i @abgov/angular-components@lts
         `}
         />
 
@@ -89,7 +89,7 @@ export default function DevelopersSetupPage() {
           tags="react"
           allowCopy={true}
           code={`
-          npm i @abgov/react-components
+          npm i @abgov/react-components@lts
           npm i @abgov/web-components
         `}
         />
