@@ -6,7 +6,6 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from "react-router-dom";
-import "@abgov/ui-components-common";
 import "@abgov/web-components";
 
 import Root from "@routes/root";
