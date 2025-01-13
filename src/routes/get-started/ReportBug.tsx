@@ -10,13 +10,32 @@ import {
   GoATextArea
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
 import { useNavigate } from "react-router-dom";
   
 export default function ReportBugPage() {
+  interface Package {
+    name: string;
+    location: string;
+  }
+
   let navigate = useNavigate();
   
+  const packages: Package[] = [
+    {
+      name: "web",
+      location: "/@abgov/web-components"
+    },
+    {
+      name: "angular",
+      location: "/@abgov/angular-components"
+    },
+    {
+      name: "react",
+      location: "/@abgov/react-components"
+    }
+  ]
   const [formValues, setFormValues] = useState({
     email: "",
     webVersion: "",
@@ -27,6 +46,11 @@ export default function ReportBugPage() {
     stackblitz: "",
     jam: "",
     additional: ""
+  })
+  const [versions, setVersions] = useState({
+    react: "",
+    angular: "",
+    web: ""
   })
 
   const [emailError, setEmailError] = useState<string>();
@@ -180,6 +204,26 @@ export default function ReportBugPage() {
     return valid;
   }
 
+  useEffect(() => {
+    async function getLatestVersion() {
+      for (let singlePackage of packages) {
+        try {
+          const response = await fetch("https://registry.npmjs.org" + singlePackage.location + "/latest");
+          const data = await response.json();
+
+          setVersions(prevVersions => ({
+            ...prevVersions,
+            [singlePackage.name]: data.version
+          }));
+        } catch (error) {
+          console.error("Error fetching version for ", singlePackage.name, error);
+        }
+      }
+    }
+
+    getLatestVersion();
+  }, [])
+
   if (!formSubmitted) {
     return (
       <ComponentContent>
@@ -191,9 +235,9 @@ export default function ReportBugPage() {
         </h3>
         <GoACallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
           <ul>
-            <li>Web Components - 1.28.0</li>
-            <li>Angular Components - 3.2.0</li>
-            <li>React Components - 5.3.0</li>
+            <li>Web Components - { versions["web"] }</li>
+            <li>Angular Components - { versions["angular"] }</li>
+            <li>React Components - { versions["react"] }</li>
           </ul>
         </GoACallout>
         <GoAFormItem label="Your email" mb="xl" error={ emailError }>
