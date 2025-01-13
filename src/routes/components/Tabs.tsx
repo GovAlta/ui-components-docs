@@ -125,7 +125,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -160,7 +160,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -185,7 +185,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -229,7 +229,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -267,7 +267,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -293,7 +293,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -324,7 +324,7 @@ export default function TabsPage() {
                       <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -362,7 +362,7 @@ export default function TabsPage() {
                       <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -388,7 +388,7 @@ export default function TabsPage() {
                       <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -426,7 +426,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -461,7 +461,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -486,7 +486,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th class="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -530,7 +530,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -568,7 +568,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -594,7 +594,7 @@ export default function TabsPage() {
                           <tr>
                             <th>Status</th>
                             <th>Text</th>
-                            <th>Number</th>
+                            <th className="goa-table-number-header">Number</th>
                             <th>Action</th>
                           </tr>
                         </thead>
@@ -622,10 +622,12 @@ export default function TabsPage() {
                 <GoATab heading="All">
                   <GoATable width="100%">
                     <thead>
+                      <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
+                      </tr>
                     </thead>
                     <tbody>
                       {review.map((i) => (
@@ -661,7 +663,7 @@ export default function TabsPage() {
                       <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -687,7 +689,7 @@ export default function TabsPage() {
                       <tr>
                         <th>Status</th>
                         <th>Text</th>
-                        <th>Number</th>
+                        <th className="goa-table-number-header">Number</th>
                         <th>Action</th>
                       </tr>
                     </thead>
