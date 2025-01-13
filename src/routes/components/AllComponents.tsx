@@ -600,7 +600,7 @@ const AllComponents = () => {
         />
       </GoAFormItem>
 
-      <GoATabs mt="l">
+      <GoATabs>
         <GoATab heading="Cards">
           <GoAGrid minChildWidth="15rem" gap="xl">
             {filteredCards.map((card) => (
