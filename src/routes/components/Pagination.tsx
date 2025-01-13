@@ -463,7 +463,7 @@ export default function PaginationPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-1">Show X per page</h3>
+            <h3 id="component-example-1">Set items per page and navigate multiple pages in a table</h3>
 
             <Sandbox
               flags={["reactive"]}
