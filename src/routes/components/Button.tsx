@@ -10,6 +10,7 @@ import {
   GoAInput,
   GoATab,
   GoATabs,
+  GoAText,
 } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
@@ -29,7 +30,7 @@ export default function ButtonPage() {
       label: "Type",
       type: "list",
       name: "type",
-      options: ["primary", "submit", "secondary", "tertiary", "start"],
+      options: ["primary", "secondary", "tertiary", "start"],
       value: "",
       defaultValue: "primary",
     },
@@ -61,7 +62,6 @@ export default function ButtonPage() {
       options: [""].concat(ICONS),
       value: "",
     },
-    {label: "Width", type: "string", name: "width", value: ""},
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
   ]);
   const componentProperties: ComponentProperty[] = [
@@ -114,11 +114,6 @@ export default function ButtonPage() {
       description: "Shows an icon to the right of the text.",
     },
     {
-      name: "width",
-      type: "string",
-      description: "Sets the width of the button.",
-    },
-    {
       name: "_click",
       lang: "angular",
       type: "CustomEvent",
@@ -159,16 +154,16 @@ export default function ButtonPage() {
       <ComponentHeader
         name="Button"
         category={Category.INPUTS_AND_ACTIONS}
-        description="Carry out an important action or to navigate to another page."
+        description="Carry out an important action or navigate to another page."
         relatedComponents={[
-          { link: "/components/buttonGroup", name: "Button group" },
+          { link: "/components/button-group", name: "Button group" },
           { link: "/components/icon-button", name: "Icon button" },
         ]}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code">
             {/*Button Sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
@@ -185,20 +180,21 @@ export default function ButtonPage() {
                 `}
               />
               <GoAButton {...buttonProps} onClick={noop}>
-                Primary Button
+                Button
               </GoAButton>
             </Sandbox>
 
             {/*Button Table Properties*/}
             <ComponentProperties properties={componentProperties} />
-
+          </GoATab>
+          
+          <GoATab heading="Examples">
             {/*Button Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
-
+      
             {/*Button Example 1*/}
             <h3 id="component-example-ask-address">Ask a user for an address</h3>
             <Sandbox flags={["reactive"]}>
+              
               
             <GoABlock gap="xl" direction="column">
               <GoAFormItem label="Street Address">
@@ -279,14 +275,13 @@ export default function ButtonPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            
+            
+          </GoATab>
+          <GoATab heading="Accessibility">
+            
+            
           </GoATab>
         </GoATabs>
       </ComponentContent>

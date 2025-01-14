@@ -20,7 +20,7 @@
   display: flex;
   gap: 1rem 2rem;
   flex-flow: wrap;
-  margin-top: var(--goa-space-l);
+  margin-top: var(--goa-space-m);
 }
 
 .sandbox-render-centered {
@@ -31,10 +31,6 @@
   .sandbox-render {
     /*make sure preview element will inherit component width*/
     display: block;
-    padding: var(--goa-space-xs);
-  }
-  .sandbox-container {
-    gap: 0;
-    display: block;
-  }
+    padding: var(--goa-space-xl);
+  } 
 }
