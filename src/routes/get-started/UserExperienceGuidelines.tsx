@@ -17,19 +17,22 @@ export default function UserExperienceGuidelinesPage() {
           <li>Repeated test cycles as products mature and user needs change over time.</li>
           <li>Testing of complete services end-to-end, not just technology in isolation.</li>
         </ul>
-        
+
         <p>
           For more details on the process of usability testing, refer to our&nbsp;
-          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/Understanding-Usability.aspx" target="_blank">
-            usability field guide.
-          </a>
+          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT#usability-field-guide" target="_blank">
+            usability field guide
+          </a>.
         </p>
 
         <p>
           For more details on the process of assessing compliance to each guideline, refer to our&nbsp;
-          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/UX-Review-Process.aspx" target="_blank">
-            Heuristic Worksheet & UX Review Process.
-          </a>
+          <a href="https://abgov.sharepoint.com/sites/S600D27-DDDUXT/SitePages/User-Experience-Guidelines.aspx" target="_blank">
+            User Experience Guidelines
+          </a> and&nbsp;
+          <a href="https://abgov.sharepoint.com/:x:/r/sites/S600D27-DDDUXT/Shared%20Documents/User%20Experience%20Review%20and%20Support/Template%20-%20User%20Experience%20Worksheet.xlsx?d=wca1b397b18c44f33bed42119ea2a48c0&csf=1&web=1&e=yCFDxn" target="_blank">
+            User Experience Worksheet
+          </a>.
         </p>
 
         <h3>Guidelines:</h3>
