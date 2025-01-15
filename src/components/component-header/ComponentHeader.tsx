@@ -1,4 +1,4 @@
-import {GoABadge, GoABlock, GoAHeroBanner, GoAText, } from "@abgov/react-components";
+import {GoABadge, GoABlock, GoAText, } from "@abgov/react-components";
 import "./ComponentHeader.css";
 import { Link } from "react-router-dom";
 
