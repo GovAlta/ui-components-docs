@@ -16,7 +16,7 @@ export default function FoundationsColorPage() {
             <li>Text colors</li>
             <li>Status colors</li>
             <li>Greyscale colors</li>
-            <li>Data visualization colors</li>
+            <li>Additional colors</li>
           </ul>
           <p>For more information about how to use our colors in your digital product, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
           <h2 id="brand">Brand colors</h2>
@@ -208,6 +208,7 @@ export default function FoundationsColorPage() {
           
           <h2 id="status">Status colors</h2>
           <p>Status colors are used to show various states such as success, warning, error and critical, helping users easily interpret the messages in our products.</p>
+          <h3 id="info">Info</h3>
           <GoASpacer vSpacing="l"></GoASpacer>
           <GoAGrid gap="m" minChildWidth="150px">     
             <GoAContainer accent="filled" padding="relaxed" width="full">
@@ -264,6 +265,10 @@ export default function FoundationsColorPage() {
                 <strong>Info - Background</strong>
               </div>
             </GoAContainer>
+          </GoAGrid> 
+          <h3 id="warning">Warning</h3>
+          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoAGrid gap="m" minChildWidth="150px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
@@ -320,6 +325,10 @@ export default function FoundationsColorPage() {
                 <strong>Warning - Background</strong>
               </div>
             </GoAContainer>
+          </GoAGrid> 
+          <h3 id="emergency">Emergency</h3>
+          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoAGrid gap="m" minChildWidth="150px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
@@ -377,6 +386,10 @@ export default function FoundationsColorPage() {
                 <strong>Emergency - Background</strong>
               </div>
             </GoAContainer>
+          </GoAGrid> 
+          <h3 id="success">Success</h3>
+          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoAGrid gap="m" minChildWidth="150px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
@@ -434,7 +447,11 @@ export default function FoundationsColorPage() {
                 <strong>Success - Background</strong>
               </div>
             </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          </GoAGrid> 
+          <h3 id="critical">Critical</h3>
+          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoAGrid gap="m" minChildWidth="150px"> 
+            <GoAContainer maxWidth="150px" accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#171D23",
@@ -561,189 +578,211 @@ export default function FoundationsColorPage() {
             </GoAContainer>
           </GoAGrid>
 
-          <h2 id="extended">Data visualization colors</h2>
-          <p>Data visualization colors are used for differentiating between data categories in charts.</p>
+          <h2 id="extended">Additional colors</h2>
+          <p>Additional colours can be used If you need more badge colours or need colours to differentiate between data categories in charts.</p>
           <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="220px"> 
+          <GoAGrid gap="m" minChildWidth="150px"> 
             <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#4046CA",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#575CC3",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#7F84EB",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Cerulean - Default</strong></div>
-              <div><strong>Cerulean - Mid</strong></div>
-              <div><strong>Cerulean - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#F68511",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#F89F45",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#FFC76D",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Orange - Default</strong></div>
-              <div><strong>Orange - Mid</strong></div>
-              <div><strong>Orange - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#DE3D82",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#E5679D",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#FF8FC5",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Pink - Default</strong></div>
-              <div><strong>Pink - Mid</strong></div>
-              <div><strong>Pink - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#72E06A",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#8CFA84",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#BBFCB4",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Go-Green - Default</strong></div>
-              <div><strong>Go-Green - Mid</strong></div>
-              <div><strong>Go-Green - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#7E84FA",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#9A9EFB",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#C2C6FF",
-                  height: "45px",
-                  width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
-                }}
-              />
-              <div><strong>Violet - Default</strong></div>
-              <div><strong>Violet - Mid</strong></div>
-              <div><strong>Violet - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
-              <div
-                style={{
-                  backgroundColor: "#0FB5AE",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "4px 4px 0 0",
-                }}
-              />
-              <div
-                style={{
-                  backgroundColor: "#29CFC8",
-                  height: "45px",
-                  width: "100%",
-                  borderRadius: "0",
-                }}
-              />
               <div
                 style={{
                   backgroundColor: "#7FEBE6",
                   height: "45px",
                   width: "100%",
-                  marginBottom: "24px",
-                  borderRadius: "0 0 4px 4px",
+                  borderRadius: "4px 4px 0 0",
                 }}
               />
-              <div><strong>Turquoise - Default</strong></div>
-              <div><strong>Turquoise - Mid</strong></div>
-              <div><strong>Turquoise - Light</strong></div>
+              <div
+                style={{
+                  backgroundColor: "#DCFBF8",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Aqua</strong></div>
+              <div><strong>Aqua - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#333333",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#E7E7E7",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Black</strong></div>
+              <div><strong>Black - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#AAC9E7",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#DDEFFF",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Blue</strong></div>
+              <div><strong>Blue - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#BBFCB4",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#CCE2D9",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Green</strong></div>
+              <div><strong>Green - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#FFC76D",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#FCD6C3",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Orange</strong></div>
+              <div><strong>Orange - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#FF8FC5",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#F9E1EB",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Pink</strong></div>
+              <div><strong>Pink - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#ED948D",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#F4CDC6",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Red</strong></div>
+              <div><strong>Red - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#D4C2FF",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#EFE2FB",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Violet</strong></div>
+              <div><strong>Violet - Light</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  height: "90px",
+                  width: "100%",
+                  borderRadius: "4px",
+                  marginBottom: "24px",
+                  border: "1px solid #DCDCDC",
+                }}
+              />
+              <div><strong>White</strong></div>
+            </GoAContainer>
+            <GoAContainer accent="filled" padding="relaxed" width="full">
+              <div
+                style={{
+                  backgroundColor: "#FCE796",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "4px 4px 0 0",
+                }}
+              />
+              <div
+                style={{
+                  backgroundColor: "#FFF7BF",
+                  height: "45px",
+                  width: "100%",
+                  borderRadius: "0 0 4px 4px",
+                  marginBottom: "24px",
+                }}
+              />
+              <div><strong>Yellow</strong></div>
+              <div><strong>Yellow - Light</strong></div>
             </GoAContainer>
           </GoAGrid>
       
