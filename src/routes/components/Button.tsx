@@ -159,6 +159,7 @@ export default function ButtonPage() {
           { link: "/components/button-group", name: "Button group" },
           { link: "/components/icon-button", name: "Icon button" },
         ]}
+        githubLink="routes/components/Button.tsx"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">

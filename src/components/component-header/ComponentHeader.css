@@ -1,11 +1,26 @@
 .component-header {
-  margin-bottom: 3rem;
-  margin-top: 2rem;
+  margin-bottom: var(--goa-space-l);
+  margin-top: var(--goa-space-xl);
 }
 
 .component-header h1 {
-  margin-bottom: 1rem;
-  margin-top: 1.5rem;
+  margin-bottom: var(--goa-space-m);
+  margin-top: var(--goa-space-l);
+}
+
+.component-header h3 {
+  margin-bottom: var(--goa-space-xs);
+}
+
+.component-header span.small,
+.component-header a.small {
+  font: var(--goa-typography-body-s);
+  margin-bottom: var(--goa-space-xs);
+}
+
+.component-header span.x-small,
+.component-header a.x-small {
+  font: var(--goa-typography-body-xs);
 }
 
 @media screen and (max-width: 623px) {
