@@ -529,14 +529,20 @@ const AllComponents = () => {
       const aValue =
           sortBy === "name"
               ? a.name.toLowerCase()
+            // @ts-ignore
               : Array.isArray(a[sortBy])
+              // @ts-ignore
                   ? a[sortBy][0]
+              // @ts-ignore
                   : a[sortBy];
       const bValue =
           sortBy === "name"
               ? b.name.toLowerCase()
+            // @ts-ignore
               : Array.isArray(b[sortBy])
+              // @ts-ignore
                   ? b[sortBy][0]
+              // @ts-ignore
                   : b[sortBy];
 
       if (aValue > bValue) return newDirection;
@@ -576,19 +582,24 @@ const AllComponents = () => {
             <GoATableSortHeader
                 name="status"
                 direction={sortDirection.status === -1 ? "asc" : "desc"}
+              // @ts-ignore
                 onClick={() => sortData("status")}
             >
               Status
             </GoATableSortHeader>
           </th>
           <th>
-            <GoATableSortHeader name="name" onClick={() => sortData("name")}>
+            <GoATableSortHeader name="name"
+              // @ts-ignore
+                                onClick={() => sortData("name")}>
               Name
             </GoATableSortHeader>
           </th>
 
           <th>
-            <GoATableSortHeader name="groups" onClick={() => sortData("groups")}>
+            <GoATableSortHeader name="groups"
+              // @ts-ignore
+                                onClick={() => sortData("groups")}>
               Category
             </GoATableSortHeader>
           </th>
