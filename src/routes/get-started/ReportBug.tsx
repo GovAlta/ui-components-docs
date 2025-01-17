@@ -236,8 +236,8 @@ export default function ReportBugPage() {
         <GoACallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
           <ul>
             <li>Web Components - { versions["web"] }</li>
-            <li>Angular Components - { versions["angular"] }</li>
-            <li>React Components - { versions["react"] }</li>
+            <li>Angular Components - 3.2.2</li>
+            <li>React Components - 5.4.1</li>
           </ul>
         </GoACallout>
         <GoAFormItem label="Your email" mb="xl" error={ emailError }>
