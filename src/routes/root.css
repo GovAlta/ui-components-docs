@@ -80,7 +80,7 @@ h4.heading {
 }
 
 code {
-  font: var(--goa-typography-number-m);
+  font: var(--goa-typography-number-s);
 }
 
 iframe {

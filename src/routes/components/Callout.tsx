@@ -9,20 +9,16 @@ import {
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
-
-import {
-  ComponentProperties,
-  ComponentProperty,
-} from "@components/component-properties/ComponentProperties.tsx";
+import { ComponentProperties, ComponentProperty } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-// == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
 const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
-  { link: "/components/Notification-banner", name: "Notification banner" },
+  { link: "/components/notification-banner", name: "Notification banner" },
 ];
 type ComponentPropsType = GoACalloutProps;
 type CastingType = {
@@ -141,14 +137,14 @@ export default function CalloutPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{ display: "none" }}>
-              Component
-            </h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoACallout {...componentProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -156,14 +152,32 @@ export default function CalloutPage() {
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
           </GoATab>
-
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading={<>Examples<GoABadge type="information" content="0" /></>}>
+            <GoACallout heading="We are currently working on design examples for this component" type="important" size="medium" maxWidth="540px">
+              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                Talk to the design system team
+              </a>{" "}
+              to contribute examples from your service.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

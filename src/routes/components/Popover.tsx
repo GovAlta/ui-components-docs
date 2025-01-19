@@ -5,10 +5,23 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs, GoACallout, } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
+const componentName = "Popover";
+const category = Category.CONTENT_AND_LAYOUT;
+const description = "A small overlay that opens on demand, used in other components.";
+const relatedComponents = [
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/header", name: "Header" },
+  { link: "/components/tooltip", name: "Tooltip" },
+];
 
 export default function PopoverPage() {
   const [popoverProps, setPopoverProps] = useState({});
@@ -126,23 +139,20 @@ export default function PopoverPage() {
   return (
     <>
       <ComponentHeader
-        name="Popover"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="A small overlay that opens on demand, used in other components."
-        relatedComponents={[
-          { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/header", name: "Header" },
-          { link: "/components/tooltip", name: "Tooltip" },
-
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code Playground">
             {/*Popover sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{display: "none"}}>Playground</h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
 
               {/*Angular*/}
@@ -161,7 +171,7 @@ export default function PopoverPage() {
               `}
               />
 
-              {/*React*/}
+              {/* React */}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -199,18 +209,58 @@ export default function PopoverPage() {
               </GoAPopover>
             </Sandbox>
 
-            {/*Popover table properties*/}
+            {/* Popover component properties table */}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          ></GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="0" />
+                </>
+              }
+            >
+              <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
+                {" "}
+                <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                  Talk to the design system team
+                </a>{" "}
+                to contribute examples from your service.
+              </GoACallout>
+            </GoATab>
+
+          <GoATab heading="Design">
+
+          <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+
+          <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

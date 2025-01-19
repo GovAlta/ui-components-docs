@@ -9,6 +9,7 @@ import {
   GoASpacer,
   GoADropdown,
   GoADropdownItem,
+  GoACallout,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -20,6 +21,15 @@ import { faker } from "@faker-js/faker";
 import { useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13964";
+const componentName = "Pagination";
+const category = Category.STRUCTURE_AND_NAVIGATION;
+const description = "Help users navigate between multiple pages or screens as part of a set.";
+const relatedComponents = [{ link: "/components/table", name: "Table" }];
 
 type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
@@ -47,11 +57,6 @@ interface User {
   lastName: string;
   age: number;
 }
-
-const componentName = "Pagination";
-const description = "Help users navigation between multiple pages or screens as part of a set.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [{ link: "/components/table", name: "Table" }];
 
 export default function PaginationPage() {
   const [paginationProps, setPaginationProps] = useState<ComponentPropsType>({
@@ -169,6 +174,7 @@ export default function PaginationPage() {
     (paginationBindings.find(binding => binding.name === "itemCount")?.value as number) || 30;
   let perPageUsers: number =
     (paginationBindings.find(binding => binding.name === "perPageCount")?.value as number) || 10;
+
   useEffect(() => {
     const _users = [];
     for (let i = 1; i < totalUsers + 1; i++) {
@@ -274,16 +280,19 @@ export default function PaginationPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Pagination Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={paginationBindings}
@@ -458,11 +467,16 @@ export default function PaginationPage() {
 
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} />
-
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
+          </GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="1" />
+                </>
+              }
+            >
+            {/* Example 1 */}
             <h3 id="component-example-1">Show X per page</h3>
 
             <Sandbox
@@ -756,14 +770,36 @@ export default function PaginationPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+
+          <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+
+          <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

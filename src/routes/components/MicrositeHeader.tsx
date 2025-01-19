@@ -5,6 +5,7 @@ import {
   GoAServiceLevel,
   GoATab,
   GoATabs,
+  GoACallout,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -16,17 +17,24 @@ import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
 
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=2-81";
 const componentName = "Microsite header";
+const category = Category.STRUCTURE_AND_NAVIGATION;
 const description =
-  "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [{ link: "/components/header", name: "Header" }];
+  "Communicate what stage the service is at, connect to Alberta.ca, and gather feedback on your service from users.";
+const relatedComponents = [
+  { link: "/components/footer", name: "Footer" },
+  { link: "/components/header", name: "Header" },
+];
+
 type ComponentPropsType = GoAHeaderProps;
 type CastingType = {
-  // add any required props here
   type: GoAServiceLevel;
   [key: string]: unknown;
 };
+
 export default function MicrositeHeaderPage() {
   const [micrositeHeaderProps, setMicrositeHeaderProps] = useState<ComponentPropsType>({
     type: "alpha" as GoAServiceLevel,
@@ -176,34 +184,63 @@ export default function MicrositeHeaderPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Microsite Header Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
 
-            {/*Component properties table*/}
+            {/* Component properties table */}
             <ComponentProperties properties={componentProperties} />
-            <MicrositeHeaderExamples />
+          </GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="2" />
+                </>
+              }
+            >
+              <MicrositeHeaderExamples />
+
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+
+          <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

@@ -9,6 +9,22 @@ import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-com
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
+const componentName = "Icons";
+const category = Category.UTILITIES;
+const description =
+  "A simple and universal graphic symbol representing an action, object, or concept to help guide the user.";
+const relatedComponents = [
+  { link: "/components/badge", name: "Badge" },
+  { link: "/components/callout", name: "Callout" },
+  { link: "/components/icon-button", name: "Icon button" },
+  { link: "/components/Tooltip", name: "Tooltip" },
+];
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -142,12 +158,12 @@ export default function IconsPage() {
       type: "string",
       lang: "angular",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },  
+    },
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },  
+    },
   ];
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -158,36 +174,31 @@ export default function IconsPage() {
   return (
     <>
       <ComponentHeader
-        name="Icons"
-        category={Category.UTILITIES}
-        description="A simple and universal graphic symbol representing an action, object, or concept to help guide the user."
-        relatedComponents={[
-          { link: "/components/badge", name: "Badge" },
-          { link: "/components/callout", name: "Callout" },
-          { link: "/components/icon-button", name: "Icon button" },
-          { link: "/components/Tooltip", name: "Tooltip" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
-            {/*Icons Sandbox*/}
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
               <GoAIcon {...iconsProps} />
             </Sandbox>
 
-            {/*Icons Properties*/}
+            {/* Icons Properties */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/*Icons example*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoATab heading="Icon categories">
 
+            {/* Category 1 */}
             <h3 id="component-example-alert-messaging">Alert and messaging</h3>
             <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"information-circle"} />
@@ -200,6 +211,7 @@ export default function IconsPage() {
               <IconSnippet type={"remove-circle"} />
             </GoAGrid>
 
+            {/* Category 2 */}
             <h3 id="component-example-basic">Basic</h3>
             <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"close"} />
@@ -208,8 +220,9 @@ export default function IconsPage() {
               <IconSnippet type={"remove"} />
             </GoAGrid>
 
+            {/* Category 3 */}
             <h3 id="component-example-direction">Direction</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"chevron-down"} />
               <IconSnippet type={"chevron-up"} />
               <IconSnippet type={"chevron-back"} />
@@ -224,8 +237,9 @@ export default function IconsPage() {
               <IconSnippet type={"caret-forward"} />
             </GoAGrid>
 
+            {/* Category 4 */}
             <h3 id="component-example-interaction">Interactions</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"menu"} />
               <IconSnippet type={"reload"} />
               <IconSnippet type={"search"} />
@@ -246,14 +260,17 @@ export default function IconsPage() {
               <IconSnippet type={"download"} />
             </GoAGrid>
 
+            {/* Category 5 */}
             <h3 id="component-example-accounts">Accounts</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"person-circle"} />
               <IconSnippet type={"settings"} />
               <IconSnippet type={"mail"} />
               <IconSnippet type={"call"} />
             </GoAGrid>
           </GoATab>
+
+
         </GoATabs>
       </ComponentContent>
     </>

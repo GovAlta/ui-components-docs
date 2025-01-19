@@ -7,14 +7,17 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
-  GoAContainer, GoAContainerProps,
+  GoAContainer,
+  GoAContainerProps,
   GoATab,
-  GoATabs
+  GoATabs,
+  GoACallout,
 } from "@abgov/react-components";
 import ContainerExamples from "@examples/container/ContainerExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
-// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1789-12623";
 const componentName = "Container";
 const description = "Group information, create hierarchy, and show related information.";
 const category = Category.FEEDBACK_AND_ALERTS;
@@ -121,7 +124,7 @@ export default function ContainerPage() {
       type: "string",
       description: "Sets the maximum width of the container.",
       lang: "angular",
-    },    
+    },
     {
       name: "testId",
       type: "string",
@@ -153,13 +156,15 @@ export default function ContainerPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading={"Code examples"}>
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={containerBindings} onChange={onSandboxChange} fullWidth>
               <GoAContainer {...containerProps}>
                 <h2>Detach to use</h2>
@@ -169,18 +174,29 @@ export default function ContainerPage() {
 
             {/*Container Table Properties*/}
             <ComponentProperties properties={componentProperties} />
-            <ContainerExamples />
-
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading={<>Examples<GoABadge type="information" content="4" /></>}>
+            <ContainerExamples />
+          </GoATab>
+
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

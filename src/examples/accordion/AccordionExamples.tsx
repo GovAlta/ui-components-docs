@@ -14,7 +14,6 @@ export default function AccordionExamples() {
   }
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
       <h3 id="component-example-expand-collapse-form">Expand or collapse part of a form</h3>
       <Sandbox fullWidth skipRender allow={["h3"]}>
         <CodeSnippet

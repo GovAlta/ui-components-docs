@@ -7,32 +7,36 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 
 import {
-  GoAIcon,
   GoABadge,
+  GoAIcon,
   GoATab,
   GoATabs,
   GoATooltip,
   GoATooltipProps,
+  GoACallout,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21932-557049";
 const componentName = "Tooltip";
 const description = "A small popover that displays more information about an item.";
+const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/form-item", name: "Helper text" },
   { link: "/components/icon-button", name: "Icon button" },
-  { link: "/components/popover", name: "Popover" }
+  { link: "/components/popover", name: "Popover" },
 ];
+
 type ComponentPropsType = GoATooltipProps;
 type CastingType = {
   content: string;
   [key: string]: unknown;
 };
 
-export default function TEMPLATE_Page() {
+export default function TooltipPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
   });
@@ -69,7 +73,7 @@ export default function TEMPLATE_Page() {
     {
       name: "position",
       type: "top | bottom | left | right",
-      description: "Position wrt the child element",
+      description: "Position relative to the child element.",
       defaultValue: "top",
     },
     {
@@ -94,32 +98,80 @@ export default function TEMPLATE_Page() {
     <>
       <ComponentHeader
         name={componentName}
-        category={Category.FEEDBACK_AND_ALERTS}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Tooltip Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoATooltip {...componentProps}>
                 <GoAIcon type="information-circle" />
               </GoATooltip>
             </Sandbox>
+
+            {/* Tooltip Properties */}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
+
+          {/* Since there are 0 examples, the "Examples" tab is omitted */}
 
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
             }
-          ></GoATab>
+          >
+            <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
+              {" "}
+              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                Talk to the design system team
+              </a>{" "}
+              to contribute examples from your service.
+            </GoACallout>
+
+          </GoATab>
+
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+
+          <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

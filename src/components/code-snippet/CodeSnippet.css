@@ -3,7 +3,7 @@
   border-radius: 4px;
   margin-top: var(--goa-space-m);
   overflow: hidden;
-  max-height: 25rem;
+  max-height: 20rem;
   position: relative;
 }
 
@@ -11,11 +11,15 @@
   margin: 0;
   white-space: pre-wrap;
   word-wrap: break-word;
+  padding-right: var(--goa-space-2xl); /** to not overlap with copy button **/
+  background-color: var(--goa-color-greyscale-100);
+
+
 }
 
 .goa-code-snippet.overflow pre {
   padding-bottom: var(--goa-space-xl); /** to not overlap with show more/less button **/
-  padding-right: var(--goa-space-2xl); /** to not overlap with copy button **/
+  padding-right: var(--goa-space-3xl); /** to not overlap with copy button **/
   background-color: var(--goa-color-greyscale-100);
 }
 

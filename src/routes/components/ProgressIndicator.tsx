@@ -10,21 +10,25 @@ import {
   GoABadge,
   GoATab,
   GoATabs,
+  GoACallout,
   GoACircularProgress,
   GoACircularProgressProps,
 } from "@abgov/react-components";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
 
 // == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13604";
 const componentName = "Progress indicator";
-const description = "Provide visual feedback to users while loading.";
 const category = Category.FEEDBACK_AND_ALERTS;
+const description = "Provide visual feedback to users while loading.";
 const relatedComponents = [
   { link: "/components/file-uploader", name: "File uploader" },
-  { link: "/components/skeleton-loader", name: "Skeleton loading" }
+  { link: "/components/skeleton-loader", name: "Skeleton loading" },
 ];
+
 type ComponentPropsType = GoACircularProgressProps;
 type CastingType = {
   // add any required props here
@@ -100,7 +104,6 @@ export default function ProgressIndicatorPage() {
     },
   ];
 
-
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     const updatedProps = { ...props, visible: true } as CastingType;
 
@@ -110,7 +113,7 @@ export default function ProgressIndicatorPage() {
     if (props?.variant === "fullscreen") {
       setTimeout(() => {
         setComponentProps({ ...updatedProps, visible: false });
-        // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
+        // Reset body styles after closing the modal, sandbox renders multiple times that do not trigger modal component no-scroll destroy effects
         resetScrollbars();
       }, 3000);
     }
@@ -118,26 +121,79 @@ export default function ProgressIndicatorPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
+
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Progress Indicator Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoACircularProgress {...componentProps} />
             </Sandbox>
+
+            {/* Progress Indicator component properties table */}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
+
+          {/* Since there are 0 examples, the "Examples" tab is omitted */}
 
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
             }
-          ></GoATab>
+          >
+            <GoACallout heading="We are currently working on design examples for this component" type="important" size="medium" maxWidth="540px">
+              {" "}
+              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                Talk to the design system team
+              </a>{" "}
+              to contribute examples from your service.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

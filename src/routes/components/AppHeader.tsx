@@ -2,9 +2,11 @@ import {
   GoAAppHeader,
   GoAAppHeaderMenu,
   GoAAppHeaderProps,
-  GoABadge, GoARadioGroup, GoARadioItem,
   GoATab,
-  GoATabs
+  GoATabs,
+  GoARadioGroup,
+  GoARadioItem,
+  GoACallout, GoABadge
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -16,10 +18,14 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=4576-224884";
 const componentName = "Header";
 const description =
   "Provide structure to help users find their way around the service.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const category = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/footer", name: "Footer" },
   { link: "/patterns", name: "Layout" },
@@ -138,29 +144,32 @@ export default function AppHeaderPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAAppHeader {...appHeaderProps} />
             </Sandbox>
 
-            {/*Component properties*/}
+            {/* Component properties */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoATab heading={<>Examples<GoABadge type="information" content="2" /></>}>
 
+            {/* Examples */}
+
+            {/* Example 1 */}
             <h3 id="component-example-header-navigation">Header with navigation</h3>
             <Sandbox fullWidth skipRender>
               <CodeSnippet
@@ -208,6 +217,7 @@ export default function AppHeaderPage() {
               </GoAAppHeader>
             </Sandbox>
 
+            {/* Example 2 */}
             <h3 id="component-example-with-menu-click">Header with menu click event</h3>
             <Sandbox fullWidth skipRender>
               <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
@@ -306,16 +316,37 @@ export default function AppHeaderPage() {
               `}
               />
             </Sandbox>
+
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

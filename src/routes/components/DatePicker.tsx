@@ -1,20 +1,20 @@
-import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
-} from "@components/component-properties/ComponentProperties.tsx";
-
+} from "@components/component-properties/ComponentProperties";
+import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoABadge,
-  GoATab,
-  GoATabs,
-  GoADatePickerProps,
   GoADatePicker,
+  GoADatePickerProps,
   GoAFormItem,
   GoAButton,
   GoAButtonGroup,
+  GoATab,
+  GoATabs,
+  GoACallout,
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -22,14 +22,16 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 
 // == Page props ==
 
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-33175";
 const componentName = "Date picker";
+const description =
+  "Lets users select a date through a calendar without the need to manually type it in a field.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   // { link: "/content/date-format", name: "Date format" },
   { link: "/components/form-item", name: "Form item" },
 ];
-const description =
-  "Lets users select a date through a calendar without the need to manually type it in a field.";
 type ComponentPropsType = GoADatePickerProps;
 type CastingType = {
   [key: string]: unknown;
@@ -148,13 +150,15 @@ export default function DatePickerPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={componentBindings}
@@ -206,10 +210,10 @@ export default function DatePickerPage() {
               </GoAFormItem>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
+
 
             <h3 id="component-example-1">Reset example</h3>
             <Sandbox fullWidth skipRender onChange={onSandboxChange} flags={["reactive"]}>
@@ -351,13 +355,34 @@ export default function DatePickerPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

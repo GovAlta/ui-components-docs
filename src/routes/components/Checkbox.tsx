@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs, GoACallout } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -11,7 +11,8 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
 
-// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
 const componentName = "Checkbox";
 const description = "Let the user select one or more options.";
 const category = Category.INPUTS_AND_ACTIONS;
@@ -26,6 +27,7 @@ type CastingType = {
   checked: boolean;
   [key: string]: unknown;
 };
+
 export default function CheckboxPage() {
   const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
     name: "item",
@@ -165,12 +167,18 @@ export default function CheckboxPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox
               properties={checkboxBindings}
               formItemProperties={formItemBindings}
@@ -207,18 +215,31 @@ export default function CheckboxPage() {
                 <GoACheckbox {...checkboxProps} onChange={noop} />
               </GoAFormItem>
             </Sandbox>
-
             <ComponentProperties properties={componentProperties} />
-            <CheckboxExamples />
           </GoATab>
+          <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
+            <CheckboxExamples />
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+
+          </GoATab>
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

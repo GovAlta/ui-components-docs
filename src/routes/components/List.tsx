@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAContainer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoACallout, GoAContainer, GoATab, GoATabs, GoAText } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageContext } from "@components/sandbox";
@@ -8,16 +8,37 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function ListPage() {
   const language = useContext(LanguageContext);
 
+  const FIGMA_LINK =
+    "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303450";
+  const description = "Organize information into brief and clear groups.";
+  const componentName = "List";
+  const category = Category.INPUTS_AND_ACTIONS;
+
+
   return (
+
     <>
       <ComponentHeader
-        name="List"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="Organize information into brief and clear groups."
+        name={componentName}
+        category={category}
+        description={description}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Examples">
+
+            <GoACallout
+              type="information"
+              size="medium"
+              maxWidth="550px"
+            >
+              The list is not a GoA component, it can be used through CSS.
+            </GoACallout>
+            <h3 id="component-example-ordered-list" style={{ display: "none" }}>Ordered list</h3>
+            <GoAText size="heading-m" mt="xl" mb="l" as="h3"> Ordered list </GoAText>
+
             {/*We don't use sandbox because it isn't starting with "GoA" components*/}
             <GoAContainer>
               <ol className="goa-ordered-list">
@@ -136,10 +157,6 @@ export default function ListPage() {
             )}
             {/* Examples*/}
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
             <h3 id="component-example-unordered-list">Unordered list</h3>
             <GoAContainer mt="m">
               <ul className="goa-unordered-list">
@@ -195,14 +212,19 @@ export default function ListPage() {
             )}
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

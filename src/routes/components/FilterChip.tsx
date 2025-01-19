@@ -1,3 +1,9 @@
+import { useState, useContext } from "react";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import {
+  ComponentProperties,
+  ComponentProperty,
+} from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
@@ -9,25 +15,23 @@ import {
   GoAInput,
   GoATab,
   GoATabs,
+  GoACallout,
 } from "@abgov/react-components";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
-import { useContext, useState } from "react";
-import {
-  ComponentProperties,
-  ComponentProperty,
-} from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
-// Page props
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=46-115";
 const componentName = "Filter Chip";
-const description = "Allow the user to filter content.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
   { link: "/components/popover", name: "Popover" },
   { link: "/components/Table", name: "Table" },
 ];
+const description = "Allow the user to filter content.";
 type ComponentPropsType = GoAFilterChipProps;
 
 type CastingType = {
@@ -61,7 +65,6 @@ export default function FilterChipPage() {
       type: "boolean",
       description: "Shows an error state.",
     },
-
     {
       name: "content",
       type: "string",
@@ -149,17 +152,23 @@ export default function FilterChipPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoAFilterChip {...componentProps} />
             </Sandbox>
+            {/* Component properties table */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab heading={<>Examples<GoABadge type="information" content="3" /></>}>
 
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
@@ -403,7 +412,6 @@ export default function FilterChipPage() {
                       }
                     }
                   }
-                
                 `}
                 />
               </>
@@ -506,13 +514,34 @@ export default function FilterChipPage() {
             )}
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading="Design">
+            <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

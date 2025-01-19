@@ -5,6 +5,7 @@ import {
   GoATab,
   GoATabs,
   NotificationType,
+  GoACallout,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -15,13 +16,15 @@ import {
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
-
-const componentName = "Notification Banner";
-const description = "Display important page level information or notifications.";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-12949";
+const componentName = "Notification banner";
 const category = Category.FEEDBACK_AND_ALERTS;
+const description = "Display important page level information or notifications.";
 const relatedComponents = [
   { link: "/components/callout", name: "Callout" },
 ];
+
 type ComponentPropsType = {
   type: NotificationType;
   content?: string;
@@ -109,14 +112,23 @@ export default function NotificationBannerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
+            <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth>
               <GoANotification {...componentProps}>Notification banner message</GoANotification>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
@@ -125,11 +137,52 @@ export default function NotificationBannerPage() {
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
             }
-          ></GoATab>
+          >
+            <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
+              {" "}
+              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                Talk to the design system team
+              </a>{" "}
+              to contribute examples from your service.
+            </GoACallout>
+
+          </GoATab>
+
+          <GoATab heading="Design">
+
+          <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+
+          <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

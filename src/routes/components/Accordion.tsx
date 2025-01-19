@@ -1,7 +1,7 @@
 import {
   GoAAccordion,
   GoAAccordionProps,
-  GoABadge,
+  GoABadge, GoACallout,
   GoATab,
   GoATabs
 } from "@abgov/react-components";
@@ -15,6 +15,8 @@ import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
 import { GoAHeadingSize } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576;"
 
 // == Page props ==
 const componentName = "Accordion";
@@ -33,7 +35,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function AccordionPage() {  
+export default function AccordionPage() {
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Heading",
     headingSize: "medium",
@@ -64,7 +66,7 @@ export default function AccordionPage() {
     {
       label: "Open",
       type: "boolean",
-      name: "open", 
+      name: "open",
       value: false
     },
     {
@@ -177,12 +179,19 @@ export default function AccordionPage() {
 
   return (
     <div className="accordion-page">
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink="Accordion"
+        figmaLink={FIGMA_LINK}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{display: "none"}}>Playground</h2>
             <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
               <GoAAccordion {...accordionProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -191,16 +200,37 @@ export default function AccordionPage() {
               </GoAAccordion>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-            <AccordionExamples />
-          </GoATab>
 
+          </GoATab>
           <GoATab
             heading={<>
-              Design guidelines
-              <GoABadge type="information" content="In progress" />
+              Examples
+              <GoABadge type="information" content="2" />
             </>}
           >
-            </GoATab>
+            <AccordionExamples></AccordionExamples>
+          </GoATab>
+
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+
         </GoATabs>
       </ComponentContent>
     </div>

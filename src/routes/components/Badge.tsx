@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps } from "@abgov/react-components";
+import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps, GoACallout } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import {
@@ -9,22 +9,17 @@ import {
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
-
 const componentName = "Badge";
 const description =
   "Small labels which hold small amounts of information, system feedback, or states.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
-  {
-    link: "/components/chip", name: "Chip"
-  },
-  {
-    link: "/components/Icons", name: "Icons"
-  },
-  {
-    link: "/components/Table", name: "Table"
-  }
+  { link: "/components/chip", name: "Chip" },
+  { link: "/components/Icons", name: "Icons" },
+  { link: "/components/Table", name: "Table" }
 ];
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=458-16984";
+
 
 type ComponentPropsType = GoABadgeProps;
 type CastingType = {
@@ -124,12 +119,18 @@ export default function BadgePage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader name={componentName}
+                       category={category}
+                       description={description}
+                       relatedComponents={relatedComponents}
+                       githubLink={componentName}
+                       figmaLink={FIGMA_LINK}
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{display: "none"}}>Playground</h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoABadge {...badgeProps} />
             </Sandbox>
@@ -139,11 +140,39 @@ export default function BadgePage() {
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
             }
-          ></GoATab>
+          >
+            <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
+              {" "}
+              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
+                Talk to the design system team
+              </a>{" "}
+              to contribute examples from your service.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Design">
+            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+          <GoATab heading="Accessibility">
+            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

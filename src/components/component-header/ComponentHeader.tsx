@@ -61,11 +61,9 @@ export const ComponentHeader: React.FC<Props> = (props) => {
                 )}
             </GoABlock>
 
-            <h2 id="component" className="hidden" aria-hidden="true">
-                Component
-            </h2>
-
-            <h3 dangerouslySetInnerHTML={{ __html: props.description || "" }} />
+          <GoAText size="heading-m" mt="none">
+            {props.description}
+          </GoAText>
 
             {props.relatedComponents?.length && (
                 <GoABlock mt="m" mb="xl" gap="xs">

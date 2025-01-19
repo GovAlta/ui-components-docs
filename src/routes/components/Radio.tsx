@@ -8,10 +8,12 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoABadge,
   GoAFormItem,
-  GoARadioGroup, GoARadioGroupProps,
+  GoARadioGroup,
+  GoARadioGroupProps,
   GoARadioItem,
   GoATab,
-  GoATabs
+  GoATabs,
+  GoACallout,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
@@ -19,21 +21,24 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import RadioExamples from "@examples/radio/RadioExamples.tsx";
 
 // == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=102-26";
 const componentName = "Radio";
-const description = "Allow users to select one option from a set.";
 const category = Category.INPUTS_AND_ACTIONS;
+const description = "Allow users to select one option from a set.";
 const relatedComponents = [
   { link: "/components/checkbox", name: "Checkbox" },
   { link: "/components/dropdown", name: "Dropdown" },
-  { link: "/components/form-item", name: "Form item" }
+  { link: "/components/form-item", name: "Form item" },
 ];
+
 type ComponentPropsType = GoARadioGroupProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
   onChange: (name: string, value: string) => void;
-}
+};
 
 export default function RadioPage() {
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
@@ -141,6 +146,7 @@ export default function RadioPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+
   const radioItemProperties: ComponentProperty[] = [
     {
       name: "value",
@@ -205,14 +211,22 @@ export default function RadioPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} description={description} category={category} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            {/*Radio sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Radio Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={radioBindings}
               formItemProperties={formItemBindings}
@@ -266,21 +280,52 @@ export default function RadioPage() {
               </GoAFormItem>
             </Sandbox>
 
-            {/*Radio Group properties*/}
+            {/* Radio Group properties */}
             <ComponentProperties heading="Radio group properties" properties={radioGroupProperties} />
-            {/*Radio Item properties*/}
+            {/* Radio Item properties */}
             <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
+          </GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="2" />
+                </>
+              }
+            >
             <RadioExamples />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          ></GoATab>
+          <GoATab heading="Design">
+
+          <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

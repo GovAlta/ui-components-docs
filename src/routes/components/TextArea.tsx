@@ -16,20 +16,24 @@ import {
   GoATabs,
   GoATextArea,
   GoATextAreaProps,
+  GoACallout,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
 
 // == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=133-186";
 const componentName = "Text area";
-const description = "A multi-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
+const description = "A multi-line field where users can input and edit text.";
 const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/input", name: "Input" },
 ];
+
 type ComponentPropsType = GoATextAreaProps;
 type CastingType = {
   name: string;
@@ -255,13 +259,16 @@ export default function TextAreaPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Text Area Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={textAreaBindings}
@@ -269,7 +276,9 @@ export default function TextAreaPage() {
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
               flags={["reactive"]}
-              fullWidth>
+              fullWidth
+            >
+              {/* Angular */}
               <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
@@ -297,6 +306,7 @@ export default function TextAreaPage() {
               `}
               />
 
+              {/* React */}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -321,12 +331,18 @@ export default function TextAreaPage() {
               </GoAFormItem>
             </Sandbox>
 
+            {/* Text Area Properties */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          {/* Examples Tab */}
+          <GoATab
+            heading={
+              <>
+                Examples<GoABadge type="information" content="1" />
+              </>
+            }
+          >
 
             <h3 id="component-example-1">Ask a question and give more information</h3>
             <Sandbox flags={["reactive"]} fullWidth>
@@ -363,14 +379,35 @@ export default function TextAreaPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+
+          <GoACallout
+              heading="Design documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="540px"
+            >
+              Detailed design documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <GoACallout
+              heading="Accessibility documentation in Figma"
+              type="important"
+              size="medium"
+              maxWidth="550px"
+            >
+              Detailed accessibility documentation for this component can be found on the associated{" "}
+              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
+                component page
+              </a>{" "}
+              in the Component library in Figma.
+            </GoACallout>
           </GoATab>
         </GoATabs>
       </ComponentContent>

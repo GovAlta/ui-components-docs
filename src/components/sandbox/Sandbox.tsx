@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode, useContext, useEffect, useState } from "react";
-
+import { GoAAccordion } from "@abgov/react-components";
 import SandboxProperties from "./SandboxProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding } from "./ComponentBinding";
@@ -93,7 +93,10 @@ export const Sandbox = (props: SandboxProps) => {
 
   function SandboxView(props: SandboxViewProps): ReactElement {
     return <div className="sandbox-render">
+
+
       <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+
         <ComponentList type="goa" sandboxProps={props.sandboxProps} />
       </div>
     </div>
@@ -102,17 +105,33 @@ export const Sandbox = (props: SandboxProps) => {
   return (
     <>
       <SandboxView fullWidth={props.fullWidth} sandboxProps={props} />
-      {props.formItemProperties && props.formItemProperties.length > 0 && (
-        <SandboxProperties
-          onChange={onChangeFormItemBindings}
-          properties={props.formItemProperties}
-        />
-      )}
+
+      {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (
-        <SandboxProperties properties={props.properties} onChange={onChange} />
+        <GoAAccordion
+          heading="Playground controls"
+          secondaryText="(Copy code below)"
+          headingSize="small"
+          mt="m"
+          open={true}
+        >
+          {props.formItemProperties && props.formItemProperties.length > 0 && (
+            <SandboxProperties
+              onChange={onChangeFormItemBindings}
+              properties={props.formItemProperties}
+            />
+          )}
+
+          <SandboxProperties
+            properties={props.properties}
+            onChange={onChange}
+          />
+        </GoAAccordion>
       )}
+
       <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} />
-      {props.note && (<div className="sandbox-note">{props.note}</div>)}
+
+      {props.note && <div className="sandbox-note">{props.note}</div>}
     </>
   );
 };
@@ -199,7 +218,7 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
   const isValidGOAComponent = (el: ReactElement) =>
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
   const isAllowedInSandbox = (el: ReactElement) =>
-    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) || 
+    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) ||
     typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);
   return children.filter(
     el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
