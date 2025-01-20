@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import {
   DropdownItemMountType,
+  GoAAppHeader,
+  GoAAppFooter,
   GoAButton,
   GoAButtonGroup,
   GoAContainer,
@@ -9,8 +11,11 @@ import {
   GoADropdownItem,
   GoAFormItem,
   GoAInput,
+  GoAMicrositeHeader,
+  GoAPageBlock,
   GoARadioGroup,
   GoARadioItem,
+  GoASpacer,
 } from "@abgov/react-components";
 import { LanguageContext } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -67,6 +72,7 @@ export const DropdownExamples = () => {
   // Parent child edge case
   // ------------------------------------------------------------------
   const parents = ["All", "Big", "Small"];
+  const cities = ["Banff", "Brooks", "Calgary", "Edmonton", "Fort McMurray", "Grande Prairie", "Jasper", "Lake Louise", "Lethbridge", "Medicine Hat", "Red Deer", "Saint Albert"];
   const childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
   const childrenBig = ["Elephant", "Truck", "Bus"];
   const childrenSmall = ["Key", "Pen", "Watch"];
@@ -544,6 +550,287 @@ export const DropdownExamples = () => {
                   </goa-dropdown>
                 </goa-form-item>
               </div>
+            `}
+          />
+        </>
+      )}
+
+      <h3 id="component-choose-one-option" style={{ marginTop: "48px" }}>
+        Choose one option from a list
+      </h3>
+      <GoAContainer>
+        <div style={{ padding: "40px" }}>
+          <GoAFormItem
+            label="Basic dropdown">
+            <GoADropdown name="dropdown" placeholder="--Select--">
+                <GoADropdownItem value="red" label="Red" />
+                <GoADropdownItem value="green" label="Green" />
+                <GoADropdownItem value="blue" label="Blue" />
+            </GoADropdown>
+          </GoAFormItem>
+        </div>
+      </GoAContainer>
+
+      {language === "react" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              <GoAFormItem
+                label="Basic dropdown">
+                <GoADropdown name="dropdown" placeholder="--Select--">
+                    <GoADropdownItem value="red" label="Red" />
+                    <GoADropdownItem value="green" label="Green" />
+                    <GoADropdownItem value="blue" label="Blue" />
+                </GoADropdown>
+              </GoAFormItem>
+            `}
+          />
+        </>
+      )}
+
+      {language === "angular" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              <goa-form-item label="Basic dropdown">
+                <goa-dropdown name="item" value="">
+                  <goa-dropdown-item value="red" label="Red"></goa-dropdown-item>
+                  <goa-dropdown-item value="green" label="Green"></goa-dropdown-item>
+                  <goa-dropdown-item value="blue" label="Blue"></goa-dropdown-item>
+                </goa-dropdown>
+              </goa-form-item>
+            `}
+          />
+        </>
+      )}
+
+      <h3 id="component-filter-through-long-list" style={{ marginTop: "48px" }}>
+        Filter through a long list to choose an option
+      </h3>
+      <GoAContainer>
+        <div style={{ padding: "40px" }}>
+          <GoAFormItem
+            label="Filter dropdown">
+            <GoADropdown
+              name="city"
+              filterable={true}
+              leadingIcon="search"
+              value=""
+              placeholder="Select a city"
+              width="100%"
+            >
+              {cities.map(city => (
+                <GoADropdownItem key={city} value={city} label={city} />
+              ))}
+            </GoADropdown>
+          </GoAFormItem>
+        </div>
+      </GoAContainer>
+
+      {language === "react" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              const cities = ["Banff", "Brooks", "Calgary", "Edmonton", "Fort McMurray", "Grande Prairie", "Jasper", "Lake Louise", "Lethbridge", "Medicine Hat", "Red Deer", "Saint Albert"];
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              <GoAFormItem
+                label="Filter dropdown">
+                <GoADropdown name="city" filterable={true} leadingIcon="search" value="" placeholder="Select a city" width="100%">
+                  {cities.map(city => (
+                    <GoADropdownItem key={city} value={city} label={city} />
+                  ))}
+                </GoADropdown>
+              </GoAFormItem>
+            `}
+          />
+        </>
+      )}
+
+      {language === "angular" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              export class DropdownComponent {
+                changeForm = new FormGroup({
+                  cityDropdown: new FormControl(""),
+                });
+                cities = ["Banff", "Brooks", "Calgary", "Edmonton", "Fort McMurray", "Grande Prairie", "Jasper", "Lake Louise", "Lethbridge", "Medicine Hat", "Red Deer", "Saint Albert"];
+              };
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              <div [formGroup]="changeForm">
+                <goa-form-item label="Filter dropdown">
+                  <goa-dropdown name="city" filterable="true" formControlName="cityDropdown" value="" placeholder="Select a city" width="100%">
+                    <goa-dropdown-item *ngFor="let city of cities" [value]="city" [label]="city" />
+                  </goa-dropdown>
+                </goa-form-item>
+              </div>
+            `}
+          />
+        </>
+      )}
+
+      
+
+      <h3 id="component-basic-question-page" style={{ marginTop: "48px" }}>
+        Basic question page
+      </h3>
+      <GoAContainer>
+        <div style={{ padding: "0" }}>
+          <section className="header" slot="header">
+            <GoAMicrositeHeader
+              type="live"
+            />
+            <GoAAppHeader
+              url="#"
+              heading="Service name">
+            </GoAAppHeader>
+          </section>
+          <GoAPageBlock width="704px">
+            <GoASpacer vSpacing="2xl"></GoASpacer>
+            <a href="#" className="back-link">
+              Back
+            </a>
+            <GoASpacer vSpacing="xl"></GoASpacer>
+            <GoAFormItem label="Choose a location" labelSize="large" helpText="This can be different from where you went before">
+              <GoADropdown name="city" width="100%" placeholder="Select">
+                {cities.map(city => (
+                  <GoADropdownItem key={city} value={city} label={city} />
+                ))}
+              </GoADropdown>
+            </GoAFormItem>
+            <GoAButton type="submit" mt="2xl">
+              Continue
+            </GoAButton>
+          </GoAPageBlock>
+          <GoASpacer vSpacing="2xl"></GoASpacer>
+          <section slot="footer">
+            <GoAAppFooter></GoAAppFooter>
+          </section>
+        </div>
+      </GoAContainer>
+
+      {language === "react" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              const cities = ["Banff", "Brooks", "Calgary", "Edmonton", "Fort McMurray", "Grande Prairie", "Jasper", "Lake Louise", "Lethbridge", "Medicine Hat", "Red Deer", "Saint Albert"];
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+              <section className="header" slot="header">
+                <GoAMicrositeHeader
+                  type="live"
+                />
+                <GoAAppHeader
+                  url="#"
+                  heading="Service name">
+                </GoAAppHeader>
+              </section>
+              <GoAPageBlock width="704px">
+                <GoASpacer vSpacing="2xl"></GoASpacer>
+                <a href="#" className="back-link">
+                  Back
+                </a>
+                <GoASpacer vSpacing="xl"></GoASpacer>
+                <GoAFormItem label="Choose a location" labelSize="large" helpText="This can be different from where you went before">
+                  <GoADropdown name="city" width="100%" placeholder="Select">
+                    {cities.map(city => (
+                      <GoADropdownItem key={city} value={city} label={city} />
+                    ))}
+                  </GoADropdown>
+                </GoAFormItem>
+                <GoAButton type="submit" mt="2xl">
+                  Continue
+                </GoAButton>
+              </GoAPageBlock>
+              <GoASpacer vSpacing="2xl"></GoASpacer>
+              <section slot="footer">
+                <GoAAppFooter></GoAAppFooter>
+              </section>
+            `}
+        />
+        </>
+      )}
+
+      {language === "angular" && (
+        <>
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              export class DropdownComponent {
+                changeForm = new FormGroup({
+                  cityDropdown: new FormControl(""),
+                });
+                cities = ["Banff", "Brooks", "Calgary", "Edmonton", "Fort McMurray", "Grande Prairie", "Jasper", "Lake Louise", "Lethbridge", "Medicine Hat", "Red Deer", "Saint Albert"];
+              };
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
+              <section class="header" slot="header">
+                <goa-microsite-header type="live"/>
+                <goa-app-header
+                  url="#"
+                  heading="Service name">
+                </goa-app-header>
+              </section>
+              <goa-page-block width="704px">
+                <goa-spacer vspacing="2xl"></goa-spacer>
+                <a href="#" class="back-link">
+                  Back
+                </a>
+                <goa-spacer vspacing="xl"></goa-spacer>
+                <div [formGroup]="changeForm">
+                  <goa-form-item label="Choose a location" labelsize="large" helptext="This can be different from where you went before">
+                    <goa-dropdown name="city" formControlName="cityDropdown" value="" width="100%" placeholder="Select">
+                      <goa-dropdown-item *ngFor="let city of cities" [value]="city" [label]="city" />
+                    </goa-dropdown>
+                  </goa-form-item>
+                </div>
+                <goa-button type="submit" mt="2xl">
+                  Continue
+                </goa-button>
+              </goa-page-block>
+              <goa-spacer vspacing="2xl"></goa-spacer>
+              <section slot="footer">
+                <goa-app-footer></goa-app-footer>
+              </section>
             `}
           />
         </>
