@@ -109,12 +109,6 @@ export default function DatePickerPage() {
       defaultValue: "false",
       description: "Disables the date picker.",
     },
-    {
-      name: "relative",
-      type: "boolean",
-      description: "Set to true if a parent element has a css position of relative.",
-      defaultValue: "false",
-    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

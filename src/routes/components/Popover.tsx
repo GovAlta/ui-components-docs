@@ -94,12 +94,6 @@ export default function PopoverPage() {
       lang: "react",
     },
     {
-      name: "relative",
-      type: "boolean",
-      description: "Set to true if a parent element has a css position of relative.",
-      defaultValue: "false",
-    },
-    {
       name: "testId",
       type: "string",
       lang: "react",
