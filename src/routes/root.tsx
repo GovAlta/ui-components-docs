@@ -3,11 +3,12 @@ import {
   GoabAppFooterMetaSection,
   GoabAppFooterNavSection,
   GoabAppHeader,
-  GoabMicrositeHeader,
+  GoabMicrositeHeader, GoabNotification,
   GoabOneColumnLayout
 } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import "./root.css";
 
@@ -28,7 +29,7 @@ function ScrollToTop() {
 }
 
 export default function Root() {
-
+  const isFirstVisit = Cookies.get("hasVisited");
   const [visible, setVisibility] = useState<boolean>(false);
 
 
@@ -37,6 +38,12 @@ export default function Root() {
       setVisibility(true);
     }, 50);
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      Cookies.set("hasVisited", "true", {expires: 3650}); // increase the time everytime ppl land on so it won't expire
+    }, 600); // update later
+  }, []);
 
   return (
     <div className="app" style={{ opacity: visible ? "1" : "0" }}>
@@ -58,6 +65,10 @@ export default function Root() {
             <Link to="/get-started/support">Support</Link>
           </GoabAppHeader>
         </section>
+
+        {isFirstVisit == null && <GoabNotification type='information'>
+          Select your development framework to see all code in your development languages. You can change this in the top right of the screen.
+        </GoabNotification>}
 
         <Outlet />
 
