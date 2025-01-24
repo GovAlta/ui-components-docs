@@ -1,5 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { getCssVarValue } from "../../utils/styling";
 import { useState } from "react";
 import {
   ComponentProperties,
@@ -9,11 +10,16 @@ import {
 import {
   GoAIcon,
   GoABadge,
+  GoABlock,
+  GoAButtonGroup,
+  GoAContainer,
+  GoAIconButton,
   GoATab,
   GoATabs,
   GoATooltip,
   GoATooltipProps,
 } from "@abgov/react-components";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 // == Page props ==
@@ -90,6 +96,16 @@ export default function TEMPLATE_Page() {
     setComponentProps(props as CastingType);
   }
 
+  const [isCopied, setIsCopied] = useState(false);
+
+  function copyCode() {
+    const codeToCopy = "$goa-color-interactive-default";
+    navigator.clipboard.writeText(codeToCopy).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 1000);
+    });
+  }
+
   return (
     <>
       <ComponentHeader
@@ -110,6 +126,178 @@ export default function TEMPLATE_Page() {
               </GoATooltip>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+            
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
+        
+            <h3 id="component-example-date-when-shortened">Use a tooltip to show a full date when shortened</h3>
+            <Sandbox skipRender fullWidth>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-container type="non-interactive" accent="thick">
+                    <div slot="title">
+                      Joan Smith
+                      <goa-tooltip content="Nov 23, 2023 at 10:35 am">
+                        <span style="color:var(--goa-color-text-secondary); font: var(--goa-typography-body-xs);">4 hours ago</span>
+                      </goa-tooltip>
+                    </div>
+                    <p>Hover on the time it was added to see the full date and time.</p>
+                  </goa-container>     
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAContainer
+                    type="non-interactive"
+                    accent="thick"
+                    heading={
+                      <span>
+                        Joan Smith 
+                        <GoATooltip content="Nov 23, 2023 at 10:35 am">
+                          <span style={{
+                            color:"var(--goa-color-text-secondary)",
+                            font: "var(--goa-typography-body-xs)" }}>
+                            4 hours ago
+                          </span>
+                        </GoATooltip>
+                      </span>
+                    }>
+                    <p>Hover on the time it was added to see the full date and time.</p>
+                  </GoAContainer>
+                `}
+              />
+              <GoAContainer
+                type="non-interactive"
+                accent="thick"
+                heading={
+                <span>
+                  Joan Smith
+                  <GoATooltip content="Nov 23, 2023 at 10:35 am">
+                    <span style={{ color:"var(--goa-color-text-secondary)", font: "var(--goa-typography-body-xs)" }} >4 hours ago</span>
+                  </GoATooltip>
+                </span>}>
+                <p>Hover on the time it was added to see the full date and time.</p>
+              </GoAContainer>
+            </Sandbox>
+            
+            <h3 id="component-example-label-icon-only">Show a label on an icon only button</h3>
+            <Sandbox fullWidth>
+              <GoAButtonGroup alignment="center">
+                  <GoATooltip content="Edit">
+                    <GoAIconButton icon="pencil" ariaLabel="Pencil icon"/>
+                  </GoATooltip>
+                  <GoATooltip content="Alerts">
+                    <GoAIconButton icon="notifications" ariaLabel="Alert icon"/>
+                  </GoATooltip>
+                  <GoATooltip content="Settings">
+                    <GoAIconButton icon="settings" ariaLabel="Settings icon"/>
+                  </GoATooltip>
+              </GoAButtonGroup>
+            </Sandbox>
+
+            <h3 id="component-example-copy-clipboard">Click to copy something to your clipboard</h3>
+            <Sandbox allow={['div', 'pre', 'a']} skipRender>
+              <CodeSnippet
+                lang="css"
+                allowCopy={true}
+                code={`
+                  .token-block {
+                    background-color: var(--goa-color-interactive-default);
+                    height: 22px;
+                    width: 24px;
+                    border-radius: var(--goa-border-radius-m);
+                  }
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  isCopied = false;
+
+                  copyCode() {
+                    const codeToCopy = "$goa-color-interactive-default";
+                    navigator.clipboard.writeText(codeToCopy).then(() => {
+                      this.isCopied = true;
+                      setTimeout(() => this.isCopied = false, 1000);
+                    });
+                  }
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-block alignment="center">
+                    <div class="token-block"></div>
+                    <a (_click)="copyCode()">
+                      <u>$goa-color-interactive-default</u>
+                    </a>
+                    <goa-tooltip [content]="isCopied ? 'Copied' : 'Copy?'" position="top">
+                      <goa-icon-button icon="copy" (_click)="copyCode()" mt="2xs" />
+                    </goa-tooltip>
+                  </goa-block>
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  const [isCopied, setIsCopied] = useState(false);
+
+                  function copyCode() {
+                    const codeToCopy = "$goa-color-interactive-default";
+                    navigator.clipboard.writeText(codeToCopy).then(() => {
+                      setIsCopied(true);
+                      setTimeout(() => setIsCopied(false), 1000);
+                    });
+                  }
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoABlock alignment="center">
+                    <div className="token-block"/>
+                    <a onClick={copyCode}>
+                      <u>$goa-color-interactive-default</u>
+                    </a>
+                    <GoATooltip content={isCopied ? "Copied" : "Copy?"} position="top">
+                      <GoAIconButton icon="copy" onClick={copyCode} mt="2xs" />
+                    </GoATooltip>
+                  </GoABlock>
+                `}
+              />
+              <GoABlock alignment="center">
+                <div
+                  className="token-block"
+                  style={{
+                    backgroundColor: getCssVarValue(`--goa-color-interactive-default`),
+                    height: '22px',
+                    width: '24px',
+                    borderRadius: getCssVarValue('--goa-border-radius-m')
+                  }}
+                />
+                <a onClick={copyCode}>
+                  <u>$goa-color-interactive-default</u>
+                </a>
+                <GoATooltip content={isCopied ? `Copied` : `Copy?`} position="top">
+                  <GoAIconButton icon="copy" onClick={copyCode} mt="2xs" />
+                </GoATooltip>
+              </GoABlock>
+            </Sandbox>
           </GoATab>
 
           <GoATab
