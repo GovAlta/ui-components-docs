@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import {
   GoATable,
   GoATableSortHeader,
@@ -16,7 +16,7 @@ const AllComponents = () => {
   const [filter, setFilter] = useState<string>("");
 
 // Store issue counts
-  const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
+  const [issueCounts] = useState<Record<string, number>>({});
 
   const [cards, setCards] = useState<ComponentProps[]>(() => {
     // Initial data
@@ -435,7 +435,7 @@ const AllComponents = () => {
         status: "Not Published",
       },
       {
-        name: "Temporary notofication",
+        name: "Temporary notfication",
         groups: ["Feedback and alerts"],
         tags: ["Snackbar", "Toast", "Temporary notification"],
         description: "Planned for development",
@@ -472,6 +472,8 @@ const AllComponents = () => {
   });
 
   // Fetch open GitHub issues counts for each component name
+  /* This is to get and display issue count in Figma. Not working correctly, hits a rate limit and shows count inconsistently, often showing zero issues for all
+
   useEffect(() => {
     const fetchIssueCounts = async () => {
 
@@ -486,10 +488,14 @@ const AllComponents = () => {
         try {
           const res = await fetch(
               `https://api.github.com/search/issues?q=repo:GovAlta/ui-components+is:issue+is:open+label:"${label}"`,
-              { headers: { "Authorization": 'Bearer ${token}'}}
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
           );
           const data = await res.json();
-          newIssueCounts[card.name] = data.total_count || 0;
+          newIssueCounts[card.name] = data.total_count ?? 0;
         } catch (err) {
           console.error("Failed to fetch issues for label:", label, err);
           newIssueCounts[card.name] = 0;
@@ -501,6 +507,8 @@ const AllComponents = () => {
 
     fetchIssueCounts();
   }, []);
+
+   */
 
   // Filtered cards based on the filter input
   const filteredCards = cards.filter((card) => {
