@@ -486,7 +486,7 @@ const AllComponents = () => {
         try {
           const res = await fetch(
               `https://api.github.com/search/issues?q=repo:GovAlta/ui-components+is:issue+is:open+label:"${label}"`,
-              { headers: { "Authorization": Bearer ${token}}}
+              { headers: { "Authorization": 'Bearer ${token}'}}
           );
           const data = await res.json();
           newIssueCounts[card.name] = data.total_count || 0;
