@@ -10,6 +10,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
 
 // == Page props ==
 const componentName = "Badge";
@@ -138,6 +139,8 @@ export default function BadgePage() {
               <GoABadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+            <BadgeExamples />
+
           </GoATab>
 
           <GoATab

@@ -1,11 +1,14 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoATab,
-  GoATabs,
+  GoAButton,
+  GoAButtonGroup,
   GoACallout,
   GoACalloutProps,
   GoACalloutType,
+  GoASpacer,
+  GoATab,
+  GoATabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -14,6 +17,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 const FIGMA_LINK =
   "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
@@ -154,6 +158,80 @@ export default function CalloutPage() {
               </GoACallout>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
+            
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-confirm-application-submitted">Confirm that an application was submitted</h3>
+            <Sandbox fullWidth allow={['h2', 'h3', 'p']} skipRender>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                      <h2>You have completed the application</h2>
+
+                      <goa-callout type="success">
+                        <span slot="heading">Your application was successful</span>
+                        <p>You will receive a copy of the confirmation to the email person&#64;email.com</p>
+                        <p>Confirmation number: <strong>1234ABC</strong></p>
+                      </goa-callout>
+
+                      <h3>Go back to the dashboard, or direct your user somewhere else useful.</h3>
+                      <p>
+                        Other information about what was just completed, other tertiary information, and/or contact information.
+                        Phone: <a href="tel:7801234567">780 123 4567</a>
+                        Email: <a href="mailto:information&#64;gov.ab.ca">information&#64;gov.ab.ca</a>
+                      </p>
+
+                      <goa-button-group alignment="start">
+                        <goa-button type="primary">Go to application</goa-button>
+                        <goa-button type="secondary">Back to dashboard</goa-button>
+                      </goa-button-group>
+                    `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                    <h2>You have completed the application</h2>
+
+                    <GoACallout type="success" heading="Your application was successful">
+                      <p>You will receive a copy of the confirmation to the email person@email.com</p>
+                      <p>Confirmation number: <strong>1234ABC</strong></p>
+                    </GoACallout>
+
+                    <h3>Go back to the dashboard, or direct your user somewhere else useful.</h3>
+                    <p>
+                      Other information about what was just completed, other tertiary information, and/or contact information.
+                      Phone: <a href="tel:7801234567">780 123 4567</a>
+                      Email: <a href="mailto:information@gov.ab.ca">information@gov.ab.ca</a>
+                    </p>
+
+                    <GoAButtonGroup alignment="start">
+                      <GoAButton type="primary">Go to application</GoAButton>
+                      <GoAButton type="secondary">Back to dashboard</GoAButton>
+                    </GoAButtonGroup>
+                  `}
+              />
+              <h2 style={{ marginTop: 0 }}>You have completed the application</h2>
+              <GoACallout type="success" heading="Your application was successful">
+                <p>You will receive a copy of the confirmation to the email person@email.com</p>
+                <p style={{ marginBottom: 0 }}>Confirmation number: <strong>1234ABC</strong></p>
+              </GoACallout>
+              <h3>Go back to the dashboard, or direct your user somewhere else useful.</h3>
+              <p>
+                Other information about what was just completed, other tertiary information, and/or contact information.<br/>
+                Phone: <a href="#">780 123 4567</a><br/>
+                Email: <a href="#">information@gov.ab.ca</a>
+              </p>
+              <GoASpacer vSpacing="l"></GoASpacer>
+              <GoAButtonGroup alignment="start">
+                <GoAButton type="primary">Go to application</GoAButton>
+                <GoAButton type="secondary">Back to dashboard</GoAButton>
+              </GoAButtonGroup>
+            </Sandbox>
           </GoATab>
 
           <GoATab heading={<>Examples<GoABadge type="information" content="0" /></>}>
