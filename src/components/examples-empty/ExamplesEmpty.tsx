@@ -17,4 +17,4 @@ import "./ExamplesEmpty.css";
       </GoAContainer>
     </div>
   );
-};
+}

@@ -18,4 +18,4 @@ import "./DesignEmpty.css";
       </GoAContainer>
     </div>
   );
-};
+}

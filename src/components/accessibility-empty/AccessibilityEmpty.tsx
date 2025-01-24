@@ -20,4 +20,4 @@ import "./AccessibilityEmpty.css";
       </GoAContainer>
     </div>
   );
-};
+}
