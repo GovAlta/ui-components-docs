@@ -70,7 +70,9 @@ interface ComponentPropertyProps {
 
 function ComponentProperty({ props }: ComponentPropertyProps) {
   return (
+
     <div className={css["component-props"]}>
+
       <div className={css.details}>
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
@@ -86,7 +88,9 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       <div className={css.description}>
         {props.description}
         {props.defaultValue && (
+
           <span>
+            <br/>
             {" "}
             Defaults to <code className={css.code}>{props.defaultValue}</code>.
           </span>

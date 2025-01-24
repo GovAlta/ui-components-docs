@@ -5,10 +5,11 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoADivider, GoATab, GoATabs, GoACallout } from "@abgov/react-components";
+import { GoADivider, GoATab, GoATabs, } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import Sandbox from "@components/sandbox/Sandbox.tsx";
 import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 
 // == Page props ==
 
@@ -94,18 +95,7 @@ export default function DividerPage() {
           {/* No Examples Tab since there are no examples */}
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="540px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
         </GoATabs>

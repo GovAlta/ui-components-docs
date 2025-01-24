@@ -4,6 +4,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 
 export default function ListPage() {
   const language = useContext(LanguageContext);
@@ -213,19 +214,9 @@ export default function ListPage() {
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="550px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

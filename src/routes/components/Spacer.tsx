@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABlock, GoASpacer, GoATab, GoATabs, GoACallout, } from "@abgov/react-components";
+import { GoABlock, GoASpacer, GoATab, GoATabs, } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { CSSProperties, useState } from "react";
 import {
@@ -7,6 +7,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 
 // == Page props ==
 const FIGMA_LINK =
@@ -151,18 +152,7 @@ export default function SpacerPage() {
           {/* Since there are 0 examples, the "Examples" tab is omitted */}
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="540px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
         </GoATabs>

@@ -5,9 +5,10 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoASkeleton, GoATab, GoATabs, GoASkeletonProps, SkeletonType, GoACallout, GoAText, GoABlock,  } from "@abgov/react-components";
+import { GoASkeleton, GoATab, GoATabs, GoASkeletonProps, SkeletonType, GoAText, GoABlock,  } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 
 // == Page props ==
 const FIGMA_LINK =
@@ -154,7 +155,7 @@ export default function SkeletonPage() {
 
           {/* Since there are 0 examples, the "Examples" tab is omitted */}
 
-          <GoATab heading="Examples">
+          <GoATab heading="All">
 
             <GoABlock gap="xl" mb="xl" direction="column">
               <GoAText size="heading-s" mt="none" mb="m">
@@ -240,18 +241,7 @@ export default function SkeletonPage() {
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="540px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
 

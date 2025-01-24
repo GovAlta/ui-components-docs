@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs, GoACallout } from "@abgov/react-components";
+import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs, } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -10,6 +10,8 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 const FIGMA_LINK =
   "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
@@ -177,6 +179,7 @@ export default function CheckboxPage() {
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
+
           <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox
@@ -217,29 +220,19 @@ export default function CheckboxPage() {
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
           </GoATab>
+
           <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
             <CheckboxExamples />
-
-
           </GoATab>
+
           <GoATab heading="Design">
-            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
           <GoATab heading="Accessibility">
-            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
-              Detailed accessibility documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

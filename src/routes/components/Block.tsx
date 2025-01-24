@@ -9,7 +9,8 @@ import {
   GoABlock,
   GoATab,
   GoATabs,
-  GoACallout,
+  GoAText,
+  GoAContainer,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
@@ -139,13 +140,15 @@ export default function BlockPage() {
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout heading="Using Block in design" type="important" size="medium" maxWidth="540px">
-              The block component is accomplished in design by using{" "}
-              <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties" target="_blank" rel="noreferrer">
-                auto layout
-              </a>{" "}
-              in Figma, our design tool.
-            </GoACallout>
+            <GoAContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoAText size="body-m" mt="none" mb="none">
+                In design, use Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties" target="_blank" rel="noreferrer">
+                  auto layout
+                </a>{" "}
+                feature to group multiple things with consistent spacing between them instead of a <i>Block</i> component.
+              </GoAText>
+            </GoAContainer>
           </GoATab>
 
         </GoATabs>

@@ -4,7 +4,6 @@ import {
   GoABlock,
   GoAButton,
   GoAButtonGroup,
-  GoACallout,
   GoADropdown,
   GoADropdownItem,
   GoAFormItem,
@@ -22,6 +21,8 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import ICONS from "@routes/components/icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810";
 
@@ -254,7 +255,7 @@ export default function ButtonPage() {
 
             {/*Button example 2*/}
             <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox flags={["reactive"]} /*background="#33333380"*/>
               <GoAModal heading="Are you sure you want to delete this record?">
                 <p>You cannot undo this action.</p>
 
@@ -288,24 +289,13 @@ export default function ButtonPage() {
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
           <GoATab heading="Accessibility">
-            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
-              Detailed accessibility documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

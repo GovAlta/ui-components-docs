@@ -1,12 +1,15 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps, GoACallout } from "@abgov/react-components";
+import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps, } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import {
   ComponentProperties,
-  ComponentProperty,
+  ComponentProperty
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Badge";
@@ -31,8 +34,8 @@ type CastingType = {
 
 export default function BadgePage() {
   const [badgeProps, setBadgeProps] = useState<ComponentPropsType>({
-    type: "information",
-    content: "Information",
+    type: "important",
+    content: "Badge"
   });
 
   const [badgeBindings, setBadgeBindings] = useState<ComponentBinding[]>([
@@ -41,26 +44,26 @@ export default function BadgePage() {
       type: "list",
       name: "type",
       options: ["success", "important", "information", "emergency", "dark", "midtone", "light"],
-      value: "information",
+      value: "important"
     },
     {
       label: "Icon",
       type: "boolean",
       name: "icon",
-      value: false,
+      value: false
     },
     {
       label: "Content",
       type: "string",
       name: "content",
-      value: "Information",
+      value: "Badge"
     },
     {
       label: "AriaLabel",
       type: "string",
       name: "ariaLabel",
-      value: "",
-    },
+      value: ""
+    }
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -68,48 +71,48 @@ export default function BadgePage() {
       name: "type",
       type: "success | important | information | emergency | dark | midtone | light",
       description: "Define the context and colour of the badge",
-      required: true,
+      required: true
     },
     {
       name: "icon",
       type: "boolean",
       description: "Includes an icon in the badge.",
-      defaultValue: "false",
+      defaultValue: "false"
     },
     {
       name: "content",
       type: "string",
-      description: "Text label of the badge.",
+      description: "Text label of the badge."
     },
     {
       name: "ariaLabel",
       type: "string",
       description: "Accessible label.",
-      lang: "react",
+      lang: "react"
     },
     {
       name: "arialabel",
       type: "string",
       description: "Accessible label.",
-      lang: "angular",
+      lang: "angular"
     },
     {
       name: "testId",
       type: "string",
       lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests."
     },
     {
       name: "testid",
       type: "string",
       lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests."
     },
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+      description: "Apply margin to the top, right, bottom, and/or left of the component."
+    }
   ];
 
   function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -130,7 +133,7 @@ export default function BadgePage() {
 
         <GoATabs>
           <GoATab heading="Code playground">
-            <h2 id="component" style={{display: "none"}}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoABadge {...badgeProps} />
             </Sandbox>
@@ -145,32 +148,15 @@ export default function BadgePage() {
               </>
             }
           >
-            <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
-              {" "}
-              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
-                Talk to the design system team
-              </a>{" "}
-              to contribute examples from your service.
-            </GoACallout>
+            <ExamplesEmpty/>
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout heading="Design documentation in Figma" type="important" size="medium" maxWidth="540px">
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
           <GoATab heading="Accessibility">
-            <GoACallout heading="Accessibility documentation in Figma" type="important" size="medium" maxWidth="550px">
-              Detailed accessibility documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
         </GoATabs>

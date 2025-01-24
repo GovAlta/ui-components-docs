@@ -9,7 +9,8 @@ import {
   GoAGrid,
   GoATab,
   GoATabs,
-  GoACallout,
+  GoAText,
+  GoAContainer,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import "./AllComponents.css";
@@ -152,13 +153,15 @@ export default function GridPage() {
           {/* Since there are 0 examples, no "Examples" tab is included */}
 
           <GoATab heading="Design">
-            <GoACallout heading="Using Grid in design" type="important" size="medium" maxWidth="540px">
-              The grid component is accomplished in design by using{" "}
-              <a href="https://www.figma.com/best-practices/everything-you-need-to-know-about-layout-grids/" target="_blank" rel="noreferrer">
-                grids and guides in Figma
-              </a>{" "}
-              our design tool.
-            </GoACallout>
+            <GoAContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoAText size="body-m" mt="none" mb="none">
+                In design, use Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties" target="_blank" rel="noreferrer">
+                  auto layout
+                </a>{" "}
+                feature set to <i>wrap</i> to create a responsive grid pattern that can respond to different screen sizes instead of the <i>Grid</i> component.
+              </GoAText>
+            </GoAContainer>
           </GoATab>
 
         </GoATabs>

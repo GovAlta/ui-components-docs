@@ -17,9 +17,9 @@ type ComponentType = "goa" | "codesnippet";
 type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
 interface SandboxProps {
-  properties?: ComponentBinding[];
-  formItemProperties?: ComponentBinding[];
-  note?: string;
+  properties?: ComponentBinding[]; // show property controls for the rendered component
+  formItemProperties?: ComponentBinding[]; // show property controls for the form item in the rendered component
+  note?: string; // show text below (description or other)
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
@@ -28,11 +28,14 @@ interface SandboxProps {
   allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
                         // additional elements to what is allowed to be rendered out
   children: ReactNode;
+  background?: string; // Add custom background for SandboxView
+
 }
 
 type SandboxViewProps = {
   fullWidth?: boolean;
   sandboxProps: SandboxProps;
+  background?: string; // set custom background colour
 }
 
 export const Sandbox = (props: SandboxProps) => {
@@ -92,8 +95,9 @@ export const Sandbox = (props: SandboxProps) => {
   }
 
   function SandboxView(props: SandboxViewProps): ReactElement {
-    return <div className="sandbox-render">
+    const { background } = props;
 
+    return <div className="sandbox-render" style={{ background }}>
 
       <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
 
@@ -104,7 +108,7 @@ export const Sandbox = (props: SandboxProps) => {
 
   return (
     <>
-      <SandboxView fullWidth={props.fullWidth} sandboxProps={props} />
+      <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />
 
       {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (

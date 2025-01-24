@@ -1,4 +1,4 @@
-import { GoABadge, GoATab, GoATabs, GoACallout } from "@abgov/react-components";
+import { GoABadge, GoATab, GoATabs, } from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -8,6 +8,9 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import "./AllComponents.css";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const FIGMA_LINK =
@@ -139,46 +142,17 @@ export default function TabsPage() {
               </>
             }
           >
-            <GoACallout heading="We are currently collecting design examples for this component" type="important" size="medium" maxWidth="540px">
-              {" "}
-              <a href="https://design.alberta.ca/get-started/support#:~:text=Raise%20an%20issue-,Talk%20to%20us,-Slack" target="_blank" rel="noreferrer">
-                Talk to the design system team
-              </a>{" "}
-              to contribute examples from your service.
-            </GoACallout>
-
+            <ExamplesEmpty/>
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="540px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
 
           <GoATab heading="Accessibility">
-
-          <GoACallout
-              heading="Accessibility documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="550px"
-            >
-              Detailed accessibility documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

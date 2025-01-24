@@ -14,11 +14,12 @@ import {
   GoAButtonGroup,
   GoATab,
   GoATabs,
-  GoACallout,
 } from "@abgov/react-components";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 
 // == Page props ==
 
@@ -356,33 +357,13 @@ export default function DatePickerPage() {
           </GoATab>
 
           <GoATab heading="Design">
-            <GoACallout
-              heading="Design documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="540px"
-            >
-              Detailed design documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
           <GoATab heading="Accessibility">
-            <GoACallout
-              heading="Accessibility documentation in Figma"
-              type="important"
-              size="medium"
-              maxWidth="550px"
-            >
-              Detailed accessibility documentation for this component can be found on the associated{" "}
-              <a href={FIGMA_LINK} target="_blank" rel="noreferrer">
-                component page
-              </a>{" "}
-              in the Component library in Figma.
-            </GoACallout>
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>
