@@ -26,6 +26,7 @@ const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
   { link: "/components/popover", name: "Popover" },
+  { link: "/components/input", name: "Input" },
   { link: "/components/table", name: "Table" },
 ];
 type ComponentPropsType = GoabFilterChipProps;
