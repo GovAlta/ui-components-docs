@@ -17,6 +17,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { GoATableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
 
 interface User {
   firstName: string;
@@ -131,6 +132,7 @@ export default function TablePage() {
         relatedComponents={[
           { link: "/components/button", name: "Button" },
           { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/filter-chip", name: "Filter chip" },
           { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
@@ -196,7 +198,9 @@ export default function TablePage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-sortable-columns">Sortable columns</h3>
             <GoAContainer mt="m" mb="none">
@@ -407,6 +411,8 @@ export default function TablePage() {
                 </tbody>
               </GoATable>
             </Sandbox>
+
+            <TableWithGlobalFiltersExample />
           </GoATab>
 
           <GoATab
