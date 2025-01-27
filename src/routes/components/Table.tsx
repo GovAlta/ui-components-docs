@@ -20,6 +20,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { omit } from "lodash";
+import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
 
 interface User {
   firstName: string;
@@ -52,6 +53,37 @@ export default function TablePage() {
       value: "",
     },
   ]);
+
+  const oldComponentProperties: ComponentProperty[] = [
+    {
+      name: "width",
+      type: "string",
+      description: "Width of the table. By default it will fit the enclosed content.",
+    },
+    {
+      name: "variant",
+      type: "normal | relaxed",
+      description: "A relaxed variant of the table with more vertical padding for the cells",
+      defaultValue: "normal",
+    },
+    {
+      name: "_sort",
+      lang: "angular",
+      type: "CustomEvent({detail: {sortBy: string: sortDir: number}})",
+      description: "Sort event fired when a GoATableSortHeader component is used.",
+    },
+    {
+      name: "onSort",
+      lang: "react",
+      type: "(sortBy: string, sortDir: number) => void",
+      description: "Sort event fired when a GoATableSortHeader component is used.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   const componentProperties: ComponentProperty[] = [
     {
@@ -132,6 +164,7 @@ export default function TablePage() {
         relatedComponents={[
           { link: "/components/button", name: "Button" },
           { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/filter-chip", name: "Filter chip" },
           { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
@@ -201,8 +234,13 @@ export default function TablePage() {
               </GoabTable>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-sortable-columns">Sortable columns</h3>
             <GoabContainer mt="m" mb="none">
@@ -570,6 +608,9 @@ export default function TablePage() {
                 </tbody>
               </GoabTable>
             </Sandbox>
+						
+            <h3 id="component-table-with-global-filters-example">Table with Global Filters</h3>
+            <TableWithGlobalFiltersExample />
           </GoabTab>
 
           <GoabTab
