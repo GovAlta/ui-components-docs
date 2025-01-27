@@ -1,5 +1,4 @@
 import { Sandbox } from "@components/sandbox";
-
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./review-page-example.css";
 import { GoabButton, GoabButtonGroup, GoabTable } from "@abgov/react-components";

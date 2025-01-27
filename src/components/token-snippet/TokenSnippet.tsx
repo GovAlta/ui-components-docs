@@ -2,7 +2,7 @@ import { FC, useContext, useState } from "react";
 
 import "./TokenSnippet.css";
 import { GoabIcon } from "@abgov/react-components";
-import { DesignTokensLanguageContext } from "@components/sandbox";
+import { DesignTokensLanguageContext } from "@contexts/DesignTokensLanguageContext";
 
 interface Props {
   code: string;

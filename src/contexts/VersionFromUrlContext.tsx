@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import React, { createContext, useEffect, useState, ReactNode } from "react";
 import {
   LOCAL_STORAGE_LANGUAGE_KEY,
   LOCAL_STORAGE_VERSION_KEY,
@@ -9,8 +9,6 @@ interface VersionFromUrlContextProps {
 }
 
 const VersionFromUrlContext = createContext<VersionFromUrlContextProps>({ version: null });
-
-export const useVersionFromUrlContext = () => useContext(VersionFromUrlContext).version;
 
 interface VersionProviderProps {
   children: ReactNode;
@@ -27,20 +25,15 @@ export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ childre
         setVersionFromPath(versionSegment);
        localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, versionSegment.includes("angular") ? "angular" : "react");
       } else {
-        console.log("Reach versionFromUrl ", pathSegments);
         setVersionFromPath(null);
-        // Fresh, new version
         localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, "new");
       }
     };
 
-    // Initial call to set the version
     updateVersion();
 
-    // Add event listener for popstate
     window.addEventListener("popstate", updateVersion);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("popstate", updateVersion);
     };

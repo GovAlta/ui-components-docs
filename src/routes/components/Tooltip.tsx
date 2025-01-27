@@ -1,7 +1,7 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { getCssVarValue } from "../../utils/styling";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -13,10 +13,13 @@ import {
   GoabTab,
   GoabTabs,
   GoabTooltip,
-  GoabTooltipProps,
+  GoabIconButton,
+  GoabBlock,
+  GoabTooltipProps, GoabContainer, GoabButtonGroup
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -35,6 +38,7 @@ type CastingType = {
 };
 
 export default function TooltipPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
   });
@@ -158,7 +162,8 @@ export default function TooltipPage() {
 
             <h3 id="component-example-date-when-shortened">Use a tooltip to show a full date when shortened</h3>
             <Sandbox skipRender fullWidth>
-              <CodeSnippet
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -173,8 +178,26 @@ export default function TooltipPage() {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </goa-container>     
                 `}
-              />
-              <CodeSnippet
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-container type="non-interactive" accent="thick" [title]="containerTitle">
+                    <ng-template #containerTitle>
+                      Joan Smith
+                      <goa-tooltip content="Nov 23, 2023 at 10:35 am">
+                        <span style="color:var(--goa-color-text-secondary); font: var(--goa-typography-body-xs);">4 hours ago</span>
+                      </goa-tooltip>
+                    </ng-template>
+                    <p>Hover on the time it was added to see the full date and time.</p>
+                  </goab-container>     
+                `}
+              />}
+
+              {/*React code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -197,34 +220,59 @@ export default function TooltipPage() {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </GoAContainer>
                 `}
-              />
-              <GoAContainer
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoabContainer
+                    type="non-interactive"
+                    accent="thick"
+                    heading={
+                      <span>
+                        Joan Smith 
+                        <GoabTooltip content="Nov 23, 2023 at 10:35 am">
+                          <span style={{
+                            color:"var(--goa-color-text-secondary)",
+                            font: "var(--goa-typography-body-xs)" }}>
+                            4 hours ago
+                          </span>
+                        </GoabTooltip>
+                      </span>
+                    }>
+                    <p>Hover on the time it was added to see the full date and time.</p>
+                  </GoabContainer>
+                `}
+              />}
+
+              <GoabContainer
                 type="non-interactive"
                 accent="thick"
                 heading={
                 <span>
                   Joan Smith
-                  <GoATooltip content="Nov 23, 2023 at 10:35 am">
+                  <GoabTooltip content="Nov 23, 2023 at 10:35 am">
                     <span style={{ color:"var(--goa-color-text-secondary)", font: "var(--goa-typography-body-xs)" }} >4 hours ago</span>
-                  </GoATooltip>
+                  </GoabTooltip>
                 </span>}>
                 <p>Hover on the time it was added to see the full date and time.</p>
-              </GoAContainer>
+              </GoabContainer>
             </Sandbox>
 
             <h3 id="component-example-label-icon-only">Show a label on an icon only button</h3>
             <Sandbox fullWidth>
-              <GoAButtonGroup alignment="center">
-                  <GoATooltip content="Edit">
-                    <GoAIconButton icon="pencil" ariaLabel="Pencil icon"/>
-                  </GoATooltip>
-                  <GoATooltip content="Alerts">
-                    <GoAIconButton icon="notifications" ariaLabel="Alert icon"/>
-                  </GoATooltip>
-                  <GoATooltip content="Settings">
-                    <GoAIconButton icon="settings" ariaLabel="Settings icon"/>
-                  </GoATooltip>
-              </GoAButtonGroup>
+              <GoabButtonGroup alignment="center">
+                  <GoabTooltip content="Edit">
+                    <GoabIconButton icon="pencil" ariaLabel="Pencil icon"/>
+                  </GoabTooltip>
+                  <GoabTooltip content="Alerts">
+                    <GoabIconButton icon="notifications" ariaLabel="Alert icon"/>
+                  </GoabTooltip>
+                  <GoabTooltip content="Settings">
+                    <GoabIconButton icon="settings" ariaLabel="Settings icon"/>
+                  </GoabTooltip>
+              </GoabButtonGroup>
             </Sandbox>
 
             <h3 id="component-example-copy-clipboard">Click to copy something to your clipboard</h3>
@@ -241,6 +289,7 @@ export default function TooltipPage() {
                   }
                 `}
               />
+              {/*Angular code*/}
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -257,7 +306,7 @@ export default function TooltipPage() {
                   }
                 `}
               />
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -272,7 +321,25 @@ export default function TooltipPage() {
                     </goa-tooltip>
                   </goa-block>
                 `}
-              />
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-block alignment="center">
+                    <div class="token-block"></div>
+                    <a (click)="copyCode()">
+                      <u>$goa-color-interactive-default</u>
+                    </a>
+                    <goab-tooltip [content]="isCopied ? 'Copied' : 'Copy?'" position="top">
+                      <goab-icon-button icon="copy" (onClick)="copyCode()" mt="2xs" />
+                    </goab-tooltip>
+                  </goab-block>
+                `}
+              />}
+
+              {/*React code*/}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -289,7 +356,7 @@ export default function TooltipPage() {
                   }
                 `}
               />
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -304,8 +371,24 @@ export default function TooltipPage() {
                     </GoATooltip>
                   </GoABlock>
                 `}
-              />
-              <GoABlock alignment="center">
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoabBlock alignment="center">
+                    <div className="token-block"/>
+                    <a onClick={copyCode}>
+                      <u>$goa-color-interactive-default</u>
+                    </a>
+                    <GoabTooltip content={isCopied ? "Copied" : "Copy?"} position="top">
+                      <GoabIconButton icon="copy" onClick={copyCode} mt="2xs" />
+                    </GoabTooltip>
+                  </GoabBlock>
+                `}
+              />}
+              <GoabBlock alignment="center">
                 <div
                   className="token-block"
                   style={{
@@ -318,12 +401,11 @@ export default function TooltipPage() {
                 <a onClick={copyCode}>
                   <u>$goa-color-interactive-default</u>
                 </a>
-                <GoATooltip content={isCopied ? `Copied` : `Copy?`} position="top">
-                  <GoAIconButton icon="copy" onClick={copyCode} mt="2xs" />
-                </GoATooltip>
-              </GoABlock>
+                <GoabTooltip content={isCopied ? `Copied` : `Copy?`} position="top">
+                  <GoabIconButton icon="copy" onClick={copyCode} mt="2xs" />
+                </GoabTooltip>
+              </GoabBlock>
             </Sandbox>
-          </GoATab>
           </GoabTab>
 
           <GoabTab

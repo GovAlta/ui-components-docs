@@ -8,7 +8,7 @@ import {
   GoabTab,
   GoabTabs,
 } from "@abgov/react-components";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
 import {
   ComponentProperties,
@@ -18,6 +18,7 @@ import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import ModalExamples from "@examples/modal/ModalExamples.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -36,7 +37,7 @@ type CastingType = {
 };
 
 export default function ModalPage() {
-  const language = useContext(LanguageContext);
+  const {language} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     heading: "Are you sure you want to exit your application?",
     role: "alertdialog",

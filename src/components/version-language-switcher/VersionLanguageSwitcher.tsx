@@ -82,7 +82,7 @@ export const VersionLanguageSwitcher = () => {
         padded={false}>
         <>
           {["angular", "react"].map(lang => (
-            <a className={`version-language-switcher__menu ${language === lang ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateLanguage(lang as "react" | "angular")}>
+            <a key={lang} className={`version-language-switcher__menu ${language === lang ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateLanguage(lang as "react" | "angular")}>
               {capitalizeFirstLetter(lang)}
             </a>))
           }
@@ -97,7 +97,7 @@ export const VersionLanguageSwitcher = () => {
       } padded={false}>
     <>
       {["new", "old"].map(ver => (
-          <a className={`version-language-switcher__menu ${version === ver ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateVersion(ver as "old" | "new")}>
+          <a key={ver} className={`version-language-switcher__menu ${version === ver ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateVersion(ver as "old" | "new")}>
             {getCurrentVersionLabel(language, ver)}
           </a>
         ))}

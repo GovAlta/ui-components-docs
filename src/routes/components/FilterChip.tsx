@@ -1,16 +1,15 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
+  GoabBadge,
+  GoabButton,
+  GoabButtonGroup,
+  GoabContainer,
   GoAFilterChip,
-  GoAFilterChipProps,
-  GoAInput,
-  GoATab,
-  GoATabs,
+  GoabInput,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useState } from "react";
 import {
   ComponentProperties,
@@ -18,6 +17,8 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { GoAFilterChipProps } from "@abgov/react-components";
 
 // Page props
 const componentName = "Filter Chip";
@@ -36,10 +37,10 @@ type CastingType = {
 };
 
 export default function FilterChipPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Chip text",
   });
-  const language = useContext(LanguageContext);
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
       label: "Error",
@@ -55,7 +56,7 @@ export default function FilterChipPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "error",
       type: "boolean",
@@ -91,6 +92,35 @@ export default function FilterChipPage() {
       type: "string",
       lang: "angular",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+  ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "error",
+      type: "boolean",
+      description: "Shows an error state.",
+    },
+
+    {
+      name: "content",
+      type: "string",
+      required: true,
+      description: "Text label of the chip.",
+    },
+    {
+      name: "onClick",
+      type: "() = void",
+      description: "Callback when deletable and delete icon is clicked.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
 
@@ -151,15 +181,18 @@ export default function FilterChipPage() {
         relatedComponents={relatedComponents}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoAFilterChip {...componentProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
 
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
@@ -180,11 +213,12 @@ export default function FilterChipPage() {
                 `}
               />
 
-              <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   <goa-filter-chip
                     *ngFor="let chip of chips"
                     [content]="chip"
@@ -192,7 +226,23 @@ export default function FilterChipPage() {
                     mr="s">
                   </goa-filter-chip>
                 `}
-              />
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                  <goab-filter-chip
+                    *ngFor="let chip of chips"
+                    [content]="chip"
+                    (onClick)="deleteChip(chip)"
+                    mr="s">
+                  </goab-filter-chip>
+                `}
+                />
+              )}
 
               <CodeSnippet
                 lang="typescript"
@@ -207,11 +257,12 @@ export default function FilterChipPage() {
                 `}
               />
 
-              <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   {chips.map(chip => (
                     <GoAFilterChip
                       key={chip}
@@ -221,7 +272,25 @@ export default function FilterChipPage() {
                     />
                   ))}
                 `}
-              />
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  {chips.map(chip => (
+                    <GoabFilterChip
+                      key={chip}
+                      content={chip}
+                      onClick={() => deleteChip(chip)}
+                      mr="s"
+                    />
+                  ))}
+                `}
+                />
+              )}
             </Sandbox>
 
             <h3 id="component-interactive">Interactive Example</h3>
@@ -237,9 +306,9 @@ export default function FilterChipPage() {
                 />
               ))}
 
-              <GoAButtonGroup alignment="center" mt="l">
-                <GoAButton onClick={addFilter}>Add Random Filter</GoAButton>
-              </GoAButtonGroup>
+              <GoabButtonGroup alignment="center" mt="l">
+                <GoabButton onClick={addFilter}>Add Random Filter</GoabButton>
+              </GoabButtonGroup>
 
               <CodeSnippet
                 lang="typescript"
@@ -262,11 +331,12 @@ export default function FilterChipPage() {
                 `}
               />
 
-              <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                       <div>
                         <goa-filter-chip
                           *ngFor="let filter of activeFilters"
@@ -279,7 +349,28 @@ export default function FilterChipPage() {
                         <goa-button (click)="addFilter()">Add Random Filter</goa-button>
                       </goa-button-group>
                 `}
-              />
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                      <div>
+                        <goab-filter-chip
+                          *ngFor="let filter of activeFilters"
+                          [content]="filter"
+                          (onClick)="removeFilter(filter)"
+                          mr="s">
+                        </goab-filter-chip>
+                      </div>
+                      <goab-button-group alignment="center" mt="l">
+                        <goab-button (onClick)="addFilter()">Add Random Filter</goab-button>
+                      </goab-button-group>
+                `}
+                />
+              )}
 
               <CodeSnippet
                 lang="typescript"
@@ -301,11 +392,12 @@ export default function FilterChipPage() {
                 `}
               />
 
-              <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   <div>
                     {activeFilters.map((filter) => (
                       <GoAFilterChip
@@ -322,11 +414,36 @@ export default function FilterChipPage() {
                     <GoAButton onClick={addFilter}>Add Random Filter</GoAButton>
                   </GoAButtonGroup>
                 `}
-              />
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <div>
+                    {activeFilters.map((filter) => (
+                      <GoabFilterChip
+                        key={filter}
+                        content={filter}
+                        onClick={() => removeFilter(filter)}
+                        mr="s"
+                        mb="s"
+                        mt="s"
+                      />
+                    ))}
+                  </div>
+                  <GoabButtonGroup alignment="center" mt="l">
+                    <GoabButton onClick={addFilter}>Add Random Filter</GoabButton>
+                  </GoabButtonGroup>
+                `}
+                />
+              )}
             </Sandbox>
 
             <h3 id="component-typed">Typed Chips Example</h3>
-            <GoAContainer mb="none">
+            <GoabContainer mb="none">
               <div
                 className="chip-input-wrapper"
                 style={{
@@ -337,12 +454,12 @@ export default function FilterChipPage() {
                   flexWrap: "wrap",
                   alignItems: "center",
                 }}>
-                <GoAInput
+                <GoabInput
                   name="chipInput"
                   placeholder="Type and press Enter"
                   value={inputValue}
-                  onChange={handleInputChange}
-                  onKeyPress={handleInputKeyDown}
+                  onChange={detail => handleInputChange(detail.name, detail.value)}
+                  onKeyPress={detail => handleInputKeyDown(detail.name, detail.value, detail.key)}
                   width="30ch"
                   mr="s"
                 />
@@ -357,15 +474,13 @@ export default function FilterChipPage() {
                   />
                 ))}
               </div>
-            </GoAContainer>
+            </GoabContainer>
 
-            {language === "angular" && (
-              <>
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
+            {version === "old" && <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
 
                   import { Component } from "@angular/core";
 
@@ -405,47 +520,85 @@ export default function FilterChipPage() {
                   }
                 
                 `}
-                />
-              </>
-            )}
+            />}
+            {version === "new" && <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
 
-            {language === "angular" && (
-              <>
-                <CodeSnippet
-                  lang="html"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
-                      <goa-input
-                          id="chipInput"
-                          type="text"
-                          [value]="inputValue"
-                          (_change)="onInput($event)"
-                          (keydown)="handleBackspace($event)"
-                          (keydown.enter)="addChip()"
-                          placeholder="Type and press Enter"
-                          mr="s">
-                      </goa-input>
-                      <goa-filter-chip
-                          *ngFor="let chip of typedChips"
-                          [content]="chip"
-                          (_click)="removeTypedChip(chip)"
-                          mr="s"
-                          mt="s"
-                          mb="s">
-                      </goa-filter-chip>
+                  import { Component } from "@angular/core";
+
+                  @Component({
+                    selector: "abgov-chip",
+                    templateUrl: "./filter-chip.component.html",
+                    styleUrl: "./filter-chip.component.css",
+                  })
+                  export class FilterChipComponent {
+                    chips: string[] = ["Chip 1", "Chip 2", "Chip 3"];
+                    activeFilters: string[] = [];
+                    typedChips: string[] = ["Typed Chip 1", "Typed Chip 2", "Typed Chip 3"];
+                    inputValue = "";
+
+
+                    onInput(detail: GoabInputOnChangeDetail): void {
+                      this.inputValue = detail.value;
+                    }
+
+                    addChip(): void {
+                      if (this.inputValue.trim()) {
+                        this.typedChips.push(this.inputValue.trim());
+                        this.inputValue = "";
+                      }
+                    }
+
+                    removeTypedChip(chip: string): void {
+                      this.typedChips = this.typedChips.filter((c) => c !== chip);
+                    }
+
+                    handleBackspace(event: KeyboardEvent): void {
+                      if (!this.inputValue && this.typedChips.length > 0 && event.key === "Backspace") {
+                        this.typedChips.pop();
+                        event.preventDefault();
+                      }
+                    }
+                  }
+                
+                `}
+            />}
+
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
+                      <h2>Typed Chip</h2>
+                      <goab-input
+                        id="chipInput"
+                        type="text"
+                        [value]="inputValue"
+                        (onChange)="onInput($event)"
+                        (keydown)="handleBackspace($event)"
+                        (keydown.enter)="addChip()"
+                        placeholder="Type and press Enter"
+                        mr="s">
+                      </goab-input>
+                      <goab-filter-chip
+                        *ngFor="let chip of typedChips"
+                        [content]="chip"
+                        (_click)="removeTypedChip(chip)"
+                        mr="s"
+                        mt="s"
+                        mb="s">
+                      </goab-filter-chip>
                   `}
-                />
-              </>
-            )}
+            />
 
-            {language === "react" && (
-              <>
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
+            <CodeSnippet
+              lang="typescript"
+              tags="react"
+              allowCopy={true}
+              code={`
                       const [typedChips, setTypedChips] = useState<string[]>([
                         "Typed Chip 1",
                         "Typed Chip 2",
@@ -475,13 +628,12 @@ export default function FilterChipPage() {
                         setTypedChips((prevChips) => prevChips.filter((c) => c !== chip));
                       };
                 `}
-                />
-
-                <CodeSnippet
-                  lang="html"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
+            />
+            {version === "old" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
                         <GoAInput
                           name="chipInput"
                           placeholder="Type and press Enter"
@@ -501,19 +653,42 @@ export default function FilterChipPage() {
                             mb="s"/>
                         ))}
                 `}
-                />
-              </>
-            )}
-          </GoATab>
+            />}
+            {version === "new" && <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
+                        <GoabInput
+                          name="chipInput"
+                          placeholder="Type and press Enter"
+                          value={inputValue}
+                          onChange={(detail) => handleInputChange(detail.name, detail.value)}
+                          onKeyPress={(detail) => handleInputKeyDown(detail.name, detail.value, detail.key)}
+                          width="30ch"
+                          mr="s"
+                        />    
+                        {typedChips.map((chip, index) => (
+                          <GoabFilterChip
+                            key={index}
+                            content={chip}
+                            onClick={() => removeTypedChip(chip)}
+                            mr="s"
+                            mt="s"
+                            mb="s"/>
+                        ))}
+                `}
+            />}
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

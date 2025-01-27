@@ -32,23 +32,12 @@ export const ComponentProperties = (props: Props) => {
   };
 
   useEffect(() => {
-    console.log("ComponentProperties ---- ", language, " and version ", version);
     if (version === "old") {
       setFilteredProperties([...filterBy(props.oldProperties || props.properties)]); // If no old properties are provided, use the current properties
       return;
     }
     setFilteredProperties([...filterBy(props.properties)]);
   }, [language, version]);
-
-  // useEffect(() => {
-  //   console.log("useEffect under ComponentProperties ", localVersion, " and lang ", localLanguage);
-  //   if (localVersion === "old") {
-  //     setFilteredProperties([...filterBy(props.oldProperties || props.properties)]); // If no old properties are provided, use the current properties
-  //     return;
-  //   }
-  //   setFilteredProperties([...filterBy(props.properties)]);
-  // }, [localLanguage, localVersion]);
-
 
   function dasherize(str: string): string {
     return str.replace(" ", "-").toLowerCase();

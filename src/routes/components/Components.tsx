@@ -17,7 +17,7 @@ export function Components() {
   return (
     <>
     {version === "old" && <GoabNotification type="important">
-        You are not on the latest version of the design system. Upgrade to latest version
+      You are not on the latest version of the design system. <a href="/get-started/developers/update">Upgrade to latest version</a>
       </GoabNotification>}
 
       <section className="content">
@@ -31,13 +31,13 @@ export function Components() {
             <Link to={getUrl("button-group")}>Button group</Link>
             <Link to={getUrl("callout")}>Callout</Link>
             <Link to={getUrl("checkbox")}>Checkbox</Link>
-            <Link to={getUrl("chip")}>Chip</Link>
             <Link to={getUrl("container")}>Container</Link>
             <Link to={getUrl("date-picker")}>Date picker</Link>
             <Link to={getUrl("details")}>Details</Link>
             <Link to={getUrl("divider")}>Divider</Link>
             <Link to={getUrl("dropdown")}>Dropdown</Link>
             <Link to={getUrl("file-uploader")}>File uploader</Link>
+            <Link to="filter-chip">Filter chip</Link>
             <Link to={getUrl("footer")}>Footer</Link>
             <Link to={getUrl("form-item")}>Form item</Link>
             <Link to={getUrl("form-stepper")}>Form stepper</Link>

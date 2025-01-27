@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { ComponentBinding } from "@components/sandbox";
-import { GoabFormItemprops } from "@abgov/react-components";
+import { GoabFormItemProps } from "@abgov/react-components";
 
-export const useSandboxFormItem = (initialProps: GoabFormItemprops) => {
+export const useSandboxFormItem = (initialProps: GoabFormItemProps) => {
   const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>(
     [
       {

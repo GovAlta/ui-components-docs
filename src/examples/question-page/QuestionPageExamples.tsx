@@ -1,5 +1,4 @@
 import { Sandbox } from "@components/sandbox";
-
 import "./question-page-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {

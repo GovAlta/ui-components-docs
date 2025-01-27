@@ -7,9 +7,9 @@ import {
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo";
 import { useEffect, useState } from "react";
-import { DesignTokensLanguageContext } from "@components/sandbox";
 import "./DesignToken.css";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
+import { DesignTokensLanguageContext } from "@contexts/DesignTokensLanguageContext";
 
 export function DesignTokenLayout() {
   const [tokenLanguage, setLanguage] = useState("");

@@ -116,17 +116,6 @@ const router = createBrowserRouter(
       </Route>
 
       <Route path="/patterns/*" element={<PatternsRouter />}></Route>
-
-      {/*<Route path="patterns" element={<PatternsLayout />} errorElement={<ComponentNotFound />}>*/}
-      {/*  <Route index element={<PatternsOverviewPage />} />*/}
-      {/*  <Route path="simple-form" element={<SimpleFormPage />} />*/}
-      {/*  <Route path="layout" element={<LayoutPage />} />*/}
-      {/*  <Route path="start-page" element={<StartPage />} />*/}
-      {/*  <Route path="task-list-page" element={<TaskListPage />} />*/}
-      {/*  <Route path="question-page" element={<QuestionPage />} />*/}
-      {/*  <Route path="review-page" element={<ReviewPage />} />*/}
-      {/*  <Route path="result-page" element={<ResultPage />} />*/}
-      {/*</Route>*/}
     </Route>
   )
 );

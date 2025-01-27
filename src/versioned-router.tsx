@@ -10,7 +10,6 @@ import ButtonPage from "@routes/components/Button.tsx";
 import ButtonGroupPage from "@routes/components/ButtonGroup.tsx";
 import CalloutPage from "@routes/components/Callout.tsx";
 import CheckboxPage from "@routes/components/Checkbox.tsx";
-import ChipPage from "@routes/components/Chip.tsx";
 import ContainerPage from "@routes/components/Container.tsx";
 import DatePickerPage from "@routes/components/DatePicker.tsx";
 import DetailsPage from "@routes/components/Details.tsx";
@@ -54,6 +53,7 @@ import QuestionPage from "@routes/patterns/QuestionPage.tsx";
 import ReviewPage from "@routes/patterns/ReviewPage.tsx";
 import ResultPage from "@routes/patterns/ResultPage.tsx";
 import SimpleFormPage from "@routes/patterns/SimpleFormPage.tsx";
+import FilterChipPage from "@routes/components/FilterChip.tsx";
 
 const ComponentRoute: React.FC<{
   componentPaths: Record<string, React.ReactElement>;
@@ -90,13 +90,13 @@ export const ComponentsRouter = () => {
     "button-group": <ButtonGroupPage />,
     "callout": <CalloutPage />,
     "checkbox": <CheckboxPage />,
-    "chip": <ChipPage />,
     "container": <ContainerPage />,
     "date-picker": <DatePickerPage />,
     "details": <DetailsPage />,
     "divider": <DividerPage />,
     "dropdown": <DropdownPage />,
     "file-uploader": <FileUploaderPage />,
+    "filter-chip": <FilterChipPage />,
     "form-item": <FormItemPage />,
     "form-stepper": <FormStepperPage />,
     "grid": <GridPage />,

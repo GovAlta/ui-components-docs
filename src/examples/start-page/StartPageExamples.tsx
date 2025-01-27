@@ -6,8 +6,10 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./start-page-example.css";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+
 export function StartPageExamples() {
   const {version} = useContext(LanguageVersionContext);
+
   return (
     <div className="start-page-example">
       <div className="component-example-header">
