@@ -18,6 +18,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
 
 // Page props
 const componentName = "Filter Chip";
@@ -25,8 +26,8 @@ const description = "Allow the user to filter content.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
-  { link: "/components/popover", name: "Popover" },
-  { link: "/components/Table", name: "Table" },
+  { link: "/components/input", name: "Input" },
+  { link: "/components/table", name: "Table" },
 ];
 type ComponentPropsType = GoAFilterChipProps;
 
@@ -161,6 +162,9 @@ export default function FilterChipPage() {
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
 
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
               {chips.map(chip => (
@@ -504,6 +508,8 @@ export default function FilterChipPage() {
                 />
               </>
             )}
+
+            <TableWithGlobalFiltersExample />
           </GoATab>
 
           <GoATab
