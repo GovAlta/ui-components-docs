@@ -471,45 +471,6 @@ const AllComponents = () => {
     name: 1, // Secondary sort by name
   });
 
-  // Fetch open GitHub issues counts for each component name
-  /* This is to get and display issue count in Figma. Not working correctly, hits a rate limit and shows count inconsistently, often showing zero issues for all
-
-  useEffect(() => {
-    const fetchIssueCounts = async () => {
-
-      const token = import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
-
-      const newIssueCounts: Record<string, number> = {};
-
-      for (const card of cards) {
-        // We'll capitalize the first letter of the name for the label
-        const label = encodeURIComponent(toSentenceCase(card.name));
-
-        try {
-          const res = await fetch(
-              `https://api.github.com/search/issues?q=repo:GovAlta/ui-components+is:issue+is:open+label:"${label}"`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          const data = await res.json();
-          newIssueCounts[card.name] = data.total_count ?? 0;
-        } catch (err) {
-          console.error("Failed to fetch issues for label:", label, err);
-          newIssueCounts[card.name] = 0;
-        }
-      }
-
-      setIssueCounts(newIssueCounts);
-    };
-
-    fetchIssueCounts();
-  }, []);
-
-   */
-
   // Filtered cards based on the filter input
   const filteredCards = cards.filter((card) => {
     const filterLowerCase = filter.toLowerCase();
