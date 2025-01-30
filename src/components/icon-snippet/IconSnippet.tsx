@@ -12,7 +12,7 @@ export const IconSnippet: FC<Props> = ({ type }) => {
   function copyIcon() {
     navigator.clipboard.writeText(type).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1000);
+      setTimeout(() => setCopied(false), 2300);
     });
   }
 

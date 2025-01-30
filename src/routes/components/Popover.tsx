@@ -5,10 +5,26 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABadge, GoAButton, GoAPopover, GoATab, GoATabs, } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
+const componentName = "Popover";
+const category = Category.CONTENT_AND_LAYOUT;
+const description = "A small overlay that opens on demand, used in other components.";
+const relatedComponents = [
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/header", name: "Header" },
+  { link: "/components/tooltip", name: "Tooltip" },
+];
 
 export default function PopoverPage() {
   const [popoverProps, setPopoverProps] = useState({});
@@ -126,23 +142,20 @@ export default function PopoverPage() {
   return (
     <>
       <ComponentHeader
-        name="Popover"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="A small overlay that opens on demand, used in other components."
-        relatedComponents={[
-          { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/header", name: "Header" },
-          { link: "/components/tooltip", name: "Tooltip" },
-
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code Playground">
             {/*Popover sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{display: "none"}}>Playground</h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
 
               {/*Angular*/}
@@ -161,7 +174,7 @@ export default function PopoverPage() {
               `}
               />
 
-              {/*React*/}
+              {/* React */}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -199,18 +212,29 @@ export default function PopoverPage() {
               </GoAPopover>
             </Sandbox>
 
-            {/*Popover table properties*/}
+            {/* Popover component properties table */}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          ></GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="0" />
+                </>
+              }
+            >
+              <ExamplesEmpty/>
+            </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

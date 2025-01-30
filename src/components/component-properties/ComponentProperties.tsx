@@ -1,4 +1,4 @@
-import { GoAAccordion, GoABadge } from "@abgov/react-components";
+import {  GoABadge, GoAText, GoAContainer } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "@components/sandbox";
 
@@ -39,20 +39,27 @@ export const ComponentProperties = (props: Props) => {
 
   return (
     <>
-      <h3 
+      <h2
         id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"} 
         className="hidden" 
         aria-hidden="true"
       >
         {props.heading || "Properties"}
-      </h3>
-      <GoAAccordion heading={props.heading || "Properties"} mt="l" mb="none">
+      </h2>
+
+      <GoAText size="heading-m" mb="l" mt="2xl">
+        {props.heading || "Properties"}
+      </GoAText>
+      <GoAContainer
+        type="interactive"
+        >
         <div>
           {filteredProperties.map((props, index) => (
             <ComponentProperty key={index} props={props} />
           ))}
         </div>
-      </GoAAccordion>
+      </GoAContainer>
+
     </>
   );
 };
@@ -63,7 +70,9 @@ interface ComponentPropertyProps {
 
 function ComponentProperty({ props }: ComponentPropertyProps) {
   return (
+
     <div className={css["component-props"]}>
+
       <div className={css.details}>
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
@@ -79,7 +88,9 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
       <div className={css.description}>
         {props.description}
         {props.defaultValue && (
+
           <span>
+            <br/>
             {" "}
             Defaults to <code className={css.code}>{props.defaultValue}</code>.
           </span>

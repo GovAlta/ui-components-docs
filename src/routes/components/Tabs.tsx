@@ -1,3 +1,4 @@
+
 import { GoABadge, GoATab, GoATabs, GoATable, GoAButton } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -7,12 +8,25 @@ import { Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import "./AllComponents.css";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
 const componentName = "Tabs";
+const category = Category.STRUCTURE_AND_NAVIGATION;
 const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
-const category = Category.STRUCTURE_AND_NAVIGATION;
+const relatedComponents = [
+  { link: "/components/button", name: "Button" },
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/pagination", name: "Pagination" },
+  { link: "/components/tabs", name: "Tabs" },
+];
+
 export default function TabsPage() {
   const componentProperties: ComponentProperty[] = [
     {
@@ -54,15 +68,24 @@ export default function TabsPage() {
   const complete = [0, 1];
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Tabs Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox fullWidth>
+              {/* Angular */}
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -76,6 +99,8 @@ export default function TabsPage() {
                   } 
                 `}
               />
+
+              {/* React */}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -86,6 +111,7 @@ export default function TabsPage() {
                   }
                   `}
               />
+
               <GoATabs onChange={noop}>
                 <GoATab heading="Tab Item 1">
                   Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -104,6 +130,7 @@ export default function TabsPage() {
 
             {/*GoATabs Table Properties*/}
             <ComponentProperties heading="GoATabs Properties" properties={componentProperties} />
+            {/* GoATab Properties */}
             <ComponentProperties heading="GoATab Properties" properties={tabProperties} />
 
             {/*Tabs Examples*/}
@@ -713,13 +740,27 @@ export default function TabsPage() {
             </Sandbox>
           </GoATab>
 
+          {/* Since there are 0 examples, the "Examples" tab is omitted */}
+
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
-            }></GoATab>
+            }
+          >
+            <ExamplesEmpty/>
+          </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

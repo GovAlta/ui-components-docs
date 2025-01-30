@@ -14,14 +14,20 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24089-474089";
 const componentName = "Side menu";
-const description =
-  "A side navigation that helps the user navigate between pages.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const category = Category.STRUCTURE_AND_NAVIGATION;
+const description = "A side navigation that helps the user navigate between pages.";
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns", name: "Layout" }
+  { link: "/patterns/layout", name: "Layout" },
 ];
 
 export default function SideMenuPage() {
@@ -68,17 +74,23 @@ export default function SideMenuPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Side Menu Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
+              {/* Angular */}
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -107,6 +119,8 @@ export default function SideMenuPage() {
                 </div>
               `}
               />
+
+              {/* React */}
               <CodeSnippet
                 allowCopy={true}
                 lang="typescript"
@@ -135,6 +149,8 @@ export default function SideMenuPage() {
                 </div>
                 `}
               />
+
+              {/* Rendered Side Menu */}
               <div style={{ maxWidth: "250px" }}>
                 <GoASideMenu>
                   <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
@@ -156,7 +172,7 @@ export default function SideMenuPage() {
               </div>
             </Sandbox>
 
-            {/*Component properties table*/}
+            {/* Component properties tables */}
             <ComponentProperties
               heading="Side menu group properties"
               properties={sideMenuGroupProperties}
@@ -167,15 +183,27 @@ export default function SideMenuPage() {
             />
           </GoATab>
 
+          {/* Since there are 0 examples, the "Examples" tab is omitted */}
+
           <GoATab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoABadge type="information" content="0" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <ExamplesEmpty/>
           </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

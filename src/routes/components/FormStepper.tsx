@@ -11,6 +11,7 @@ import {
   GoATab,
   GoATabs,
   GoAContainer,
+  GoACallout,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageContext, Sandbox } from "@components/sandbox";
@@ -21,11 +22,18 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1014-6629";
 const componentName = "Form Stepper";
-const description = "Provides a visual representation of a form through a series of steps.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
+const category = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [{ link: "/components/form-item", name: "Form item" }];
+const description = "Provides a visual representation of a form through a series of steps.";
+
 type ComponentPropsType = GoAFormStepperProps;
 
 
@@ -105,15 +113,18 @@ export default function FormStepperPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
+
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <GoAContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
@@ -201,26 +212,15 @@ export default function FormStepperPage() {
             {/*Component properties table*/}
             <ComponentProperties heading="Stepper Properties" properties={componentProperties} />
             <ComponentProperties heading="Step Properties" properties={formStepProperties} />
+          </GoATab>
 
-            {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-            {/*Example 1*/}
+
+          <GoATab heading={<>Examples<GoABadge type="information" content="2" /></>}>
+
+
+            {/* Example 1 */}
             <h3 id="component-example-controlled-navigation">Controlled Navigation</h3>
-            <p>
-              The user needs to partially or completely finish a step to be able to move forward to
-              the next step. In this case:
-              <ul>
-                <li>A step that is “Not started” will not be clickable.</li>
-                <li>A user cannot use the stepper to navigate to another page.</li>
-                <li>
-                  Clicking the Active step when you are on that step will do nothing. (no page
-                  refresh).
-                </li>
-              </ul>
-              To use the controlled type you must set a step value ≥ 1
-            </p>
+
             <Sandbox fullWidth skipRender allow={["div"]}>
               <CodeSnippet
                 lang="typescript"
@@ -334,12 +334,23 @@ export default function FormStepperPage() {
                 </GoAButton>
               </div>
             </Sandbox>
+            <GoACallout type="important" heading="When using a form stepper with controlled navigation" size="medium" mt="l">
+              The user needs to partially or completely finish a step to be able to move forward to
+              the next step. In this case: <ul>
+              <li>A step that is “Not started” will not be clickable.</li>
+              <li>A user cannot use the stepper to navigate to another page.</li>
+              <li>
+                Clicking the Active step when you are on that step will do nothing. (no page
+                refresh).
+              </li>
+            </ul>
+              To use the controlled type you must set a step value ≥ 1.
+            </GoACallout>
 
-            {/*Example 2*/}
-            <h3 id="component-example-step-status">Step status</h3>
-            The status of each step can be configured to either “complete” or “incomplete” using the
-            status property.
 
+
+            {/* Example 2 */}
+            <h3 id="component-example-step-status">Step Status</h3>
             <Sandbox fullWidth skipRender allow={["div"]}>
               <CodeSnippet
                 lang="typescript"
@@ -461,17 +472,20 @@ export default function FormStepperPage() {
                 </GoAButton>
               </div>
             </Sandbox>
+            <GoACallout type="important" size="medium" mt="l">
+              The status of each step can be configured to either “complete” or “incomplete” using the
+              status property.
+            </GoACallout>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

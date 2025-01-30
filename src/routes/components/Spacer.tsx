@@ -1,5 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABlock, GoASpacer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoABlock, GoASpacer, GoATab, GoATabs, } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { CSSProperties, useState } from "react";
 import {
@@ -7,6 +7,20 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303446";
+const componentName = "Spacer";
+const category = Category.UTILITIES;
+const description = "Negative area between the components and the interface.";
+const relatedComponents = [
+  { link: "/components/block", name: "Block" },
+  { link: "/components/divider", name: "Divider" },
+  { link: "/components/grid", name: "Grid" },
+  { link: "/patterns", name: "Layout" },
+];
 
 export default function SpacerPage() {
   const [hSpacerProps, setHSpacerProps] = useState({});
@@ -83,22 +97,22 @@ export default function SpacerPage() {
   return (
     <>
       <ComponentHeader
-        name="Spacer"
-        category={Category.UTILITIES}
-        description="Negative area between the components and the interface."
-        relatedComponents={[
-          { link: "/components/block", name: "Block" },
-          { link: "/components/divider", name: "Divider" },
-          { link: "/components/grid", name: "Grid" },
-          { link: "/patterns", name: "Layout" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Spacer Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
               <GoABlock gap="none">
                 <div style={styles}>
@@ -131,8 +145,16 @@ export default function SpacerPage() {
               </GoABlock>
             </Sandbox>
 
+            {/* Spacer Properties */}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
+
+          {/* Since there are 0 examples, the "Examples" tab is omitted */}
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

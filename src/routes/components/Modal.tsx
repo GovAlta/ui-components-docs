@@ -18,27 +18,30 @@ import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import ModalExamples from "@examples/modal/ModalExamples.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13874";
 const componentName = "Modal";
+const category = Category.FEEDBACK_AND_ALERTS;
 const description =
   "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
-const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/button-group", name: "Button group" },
   { link: "/components/callout", name: "Callout" },
 ];
+
 type ComponentPropsType = Omit<GoAModalProps, "open"> & { closable?: boolean };
 type CastingType = {
-  // add any required props here
   [key: string]: unknown;
 };
 
 export default function ModalPage() {
   const language = useContext(LanguageContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    heading: "Are you sure you want to exit your application?",
+    heading: "Are you sure you want to [exit your application]?",
     role: "alertdialog",
   });
 
@@ -221,13 +224,16 @@ export default function ModalPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Modal Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <CodeSnippet
@@ -259,18 +265,19 @@ export default function ModalPage() {
               <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
 
               {!isClosableChecked(componentBindings) && (
-                <GoAModal {...componentProps} open={open}>
+                <GoAModal {...componentProps} open={open} actions={
+                  <GoAButtonGroup alignment="end">
+                    <GoAButton type="secondary" onClick={() => setOpen(false)}>
+                      Secondary
+                    </GoAButton>
+                    <GoAButton type="primary" onClick={() => setOpen(false)}>
+                      Primary
+                    </GoAButton>
+                  </GoAButtonGroup>
+                }>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
                   laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoAButtonGroup alignment="end" mt="xl">
-                    <GoAButton type="tertiary" onClick={() => setOpen(false)}>
-                      Cancel
-                    </GoAButton>
-                    <GoAButton type="primary" onClick={() => setOpen(false)}>
-                      Exit
-                    </GoAButton>
-                  </GoAButtonGroup>
                 </GoAModal>
               )}
 
@@ -283,17 +290,32 @@ export default function ModalPage() {
               )}
             </Sandbox>
 
+            {/* Modal component properties table */}
             <ComponentProperties properties={componentProperties} />
-            <ModalExamples/>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="6" />
+                </>
+              }
+            >
+            {/* Examples */}
+
+            <ModalExamples/>
+
+            </GoATab>
+
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
         </GoATabs>
       </ComponentContent>
     </>

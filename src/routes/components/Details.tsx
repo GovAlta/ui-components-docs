@@ -7,7 +7,6 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
-  GoABlock,
   GoADetails,
   GoAFormItem,
   GoAInput,
@@ -15,11 +14,28 @@ import {
   GoARadioItem,
   GoATab,
   GoATabs,
+  GoABlock,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553577";
+const componentName = "Details";
+const category = Category.CONTENT_AND_LAYOUT;
+const relatedComponents = [
+  { link: "/components/accordion", name: "Accordion" },
+  { link: "/components/form-item", name: "Form item" },
+];
+const description = "Let users reveal more detailed information when they need it.";
+type ComponentPropsType = {
+  heading: string;
+  maxWidth?: string;
+};
 
 export default function DetailsPage() {
-  const [detailsProps, setDetailsProps] = useState({
+  const [detailsProps, setDetailsProps] = useState<ComponentPropsType>({
     heading: "Detail Heading",
   });
   const [detailsBindings, setDetailsBindings] = useState<ComponentBinding[]>([
@@ -35,7 +51,7 @@ export default function DetailsPage() {
       name: "maxWidth",
       requirement: "optional",
       value: "",
-    },    
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -80,20 +96,18 @@ export default function DetailsPage() {
   return (
     <>
       <ComponentHeader
-        name="Details"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="Let users reveal more detailed information when they need it."
-        relatedComponents={[
-          { link: "/components/accordion", name: "Accordion" },
-          { link: "/components/form-item", name: "Form item" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={detailsBindings} onChange={onSandboxChange} fullWidth>
               <GoADetails {...detailsProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel lacinia metus, sed
@@ -107,16 +121,16 @@ export default function DetailsPage() {
               </GoADetails>
             </Sandbox>
 
-            {/*Component properties table*/}
+            {/* Component properties table */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          <GoATab heading={<>Examples<GoABadge type="information" content="3" /></>}>
 
             <h3 id="component-example-show-more-information-for-basic-question">
               Show more information for a basic question
             </h3>
-            <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
+            <Sandbox fullWidth>
               <GoAFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
                 <GoARadioGroup name="pay" onChange={() => { }}>
                   <GoARadioItem label="Yes" value="yes" name="pay" />
@@ -140,7 +154,7 @@ export default function DetailsPage() {
                 label="Do you have additional education expense?"
                 helpText="You can request this money now or at any time during your program."
               >
-                <GoARadioGroup name="additional" onChange={noop}>
+                <GoARadioGroup name="additional" onChange={() => { }}>
                   <GoARadioItem label="Yes" value="yes" name="additional" />
                   <GoARadioItem label="No" value="no" name="additional" />
                 </GoARadioGroup>
@@ -230,16 +244,14 @@ export default function DetailsPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          >
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

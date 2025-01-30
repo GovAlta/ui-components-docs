@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { propsToString } from "@components/sandbox/BaseSerializer"
+import { propsToString } from "@components/sandbox/BaseSerializer";
 import {
   GoAFileUploadCard,
   GoAFileUploadInput,
@@ -9,6 +9,7 @@ import {
   GoAFormItem,
   GoATab,
   GoATabs,
+  GoABadge,
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -16,6 +17,9 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
@@ -54,12 +58,14 @@ class MockUploader implements Uploader {
   }
 }
 
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=804-5767";
 const componentName = "File uploader";
 const description = "Help users select and upload a file.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/container", name: "Container" },
-  { link: "/components/progress-indicator", name: "Progress indicator" }
+  { link: "/components/progress-indicator", name: "Progress indicator" },
 ];
 type ComponentPropsType = Omit<GoAFileUploadInputProps, "onSelectFile">;
 type CastingType = {
@@ -227,12 +233,20 @@ export default function FileUploaderPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
+      />
+
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
 
               {/* ******* */}
@@ -322,7 +336,6 @@ export default function FileUploaderPage() {
                 </goa-form-item>
               `}
               />
-
 
               {/* ***** */}
               {/* React */}
@@ -415,6 +428,21 @@ export default function FileUploaderPage() {
             />
 
           </GoATab>
+
+          <GoATab heading={
+            <>Examples<GoABadge type="information" content="0" /></>
+          }>
+            <ExamplesEmpty />
+          </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK}></DesignEmpty>
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK}/>
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

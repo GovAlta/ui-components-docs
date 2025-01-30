@@ -5,8 +5,17 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoABlock, GoATab, GoATabs } from "@abgov/react-components";
+import {
+  GoABlock,
+  GoATab,
+  GoATabs,
+  GoAText,
+  GoAContainer,
+} from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+
+
+const componentName = "Block";
 
 export default function BlockPage() {
   const [blockProps, setBlockProps] = useState({});
@@ -60,7 +69,7 @@ export default function BlockPage() {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },  
+    },
   ];
 
   useEffect(() => {
@@ -76,7 +85,7 @@ export default function BlockPage() {
   return (
     <>
       <ComponentHeader
-        name="Block"
+        name={componentName}
         category={Category.UTILITIES}
         description="Used when grouping components into a block with consistent space between."
         relatedComponents={[
@@ -85,13 +94,14 @@ export default function BlockPage() {
           { link: "/patterns", name: "Layout" },
           { link: "/component/spacer", name: "Spacer" },
         ]}
+        githubLink={componentName}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
               <GoABlock {...blockProps}>
                 <div
@@ -126,18 +136,21 @@ export default function BlockPage() {
                 </div>
               </GoABlock>
             </Sandbox>
-            {/*Block table properties*/}
             <ComponentProperties properties={componentProperties} />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          ></GoATab>
+          <GoATab heading="Design">
+            <GoAContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoAText size="body-m" mt="none" mb="none">
+                In design, use Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties" target="_blank" rel="noreferrer">
+                  auto layout
+                </a>{" "}
+                feature to group multiple things with consistent spacing between them instead of a <i>Block</i> component.
+              </GoAText>
+            </GoAContainer>
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

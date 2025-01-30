@@ -21,6 +21,11 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import ICONS from "@routes/components/icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810";
+
 
 export default function ButtonPage() {
   const [buttonProps, setButtonProps] = useState({});
@@ -164,13 +169,15 @@ export default function ButtonPage() {
           { link: "/components/buttonGroup", name: "Button group" },
           { link: "/components/icon-button", name: "Icon button" },
         ]}
+        githubLink="Button"
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             {/*Button Sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{display: "none"}}>Playground</h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
               <CodeSnippet
                 lang="typescript"
@@ -190,16 +197,18 @@ export default function ButtonPage() {
             </Sandbox>
 
             {/*Button Table Properties*/}
-            <ComponentProperties properties={componentProperties} />
 
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+          <GoATab heading={<>Examples<GoABadge type="information" content="3" /></>}>
             {/*Button Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <h2 className="hidden" aria-hidden="true">Examples</h2>
 
 
             {/*Button Example 1*/}
             <h3 id="component-example-ask-address">Ask a user for an address</h3>
             <Sandbox flags={["reactive"]}>
-              
+
             <GoABlock gap="xl" direction="column">
               <GoAFormItem label="Street Address">
                 <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
@@ -231,9 +240,9 @@ export default function ButtonPage() {
                   <GoAInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
                 </GoAFormItem>
               </GoABlock>
-              
+
              </GoABlock>
-              
+
               <GoAButtonGroup alignment="start" mt="2xl">
                 <GoAButton type="primary" onClick={noop}>
                   Submit and continue
@@ -246,7 +255,7 @@ export default function ButtonPage() {
 
             {/*Button example 2*/}
             <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
-            <Sandbox flags={["reactive"]}>
+            <Sandbox flags={["reactive"]} /*background="#33333380"*/>
               <GoAModal heading="Are you sure you want to delete this record?">
                 <p>You cannot undo this action.</p>
 
@@ -279,15 +288,14 @@ export default function ButtonPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

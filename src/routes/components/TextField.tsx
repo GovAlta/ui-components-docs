@@ -11,22 +11,29 @@ import {
   GoAInput,
   GoAInputProps,
   GoATab,
-  GoATabs
+  GoATabs,
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import TextFieldExamples from "@examples/text-field/TextFieldExamples";
+import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303447";
 const componentName = "Input";
-const description = "A single-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
+const description = "A single-line field where users can input and edit text.";
 const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
-  { link: "/components/text-area", name: "Text area" }
+  { link: "/components/radio", name: "Radio" },
+  { link: "/components/text-area", name: "Text area" },
 ];
+
 type ComponentPropsType = GoAInputProps;
 type CastingType = {
   name: string;
@@ -120,7 +127,7 @@ export default function TextFieldPage() {
       value: "",
       hidden: true,
       dynamic: true,
-    }
+    },
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
   const componentProperties: ComponentProperty[] = [
@@ -427,14 +434,17 @@ export default function TextFieldPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            {/*Input sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            {/* Input sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
@@ -485,20 +495,28 @@ export default function TextFieldPage() {
               </GoAFormItem>
             </Sandbox>
 
-            {/*Input component properties table*/}
+            {/* Input component properties table */}
             <ComponentProperties properties={componentProperties} />
-            {/*Examples*/}
-            <TextFieldExamples/>
+          </GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="5" />
+                </>
+              }
+            >
+
+            {/* Examples */}
+            <TextFieldExamples />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
         </GoATabs>
       </ComponentContent>
