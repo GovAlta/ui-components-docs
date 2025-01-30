@@ -114,7 +114,7 @@ export const Sandbox = (props: SandboxProps) => {
       {props.properties && props.properties.length > 0 && (
         <GoAAccordion
           heading="Playground controls"
-          secondaryText="(Copy code below)"
+          secondaryText="Change properties to update code below"
           headingSize="small"
           mt="m"
           open={true}

@@ -13,8 +13,6 @@
   word-wrap: break-word;
   padding-right: var(--goa-space-2xl); /** to not overlap with copy button **/
   background-color: var(--goa-color-greyscale-100);
-
-
 }
 
 .goa-code-snippet.overflow pre {

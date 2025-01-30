@@ -1,5 +1,4 @@
 import { GoAContainer, GoAText } from "@abgov/react-components";
-import "./DesignEmpty.css";
 
   export interface Props {
     figmaLink: string;
