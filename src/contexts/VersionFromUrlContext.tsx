@@ -3,6 +3,7 @@ import {
   LOCAL_STORAGE_LANGUAGE_KEY,
   LOCAL_STORAGE_VERSION_KEY,
 } from "@components/version-language-switcher/version-language-constants.ts";
+import { DEFAULT_VERSION } from "../global-constants";
 
 interface VersionFromUrlContextProps {
   version: string | null;
@@ -26,7 +27,7 @@ export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ childre
        localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, versionSegment.includes("angular") ? "angular" : "react");
       } else {
         setVersionFromPath(null);
-        localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, "new");
+        localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, DEFAULT_VERSION);
       }
     };
 

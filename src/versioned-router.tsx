@@ -41,8 +41,8 @@ import TooltipPage from "@routes/components/Tooltip.tsx";
 import AppHeaderPage from "@routes/components/AppHeader.tsx";
 import AppFooterPage from "@routes/components/AppFooter.tsx";
 import {
-  OLD_ANGULAR_URL_SEGMENT,
-  OLD_REACT_URL_SEGMENT,
+  VERSIONED_ANGULAR_URL_SEGMENT,
+  VERSIONED_REACT_URL_SEGMENT,
 } from "@components/version-language-switcher/version-language-constants.ts";
 import PatternsLayout from "@routes/patterns/PatternsLayout.tsx";
 import PatternsOverviewPage from "@routes/patterns/PatternsOverview.tsx";
@@ -69,7 +69,7 @@ const VersionedComponentRoute: React.FC<{
   if (!version || !component) {
     return <ComponentNotFoundPage />;
   }
-  const supportedVersions = [`${OLD_ANGULAR_URL_SEGMENT}`, OLD_REACT_URL_SEGMENT];
+  const supportedVersions = [VERSIONED_ANGULAR_URL_SEGMENT, VERSIONED_REACT_URL_SEGMENT];
   if (!supportedVersions.includes(version)) {
     return <ComponentNotFoundPage />;
   }

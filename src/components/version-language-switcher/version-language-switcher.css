@@ -2,6 +2,7 @@
     display: inline-flex;
     align-items: center;
     gap: var(--goa-space-2xs);
+    font-size: var(--goa-font-size-2);
 }
 .version-language-switcher__menu {
     display: block;

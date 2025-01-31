@@ -4,8 +4,8 @@ import {
 } from "@abgov/react-components";
 import {
   ANGULAR_VERSIONS, getVersionedUrlPath, Language, LanguageVersion,
-  OLD_ANGULAR_URL_SEGMENT,
-  OLD_REACT_URL_SEGMENT, REACT_VERSIONS
+  VERSIONED_ANGULAR_URL_SEGMENT,
+  VERSIONED_REACT_URL_SEGMENT, REACT_VERSIONS
 } from "./version-language-constants.ts";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useContext } from "react";
@@ -30,7 +30,7 @@ export const VersionLanguageSwitcher = () => {
     if (isComponentRoute) {
       const pathSegments = location.pathname.split("/");
       const componentName = pathSegments[pathSegments.length -1];
-      if (OLD_REACT_URL_SEGMENT === combineSegment || OLD_ANGULAR_URL_SEGMENT === combineSegment) {
+      if (VERSIONED_REACT_URL_SEGMENT === combineSegment || VERSIONED_ANGULAR_URL_SEGMENT === combineSegment) {
         const newPath = `/components/${combineSegment}/${componentName}${location.hash}`;
         navigate(newPath, {replace: true});
       } else {

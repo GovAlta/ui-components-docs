@@ -24,9 +24,9 @@ export const REACT_VERSIONS = {
 export const LOCAL_STORAGE_LANGUAGE_KEY = "goa-docs-lang";
 export const LOCAL_STORAGE_VERSION_KEY = "goa-docs-version";
 
-export const OLD_REACT_URL_SEGMENT = `${REACT_VERSIONS.OLD.label}-react`;
-export const OLD_ANGULAR_URL_SEGMENT = `${ANGULAR_VERSIONS.OLD.label}-angular`;
+export const VERSIONED_REACT_URL_SEGMENT = `${REACT_VERSIONS.NEW.label}-react`;
+export const VERSIONED_ANGULAR_URL_SEGMENT = `${ANGULAR_VERSIONS.NEW.label}-angular`;
 
 export const getVersionedUrlPath = (version: string, language: string) => {
-  return version === "old" ? `${language === "react" ? REACT_VERSIONS.OLD.label : ANGULAR_VERSIONS.OLD.label}-${language}` : "";
+  return version === "new" ? `${language === "react" ? REACT_VERSIONS.NEW.label : ANGULAR_VERSIONS.NEW.label}-${language}` : "";
 }
