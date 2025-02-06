@@ -190,7 +190,6 @@ export default function HeroBannerPage() {
     },
   ];
 
-
   function onSandboxChange(heroBannerBindings: ComponentBinding[], props: Record<string, unknown>) {
     setHeroBannerBindings(heroBannerBindings);
     setHeroBannerProps(props as { heading: string; [key: string]: unknown });
@@ -242,6 +241,7 @@ export default function HeroBannerPage() {
                   </goa-hero-banner>
                 `}
               />}
+
               {version === "new" && <CodeSnippet
                 lang="html"
                 tags="angular"
@@ -250,7 +250,7 @@ export default function HeroBannerPage() {
                   <goab-hero-banner heading="Supporting Businesses" [actions]="heroBannerActionTemplate">
                     Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
                     <ng-template #heroBannerActionTemplate>
-                      <goab-button type="start" (onClick)="onClick()">Call to action</goab-button>
+                      <goab-button type="start">Call to action</goab-button>
                     </ng-template>
                   </goab-hero-banner>
                 `}
@@ -278,7 +278,7 @@ export default function HeroBannerPage() {
                   <GoabHeroBanner heading="Supporting Businesses">
                     Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
                     <GoabHeroBannerActions>
-                      <GoabButton type="start" onClick={noop}>Call to action</GoabButton>
+                      <GoabButton type="start">Call to action</GoabButton>
                     </GoabHeroBannerActions>
                   </GoabHeroBanner>
                 `}

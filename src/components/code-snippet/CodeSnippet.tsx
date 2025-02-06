@@ -41,7 +41,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }
     });
     resizeObserver.observe(codeSnippetRef.current);
     return () => resizeObserver.disconnect(); // clean up
-  }, []);
+  }, [language]);
 
   const cleanTabs = (code = "", tabSize: number): string => {
     const lines = code.trim().split("\n");
@@ -107,7 +107,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }
   }
 
   return (
-    tags?.includes(language) && (
+    (tags == null || tags?.includes(language)) && (
       <div
         ref={codeSnippetRef}
         className={`goa-code-snippet ${showMore ? "overflow" : ""}`}

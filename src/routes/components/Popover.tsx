@@ -10,6 +10,11 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties, MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 export default function PopoverPage() {
   const {version} = useContext(LanguageVersionContext);
@@ -101,23 +106,8 @@ export default function PopoverPage() {
       description: "Set to true if a parent element has a css position of relative.",
       defaultValue: "false",
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty,
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -163,16 +153,8 @@ export default function PopoverPage() {
       description: "Set to true if a parent element has a css position of relative.",
       defaultValue: "false",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(baseBinding: ComponentBinding[], props: Record<string, unknown>) {
@@ -190,7 +172,6 @@ export default function PopoverPage() {
           { link: "/components/dropdown", name: "Dropdown" },
           { link: "/components/header", name: "Header" },
           { link: "/components/tooltip", name: "Tooltip" },
-
         ]}
       />
 
@@ -201,14 +182,14 @@ export default function PopoverPage() {
             {/*Popover sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
-
+              {/*Must be skipRender because Sandbox doesn't support slot target*/}
               {/*Angular*/}
               {version === "old" && <CodeSnippet
                 lang="html"
                 tags="angular"
                 allowCopy={true}
                 code={`
-                <goa-popover ${propsToString(popoverProps, "angular")}>
+                <goa-popover ${propsToString(popoverProps, "angular", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                   <div slot="target">
@@ -223,7 +204,7 @@ export default function PopoverPage() {
                 tags="angular"
                 allowCopy={true}
                 code={`
-                <goab-popover ${propsToString(popoverProps, "angular")} [target]="target">
+                <goab-popover ${propsToString(popoverProps, "angular", version)} [target]="target">
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                   <ng-template #target>
@@ -265,7 +246,7 @@ export default function PopoverPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                <GoAPopover target={target} ${propsToString(popoverProps, "react")}>
+                <GoAPopover target={target} ${propsToString(popoverProps, "react", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                 </GoAPopover>
@@ -277,7 +258,7 @@ export default function PopoverPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                <GoabPopover target={target} ${propsToString(popoverProps, "react")}>
+                <GoabPopover target={target} ${propsToString(popoverProps, "react", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                 </GoabPopover>

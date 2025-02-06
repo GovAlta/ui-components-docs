@@ -15,6 +15,7 @@ import {
 } from "@abgov/react-components";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { TestIdProperty } from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 
@@ -56,10 +57,9 @@ export default function ProgressIndicatorPage() {
     },
     {
       label: "Progress",
-      type: "string",
+      type: "number",
       name: "progress",
       width: "8ch",
-      value: "",
     },
     {
       label: "Message",
@@ -127,11 +127,7 @@ export default function ProgressIndicatorPage() {
       description:
         "Show/hide the page loader. This allows for fade transition to be applied in each transition.",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    TestIdProperty,
   ];
 
 

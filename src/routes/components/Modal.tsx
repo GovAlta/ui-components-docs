@@ -19,6 +19,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import ModalExamples from "@examples/modal/ModalExamples.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { TestIdProperty } from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 
@@ -229,11 +230,7 @@ export default function ModalPage() {
         "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
       defaultValue: "dialog",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests."
-    },
+    TestIdProperty,
     {
       name: "onClose",
       type: "() => void",
@@ -253,9 +250,9 @@ export default function ModalPage() {
     },
   ];
 
-
   function isClosableChecked(bindings: ComponentBinding[]): boolean {
     const closable = bindings.find(b => b.name == "closable");
+    // setClosableChecked(closable?.value === true);
     return closable?.value === true;
   }
 
@@ -269,7 +266,6 @@ export default function ModalPage() {
         props["closable"] = true;
       }
     }
-
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
   }
@@ -297,7 +293,7 @@ export default function ModalPage() {
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <Sandbox properties={componentBindings} onChange={onSandboxChange} allow={["p"]}>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -312,6 +308,17 @@ export default function ModalPage() {
                 `}
               />
 
+              {isClosableChecked(componentBindings) && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                    onClose() {
+                      this.open = false;
+                   } 
+                `}
+              />}
+
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -323,14 +330,24 @@ export default function ModalPage() {
                    }
                 `}
               />
+              {isClosableChecked(componentBindings) && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function modalOnClose() {
+                    setOpen(false);
+                   } 
+                `}
+              />}
 
               <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
               {!isClosableChecked(componentBindings) && (
                 <GoabModal {...componentProps} open={open}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
                   <GoabButtonGroup alignment="end" mt={"xl"}>
                     <GoabButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
@@ -344,9 +361,9 @@ export default function ModalPage() {
 
               {isClosableChecked(componentBindings) && (
                 <GoabModal {...componentProps} open={open} onClose={onClose}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
                 </GoabModal>
               )}
             </Sandbox>

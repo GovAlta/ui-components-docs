@@ -46,13 +46,7 @@ export default function MicrositeHeaderExamples() {
             tags="angular"
             allowCopy={true}
             code={`
-                  @Component({
-                    selector: "abgov-microsite-header",
-                    templateUrl: "./microsite-header.component.html",
-                  })
                   export class MicrositeHeaderComponent {
-                    constructor() {}
-              
                     handleFeedbackClick() {
                       console.log("Feedback clicked");
                       alert("Thank you for your feedback!");

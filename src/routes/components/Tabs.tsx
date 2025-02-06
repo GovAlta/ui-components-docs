@@ -1,14 +1,20 @@
-import { GoabBadge, GoabButton, GoabTab, GoabTable, GoabTabs } from "@abgov/react-components";
+import {
+  GoabBadge,
+  GoabContainer,
+  GoabTab,
+  GoabTabs,
+} from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
-import { Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
+import { TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { TabsExamples } from "@examples/tabs/TabsExamples.tsx";
 
 // == Page props ==
 const componentName = "Tabs";
@@ -16,7 +22,7 @@ const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
 export default function TabsPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "initialtab",
@@ -57,11 +63,7 @@ export default function TabsPage() {
       type: "(event: GoabTabsOnChangeDetail) => void",
       description: "Callback function when tab is changed.",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    TestIdProperty,
   ];
 
   const oldTabProperties: ComponentProperty[] = [
@@ -86,8 +88,7 @@ export default function TabsPage() {
     },
   ];
   const noop = () => {};
-  const review = [0, 1, 2, 3];
-  const complete = [0, 1];
+
   return (
     <>
       <ComponentHeader name={componentName} category={category} description={description} />
@@ -98,1060 +99,183 @@ export default function TabsPage() {
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
-            <Sandbox fullWidth>
-              {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            {/*Cannot use Sandbox because if we change the language/version, the tabs inside the tabs will make the below bugs:*/}
+            {/*1. Scroll down to an example*/}
+            {/*2. Scroll back and change the language selected*/}
+            {/*3. It autoscrolls you back down close to the example you were looking at*/}
+            {/*4. If you click anywhere on the screen, it then autoscrolls back up to the top*/}
+            <GoabContainer mt="m" mb="none">
+              <div style={{ padding: "40px" }}>
+                <GoabTabs onChange={noop}>
+                  <GoabTab heading="Tab Item 1">
+                    Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoabTab>
+                  <GoabTab heading="Tab Item 2">
+                    Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoabTab>
+                  <GoabTab heading="Tab Item 3">
+                    Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoabTab>
+                </GoabTabs>
+              </div>
+            </GoabContainer>
+            {/*Angular code*/}
+
+            {version === "old" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   onChange(event: Event) {
                     const customEvent = event as CustomEvent;
                     const tabIndex = customEvent.detail.tab;
                     console.log('Tab changed to ', tabIndex);
                   } 
                 `}
-              />}
+                />
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                  <goa-tabs (_change)="onChange($event)">
+                    <goa-tab heading="Tab Item 1">
+                      Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goa-tab>
+                    <goa-tab heading="Tab Item 2">
+                      Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goa-tab>
+                    <goa-tab heading="Tab Item 3">
+                      Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goa-tab>
+                  </goa-tabs>
+                `}
+                />
+              </>
+            )}
+            {version === "new" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   tabsOnChange(event: GoabTabsOnChangeDetail) {
                     const tabIndex = event.tab;
                     console.log('Tab changed to ', tabIndex);
                   } 
                 `}
-              />}
+                />
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+                  <goab-tabs (onChange)="tabsOnChange($event)">
+                    <goab-tab heading="Tab Item 1">
+                      Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goab-tab>
+                    <goab-tab heading="Tab Item 2">
+                      Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goab-tab>
+                    <goab-tab heading="Tab Item 3">
+                      Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </goab-tab>
+                  </goab-tabs>
+                `}
+                />
+              </>
+            )}
 
-              {/*React Code*/}
+            {/*React Code*/}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            {version === "old" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   function onChange(tabIndex: number): void {
                     console.log('Tab changed to ', tabIndex);
                   }
                   `}
-              />}
+                />
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                <GoATabs onChange={onChange}>
+                  <GoATab heading="Tab Item 1">
+                    Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoATab>
+                  <GoATab heading="Tab Item 2">
+                    Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoATab>
+                  <GoATab heading="Tab Item 3">
+                    Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  </GoATab>
+                </GoATabs>
+                  `}
+                />
+              </>
+            )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  function onChange(event: GoabTabsOnChangeDetail): void {
+            {version === "new" && (
+              <>
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  function tabsOnChange(event: GoabTabsOnChangeDetail): void {
                     console.log('Tab changed to ', event.tab);
                   }
                   `}
-              />}
+                />
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <GoabTabs onChange={tabsOnChange}>
+                    <GoabTab heading="Tab Item 1">
+                      Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                    <GoabTab heading="Tab Item 2">
+                      Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                    <GoabTab heading="Tab Item 3">
+                      Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                  </GoabTabs>
+                  `}
+                />
+              </>
+            )}
 
-              <GoabTabs onChange={noop}>
-                <GoabTab heading="Tab Item 1">
-                  Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoabTab>
-                <GoabTab heading="Tab Item 2">
-                  Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoabTab>
-                <GoabTab heading="Tab Item 3">
-                  Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </GoabTab>
-              </GoabTabs>
-            </Sandbox>
+            {/*</Sandbox>*/}
 
             {/*GoATabs Table Properties*/}
-            <ComponentProperties heading="GoATabs Properties" properties={componentProperties} oldProperties={oldComponentProperties} />
-            <ComponentProperties heading="GoATab Properties" properties={tabProperties} oldProperties={oldTabProperties} />
+            <ComponentProperties
+              heading="GoATabs Properties"
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
+            <ComponentProperties
+              heading="GoATab Properties"
+              properties={tabProperties}
+              oldProperties={oldTabProperties}
+            />
 
-            {/*Tabs Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
-            <h3 id="component-example-different-views-data-table">Show different views of data in a table</h3>
-            <Sandbox fullWidth skipRender>
-            {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-tabs>
-                    <goa-tab>
-                      <div slot="heading">All</div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goa-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goa-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                    <goa-tab>
-                      <div slot="heading">Review pending<goa-badge type="important" content="4"></goa-badge></div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goa-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                    <goa-tab>
-                      <div slot="heading">Complete<goa-badge type="information" content="338"></goa-badge></div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goa-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                  </goa-tabs>
-                `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goab-tabs>
-                    <goab-tab heading="All">
-                    <goab-table width="100%">
-                      <thead>
-                        <tr>
-                          <th>Status</th>
-                          <th>Text</th>
-                          <th class="goa-table-number-header">Number</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let i of [0,1,2,3]">
-                          <td><goab-badge type="important" content="Review pending" /></td>
-                          <td>Lorem ipsum</td>
-                          <td class="goa-table-number-column">1234567890</td>
-                          <td><goab-button type="tertiary">Action</goab-button></td>
-                        </tr>
-                        <tr *ngFor="let i of [0,1]">
-                          <td><goab-badge type="information" content="Complete" /></td>
-                          <td>Lorem Ipsum</td>
-                          <td class="goa-table-number-column">1234567890</td>
-                          <td><goab-button type="tertiary">Action</goab-button></td>
-                        </tr>
-                      </tbody>
-                    </goab-table>
-                    </goab-tab>
-                    <goab-tab [heading]="reviewPending">
-                      <ng-template #reviewPending>Review pending<goa-badge type="important" content="4"></goa-badge></ng-template>
-                      <goab-table width="100%">
-                        <thead>
-                        <tr>
-                          <th>Status</th>
-                          <th>Text</th>
-                          <th class="goa-table-number-header">Number</th>
-                          <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goab-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                    </goab-table>
-                    </goab-tab>
-                    <goab-tab [heading]="complete">
-                      <ng-template #complete>Complete<goa-badge type="information" content="338"></goa-badge></ng-template>
-                      <goab-table width="100%">
-                      <thead>
-                        <tr>
-                          <th>Status</th>
-                          <th>Text</th>
-                          <th class="goa-table-number-header">Number</th>
-                          <th>Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let i of [0,1]">
-                          <td>
-                            <goab-badge type="information" content="Complete" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td class="goa-table-number-column">1234567890</td>
-                          <td>
-                            <goab-button type="tertiary">Action</goab-button>
-                          </td>
-                        </tr>
-                      </tbody>
-                      </goab-table>
-                    </goab-tab>
-                  </goab-tabs>
-                `}
-              />}
-
-              {/*React code*/}
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const review = [0, 1, 2, 3];
-                  const complete = [0, 1];
-                  `}
-              />
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoATabs>
-                    <GoATab heading="All">
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                    <GoATab heading={<>Review pending<GoABadge type="important" content="4"></GoABadge></>}>
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                    <GoATab heading={<>Complete<GoABadge type="information" content="338"></GoABadge></>}>
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                  </GoATabs>
-                  `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoabTabs>
-                    <GoabTab heading="All">
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                    <GoabTab heading={<>Review pending<GoabBadge type="important" content="4"></GoabBadge></>}>
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                    <GoabTab heading={<>Complete<GoabBadge type="information" content="338"></GoabBadge></>}>
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                  </GoabTabs>
-                  `}
-              />}
-
-              <GoabTabs>
-                <GoabTab heading="All">
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {review.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="important" content="Review pending" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                      {complete.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="information" content="Complete" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-                <GoabTab heading={<>Review pending<GoabBadge type="important" content="4"></GoabBadge></>}>
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {review.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="important" content="Review pending" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-                <GoabTab heading={<>Complete<GoabBadge type="information" content="338"></GoabBadge></>}>
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {complete.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="information" content="Complete" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-              </GoabTabs>
-            </Sandbox>
-
-            <h3 id="component-example-set-specific-tab-active">Set a specific tab to be active</h3>
-            <Sandbox fullWidth skipRender>
-              {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-tabs initialTab={2}>
-                    <goa-tab>
-                      <div slot="heading">All</div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goa-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goa-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                    <goa-tab>
-                      <div slot="heading">Review pending<goa-badge type="important" content="4"></goa-badge></div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goa-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                    <goa-tab>
-                      <div slot="heading">Complete<goa-badge type="information" content="338"></goa-badge></div>
-                      <goa-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goa-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goa-button type="tertiary">Action</goa-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goa-table>
-                    </goa-tab>
-                  </goa-tabs>
-                `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goab-tabs [initialTab]="2">
-                    <goab-tab heading="All">
-                      <goab-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goab-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goab-button type="tertiary">Action</goab-button>
-                            </td>
-                          </tr>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goab-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goab-button type="tertiary">Action</goab-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goab-table>
-                    </goab-tab>
-                    <goab-tab [heading]="reviewPending">
-                      <ng-template #reviewPending>Review pending<goa-badge type="important" content="4"></goa-badge></ng-template>
-                      <goab-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1,2,3]">
-                            <td>
-                              <goab-badge type="important" content="Review pending" />
-                            </td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goab-button type="tertiary">Action</goab-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goab-table>
-                    </goab-tab>
-                    <goab-tab [heading]="complete">
-                      <ng-template #complete>Complete<goa-badge type="information" content="338"></goa-badge></ng-template>
-                      <goab-table width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr *ngFor="let i of [0,1]">
-                            <td>
-                              <goab-badge type="information" content="Complete" />
-                            </td>
-                            <td>Lorem Ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td>
-                              <goab-button type="tertiary">Action</goab-button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </goab-table>
-                    </goab-tab>
-                  </goab-tabs>
-                `}
-              />}
-              {/*React code*/}
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  const review = [0, 1, 2, 3];
-                  const complete = [0, 1];
-                  `}
-              />
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoATabs initialTab={2}>
-                    <GoATab heading="All">
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                    <GoATab heading={<>Review pending<GoABadge type="important" content="4"></GoABadge></>}>
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                    <GoATab heading={<>Complete<GoABadge type="information" content="338"></GoABadge></>}>
-                      <GoATable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoABadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoAButton type="tertiary">Action</GoAButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoATable>
-                    </GoATab>
-                  </GoATabs>
-                  `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoabTabs initialTab={2}>
-                    <GoabTab heading="All">
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                    <GoabTab heading={<>Review pending<GoABadge type="important" content="4"></GoABadge></>}>
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {review.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="important" content="Review pending" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                    <GoabTab heading={<>Complete<GoabBadge type="information" content="338"></GoabBadge></>}>
-                      <GoabTable width="100%">
-                        <thead>
-                          <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {complete.map((i) => (
-                            <tr key={i}>
-                              <td>
-                                <GoabBadge type="information" content="Complete" />
-                              </td>
-                              <td>Lorem Ipsum</td>
-                              <td className="goa-table-number-column">1234567890</td>
-                              <td>
-                                <GoabButton type="tertiary">Action</GoabButton>
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </GoabTable>
-                    </GoabTab>
-                  </GoabTabs>
-                  `}
-              />}
-
-              <GoabTabs initialTab={2}>
-                <GoabTab heading="All">
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {review.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="important" content="Review pending" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                      {complete.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="information" content="Complete" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-                <GoabTab heading={<>Review pending<GoabBadge type="important" content="4"></GoabBadge></>}>
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {review.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="important" content="Review pending" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-                <GoabTab heading={<>Complete<GoabBadge type="information" content="338"></GoabBadge></>}>
-                  <GoabTable width="100%">
-                    <thead>
-                      <tr>
-                        <th>Status</th>
-                        <th>Text</th>
-                        <th className="goa-table-number-header">Number</th>
-                        <th>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {complete.map((i) => (
-                        <tr key={i}>
-                          <td>
-                            <GoabBadge type="information" content="Complete" />
-                          </td>
-                          <td>Lorem Ipsum</td>
-                          <td className="goa-table-number-column">1234567890</td>
-                          <td>
-                            <GoabButton type="tertiary">Action</GoabButton>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabTab>
-              </GoabTabs>
-            </Sandbox>
+            <TabsExamples />
           </GoabTab>
           <GoabTab
             heading={

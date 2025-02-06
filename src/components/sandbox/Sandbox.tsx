@@ -12,8 +12,9 @@ import "./Sandbox.css";
 import React from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { AngularTemplateDrivenSerializer } from "@components/sandbox/AngularTemplateDrivenSerializer.ts";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
-type Flag = "reactive" | "template-driven";
+type Flag = "reactive" | "template-driven" | "event";
 type ComponentType = "goa" | "codesnippet";
 type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
@@ -26,8 +27,10 @@ interface SandboxProps {
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
+  skipRenderOnly?: string; // prevent rendering the snippet for a specific language. Ex: react/angular
   allow?: string[]; // Be default the Sandbox is selective to what it renders out. This adds
   // additional elements to what is allowed to be rendered out
+  variableNames?: string[]; // If we want to assign a variable such as step={step} render in code snippet, provides variableNames=["step"]
   children: ReactNode;
 }
 
@@ -42,7 +45,7 @@ export const Sandbox = (props: SandboxProps) => {
 
   const serializers: Record<string, Serializer> = {
     "react": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new ReactSerializer(properties, version));
+      const serializer = new ComponentSerializer(new ReactSerializer(properties, version, props.variableNames || []));
       return serializer.componentsToString(els);
     },
 
@@ -116,7 +119,7 @@ export const Sandbox = (props: SandboxProps) => {
       {props.properties && props.properties.length > 0 && (
         <SandboxProperties properties={props.properties} onChange={onChange} />
       )}
-      <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} />
+      <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
       {props.note && (<div className="sandbox-note">{props.note}</div>)}
     </>
   );
@@ -127,28 +130,52 @@ type SandboxCodeProps = {
   lang: string;
   formatLang: string;
   serializers: Record<string, Serializer>;
+  version?: LanguageVersion;
 }
 function SandboxCode(p: SandboxCodeProps) {
   // reactive angular
   if (p.lang === "angular" && p.props.flags?.includes("reactive")) {
     return (
       <>
-        <h4>Event based</h4>
-        <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
-        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {(p.version === "old" || p.props.flags?.includes("event")) && <>
+          <h4>Event based</h4>
+          <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
+          {!p.props.skipRender && p.props?.skipRenderOnly !== p.lang && (
+            <ComponentOutput
+              formatLang={p.formatLang}
+              type="angular"
+              sandboxProps={p.props}
+              serializer={p.serializers[p.lang]}
+            />
+          )}
+        </>}
 
         <h4>Reactive forms (FormControl)</h4>
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
 
-        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-reactive" sandboxProps={p.props} serializer={p.serializers["angular-reactive"]} />}
+        {!p.props.skipRender && (
+          <ComponentOutput
+            formatLang={p.formatLang}
+            type="angular-reactive"
+            sandboxProps={p.props}
+            serializer={p.serializers["angular-reactive"]}
+          />
+        )}
 
         {/*If flags have reactive, it means that the possibility we have template-driven as well*/}
 
         {p.props.flags?.includes("template-driven") && (
           <>
-          <h4>Template driven (ngModel)</h4>
-          <AdditionalCodeSnippets tags={["angular", "template-driven"]} sandboxProps={p.props} />
-          {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-template-driven" sandboxProps={p.props} serializer={p.serializers["angular-template-driven"]} />}
+            <h4>Template driven (ngModel)</h4>
+            <AdditionalCodeSnippets tags={["angular", "template-driven"]} sandboxProps={p.props} />
+            {!p.props.skipRender && (
+              <ComponentOutput
+                formatLang={p.formatLang}
+                type="angular-template-driven"
+                sandboxProps={p.props}
+                serializer={p.serializers["angular-template-driven"]}
+              />
+            )}
           </>
         )}
       </>
@@ -160,7 +187,7 @@ function SandboxCode(p: SandboxCodeProps) {
     return (
       <>
         <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
-        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {!p.props.skipRender && p.props.skipRenderOnly !== "angular" && <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
       </>
     );
   }
@@ -170,7 +197,7 @@ function SandboxCode(p: SandboxCodeProps) {
     return (
       <>
         <AdditionalCodeSnippets tags={["react"]} sandboxProps={p.props} />
-        {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="react" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {!p.props.skipRender && p.props.skipRenderOnly !== "react" && <ComponentOutput formatLang={p.formatLang} type="react" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
       </>
     );
   }

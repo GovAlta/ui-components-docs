@@ -20,6 +20,11 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import TextFieldExamples from "@examples/text-field/TextFieldExamples";
 import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties, MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 const componentName = "Input";
@@ -397,23 +402,8 @@ export default function TextFieldPage() {
       type: "(name: string, value: string | Date | number) => void",
       description: "Function invoked when a key is pressed",
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty,
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -578,16 +568,8 @@ export default function TextFieldPage() {
       type: "(event: GoabInputOnKeyPressDetail) => void",
       description: "Function invoked when a key is pressed",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -597,6 +579,7 @@ export default function TextFieldPage() {
 
   // For sandbox demo function
   const noop = () => { };
+
   return (
     <>
       <ComponentHeader
@@ -617,7 +600,8 @@ export default function TextFieldPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
+              allow={["form"]}
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
               {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -641,7 +625,7 @@ export default function TextFieldPage() {
                 // non-reactive code
                 export class SomeComponent {
                   value = "";
-                  onChange(event: GoabInputOnChangeDetail) {
+                  inputOnChange(event: GoabInputOnChangeDetail) {
                     // handle change
                     console.log(event.value);
                   }
@@ -660,6 +644,7 @@ export default function TextFieldPage() {
                 }
               `}
               />}
+
               {version === "new" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
@@ -676,6 +661,7 @@ export default function TextFieldPage() {
                 }
               `}
               />}
+
               {version === "new" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "template-driven"]}
@@ -710,15 +696,16 @@ export default function TextFieldPage() {
                 code={`
                 const [value, setValue] = useState<string>("");
               
-                onChange(event: GoabInputOnChangeDetail) {
+                function inputOnChange(event: GoabInputOnChangeDetail) {
                   setValue(event.value);
                 }
               `}
               />}
-
-              <GoabFormItem {...formItemProps}>
-                <GoabInput {...componentProps} name="item" value="" onChange={noop}/>
-              </GoabFormItem>
+              <form>
+                <GoabFormItem {...formItemProps}>
+                  <GoabInput {...componentProps} name="item" value="" onChange={noop}/>
+                </GoabFormItem>
+              </form>
             </Sandbox>
 
             {/*Input component properties table*/}

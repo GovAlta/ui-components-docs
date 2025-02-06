@@ -15,6 +15,11 @@ import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties,
+  MarginProperty, TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -141,23 +146,6 @@ export default function AccordionPage() {
       lang: "angular",
     },
     {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
-    {
       name: "_change",
       lang: "angular",
       type: "CustomEvent",
@@ -168,7 +156,9 @@ export default function AccordionPage() {
       lang: "react",
       type: "(open: boolean) => void",
       description: "Callback function when accordion heading is clicked.",
-    }
+    },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty
   ];
 
   const componentProperties: ComponentProperty[] = [
@@ -213,10 +203,12 @@ export default function AccordionPage() {
       description: "Sets the maximum width of the accordion.",
     },
     {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      name: "onChange",
+      type: "(open: boolean) => void",
+      description: "Callback function when accordion heading is clicked.",
     },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {

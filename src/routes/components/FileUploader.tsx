@@ -17,6 +17,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { MarginProperty, TestIdProperty } from "@components/component-properties/common-properties.ts";
 
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
@@ -151,16 +152,8 @@ export default function FileUploaderPage() {
       description: "Max allowed file size.",
       defaultValue: "5MB",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
     {
       name: "onSelectFile",
       required: true,
@@ -254,11 +247,7 @@ export default function FileUploaderPage() {
       type: "string",
       description: "Error message",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    TestIdProperty,
     {
       name: "onCancel",
       type: "(event: GoabFileUploadOnCancelDetail) => void",
@@ -351,8 +340,17 @@ export default function FileUploaderPage() {
                    // implement your logic to abort file upload
                   }
                 }
-              
-                class FileUploadComponent {
+              `}
+              />
+
+              {/************* Angular old code snippets *******************/}
+
+              {version === "old" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                export class FileUploadComponent {
                   uploads: Upload[] = [];
                   progressList: Record<string, number> = {};
               
@@ -385,7 +383,7 @@ export default function FileUploaderPage() {
                   }
                 }
               `}
-              />
+              />}
 
               {version === "old" && <CodeSnippet
                 lang="html"
@@ -393,7 +391,7 @@ export default function FileUploaderPage() {
                 allowCopy={true}
                 code={`
                 <goa-form-item label="Upload a file">
-                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps, "angular")}></goa-file-upload-input>
+                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps, "angular", version)}></goa-file-upload-input>
                   <goa-file-upload-card
                     *ngFor="let upload of uploads; index as i"
                     [type]="upload.file.type"
@@ -405,6 +403,49 @@ export default function FileUploaderPage() {
                   >
                   </goa-file-upload-card>              
                 </goa-form-item>
+              `}
+              />}
+
+
+              {/************* Angular new code snippets *******************/}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                export class FileUploadComponent {
+                  uploads: Upload[] = [];
+                  progressList: Record<string, number> = {};
+              
+                  uploadFile(e: GoabFileUploadInputOnSelectFileDetail) {
+                    const reader = new FileReader();
+                    const file = e.file;
+                    reader.onload = (e: ProgressEvent<FileReader>) => {
+                      if (!e.target) return;
+                      const url = e.target.result;
+                      const uploader = new MockUploader();
+              
+                      this.uploads.push({file, uploader});
+              
+                      uploader.onabort = () => console.log("Aborting upload");
+                      uploader.onfail = err => console.log("Upload failed: ", err);
+                      uploader.oncomplete = () => console.log("File upload complete");
+                      uploader.onprogress = percent => {
+                        this.progressList[file.name] = percent;
+                      };
+                      if (url) {
+                        uploader.upload(url);
+                      }
+                    };
+                    reader.readAsDataURL(file);
+                  }
+              
+                  deleteFile(upload: Upload) {
+                    upload.uploader.abort();
+                    this.uploads = this.uploads.filter(u => u.file.name !== upload.file.name);
+                  }
+                }
               `}
               />}
 
@@ -438,46 +479,78 @@ export default function FileUploaderPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                const [uploads, setUploads] = useState<Upload[]>([]);
-                const [progressList, setProgressList] = useState<Record<string, number>>({});
-
-                function deleteFile(file: Upload) {
-                  setUploads((uploadz) => {
-                    return uploadz.filter(u => u.name !== file.name);
-                  })
-                }
-
-                function uploadFile(file: File) {
-                  const reader = new FileReader();
-                  reader.onload = (e: ProgressEvent<FileReader>) => {
-                  if (!e.target) return;
-                  const url = e.target.result;
-                  const uploader = new MockUploader();
-
-                  setUploads(old => [...old, {file, uploader}]);
-
-                  uploader.onabort = () => console.log("Aborting upload");
-                  uploader.onfail = err => console.log("Upload failed: ", err);
-                  uploader.oncomplete = () => console.log("File upload complete");
-                  uploader.onprogress = percent => {
-                    setProgressList(old => ({...old, [file.name]: percent}));
-                  };
-
-                  if (url) {
-                    uploader.upload(url);
+                  interface Uploader {
+                    upload: (url: string | ArrayBuffer) => void;
+                    abort: () => void;
                   }
-                }
-                reader.readAsDataURL(file);
+                  interface Upload {
+                    file: File;
+                    uploader: Uploader;
+                  }
+                  class MockUploader implements Uploader {
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    public onprogress: (percent: number) => void = (_: number) => {};
+                    public onabort: () => void = () => {};
+                    public onfail: (err: string) => void = (_: string) => {};
+                    public oncomplete: () => void = () => {};
+
+                    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                    upload(_url: string | ArrayBuffer) {
+                      // implement your logic to upload files
+                    }
+
+                    abort() {
+                      // implement your logic to abort file upload
+                    }
+                  }
               `}
               />
 
+              {/************* React old code snippets *******************/}
               {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
+              const [uploads, setUploads] = useState<Upload[]>([]);
+              const [progressList, setProgressList] = useState<Record<string, number>>({});
+
+              function deleteFile(file: Upload) {
+                  setUploads((uploadz) => {
+                    return uploadz.filter(u => u.name !== file.name);
+                })
+              }
+
+              function uploadFile(file: File) {
+                const reader = new FileReader();
+                reader.onload = (e: ProgressEvent<FileReader>) => {
+                if (!e.target) return;
+                const url = e.target.result;
+                const uploader = new MockUploader();
+                setUploads(old => [...old, {file, uploader}]);
+
+                uploader.onabort = () => console.log("Aborting upload");
+                uploader.onfail = err => console.log("Upload failed: ", err);
+                uploader.oncomplete = () => console.log("File upload complete");
+                uploader.onprogress = percent => {
+                setProgressList(old => ({...old, [file.name]: percent}));
+              };
+
+              if (url) {
+                  uploader.upload(url);
+                }
+              }
+              reader.readAsDataURL(file);
+            `}
+              />}
+
+              {version === "old" && <CodeSnippet
+                lang="html"
+                tags="react"
+                allowCopy={true}
+                code={`
                 <GoAFormItem label="Upload a file">
-                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps, "react")} />
+                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps, "react", version)} />
                   {uploads.map(upload => (
                     <GoAFileUploadCard
                       key={upload.file.name}
@@ -493,13 +566,53 @@ export default function FileUploaderPage() {
               `}
               />}
 
+              {/************* React new code snippets *******************/}
               {version === "new" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
+                const [uploads, setUploads] = useState<Upload[]>([]);
+                const [progressList, setProgressList] = useState<Record<string, number>>({});
+
+                function deleteFile(fileName: string) {
+                  setUploads((uploadz) => {
+                    return uploadz.filter(u => fileName !== u.file.name);
+                  })
+                }
+
+                function uploadFile(file: File) {
+                  const reader = new FileReader();
+                  reader.onload = (e: ProgressEvent<FileReader>) => {
+                    if (!e.target) return;
+                    const url = e.target.result;
+                    const uploader = new MockUploader();
+
+                    setUploads(old => [...old, { file, uploader }]);
+
+                    uploader.onabort = () => console.log("Aborting upload");
+                    uploader.onfail = err => console.log("Upload failed: ", err);
+                    uploader.oncomplete = () => console.log("File upload complete");
+                    uploader.onprogress = percent => {
+                      setProgressList(old => ({ ...old, [file.name]: percent }));
+                    };
+
+                    if (url) {
+                      uploader.upload(url);
+                    }
+                  }
+                  reader.readAsDataURL(file);
+                }
+              `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="html"
+                tags="react"
+                allowCopy={true}
+                code={`
                 <GoabFormItem label="Upload a file">
-                  <GoabFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps, "react")} />
+                  <GoabFileUploadInput onSelectFile={(event: GoabFileUploadInputOnSelectFileDetail) => uploadFile(event.file)} ${propsToString(fileUploaderProps, "react", version)} />
                   {uploads.map(upload => (
                     <GoabFileUploadCard
                       key={upload.file.name}
@@ -507,8 +620,8 @@ export default function FileUploaderPage() {
                       type={upload.file.type}
                       size={upload.file.size}
                       progress={progressList[upload.file.name]}
-                      onDelete={() => deleteFile(upload)}
-                      onCancel={() => deleteFile(upload)}
+                      onDelete={(detail: GoabFileUploadOnDeleteDetail) => deleteFile(detail.filename)}
+                      onCancel={(detail: GoabFileUploadOnCancelDetail) => deleteFile(detail.filename)}
                     />
                   ))}
                 </GoabFormItem>

@@ -1,8 +1,7 @@
 import {
   GoabAppHeader,
-  GoabAppHeaderMenu,
   GoabAppHeaderProps,
-  GoabBadge, GoabRadioGroup, GoabRadioItem,
+  GoabBadge,
   GoabTab,
   GoabTabs
 } from "@abgov/react-components";
@@ -11,12 +10,11 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { LegacyTestIdProperties, TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { AppHeaderExamples } from "@examples/app-header/AppHeaderExamples.tsx";
 
 const componentName = "Header";
 const description =
@@ -33,7 +31,6 @@ type CastingType = {
   [key: string]: unknown;
 };
 export default function AppHeaderPage() {
-  const {version} = useContext(LanguageVersionContext);
   const [appHeaderProps, setAppHeaderProps] = useState<ComponentPropsType>({
     url: "www.alberta.ca",
     maxContentWidth: "100%",
@@ -96,18 +93,7 @@ export default function AppHeaderPage() {
       description: "Sets the breakpoint in px for the full menu to display.",
       lang: "react"
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    ...LegacyTestIdProperties,
     {
       name: "hasmenuclickhandler",
       type: "boolean",
@@ -149,11 +135,7 @@ export default function AppHeaderPage() {
       type: "number",
       description: "Sets the breakpoint in px for the full menu to display.",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    TestIdProperty,
     {
       name: "onMenuClick",
       type: "() => void",
@@ -167,10 +149,6 @@ export default function AppHeaderPage() {
     setAppHeaderBindings(bindings);
   }
 
-  const [deviceWidth, setDeviceWidth] = useState("5000");
-  function handleMenuClick() {
-    alert("Menu not being displayed and you can do anything");
-  }
   return (
     <>
       <ComponentHeader
@@ -193,255 +171,7 @@ export default function AppHeaderPage() {
             {/*Component properties*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
-            {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
-            <h3 id="component-example-header-navigation">Header with navigation</h3>
-            <Sandbox fullWidth skipRender>
-              {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goa-microsite-header type="live"></goa-microsite-header>
-                <goa-app-header url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goa-app-header-menu>
-                  <a href="#" className="interactive">Sign in</a>
-                </goa-app-header>
-              `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goab-microsite-header type="live"></goab-microsite-header>
-                <goab-app-header url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <goab-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goab-app-header-menu>
-                  <a href="#" className="interactive">Sign in</a>
-                </goab-app-header>
-              `}
-              />}
-
-              {/*React code*/}
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                <GoAAppHeader url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </GoAAppHeaderMenu>
-                  <a href="#" className="interactive">Sign in</a>
-                </GoAAppHeader>
-              `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                <GoabAppHeader url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </GoabAppHeaderMenu>
-                  <a href="#" className="interactive">Sign in</a>
-                </GoabAppHeader>
-              `}
-              />}
-
-              <GoabAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
-                <a href="">Support</a>
-                <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                  <a>Cases</a>
-                  <a>Payments</a>
-                  <a>Outstanding</a>
-                </GoabAppHeaderMenu>
-                <a className="interactive">Sign in</a>
-              </GoabAppHeader>
-            </Sandbox>
-
-            <h3 id="component-example-with-menu-click">Header with menu click event</h3>
-            <Sandbox fullWidth skipRender>
-              <GoabRadioGroup name="device" value={deviceWidth} onChange={(event: GoabRadioGroupOnChangeDetail) => setDeviceWidth(event.value)}>
-                <GoabRadioItem value="600" label="Desktop"></GoabRadioItem>
-                <GoabRadioItem value="5000" label="Mobile"></GoabRadioItem>
-              </GoabRadioGroup>
-              <GoabAppHeader
-                url="https://example.com"
-                heading="Design System"
-                onMenuClick={handleMenuClick}
-                fullMenuBreakpoint={+deviceWidth}>
-                <a href="#">Support</a>
-                <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                  <a href="#">Cases</a>
-                  <a href="#">Payments</a>
-                  <a href="#">Outstanding</a>
-                </GoabAppHeaderMenu>
-                <a href="#" className="interactive">
-                  Sign in
-                </a>
-              </GoabAppHeader>
-
-              {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={"angular"}
-                allowCopy={true}
-                code={`
-                export class MyComponent {
-                  deviceWidth = '5000';
-                  changeDeviceWidth(event: Event) {
-                    this.deviceWidth = (event as CustomEvent).detail.value;
-                  }
-                  
-                  handleMenuClick() {
-                    alert("Menu not being displayed and you can do anything");
-                  }
-                }
-              `}/>}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={"angular"}
-                allowCopy={true}
-                code={`
-                export class MyComponent {
-                  deviceWidth = 5000;
-                  changeDeviceWidth(event: GoabRadioGroupOnChangeDetail) {
-                    this.deviceWidth = +event.value;
-                 }
-                  handleMenuClick() {
-                    alert("Menu not being displayed and you can do anything");
-                }
-                }
-              `}/>}
-
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                 <goa-radio-group name="device" value="deviceWidth" (_change)="changeDeviceWidth($event)">
-                  <goa-radio-item value="600" label="Desktop"></goa-radio-item>
-                  <goa-radio-item value="5000" label="Mobile"></goa-radio-item>
-                 </goa-radio-group>
-                  
-                 <goa-app-header url="https://example.com" heading="Design System" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goa-app-header-menu>
-                  <a href="#" className="interactive">Sign in</a>
-                </goa-app-header>
-              `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                 <goab-radio-group name="device" value="deviceWidth" (onChange)="changeDeviceWidth($event)">
-                  <goab-radio-item value="600" label="Desktop"></goab-radio-item>
-                  <goab-radio-item value="5000" label="Mobile"></goab-radio-item>
-                </goab-radio-group>
-
-                <goab-app-header url="https://example.com" heading="Design System" [fullMenuBreakpoint]="deviceWidth" (onMenuClick)="handleMenuClick()">
-                  <a href="#">Support</a>
-                  <goab-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goab-app-header-menu>
-                  <a href="#" class="interactive">Sign in</a>
-                </goab-app-header>
-              `}
-              />}
-
-              {/*React code*/}
-              <CodeSnippet
-                lang="typescript"
-                tags={"react"}
-                allowCopy={true}
-                code={`
-                const [deviceWidth, setDeviceWidth] = useState("5000");
-                function handleMenuClick() {
-                  alert("Menu not being displayed and you can do anything");
-                }
-              `}/>
-
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
-                    <GoARadioItem value="600" label="Desktop"></GoARadioItem>
-                    <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
-                  </GoARadioGroup>
-                  
-                  <GoAAppHeader
-                    url="https://example.com"
-                    heading="Design System"
-                    onMenuClick={handleMenuClick}
-                    fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                      <a href="#">Cases</a>
-                      <a href="#">Payments</a>
-                      <a href="#">Outstanding</a>
-                    </GoAAppHeaderMenu>
-                    <a href="#" className="interactive">Sign in</a>
-                  </GoAAppHeader>
-              `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoabRadioGroup name="device" value={deviceWidth} onChange={(event: GoabRadioGroupOnChangeDetail) => setDeviceWidth(event.value)}>
-                    <GoabRadioItem value="600" label="Desktop"></GoabRadioItem>
-                    <GoabRadioItem value="5000" label="Mobile"></GoabRadioItem>
-                  </GoabRadioGroup>
-                  
-                  <GoabAppHeader
-                    url="https://example.com"
-                    heading="Design System"
-                    onMenuClick={handleMenuClick}
-                    fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                      <a href="#">Cases</a>
-                      <a href="#">Payments</a>
-                      <a href="#">Outstanding</a>
-                    </GoabAppHeaderMenu>
-                    <a href="#" class="interactive">Sign in</a>
-                  </GoabAppHeader>
-              `}
-              />}
-            </Sandbox>
+            <AppHeaderExamples/>
           </GoabTab>
 
           <GoabTab

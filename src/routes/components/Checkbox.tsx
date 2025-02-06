@@ -11,6 +11,11 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 const componentName = "Checkbox";
@@ -132,24 +137,10 @@ export default function CheckboxPage() {
       description: "Sets the maximum width of the checkbox.",
       lang: "angular",
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    ...LegacyTestIdProperties,
+    MarginProperty
   ];
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "name",
@@ -208,20 +199,12 @@ export default function CheckboxPage() {
       description: "Sets the maximum width of the checkbox.",
     },
     {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
       name: "onChange",
       type: "(event: GoabCheckboxOnChangeDetail) => void",
       description: "Callback function when checkbox value is changed.",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   const noop = () => { };
@@ -308,6 +291,18 @@ export default function CheckboxPage() {
                   }
                 `}
               />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
+                    console.log(event.value);
+                  }
+                `}
+              />
+              }
 
               <form>
                 <GoabFormItem {...formItemProps}>

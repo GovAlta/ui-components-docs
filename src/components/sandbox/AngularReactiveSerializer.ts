@@ -14,7 +14,7 @@ const ReactiveComponents = [
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "div form span p br header footer blockquote input textarea a button h2 h2 h3 h4 h5 h6 img label ul li ol hr section dt dl dd".split(
+    "div form span p br header footer blockquote input textarea a button h2 h2 h3 h4 h5 h6 img label ul li ol hr section dt dl dd strong".split(
       " "
     );
 
@@ -130,12 +130,28 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       children = children.replace(/<form/g, '<form [formGroup]="form"');
     }
     if (this.version === "new" && children.startsWith("<goab-form-item")) {
-      children = children.replace(/<goab-form-item/g, '<goab-form-item [formGroup]="form"');
+      children = children.replace(
+        /<goab-form-item(?![^>]*\[formGroup\]="form")/g,
+        '<goab-form-item [formGroup]="form"'
+      );
     }
 
     if (this.version === "new" && children.includes(`[value]="value"`)) {
       children = children.replace(`[value]="value"`, "");
     }
+
+    console.log("children ", children);
+    if (this.version === "new") {
+      children = children.replace(/<goab-radio-group([^>]*)>/g, (match, attrs) => {
+        if (attrs.includes('formControlName')) {
+          // Remove the value attribute (with any numeric value)
+          const newAttrs = attrs.replace(/ ?value="\d+"/, '');
+          return `<goab-radio-group${newAttrs}>`;
+        }
+        return match;
+      });
+    }
+
     if (children.startsWith("<goa-checkbox")) {
       if (this.version === "old") {
         if (children.includes("goaChecked") && children.includes("goaValue")) {

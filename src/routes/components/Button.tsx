@@ -15,6 +15,12 @@ import {
 import ICONS from "@routes/components/icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { ButtonExamples } from "@examples/button/ButtonExamples.tsx";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 export default function ButtonPage() {
   const [buttonProps, setButtonProps] = useState({});
@@ -124,23 +130,8 @@ export default function ButtonPage() {
       type: "(e: any) => void",
       description: "Callback function when button is clicked.",
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -178,20 +169,17 @@ export default function ButtonPage() {
       description: "Shows an icon to the right of the text.",
     },
     {
+      name: "width",
+      type: "string",
+      description: "Sets the width of the button.",
+    },
+    {
       name: "onClick",
       type: "() => void",
       description: "Callback function when button is clicked.",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "Spacing (mt,mr,mb,ml)",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   const noop = () => {};
@@ -230,6 +218,17 @@ export default function ButtonPage() {
                     onClick() {
                       console.log('clicked');
                     }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function onClick() {
+                    console.log('clicked');
                   }
                 `}
               />

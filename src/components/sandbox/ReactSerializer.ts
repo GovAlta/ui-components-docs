@@ -1,15 +1,20 @@
 import { ComponentBinding } from "./ComponentBinding";
-import { BaseSerializer, Serializer } from "./BaseSerializer";
+import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 export class ReactSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
 
-  constructor(properties: ComponentBinding[], version: "old" | "new") {
+  constructor(properties: ComponentBinding[], version: LanguageVersion, protected variableNames: string[]) {
     super(properties, version);
   }
 
   setIsRoot(isRoot: boolean) {
     this.isRoot = isRoot;
+  }
+
+  setState(state: SerializerState) {
+    super.setState(state);
   }
 
   getProperty(name: string): ComponentBinding | undefined {
@@ -24,6 +29,10 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.dynamicProp(name);
     }
+    if (this.variableNames.includes(name)) {
+      return `${name}={${name}}`;
+    }
+
     if (name === "value" && value === "") return `value=""`;
 
     if (value === "") return "";
@@ -33,6 +42,9 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   numberToProp(name: string, value: number): string {
     if (this.isDynamic(name)) {
       return this.dynamicProp(name);
+    }
+    if (this.variableNames.includes(name)) {
+      return `${name}={${name}}`;
     }
     return `${name}={${value}}`;
   }
@@ -46,7 +58,11 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
   }
 
   funcToProp(name: string, _callback: Object): string {
-    return `${name}={${name}}`;
+    if (this.version === "old" || name === "onClick") {
+      return `${name}={${name}}`;
+    }
+
+    return `${name}={${this.getNewVersionFunctionName(name)}}`;
   }
 
   dateToProp(name: string, item: Date): string {

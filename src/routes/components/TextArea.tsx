@@ -7,10 +7,6 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoabBadge,
-  GoabButton,
-  GoabButtonGroup,
-  GoabContainer,
-  GoabDetails,
   GoabFormItem,
   GoabTab,
   GoabTabs, GoabTextarea,
@@ -21,6 +17,12 @@ import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
+import { TextAreaExamples } from "@examples/textarea/TextAreaExamples.tsx";
 
 // == Page props ==
 
@@ -237,11 +239,7 @@ export default function TextAreaPage() {
       required: false,
       description: "Function invoked when a key is pressed",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    LegacyMarginProperty,
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -316,11 +314,7 @@ export default function TextAreaPage() {
       type: "string",
       description: "Maximum width of the text area",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    TestIdProperty,
     {
       name: "onChange",
       type: "(event: GoabTextAreaOnChangeDetail) => void",
@@ -331,11 +325,7 @@ export default function TextAreaPage() {
       type: "(event: GoabTextAreaOnKeyPressDetail) => void",
       description: "Function invoked when a key is pressed",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -365,44 +355,51 @@ export default function TextAreaPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}
+              allow={["form"]}
               fullWidth>
-
               {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <>
+                  <CodeSnippet
+                    lang="typescript"
+                    tags={["angular", "reactive"]}
+                    allowCopy={true}
+                    code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />}
+                  />
+                </>
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
-                export class SomeComponent {
+                export class TextareaReactiveSandboxComponent {
                   form!: FormGroup;
                   constructor(private fb: FormBuilder) {
                     this.form = this.fb.group({
                       item: '',
-                  });
-                }
+                    });
+                  }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                   value: string = "";
@@ -412,13 +409,15 @@ export default function TextAreaPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                   value = '';
@@ -428,13 +427,15 @@ export default function TextAreaPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                    item = "";
@@ -444,86 +445,59 @@ export default function TextAreaPage() {
                    }
                 }
               `}
-              />}
+                />
+              )}
 
               {/*React code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [value, setValue] = useState<string>("");
               
                 function onChange(name: string, value: string) {
                   setValue(value);
                 }
             `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [value, setValue] = useState<string>("");
               
-                function onChange(event: GoabTextAreaOnChangeDetail) {
+                function textareaOnChange(event: GoabTextAreaOnChangeDetail) {
                   setValue(event.value);
                 }
             `}
-              />}
-
-              <GoabFormItem {...formItemProps}>
-                <GoabTextarea
-                  {...componentProps}
-                  width="60ch"
-                  name="item"
-                  value=""
-                  onChange={noop}
                 />
-              </GoabFormItem>
+              )}
+              <form>
+                <GoabFormItem {...formItemProps}>
+                  <GoabTextarea
+                    {...componentProps}
+                    width="60ch"
+                    name="item"
+                    value=""
+                    onChange={noop}
+                  />
+                </GoabFormItem>
+              </form>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
 
             {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
-            <h3 id="component-example-1">Ask a question and give more information</h3>
-            <Sandbox flags={["reactive"]} fullWidth>
-              <GoabContainer>
-                <GoabButton type="tertiary" leadingIcon="arrow-back" mb="m">
-                  Back
-                </GoabButton>
-
-                <h2>Description</h2>
-                <p>
-                  List all components and include a description, including the number of hours for
-                  each.
-                </p>
-
-                <GoabFormItem
-                  label="Program outline"
-                  helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoabTextarea name="program" value="Input text" onChange={noop} />
-                </GoabFormItem>
-
-                <GoabDetails heading="How to write a good outline">
-                  <p>
-                    Break down your outline into easily digestible sections. This can help to ensure
-                    that the document is well-organized and easy to navigate.
-                  </p>
-                </GoabDetails>
-
-                <GoabButtonGroup alignment="start" mt="l">
-                  <GoabButton type="primary" onClick={noop}>
-                    Continue
-                  </GoabButton>
-                </GoabButtonGroup>
-              </GoabContainer>
-            </Sandbox>
+            <TextAreaExamples />
           </GoabTab>
 
           <GoabTab

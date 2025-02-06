@@ -1,8 +1,5 @@
 import {
   GoabAppFooter,
-  GoabAppFooterMetaSection,
-  GoabFooterNavSectionProps,
-  GoabAppFooterNavSection,
   GoabAppFooterProps,
   GoabBadge,
   GoabTab,
@@ -16,8 +13,8 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { useState, useContext } from "react";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { AppFooterExamples } from "@examples/app-footer/AppFooterExamples.tsx";
 
 // == Page props ==
 
@@ -29,21 +26,17 @@ const relatedComponents = [
   { link: "/patterns", name: "Layout" },
 ];
 type ComponentPropsType = GoabAppFooterProps;
-type FooterNavPropsType = GoabFooterNavSectionProps;
+
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
 };
 
 export default function AppFooterPage() {
-  const {version, language} = useContext(LanguageVersionContext);
+  const {language} = useContext(LanguageVersionContext);
 
-  const [appFooterProps, setAppFooterProps] = useState<ComponentPropsType>({
+  const [sandbox1Props, setSandbox1Props] = useState<ComponentPropsType>({
     maxContentWidth: "100%",
-  });
-  const [appFooterNavProps, setAppFooterNavProps] = useState<FooterNavPropsType>({
-    maxColumnCount: 1,
-    heading: "",
   });
   const [appFooterBindings, setAppFooterBindings] = useState<ComponentBinding[]>([
     {
@@ -51,27 +44,6 @@ export default function AppFooterPage() {
       type: "string",
       name: "maxContentWidth",
       value: "100%",
-    },
-  ]);
-
-  const [appFooterNavBindings, setAppFooterNavBindings] = useState<ComponentBinding[]>([
-    {
-      label: "Max content width",
-      type: "string",
-      name: "maxContentWidth",
-      value: "100%",
-    },
-    {
-      label: "Max footer nav columns",
-      type: "number",
-      name: "maxColumnCount",
-      value: 1,
-    },
-    {
-      label: "Heading",
-      type: "string",
-      name: "heading",
-      value: "",
     },
   ]);
 
@@ -114,13 +86,8 @@ export default function AppFooterPage() {
   ];
 
   function onSandbox1Change(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setAppFooterProps(props as CastingType);
+    setSandbox1Props(props as CastingType);
     setAppFooterBindings(bindings);
-  }
-
-  function onSandbox2Change(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setAppFooterNavProps(props as CastingType);
-    setAppFooterNavBindings(bindings);
   }
 
   return (
@@ -139,7 +106,7 @@ export default function AppFooterPage() {
             </h2>
             <h3>Basic Footer</h3>
             <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
-              <GoabAppFooter {...appFooterProps} />
+              <GoabAppFooter {...sandbox1Props} />
             </Sandbox>
 
             {/*Component properties table*/}
@@ -157,342 +124,8 @@ export default function AppFooterPage() {
             )}
 
             {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+            <AppFooterExamples/>
 
-            <h3 id="component-example-footer-meta">Show quick links</h3>
-            <Sandbox skipRender fullWidth>
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goa-app-footer maxcontentwidth="100%">
-                  <goa-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </goa-app-footer-meta-section>
-                </goa-app-footer>
-               `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goab-app-footer maxContentWidth="100%">
-                  <goab-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </goab-app-footer-meta-section>
-                </goab-app-footer>
-               `}
-              />}
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                 <GoAAppFooter maxContentWidth="100%">
-                  <GoAAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </GoAAppFooterMetaSection>
-                </GoAAppFooter>
-              `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                 <GoabAppFooter maxContentWidth="100%">
-                  <GoabAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </GoabAppFooterMetaSection>
-                </GoabAppFooter>
-              `}
-              />}
-
-              <GoabAppFooter {...appFooterProps}>
-                <GoabAppFooterMetaSection>
-                  <a href="privacy.html">Privacy</a>
-                  <a href="disclaimer.html">Disclaimer</a>
-                  <a href="accessibility.html">Accessibility</a>
-                  <a href="using-alberta.html">Using Alberta.ca</a>
-                </GoabAppFooterMetaSection>
-              </GoabAppFooter>
-            </Sandbox>
-
-            <h3 id="component-example-footer-secondary-nav">
-              Show links to navigation items
-            </h3>
-            <Sandbox
-              skipRender
-              properties={appFooterNavBindings}
-              onChange={onSandbox2Change}
-              fullWidth>
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goa-app-footer maxcontentwidth="100%">
-                  <goa-app-footer-nav-section slot="nav" maxcolumncount="1">
-                    <a href="a.html">
-                      Arts and culture
-                    </a>
-                    <a href="b.html">
-                      Education and training
-                    </a>
-                    <a href="c.html">
-                      Family and social supports
-                    </a>
-                    <a href="d.html">
-                      Housing and community
-                    </a>
-                    <a href="e.html">
-                      Life events
-                    </a>
-                    <a href="f.html">
-                      Business and economy
-                    </a>
-                    <a href="g.html">
-                      Emergencies and public safety
-                    </a>
-                    <a href="h.html">
-                      Government
-                    </a>
-                    <a href="i.html">
-                      Jobs and employment
-                    </a>
-                    <a href="j.html">
-                      Moving to Alberta
-                    </a>
-                  </goa-app-footer-nav-section>
-                  <goa-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </goa-app-footer-meta-section>
-                </goa-app-footer>
-               `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goab-app-footer maxContentWidth="100%">
-                  <goab-app-footer-nav-section slot="nav" [maxColumnCount]="1">
-                  <a href="a.html">
-                    Arts and culture
-                  </a>
-                  <a href="b.html">
-                    Education and training
-                  </a>
-                  <a href="c.html">
-                    Family and social supports
-                  </a>  
-                  <a href="d.html">
-                    Housing and community
-                  </a>
-                  <a href="e.html">
-                    Life events
-                  </a>
-                  <a href="f.html">
-                    Business and economy
-                  </a>
-                  <a href="g.html">
-                    Emergencies and public safety
-                  </a>
-                  <a href="h.html">
-                    Government
-                  </a>
-                  <a href="i.html">
-                    Jobs and employment
-                  </a>
-                  <a href="j.html">
-                    Moving to Alberta
-                  </a>
-                </goab-app-footer-nav-section>
-                <goab-app-footer-meta-section slot="meta">
-                  <a href="privacy.html">
-                    Privacy
-                  </a>
-                  <a href="disclaimer.html">
-                    Disclaimer
-                  </a>
-                  <a href="accessibility.html">
-                    Accessibility
-                  </a>
-                  <a href="using-alberta.html">
-                    Using Alberta.ca
-                  </a>
-                </goab-app-footer-meta-section>
-              </goab-app-footer>
-               `}
-              />}
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                 <GoAAppFooter maxContentWidth="100%">
-                  <GoAAppFooterNavSection maxColumnCount=1>
-                    <a href="a.html">
-                      Arts and culture
-                    </a>
-                    <a href="b.html">
-                      Education and training
-                    </a>
-                    <a href="c.html">
-                      Family and social supports
-                    </a>
-                    <a href="d.html">
-                      Housing and community
-                    </a>
-                    <a href="e.html">
-                      Life events
-                    </a>
-                    <a href="f.html">
-                      Business and economy
-                    </a>
-                    <a href="g.html">
-                      Emergencies and public safety
-                    </a>
-                    <a href="h.html">
-                      Government
-                    </a>
-                    <a href="i.html">
-                      Jobs and employment
-                    </a>
-                    <a href="j.html">
-                      Moving to Alberta
-                    </a>
-                  </GoAAppFooterNavSection>
-                  <GoAAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
-                    </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
-                      Accessibility
-                    </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
-                    </a>
-                  </GoAAppFooterMetaSection>
-                </GoAAppFooter>
-              `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                 <GoabAppFooter maxContentWidth="100%">
-                  <GoabAppFooterNavSection maxColumnCount=1>
-                    <a href="a.html">Arts and culture</a>
-                    <a href="b.html">Education and training</a>
-                    <a href="c.html">Family and social supports</a>
-                    <a href="d.html">Housing and community</a>
-                    <a href="e.html">Life events</a>
-                    <a href="f.html">Business and economy</a>
-                    <a href="g.html">Emergencies and public safety</a>
-                    <a href="h.html">Government</a>
-                    <a href="i.html">Jobs and employment</a>
-                    <a href="j.html">Moving to Alberta</a>
-                  </GoabAppFooterNavSection>
-                  <GoAAppFooterMetaSection>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                    <a href="accessibility.html">Accessibility</a>
-                    <a href="using-alberta.html">Using Alberta.ca</a>
-                  </GoAAppFooterMetaSection>
-                </GoabAppFooter>
-              `}
-              />}
-
-              <GoabAppFooter {...appFooterProps}>
-                <GoabAppFooterNavSection {...appFooterNavProps}>
-                  <a href="a.html">Arts and culture</a>
-                  <a href="b.html">Education and training</a>
-                  <a href="c.html">Family and social supports</a>
-                  <a href="d.html">Housing and community</a>
-                  <a href="e.html">Life events</a>
-                  <a href="f.html">Business and economy</a>
-                  <a href="g.html">Emergencies and public safety</a>
-                  <a href="h.html">Government</a>
-                  <a href="i.html">Jobs and employment</a>
-                  <a href="j.html">Moving to Alberta</a>
-                </GoabAppFooterNavSection>
-                <GoabAppFooterMetaSection>
-                  <a href="privacy.html">Privacy</a>
-                  <a href="disclaimer.html">Disclaimer</a>
-                  <a href="accessibility.html">Accessibility</a>
-                  <a href="using-alberta.html">Using Alberta.ca</a>
-                </GoabAppFooterMetaSection>
-              </GoabAppFooter>
-            </Sandbox>
           </GoabTab>
 
           <GoabTab

@@ -131,7 +131,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
         return <GoabInput name={p.name} value={p.value} width={p.width} onChange={(event) => onTextChange(p.name, event.value)} />;
       case "number":
         return (
-          <GoabInput type="number" name={p.name} value={`${p.value}`} onChange={(event) => onNumberChange(p.name, event.value)} />
+          <GoabInput step={p.step || 1} type="number" name={p.name} value={`${p.value}`}  width={p.width} onChange={(event) => onNumberChange(p.name, event.value)} />
         );
       case "date":
         return (

@@ -33,7 +33,7 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     }
 
 
-    if (name === "onClick") {
+    if (name === "onClick" || name === "onClose") {
       return `(${name})="${name}()"`;
     }
 
@@ -46,11 +46,9 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-
     if (name === "value" && item === "") return `value=""`;
     if (item === "") return "";
     if (name === "className") name = "class";
-
     return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 

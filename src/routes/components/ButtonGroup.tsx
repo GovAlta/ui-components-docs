@@ -8,6 +8,7 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoabBadge, GoabButton, GoabButtonGroup, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabButtonGroupAlignment } from "@abgov/ui-components-common";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
@@ -120,6 +121,29 @@ export default function ButtonGroupPage() {
             {/*Button Group Sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={buttonGroupBindings} onChange={onSandboxChange} fullWidth>
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  export class SomeOtherComponent {
+                    onClick() {
+                      console.log('clicked');
+                    }
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function onClick() {
+                    console.log('clicked');
+                  }
+                `}
+              />
               <GoabButtonGroup {...buttonGroupProps}>
                 <GoabButton type="primary" onClick={noop}>
                   Button

@@ -14,6 +14,11 @@ import {
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabSkeletonType } from "@abgov/ui-components-common";
+import {
+  LegacyMarginProperty,
+  MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 const componentName = "Skeleton loading";
@@ -99,12 +104,7 @@ export default function SkeletonPage() {
       defaultValue: "320px",
       lang: "angular",
     },
-    {
-
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    LegacyMarginProperty,
     {
       name: "lineCount",
       type: "number",
@@ -147,17 +147,8 @@ export default function SkeletonPage() {
       description: "Set component maximum width. Currently only used in card skeleton type",
       defaultValue: "300px",
     },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>): void {

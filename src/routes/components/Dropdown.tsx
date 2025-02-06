@@ -20,6 +20,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { LegacyMarginProperty, MarginProperty } from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -200,11 +201,7 @@ export default function DropdownPage() {
       type: "(name: string, value: string[] | string | null) => void",
       description: "Callback function when dropdown value is changed.",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    LegacyMarginProperty,
   ];
   const dropdownProperties: ComponentProperty[] = [
     {
@@ -284,16 +281,11 @@ export default function DropdownPage() {
     },
     {
       name: "onChange",
-      lang: "react",
       type: "(event: GoabDropdownOnChangeDetail) => void",
       required: true,
       description: "Callback function when dropdown value is changed",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    MarginProperty,
   ];
 
   const oldDropdownItemProperties: ComponentProperty[] = [
@@ -383,7 +375,7 @@ export default function DropdownPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
               {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -457,7 +449,7 @@ export default function DropdownPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                function onChange(event: GoabDropdownOnChangeDetail) {
+                function dropdownOnChange(event: GoabDropdownOnChangeDetail) {
                  console.log("onChange", event.name, event.value);
                 }
               `}
@@ -472,7 +464,7 @@ export default function DropdownPage() {
                   item = "";
                   dropdownOnChange(event: GoabDropdownOnChangeDetail) {
                     console.log(event.value);
-                    this.item = event.value;
+                    this.item = event.value as string;
                   }
                }
               `}
@@ -494,7 +486,6 @@ export default function DropdownPage() {
               properties={dropdownItemProperties}
               oldProperties={oldDropdownItemProperties}
             />
-
             <DropdownExamples/>
           </GoabTab>
 
