@@ -27,7 +27,6 @@ export const ComponentProperties = (props: Props) => {
     const result = properties.filter((child: ComponentProperty) => {
       return !child.lang || child.lang === language;
     });
-    console.log("filter by ", properties, " and lang ", language);
     return result;
   };
 
