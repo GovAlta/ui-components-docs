@@ -1,18 +1,22 @@
 import {
-  GoABlock,
-  GoAButton,
-  GoACallout,
-  GoADetails,
-  GoAFormItem,
-  GoAInput,
-  GoARadioItem,
-  GoARadioGroup,
-  GoATextArea
+  GoabBlock,
+  GoabButton,
+  GoabCallout,
+  GoabDetails,
+  GoabFormItem,
+  GoabInput,
+  GoabRadioItem,
+  GoabRadioGroup, GoabTextarea
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 import { useEffect, useState } from "react";
 import { Octokit } from "octokit";
 import { useNavigate } from "react-router-dom";
+import {
+  GoabInputOnChangeDetail,
+  GoabRadioGroupOnChangeDetail,
+  GoabTextAreaOnChangeDetail
+} from "@abgov/ui-components-common";
   
 export default function ReportBugPage() {
   interface Package {
@@ -233,53 +237,53 @@ export default function ReportBugPage() {
           Let us know if you find a problem or inconsistency in the design system. Providing complete details in your bug report
           helps our team understand, prioritize, and fix the issue faster.
         </h3>
-        <GoACallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
+        <GoabCallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
           <ul>
             <li>Web Components - { versions["web"] }</li>
             <li>Angular Components - 3.2.2</li>
             <li>React Components - 5.4.1</li>
           </ul>
-        </GoACallout>
-        <GoAFormItem label="Your email" mb="xl" error={ emailError }>
-          <GoAInput name="email" value={ formValues.email } onChange={ handleChange } trailingContent="@gov.ab.ca" width="30ch" error={ !!emailError } />
-        </GoAFormItem>
-        <GoABlock gap="3xl" mb="xl">
-          <GoAFormItem label="Web components version" error={ webVersionError }>
-            <GoAInput name="webVersion" value={ formValues.webVersion } onChange={ handleChange } width="167px" error={ !!webVersionError } />
-          </GoAFormItem>
-          <GoAFormItem label="React or Angular components version" error={ otherVersionError }>
-            <GoAInput name="otherVersion" value={ formValues.otherVersion } onChange={ handleChange } width="167px" error={ !!otherVersionError } />
-          </GoAFormItem>
-        </GoABlock>
-        <GoAFormItem label="Expected Behaviour" mb="xl" helpText="A description of what you are expecting to happen." error={ expectedError }>
-          <GoATextArea name="expected" value={ formValues.expected } onChange={ handleChange } rows={ 6 } width="90%" error={ !!expectedError } />
-        </GoAFormItem>
-        <GoAFormItem label="Actual Behaviour" mb="xl" helpText="A description of what is actually happening (what the bug is)." error={ actualError }>
-          <GoATextArea name="actual" value={ formValues.actual } onChange={ handleChange } rows={ 6 } width="90%" error={ !!actualError } />
-        </GoAFormItem>
-        <GoAFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
-          <GoATextArea name="replication" value={ formValues.replication } onChange={ handleChange } rows={ 6 } width="90%" error={ !!replicationError } />
-        </GoAFormItem>
-        <GoAFormItem label="StackBlitz URL" mb="s" helpText="Share your code with us in an isolated environment." requirement="optional" error={ stackblitzError }>
-          <GoAInput name="stackblitz" value={ formValues.stackblitz } onChange={ handleChange } width="90%" error={ !!stackblitzError } />
-        </GoAFormItem>
-        <GoADetails heading="Why stackblitz?" maxWidth="90%" mb="s">
+        </GoabCallout>
+        <GoabFormItem label="Your email" mb="xl" error={ emailError }>
+          <GoabInput name="email" value={ formValues.email } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } trailingContent="@gov.ab.ca" width="30ch" error={ !!emailError } />
+        </GoabFormItem>
+        <GoabBlock gap="3xl" mb="xl">
+          <GoabFormItem label="Web components version" error={ webVersionError }>
+            <GoabInput name="webVersion" value={ formValues.webVersion } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="167px" error={ !!webVersionError } />
+          </GoabFormItem>
+          <GoabFormItem label="React or Angular components version" error={ otherVersionError }>
+            <GoabInput name="otherVersion" value={ formValues.otherVersion } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="167px" error={ !!otherVersionError } />
+          </GoabFormItem>
+        </GoabBlock>
+        <GoabFormItem label="Expected Behaviour" mb="xl" helpText="A description of what you are expecting to happen." error={ expectedError }>
+          <GoabTextarea name="expected" value={ formValues.expected } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!expectedError } />
+        </GoabFormItem>
+        <GoabFormItem label="Actual Behaviour" mb="xl" helpText="A description of what is actually happening (what the bug is)." error={ actualError }>
+          <GoabTextarea name="actual" value={ formValues.actual } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!actualError } />
+        </GoabFormItem>
+        <GoabFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
+          <GoabTextarea name="replication" value={ formValues.replication } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!replicationError } />
+        </GoabFormItem>
+        <GoabFormItem label="StackBlitz URL" mb="s" helpText="Share your code with us in an isolated environment." requirement="optional" error={ stackblitzError }>
+          <GoabInput name="stackblitz" value={ formValues.stackblitz } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="90%" error={ !!stackblitzError } />
+        </GoabFormItem>
+        <GoabDetails heading="Why stackblitz?" maxWidth="90%" mb="s">
           The design system team uses <a href="https://stackblitz.com/" target="_blank">StackBlitz</a> to create and share live code
           examples. It allows us to easily see your code in an environment that is unaffected by the rest of your project. Create a free
           account and share your work directly with the team.
-        </GoADetails>
-        <GoAFormItem label="Jam.dev URL" mb="s" helpText="Show us the bug." requirement="optional" error={ jamError }>
-          <GoAInput name="jam" value={ formValues.jam } onChange={ handleChange } width="90%" error={ !!jamError } />
-        </GoAFormItem>
-        <GoADetails heading="Why jam.dev" maxWidth="90%" mb="s">
+        </GoabDetails>
+        <GoabFormItem label="Jam.dev URL" mb="s" helpText="Show us the bug." requirement="optional" error={ jamError }>
+          <GoabInput name="jam" value={ formValues.jam } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="90%" error={ !!jamError } />
+        </GoabFormItem>
+        <GoabDetails heading="Why jam.dev" maxWidth="90%" mb="s">
           The design system team uses <a href="https://jam.dev/" target="_blank">jam.dev</a> to share and report bugs. This gives us
           a lot of the information we need to understand what's happening and how to fix it. Create a free account and record and share
           the issue.        
-        </GoADetails>
-        <GoAFormItem label="Any additional information" mb="2xl" helpText="Add any other relevant context." requirement="optional">
-          <GoATextArea name="additional" value={ formValues.additional } onChange={ handleChange } rows={ 6 } width="90%" />
-        </GoAFormItem>
-        <GoAButton onClick={ submitBug }>Submit bug</GoAButton>
+        </GoabDetails>
+        <GoabFormItem label="Any additional information" mb="2xl" helpText="Add any other relevant context." requirement="optional">
+          <GoabTextarea name="additional" value={ formValues.additional } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" />
+        </GoabFormItem>
+        <GoabButton onClick={ submitBug }>Submit bug</GoabButton>
       </ComponentContent>
     );
   } else {
@@ -287,23 +291,22 @@ export default function ReportBugPage() {
       <ComponentContent>
         <a href="/get-started/support" className="back">Back</a>
         <h1>Issue Submitted</h1>
-        <GoACallout type="success" heading="Your issue has been submitted to Github" mb="xl">
+        <GoabCallout type="success" heading="Your issue has been submitted to Github" mb="xl">
           <a href={ responseURL } target="_blank">View your issue</a> in the design system backlog.
-        </GoACallout>
+        </GoabCallout>
         <h3>What happens next</h3>
         <ol>
           <li>The design system team will review the issue in the next backlog grooming</li>
           <li>Subscribe to your issue in Github to get notified of any updates</li>
         </ol>
         <h3>Create another issue</h3>
-        <GoARadioGroup name="bug-or-feature" onChange={bugOrFeature}>
-          <GoARadioItem value="bug" label="Report a bug" />
-          <GoARadioItem value="feature" label="Request a new feature" />
-        </GoARadioGroup>
+        <GoabRadioGroup name="bug-or-feature" onChange={(event: GoabRadioGroupOnChangeDetail) => bugOrFeature(event.name, event.value)}>
+          <GoabRadioItem value="bug" label="Report a bug" />
+          <GoabRadioItem value="feature" label="Request a new feature" />
+        </GoabRadioGroup>
         <br />
-        <GoAButton onClick={openPage} mt="m">Raise an issue</GoAButton>   
+        <GoabButton onClick={openPage} mt="m">Raise an issue</GoabButton>
       </ComponentContent>
     );
   }
 }
-  

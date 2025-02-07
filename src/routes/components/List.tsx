@@ -1,13 +1,9 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAContainer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { useContext } from "react";
-import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function ListPage() {
-  const language = useContext(LanguageContext);
-
   return (
     <>
       <ComponentHeader
@@ -16,10 +12,10 @@ export default function ListPage() {
         description="Organize information into brief and clear groups."
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*We don't use sandbox because it isn't starting with "GoA" components*/}
-            <GoAContainer>
+            <GoabContainer>
               <ol className="goa-ordered-list">
                 <li>
                   An ordered item
@@ -51,14 +47,13 @@ export default function ListPage() {
                   </ul>
                 </li>
               </ol>
-            </GoAContainer>
+            </GoabContainer>
 
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ol className="goa-ordered-list">
               <li>
                 An ordered item
@@ -91,15 +86,12 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
-
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            />
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ol class="goa-ordered-list">
               <li>
                 An ordered item
@@ -132,8 +124,7 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
+            />
             {/* Examples*/}
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -141,7 +132,7 @@ export default function ListPage() {
             </h2>
 
             <h3 id="component-example-unordered-list">Unordered list</h3>
-            <GoAContainer mt="m">
+            <GoabContainer mt="m">
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -152,14 +143,12 @@ export default function ListPage() {
                   </ul>
                 </li>
               </ul>
-            </GoAContainer>
-
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            </GoabContainer>
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -171,15 +160,13 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
+            />
 
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ul class="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -191,20 +178,19 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
-          </GoATab>
+            />
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

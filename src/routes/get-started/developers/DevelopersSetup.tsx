@@ -1,4 +1,4 @@
-import { GoABlock, GoAContainer, GoADivider } from "@abgov/react-components";
+import { GoabBlock, GoabContainer, GoabDivider } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import "./Developers.css";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -6,45 +6,45 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function DevelopersSetupPage() {
   return (
     <div className="developer-setup">
-      <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Developers</h1>
-        <h2 id="setup">Setup</h2>
-        <GoAContainer type="non-interactive">
-          <h3>Once you are setup, you can use the project template to quickly get started.</h3>
-          <a href="#templates">View project templates</a>
-        </GoAContainer>
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
+      <h1>Developers</h1>
+      <h2 id="setup">Setup</h2>
+      <GoabContainer type="non-interactive">
+        <h3>Once you are setup, you can use the project template to quickly get started.</h3>
+        <a href="#templates">View project templates</a>
+      </GoabContainer>
 
-        <h3 id="angular">Angular UI components</h3>
-        <p>This is the web component library and utilizes Angular's web component integration.</p>
+      <h3 id="angular">Angular UI components</h3>
+      <p>This is the web component library and utilizes Angular's web component integration.</p>
 
-        <h4>1. Add Dependencies</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+      <h4>1. Add Dependencies</h4>
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
           npm i @abgov/web-components
           npm i @abgov/angular-components@lts
         `}
-        />
+      />
 
-        <h4>2. Link ionicons in app/index.html Add the following in the head element</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+      <h4>2. Link ionicons in app/index.html Add the following in the head element</h4>
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
           <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
           <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         `}
-        />
+      />
 
-        <h4>3. Update src/app/app.module.ts as per the four steps below</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+      <h4>3. Update src/app/app.module.ts as per the four steps below</h4>
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
           // 1. Import the CUSTOM_ELEMENTS_SCHEMA
           import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
           // 2. Import the libs
@@ -65,17 +65,17 @@ export default function DevelopersSetupPage() {
           })
           export class AppModule {}
         `}
-        />
+      />
 
-        <h4>4. Add the styles link in the src/styles.css file</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`@import "@abgov/web-components/index.css";`}
-        />
+      <h4>4. Add the styles link in the src/styles.css file</h4>
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`@import "@abgov/web-components/index.css";`}
+      />
 
-        <GoADivider mt="2xl" mb="xl" />
+      <GoabDivider mt="2xl" mb="xl" />
 
         <h3 id="react">React UI components</h3>
         <p>
@@ -113,33 +113,7 @@ export default function DevelopersSetupPage() {
           code={`@import "@abgov/web-components/index.css";`}
         />
 
-        <h4>4. Import the web-component library at the top of your entry point file</h4>
-        <p>Your entry point file might be called index.tsx or main.tsx:</p>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-          import React from "react";
-          import ReactDOM from "react-dom/client";
-          // Import the libs
-          import "@abgov/web-components"; 
-          
-          const App: React.FC = () => {
-            return <div>Hello, world!</div>;
-          };
-
-          const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
-          
-          root.render(
-            <React.StrictMode>
-              <App />
-            </React.StrictMode>
-          );
-      `}
-        />
-
-        <GoADivider mt="2xl" mb="xl" />
+      <GoabDivider mt="2xl" mb="xl" />
 
         <h3 id="vue">Vue web components</h3>
         <p>This library contains react components from the Government of Alberta.</p>
@@ -200,17 +174,17 @@ export default function DevelopersSetupPage() {
           code={`@import "@abgov/web-components/index.css";`}
         />
 
-        <GoADivider mt="2xl" mb="xl" />
+      <GoabDivider mt="2xl" mb="xl" />
 
-        <h3 id="templates">Angular/React templates</h3>
-        <GoABlock gap="xl" mb="xl">
-          <a href="https://github.com/GovAlta/ui-components-angular-template" target="_blank">
-            Angular template
-          </a>
-          <a href="https://github.com/GovAlta/ui-components-react-template" target="_blank">
-            React template
-          </a>
-        </GoABlock>
+      <h3 id="templates">Angular/React templates</h3>
+      <GoabBlock gap="xl" mb="xl">
+        <a href="https://github.com/GovAlta/ui-components-angular-template" target="_blank">
+          Angular template
+        </a>
+        <a href="https://github.com/GovAlta/ui-components-react-template" target="_blank">
+          React template
+        </a>
+      </GoabBlock>
 
         <p>To use the templates, follow these steps:</p>
         <ol>

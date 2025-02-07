@@ -1,7 +1,7 @@
 import {
-  GoACallout,
-  GoATab,
-  GoATabs
+  GoabCallout,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { TaskListPageExamples } from "@examples/task-list-page/TaskListPageExamples";
@@ -19,12 +19,12 @@ export default function TaskListPage() {
       <ComponentContent
         contentClassName="task-list-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <TaskListPageExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab heading="Design guidelines">
+          <GoabTab heading="Design guidelines">
             <figure className={css.imageContainer}>
               <h2 id="overview" className="hidden">
                 Overview
@@ -61,9 +61,9 @@ export default function TaskListPage() {
             </p>
 
             <div style={{maxWidth: "22rem", marginTop: "0.5rem"}}>
-              <GoACallout type="important" size="medium" heading="Application incomplete" mb="3xl">
+              <GoabCallout type="important" size="medium" heading="Application incomplete" mb="3xl">
                 You have completed 0 of 3 sections.
-              </GoACallout>
+              </GoabCallout>
             </div>
 
 
@@ -114,8 +114,8 @@ export default function TaskListPage() {
                 Task: <Link to="/components/table">goa-table</Link>
               </li>
             </ol>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

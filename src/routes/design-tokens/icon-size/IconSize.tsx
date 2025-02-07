@@ -1,15 +1,15 @@
-import { GoAContainer, GoAGrid, GoAIcon, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabIcon, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./IconSize.css";
 import { getTokenGroups } from "../getTokenGroups";
-import { IconSize } from "@abgov/react-components";
 import { Token } from "../token";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabIconSize } from "@abgov/ui-components-common";
 
 interface IconSizeToken extends Token {
-  size: IconSize | string;
+  size: GoabIconSize | string;
 }
 
 export default function IconSizePage() {
@@ -40,7 +40,7 @@ export default function IconSizePage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -55,7 +55,7 @@ export default function IconSizePage() {
             <tr key={index}>
               <td>
                 <div className={`icon ${token.tokenName}`}>
-                  <GoAIcon type="add" size={token.size as IconSize}></GoAIcon>
+                  <GoabIcon type="add" size={token.size as GoabIconSize}></GoabIcon>
                 </div>
               </td>
               <td>
@@ -67,18 +67,18 @@ export default function IconSizePage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: IconSizeToken, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <div className={`icon ${token.tokenName}`}>
-                <GoAIcon type="add" size={token.size as IconSize}></GoAIcon>
+                <GoabIcon type="add" size={token.size as GoabIconSize}></GoabIcon>
               </div>
               <TokenSnippet code={token.tokenName} />
               <dl>
@@ -86,10 +86,10 @@ export default function IconSizePage() {
                 <dt>px</dt> <dd>{token.px}</dd>
                 <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

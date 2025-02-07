@@ -36,7 +36,7 @@ export class BaseSerializer {
   protected isRoot = false;
   protected state: SerializerState = { element: "", props: { name: "" } };
 
-  constructor(protected properties: ComponentBinding[]) {}
+  constructor(protected properties: ComponentBinding[], protected version: "old" | "new") {}
 
   getProperty(name: string): ComponentBinding | undefined {
     return this.properties.find(p => p.name === name);
@@ -67,5 +67,10 @@ export class BaseSerializer {
     return this.getProperty(name)?.dynamic || false;
   }
 
+  protected getNewVersionFunctionName(functionName: string): string {
+    const componentName = (this.state.element || 'goab-').split('-')[1];
+    functionName = functionName[0].toUpperCase() + functionName.slice(1);
+    return `${componentName}${functionName}`;
+  }
 
 }

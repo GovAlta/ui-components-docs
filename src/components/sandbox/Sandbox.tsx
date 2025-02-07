@@ -3,7 +3,6 @@ import { ReactElement, ReactNode, useContext, useEffect, useState } from "react"
 import SandboxProperties from "./SandboxProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding } from "./ComponentBinding";
-import { LanguageContext } from "./LanguageContext";
 import { ReactSerializer } from "./ReactSerializer";
 import { AngularSerializer } from "./AngularSerializer";
 import { AngularReactiveSerializer } from "./AngularReactiveSerializer";
@@ -11,8 +10,10 @@ import ComponentSerializer from "./ComponentSerializer";
 
 import "./Sandbox.css";
 import React from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { AngularTemplateDrivenSerializer } from "@components/sandbox/AngularTemplateDrivenSerializer.ts";
 
-type Flag = "reactive";
+type Flag = "reactive" | "template-driven";
 type ComponentType = "goa" | "codesnippet";
 type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
@@ -25,36 +26,40 @@ interface SandboxProps {
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
-  allow?: string[];     // Be default the Sandbox is selective to what it renders out. This adds
-                        // additional elements to what is allowed to be rendered out
+  allow?: string[]; // Be default the Sandbox is selective to what it renders out. This adds
+  // additional elements to what is allowed to be rendered out
   children: ReactNode;
 }
 
 type SandboxViewProps = {
   fullWidth?: boolean;
   sandboxProps: SandboxProps;
-}
+};
 
 export const Sandbox = (props: SandboxProps) => {
-
-  const lang = useContext(LanguageContext);
+  const {language: lang, version} = useContext(LanguageVersionContext);
   const [formatLang, setFormatLang] = useState<string>("");
 
   const serializers: Record<string, Serializer> = {
     "react": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new ReactSerializer(properties));
+      const serializer = new ComponentSerializer(new ReactSerializer(properties, version));
       return serializer.componentsToString(els);
     },
 
     "angular": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularSerializer(properties));
+      const serializer = new ComponentSerializer(new AngularSerializer(properties, version));
       return serializer.componentsToString(els);
     },
 
     "angular-reactive": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularReactiveSerializer(properties));
+      const serializer = new ComponentSerializer(new AngularReactiveSerializer(properties, version));
       return serializer.componentsToString(els);
     },
+
+    "angular-template-driven": (els: ReactElement[], properties) => {
+      const serializer = new ComponentSerializer(new AngularTemplateDrivenSerializer(properties, version));
+      return serializer.componentsToString(els);
+    }
   };
 
   const formatMap: Record<string, string> = {
@@ -136,6 +141,16 @@ function SandboxCode(p: SandboxCodeProps) {
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
 
         {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-reactive" sandboxProps={p.props} serializer={p.serializers["angular-reactive"]} />}
+
+        {/*If flags have reactive, it means that the possibility we have template-driven as well*/}
+
+        {p.props.flags?.includes("template-driven") && (
+          <>
+          <h4>Template driven (ngModel)</h4>
+          <AdditionalCodeSnippets tags={["angular", "template-driven"]} sandboxProps={p.props} />
+          {!p.props.skipRender && <ComponentOutput formatLang={p.formatLang} type="angular-template-driven" sandboxProps={p.props} serializer={p.serializers["angular-template-driven"]} />}
+          </>
+        )}
       </>
     );
   }
@@ -199,19 +214,18 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
   const isValidGOAComponent = (el: ReactElement) =>
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
   const isAllowedInSandbox = (el: ReactElement) =>
-    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) || 
+    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) ||
     typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);
   return children.filter(
     el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
   );
 }
 
-
 // CodeSnippet output. To show code the root element *must* start with goa (case-insensitive).
 // This allows
 type ComponentOutputProps = {
   formatLang: string;
-  type: "angular" | "angular-reactive" | "react";
+  type: "angular" | "angular-reactive" | "angular-template-driven" | "react";
   sandboxProps: SandboxProps;
   serializer: Serializer;
 }
@@ -232,6 +246,7 @@ function ComponentOutput(props: ComponentOutputProps): ReactElement {
   return (
     <CodeSnippet
       lang={props.formatLang}
+      tags={props.type}
       allowCopy={true}
       code={code}
     />

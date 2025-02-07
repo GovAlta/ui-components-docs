@@ -1,4 +1,4 @@
-import { GoAIcon } from "@abgov/react-components";
+import { GoabIcon } from "@abgov/react-components";
 import "./DoDont.css";
 import { ReactNode } from "react";
 
@@ -15,7 +15,7 @@ export function DoDont({ type, children, description }: Props) {
       <div className="do-container">{children}</div>
       {(type === "do" || type === "dont") && (
         <div className="do-content" data-positive={type}>
-          {type === "do" ? <GoAIcon type="checkmark-circle" /> : <GoAIcon type="close-circle" />}
+          {type === "do" ? <GoabIcon type="checkmark-circle" /> : <GoabIcon type="close-circle" />}
           <div className="content-label">{type === "do" ? "Do" : "Dont"}</div>
         </div>
       )}

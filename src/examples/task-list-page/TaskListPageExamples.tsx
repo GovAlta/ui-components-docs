@@ -1,5 +1,5 @@
 import { Sandbox } from "@components/sandbox";
-import { GoABadge, GoACallout, GoATable } from "@abgov/react-components";
+import { GoabBadge, GoabCallout, GoabTable } from "@abgov/react-components";
 import "./task-list-page-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
@@ -32,42 +32,42 @@ export function TaskListPageExamples() {
         />
         <h2>Apply for a service</h2>
         <div className="warning">
-          <GoACallout
+          <GoabCallout
             type="important"
             size="medium"
             heading="Application incomplete"
             mb="2xl"
             mt="xl">
             You have completed 1 of 3 sections.
-          </GoACallout>
+          </GoabCallout>
         </div>
 
         <h3>1. Before you start</h3>
-        <GoATable width="100%" mb="2xl" mt="l">
+        <GoabTable width="100%" mb="2xl" mt="l">
           <tbody>
             <tr>
               <td>
                 <a href="#">Reads terms of use</a>
               </td>
               <td className="goa-table-number-column">
-                <GoABadge type="success" content="Completed" ariaLabel="completed"></GoABadge>
+                <GoabBadge type="success" content="Completed" ariaLabel="completed"></GoabBadge>
               </td>
             </tr>
           </tbody>
-        </GoATable>
+        </GoabTable>
 
         <h3>2. Prepare application</h3>
-        <GoATable width="100%" mb="2xl" mt="l">
+        <GoabTable width="100%" mb="2xl" mt="l">
           <tbody>
             <tr>
               <td>
                 <a href="#">Your contact details</a>
               </td>
               <td className="goa-table-number-column">
-                <GoABadge
+                <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoABadge>
+                  ariaLabel="not started"></GoabBadge>
               </td>
             </tr>
             <tr>
@@ -75,10 +75,10 @@ export function TaskListPageExamples() {
                 <a href="#">Your family</a>
               </td>
               <td className="goa-table-number-column">
-                <GoABadge
+                <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoABadge>
+                  ariaLabel="not started"></GoabBadge>
               </td>
             </tr>
             <tr>
@@ -86,41 +86,41 @@ export function TaskListPageExamples() {
                 <a href="#">Verify your identity</a>
               </td>
               <td className="goa-table-number-column">
-                <GoABadge
+                <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoABadge>
+                  ariaLabel="not started"></GoabBadge>
               </td>
             </tr>
           </tbody>
-        </GoATable>
+        </GoabTable>
 
         <h3>3. Schedule service</h3>
         <p className="small">
           You need to complete the previous section before you can start this task.
         </p>
-        <GoATable width="100%" mt="l" mb="3xl">
+        <GoabTable width="100%" mt="l" mb="3xl">
           <tbody>
             <tr>
               <td>Receive email confirmation</td>
               <td className="goa-table-number-column">
-                <GoABadge
+                <GoabBadge
                   type="light"
                   content="Cannot start yet"
-                  ariaLabel="cannot start yet"></GoABadge>
+                  ariaLabel="cannot start yet"></GoabBadge>
               </td>
             </tr>
             <tr>
               <td>Pay service fee</td>
               <td className="goa-table-number-column">
-                <GoABadge
+                <GoabBadge
                   type="light"
                   content="Cannot start yet"
-                  ariaLabel="cannot start yet"></GoABadge>
+                  ariaLabel="cannot start yet"></GoabBadge>
               </td>
             </tr>
           </tbody>
-        </GoATable>
+        </GoabTable>
       </Sandbox>
     </div>
   );

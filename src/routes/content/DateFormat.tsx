@@ -1,4 +1,4 @@
-import { GoACallout, GoAContainer, GoADivider, GoAGrid } from "@abgov/react-components";
+import { GoabCallout, GoabContainer, GoabDivider, GoabGrid } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
@@ -13,19 +13,19 @@ export default function DateFormatPage() {
         and structure of the date data within the date format in different scenarios.
       </h3>
 
-      <GoAContainer type="non-interactive" mb="xl">
+      <GoabContainer type="non-interactive" mb="2xl">
         <div
           className="example"
           style={{
-           
-            
+
+
             textAlign: "center",
           }}>
           March 14, 2021
         </div>
-      </GoAContainer>
+      </GoabContainer>
 
-      <GoADivider mb="2xl" mt="l"></GoADivider>
+      <GoabDivider mb="2xl" mt="l"></GoabDivider>
 
       <h2 id="conversational-long-form">Conversational and long-form</h2>
       <p>
@@ -34,7 +34,7 @@ export default function DateFormatPage() {
         “readable” tone.
       </p>
 
-      <GoAContainer type="non-interactive" mb="l">
+      <GoabContainer type="non-interactive" mb="l">
         <div
           className="example"
           style={{
@@ -42,7 +42,7 @@ export default function DateFormatPage() {
           }}>
           <strong>Month date, Year</strong> (e.g., March 14, 2021)
         </div>
-      </GoAContainer>
+      </GoabContainer>
 
       <p>
         This presents the date in a conventional “speaking” way and aligns with the Canadian Style
@@ -50,7 +50,7 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Use the format: Month, cardinal date, year.">
             <div className="example">March 14, 2021</div>
             <div className="example"></div>
@@ -59,9 +59,9 @@ export default function DateFormatPage() {
             <div className="example">March 14</div>
             <div className="example">March 14th</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don’t use ordinal numbers with written out month.">
             <div className="example">March 14th, 2021</div>
           </DoDont>
@@ -73,10 +73,10 @@ export default function DateFormatPage() {
             description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity.">
             <div className="example">March 12, 21</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="short-hand">Short-hand</h2>
       <p>
@@ -112,15 +112,15 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use the same format as the long-form: month, cardinal date, year.">
             <div className="example">Mar 14, 2021</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="dont"
             description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity.">
@@ -142,10 +142,10 @@ export default function DateFormatPage() {
             <div className="example">03/07/21</div>
             <div className="example">07/03/2021</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="day-of-the-week">Day of the week</h2>
       <p>
@@ -184,14 +184,14 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth}>
           <DoDont type="do" description="Use the same format: month, cardinal date, year.">
             <div className="example">Monday, March 14, 2021</div>
             <div className="example">Mon, Mar 14, 2021</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don’t mix long-form and short-form.">
             <div className="example">Monday, Mar 12, 2021</div>
             <div className="example">Mon, March 12, 2021</div>
@@ -204,18 +204,18 @@ export default function DateFormatPage() {
           <DoDont type="dont" description="Don’t forget to delineate day and month with a comma.">
             <div className="example">Monday March 12, 2021</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
         <div style={{ maxWidth: "700px" }}>
-          <GoACallout mt="2xl" heading="Best Practices">
+          <GoabCallout mt="2xl" heading="Best Practices">
             <p>
               Avoid using day of the week in tabular, form, summary, or other concise displays, as
               it would crowd the already limited space with unnecessary information.
             </p>
-          </GoACallout>
+          </GoabCallout>
         </div>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="time">Time</h2>
       <p>
@@ -238,29 +238,29 @@ export default function DateFormatPage() {
       </p>
       <p>(e.g., Friday, March 14, 2021 at 2:26 pm)</p>
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use the same format: day, month cardinal date, year at XX:XX am/pm">
             <div className="example">Monday, March 14, 2021 at 3:30 pm</div>
           </DoDont>
-        </GoAGrid>
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        </GoabGrid>
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont type="dont" description="Don't include a leading zero for the time.">
             <div className="example">08:15 am</div>
           </DoDont>
           <DoDont type="dont" description="Don’t use periods in the “am” or “pm”.">
             <div className="example">4:43 p.m.</div>
           </DoDont>
-        </GoAGrid>
-        <GoAGrid minChildWidth={minGridWidth} mt="2xl">
+        </GoabGrid>
+        <GoabGrid minChildWidth={minGridWidth} mt="2xl">
           <DoDont type="dont" description="Don’t write the time before the date.">
             <div className="example">7:55 am on Saturday, May 15, 2021</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="time-zones">Time zones</h2>
       <p>
@@ -316,7 +316,7 @@ export default function DateFormatPage() {
       </p>
 
       <div className="dodont-wrapper">
-        <GoAGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="generic"
             description="12-month timeline highlighting those that pertain to daylight time.">
@@ -335,9 +335,9 @@ export default function DateFormatPage() {
               <div className="month">Dec</div>
             </div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
 
-        <GoAGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
             description="Use standard time between the months of November and March.">
@@ -348,22 +348,22 @@ export default function DateFormatPage() {
             description="Use daylight time between the months of April and October.">
             <img src="/images/date-dst.png" width="80%"></img>
           </DoDont>
-        </GoAGrid>
-        <GoAGrid minChildWidth={minGridWidth} mt="2xl">
+        </GoabGrid>
+        <GoabGrid minChildWidth={minGridWidth} mt="2xl">
           <DoDont
             type="dont"
             description="Don’t wrap the three-letter abbreviation in parentheses.">
             <div className="example">4:43pm (MST)</div>
           </DoDont>
-        </GoAGrid>
+        </GoabGrid>
         <div style={{ maxWidth: "700px" }}>
-          <GoACallout type="information" heading="Daylight saving time" size="large" mt="2xl">
+          <GoabCallout type="information" heading="Daylight saving time" size="large" mt="2xl">
             From April to October Alberta participates in daylight saving time.
-          </GoACallout>
+          </GoabCallout>
         </div>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="accessibility">Accessibility and Screen readers</h2>
       <p>
@@ -375,7 +375,7 @@ export default function DateFormatPage() {
         </a>
       </p>
 
-      <GoAContainer>
+      <GoabContainer>
         Consider the following html <br />
         <span style={{ color: "var(--goa-color-text-secondary)" }}>
           &lt;time id="timestamp" datetime="2001-05-15T19:30"&gt;May 15, 2001 - 7:30pm&lt;/time&gt;
@@ -393,13 +393,13 @@ export default function DateFormatPage() {
         <strong>
           <i>“Tuesday, May fifteenth, two-thousand one at seven thirty pm”</i>
         </strong>
-      </GoAContainer>
+      </GoabContainer>
 
       <div style={{ maxWidth: "700px" }}>
-        <GoACallout type="information" heading="ISO 8601 format" size="large" mt="xl">
+        <GoabCallout type="information" heading="ISO 8601 format" size="large" mt="xl">
           The date time variables entered into the module for producing “readable” and
           “conversational” need to be rendered in the ISO 8601 format.
-        </GoACallout>
+        </GoabCallout>
       </div>
     </ComponentContent>
   );

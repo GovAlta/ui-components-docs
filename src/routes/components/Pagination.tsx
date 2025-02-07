@@ -1,14 +1,14 @@
 import {
-  GoABadge,
-  GoAPagination,
-  GoAPaginationProps,
-  GoATab,
-  GoATable,
-  GoATabs,
-  GoABlock,
-  GoASpacer,
-  GoADropdown,
-  GoADropdownItem,
+  GoabBadge,
+  GoabPagination,
+  GoabPaginationProps,
+  GoabTab,
+  GoabTable,
+  GoabTabs,
+  GoabBlock,
+  GoabSpacer,
+  GoabDropdown,
+  GoabDropdownItem,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -17,11 +17,13 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { faker } from "@faker-js/faker";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
-type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
+type ComponentPropsType = Omit<GoabPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
   itemCount: number;
   [key: string]: unknown;
@@ -54,6 +56,7 @@ const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [{ link: "/components/table", name: "Table" }];
 
 export default function PaginationPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [paginationProps, setPaginationProps] = useState<ComponentPropsType>({
     itemCount: 30,
     perPageCount: 10,
@@ -111,7 +114,7 @@ export default function PaginationPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "pageNumber",
       type: "number",
@@ -156,6 +159,49 @@ export default function PaginationPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "pageNumber",
+      type: "number",
+      required: true,
+      description: "The current page being viewed (non-zero based)",
+    },
+    {
+      name: "itemCount",
+      type: "number",
+      required: true,
+      description: "Total number of data items within all pages",
+    },
+    {
+      name: "perPageCount",
+      type: "number",
+      required: false,
+      defaultValue: "10",
+      description: "Number of data items shown per page",
+    },
+    {
+      name: "variant",
+      type: "GoabPaginationVariant (all | links-only)",
+      required: false,
+      defaultValue: "all",
+      description: "Controls which nav controls are visible",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabPaginationOnChangeDetail) => void",
+      description: "Callback function for page change events.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setPaginationProps(props as CastingType);
@@ -190,10 +236,6 @@ export default function PaginationPage() {
   }, [paginationProps.perPageCount, users]);
 
   function changePage(newPage: number) {
-    if (typeof perPageUsers !== "number") {
-      perPageUsers = Number(perPageUsers);
-    }
-
     const offset = (newPage - 1) * perPageUsers;
     const _users = users.slice(offset, offset + perPageUsers);
     setPage(newPage);
@@ -232,10 +274,6 @@ export default function PaginationPage() {
   }, [paginationPropsCustomExample.perPageCount, usersCustomExample]);
 
   function changePageCustomExample(newPageCustomExample: number) {
-    if (typeof perPageUsersCustomExample !== "number") {
-      perPageUsersCustomExample = Number(perPageUsersCustomExample);
-    }
-
     const offset = (newPageCustomExample - 1) * perPageUsersCustomExample;
     const _users = users.slice(offset, offset + perPageUsersCustomExample);
     setPageCustomExample(newPageCustomExample);
@@ -251,8 +289,8 @@ export default function PaginationPage() {
   }
 
   // @ts-ignore
-  function handlePerPageChangeCustomExample(name: string, values: string | string[]): void {
-    const newPerPageCount = Array.isArray(values) ? parseInt(values[0]) : parseInt(values);
+  function handlePerPageChangeCustomExample(event: GoabDropdownOnChangeDetail): void {
+    const newPerPageCount = parseInt(event.value || '1');
 
     // Update paginationProps
     setpaginationPropsCustomExample(prevProps => ({
@@ -280,8 +318,8 @@ export default function PaginationPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -290,6 +328,8 @@ export default function PaginationPage() {
               onChange={onSandboxChange}
               fullWidth
               skipRender>
+
+              {/*========React code =========*/}
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -304,13 +344,13 @@ export default function PaginationPage() {
                 }
 
                 // table data
-                const [users, setUsers ] = useState([]);
+                const [users, setUsers ] = useState<User[]>([]);
 
                 // subset of data shown per page
-                const [pageUsers, setPageUsers] = useState([]);
+                const [pageUsers, setPageUsers] = useState<User[]>([]);
 
                 // page number
-                const [page, setPage] = useState(1);
+                const [page, setPage] = useState<number>(1);
                 useEffect(() => {
                   const _users = []
                   for (let i = 0; i < 100; i++) {
@@ -328,7 +368,7 @@ export default function PaginationPage() {
                   // save current page
                   setPageUsers(_users.slice(0, 10))
                 }, [])
-                function changePage(newPage) {
+                function changePage(newPage: number) {
                   const offset = (newPage - 1) * 10;
                   const _users = users.slice(offset, offset + 10)
                   setPage(newPage);
@@ -336,11 +376,13 @@ export default function PaginationPage() {
                 }
         `}
               />
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   <GoATable width="100%" mb="xl">
                     <thead>
                       <tr>
@@ -367,9 +409,46 @@ export default function PaginationPage() {
                     onChange={changePage}
                   />
               `}
-              />
+                />
+              )}
 
-              <CodeSnippet
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <GoabTable width="100%" mb="xl">
+                    <thead>
+                      <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pageUsers.map(u => (
+                        <tr key={u.id}>
+                          <td>{u.firstName}</td>
+                          <td>{u.lastName}</td>
+                          <td>{u.age}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </GoabTable>
+                  <GoabPagination ${propsToString(
+                    paginationProps as unknown as Record<string, string | number>,
+                    "react"
+                  )} 
+                    pageNumber={page} 
+                    onChange={event => changePage(event.page)}
+                  />
+              `}
+                />
+              )}
+
+              {/*===========Angular code=============*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -409,8 +488,50 @@ export default function PaginationPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                import { faker } from "@faker-js/faker";
+                interface User {
+                  id: string;
+                  firstName: string;
+                  lastName: string;
+                  age: number;
+                }
+                @Component({
+                  selector: "abgov-paginate",
+                  templateUrl: "./paginate.html",
+                })
+                export class PaginateComponent {
+                  users: User[] = [];
+                  pageUsers: User[] = []
+                  page: number = 1;
+                  perPage: number = 10;
+                  handlePageChange(event: GoabPaginationOnChangeDetail) {
+                    this.page = event.page;
+                    const offset = (this.page - 1) * this.perPage;
+                    this.pageUsers = this.users.slice(offset, offset + this.perPage);
+                  }
+                  constructor() {
+                    for (let i = 0; i < 100; i++) {
+                      this.users.push({
+                        id: faker.datatype.uuid(),
+                        firstName: faker.name.firstName(),
+                        lastName: faker.name.lastName(),
+                        age: faker.datatype.number({min: 18, max: 60}),
+                      });
+                    }
+                    this.pageUsers = this.users.slice(0, this.perPage)
+                  }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -433,8 +554,35 @@ export default function PaginationPage() {
                 </goa-table>
                 <goa-pagination [itemcount]="users.length" perpagecount="10" [pagenumber]="page" (_change)="handlePageChange($event)"></goa-pagination>
               `}
-              />
-              <GoATable width="100%" mb="xl">
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goab-table width="100%" mb="xl">
+                    <thead>
+                      <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of pageUsers; index as i">
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.age }}</td>
+                      </tr>
+                    </tbody>
+                  </goab-table>
+                  <goab-pagination [itemCount]="users.length" [perPageCount]="10" [pageNumber]="page"
+                                    (onChange)="handlePageChange($event)"></goab-pagination>
+              `}
+              />}
+
+              <GoabTable width="100%" mb="xl">
                 <thead>
                   <tr>
                     <th>First name</th>
@@ -451,26 +599,30 @@ export default function PaginationPage() {
                     </tr>
                   ))}
                 </tbody>
-              </GoATable>
+              </GoabTable>
 
-              <GoAPagination {...paginationProps} pageNumber={page} onChange={changePage} />
+              <GoabPagination
+                {...paginationProps}
+                pageNumber={page}
+                onChange={event => changePage(event.page)}
+              />
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples
             </h2>
 
             <h3 id="component-example-1">Show X per page</h3>
-
             <Sandbox
-              flags={["reactive"]}
               fullWidth
               skipRender
               onChange={onSandboxChangeCustomExample}>
-              <CodeSnippet
+
+              {/*============= React code ==============*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -528,8 +680,69 @@ export default function PaginationPage() {
                     setPageUsers(_users);
                   }
         `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                import {
+                  GoabPagination,
+                  GoabTable,
+                  GoabBlock,
+                  GoabDropdown,
+                  GoabDropdownItem,
+                  GoabSpacer,
+                } from "@abgov/react-components";
+                import { useEffect, useState } from "react";
+                import { faker } from "@faker-js/faker";
+
+                interface User {
+                  id: string;
+                  firstName: string;
+                  lastName: string;
+                  age: number;
+                }
+
+                export default function Pagination() {
+                  const [users, setUsers] = useState<User[]>([]);
+                  const [pageUsers, setPageUsers] = useState<User[]>([]);
+                  const [page, setPage] = useState<number>(1);
+                  const [perPage, setPerPage] = useState<number>(10);
+
+                  useEffect(() => {
+                    const _users = [];
+                    for (let i = 1; i <= 100; i++) {
+                      _users.push({
+                        id: faker.datatype.uuid(),
+                        firstName: faker.name.firstName(),
+                        lastName: faker.name.lastName(),
+                        age: faker.datatype.number({ min: 18, max: 60 }),
+                      });
+                    }
+                    setUsers(_users);
+                    setPageUsers(_users.slice(0, perPage));
+                  }, [perPage]);
+
+                  function changePage(newPage: number) {
+                    const offset = (newPage - 1) * 10;
+                    const _users = users.slice(offset, offset + perPage);
+                    setPage(newPage);
+                    setPageUsers(_users);
+                  }
+
+                  function handlePerPageCountChangeEvent(event: GoabDropdownOnChangeDetail) {
+                    const perPageValue = parseInt(event.value || '1');
+                    setPage(1);
+                    setPerPage(perPageValue);
+                    const _users = users.slice(0, perPageValue);
+                    setPageUsers(_users);
+                  }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -565,7 +778,7 @@ export default function PaginationPage() {
                         <GoADropdownItem value="20" label="20"></GoADropdownItem>
                         <GoADropdownItem value="30" label="30"></GoADropdownItem>
                       </GoADropdown>
-                      <span style={{width: "50px"}}>of {users.length}</span>
+                      <span style={{width: "75px"}}>of {users.length}</span>
                     </GoABlock>
 
                     <GoASpacer hSpacing="fill"></GoASpacer>
@@ -578,9 +791,61 @@ export default function PaginationPage() {
                     />
                   </GoABlock>
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoabTable width="100%" mb="xl">
+                    <thead>
+                      <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pageUsers.map((u) => (
+                        <tr key={u.id}>
+                          <td>{u.firstName}</td>
+                          <td>{u.lastName}</td>
+                          <td>{u.age}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </GoabTable>
+
+                  <GoabBlock alignment="center">
+                    <GoabBlock mb="m" alignment="center">
+                      Show
+                      <GoabDropdown
+                        onChange={handlePerPageCountChangeEvent}
+                        value={perPage.toString()}
+                        width="8ch"
+                      >
+                        <GoabDropdownItem value="10" label="10"></GoabDropdownItem>
+                        <GoabDropdownItem value="20" label="20"></GoabDropdownItem>
+                        <GoabDropdownItem value="30" label="30"></GoabDropdownItem>
+                      </GoabDropdown>
+                      <span style={{width: "75px"}}>of {users.length}</span>
+                    </GoabBlock>
+
+                    <GoabSpacer hSpacing="fill"></GoabSpacer>
+
+                    <GoabPagination
+                      itemCount={users.length}
+                      perPageCount={perPage}
+                      pageNumber={page}
+                      onChange={event => changePage(event.page)}
+                    />
+                  </GoabBlock>
+              `}
+              />}
+
+              {/*================ Angular code ==================*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -648,8 +913,69 @@ export default function PaginationPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                import { Component } from "@angular/core";
+                import { faker } from "@faker-js/faker";
+
+                interface User {
+                  id: string;
+                  firstName: string;
+                  lastName: string;
+                  age: number;
+                }
+
+                @Component({
+                  selector: "abgov-paginate",
+                  templateUrl: "./paginate.html",
+                })
+                export class PaginateComponent {
+                  users: User[] = [];
+                  pageUsers: User[] = [];
+                  page = 1;
+                  perPage = 10;
+                  total = 100;
+
+                  handlePageChange(event: GoabPaginationOnChangeDetail) {
+                    this.page = event.page;
+
+                    const offset: number = (this.page - 1) * this.perPage;
+                    this.pageUsers = this.users.slice(offset, offset + this.perPage);
+                  }
+
+                  handlePerPageCountChangeEvent(event: GoabDropdownOnChangeDetail) {
+                    this.page = 1;
+                    this.perPage = Number(event.value);
+
+                    this.pageUsers = this.users.slice(0, this.perPage);
+                  }
+
+                  constructor() {
+                    this.pageUsers = this.prepareUsers().slice(0, this.perPage);
+                  }
+
+                  prepareUsers() {
+                    for (let i = 0; i < this.total; i++) {
+                      this.users.push({
+                        id: faker.datatype.uuid(),
+                        firstName: faker.name.firstName(),
+                        lastName: faker.name.lastName(),
+                        age: faker.datatype.number({ min: 18, max: 60 }),
+                      });
+                    }
+
+                    return this.users;
+                  }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -707,9 +1033,67 @@ export default function PaginationPage() {
 
                 </goa-block>
               `}
-              />
+              />}
 
-              <GoATable width="100%" mb="xl">
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <goab-table width="100%" mb="xl">
+                  <thead>
+                    <tr>
+                      <th>First name</th>
+                      <th>Last name</th>
+                      <th>Age</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of pageUsers; index as i">
+                      <td>{{ user.firstName }}</td>
+                      <td>{{ user.lastName }}</td>
+                      <td>{{ user.age }}</td>
+                    </tr>
+                  </tbody>
+                </goab-table>
+
+                <goab-block alignment="center">
+                  <goab-block mb="m" alignment="center">
+                  Show
+                  <goab-dropdown
+                    (onChange)="handlePerPageCountChangeEvent($event)"
+                    value="10"
+                    width="8ch"
+                  >
+                    <goab-dropdown-item value="10" label="10"></goab-dropdown-item>
+                    <goab-dropdown-item value="20" label="20"></goab-dropdown-item>
+                    <goab-dropdown-item value="30" label="30"></goab-dropdown-item>
+                    <goab-dropdown-item value="40" label="40"></goab-dropdown-item>
+                    <goab-dropdown-item value="50" label="50"></goab-dropdown-item>
+                    <goab-dropdown-item value="60" label="60"></goab-dropdown-item>
+                    <goab-dropdown-item value="70" label="70"></goab-dropdown-item>
+                    <goab-dropdown-item value="80" label="80"></goab-dropdown-item>
+                    <goab-dropdown-item value="90" label="90"></goab-dropdown-item>
+                    <goab-dropdown-item value="100" label="100"></goab-dropdown-item>
+                  </goab-dropdown>
+                    <span style="width: 50px">of {{ this.users.length }}</span
+                >
+              </goab-block>
+
+              <goab-spacer hSpacing="fill"></goab-spacer>
+
+              <goab-pagination
+                [itemCount]="users.length"
+                [perPageCount]="perPage"
+                [pageNumber]="page"
+                (onChange)="handlePageChange($event)"
+              ></goab-pagination>
+
+            </goab-block>
+              `}
+              />}
+
+              <GoabTable width="100%" mb="xl">
                 <thead>
                   <tr>
                     <th>First name</th>
@@ -726,46 +1110,46 @@ export default function PaginationPage() {
                     </tr>
                   ))}
                 </tbody>
-              </GoATable>
+              </GoabTable>
 
-              <GoABlock alignment="center">
-                <GoABlock mb="m" alignment="center">
+              <GoabBlock alignment="center">
+                <GoabBlock mb="m" alignment="center">
                   Show
-                  <GoADropdown
+                  <GoabDropdown
                     onChange={handlePerPageChangeCustomExample}
                     value={paginationPropsCustomExample.perPageCount?.toString()}
                     width="8ch">
                     {[10, 20, 30].map(value => (
-                      <GoADropdownItem
+                      <GoabDropdownItem
                         key={value}
                         value={value.toString()}
                         label={value.toString()}
                       />
                     ))}
-                  </GoADropdown>
+                  </GoabDropdown>
                   <span style={{ width: "75px" }}>per page</span>
-                </GoABlock>
-                <GoASpacer hSpacing={"fill"} />
+                </GoabBlock>
+                <GoabSpacer hSpacing={"fill"} />
 
-                <GoAPagination
+                <GoabPagination
                   {...paginationPropsCustomExample}
                   pageNumber={pageCustomExample}
-                  onChange={changePageCustomExample}
+                  onChange={event => changePageCustomExample(event.page)}
                 />
-              </GoABlock>
+              </GoabBlock>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );
