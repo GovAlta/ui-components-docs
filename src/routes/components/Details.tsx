@@ -116,7 +116,7 @@ export default function DetailsPage() {
             <h3 id="component-example-show-more-information-for-basic-question">
               Show more information for a basic question
             </h3>
-            <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
+            <Sandbox fullWidth>
               <GoAFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
                 <GoARadioGroup name="pay" onChange={() => { }}>
                   <GoARadioItem label="Yes" value="yes" name="pay" />
@@ -146,7 +146,7 @@ export default function DetailsPage() {
                 </GoARadioGroup>
               </GoAFormItem>
 
-              <GoADetails heading="What is an additional education expense?">
+              <GoADetails heading="What is an additional education expense?" mt="l">
                 <GoABlock gap="m" mt="m">
                   <div>
                     <strong>Examples of education expenses</strong>
