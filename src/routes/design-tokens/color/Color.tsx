@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Color.css";
 import COLORS from "./colors.json";
@@ -25,7 +25,7 @@ export default function ColorPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th>Type</th>
@@ -61,7 +61,7 @@ export default function ColorPage() {
             </React.Fragment>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
@@ -75,9 +75,9 @@ export default function ColorPage() {
               {color.name}
             </h3>
 
-            <GoAGrid minChildWidth="22rem" gap="xl">
+            <GoabGrid minChildWidth="22rem" gap="xl">
               {color.tokens.map((token, tokenIndex) => (
-                <GoAContainer key={tokenIndex}>
+                <GoabContainer key={tokenIndex}>
                   <div
                     className="token-block"
                     style={{
@@ -90,9 +90,9 @@ export default function ColorPage() {
                     <dt>Figma colour style</dt> <dd>{token.figmaColorStyle}</dd>
                     <dt>Description</dt> <dd>{token.description}</dd>
                   </dl>
-                </GoAContainer>
+                </GoabContainer>
               ))}
-            </GoAGrid>
+            </GoabGrid>
           </React.Fragment>
         ))}
         </>

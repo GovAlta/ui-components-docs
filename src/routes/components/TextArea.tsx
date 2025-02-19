@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -6,20 +6,21 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoAContainer,
-  GoADetails,
-  GoAFormItem,
-  GoATab,
-  GoATabs,
-  GoATextArea,
-  GoATextAreaProps,
+  GoabBadge,
+  GoabButton,
+  GoabButtonGroup,
+  GoabContainer,
+  GoabDetails,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs, GoabTextarea,
+  GoabTextAreaProps
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -30,15 +31,16 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/input", name: "Input" },
 ];
-type ComponentPropsType = GoATextAreaProps;
+type ComponentPropsType = GoabTextAreaProps;
 type CastingType = {
   name: string;
   value: string;
-  onChange: (name: string, value: string) => void;
+  onChange: (event: GoabTextAreaOnChangeDetail) => void;
   [key: string]: unknown;
 };
 
 export default function TextAreaPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -98,7 +100,8 @@ export default function TextAreaPage() {
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
   });
-  const componentProperties: ComponentProperty[] = [
+
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "name",
       lang: "angular",
@@ -240,6 +243,100 @@ export default function TextAreaPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "name",
+      type: "string",
+      description: "Name of the input value that is received in the _change event",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "Bound to value",
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      description: "Text displayed within the input when no value is set.",
+    },
+    {
+      name: "id",
+      type: "string",
+      description: "Set the id of the textarea",
+    },
+    {
+      name: "rows",
+      type: "number",
+      description: "Set the number of rows",
+      defaultValue: "3",
+    },
+    {
+      name: "width",
+      type: "string",
+      description: "Width of the text area",
+      defaultValue: "60ch",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      description: "Sets the input to an error state",
+      defaultValue: "false",
+    },
+    {
+      name: "readOnly",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to a read only state.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to a disabled state. Use [attr.disabled] with [formControl]",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description:
+        "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+    },
+    {
+      name: "countBy",
+      type: "GoabTextAreaCountBy (character | word)",
+      description:
+        "Counting interval for characters or words, specifying whether to count every character or word.",
+    },
+    {
+      name: "maxCount",
+      type: "number",
+      description: "Maximum number of characters or words allowed",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Maximum width of the text area",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabTextAreaOnChangeDetail) => void",
+      description: "Callback function when textarea value is changed",
+    },
+    {
+      name: "onKeyPress",
+      type: "(event: GoabTextAreaOnKeyPressDetail) => void",
+      description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setTextAreaBindings(bindings);
@@ -258,8 +355,8 @@ export default function TextAreaPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
@@ -268,9 +365,11 @@ export default function TextAreaPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}
               fullWidth>
-              <CodeSnippet
+
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -280,8 +379,26 @@ export default function TextAreaPage() {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                // reactive code
+                export class SomeComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: '',
+                  });
+                }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -295,9 +412,42 @@ export default function TextAreaPage() {
                   }
                 }
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value = '';
+                  textareaOnChange(event: GoabTextAreaOnChangeDetail) {
+                    // handle change
+                    this.value = event.value;
+                  }
+                }
+              `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "template-driven"]}
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                   item = "";
+                   textareaOnChange(event: GoabTextAreaOnChangeDetail) {
+                    // handle change
+                    this.item = event.value;
+                   }
+                }
+              `}
+              />}
+
+              {/*React code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -308,20 +458,33 @@ export default function TextAreaPage() {
                   setValue(value);
                 }
             `}
-              />
+              />}
 
-              <GoAFormItem {...formItemProps}>
-                <GoATextArea
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const [value, setValue] = useState<string>("");
+              
+                function onChange(event: GoabTextAreaOnChangeDetail) {
+                  setValue(event.value);
+                }
+            `}
+              />}
+
+              <GoabFormItem {...formItemProps}>
+                <GoabTextarea
                   {...componentProps}
                   width="60ch"
                   name="item"
                   value=""
                   onChange={noop}
                 />
-              </GoAFormItem>
+              </GoabFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
             {/*Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">
@@ -330,10 +493,10 @@ export default function TextAreaPage() {
 
             <h3 id="component-example-1">Ask a question and give more information</h3>
             <Sandbox flags={["reactive"]} fullWidth>
-              <GoAContainer>
-                <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
+              <GoabContainer>
+                <GoabButton type="tertiary" leadingIcon="arrow-back" mb="m">
                   Back
-                </GoAButton>
+                </GoabButton>
 
                 <h2>Description</h2>
                 <p>
@@ -341,38 +504,38 @@ export default function TextAreaPage() {
                   each.
                 </p>
 
-                <GoAFormItem
+                <GoabFormItem
                   label="Program outline"
                   helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextArea name="program" value="Input text" onChange={noop} />
-                </GoAFormItem>
+                  <GoabTextarea name="program" value="Input text" onChange={noop} />
+                </GoabFormItem>
 
-                <GoADetails heading="How to write a good outline">
+                <GoabDetails heading="How to write a good outline">
                   <p>
                     Break down your outline into easily digestible sections. This can help to ensure
                     that the document is well-organized and easy to navigate.
                   </p>
-                </GoADetails>
+                </GoabDetails>
 
-                <GoAButtonGroup alignment="start" mt="l">
-                  <GoAButton type="primary" onClick={noop}>
+                <GoabButtonGroup alignment="start" mt="l">
+                  <GoabButton type="primary" onClick={noop}>
                     Continue
-                  </GoAButton>
-                </GoAButtonGroup>
-              </GoAContainer>
+                  </GoabButton>
+                </GoabButtonGroup>
+              </GoabContainer>
             </Sandbox>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

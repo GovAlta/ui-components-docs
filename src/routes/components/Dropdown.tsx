@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
-  GoABadge,
-  GoADropdown,
-  GoADropdownItem, GoADropdownProps,
-  GoAFormItem,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabDropdown,
+  GoabDropdownItem, GoabDropdownProps,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
@@ -18,6 +18,8 @@ import {
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -29,15 +31,16 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" },
   { link: "/components/radio", name: "Radio" },
 ];
-type ComponentPropsType = GoADropdownProps;
+type ComponentPropsType = GoabDropdownProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, values: string[] | string) => void;
+  onChange: (event: GoabDropdownOnChangeDetail) => void;
 }
 
 export default function DropdownPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [dropdownProps, setDropdownProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -77,7 +80,7 @@ export default function DropdownPage() {
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic dropdown" });
 
-  const dropdownProperties: ComponentProperty[] = [
+  const oldDropdownProperties: ComponentProperty[] = [
     {
       name: "name",
       type: "string",
@@ -203,7 +206,97 @@ export default function DropdownPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
-  const dropdownItemProperties: ComponentProperty[] = [
+  const dropdownProperties: ComponentProperty[] = [
+    {
+      name: "name",
+      type: "string",
+      description: "Identifier for the Dropdown. Should be unique.",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "Stores the value of the item selected from the dropdown.",
+    },
+    {
+      name: "leadingIcon",
+      type: "GoAIconType",
+      description: "Show an icon to the left of the dropdown option.",
+    },
+    {
+      name: "maxHeight",
+      type: "string",
+      description: "Maximum height of the dropdown menu items popover. Non-native only.",
+      defaultValue: "276px",
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      description:
+        "The text displayed for the dropdown before a selection is made. Non-native only.",
+    },
+    {
+      name: "width",
+      type: "string",
+      description: "Overrides the autosized menu width. Non-native only.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      description: "Disable this control.",
+      defaultValue: "false",
+    },
+    {
+      name: "relative",
+      type: "boolean",
+      description: "Set to true if a parent element has a css positive of relative.",
+      defaultValue: "false",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      description: "Show an error state",
+      defaultValue: "false",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description:
+        "Defines how the selected value will be translated for the screen reader. If not specified it will fall back to the name.",
+    },
+    {
+      name: "ariaLabelledBy",
+      type: "string",
+      description:
+        "The aria-labelledby attribute identifies the element(or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+    },
+    {
+      name: "native",
+      type: "boolean",
+      defaultValue: "false",
+      description: "When true will render the native <select> html element.",
+    },
+    {
+      name: "filterable",
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "When true the dropdown will have the ability to filter options by typing into the input field.",
+    },
+    {
+      name: "onChange",
+      lang: "react",
+      type: "(event: GoabDropdownOnChangeDetail) => void",
+      required: true,
+      description: "Callback function when dropdown value is changed",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+
+  const oldDropdownItemProperties: ComponentProperty[] = [
     {
       name: "value",
       type: "string",
@@ -237,6 +330,32 @@ export default function DropdownPage() {
       defaultValue: "append"
     }
   ];
+  const dropdownItemProperties: ComponentProperty[] = [
+    {
+      name: "value",
+      type: "string",
+      required: true,
+      description: "The value of the item. This value will be contained within the onChange event",
+    },
+    {
+      name: "label",
+      type: "string",
+      description:
+        "The displayed value within the selection box. The value property is the fallback value.",
+    },
+    {
+      name: "filter",
+      type: "string",
+      description:
+        "In case of the filterable dropdown, this property is for us to set what we want to search the option with different keywords. The label or value property is the fallback value.",
+    },
+    {
+      name: "mountType",
+      type: "GoabDropdownItemMountType (append | prepend | reset)",
+      description: "The mount type for the dropdown item.",
+      defaultValue: "append"
+    }
+  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setDropdownBindings(bindings);
@@ -246,9 +365,9 @@ export default function DropdownPage() {
   // Demo
   const [color, setColor] = useState<string>("");
 
-  function onChange(_name: string, value: string | string[]) {
-    setColor(value as string);
-    setDropdownProps({ ...dropdownProps, value: value as string } as CastingType);
+  function onChange(event: GoabDropdownOnChangeDetail) {
+    setColor(event.value || "");
+    setDropdownProps({ ...dropdownProps, value: event.value || "" } as CastingType);
   }
 
   return (
@@ -256,16 +375,16 @@ export default function DropdownPage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
               properties={dropdownBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}>
-              <CodeSnippet
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -278,9 +397,22 @@ export default function DropdownPage() {
                   }
                 }  
               `}
-              />
+              />}
+              {version === "new"  && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class MyComponent {
+                  dropdownOnChange(event: GoabDropdownOnChangeDetail) {
+                    console.log(event.value);
+                  }
+                }  
+              `}
+              />}
 
-              <CodeSnippet
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -291,9 +423,25 @@ export default function DropdownPage() {
                   itemFormCtrl = new FormControl("");
                 }  
               `}
-              />
+              />}
 
-              <CodeSnippet
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+               export class ExampleComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: [""]
+                    });
+                  }
+              }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -302,38 +450,65 @@ export default function DropdownPage() {
                  console.log("onChange", name, value);
                 }
               `}
-              />
+              />}
 
-              <GoAFormItem {...formItemProps}>
-                <GoADropdown name="item" value={color} {...dropdownProps}>
-                  <GoADropdownItem value="red" label="Red" />
-                  <GoADropdownItem value="green" label="Green" />
-                  <GoADropdownItem value="blue" label="Blue" />
-                </GoADropdown>
-              </GoAFormItem>
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                function onChange(event: GoabDropdownOnChangeDetail) {
+                 console.log("onChange", event.name, event.value);
+                }
+              `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "template-driven"]}
+                allowCopy={true}
+                code={`
+               export class ExampleComponent {
+                  item = "";
+                  dropdownOnChange(event: GoabDropdownOnChangeDetail) {
+                    console.log(event.value);
+                    this.item = event.value;
+                  }
+               }
+              `}
+              />}
+
+              <GoabFormItem {...formItemProps}>
+                <GoabDropdown name="item" value={color} {...dropdownProps}>
+                  <GoabDropdownItem value="red" label="Red" />
+                  <GoabDropdownItem value="green" label="Green" />
+                  <GoabDropdownItem value="blue" label="Blue" />
+                </GoabDropdown>
+              </GoabFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={dropdownProperties} />
+            <ComponentProperties properties={dropdownProperties} oldProperties={oldDropdownProperties} />
 
             <ComponentProperties
               heading="Dropdown item properties"
               properties={dropdownItemProperties}
+              oldProperties={oldDropdownItemProperties}
             />
 
             <DropdownExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
           >
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

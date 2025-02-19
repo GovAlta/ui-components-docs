@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Shadow.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -24,7 +24,7 @@ export default function ShadowPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -47,26 +47,26 @@ export default function ShadowPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <div className="token-block" />
               <TokenSnippet code={token.tokenName} />
               <dl>
                 <dt>Value</dt> <dd>{token.value}</dd>
                 <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

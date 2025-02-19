@@ -1,9 +1,10 @@
 import { FC, useState } from "react";
-import { GoAIcon, GoAIconType } from "@abgov/react-components";
+import { GoabIcon } from "@abgov/react-components";
 import "./IconSnippet.css";
+import { GoabIconType } from "@abgov/ui-components-common";
 
 interface Props {
-  type: GoAIconType;
+  type: GoabIconType;
 }
 
 export const IconSnippet: FC<Props> = ({ type }) => {
@@ -19,7 +20,7 @@ export const IconSnippet: FC<Props> = ({ type }) => {
   return (
     <>
       <div className="icon-snippet" role="button" onClick={copyIcon}>
-        <GoAIcon type={type} />
+        <GoabIcon type={type} />
         <span>{type}</span>
         <div
           className="copy-feedback"

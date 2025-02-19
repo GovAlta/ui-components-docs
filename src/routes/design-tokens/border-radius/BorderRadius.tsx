@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./BorderRadius.css";
 import { Token } from "../token";
@@ -27,7 +27,7 @@ export default function BorderRadiusPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -57,17 +57,17 @@ export default function BorderRadiusPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token, idx) => (
             <>
-              <GoAContainer key={idx}>
+              <GoabContainer key={idx}>
                 <div
                   className="token-block"
                   style={{
@@ -80,11 +80,11 @@ export default function BorderRadiusPage() {
                   <dt>px</dt> <dd>{token.px}</dd>
                   <dt>Figma variable</dt> <dd>{token.figmaUsage}</dd>
                 </dl>
-              </GoAContainer>
+              </GoabContainer>
             </>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

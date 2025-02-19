@@ -1,8 +1,9 @@
-import { GoAGrid, GoAInput, GoAFormItem } from "@abgov/react-components";
+import { GoabGrid, GoabInput, GoabFormItem } from "@abgov/react-components";
 import { ComponentCard, Props as ComponentProps } from "@components/component-card/ComponentCard";
 import { ReactNode, useState } from "react";
 import "./AllComponents.css";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
 
 export default function AllComponentsPage() {
   const cards: ComponentProps[] = [
@@ -368,57 +369,57 @@ export default function AllComponentsPage() {
         </h3>
       </div>
 
-      <GoAFormItem helpText="Search by keyword, category, or name" mb="xl">
-      <GoAInput
+      <GoabFormItem helpText="Search by keyword, category, or name" mb="xl">
+      <GoabInput
         leadingIcon="search" 
         name="filter"
         type="text"
         value=""
         width="100%"
-        onChange={(_name, value) => filterComponents(value)}
+        onChange={(event: GoabInputOnChangeDetail) => filterComponents(event.value)}
       />
-        </GoAFormItem>
+        </GoabFormItem>
 
-      {mode === "search" && <GoAGrid minChildWidth="300px">{getComponentsByFilter()}</GoAGrid>}
+      {mode === "search" && <GoabGrid minChildWidth="300px">{getComponentsByFilter()}</GoabGrid>}
 
       {mode === "list" && (
         <ComponentContent tocCssQuery="h2[id], h3[id]">
           <h2 id="content">Content layout</h2>
-          <GoAGrid minChildWidth="15rem" gap="xl">
+          <GoabGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("content")}
-          </GoAGrid>
+          </GoabGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>
 
           <h2 id="feedback">Feedback and alerts</h2>
-          <GoAGrid minChildWidth="15rem" gap="xl">
+          <GoabGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("feedback")}
-          </GoAGrid>
+          </GoabGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>
 
           <h2 id="inputs">Inputs and actions</h2>
-          <GoAGrid minChildWidth="15rem" gap="xl">
+          <GoabGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("inputs")}
-          </GoAGrid>
+          </GoabGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>
 
           <h2 id="structure">Structure and navigation</h2>
-          <GoAGrid minChildWidth="15rem" gap="xl">
+          <GoabGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("structure")}
-          </GoAGrid>
+          </GoabGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>
 
           <h2 id="utilities">Utilities</h2>
-          <GoAGrid minChildWidth="15rem" gap="xl">
+          <GoabGrid minChildWidth="15rem" gap="xl">
             {getComponentsByGroup("utilities")}
-          </GoAGrid>
+          </GoabGrid>
           <div className="back-to-top">
             <a href="#top">Back to top</a>
           </div>

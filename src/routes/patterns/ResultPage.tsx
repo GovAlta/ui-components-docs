@@ -1,6 +1,6 @@
 import {
-  GoATab,
-  GoATabs
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "./patterns.module.css";
@@ -16,12 +16,12 @@ export default function ResultPage() {
       <ComponentContent
         contentClassName="question-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <ResultPageExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab heading="Design guidelines">
+          <GoabTab heading="Design guidelines">
             <h2 id="overview" className="hidden">Overview</h2>
             <figure className={css.imageContainer}>
               <img
@@ -42,8 +42,8 @@ export default function ResultPage() {
               <li>contact details for the service</li>
               <li>links to information or services that users are likely to need next</li>
             </ul>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

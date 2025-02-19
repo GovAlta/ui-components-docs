@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Spacing.css";
 import SPACING_TOKENS from "./spacing.json";
@@ -21,7 +21,7 @@ export default function SpacingPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -55,16 +55,16 @@ export default function SpacingPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <div className="represent">
                 <div className="grey-circle"></div>
                 <div
@@ -81,10 +81,10 @@ export default function SpacingPage() {
                 <dt>PX</dt> <dd>{token.px}</dd>
                 <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 
