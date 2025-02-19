@@ -1,4 +1,5 @@
 import { ComponentBinding } from "./ComponentBinding";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 export interface Serializer {
   stringToProp: (name: string, item: string) => string;
@@ -36,7 +37,7 @@ export class BaseSerializer {
   protected isRoot = false;
   protected state: SerializerState = { element: "", props: { name: "" } };
 
-  constructor(protected properties: ComponentBinding[], protected version: "old" | "new") {}
+  constructor(protected properties: ComponentBinding[], protected version: LanguageVersion) {}
 
   getProperty(name: string): ComponentBinding | undefined {
     return this.properties.find(p => p.name === name);
@@ -67,10 +68,22 @@ export class BaseSerializer {
     return this.getProperty(name)?.dynamic || false;
   }
 
+
   protected getNewVersionFunctionName(functionName: string): string {
-    const componentName = (this.state.element || 'goab-').split('-')[1];
+    let element = this.state.element || 'goab-';
+    let componentName = '';
+    if (element.includes('-')) {
+      const parts = element.split('-');
+      componentName = parts[1] || '';
+    } else if (element.toLowerCase().startsWith('goab')) {
+      componentName = element.substring(4);
+      if (componentName.length > 0) {
+        componentName = componentName[0].toLowerCase() + componentName.slice(1);
+      }
+    }
+    // So onChange for GoabInput will be: inputOnChange, onChange for Dropdown will be dropdownOnChange
+    // The event passed on onChange.. now is strict with type of Event, so we must handle it
     functionName = functionName[0].toUpperCase() + functionName.slice(1);
     return `${componentName}${functionName}`;
   }
-
 }

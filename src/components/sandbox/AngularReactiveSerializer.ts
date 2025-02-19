@@ -130,7 +130,11 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       children = children.replace(/<form/g, '<form [formGroup]="form"');
     }
     if (this.version === "new" && children.startsWith("<goab-form-item")) {
-      children = children.replace(/<goab-form-item/g, '<goab-form-item [formGroup]="form"');
+      console.log("vanessa reach here? for children ", children);
+      children = children.replace(
+        /<goab-form-item(?![^>]*\[formGroup\]="form")/g,
+        '<goab-form-item [formGroup]="form"'
+      );
     }
 
     if (this.version === "new" && children.includes(`[value]="value"`)) {
