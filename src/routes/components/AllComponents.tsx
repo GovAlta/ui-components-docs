@@ -314,6 +314,12 @@ export default function AllComponentsPage() {
       tags: ["gap", "margin", "padding", "space", "utilities"],
       description: "Negative area between the components and the interface.",
     },
+    {
+      name: "text",
+      groups: ["utilities"],
+      tags: ["heading", "font", "typography", "utilities"],
+      description: "Provides consistent sizing, spacing, and colour to written content."
+    }
   ];
 
   function getComponentsByGroup(group: string): ReactNode[] {
