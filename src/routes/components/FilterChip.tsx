@@ -8,7 +8,6 @@ import {
   GoAContainer,
   GoAFilterChip,
   GoAFilterChipProps,
-  GoAGrid,
   GoAInput,
   GoATab,
   GoATable,
