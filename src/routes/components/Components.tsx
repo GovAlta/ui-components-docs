@@ -67,6 +67,7 @@ export function Components() {
             <Link to="spacer">Spacer</Link>
             <Link to="table">Table</Link>
             <Link to="tabs">Tabs</Link>
+            <Link to="text">Text</Link>
             <Link to="text-area">Text area</Link>
             <Link to="tooltip">Tooltip</Link>
           </GoASideMenu>
