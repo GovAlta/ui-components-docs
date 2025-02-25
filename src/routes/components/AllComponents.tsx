@@ -302,6 +302,12 @@ export default function AllComponentsPage() {
         "Arrange a number of components into a responsive grid pattern.",
     },
     {
+      name: "link",
+      groups: ["utilities"],
+      tags: ["utilities"],
+      description: "Wraps an anchor element to add icons or margins.",
+    },
+    {
       name: "icons",
       groups: ["utilities"],
       tags: ["utilities"],

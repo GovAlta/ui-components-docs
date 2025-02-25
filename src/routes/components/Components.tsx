@@ -54,6 +54,7 @@ export function Components() {
             <Link to="icons">Icons</Link>
             <Link to="icon-button">Icon button</Link>
             <Link to="input">Input</Link>
+            <Link to="link">Link</Link>
             <Link to="list">List</Link>
             <Link to="microsite-header">Microsite header</Link>
             <Link to="modal">Modal</Link>
