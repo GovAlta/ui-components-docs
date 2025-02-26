@@ -1,6 +1,8 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
+  GoABadgeType,
+  GoABlock,
   GoAButton,
   GoAButtonGroup,
   GoAContainer,
@@ -8,10 +10,11 @@ import {
   GoAFilterChipProps,
   GoAInput,
   GoATab,
-  GoATabs,
+  GoATable,
+  GoATabs
 } from "@abgov/react-components";
 import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -100,7 +103,12 @@ export default function FilterChipPage() {
   }
 
   const [chips, setChips] = useState(["Chip 1", "Chip 2", "Chip 3"]);
+  const [tableChips, setTableChips] = useState(["Filter 1: Item", "Filter 2: Item", "Filter 3: Item"]);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
+
+  const deleteTableChip = (chip: string) => {
+    setTableChips(prevChips => prevChips.filter(c => c !== chip));
+  };
 
   const deleteChip = (chip: string) => {
     setChips(prevChips => prevChips.filter(c => c !== chip));
@@ -141,6 +149,64 @@ export default function FilterChipPage() {
   const removeTypedChip = (chip: string) => {
     setTypedChips(prevChips => prevChips.filter(c => c !== chip));
   };
+
+  interface User {
+    badgeType: string;
+    name: string;
+    text: string;
+    status: string;
+    number: number;
+  }
+
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const _users: User[] = [
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"1",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"2",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"3",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"4",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"5",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+      {
+        badgeType: "success",
+        status: "Completed",
+        name:"6",
+        text: "Lorem ipsum dolor sit amet consectetur.",
+        number: 1234567890,
+      },
+    ];
+    setUsers(_users);
+  }, []);
 
   return (
     <>
@@ -504,6 +570,262 @@ export default function FilterChipPage() {
                 />
               </>
             )}
+
+            <h3 id="component-filters-applied-table">Show filters applied to a view of a table</h3>
+            <Sandbox fullWidth skipRender>
+              <GoABlock alignment="center">
+                <h3 style={{ marginRight: "auto" }}>Records</h3>
+                <GoAButton type="secondary" leadingIcon="filter">
+                  Filter
+                </GoAButton>
+              </GoABlock>
+              <GoABlock>
+                <p>Filter:</p>
+                {tableChips.map(chip => (
+                  <GoAFilterChip key={chip} content={chip} onClick={() => deleteTableChip(chip)} mr="3xs" />
+                ))}
+                <GoAButton type="tertiary">
+                  Clear
+                </GoAButton>
+              </GoABlock>
+              <GoATable width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      Status
+                    </th>
+                    <th>
+                      Text
+                    </th>
+                    <th className="goa-table-number-header">
+                      Number
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map(user => (
+                    <tr key={user.name}>
+                      <td><GoABadge type={user.badgeType as GoABadgeType} content={user.status}></GoABadge></td>
+                      <td>{user.text}</td>
+                      <td className="goa-table-number-column">{user.number}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </GoATable>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  chips: string[] = ["Filter 1: Item", "Filter 2: Item", "Filter 3: Item"];
+
+                  deleteTableChip(chip: string): void {
+                    this.chips = this.chips.filter((c) => c !== chip);
+                  }
+
+                  userValues = [
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"1",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"2",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"3",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"4",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"5",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      type: "success",
+                      content: "Completed",
+                      name:"6",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                  ]
+                `}
+              />
+
+              
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                   <goa-block alignment="center">
+                      <h3>Records</h3>
+                      <goa-button type="secondary" leadingicon="filter">
+                        Filter
+                      </goa-button>
+                    </goa-block>
+                    <goa-block>
+                      <p>Filter:</p>
+                      <goa-filter-chip
+                        *ngFor="let chip of tableChips"
+                        [content]="chip"
+                        (_click)="deleteTableChip(chip)"
+                        mr="3xs">
+                      </goa-filter-chip>
+                      <goa-button type="tertiary">
+                        Clear
+                      </goa-button>
+                    </goa-block>
+                    <goa-table width="100%">
+                      <thead>
+                        <tr>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Text
+                          </th>
+                          <th class="goa-table-number-header">
+                            Number
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of userValues">
+                          <td><goa-badge [type]="user.type" [content]="user.content" /></td>
+                          <td>{user.text}</td>
+                          <td class="goa-table-number-column">{user.number}</td>
+                        </tr>
+                      </tbody>
+                    </goa-table>
+                  }
+                `}
+              />
+
+              <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  const [tableChips, setTableChips] = useState(["Filter 1: Item", "Filter 2: Item", "Filter 3: Item"]);
+
+                  const deleteTableChip = (chip: string) => {
+                    setChips((prevChips) => prevChips.filter((c) => c !== chip));
+                  };
+
+                  const userValues = [
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"1",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"2",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"3",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"4",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"5",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                    {
+                      badgeType: "success",
+                      status: "Completed",
+                      name:"6",
+                      text: "Lorem ipsum dolor sit amet consectetur.",
+                      number: 1234567890,
+                    },
+                  ]
+                `}
+              />
+
+              <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                    <GoABlock alignment="center">
+                      <h3>Records</h3>
+                      <GoAButton type="secondary" leadingIcon="filter">
+                        Filter
+                      </GoAButton>
+                    </GoABlock>
+                    <GoABlock>
+                      <p>Filter:</p>
+                      {tableChips.map(chip => (
+                        <GoAFilterChip key={chip} content={chip} onClick={() => deleteTableChip(chip)} mr="3xs" />
+                      ))}
+                      <GoAButton type="tertiary">
+                        Clear
+                      </GoAButton>
+                    </GoABlock>
+                    <GoATable width="100%">
+                      <thead>
+                        <tr>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Text
+                          </th>
+                          <th className="goa-table-number-header">
+                            Number
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {userValues.map(user => (
+                          <tr key={user.name}>
+                            <td><GoABadge type={user.badgeType as GoABadgeType} content={user.status}></GoABadge></td>
+                            <td>{user.text}</td>
+                            <td className="goa-table-number-column">{user.number}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </GoATable>
+                `}
+              />
+            </Sandbox>
           </GoATab>
 
           <GoATab
