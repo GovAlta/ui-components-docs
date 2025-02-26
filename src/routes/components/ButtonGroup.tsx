@@ -8,6 +8,8 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoABadge, GoAButton, GoAButtonGroup, GoATab, GoATabs } from "@abgov/react-components";
 import { GoAButtonGroupAlignment } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import ButtonGroupExamples from "@examples/button-group/ButtonGroupExamples";
+
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
@@ -109,6 +111,9 @@ export default function ButtonGroupPage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} />
+            
+
+            <ButtonGroupExamples/>
           </GoATab>
           <GoATab
             heading={
