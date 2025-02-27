@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { useState } from "react";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -10,7 +9,6 @@ import { GoALink, GoATab, GoATabs, GoABadge } from "@abgov/react-components";
 import ICONS from "@routes/components/icons.json";
 
 export default function LinkPage() {
-  const language = useContext(LanguageContext);
   const [linkProps, setLinkProps] = useState({});
 
   const [linkBindings, setLinkBindings] = useState<ComponentBinding[]>([
