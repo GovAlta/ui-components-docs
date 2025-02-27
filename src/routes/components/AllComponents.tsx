@@ -308,6 +308,12 @@ export default function AllComponentsPage() {
       description: "Wraps an anchor element to add icons or margins.",
     },
     {
+      name: "link button",
+      groups: ["utilities"],
+      tags: ["utilities"],
+      description: "A button that looks like a link.",
+    },
+    {
       name: "icons",
       groups: ["utilities"],
       tags: ["utilities"],

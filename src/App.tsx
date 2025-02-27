@@ -46,6 +46,7 @@ import IconsPage from "@routes/components/Icons";
 import IconButtonPage from "@routes/components/IconButton";
 import ListPage from "@routes/components/List";
 import LinkPage from "@routes/components/Link";
+import LinkButtonPage from "@routes/components/LinkButton";
 import ModalPage from "@routes/components/Modal";
 import NotificationBannerPage from "@routes/components/Notificationbanner";
 import PaginationPage from "@routes/components/Pagination";
@@ -165,6 +166,7 @@ const router = createBrowserRouter(
         <Route path="icon-button" element={<IconButtonPage />} />
         <Route path="input" element={<TextFieldPage />} />
         <Route path="link" element={<LinkPage />} />
+        <Route path="link-button" element={<LinkButtonPage />} />
         <Route path="list" element={<ListPage />} />
         <Route path="microsite-header" element={<MicrositeHeaderPage />} />
         <Route path="modal" element={<ModalPage />} />
