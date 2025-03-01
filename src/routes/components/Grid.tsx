@@ -5,8 +5,28 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { GoABadge, GoAGrid, GoATab, GoATabs } from "@abgov/react-components";
+import {
+  GoAGrid,
+  GoATab,
+  GoATabs,
+  GoAText,
+  GoAContainer,
+} from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+
+// == Page props ==
+
+
+const componentName = "Grid";
+const category = Category.UTILITIES;
+const description = "Arrange a number of components into a responsive grid pattern.";
+const relatedComponents = [
+  { link: "/components/block", name: "Block" },
+  { link: "/components/divider", name: "Divider" },
+  { link: "/patterns", name: "Layout" },
+  { link: "/components/spacer", name: "Spacer" },
+];
 
 export default function GridPage() {
   const [gridProps, setGridProps] = useState({
@@ -63,23 +83,20 @@ export default function GridPage() {
   return (
     <>
       <ComponentHeader
-        name="Grid"
-        category={Category.UTILITIES}
-        description="Arrange a number of components into a responsive grid pattern."
-        relatedComponents={[
-          { link: "/components/block", name: "Block" },
-          { link: "/components/divider", name: "Divider" },
-          { link: "/patterns", name: "Layout" },
-          { link: "/components/spacer", name: "Spacer" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
-            {/*Grid sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
               <GoAGrid {...gridProps}>
                 <div
@@ -133,14 +150,20 @@ export default function GridPage() {
             <ComponentProperties properties={componentProperties} />
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }
-          ></GoATab>
+          {/* Since there are 0 examples, no "Examples" tab is included */}
+
+          <GoATab heading="Design">
+            <GoAContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoAText size="body-m" mt="none" mb="none">
+                In design, use Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties" target="_blank" rel="noreferrer">
+                  auto layout
+                </a>{" "}
+                feature set to <i>wrap</i> to create a responsive grid pattern that can respond to different screen sizes instead of the <i>Grid</i> component.
+              </GoAText>
+            </GoAContainer>
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

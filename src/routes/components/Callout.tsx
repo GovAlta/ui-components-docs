@@ -12,21 +12,20 @@ import {
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
-
-import {
-  ComponentProperties,
-  ComponentProperty,
-} from "@components/component-properties/ComponentProperties.tsx";
+import { ComponentProperties, ComponentProperty } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
-// == Page props ==
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
 const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
-  { link: "/components/Notification-banner", name: "Notification banner" },
+  { link: "/components/notification-banner", name: "Notification banner" },
 ];
 type ComponentPropsType = GoACalloutProps;
 type CastingType = {
@@ -145,14 +144,14 @@ export default function CalloutPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{ display: "none" }}>
-              Component
-            </h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoACallout {...componentProps}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -235,13 +234,18 @@ export default function CalloutPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading={<>Examples<GoABadge type="information" content="0" /></>}>
+            <ExamplesEmpty/>
+          </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

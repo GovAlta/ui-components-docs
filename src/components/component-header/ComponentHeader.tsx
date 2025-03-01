@@ -1,42 +1,83 @@
-import { GoABadge } from "@abgov/react-components";
+import {GoABadge, GoABlock, GoAText, } from "@abgov/react-components";
 import "./ComponentHeader.css";
 import { Link } from "react-router-dom";
 
+// If you have an enum for categories:
+export enum Category {
+    CONTENT_AND_LAYOUT = "Content and layout",
+    FEEDBACK_AND_ALERTS = "Feedback and alerts",
+    STRUCTURE_AND_NAVIGATION = "Structure and navigation",
+    INPUTS_AND_ACTIONS = "Inputs and actions",
+    UTILITIES = "Utilities",
+}
 
 interface Props {
-  category?: Category;
-  name: string;
-  description?: string;
-  relatedComponents?: { link: string; name: string }[];
+    category?: Category;
+    name: string;
+    description?: string;
+    relatedComponents?: { link: string; name: string }[];
+    githubLink?: string;
+    figmaLink?: string;
 }
 
-export enum Category {
-  CONTENT_AND_LAYOUT = "Content and layout",
-  FEEDBACK_AND_ALERTS = "Feedback and alerts",
-  STRUCTURE_AND_NAVIGATION = "Structure and navigation",
-  INPUTS_AND_ACTIONS = "Inputs and actions",
-  UTILITIES = "Utilities",
-}
+export const ComponentHeader: React.FC<Props> = (props) => {
+    // Helper to transform "button" -> "Button" for GitHub label
+    function toSentenceCase(str: string): string {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
 
-export const ComponentHeader: React.FC<Props> = (props: Props) => {
-  return (
-    <div className="component-header">
-      <GoABadge type="information" content={props.category} />
-      <h1>{props.name}</h1>
-      <h2 id="component" className="hidden" aria-hidden="true">Component</h2>
-      <h3 dangerouslySetInnerHTML={{__html: props.description || ''}}></h3>
+    return (
 
-      {props.relatedComponents?.length && (
-        <>
-          <span>Related components: </span>
-          {props.relatedComponents.map((relatedComponent, index, array) => (
-            <span key={index}>
-              <Link to={relatedComponent.link}>{relatedComponent.name}</Link>
-              {index < array.length - 1 && ", "}
+        <div className="component-header" >
+            <GoABadge type="information" content={props.category} />
+
+            <GoABlock gap="2xl" alignment="center">
+                <GoAText size="heading-xl" mt="xs">
+                    {props.name}
+                </GoAText>
+                {(props.githubLink || props.figmaLink) && (
+                    <GoABlock gap="l" direction="row" mt="l">
+                        {/* GitHub Issues link, if we have a "githubLink" */}
+                        {props.githubLink && (
+                            <a className="small"
+                               href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(
+                                   toSentenceCase(props.githubLink)
+                               )}`}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                            >
+                                GitHub issues
+                            </a>
+                        )}
+
+                        {/* Figma link, if we have a "figmaLink" */}
+                        {props.figmaLink && (
+                            <a className="small"
+                               href={props.figmaLink} target="_blank" rel="noopener noreferrer">
+                                Figma
+                            </a>
+                        )}
+                    </GoABlock>
+                )}
+            </GoABlock>
+
+          <GoAText size="heading-m" mt="none">
+            {props.description}
+          </GoAText>
+
+            {props.relatedComponents?.length && (
+                <GoABlock mt="m" mb="xl" gap="xs">
+                    <span className="small">Related:</span>
+                    {props.relatedComponents.map((rc, index, array) => (
+                        <span className="small" key={index}>
+              <Link to={rc.link}>{rc.name}</Link>
+                            {index < array.length - 1 && ", "}
             </span>
-          ))}
-        </>
-      )}
-    </div>
-  );
+                    ))}
+                </GoABlock>
+            )}
+
+
+        </div>
+    );
 };

@@ -15,18 +15,27 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
+// == Page props ==
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=2-81";
 const componentName = "Microsite header";
+const category = Category.STRUCTURE_AND_NAVIGATION;
 const description =
-  "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
-const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [{ link: "/components/header", name: "Header" }];
+  "Communicate what stage the service is at, connect to Alberta.ca, and gather feedback on your service from users.";
+const relatedComponents = [
+  { link: "/components/footer", name: "Footer" },
+  { link: "/components/header", name: "Header" },
+];
+
 type ComponentPropsType = GoAHeaderProps;
 type CastingType = {
-  // add any required props here
   type: GoAServiceLevel;
   [key: string]: unknown;
 };
+
 export default function MicrositeHeaderPage() {
   const [micrositeHeaderProps, setMicrositeHeaderProps] = useState<ComponentPropsType>({
     type: "alpha" as GoAServiceLevel,
@@ -176,35 +185,47 @@ export default function MicrositeHeaderPage() {
     <>
       <ComponentHeader
         name={componentName}
-        category={componentCategory}
+        category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Microsite Header Sandbox */}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoAMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
 
-            {/*Component properties table*/}
+            {/* Component properties table */}
             <ComponentProperties properties={componentProperties} />
-            <MicrositeHeaderExamples />
+          </GoATab>
+            <GoATab
+              heading={
+                <>
+                  Examples
+                  <GoABadge type="information" content="2" />
+                </>
+              }
+            >
+              <MicrositeHeaderExamples />
+
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

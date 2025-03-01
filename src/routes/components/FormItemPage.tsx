@@ -5,9 +5,29 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
+import { GoAFormItem, GoAInput, GoATab, GoATabs, GoABadge, } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27284-300347";
+const componentName = "Form Item";
+const category = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/checkbox", name: "Checkbox" },
+  { link: "/components/dropdown", name: "Dropdown" },
+  { link: "/components/input", name: "Input" },
+  { link: "/components/Radio", name: "Radio" },
+  { link: "/components/text-area", name: "Text area" },
+];
+const description =
+  "Wraps an input control with a text label, requirement label, helper text, and error text.";
+
 
 export default function FormItemPage() {
   const language = useContext(LanguageContext);
@@ -68,7 +88,8 @@ export default function FormItemPage() {
       value: "",
     },
   ]);
-  const componentProps: ComponentProperty[] = [
+
+  const componentProperties: ComponentProperty[] = [
     {
       name: "label",
       type: "string",
@@ -134,7 +155,7 @@ export default function FormItemPage() {
       type: "string",
       description: "Sets the maximum width of the form item.",
       lang: "angular",
-    },    
+    },
     {
       name: "testId",
       type: "string",
@@ -164,23 +185,20 @@ export default function FormItemPage() {
   return (
     <>
       <ComponentHeader
-        name="Form Item"
-        category={Category.INPUTS_AND_ACTIONS}
-        description="Wraps an input control with a text label, requirement label, helper text, and error text."
-        relatedComponents={[
-          { link: "/components/checkbox", name: "Checkbox" },
-          { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/Radio", name: "Radio" },
-          { link: "/components/text-area", name: "Text area" },
-          { link: "/components/text-field", name: "Text field" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoATab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
               <CodeSnippet
                 lang="typescript"
@@ -228,15 +246,16 @@ export default function FormItemPage() {
               </GoAFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={componentProps} />
+            {/* Component properties table */}
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
+          <GoATab heading={<>Examples<GoABadge type="information" content="2" /></>}>
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
 
             <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
             <Sandbox skipRender>
-              <GoAFormItem 
-                label="First name" 
-                helpText={helptextReactNode}>
+              <GoAFormItem label="First name" helpText={helptextReactNode}>
                 <GoAInput onChange={noop} value="" name="item" />
               </GoAFormItem>
 
@@ -261,25 +280,27 @@ export default function FormItemPage() {
                   allowCopy={true}
                   code={`
                   <goa-form-item label="First name">
-                    <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
+                    <goa-input
+                      goaValue
+                      name="item"
+                      [formControl]="itemFormCtrl"
+                      [value]="itemFormCtrl.value"
+                    ></goa-input>
 
                     <div slot="helptext">
                       <span>This is </span>
                       <i>slotted</i>
                       <b>help text</b>.
                     </div>
-
                   </goa-form-item>
                   `}
                 />
               )}
             </Sandbox>
 
-            <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
+            <h3 id="component-example-slotted-error-text">Slotted Error Text</h3>
             <Sandbox skipRender>
-              <GoAFormItem 
-                label="First name" 
-                error={errorReactNode}>
+              <GoAFormItem label="First name" error={errorReactNode}>
                 <GoAInput onChange={noop} value="" name="item" />
               </GoAFormItem>
 
@@ -289,10 +310,11 @@ export default function FormItemPage() {
                   tags="react"
                   allowCopy={true}
                   code={`
-                  <GoAFormItem 
+                  <GoAFormItem
                     label="First name"
-                    error={<><i>This is </i> slotted <b>error text</b>.</>}>
-                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
+                    error={<><i>This is </i> slotted <b>error text</b>.</>}
+                  >
+                    <GoAInput onChange={onChange} value={value} name="item" />
                   </GoAFormItem>
                   `}
                 />
@@ -305,29 +327,33 @@ export default function FormItemPage() {
                   allowCopy={true}
                   code={`
                   <goa-form-item label="First name">
-                  <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
+                    <goa-input
+                      goaValue
+                      name="item"
+                      [formControl]="itemFormCtrl"
+                      [value]="itemFormCtrl.value"
+                    ></goa-input>
 
                     <div slot="error">
                       <span>This is </span>
                       <i>slotted </i>
                       <b>error text.</b>
                     </div>
-
                   </goa-form-item>
                   `}
                 />
               )}
             </Sandbox>
           </GoATab>
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

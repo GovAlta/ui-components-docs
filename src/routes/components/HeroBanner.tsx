@@ -6,14 +6,32 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
+  GoABadge,
   GoAButton,
   GoAHeroBanner,
   GoAHeroBannerActions,
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
+
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
+const componentName = "Hero banner";
+const category = Category.STRUCTURE_AND_NAVIGATION;
+const description =
+  "A visual band of text, including a background colour or image and a call to action.";
+const relatedComponents = [
+  { link: "/components/footer", name: "Footer" },
+  { link: "/patterns", name: "Layout" },
+  { link: "/components/spacer", name: "Spacer" },
+];
 
 export default function HeroBannerPage() {
   const [heroBannerProps, setHeroBannerProps] = useState({
@@ -150,32 +168,38 @@ export default function HeroBannerPage() {
   return (
     <>
       <ComponentHeader
-        name="Hero banner"
-        category={Category.STRUCTURE_AND_NAVIGATION}
-        description="A visual band of text, including a background colour or image and a call to action."
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
-            {/*Hero Banner Sandbox*/}
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
-            <Sandbox properties={heroBannerBindings} fullWidth={true} onChange={onSandboxChange}>
+            <Sandbox
+              properties={heroBannerBindings}
+              onChange={onSandboxChange}
+              fullWidth
+            >
               <GoAHeroBanner {...heroBannerProps}>
                 Resources are available to help Alberta entrepreneurs and small businesses start,
                 grow and succeed.
               </GoAHeroBanner>
             </Sandbox>
 
+            {/* Component properties */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/* Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
 
+            {/* Example 1 */}
             <h3 id="component-example-actions">Hero Banner with actions</h3>
             <Sandbox skipRender fullWidth>
               <CodeSnippet
@@ -217,6 +241,15 @@ export default function HeroBannerPage() {
               </GoAHeroBanner>
             </Sandbox>
           </GoATab>
+
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

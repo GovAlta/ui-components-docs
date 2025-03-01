@@ -1,3 +1,9 @@
+import { useState, useContext } from "react";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import {
+  ComponentProperties,
+  ComponentProperty,
+} from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoABadge,
@@ -10,24 +16,23 @@ import {
   GoATab,
   GoATabs,
 } from "@abgov/react-components";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
-import { useContext, useState } from "react";
-import {
-  ComponentProperties,
-  ComponentProperty,
-} from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
-// Page props
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=46-115";
 const componentName = "Filter Chip";
-const description = "Allow the user to filter content.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
   { link: "/components/popover", name: "Popover" },
   { link: "/components/Table", name: "Table" },
 ];
+const description = "Allow the user to filter content.";
 type ComponentPropsType = GoAFilterChipProps;
 
 type CastingType = {
@@ -61,7 +66,6 @@ export default function FilterChipPage() {
       type: "boolean",
       description: "Shows an error state.",
     },
-
     {
       name: "content",
       type: "string",
@@ -149,17 +153,23 @@ export default function FilterChipPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoAFilterChip {...componentProps} />
             </Sandbox>
+            {/* Component properties table */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
+
+          <GoATab heading={<>Examples<GoABadge type="information" content="3" /></>}>
 
             <h3 id="component-example-delete">Delete Event</h3>
             <Sandbox skipRender>
@@ -403,7 +413,6 @@ export default function FilterChipPage() {
                       }
                     }
                   }
-                
                 `}
                 />
               </>
@@ -506,13 +515,14 @@ export default function FilterChipPage() {
             )}
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

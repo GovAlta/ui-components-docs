@@ -1,5 +1,6 @@
 import TOC from "@components/table-of-contents/TOC";
 import "./component-content.css";
+import { GoADivider } from "@abgov/react-components";
 
 type Props = {
   children: React.ReactNode;
@@ -11,10 +12,16 @@ export function ComponentContent({tocCssQuery, contentClassName, children}: Prop
 
   return <>
     <div className="component-content--container">
-      <div style={{ maxWidth: tocCssQuery ? "auto" : "54rem" }} className={`component-content--content ${contentClassName ? contentClassName: ""}`}>
+      <div style={{ maxWidth: tocCssQuery ? "auto" : "54rem" }}
+           className={`component-content--content ${contentClassName ? contentClassName : ""}`}>
         {children}
+        <GoADivider mt="3xl"></GoADivider>
+
       </div>
       {tocCssQuery && <TOC cssQuery={tocCssQuery} />}
+    </div>
+
+    <div >
     </div>
   </>
 }

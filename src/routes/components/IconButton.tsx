@@ -17,16 +17,29 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import ICONS from "./icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
+// == Page props ==
+
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302107";
 const componentName = "Icon button";
 const description = "A compact button with an icon and no text.";
 const componentCategory = Category.INPUTS_AND_ACTIONS;
+const relatedComponents = [
+  { link: "/components/icons", name: "Icons" },
+  { link: "/components/button", name: "Button" },
+  { link: "/components/tooltip", name: "Tooltip" },
+];
 type ComponentPropsType = GoAIconButtonProps;
 type CastingType = {
   // add any required props here
   icon: GoAIconType;
   [key: string]: unknown;
 };
+
 export default function IconButtonPage() {
   const [iconButtonProps, setIconButtonProps] = useState<ComponentPropsType>({
     icon: "refresh",
@@ -71,7 +84,7 @@ export default function IconButtonPage() {
       type: "string",
       name: "ariaLabel",
       value: "Refresh icon",
-    }
+    },
   ]);
 
   const componentProperties: ComponentProperty[] = [
@@ -158,23 +171,26 @@ export default function IconButtonPage() {
         name={componentName}
         category={componentCategory}
         description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
               <GoAIconButton {...iconButtonProps} />
             </Sandbox>
 
-            {/*Component properties table*/}
+            {/* Component properties */}
             <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-            {/* Examples */}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
 
+            {/* Example 1 */}
             <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
             <Sandbox fullWidth>
               <GoATable width="100%">
@@ -282,15 +298,14 @@ export default function IconButtonPage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>

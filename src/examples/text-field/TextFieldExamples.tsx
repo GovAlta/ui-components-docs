@@ -14,9 +14,6 @@ export default function TextFieldExamples() {
   return (
     <>
       {/*Examples*/}
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
 
       <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
       <Sandbox flags={["reactive"]}>

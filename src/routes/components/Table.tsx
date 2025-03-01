@@ -17,6 +17,9 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { GoATableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import "./AllComponents.css";
+import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
 interface User {
   firstName: string;
@@ -28,6 +31,20 @@ type CastingType = {
   width: string;
   [key: string]: unknown;
 }
+
+// == Page props ==
+const componentName = "Table";
+const description =
+  "A set of structured data that is easy for a user to scan, examine, and compare.";
+const category = Category.FEEDBACK_AND_ALERTS;
+const relatedComponents = [
+  { link: "/components/button", name: "Button" },
+  { link: "/components/pagination", name: "Pagination" },
+  { link: "/components/tabs", name: "Tabs" },
+];
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=3785-18038";
+
+
 export default function TablePage() {
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
     width: "100%"
@@ -85,7 +102,7 @@ export default function TablePage() {
     setTableProps(props as CastingType);
   }
 
-  // For table demo -- needs to do sort functionality
+  // For table demo -- needs to handle sort functionality
   const language = useContext(LanguageContext);
   const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
@@ -125,21 +142,22 @@ export default function TablePage() {
   return (
     <>
       <ComponentHeader
-        name="Table"
-        category={Category.CONTENT_AND_LAYOUT}
-        description="A set of structured data that is easy for a user to scan, examine, and compare."
-        relatedComponents={[
-          { link: "/components/button", name: "Button" },
-          { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/pagination", name: "Pagination" },
-          { link: "/components/tabs", name: "Tabs" },
-        ]}
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        githubLink={componentName}
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoATabs>
-          <GoATab heading="Code examples">
+          <GoATab heading="Code playground">
+            {/* Table Sandbox */}
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
               <GoATable {...tableProps}>
                 <thead>
@@ -195,9 +213,20 @@ export default function TablePage() {
               </GoATable>
             </Sandbox>
 
+            {/* Table Properties */}
             <ComponentProperties properties={componentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          </GoATab>
 
+          <GoATab
+            heading={
+              <>
+                Examples<GoABadge type="information" content="2" />
+              </>
+            }
+          >
+
+
+            {/* Example 1 */}
             <h3 id="component-example-sortable-columns">Sortable columns</h3>
             <GoAContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
@@ -383,6 +412,7 @@ export default function TablePage() {
               />
             )}
 
+            {/* Example 2 */}
             <h3 id="component-example-number-column">Number column</h3>
             <Sandbox fullWidth>
               <GoATable width="100%">
@@ -409,13 +439,14 @@ export default function TablePage() {
             </Sandbox>
           </GoATab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }></GoATab>
+          <GoATab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
+          <GoATab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoATab>
+
         </GoATabs>
       </ComponentContent>
     </>
