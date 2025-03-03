@@ -9,7 +9,6 @@ import {
   GoABadge,
   GoAButton,
   GoAButtonGroup,
-  GoAContainer,
   GoADetails,
   GoAFormItem,
   GoATab,
@@ -328,38 +327,47 @@ export default function TextAreaPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-1">Ask a question and give more information</h3>
-            <Sandbox flags={["reactive"]} fullWidth>
-              <GoAContainer>
-                <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
-                  Back
-                </GoAButton>
+            <h3 id="component-example-ask-question-more-information">Ask a question and give more information</h3>
+            <Sandbox flags={["reactive"]} allow={['h2', 'p']} fullWidth>
 
-                <h2>Description</h2>
+              <GoAButton type="tertiary" leadingIcon="arrow-back" mb="none">
+                Back
+              </GoAButton>
+
+              <h2 style={{marginTop: "1rem"}}>Description</h2>
+              <p>
+                List all components and include a description, including the number of hours for
+                each.
+              </p>
+
+              <GoAFormItem
+                label="Program outline"
+                helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
+                <GoATextArea name="program" onChange={noop} rows={6}/>
+              </GoAFormItem>
+
+              <GoADetails heading="How to write a good outline" mt="xl" mb="none">
                 <p>
-                  List all components and include a description, including the number of hours for
-                  each.
+                  Break down your outline into easily digestible sections. This can help to ensure
+                  that the document is well-organized and easy to navigate.
                 </p>
+              </GoADetails>
 
-                <GoAFormItem
-                  label="Program outline"
-                  helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextArea name="program" value="Input text" onChange={noop} />
-                </GoAFormItem>
+              <GoAButtonGroup alignment="start" mt="l">
+                <GoAButton type="primary" onClick={noop}>
+                  Continue
+                </GoAButton>
+              </GoAButtonGroup>
+            </Sandbox>
 
-                <GoADetails heading="How to write a good outline">
-                  <p>
-                    Break down your outline into easily digestible sections. This can help to ensure
-                    that the document is well-organized and easy to navigate.
-                  </p>
-                </GoADetails>
+            <h3 id="component-example-ask-longer-question">Ask a long answer question</h3>
+            <Sandbox flags={["reactive"]} fullWidth>
 
-                <GoAButtonGroup alignment="start" mt="l">
-                  <GoAButton type="primary" onClick={noop}>
-                    Continue
-                  </GoAButton>
-                </GoAButtonGroup>
-              </GoAContainer>
+              <GoAFormItem
+                label="Provide more detail"
+                helpText="Do not include personal or financial information, like your National Insurance number or credit card details.">
+                <GoATextArea name="program" countBy="character" maxCount={500} rows={6} onChange={noop}/>
+              </GoAFormItem>
             </Sandbox>
           </GoATab>
 
