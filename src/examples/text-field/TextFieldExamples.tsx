@@ -105,6 +105,100 @@ export default function TextFieldExamples() {
         </GoABlock>
       </Sandbox>
 
+      <h3 id="component-example-enter-phone-number">
+        Enter a phone number
+      </h3>
+      <Sandbox flags={["reactive"]} skipRender>
+        
+        {/*Angular Code Snippet - need for leadingContent slot*/}
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                  export class ExampleComponent {
+                    phoneNumber: number|undefined;
+
+                    onChangePhoneNumber(event: Event) {
+                      this.phoneNumber = (event as CustomEvent).detail.value as number;
+                    }
+                  }
+                `}
+        />
+        <CodeSnippet
+          lang="html"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                  <goa-form-item label="Phone number">
+                    <goa-input (_change)="onChangePhoneNumber($event)" value="" name="phoneNumber" type="tel" mb="xl">
+                      <div slot="leadingContent">$</div>
+                    </goa-input>
+                  </goa-form-item>
+                `}
+        />
+
+        {/*Reactive FormControl Angular Code Snippet*/}
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
+                  export class ExampleComponent {
+                    phoneNumberForm = new FormGroup({
+                      phoneNumber: new FormControl(""),
+                    });
+                  }  
+                `}
+        />
+        <CodeSnippet
+          lang="html"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
+                <form [formGroup]="phoneNumberForm">
+                  <goa-form-item label="Phone number">
+                      <goa-input goaValue name="phoneNumber" formControlName="phoneNumber" type="tel">
+                        <div slot="leadingContent">+1</div>
+                      </goa-input>
+                  </goa-form-item>                
+                </form>
+                `}
+        />
+
+        {/*React Code Snippet - need for leadingContent slot*/}
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+                  const [phoneNumber, setPhoneNumber] = useState<string>("");
+                  function onChangePhoneNumber(_name: string, value: string) {
+                    setPhoneNumber(value);
+                  }
+                `}
+        />
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+                  <GoAFormItem label="Phone number">
+                    <GoAInput onChange={onChangePhoneNumber} value={phoneNumber} name="phoneNumber" type="tel" leadingContent="+1"></GoAInput>
+                  </GoAFormItem>
+                `}
+        />
+        <GoAFormItem label="Phone number">
+          <GoAInput
+            onChange={noop}
+            value=""
+            type="tel"
+            name="phoneNumber"
+            leadingContent="+1"
+          />
+        </GoAFormItem>
+      </Sandbox>
+
       <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
       <Sandbox flags={["reactive"]} skipRender>
         {/*Angular Code Snippet - need for leadingContent slot*/}
@@ -269,6 +363,175 @@ export default function TextFieldExamples() {
                 value=""
                 name="position"
                 width="71px"
+              />
+            </GoAFormItem>
+          </GoABlock>
+        </GoAFormItem>
+      </Sandbox>
+
+      <h3 id="component-example-ask-user-for-bank-details">
+        Ask a user for bank details
+      </h3>
+      <Sandbox flags={["reactive"]} skipRender fullWidth>
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                  export class ExampleComponent {
+                    accountName: number|undefined;
+                    accountNumber: number|undefined;
+                    bankNumber: number|undefined;
+
+                    onChangeAccountName(event: Event) {
+                      this.accountName = (event as CustomEvent).detail.value as number;
+                    }
+                    onChangeAccountNumber(event: Event) {
+                      this.accountNumber = (event as CustomEvent).detail.value as number;
+                    }
+                    onChangeBankNumber(event: Event) {
+                      this.bankNumber = (event as CustomEvent).detail.value as number;
+                    }
+                  }
+                `}
+        />
+        <CodeSnippet
+          lang="html"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                  <goa-form-item label="Name on account">
+                    <goa-input (_change)="onChangeAccountName($event)" value="" name="bank-details">
+                    </goa-input>
+                  </goa-form-item>
+                  <goa-form-item label="Account number">
+                    <goa-input (_change)="onChangeAccountNumber($event)" value="" name="account-number">
+                    </goa-input>
+                  </goa-form-item>
+                  <goa-form-item label="Bank number">
+                    <goa-input (_change)="onChangeBankNumber($event)" value="" name="bank-number" helptext="Must be between 6 and 8 digits long">
+                    </goa-input>
+                  </goa-form-item>
+                `}
+        />
+
+        {/*Reactive FormControl Angular Code Snippet*/}
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
+                  export class ExampleComponent {
+                    bankAccountFormControl = new FormGroup({
+                      accountName: new FormControl(""),
+                      accountNumber: new FormControl(""),
+                      bankNumber: new FormControl(""),
+                    });
+                  }  
+                `}
+        />
+        <CodeSnippet
+          lang="html"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
+                <form [formGroup]="bankAccountFormControl">
+                  <goa-form-item label="Name on account">
+                    <goa-input goaValue name="bank-details" formControlName="accountName">
+                    </goa-input>
+                  </goa-form-item>
+                  <goa-form-item label="Account number">
+                    <goa-input goaValue name="account-number" formControlName="accountNumber">
+                    </goa-input>
+                  </goa-form-item>
+                  <goa-form-item label="Bank number">
+                    <goa-input goaValue name="bank-number" formControlName="bankNumber" helptext="Must be between 6 and 8 digits long">
+                    </goa-input>
+                  </goa-form-item>                
+                </form>
+                `}
+        />
+
+        {/*React Code Snippet - need for leadingContent slot*/}
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+                  const [accountName, setAccountName] = useState<string>("");
+                  const [accountNumber, setAccountNumber] = useState<string>("");
+                  const [bankNumber, setBankNumber] = useState<string>("");
+                  function onChangeAccountName(_name: string, value: string) {
+                    setAccountName(value);
+                  }
+                  function onChangeAccountNumber(_name: string, value: string) {
+                    setAccountNumber(value);
+                  }
+                  function onChangeBankNumber(_name: string, value: string) {
+                    setBankNumber(value);
+                  }
+                `}
+        />
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
+                  <GoAFormItem label="Bank account details" labelSize="large">
+                    <GoABlock gap="m" direction="column">
+                      <GoAFormItem label="Name on account">
+                        <GoAInput
+                          onChange={onChangeAccountName}
+                          value=""
+                          name="bank-details"
+                          width="100%"
+                        />
+                      </GoAFormItem>
+                      <GoAFormItem label="Account number">
+                        <GoAInput
+                          onChange={onChangeAccountNumber}
+                          value=""
+                          name="account-number"
+                        />
+                      </GoAFormItem>
+                      <GoAFormItem label="Bank number" helpText="Must be between 6 and 8 digits long">
+                        <GoAInput
+                          onChange={onChangeBankNumber}
+                          maxLength={8}
+                          type={"text"}
+                          value=""
+                          name="bank-number"
+                        />
+                      </GoAFormItem>
+                    </GoABlock>
+                  </GoAFormItem>
+                `}
+        />
+
+        <GoAFormItem label="Bank account details" labelSize="large">
+          <GoABlock gap="m" direction="column">
+            <GoAFormItem label="Name on account">
+              <GoAInput
+                onChange={noop}
+                value=""
+                name="bank-details"
+                width="100%"
+              />
+            </GoAFormItem>
+            <GoAFormItem label="Account number">
+              <GoAInput
+                onChange={noop}
+                value=""
+                name="account-number"
+              />
+            </GoAFormItem>
+            <GoAFormItem label="Bank number" helpText="Must be between 6 and 8 digits long">
+              <GoAInput
+                onChange={noop}
+                maxLength={8}
+                type={"text"}
+                value=""
+                name="bank-number"
               />
             </GoAFormItem>
           </GoABlock>
