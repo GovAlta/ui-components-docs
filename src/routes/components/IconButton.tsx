@@ -1,9 +1,12 @@
 import {
   GoABadge,
   GoABlock,
+  GoAButton,
   GoAIconButton,
   GoAIconButtonProps,
   GoAIconType,
+  GoAModal,
+  GoASpacer,
   GoATab,
   GoATable,
   GoATabs,
@@ -14,6 +17,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useState } from "react";
 import ICONS from "./icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -28,6 +32,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 export default function IconButtonPage() {
+  
   const [iconButtonProps, setIconButtonProps] = useState<ComponentPropsType>({
     icon: "refresh",
     ariaLabel: "Refresh icon",
@@ -148,6 +153,8 @@ export default function IconButtonPage() {
     },
   ];
 
+  const [basicModalOpen, setBasicModalOpen] = useState<boolean>();
+
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconButtonProps(props as CastingType);
     setIconButtonBindings(bindings);
@@ -174,6 +181,71 @@ export default function IconButtonPage() {
 
             {/* Examples */}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+
+            <h3 id="component-example-basic-close">Basic modal with close</h3>
+            <Sandbox skipRender>
+
+              <GoAButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoAButton>
+              <GoAModal
+                heading="Modal"
+                role="dialog"
+                open={basicModalOpen}
+                onClose={() => setBasicModalOpen(false)}>
+                <p style={{marginBottom: "2rem !important"}}>This modal uses an icon button to close it.</p>
+                <GoASpacer vSpacing="m"></GoASpacer>
+              </GoAModal>
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                        export class SomeOtherComponent {
+                          open = false;
+                          toggleModal() {
+                            this.open = !this.open;
+                          }
+                        }
+                      `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                  <goa-button (_click)="toggleModal();">Open Basic Modal</goa-button>
+                  <goa-modal [open]="open" (_close)="toggleModal()" heading="Modal">
+                    <p>This modal uses an icon button to close it.</p>
+                  </goa-modal>
+                `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                        const [open, setOpen] = useState(false);
+                      `}
+              />
+
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  <GoAButton onClick={() => setOpen(true)}>Open Basic Modal</GoAButton>
+                  <GoAModal
+                    heading="Modal"
+                    role="dialog"
+                    open={basicModalOpen}
+                    onClose={() => setBasicModalOpen(false)}>
+                    <p>This modal uses an icon button to close it.</p>
+                  </GoAModal>
+                `}
+              />
+            </Sandbox>
 
             <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
             <Sandbox fullWidth>
