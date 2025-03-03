@@ -132,12 +132,6 @@ export default function DropdownPage() {
       defaultValue: "false",
     },
     {
-      name: "relative",
-      type: "boolean",
-      description: "Set to true if a parent element has a css positive of relative.",
-      defaultValue: "false",
-    },
-    {
       name: "error",
       type: "boolean",
       description: "Show an error state",
