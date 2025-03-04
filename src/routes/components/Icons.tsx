@@ -9,6 +9,7 @@ import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-com
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -188,7 +189,10 @@ export default function IconsPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-alert-messaging">Alert and messaging</h3>
+            <SandboxHeader
+              exampleTitle="Alert and messaging"
+              figmaExample="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=28309-20409&t=UnQy9SPJJ9WBbyEN-4">
+            </SandboxHeader>
             <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"information-circle"} />
               <IconSnippet type={"warning"} />
@@ -200,7 +204,10 @@ export default function IconsPage() {
               <IconSnippet type={"remove-circle"} />
             </GoAGrid>
 
-            <h3 id="component-example-basic">Basic</h3>
+            <SandboxHeader
+              exampleTitle="Basic"
+              figmaExample="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=28309-20410&t=UnQy9SPJJ9WBbyEN-4">
+            </SandboxHeader>
             <GoAGrid minChildWidth="230px" gap="l" mt="m">
               <IconSnippet type={"close"} />
               <IconSnippet type={"checkmark"} />
@@ -208,7 +215,10 @@ export default function IconsPage() {
               <IconSnippet type={"remove"} />
             </GoAGrid>
 
-            <h3 id="component-example-direction">Direction</h3>
+            <SandboxHeader
+              exampleTitle="Direction"
+              figmaExample="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=28309-20411&t=UnQy9SPJJ9WBbyEN-4">
+            </SandboxHeader>
             <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"chevron-down"} />
               <IconSnippet type={"chevron-up"} />
@@ -224,7 +234,10 @@ export default function IconsPage() {
               <IconSnippet type={"caret-forward"} />
             </GoAGrid>
 
-            <h3 id="component-example-interaction">Interactions</h3>
+            <SandboxHeader
+              exampleTitle="Interactions"
+              figmaExample="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=28309-20412&t=UnQy9SPJJ9WBbyEN-4">
+            </SandboxHeader>
             <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"menu"} />
               <IconSnippet type={"reload"} />
@@ -246,7 +259,10 @@ export default function IconsPage() {
               <IconSnippet type={"download"} />
             </GoAGrid>
 
-            <h3 id="component-example-accounts">Accounts</h3>
+            <SandboxHeader
+              exampleTitle="Accounts"
+              figmaExample="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=28309-20413&t=UnQy9SPJJ9WBbyEN-4">
+            </SandboxHeader>
             <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
               <IconSnippet type={"person-circle"} />
               <IconSnippet type={"settings"} />

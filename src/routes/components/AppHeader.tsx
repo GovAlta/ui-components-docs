@@ -15,6 +15,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 const componentName = "Header";
 const description =
@@ -160,8 +161,10 @@ export default function AppHeaderPage() {
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples
             </h2>
-
-            <h3 id="component-example-header-navigation">Header with navigation</h3>
+            <SandboxHeader
+              exampleTitle="Header with navigation"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59342-90054&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
             <Sandbox fullWidth skipRender>
               <CodeSnippet
                 lang="typescript"
@@ -169,9 +172,9 @@ export default function AppHeaderPage() {
                 allowCopy={true}
                 code={`
                 <goa-microsite-header type="live"></goa-microsite-header>
-                <goa-app-header url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
+                <goa-app-header url="https://example.com" heading="Service name">
+                  <a href="#">Section 1</a>
+                  <goa-app-header-menu heading="More">
                     <a href="#">Cases</a>
                     <a href="#">Payments</a>
                     <a href="#">Outstanding</a>
@@ -186,9 +189,9 @@ export default function AppHeaderPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                <GoAAppHeader url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                <GoAAppHeader url="https://example.com" heading="Service name">
+                  <a href="#">Section 1</a>
+                  <GoAAppHeaderMenu heading="More">
                     <a href="#">Cases</a>
                     <a href="#">Payments</a>
                     <a href="#">Outstanding</a>
@@ -197,9 +200,9 @@ export default function AppHeaderPage() {
                 </GoAAppHeader>
               `}
               />
-              <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
-                <a href="">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+              <GoAAppHeader url="https://www.alberta.ca" heading="Service name">
+                <a href="">Section 1</a>
+                <GoAAppHeaderMenu heading="More">
                   <a>Cases</a>
                   <a>Payments</a>
                   <a>Outstanding</a>
@@ -208,7 +211,10 @@ export default function AppHeaderPage() {
               </GoAAppHeader>
             </Sandbox>
 
-            <h3 id="component-example-with-menu-click">Header with menu click event</h3>
+            <SandboxHeader
+              exampleTitle="Header with menu click event"
+              figmaExample="">
+            </SandboxHeader>
             <Sandbox fullWidth skipRender>
               <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
                 <GoARadioItem value="600" label="Desktop"></GoARadioItem>
@@ -216,11 +222,11 @@ export default function AppHeaderPage() {
               </GoARadioGroup>
               <GoAAppHeader
                 url="https://example.com"
-                heading="Design System"
+                heading="Service name"
                 onMenuClick={handleMenuClick}
                 fullMenuBreakpoint={+deviceWidth}>
-                <a href="#">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                <a href="#">Section 1</a>
+                <GoAAppHeaderMenu heading="More">
                   <a href="#">Cases</a>
                   <a href="#">Payments</a>
                   <a href="#">Outstanding</a>
@@ -257,9 +263,9 @@ export default function AppHeaderPage() {
                   <goa-radio-item value="5000" label="Mobile"></goa-radio-item>
                  </goa-radio-group>
                   
-                 <goa-app-header url="https://example.com" heading="Design System" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
+                 <goa-app-header url="https://example.com" heading="Service name" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
+                  <a href="#">Section 1</a>
+                  <goa-app-header-menu heading="More">
                     <a href="#">Cases</a>
                     <a href="#">Payments</a>
                     <a href="#">Outstanding</a>
@@ -292,11 +298,11 @@ export default function AppHeaderPage() {
                   
                   <GoAAppHeader
                     url="https://example.com"
-                    heading="Design System"
+                    heading="Service name"
                     onMenuClick={handleMenuClick}
                     fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                    <a href="#">Section 1</a>
+                    <GoAAppHeaderMenu heading="More">
                       <a href="#">Cases</a>
                       <a href="#">Payments</a>
                       <a href="#">Outstanding</a>

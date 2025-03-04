@@ -8,6 +8,7 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function FormItemPage() {
   const language = useContext(LanguageContext);
@@ -232,7 +233,10 @@ export default function FormItemPage() {
 
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-            <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
+            <SandboxHeader
+              exampleTitle="Slotted helper text"
+              figmaExample="">
+            </SandboxHeader>
             <Sandbox skipRender>
               <GoAFormItem 
                 label="First name" 
@@ -275,7 +279,10 @@ export default function FormItemPage() {
               )}
             </Sandbox>
 
-            <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
+            <SandboxHeader
+              exampleTitle="Slotted error text"
+              figmaExample="">
+            </SandboxHeader>
             <Sandbox skipRender>
               <GoAFormItem 
                 label="First name" 

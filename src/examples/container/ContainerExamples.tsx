@@ -9,13 +9,17 @@ import {
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./container-example.css";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function ContainerExamples() {
   return (
     <>
       {/*Container examples*/}
       <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-      <h3 id="component-example-1">User information</h3>
+      <SandboxHeader
+        exampleTitle="User information"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-183566&t=t0oxno4TRWZy1sJU-4">
+      </SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*CSS Code Snippet*/}
         <CodeSnippet
@@ -227,7 +231,10 @@ export default function ContainerExamples() {
         </GoAContainer>
       </Sandbox>
 
-      <h3 id="component-example-2">Card view of case files</h3>
+      <SandboxHeader
+        exampleTitle="Card view of case files"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-185613&t=t0oxno4TRWZy1sJU-4">
+      </SandboxHeader>
       <Sandbox fullWidth>
         <CodeSnippet
           lang="css"
@@ -315,7 +322,10 @@ export default function ContainerExamples() {
         </GoAContainer>
       </Sandbox>
 
-      <h3 id="component-example-3">Card grid that links to different sections</h3>
+      <SandboxHeader
+        exampleTitle="Card grid"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-196348&t=t0oxno4TRWZy1sJU-4">
+      </SandboxHeader>
       <Sandbox fullWidth>
         <CodeSnippet
           lang="css"
@@ -385,7 +395,10 @@ export default function ContainerExamples() {
         </GoAGrid>
       </Sandbox>
 
-      <h3 id="example-4">Review and action</h3>
+      <SandboxHeader
+        exampleTitle="Review and action"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-222204&t=t0oxno4TRWZy1sJU-4">
+      </SandboxHeader>
       <Sandbox fullWidth flags={["reactive"]}>
 
         <CodeSnippet

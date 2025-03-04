@@ -18,6 +18,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { useState, useContext } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageContext } from "@components/sandbox";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 // == Page props ==
 
@@ -160,7 +161,10 @@ export default function AppFooterPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-footer-meta">Show quick links</h3>
+            <SandboxHeader
+              exampleTitle="Show quick links"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59337-151809&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
             <Sandbox skipRender fullWidth>
               <CodeSnippet
                 lang="typescript"
@@ -169,17 +173,17 @@ export default function AppFooterPage() {
                 code={`
                 <goa-app-footer maxcontentwidth="100%">
                   <goa-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
@@ -193,17 +197,17 @@ export default function AppFooterPage() {
                 code={`
                  <GoAAppFooter maxContentWidth="100%">
                   <GoAAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
@@ -212,17 +216,18 @@ export default function AppFooterPage() {
 
               <GoAAppFooter {...appFooterProps}>
                 <GoAAppFooterMetaSection>
-                  <a href="privacy.html">Privacy</a>
-                  <a href="disclaimer.html">Disclaimer</a>
-                  <a href="accessibility.html">Accessibility</a>
-                  <a href="using-alberta.html">Using Alberta.ca</a>
+                  <a href="#">Give feedback</a>
+                  <a href="#">Accessibility</a>
+                  <a href="#">Privacy</a>
+                  <a href="#">Contact us</a>
                 </GoAAppFooterMetaSection>
               </GoAAppFooter>
             </Sandbox>
 
-            <h3 id="component-example-footer-secondary-nav">
-              Show links to navigation items
-            </h3>
+            <SandboxHeader
+              exampleTitle="Show links to navigation items"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59340-67916&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
             <Sandbox
               skipRender
               properties={appFooterNavBindings}
@@ -236,48 +241,45 @@ export default function AppFooterPage() {
                 <goa-app-footer maxcontentwidth="100%">
                   <goa-app-footer-nav-section slot="nav" maxcolumncount="1">
                     <a href="a.html">
-                      Arts and culture
+                      Section A
                     </a>
                     <a href="b.html">
-                      Education and training
+                      Section B
                     </a>
                     <a href="c.html">
-                      Family and social supports
+                      Section C
                     </a>
                     <a href="d.html">
-                      Housing and community
+                      Section D
                     </a>
                     <a href="e.html">
-                      Life events
+                      Section E
                     </a>
                     <a href="f.html">
-                      Business and economy
+                      Section F
                     </a>
                     <a href="g.html">
-                      Emergencies and public safety
+                      Section G
                     </a>
                     <a href="h.html">
-                      Government
+                      Section H
                     </a>
                     <a href="i.html">
-                      Jobs and employment
-                    </a>
-                    <a href="j.html">
-                      Moving to Alberta
+                      Section I
                     </a>
                   </goa-app-footer-nav-section>
                   <goa-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
@@ -292,48 +294,45 @@ export default function AppFooterPage() {
                  <GoAAppFooter maxContentWidth="100%">
                   <GoAAppFooterNavSection maxColumnCount=1>
                     <a href="a.html">
-                      Arts and culture
+                      Section A
                     </a>
                     <a href="b.html">
-                      Education and training
+                      Section B
                     </a>
                     <a href="c.html">
-                      Family and social supports
+                      Section C
                     </a>
                     <a href="d.html">
-                      Housing and community
+                      Section D
                     </a>
                     <a href="e.html">
-                      Life events
+                      Section E
                     </a>
                     <a href="f.html">
-                      Business and economy
+                      Section F
                     </a>
                     <a href="g.html">
-                      Emergencies and public safety
+                      Section G
                     </a>
                     <a href="h.html">
-                      Government
+                      Section H
                     </a>
                     <a href="i.html">
-                      Jobs and employment
-                    </a>
-                    <a href="j.html">
-                      Moving to Alberta
+                      Section I
                     </a>
                   </GoAAppFooterNavSection>
                   <GoAAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
@@ -342,22 +341,21 @@ export default function AppFooterPage() {
 
               <GoAAppFooter {...appFooterProps}>
                 <GoAAppFooterNavSection {...appFooterNavProps}>
-                  <a href="a.html">Arts and culture</a>
-                  <a href="b.html">Education and training</a>
-                  <a href="c.html">Family and social supports</a>
-                  <a href="d.html">Housing and community</a>
-                  <a href="e.html">Life events</a>
-                  <a href="f.html">Business and economy</a>
-                  <a href="g.html">Emergencies and public safety</a>
-                  <a href="h.html">Government</a>
-                  <a href="i.html">Jobs and employment</a>
-                  <a href="j.html">Moving to Alberta</a>
+                  <a href="a.html">Section A</a>
+                  <a href="b.html">Section B</a>
+                  <a href="c.html">Section C</a>
+                  <a href="d.html">Section D</a>
+                  <a href="e.html">Section E</a>
+                  <a href="f.html">Section F</a>
+                  <a href="g.html">Section G</a>
+                  <a href="h.html">Section H</a>
+                  <a href="i.html">Section I</a>
                 </GoAAppFooterNavSection>
                 <GoAAppFooterMetaSection>
-                  <a href="privacy.html">Privacy</a>
-                  <a href="disclaimer.html">Disclaimer</a>
-                  <a href="accessibility.html">Accessibility</a>
-                  <a href="using-alberta.html">Using Alberta.ca</a>
+                  <a href="#">Give feedback</a>
+                  <a href="#">Accessibility</a>
+                  <a href="#">Privacy</a>
+                  <a href="#">Contact us</a>
                 </GoAAppFooterMetaSection>
               </GoAAppFooter>
             </Sandbox>

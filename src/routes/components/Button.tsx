@@ -9,7 +9,7 @@ import {
   GoAFormItem,
   GoAInput,
   GoATab,
-  GoATabs,
+  GoATabs, GoAText
 } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
@@ -21,6 +21,7 @@ import {
 } from "@components/component-properties/ComponentProperties";
 import ICONS from "@routes/components/icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function ButtonPage() {
   const [buttonProps, setButtonProps] = useState({});
@@ -197,10 +198,16 @@ export default function ButtonPage() {
 
 
             {/*Button Example 1*/}
-            <h3 id="component-example-ask-address">Ask a user for an address</h3>
+            <SandboxHeader
+              exampleTitle="Ask a user for an address"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=49309-572392&t=gYY0kmF8qFf0FDMC-4">
+            </SandboxHeader>
             <Sandbox flags={["reactive"]}>
               
             <GoABlock gap="xl" direction="column">
+              <GoAText size="heading-l" mt="none" mb="none">
+                What is your address?
+              </GoAText>
               <GoAFormItem label="Street Address">
                 <GoAInput name="address" type="text" value="" onChange={noop} width="100%" />
               </GoAFormItem>
@@ -245,13 +252,16 @@ export default function ButtonPage() {
             </Sandbox>
 
             {/*Button example 2*/}
-            <h3 id="component-example-confirm-action">Confirm a destructive action</h3>
+            <SandboxHeader
+              exampleTitle="Confirm a destructive action"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=49310-636036&t=gYY0kmF8qFf0FDMC-4">
+            </SandboxHeader>
             <Sandbox flags={["reactive"]}>
               <GoAModal heading="Are you sure you want to delete this record?">
-                <p>You cannot undo this action.</p>
+                <p>This action cannot be undone.</p>
 
                 <GoAButtonGroup alignment="end" mt="l">
-                  <GoAButton type="secondary" onClick={noop}>
+                  <GoAButton type="tertiary" onClick={noop}>
                     Cancel
                   </GoAButton>
                   <GoAButton type="primary" variant="destructive" onClick={noop}>
@@ -262,7 +272,9 @@ export default function ButtonPage() {
             </Sandbox>
 
             {/*Button example 3*/}
-            <h3 id="component-example-disabled-button">Disabled button with a required field</h3>
+            <SandboxHeader
+              exampleTitle="Disabled button with a required field">
+            </SandboxHeader>
             <Sandbox flags={["reactive"]}>
               <GoAFormItem label="Name" requirement="required">
                 <GoAInput name="input" type="text" value="" onChange={noop} width="100%" />

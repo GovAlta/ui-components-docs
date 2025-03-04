@@ -1,6 +1,7 @@
 import { GoAMicrositeHeader } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 const onClick = () => {
   console.log("Feedback clicked");
@@ -11,7 +12,10 @@ export default function MicrositeHeaderExamples () {
   return (
     <>
       <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-      <h3 id="component-example-feedbackclick">Custom click event handler (for feedback)</h3>
+      <SandboxHeader
+        exampleTitle="Custom click event handler on feedback link"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-53598&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
             <Sandbox skipRender fullWidth>
               <GoAMicrositeHeader type="alpha" onFeedbackClick={onClick} />
 
@@ -71,7 +75,10 @@ export default function MicrositeHeaderExamples () {
                 `}
               />
             </Sandbox>
-      <h3 id="component-example-slotted-microsite-header-version">Slotted version</h3>
+      <SandboxHeader
+        exampleTitle="Slotted content in version number"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-89757&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}
         <CodeSnippet

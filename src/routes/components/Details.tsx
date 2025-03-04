@@ -17,6 +17,7 @@ import {
   GoATabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function DetailsPage() {
   const [detailsProps, setDetailsProps] = useState({
@@ -113,10 +114,11 @@ export default function DetailsPage() {
             {/* Examples*/}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-            <h3 id="component-example-show-more-information-for-basic-question">
-              Show more information for a basic question
-            </h3>
-            <Sandbox fullWidth note="Example below: Advanced Education - Pay for my education">
+            <SandboxHeader
+              exampleTitle="Show more information to help answer a question"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48375-343145&t=t0oxno4TRWZy1sJU-4">
+            </SandboxHeader>
+            <Sandbox>
               <GoAFormItem label="Do you pay for childcare?" helpText="Examples of child care include day care, day homes, and baby-sitters.">
                 <GoARadioGroup name="pay" onChange={() => { }}>
                   <GoARadioItem label="Yes" value="yes" name="pay" />
@@ -132,11 +134,12 @@ export default function DetailsPage() {
               </GoADetails>
             </Sandbox>
 
-            <h3 id="component-example-additional-information-help">
-              Additional information to help a user understand and answer a question
-            </h3>
+            <SandboxHeader
+              exampleTitle="Show lists as more information to help answer a question"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-249585&t=t0oxno4TRWZy1sJU-4">
+            </SandboxHeader>
             <Sandbox flags={["reactive"]} fullWidth>
-              <GoAFormItem
+              <GoAFormItem mb={"m"}
                 label="Do you have additional education expense?"
                 helpText="You can request this money now or at any time during your program."
               >
@@ -146,8 +149,8 @@ export default function DetailsPage() {
                 </GoARadioGroup>
               </GoAFormItem>
 
-              <GoADetails heading="What is an additional education expense?">
-                <GoABlock gap="m" mt="m">
+              <GoADetails heading="What is considered an additional education expense?">
+                <GoABlock gap="m">
                   <div>
                     <strong>Examples of education expenses</strong>
                     <ul className="goa-unordered-list">
@@ -171,9 +174,11 @@ export default function DetailsPage() {
               </GoADetails>
             </Sandbox>
 
-            <h3 id="component-example-direct-deposit-information">
-              Show more information to help a user fill out direct deposit information
-            </h3>
+            <SandboxHeader
+              exampleTitle="Show more information to help fill out direct deposit information"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48378-361035&t=t0oxno4TRWZy1sJU-4">
+            </SandboxHeader>
+
             <Sandbox flags={["reactive"]} fullWidth>
               <h2>Direct deposit information</h2>
               <p>

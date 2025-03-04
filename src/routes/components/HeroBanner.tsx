@@ -14,6 +14,7 @@ import {
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function HeroBannerPage() {
   const [heroBannerProps, setHeroBannerProps] = useState({
@@ -176,17 +177,20 @@ export default function HeroBannerPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-actions">Hero Banner with actions</h3>
+            <SandboxHeader
+              exampleTitle="Hero Banner with actions"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59343-90410&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
             <Sandbox skipRender fullWidth>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
-                  <goa-hero-banner heading="Supporting Businesses">
-                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                  <goa-hero-banner heading="Supporting public citizens">
+                    Digital services help to support Albertan citizens receive government services.
                     <div slot="actions">
-                      <goa-button type="start" (_click)="onClick($event)">Call to action</goa-button>
+                      <goa-button type="start" (_click)="onClick($event)">Get started</goa-button>
                     </div>
                   </goa-hero-banner>
                 `}
@@ -197,21 +201,20 @@ export default function HeroBannerPage() {
                 tags="react"
                 allowCopy={true}
                 code={`
-                  <GoAHeroBanner heading="Supporting Businesses">
-                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
+                  <GoAHeroBanner heading="Supporting public citizens">
+                    Digital services help to support Albertan citizens receive government services.
                     <GoAHeroBannerActions>
-                      <GoAButton type="start" onClick={noop}>Call to action</GoAButton>
+                      <GoAButton type="start" onClick={noop}>Get started</GoAButton>
                     </GoAHeroBannerActions>
                   </GoAHeroBanner>
                 `}
               />
 
-              <GoAHeroBanner heading="Supporting Businesses">
-                Resources are available to help Alberta entrepreneurs and small businesses start,
-                grow and succeed.
+              <GoAHeroBanner heading="Supporting public citizens">
+                Digital services help to support Albertan citizens receive government services.
                 <GoAHeroBannerActions>
                   <GoAButton type="start" onClick={noop}>
-                    Call to action
+                    Get started
                   </GoAButton>
                 </GoAHeroBannerActions>
               </GoAHeroBanner>

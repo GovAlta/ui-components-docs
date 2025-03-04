@@ -21,6 +21,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 const componentName = "Form Stepper";
 const description = "Provides a visual representation of a form through a series of steps.";
@@ -207,7 +208,10 @@ export default function FormStepperPage() {
               Examples
             </h2>
             {/*Example 1*/}
-            <h3 id="component-example-controlled-navigation">Controlled Navigation</h3>
+            <SandboxHeader
+              exampleTitle="Controlled Navigation"
+              figmaExample="">
+            </SandboxHeader>
             <p>
               The user needs to partially or completely finish a step to be able to move forward to
               the next step. In this case:
@@ -336,9 +340,12 @@ export default function FormStepperPage() {
             </Sandbox>
 
             {/*Example 2*/}
-            <h3 id="component-example-step-status">Step status</h3>
-            The status of each step can be configured to either “complete” or “incomplete” using the
-            status property.
+            <SandboxHeader
+              exampleTitle="Step status"
+              figmaExample="">
+            </SandboxHeader>
+            <p>The status of each step can be configured to either “complete” or “incomplete” using the
+              status property.</p>
 
             <Sandbox fullWidth skipRender allow={["div"]}>
               <CodeSnippet

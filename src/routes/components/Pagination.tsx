@@ -20,6 +20,7 @@ import { faker } from "@faker-js/faker";
 import { useEffect, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 type ComponentPropsType = Omit<GoAPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
@@ -463,7 +464,10 @@ export default function PaginationPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-1">Show X per page</h3>
+            <SandboxHeader
+              exampleTitle="Show # results per page"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-205485&t=Wf1wBO6G2hAdODG8-4">
+            </SandboxHeader>
 
             <Sandbox
               flags={["reactive"]}

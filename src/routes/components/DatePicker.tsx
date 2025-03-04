@@ -19,6 +19,7 @@ import {
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 // == Page props ==
 
@@ -211,7 +212,9 @@ export default function DatePickerPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-1">Reset example</h3>
+            <SandboxHeader
+              exampleTitle="Reset example">
+            </SandboxHeader>
             <Sandbox fullWidth skipRender onChange={onSandboxChange} flags={["reactive"]}>
               <CodeSnippet
                 tags="react"
