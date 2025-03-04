@@ -18,6 +18,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 // Page props
 const componentName = "Filter Chip";
@@ -161,7 +162,10 @@ export default function FilterChipPage() {
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
 
-            <h3 id="component-example-delete">Delete Event</h3>
+            <SandboxHeader
+              exampleTitle="Remove a filter"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59337-137782&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
             <Sandbox skipRender>
               {chips.map(chip => (
                 <GoAFilterChip key={chip} content={chip} onClick={() => deleteChip(chip)} mr="s" />
@@ -224,7 +228,9 @@ export default function FilterChipPage() {
               />
             </Sandbox>
 
-            <h3 id="component-interactive">Interactive Example</h3>
+            <SandboxHeader
+              exampleTitle="Add a filter chip">
+            </SandboxHeader>
             <Sandbox skipRender>
               {activeFilters.map(filter => (
                 <GoAFilterChip
@@ -325,8 +331,11 @@ export default function FilterChipPage() {
               />
             </Sandbox>
 
-            <h3 id="component-typed">Typed Chips Example</h3>
-            <GoAContainer mb="none">
+            <SandboxHeader
+              exampleTitle="Type to create a new filter chip"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59337-138323&t=qwG1ZYADxjr1MeEq-4">
+            </SandboxHeader>
+            <GoAContainer  mt="m" mb="none">
               <div
                 className="chip-input-wrapper"
                 style={{

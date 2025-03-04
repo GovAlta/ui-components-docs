@@ -15,6 +15,7 @@ import {
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./modal-examples.css";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function ModalExamples() {
   // hooks
@@ -56,7 +57,10 @@ export default function ModalExamples() {
       <h2 id="component-examples" className="hidden" aria-hidden="true">
         Examples
       </h2>
-      <h3 id="component-example-basic">Basic Modal</h3>
+      <SandboxHeader
+        exampleTitle="Basic Modal"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-105032&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       <Sandbox skipRender>
         <GoAButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoAButton>
         <GoAModal
@@ -142,7 +146,10 @@ export default function ModalExamples() {
         />
       </Sandbox>
 
-      <h3 id="component-example-destructive">Confirm a destructive action</h3>
+      <SandboxHeader
+        exampleTitle="Confirm a destructive action"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48478-52424&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       <Sandbox skipRender>
         <GoAButton
           type="tertiary"
@@ -237,7 +244,10 @@ export default function ModalExamples() {
         />
       </Sandbox>
 
-      <h3 id="component-example-warning">Warn a user of a deadline</h3>
+      <SandboxHeader
+        exampleTitle="Warn a user of a deadline"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48478-52430&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       <Sandbox skipRender>
         <GoAButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
           Save for later
@@ -325,9 +335,12 @@ export default function ModalExamples() {
         />
       </Sandbox>
 
-      <h3 id="component-example-with-input">Confirm record change</h3>
+      <SandboxHeader
+        exampleTitle="Confirm record change"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48478-52426&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       {/*Don't use a Sandbox because Datepicker inside a modal will make the modal shifts everytime we click on datepicker*/}
-      <GoAContainer mt="m" mb="none">
+      <GoAContainer mt="s" mb="none">
         <GoAButtonGroup alignment="center">
           <GoAButton onClick={() => setInputModalOpen(true)}>Save and continue</GoAButton>
         </GoAButtonGroup>
@@ -498,7 +511,10 @@ export default function ModalExamples() {
         </>
       )}
 
-      <h3 id="component-example-add-item">Add another item</h3>
+      <SandboxHeader
+        exampleTitle="Add another item"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48478-52428&t=Wf1wBO6G2hAdODG8-4">
+      </SandboxHeader>
       {/*Don't use a Sandbox because the Dropdown inside a modal will make the modal shifts everytime we tab from the dropdown*/}
       <GoAContainer mt="m" mb="none">
         <GoAButtonGroup alignment="center">
@@ -521,20 +537,20 @@ export default function ModalExamples() {
               </GoAButton>
             </GoAButtonGroup>
           }>
-          <p>Fill in the information to create a new item</p>
-          <GoAFormItem label="Type" mt="xs">
+          <p>Fill in the information below to create a new item.</p>
+          <GoAFormItem label="Type" mt="l">
             <GoADropdown onChange={onChangeType} value={type}>
               <GoADropdownItem value="1" label="Option 1"></GoADropdownItem>
               <GoADropdownItem value="2" label="Option 2"></GoADropdownItem>
             </GoADropdown>
           </GoAFormItem>
-          <GoAFormItem label="Name" mt="xs">
-            <GoAInput onChange={onChangeName} value={name} name="name"></GoAInput>
+          <GoAFormItem label="Name" mt="xl">
+            <GoAInput onChange={onChangeName} value={name} name="name" width="100%"></GoAInput>
           </GoAFormItem>
-          <GoAFormItem label="Description" mt="xs">
+          <GoAFormItem label="Description" mt="xl">
             <GoATextArea
               name="description"
-              width="80%"
+              width="100%"
               rows={2}
               onChange={onChangeDescription}
               value={description}></GoATextArea>
@@ -582,18 +598,18 @@ export default function ModalExamples() {
                   <goa-button type="tertiary" leadingicon="add" (_click)="toggleModal()">Add another item</goa-button>
                   <goa-modal [open]="open" role="dialog"
                     (_close)="toggleModal()" heading="Add a new item">
-                    <p>Fill in the information to create a new item</p>
-                    <goa-form-item label="Type" mt="xs">
+                    <p>Fill in the information below to create a new item.</p>
+                    <goa-form-item label="Type" mt="l">
                       <goa-dropdown (_change)="updateType($event)" [value]="type">
                         <goa-dropdown-item value="1" label="Option 1"></goa-dropdown-item>
                         <goa-dropdown-item value="2" label="Option 2"></goa-dropdown-item>
                       </goa-dropdown>
                     </goa-form-item>
-                    <goa-form-item label="Name" mt="xs">
-                      <goa-input name="name" (_change)="updateName($event)" [value]="name"></goa-input>
+                    <goa-form-item label="Name" mt="xl">
+                      <goa-input name="name" (_change)="updateName($event)" [value]="name" width="100%"></goa-input>
                     </goa-form-item>
-                    <goa-form-item label="Description" mt="xs">
-                      <goa-textarea name="description" width="80%" [rows]="2" (_change)="updateDescription($event)" [value]="description"></goa-textarea>
+                    <goa-form-item label="Description" mt="xl">
+                      <goa-textarea name="description" width="100%" [rows]="2" (_change)="updateDescription($event)" [value]="description"></goa-textarea>
                     </goa-form-item>
                     <div slot="actions">
                         <goa-button-group alignment="end">
@@ -655,18 +671,18 @@ export default function ModalExamples() {
                         </GoAButton>
                       </GoAButtonGroup>
                     }>
-                      <p>Fill in the information to create a new item</p>
-                      <GoAFormItem label="Type" mt="xs">
+                      <p>Fill in the information below to create a new item.</p>
+                      <GoAFormItem label="Type" mt="l">
                         <GoADropdown onChange={onChangeType} value={type}>
                           <GoADropdownItem value="1" label="Option 1"></GoADropdownItem>
                           <GoADropdownItem value="2" label="Option 2"></GoADropdownItem>
                         </GoADropdown>
                       </GoAFormItem>
-                      <GoAFormItem label="Name" mt="xs">
+                      <GoAFormItem label="Name" mt="xl" width="100%">
                         <GoAInput onChange={onChangeName} value={name} name="name"></GoAInput>
                       </GoAFormItem>
-                      <GoAFormItem label="Description" mt="xs">
-                        <GoATextArea name="description" width="80%" rows={2} onChange={onChangeDescription} value={description}></GoATextArea>
+                      <GoAFormItem label="Description" mt="xl">
+                        <GoATextArea name="description" width="100%" rows={2} onChange={onChangeDescription} value={description}></GoATextArea>
                       </GoAFormItem>
                    </GoAModal>
                 `}
@@ -674,7 +690,10 @@ export default function ModalExamples() {
         </>
       )}
 
-      <h3 id="component-example-route-change">Route changes</h3>
+      <SandboxHeader
+        exampleTitle="Route changes"
+        figmaExample="">
+      </SandboxHeader>
       <Sandbox skipRender>
         <CodeSnippet
           lang="typescript"

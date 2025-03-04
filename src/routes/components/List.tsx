@@ -4,6 +4,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function ListPage() {
   const language = useContext(LanguageContext);
@@ -140,7 +141,10 @@ export default function ListPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-unordered-list">Unordered list</h3>
+            <SandboxHeader
+              exampleTitle="Unordered list"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21567-616878&t=Wf1wBO6G2hAdODG8-4">
+            </SandboxHeader>
             <GoAContainer mt="m">
               <ul className="goa-unordered-list">
                 <li>Milk</li>

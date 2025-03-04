@@ -20,6 +20,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 // == Page props ==
 
@@ -328,33 +329,34 @@ export default function TextAreaPage() {
               Examples
             </h2>
 
-            <h3 id="component-example-1">Ask a question and give more information</h3>
+            <SandboxHeader
+              exampleTitle="Ask a question and give more information"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59438-365706&t=YS5cB4ZPTMCePF1W-4">
+            </SandboxHeader>
             <Sandbox flags={["reactive"]} fullWidth>
               <GoAContainer>
                 <GoAButton type="tertiary" leadingIcon="arrow-back" mb="m">
                   Back
                 </GoAButton>
 
-                <h2>Description</h2>
+                <h2>Submit a question about your benefits</h2>
                 <p>
-                  List all components and include a description, including the number of hours for
-                  each.
+                  If you need clarification about your benefit eligibility, payment schedule, or application status, submit your question here.
                 </p>
 
-                <GoAFormItem
-                  label="Program outline"
-                  helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-                  <GoATextArea name="program" value="Input text" onChange={noop} />
+                <GoAFormItem mt="l"
+                  label="Provide details about your situation"
+                  helpText="Include specific details to help us answer your question quickly.">
+                  <GoATextArea name="details" value="Input text" onChange={noop} />
                 </GoAFormItem>
 
-                <GoADetails heading="How to write a good outline">
+                <GoADetails heading="What kind of information is useful?" mt="m">
                   <p>
-                    Break down your outline into easily digestible sections. This can help to ensure
-                    that the document is well-organized and easy to navigate.
+                    Include your benefit program name, mention any recent correspondence you received and/or provide any relevant case or reference numbers.
                   </p>
                 </GoADetails>
 
-                <GoAButtonGroup alignment="start" mt="l">
+                <GoAButtonGroup alignment="start" mt="xl">
                   <GoAButton type="primary" onClick={noop}>
                     Continue
                   </GoAButton>

@@ -8,6 +8,7 @@ import {
   GoAInput,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 export default function TextFieldExamples() {
   const noop = () => {};
@@ -18,7 +19,10 @@ export default function TextFieldExamples() {
         Examples
       </h2>
 
-      <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for an address"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=1896-179607&t=gudxswuMJeXtXLSk-4">
+      </SandboxHeader>
       <Sandbox flags={["reactive"]}>
         <GoAFormItem label="Street Address">
           <GoAInput name="address" type="text" value="" onChange={noop} width="100%" mb="xl" />
@@ -52,21 +56,16 @@ export default function TextFieldExamples() {
         </GoABlock>
       </Sandbox>
 
-      <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for their birthday"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=1896-179613&t=gudxswuMJeXtXLSk-4">
+      </SandboxHeader>
       <Sandbox flags={["reactive"]}>
         <GoAFormItem
           label="What is your date of birth?"
           labelSize="large"
-          helpText={"For example, 27 November 2004"}>
+          helpText={"For example, February 27 1992"}>
           <GoABlock gap="m" direction="row">
-            <GoAFormItem label="Day">
-              <GoAInput
-                onChange={noop}
-                value=""
-                name="day"
-                width="6ch"
-              />
-            </GoAFormItem>
             <GoAFormItem label="Month">
             <GoADropdown onChange={noop} name="month" value="">
               <GoADropdownItem label="January" value="January" />
@@ -83,6 +82,14 @@ export default function TextFieldExamples() {
               <GoADropdownItem label="December" value="December" />
             </GoADropdown>
             </GoAFormItem>
+            <GoAFormItem label="Day">
+              <GoAInput
+                onChange={noop}
+                value=""
+                name="day"
+                width="6ch"
+              />
+            </GoAFormItem>
             <GoAFormItem label="Year">
               <GoAInput
                 onChange={noop}
@@ -95,7 +102,10 @@ export default function TextFieldExamples() {
         </GoAFormItem>
       </Sandbox>
 
-      <h3 id="component-example-search">Search</h3>
+      <SandboxHeader
+        exampleTitle="Search"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=9955-382204&t=zdjvkbCYoRqEkVKK-4">
+      </SandboxHeader>
       <Sandbox flags={["reactive"]}>
         <GoABlock gap="xs" direction="row">
           <GoAInput type="search" name="search" value="" onChange={noop} leadingIcon="search" />
@@ -105,7 +115,10 @@ export default function TextFieldExamples() {
         </GoABlock>
       </Sandbox>
 
-      <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for dollar amounts or costs"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59348-51757&t=zdjvkbCYoRqEkVKK-4">
+      </SandboxHeader>
       <Sandbox flags={["reactive"]} skipRender>
         {/*Angular Code Snippet - need for leadingContent slot*/}
         <CodeSnippet
@@ -241,9 +254,10 @@ export default function TextFieldExamples() {
         </GoAFormItem>
       </Sandbox>
 
-      <h3 id="component-example-registration-number">
-        Ask a user for their indian registration number
-      </h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for an indian registration number"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=1896-179631&t=gudxswuMJeXtXLSk-4">
+      </SandboxHeader>
       <Sandbox flags={["reactive"]}>
         <GoAFormItem label="Indian registration number" labelSize="large">
           <GoABlock gap="m" direction="row">

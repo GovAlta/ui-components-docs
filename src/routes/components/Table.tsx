@@ -17,6 +17,7 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { GoATableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 interface User {
   firstName: string;
@@ -198,7 +199,10 @@ export default function TablePage() {
             <ComponentProperties properties={componentProperties} />
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-            <h3 id="component-example-sortable-columns">Sortable columns</h3>
+            <SandboxHeader
+              exampleTitle="Sortable columns"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-221891&t=Mb3UBXNCM9iwb3lq-4">
+            </SandboxHeader>
             <GoAContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
                 <GoATable onSort={sortData} width="100%">
@@ -383,26 +387,39 @@ export default function TablePage() {
               />
             )}
 
-            <h3 id="component-example-number-column">Number column</h3>
+            <SandboxHeader
+              exampleTitle="Number column"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-222483&t=YS5cB4ZPTMCePF1W-4">
+            </SandboxHeader>
             <Sandbox fullWidth>
               <GoATable width="100%">
                 <thead>
                   <tr>
-                    <th>Col 1</th>
-                    <th>Col 2</th>
+                    <th>Text column 1</th>
+                    <th>Text column 1</th>
                     <th className="goa-table-number-header">Number Column</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Item 1</td>
-                    <td>Item 2</td>
-                    <td className="goa-table-number-column">54</td>
+                    <td>Christian</td>
+                    <td>Batz</td>
+                    <td className="goa-table-number-column">54356456</td>
                   </tr>
                   <tr>
-                    <td>Item 1</td>
-                    <td>Item 2</td>
-                    <td className="goa-table-number-column">4567</td>
+                    <td>Brain</td>
+                    <td>Wisozk</td>
+                    <td className="goa-table-number-column">23212321</td>
+                  </tr>
+                  <tr>
+                    <td>Neha</td>
+                    <td>Jones</td>
+                    <td className="goa-table-number-column">23197213</td>
+                  </tr>
+                  <tr>
+                    <td>Tristan</td>
+                    <td>Buckridge</td>
+                    <td className="goa-table-number-column">76312313</td>
                   </tr>
                 </tbody>
               </GoATable>

@@ -17,6 +17,7 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import ICONS from "./icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 const componentName = "Icon button";
 const description = "A compact button with an icon and no text.";
@@ -175,7 +176,10 @@ export default function IconButtonPage() {
             {/* Examples */}
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-            <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
+            <SandboxHeader
+              exampleTitle="Show multiple actions in a table"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59347-151192&t=zdjvkbCYoRqEkVKK-4">
+            </SandboxHeader>
             <Sandbox fullWidth>
               <GoATable width="100%">
                 <thead>

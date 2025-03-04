@@ -14,6 +14,7 @@ import {
 } from "@abgov/react-components";
 import { LanguageContext } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { SandboxHeader } from "@components/sandbox/sandboxHeader.tsx";
 
 type Task = {
   value: string;
@@ -89,7 +90,9 @@ export const DropdownExamples = () => {
       <h2 id="component-examples" className="hidden" aria-hidden="true">
         Examples
       </h2>
-      <h3 id="component-example-with-mount-type">Dynamically add an item to a dropdown list</h3>
+      <SandboxHeader
+        exampleTitle="Dynamically add an item to a dropdown list">
+      </SandboxHeader>
       <GoAContainer mt="m" mb="none">
         <div style={{ padding: "40px" }}>
           <GoAFormItem
@@ -390,10 +393,11 @@ export const DropdownExamples = () => {
       {/* ---------------------------------------- */}
       {/* Parent child edge case */}
       {/* ---------------------------------------- */}
-      <h3 id="component-parent-child-common-items" style={{ marginTop: "48px" }}>
-        Dynamically change items in a dropdown
-      </h3>
-      <GoAContainer>
+
+      <SandboxHeader
+        exampleTitle="Dynamically change items in a dropdown">
+      </SandboxHeader>
+      <GoAContainer  mt="m" mb="none">
         <div style={{ padding: "40px" }}>
           <GoAFormItem
             label="Size"
