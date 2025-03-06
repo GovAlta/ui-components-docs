@@ -453,7 +453,6 @@ const AllComponents = () => {
       },
     ];
 
-
     return initialCards.sort((a, b) => {
       const statusOrder = ["Published", "In Progress", "Not Published"];
       const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);

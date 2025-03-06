@@ -56,6 +56,7 @@ import SpacerPage from "@routes/components/Spacer";
 import TablePage from "@routes/components/Table";
 import TabsPage from "@routes/components/Tabs.tsx";
 import TooltipPage from "@routes/components/Tooltip";
+import TextPage from "@routes/components/Text";
 import TextFieldPage from "@routes/components/TextField";
 import TextAreaPage from "@routes/components/TextArea";
 import MicrositeHeaderPage from "@routes/components/MicrositeHeader";
@@ -175,6 +176,7 @@ const router = createBrowserRouter(
         <Route path="spacer" element={<SpacerPage />} />
         <Route path="table" element={<TablePage />} />
         <Route path="tabs" element={<TabsPage />} />
+        <Route path="text" element={<TextPage />} />
         <Route path="text-area" element={<TextAreaPage />} />
         <Route path="tooltip" element={<TooltipPage />} />
         <Route path="text-field" element={<TextFieldPage />} />
