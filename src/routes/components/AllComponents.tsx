@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useEffect, useState } from "react";
 import {
   GoATable,
   GoATableSortHeader,
@@ -14,12 +14,8 @@ import { ComponentCard, Props as ComponentProps } from "@components/component-ca
 
 const AllComponents = () => {
   const [filter, setFilter] = useState<string>("");
-
-// Store issue counts
-  const [issueCounts] = useState<Record<string, number>>({});
-
+  const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
   const [cards, setCards] = useState<ComponentProps[]>(() => {
-    // Initial data
     const initialCards: ComponentProps[] = [
       {
         name: "accordion",
@@ -435,7 +431,7 @@ const AllComponents = () => {
         status: "Not Published",
       },
       {
-        name: "Temporary notfication",
+        name: "Temporary notification",
         groups: ["Feedback and alerts"],
         tags: ["Snackbar", "Toast", "Temporary notification"],
         description: "Planned for development",
@@ -457,21 +453,19 @@ const AllComponents = () => {
       },
     ];
 
-    // Pre-sort data by Status (primary) and Name (secondary)
+
     return initialCards.sort((a, b) => {
-      const statusOrder = ["Published", "In Progress", "Not Published"]; // Updated order
+      const statusOrder = ["Published", "In Progress", "Not Published"];
       const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
-      if (statusComparison !== 0) return statusComparison; // Primary sort by Status
-      return a.name.localeCompare(b.name); // Secondary sort by Name
+      if (statusComparison !== 0) return statusComparison;
+      return a.name.localeCompare(b.name);
     });
   });
-
   const [sortDirection, setSortDirection] = useState<{ [key: string]: number }>({
-    status: -1, // Default sort by status
-    name: 1, // Secondary sort by name
+    status: -1,
+    name: 1,
   });
 
-  // Filtered cards based on the filter input
   const filteredCards = cards.filter((card) => {
     const filterLowerCase = filter.toLowerCase();
     const nameMatches = card.name.toLowerCase().includes(filterLowerCase);
@@ -479,173 +473,205 @@ const AllComponents = () => {
     return !filter || nameMatches || tagsMatch;
   });
 
-  // Sort the data dynamically when headers are clicked
   const sortData = (sortBy: string) => {
     const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
-
     const sorted = [...cards].sort((a, b) => {
       if (sortBy === "status") {
-        const statusOrder = ["Published", "In Progress", "Not Published"]; // Updated order
-        const statusComparison =
-            statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
+        const statusOrder = ["Published", "In Progress", "Not Published"];
+        const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
         if (statusComparison !== 0) return statusComparison * newDirection;
       }
-
       const aValue =
-          sortBy === "name"
-              ? a.name.toLowerCase()
-            // @ts-ignore
-              : Array.isArray(a[sortBy])
-              // @ts-ignore
-                  ? a[sortBy][0]
-              // @ts-ignore
-                  : a[sortBy];
+        sortBy === "name"
+          ? a.name.toLowerCase()
+          : Array.isArray(a[sortBy])
+            ? a[sortBy][0]
+            : a[sortBy];
       const bValue =
-          sortBy === "name"
-              ? b.name.toLowerCase()
-            // @ts-ignore
-              : Array.isArray(b[sortBy])
-              // @ts-ignore
-                  ? b[sortBy][0]
-              // @ts-ignore
-                  : b[sortBy];
+        sortBy === "name"
+          ? b.name.toLowerCase()
+          : Array.isArray(b[sortBy])
+            ? b[sortBy][0]
+            : b[sortBy];
 
       if (aValue > bValue) return newDirection;
       if (aValue < bValue) return -newDirection;
       return 0;
     });
-
     setCards(sorted);
     setSortDirection({ [sortBy]: newDirection });
   };
 
-  // Capitalize component name
+  // Helper to convert to sentence case
   const toSentenceCase = (str: string) => {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 
-  // Get badge type
-  const getBadgeType = (status: string) => {
-    switch (status) {
-      case "Published":
-        return "success";
-      case "In Progress":
-        return "important";
-      case "Not Published":
-        return "information";
-      default:
-        return "information"; // Fallback badge type
-    }
+  // Helper to format the label query for REST URLs
+  const getLabelQuery = (name: string) => {
+    const formatted = toSentenceCase(name);
+    return formatted.includes(" ") ? `"${formatted}"` : formatted;
   };
 
-  // Render the table
+  // Helper to format the label query for GraphQL (escaping inner quotes)
+  const getGraphQLLabelQuery = (name: string) => {
+    const formatted = toSentenceCase(name);
+    return formatted.includes(" ") ? `\\"${formatted}\\"` : formatted;
+  };
+
+  useEffect(() => {
+    const fetchIssueCountsGraphQL = async () => {
+      const token =
+        import.meta.env.VITE_GITHUB_TOKEN ||
+        import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
+      if (!token) {
+        console.error("GitHub token not provided");
+        return;
+      }
+
+      // Build a single GraphQL query for all cards
+      const queryFields = cards.map((card) => {
+        const alias = card.name.replace(/\s+/g, "").toLowerCase();
+        const labelQuery = getGraphQLLabelQuery(card.name);
+        return `${alias}: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) { issueCount }`;
+      }).join("\n");
+
+      const graphQLQuery = `
+        query {
+          ${queryFields}
+        }
+      `;
+
+      try {
+        const response = await fetch("https://api.github.com/graphql", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ query: graphQLQuery }),
+        });
+
+        const result = await response.json();
+        if (result.errors) {
+          console.error("GraphQL errors:", result.errors);
+          return;
+        }
+
+        const newIssueCounts: Record<string, number> = {};
+        cards.forEach((card) => {
+          const alias = card.name.replace(/\s+/g, "").toLowerCase();
+          newIssueCounts[card.name] =
+            result.data[alias] && result.data[alias].issueCount
+              ? result.data[alias].issueCount
+              : 0;
+        });
+
+        setIssueCounts(newIssueCounts);
+      } catch (error) {
+        console.error("Error fetching issue counts:", error);
+      }
+    };
+
+    fetchIssueCountsGraphQL();
+  }, [cards]);
+
   const renderTable = () => (
-      <GoATable width="100%" onSort={sortData}>
-        <thead>
-        <tr>
-          <th>
-            <GoATableSortHeader
-                name="status"
-                direction={sortDirection.status === -1 ? "asc" : "desc"}
-              // @ts-ignore
-                onClick={() => sortData("status")}
+    <GoATable width="100%" onSort={sortData}>
+      <thead>
+      <tr>
+        <th>
+          <GoATableSortHeader
+            name="status"
+            direction={sortDirection.status === -1 ? "asc" : "desc"}
+            onClick={() => sortData("status")}
+          >
+            Status
+          </GoATableSortHeader>
+        </th>
+        <th>
+          <GoATableSortHeader name="name" onClick={() => sortData("name")}>
+            Name
+          </GoATableSortHeader>
+        </th>
+        <th>
+          <GoATableSortHeader name="groups" onClick={() => sortData("groups")}>
+            Category
+          </GoATableSortHeader>
+        </th>
+        <th style={{ width: "130px", minWidth: "130px" }}>Open issues</th>
+      </tr>
+      </thead>
+      <tbody>
+      {filteredCards.map((card) => (
+        <tr key={card.name}>
+          <td style={{ width: "100px" }}>
+            <GoABadge type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"} content={card.status} />
+          </td>
+          <td>
+            {card.status === "Published" ? (
+              <a href={`/components/${card.name.toLowerCase()}`}>
+                {toSentenceCase(card.name)}
+              </a>
+            ) : (
+              <span>{toSentenceCase(card.name)}</span>
+            )}
+          </td>
+          <td>{card.groups.join(", ")}</td>
+          <td style={{ minWidth: "135px", maxWidth: "170px" }}>
+            <a
+              href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Status
-            </GoATableSortHeader>
-          </th>
-          <th>
-            <GoATableSortHeader name="name"
-              // @ts-ignore
-                                onClick={() => sortData("name")}>
-              Name
-            </GoATableSortHeader>
-          </th>
-
-          <th>
-            <GoATableSortHeader name="groups"
-              // @ts-ignore
-                                onClick={() => sortData("groups")}>
-              Category
-            </GoATableSortHeader>
-          </th>
-
-          <th style={{ width: "130px", minWidth: "130px" }}>Open issues</th>
+              View
+              {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
+            </a>
+          </td>
         </tr>
-        </thead>
-        <tbody>
-        {filteredCards.map((card) => (
-            <tr key={card.name}>
-              <td style={{ width: "100px" }}>
-                <GoABadge type={getBadgeType(card.status)} content={card.status} />
-              </td>
-              <td>
-                {card.status === "Published" ? (
-                    <a href={`/components/${card.name.toLowerCase()}`}>
-                      {toSentenceCase(card.name)}
-                    </a>
-                ) : (
-                    <span>{toSentenceCase(card.name)}</span>
-                )}
-              </td>
-
-              <td>{card.groups.join(", ")}</td>
-
-              <td style={{ minWidth: "130px", maxWidth: "170px" }}>
-                <a
-                    href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(
-                        toSentenceCase(card.name)
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                  View
-                  {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
-                </a>
-              </td>
-            </tr>
-        ))}
-        </tbody>
-      </GoATable>
+      ))}
+      </tbody>
+    </GoATable>
   );
 
   return (
-      <div>
-        <GoAText size="heading-xl" mt="xl">
-          Components
-        </GoAText>
-        <GoAText size="body-l" mt="m" mb="l">
-          Components are reusable parts of the user interface that have been made to support a variety
-          of applications. You can use individual components in many different patterns and contexts.
-        </GoAText>
+    <div>
+      <GoAText size="heading-xl" mt="xl">
+        Components
+      </GoAText>
+      <GoAText size="body-l" mt="m" mb="l">
+        Components are reusable parts of the user interface that have been made to support a variety of applications. You can use individual components in many different patterns and contexts.
+      </GoAText>
 
-        <GoAFormItem helpText="Search by keyword, category, or name" mb="xl">
-          <GoAInput
-              leadingIcon="search"
-              name="filter"
-              type="text"
-              value={filter}
-              width="100%"
-              onChange={(_name, value) => setFilter(value)}
-          />
-        </GoAFormItem>
+      <GoAFormItem helpText="Search by keyword, category, or name" mb="xl">
+        <GoAInput
+          leadingIcon="search"
+          name="filter"
+          type="text"
+          value={filter}
+          width="100%"
+          onChange={(_name, value) => setFilter(value)}
+        />
+      </GoAFormItem>
 
-        <GoATabs>
-          <GoATab heading="Cards">
-            <GoAGrid minChildWidth="15rem" gap="xl">
-              {filteredCards.map((card) => (
-                  <ComponentCard
-                      key={card.name}
-                      name={card.name}
-                      groups={card.groups}
-                      description={card.description}
-                      status={card.status}
-                  />
-              ))}
-            </GoAGrid>
-          </GoATab>
-          <GoATab heading="List">{renderTable()}</GoATab>
-        </GoATabs>
-      </div>
+      <GoATabs>
+        <GoATab heading="Cards">
+          <GoAGrid minChildWidth="15rem" gap="xl">
+            {filteredCards.map((card) => (
+              <ComponentCard
+                key={card.name}
+                name={card.name}
+                groups={card.groups}
+                description={card.description}
+                status={card.status}
+                githubLink={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
+              />
+            ))}
+          </GoAGrid>
+        </GoATab>
+        <GoATab heading="List">{renderTable()}</GoATab>
+      </GoATabs>
+    </div>
   );
 };
 

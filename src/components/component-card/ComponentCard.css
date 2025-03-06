@@ -23,3 +23,9 @@
   display: block;
   margin-bottom: 1rem;
 }
+
+.card-content a.github-link {
+  font: var(--goa-typography-body-s);
+  margin-top: 1rem;
+  margin-bottom: 0;
+}

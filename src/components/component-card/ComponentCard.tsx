@@ -17,6 +17,7 @@ export interface Props {
     groups: Group[]; // Use the Group type here
     tags?: string[];
     status: "Published" | "Not Published" | "In Progress";
+    githubLink?: string;
 }
 
 function dasherize(value: string): string {
@@ -65,8 +66,22 @@ export function ComponentCard(props: Props) {
                 <GoAText size="body-m" mt="none" mb="none">
                     {props.description}
                 </GoAText>
+                {props.status !== "Published" && props.githubLink && (
+                  <GoAText size="body-s">
+                      <a
+                        className="github-link"
+                        href={props.githubLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                          Github issue
+                      </a>
+                  </GoAText>
+                )}
                 {/* Conditionally render the badge */}
                 {badgeType && <GoABadge mt="m" type={badgeType} content={props.status} />}
+
+
             </div>
         </div>
     );
