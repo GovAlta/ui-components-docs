@@ -48,13 +48,13 @@ export default function Root() {
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns</Link>
             <Link to="/components">Components</Link>
-            <Link to="/design-tokens">Styles</Link>
+            <Link to="/design-tokens">Tokens</Link>
             <Link to="/content/capitalization">Content</Link>
-            <Link to="/get-started/support">Support</Link>
+            <a href="/get-started/support" className="interactive">Get support</a>
           </GoAAppHeader>
         </section>
 
-        <Outlet />
+        <Outlet/>
 
         <section slot="footer">
           <GoAAppFooter maxContentWidth={MAX_CONTENT_WIDTH}>
