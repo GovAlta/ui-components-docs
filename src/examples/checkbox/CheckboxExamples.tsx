@@ -44,6 +44,7 @@ export default function CheckboxExamples () {
               </goab-form-item>
             `}
         />}
+
         {/*React*/}
         {version === "old" && <CodeSnippet
         lang="typescript"

@@ -12,7 +12,7 @@ export const ANGULAR_VERSIONS = {
 }
 export const REACT_VERSIONS = {
   OLD: {
-    label: "v5.4.1(lts)",
+    label: "v5.4.1 (lts)",
     value: "old"
   },
   NEW: {

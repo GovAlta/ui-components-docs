@@ -102,9 +102,11 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     const currentPrefix = "Goab";
     const oldPrefix = "goa";
     const tail = name.replace(currentPrefix, "");
+
     if (this.version === "old") {
       return `${oldPrefix}-${this.dasherize(tail)}`;
     }
+
     return `${currentPrefix.toLowerCase()}-${this.dasherize(tail)}`;
   }
 

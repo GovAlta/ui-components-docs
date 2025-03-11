@@ -54,17 +54,18 @@ import ReviewPage from "@routes/patterns/ReviewPage.tsx";
 import ResultPage from "@routes/patterns/ResultPage.tsx";
 import SimpleFormPage from "@routes/patterns/SimpleFormPage.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
+import TextPage from "@routes/components/Text.tsx";
 
 const ComponentRoute: React.FC<{
-  componentPaths: Record<string, React.ReactElement>;
-}> = ({ componentPaths }: { componentPaths: Record<string, React.ReactElement> }) => {
+  versionedPaths: Record<string, React.ReactElement>;
+}> = ({ versionedPaths }: { versionedPaths: Record<string, React.ReactElement> }) => {
   const { component } = useParams<{ component: string }>();
-  return componentPaths[component as keyof typeof componentPaths] || <ComponentNotFoundPage />;
+  return versionedPaths[component as keyof typeof versionedPaths] || <ComponentNotFoundPage />;
 };
 
 const VersionedComponentRoute: React.FC<{
-  componentPaths: Record<string, React.ReactElement>;
-}> = ({ componentPaths }: { componentPaths: Record<string, React.ReactElement> }) => {
+  versionedPaths: Record<string, React.ReactElement>;
+}> = ({ versionedPaths }: { versionedPaths: Record<string, React.ReactElement> }) => {
   const { version, component } = useParams<{ version: string; component: string }>();
   if (!version || !component) {
     return <ComponentNotFoundPage />;
@@ -74,11 +75,11 @@ const VersionedComponentRoute: React.FC<{
     return <ComponentNotFoundPage />;
   }
 
-  const getComponent = (componentName: keyof typeof componentPaths) => {
-    return componentPaths[componentName] || <ComponentNotFoundPage />;
+  const getReactPage = (componentName: keyof typeof versionedPaths) => {
+    return versionedPaths[componentName] || <ComponentNotFoundPage />;
   };
 
-  return getComponent(component as keyof typeof componentPaths);
+  return getReactPage(component as keyof typeof versionedPaths);
 };
 
 export const ComponentsRouter = () => {
@@ -117,6 +118,7 @@ export const ComponentsRouter = () => {
     "spacer": <SpacerPage />,
     "table": <TablePage />,
     "tabs": <TabsPage />,
+    "text": <TextPage/>,
     "text-area": <TextAreaPage />,
     "tooltip": <TooltipPage />,
     "text-field": <TextFieldPage />,
@@ -129,10 +131,10 @@ export const ComponentsRouter = () => {
       <Route path="/" element={<ComponentsPage />} errorElement={<ComponentNotFoundPage />}>
         {/* Non-versioned paths components */}
         <Route index element={<AllComponentsPage />} />
-        <Route path=":component" element={<ComponentRoute componentPaths={componentPaths} />} />
+        <Route path=":component" element={<ComponentRoute versionedPaths={componentPaths} />} />
 
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute componentPaths={componentPaths}/>} />
+        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={componentPaths}/>} />
       </Route>
     </Routes>
   );
@@ -154,9 +156,9 @@ export const PatternsRouter = () => {
         {/* Non-versioned paths components */}
         <Route index element={<PatternsOverviewPage />} />
         <Route path="/simple-form" element={<SimpleFormPage/>} />
-        <Route path=":component" element={<ComponentRoute componentPaths={patternsPaths} />} />
+        <Route path=":component" element={<ComponentRoute versionedPaths={patternsPaths} />} />
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute componentPaths={patternsPaths} />} />
+        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={patternsPaths} />} />
       </Route>
     </Routes>
   );

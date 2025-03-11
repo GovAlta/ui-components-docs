@@ -51,7 +51,7 @@ export function Components() {
             <Link to={getUrl("divider")}>Divider</Link>
             <Link to={getUrl("dropdown")}>Dropdown</Link>
             <Link to={getUrl("file-uploader")}>File uploader</Link>
-            <Link to="filter-chip">Filter chip</Link>
+            <Link to={getUrl("filter-chip")}>Filter chip</Link>
             <Link to={getUrl("footer")}>Footer</Link>
             <Link to={getUrl("form-item")}>Form item</Link>
             <Link to={getUrl("form-stepper")}>Form stepper</Link>
@@ -74,6 +74,7 @@ export function Components() {
             <Link to={getUrl("spacer")}>Spacer</Link>
             <Link to={getUrl("table")}>Table</Link>
             <Link to={getUrl("tabs")}>Tabs</Link>
+            <Link to={getUrl("text")}>Text</Link>
             <Link to={getUrl("text-area")}>Text area</Link>
             <Link to={getUrl("tooltip")}>Tooltip</Link>
           </GoabSideMenu>

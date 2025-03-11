@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoAText, GoATab, GoATabs, GoABadge } from "@abgov/react-components";
+import { GoabText, GoabTab, GoabTabs, GoabBadge } from "@abgov/react-components";
 
 export default function TextPage() {
   const [textProps, setTextProps] = useState({});
@@ -98,27 +98,27 @@ export default function TextPage() {
         description="Provides consistent sizing, spacing, and colour to written content."
       />
 
-      <GoATabs>
-        <GoATab heading="Code examples">
+      <GoabTabs>
+        <GoabTab heading="Code examples">
           <Sandbox properties={textBindings} onChange={onSandboxChange}>
             
-            <GoAText {...textProps}>
+            <GoabText {...textProps}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            </GoAText>
+            </GoabText>
 
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
-        </GoATab>
+        </GoabTab>
         
-        <GoATab
+        <GoabTab
           heading={
             <>
               Design guidelines
-              <GoABadge type="information" content="In progress" />
+              <GoabBadge type="information" content="In progress" />
             </>
           }
-        ></GoATab>
-      </GoATabs>
+        ></GoabTab>
+      </GoabTabs>
     </>
   );
 }
