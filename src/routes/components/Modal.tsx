@@ -330,6 +330,7 @@ export default function ModalPage() {
                    }
                 `}
               />
+
               {isClosableChecked(componentBindings) && <CodeSnippet
                 lang="typescript"
                 tags="react"

@@ -50,7 +50,7 @@ export const Sandbox = (props: SandboxProps) => {
     },
 
     "angular": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularSerializer(properties, version));
+      const serializer = new ComponentSerializer(new AngularSerializer(properties, version, props.variableNames || []));
       return serializer.componentsToString(els);
     },
 
@@ -60,7 +60,7 @@ export const Sandbox = (props: SandboxProps) => {
     },
 
     "angular-template-driven": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularTemplateDrivenSerializer(properties, version));
+      const serializer = new ComponentSerializer(new AngularTemplateDrivenSerializer(properties, version, props.variableNames || []));
       return serializer.componentsToString(els);
     }
   };

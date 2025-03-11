@@ -11,11 +11,12 @@ import {
   GoabTab,
   GoabTabs,
   GoabCircularProgress,
-  GoabCircularProgressProps,
+  GoabCircularProgressProps, GoabButton
 } from "@abgov/react-components";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 // == Page props ==
 
@@ -37,9 +38,7 @@ export default function ProgressIndicatorPage() {
     variant: "inline",
     size: "large",
     message: "Loading message...",
-    visible: true,
   });
-
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
       label: "Variant",
@@ -130,20 +129,28 @@ export default function ProgressIndicatorPage() {
     TestIdProperty,
   ];
 
+  // Sandbox helpers
+  const [visible, setVisible] = useState<boolean>(true);
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    const updatedProps = { ...props, visible: true } as CastingType;
+    const updatedProps = { ...props} as CastingType;
 
     setComponentBindings(bindings);
     setComponentProps(updatedProps);
-
     if (props?.variant === "fullscreen") {
-      setTimeout(() => {
-        setComponentProps({ ...updatedProps, visible: false });
-        // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
-        resetScrollbars();
-      }, 3000);
+      setVisible(false);
+    } else {
+      setVisible(true);
     }
+  }
+
+  const openFullScreenProgress = () => {
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+      // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
+      resetScrollbars();
+    }, 3000);
   }
 
   return (
@@ -154,8 +161,40 @@ export default function ProgressIndicatorPage() {
         <GoabTabs>
           <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-              <GoabCircularProgress {...componentProps} />
+            <Sandbox properties={componentBindings} onChange={onSandboxChange} variableNames={["visible"]}>
+              <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                    const [visible, setVisible] = useState(${visible});
+                    ${componentProps.variant === 'fullscreen' ? `
+                    function onClick() {
+                      setVisible(true);
+                      setTimeout(() => {
+                        setVisible(false);
+                      }, 3000);
+                    }` : ''}
+                `}
+              />
+              <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                    export class ExampleComponent {
+                      visible = ${visible};
+                      ${componentProps.variant === 'fullscreen' ? `
+                      onClick() {
+                      this.visible = true;
+                      setTimeout(() => {
+                        this.visible = false;
+                      }, 3000);
+                    }` : ''}
+                `}
+              />
+              {componentProps.variant === "fullscreen" && <GoabButton onClick={openFullScreenProgress}>Show Fullscreen</GoabButton>}
+              <GoabCircularProgress {...componentProps} visible={visible} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>

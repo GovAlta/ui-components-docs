@@ -9,8 +9,9 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       " "
     );
 
-  constructor(properties: ComponentBinding[], version: LanguageVersion) {
+  constructor(properties: ComponentBinding[], version: LanguageVersion, protected variableNames: string[]) {
     super(properties, version);
+
   }
 
   setIsRoot(isRoot: boolean) {
@@ -66,6 +67,9 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   booleanToProp(name: string, item: boolean): string {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
+    }
+    if (this.variableNames.includes(name)) {
+      return `[${name}]="${name}"`;
     }
     if (!item) return "";
     return `${this.version === "old" ? name.toLowerCase() : `[${name}]`}="${item}"`;
