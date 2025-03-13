@@ -28,7 +28,7 @@ const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
-  { link: "/components/Notification-banner", name: "Notification banner" },
+  { link: "/components/notification-banner", name: "Notification banner" },
 ];
 type ComponentPropsType = GoabCalloutProps;
 type CastingType = {

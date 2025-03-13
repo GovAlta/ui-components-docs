@@ -23,7 +23,7 @@ const description =
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns", name: "Layout" }
+  { link: "/patterns/layout", name: "Layout" }
 ];
 
 export default function SideMenuPage() {

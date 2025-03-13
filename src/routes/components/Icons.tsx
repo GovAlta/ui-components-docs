@@ -208,7 +208,7 @@ export default function IconsPage() {
           { link: "/components/badge", name: "Badge" },
           { link: "/components/callout", name: "Callout" },
           { link: "/components/icon-button", name: "Icon button" },
-          { link: "/components/Tooltip", name: "Tooltip" },
+          { link: "/components/tooltip", name: "Tooltip" },
         ]}
       />
 

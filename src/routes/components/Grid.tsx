@@ -94,7 +94,7 @@ export default function GridPage() {
         relatedComponents={[
           { link: "/components/block", name: "Block" },
           { link: "/components/divider", name: "Divider" },
-          { link: "/patterns", name: "Layout" },
+          { link: "/patterns/layout", name: "Layout" },
           { link: "/components/spacer", name: "Spacer" },
         ]}
       />

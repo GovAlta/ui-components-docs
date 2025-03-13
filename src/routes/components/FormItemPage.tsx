@@ -214,7 +214,7 @@ export default function FormItemPage() {
         relatedComponents={[
           { link: "/components/checkbox", name: "Checkbox" },
           { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/Radio", name: "Radio" },
+          { link: "/components/radio", name: "Radio" },
           { link: "/components/text-area", name: "Text area" },
           { link: "/components/text-field", name: "Text field" },
         ]}

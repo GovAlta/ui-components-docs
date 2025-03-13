@@ -109,7 +109,7 @@ export default function SpacerPage() {
           { link: "/components/block", name: "Block" },
           { link: "/components/divider", name: "Divider" },
           { link: "/components/grid", name: "Grid" },
-          { link: "/patterns", name: "Layout" },
+          { link: "/patterns/layout", name: "Layout" },
         ]}
       />
 

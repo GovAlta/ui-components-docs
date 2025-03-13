@@ -142,7 +142,6 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       children = children.replace(`[value]="value"`, "");
     }
 
-    console.log("children ", children);
     if (this.version === "new") {
       children = children.replace(/<goab-radio-group([^>]*)>/g, (match, attrs) => {
         if (attrs.includes('formControlName')) {

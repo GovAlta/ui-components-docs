@@ -18,13 +18,13 @@ const description =
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   {
-    link: "/components/chip", name: "Chip"
+    link: "/components/filter-chip", name: "Filter Chip"
   },
   {
-    link: "/components/Icons", name: "Icons"
+    link: "/components/icons", name: "Icons"
   },
   {
-    link: "/components/Table", name: "Table"
+    link: "/components/table", name: "Table"
   }
 ];
 

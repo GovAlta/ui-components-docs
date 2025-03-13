@@ -108,9 +108,9 @@ export default function BlockPage() {
         description="Used when grouping components into a block with consistent space between."
         relatedComponents={[
           { link: "/components/divider", name: "Divider" },
-          { link: "/components/Grid", name: "Grid" },
-          { link: "/patterns", name: "Layout" },
-          { link: "/component/spacer", name: "Spacer" },
+          { link: "/components/grid", name: "Grid" },
+          { link: "/patterns/layout", name: "Layout" },
+          { link: "/components/spacer", name: "Spacer" },
         ]}
       />
 

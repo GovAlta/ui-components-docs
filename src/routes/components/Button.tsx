@@ -196,7 +196,7 @@ export default function ButtonPage() {
         category={Category.INPUTS_AND_ACTIONS}
         description="Carry out an important action or to navigate to another page."
         relatedComponents={[
-          { link: "/components/buttonGroup", name: "Button group" },
+          { link: "/components/button-group", name: "Button group" },
           { link: "/components/icon-button", name: "Icon button" },
         ]}
       />
