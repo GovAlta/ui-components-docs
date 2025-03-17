@@ -60,6 +60,7 @@ import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
 import { ComponentsRouter, PatternsRouter } from "./versioned-router";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
+import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -90,6 +91,7 @@ const router = createBrowserRouter(
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
           <Route path="vscode" element={<DevelopersVSCodePage />} />
           <Route path="bug" element={<BugVerificationPage />} />
+          <Route path="update" element={<DevelopersUpgradePage />} />
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
