@@ -17,13 +17,13 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import RadioExamples from "@examples/radio/RadioExamples.tsx";
-import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
   MarginProperty,
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 const componentName = "Radio";
@@ -39,7 +39,7 @@ type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (_: GoabRadioGroupOnChangeDetail) => void;
+  onChange: (detail: GoabRadioGroupOnChangeDetail) => void;
 }
 
 export default function RadioPage() {
