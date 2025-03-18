@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoABlock, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabBlock, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function BlockPage() {
@@ -37,7 +37,7 @@ export default function BlockPage() {
     },
   ]);
   const [sandboxFullWidth, setSandboxFullWidth] = useState<boolean>(false);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "gap",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -63,6 +63,33 @@ export default function BlockPage() {
     },  
   ];
 
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "gap",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Spacing between items",
+      defaultValue: "m",
+    },
+    {
+      name: "direction",
+      type: "GoabBlockDirection (row | column)",
+      description: "Stacking direction of child components",
+      defaultValue: "row",
+    },
+    {
+      name: "alignment",
+      type: "GoabBlockAlignment (center | start | end | normal) is",
+      description: "Primary axis alignment",
+      defaultValue: "normal",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
+
+
   useEffect(() => {
     const direction = blockBindings.find(binding => binding.name === "direction");
     setSandboxFullWidth(direction?.value === "column");
@@ -81,19 +108,19 @@ export default function BlockPage() {
         description="Used when grouping components into a block with consistent space between."
         relatedComponents={[
           { link: "/components/divider", name: "Divider" },
-          { link: "/components/Grid", name: "Grid" },
-          { link: "/patterns", name: "Layout" },
-          { link: "/component/spacer", name: "Spacer" },
+          { link: "/components/grid", name: "Grid" },
+          { link: "/patterns/layout", name: "Layout" },
+          { link: "/components/spacer", name: "Spacer" },
         ]}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
-              <GoABlock {...blockProps}>
+              <GoabBlock {...blockProps}>
                 <div
                   style={{
                     padding: "1rem",
@@ -124,21 +151,21 @@ export default function BlockPage() {
                 >
                   Item 3
                 </div>
-              </GoABlock>
+              </GoabBlock>
             </Sandbox>
             {/*Block table properties*/}
-            <ComponentProperties properties={componentProperties} />
-          </GoATab>
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

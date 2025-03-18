@@ -1,4 +1,4 @@
-import { GoACallout, GoAContainer, GoADetails, GoADivider, GoASpacer, GoATable,  } from "@abgov/react-components";
+import { GoabCallout, GoabContainer, GoabDetails, GoabDivider, GoabSpacer, GoabTable,  } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 export default function ContributePage() {
@@ -9,25 +9,25 @@ export default function ContributePage() {
       Add to the components or patterns in the design system</h3>
        <p>The design system is a shared resource for product teams to use and contribute to. We encourage everyone, regardless of their role, to help improve the design system.</p>
       
-      <GoAContainer type="non-interactive" mb="l" mt="m">
+      <GoabContainer type="non-interactive" mb="l" mt="m">
         <b>Start by using what's in the design system to design and build services easier</b>
-        <GoADetails heading="What happens when I need a new or different component or pattern?" mt="m">
+        <GoabDetails heading="What happens when I need a new or different component or pattern?" mt="m">
           <img src="/images/Contribution/contribution-process.png" width="100%" alt="Contribute" />
-          <GoASpacer vSpacing="m"></GoASpacer> 
+          <GoabSpacer vSpacing="m"></GoabSpacer>
           <p>
             <a href="https://www.figma.com/board/bFFeTY8CI2qOqCq7yvVXK6/Design-System---Governance-Process-Map?node-id=510-1364&t=gt7XnMUq1UsmJ7Lf-4" target="_blank">  
               View the full governance process in Figma
             </a>
           </p>
-        </GoADetails>
-      </GoAContainer>
+        </GoabDetails>
+      </GoabContainer>
 
-      <GoAContainer type="interactive" mb="l" mt="m">
+      <GoabContainer type="interactive" mb="l" mt="m">
         <h3>Did you know…</h3>
         <p>
         There are open <a href="https://www.figma.com/files/1352057334427203708/team/1365458889622139826" target="_blank">contribution files</a> in Figma for every component and pattern in the design system, including unpublished ideas and experiments.
         </p>
-      </GoAContainer>
+      </GoabContainer>
 
       <h2 id="design-contribution-process">Design contribution process</h2>
       
@@ -35,7 +35,7 @@ export default function ContributePage() {
         <p>
         If a <a href="https://design.alberta.ca/components" target="_blank">component</a> or <a href="https://design.alberta.ca/patterns" target="_blank">pattern</a> doesn’t exist in production or doesn’t meet the needs of your users, please contact the design system team. We’ll discuss the issue to understand it better and decide on the next steps together.
         </p>
-        <GoASpacer vSpacing="2xs"></GoASpacer>
+        <GoabSpacer vSpacing="2xs"></GoabSpacer>
         <h3>1. Come talk to us:</h3>
         <ul>
           <li>
@@ -58,7 +58,7 @@ export default function ContributePage() {
          <h3>2. Your contribution will be evaluated against the following contribution criteria:</h3>
          <h4>Proposing a component or pattern</h4>
          <p>For something to be added or changed in the design system, it needs to be:</p>
-         <GoATable width="100%" mb="xl">
+         <GoabTable width="100%" mb="xl">
             <thead>
               <tr>
                 <th>
@@ -87,11 +87,11 @@ export default function ContributePage() {
                 </td>
               </tr>
             </tbody>
-          </GoATable>
-          <GoASpacer vSpacing="2xs"></GoASpacer>   
+          </GoabTable>
+          <GoabSpacer vSpacing="2xs"></GoabSpacer>
 <h4>Standards for a given solution</h4>
           <p>For a new component or pattern to be published, a given solution has to be:</p>
-          <GoATable width="100%" mb="xl">
+          <GoabTable width="100%" mb="xl">
             <thead>
               <tr>
                 <th>
@@ -120,8 +120,8 @@ export default function ContributePage() {
                 </td>
               </tr>
             </tbody>
-          </GoATable>  
-          <GoASpacer vSpacing="3xs"></GoASpacer> 
+          </GoabTable>
+          <GoabSpacer vSpacing="3xs"></GoabSpacer>
             <h3>3. Once approved, it will be added to the <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">Design System's backlog</a> </h3>
             <ul>
               <li>
@@ -136,7 +136,7 @@ export default function ContributePage() {
             </ul>
       </div>
 
-      <GoADivider mb="2xl" mt="2xl"></GoADivider>
+      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <div className="max-width-72ch contribute-page-content">
         <h2 id="development">Code contribution process</h2>
         <p>In order to support all of the development frameworks that service teams use, we build and support a library of web components. Contributing entire components can be challenging and time-consuming, so we recommend and encourage smaller-scale contributions instead.</p>
@@ -150,9 +150,9 @@ export default function ContributePage() {
           <li>Start by reaching out on the <a href="https://goa-dio.slack.com/archives/C02PLLT9HQ9" target="_blank">#design-system-support</a> channel on slack to let us know you’re interested in contributing.</li>
           <li>
             Find an issue in our <a href="https://github.com/orgs/GovAlta/projects/35/views/1?filterQuery=" target="_blank">backlog</a> tagged with &ldquo;ready-for-contribution&rdquo;. Let us know which issue(s) you&rsquo;re picking up.
-            <GoACallout type="information" mt="xl">
+            <GoabCallout type="information" mt="xl">
               Since our repository is “public”, you'll need to use a different GitHub account than the Enterprise Managed User (EMU) account you use for your product team work.
-            </GoACallout>
+            </GoabCallout>
           </li>
         </ol>
         <h4>Setup contribution environment</h4>
@@ -181,25 +181,25 @@ export default function ContributePage() {
             <br />
             <b>Angular</b>
             <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:angular`}/>
-            <GoASpacer vSpacing="s" />
+            <GoabSpacer vSpacing="s" />
             <b>React</b>
             <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:react`}/>
           </li>
         </ol>
-        <GoASpacer vSpacing="l" />
+        <GoabSpacer vSpacing="l" />
         <h3 id="react-and-web-wrappers">React and Web wrappers</h3>
-        <GoASpacer vSpacing="s" />
+        <GoabSpacer vSpacing="s" />
         <p>
           <strong>React wrappers</strong> <br/>
           <CodeSnippet lang="css" allowCopy={true} code={`/libs/react-components/src/lib`}/>
-          <GoASpacer vSpacing="s"></GoASpacer>
+          <GoabSpacer vSpacing="s"></GoabSpacer>
           Each folder represents a single component with its associated unit tests and wrapper code
         </p>
-        <GoASpacer vSpacing="l"></GoASpacer>
+        <GoabSpacer vSpacing="l"></GoabSpacer>
         <p>
           <strong>Web wrappers</strong> <br /> 
           <CodeSnippet lang="css" allowCopy={true} code={`/libs/web-components/src/components`}/>
-          <GoASpacer vSpacing="s"></GoASpacer>
+          <GoabSpacer vSpacing="s"></GoabSpacer>
           Each folder represents a single component with:
         </p>
         <ul>
@@ -213,7 +213,7 @@ export default function ContributePage() {
             Documentation as <code>doc.md&nbsp;</code>
           </li>
         </ul>
-        <GoASpacer vSpacing="s"></GoASpacer>
+        <GoabSpacer vSpacing="s"></GoabSpacer>
         <h3 id="testing-procedures">Testing procedures</h3>
         <p>All unit tests must be written in Svelte.</p>
         <ul>
@@ -227,13 +227,13 @@ export default function ContributePage() {
           Additionally, our QA automation developer will perform a comprehensive series of tests to
           ensure the components&#39; quality and functionality.
         </p>
-        <GoASpacer vSpacing="s"></GoASpacer>
+        <GoabSpacer vSpacing="s"></GoabSpacer>
 
         <h3 id="submitting-your-code">Submitting your code</h3>
         <ol>
           <li>
             Submit a commit using the following as your commit message:
-            <GoAContainer type="non-interactive" mt="m">
+            <GoabContainer type="non-interactive" mt="m">
               <dl>
                 <dt><strong>Bug Fix:</strong></dt>
                 <dd>fix(#storyNumber): short description of issue fixed (7 words max)</dd>
@@ -242,7 +242,7 @@ export default function ContributePage() {
                 <dt><strong>Feature Request:</strong></dt>
                 <dd>feat(#storyNumber): short description of feature (7 words max)</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           </li>
           <li>Create a pull request to the alpha branch from your branch</li>
           <li>Mark the PR as a draft</li>

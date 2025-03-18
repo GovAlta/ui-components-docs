@@ -1,14 +1,14 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAButton,
-  GoAButtonGroup,
-  GoAModal,
-  GoAModalProps,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabButton,
+  GoabButtonGroup,
+  GoabModal,
+  GoabModalProps,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
 import {
   ComponentProperties,
@@ -18,6 +18,8 @@ import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import ModalExamples from "@examples/modal/ModalExamples.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { TestIdProperty } from "@components/component-properties/common-properties.ts";
 
 // == Page props ==
 
@@ -29,14 +31,14 @@ const relatedComponents = [
   { link: "/components/button-group", name: "Button group" },
   { link: "/components/callout", name: "Callout" },
 ];
-type ComponentPropsType = Omit<GoAModalProps, "open"> & { closable?: boolean };
+type ComponentPropsType = Omit<GoabModalProps, "open"> & { closable?: boolean };
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
 };
 
 export default function ModalPage() {
-  const language = useContext(LanguageContext);
+  const {language} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     heading: "Are you sure you want to exit your application?",
     role: "alertdialog",
@@ -101,7 +103,7 @@ export default function ModalPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "calloutvariant",
       type: "information | important | emergency | success | event",
@@ -185,10 +187,73 @@ export default function ModalPage() {
       lang: "react",
     },
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "calloutVariant",
+      type: "GoabModalCalloutVariant (information | important | emergency | success | event)",
+      description:
+        "Define the context and colour of the callout modal. It is required when type is set to callout.",
+    },
+    {
+      name: "heading",
+      type: "string | TemplateRef<any>",
+      description: "Heading text within the modal",
+      lang: "angular",
+    },
+    {
+      name: "heading",
+      type: "string | ReactNode",
+      description: "Heading text within the modal",
+      lang: "react",
+    },
+    {
+      name: "open",
+      type: "boolean",
+      description: "Controls if modal is visible or not",
+      defaultValue: "false",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Set the max allowed width of the modal",
+    },
+    {
+      name: "closable",
+      type: "boolean",
+      description: "Show close icon and allow clicking the background to close the modal",
+      defaultValue: "false",
+    },
+    {
+      name: "role",
+      type: "dialog | alertdialog",
+      description:
+        "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
+      defaultValue: "dialog",
+    },
+    TestIdProperty,
+    {
+      name: "onClose",
+      type: "() => void",
+      description: "",
+    },
+    {
+      name: "actions",
+      type: "TemplateRef<any>",
+      description: "Buttons displayed in the bottom right of the modal instead of a close icon",
+      lang: "angular",
+    },
+    {
+      name: "actions",
+      type: "ReactNode",
+      description: "Buttons displayed in the bottom right of the modal instead of a close icon",
+      lang: "react",
+    },
+  ];
 
   function isClosableChecked(bindings: ComponentBinding[]): boolean {
     const closable = bindings.find(b => b.name == "closable");
-    return closable?.value === true ? true : false;
+    // setClosableChecked(closable?.value === true);
+    return closable?.value === true;
   }
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -201,7 +266,6 @@ export default function ModalPage() {
         props["closable"] = true;
       }
     }
-
     setComponentBindings(bindings);
     setComponentProps(props as CastingType);
   }
@@ -224,12 +288,12 @@ export default function ModalPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{ display: "none" }}>
               Component
             </h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <Sandbox properties={componentBindings} onChange={onSandboxChange} allow={["p"]}>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -237,12 +301,23 @@ export default function ModalPage() {
                 code={`
                   export class SomeOtherComponent {
                     open = false;
-                    onClick(event: Event) {
+                    onClick() {
                       this.open = !this.open;
                     }
                   }
                 `}
               />
+
+              {isClosableChecked(componentBindings) && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                    onClose() {
+                      this.open = false;
+                   } 
+                `}
+              />}
 
               <CodeSnippet
                 lang="typescript"
@@ -256,45 +331,56 @@ export default function ModalPage() {
                 `}
               />
 
-              <GoAButton onClick={() => setOpen(true)}>Show Modal</GoAButton>
+              {isClosableChecked(componentBindings) && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                  function modalOnClose() {
+                    setOpen(false);
+                   } 
+                `}
+              />}
+
+              <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
               {!isClosableChecked(componentBindings) && (
-                <GoAModal {...componentProps} open={open}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                <GoabModal {...componentProps} open={open}>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  <GoAButtonGroup alignment="end" mt="xl">
-                    <GoAButton type="tertiary" onClick={() => setOpen(false)}>
+                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
+                  <GoabButtonGroup alignment="end" mt={"xl"}>
+                    <GoabButton type="tertiary" onClick={() => setOpen(false)}>
                       Cancel
-                    </GoAButton>
-                    <GoAButton type="primary" onClick={() => setOpen(false)}>
+                    </GoabButton>
+                    <GoabButton type="primary" onClick={() => setOpen(false)}>
                       Exit
-                    </GoAButton>
-                  </GoAButtonGroup>
-                </GoAModal>
+                    </GoabButton>
+                  </GoabButtonGroup>
+                </GoabModal>
               )}
 
               {isClosableChecked(componentBindings) && (
-                <GoAModal {...componentProps} open={open} onClose={onClose}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                <GoabModal {...componentProps} open={open} onClose={onClose}>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                </GoAModal>
+                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
+                </GoabModal>
               )}
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             <ModalExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

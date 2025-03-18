@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Opacity.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -30,7 +30,7 @@ export default function OpacityPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
@@ -61,16 +61,16 @@ export default function OpacityPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <div style={{ display: "flex" }}>
                 <div className="blue-box"></div>
                 <div
@@ -85,10 +85,10 @@ export default function OpacityPage() {
                 <dt>%</dt> <dd>{token.percentage}</dd>
                 <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

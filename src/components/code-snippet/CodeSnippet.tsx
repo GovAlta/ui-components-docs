@@ -1,7 +1,7 @@
-import { FC, ReactElement, ReactNode, useEffect, useRef, useState } from "react";
+import { FC, ReactElement, ReactNode, useContext, useEffect, useRef, useState } from "react";
 
 import "./CodeSnippet.css";
-import { GoAButton, GoAIconButton, GoATooltip } from "@abgov/react-components";
+import { GoabButton, GoabIconButton, GoabTooltip } from "@abgov/react-components";
 import { renderToString } from "react-dom/server";
 
 import hljs from "highlight.js/lib/core";
@@ -10,6 +10,7 @@ import html from "highlight.js/lib/languages/xml";
 import css from "highlight.js/lib/languages/css";
 
 import "highlight.js/styles/github.css";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 type Language = "typescript" | "javascript" | "tsx" | "jsx" | "html" | "css" | string;
 
@@ -23,7 +24,8 @@ interface Props {
   tags?: string[] | string;
 }
 
-export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
+export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }) => {
+  const {language} = useContext(LanguageVersionContext);
   const [output, setOutput] = useState<string>("");
   const [isCopied, setIsCopied] = useState(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -39,7 +41,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
     });
     resizeObserver.observe(codeSnippetRef.current);
     return () => resizeObserver.disconnect(); // clean up
-  }, []);
+  }, [language]);
 
   const cleanTabs = (code = "", tabSize: number): string => {
     const lines = code.trim().split("\n");
@@ -105,33 +107,37 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children }) => {
   }
 
   return (
-    <div
-      ref={codeSnippetRef}
-      className={`goa-code-snippet ${showMore ? "overflow" : ""}`}
-      style={isExpanded ? { maxHeight: "none" } : {}}>
+    (tags == null || tags?.includes(language)) && (
+      <div
+        ref={codeSnippetRef}
+        className={`goa-code-snippet ${showMore ? "overflow" : ""}`}
+        style={isExpanded ? { maxHeight: "none" } : {}}
+      >
       <pre>
         <code className={`highlight-${lang}`}>{output}</code>
       </pre>
-      {showMore && !isExpanded && <div className={"gradient"}></div>}
-      {showMore && (
-        <div className={"goa-code-snippet-actions--show-more"}>
-          <GoAButton
-            type="tertiary"
-            size="compact"
-            trailingIcon={isExpanded ? "chevron-up" : "chevron-down"}
-            onClick={() => setIsExpanded(!isExpanded)}>
-            Show {isExpanded ? "less" : "more"}
-          </GoAButton>
-        </div>
-      )}
+        {showMore && !isExpanded && <div className={"gradient"}></div>}
+        {showMore && (
+          <div className={"goa-code-snippet-actions--show-more"}>
+            <GoabButton
+              type="tertiary"
+              size="compact"
+              trailingIcon={isExpanded ? "chevron-up" : "chevron-down"}
+              onClick={() => setIsExpanded(!isExpanded)}
+            >
+              Show {isExpanded ? "less" : "more"}
+            </GoabButton>
+          </div>
+        )}
 
-      {allowCopy && (
-        <div className="goa-code-snippet-actions--copy">
-          <GoATooltip content={isCopied ? `Copied` : `Copy?`} position="left">
-            <GoAIconButton icon="copy" onClick={copyCode}/>
-          </GoATooltip>
-        </div>
-      )}
-    </div>
+        {allowCopy && (
+          <div className="goa-code-snippet-actions--copy">
+            <GoabTooltip content={isCopied ? `Copied` : `Copy?`} position="left">
+              <GoabIconButton icon="copy" onClick={copyCode} />
+            </GoabTooltip>
+          </div>
+        )}
+      </div>
+    )
   );
 };

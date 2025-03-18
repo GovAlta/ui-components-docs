@@ -1,22 +1,26 @@
 import { useContext, useState } from "react";
-import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAFormItem, GoAInput, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabFormItem, GoabInput, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties, MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
+import { FormItemExamples } from "@examples/form-item/FormItemExamples.tsx";
 
 export default function FormItemPage() {
-  const language = useContext(LanguageContext);
+  const {version} = useContext(LanguageVersionContext);
   const [formItemProps, setFormItemProps] = useState({
     label: "First name",
   });
-
-  const helptextReactNode: React.ReactNode = <><i>This is </i> slotted <b> help text</b>.</>;
-  const errorReactNode: React.ReactNode = <><i>This is </i> slotted <b>error text</b>.</>;
 
   const [formItemBindings, setFormItemBindings] = useState<ComponentBinding[]>([
     {
@@ -68,7 +72,7 @@ export default function FormItemPage() {
       value: "",
     },
   ]);
-  const componentProps: ComponentProperty[] = [
+  const oldComponentProps: ComponentProperty[] = [
     {
       name: "label",
       type: "string",
@@ -134,24 +138,64 @@ export default function FormItemPage() {
       type: "string",
       description: "Sets the maximum width of the form item.",
       lang: "angular",
-    },    
+    },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty,
+  ];
+  const componentProps: ComponentProperty[] = [
     {
-      name: "testId",
+      name: "label",
       type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      description: "Creates a label for a form item.",
     },
     {
-      name: "testid",
+      name: "labelSize",
+      type: "GoabFormItemLabelSize (regular | large)",
+      defaultValue: "regular",
+      description: "Sets a regular or large label size.",
+    },
+    {
+      name: "helpText",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Help text displayed under the form field to provide additional explanation.",
+    },
+    {
+      name: "helpText",
       type: "string",
       lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      description: "Help text displayed under the form field to provide additional explanation.",
     },
     {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+      name: "error",
+      type: "string | ReactNode",
+      lang: "react",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
+    {
+      name: "error",
+      type: "string",
+      lang: "angular",
+      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+    },
+    {
+      name: "requirement",
+      type: "GoabFormItemRequirement (optional | required)",
+      description: "Marks the field with an optional or required label.",
+    },
+    {
+      name: "id",
+      type: "string",
+      description:
+        "The id of the label, necessary for field's aria-labelledby attribute for the screen reader.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the form item."
+    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -170,26 +214,35 @@ export default function FormItemPage() {
         relatedComponents={[
           { link: "/components/checkbox", name: "Checkbox" },
           { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/Radio", name: "Radio" },
+          { link: "/components/radio", name: "Radio" },
           { link: "/components/text-area", name: "Text area" },
           { link: "/components/text-field", name: "Text field" },
         ]}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
+            <Sandbox
+              properties={formItemBindings}
+              onChange={onSandboxChange}
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}
+              allow={["form"]}>
+              {/* ************** Angular code snippets ****************/}
 
-        <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
-            <Sandbox properties={formItemBindings} onChange={onSandboxChange} flags={["reactive"]}>
-              <CodeSnippet
-                lang="typescript"
-                tags={["angular"]}
-                allowCopy={true}
-                code={`
+              {/*Old versions*/}
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular"]}
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
-                  value: string = "";
+                  value = "";
                   
                   onChange(event: Event) {
                     console.log("Event ", event);
@@ -197,138 +250,130 @@ export default function FormItemPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+                />
+              )}
+
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />
+                />
+              )}
 
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {/*New version*/}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular"]}
+                  allowCopy={true}
+                  code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value = "";
+                  
+                 inputOnChange(event: GoabInputOnChangeDetail) {
+                  this.value = event.value;
+                  }
+                }
+              `}
+                />
+              )}
+
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
+                // reactive code
+                export class SomeComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: [""]
+                    });
+                  }
+                }
+              `}
+                />
+              )}
+
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
+                //template-driven code
+                export class SomeComponent {
+                  item = "";
+                  
+                 inputOnChange(event: GoabInputOnChangeDetail) {
+                  this.item = event.value;
+                 }
+                }
+              `}
+                />
+              )}
+
+              {/* ************** React code *****************/}
+
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [value, setValue] = useState<string>("");
               
-                onChange(name: string, value: string) {
+                inputOnChange(name: string, value: string) {
                   setValue(value);
                 }
               `}
-              />
+                />
+              )}
 
-              <GoAFormItem {...formItemProps}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
-            </Sandbox>
-
-            <ComponentProperties properties={componentProps} />
-
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
-            <h3 id="component-example-sortable-columns">Slotted Helper Text</h3>
-            <Sandbox skipRender>
-              <GoAFormItem 
-                label="First name" 
-                helpText={helptextReactNode}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
-
-              {language === "react" && (
+              {version === "new" && (
                 <CodeSnippet
                   lang="typescript"
                   tags="react"
                   allowCopy={true}
                   code={`
-                  <GoAFormItem label="First name"
-                               helpText={<><i>This is </i> slotted <b>help text</b>.</>}>
-                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
-                  </GoAFormItem>
-                  `}
+                const [value, setValue] = useState<string>("");
+
+                const inputOnChange = (event: GoabInputOnChangeDetail) => {
+                  setValue(event.value);
+                }
+              `}
                 />
               )}
-
-              {language === "angular" && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
-                  <goa-form-item label="First name">
-                    <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
-
-                    <div slot="helptext">
-                      <span>This is </span>
-                      <i>slotted</i>
-                      <b>help text</b>.
-                    </div>
-
-                  </goa-form-item>
-                  `}
-                />
-              )}
+              <form>
+                <GoabFormItem {...formItemProps}>
+                  <GoabInput onChange={noop} value="" name="item" />
+                </GoabFormItem>
+              </form>
             </Sandbox>
 
-            <h3 id="component-example-sortable-columns">Slotted Error Text</h3>
-            <Sandbox skipRender>
-              <GoAFormItem 
-                label="First name" 
-                error={errorReactNode}>
-                <GoAInput onChange={noop} value="" name="item" />
-              </GoAFormItem>
-
-              {language === "react" && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
-                  <GoAFormItem 
-                    label="First name"
-                    error={<><i>This is </i> slotted <b>error text</b>.</>}>
-                    <GoAInput onChange={onChange} value={value} name="item"></GoAInput>
-                  </GoAFormItem>
-                  `}
-                />
-              )}
-
-              {language === "angular" && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
-                  <goa-form-item label="First name">
-                  <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
-
-                    <div slot="error">
-                      <span>This is </span>
-                      <i>slotted </i>
-                      <b>error text.</b>
-                    </div>
-
-                  </goa-form-item>
-                  `}
-                />
-              )}
-            </Sandbox>
-          </GoATab>
-          <GoATab
+            <ComponentProperties properties={componentProps} oldProperties={oldComponentProps} />
+            <FormItemExamples />
+          </GoabTab>
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

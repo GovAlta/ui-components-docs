@@ -1,5 +1,5 @@
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoADetails } from "@abgov/react-components";
+import { GoabDetails } from "@abgov/react-components";
 import css from "./patterns.module.css";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export default function SimpleFormPage() {
         Design forms that help Albertan citizens understand the task, focus on the question and its
         answer, and complete the form.
       </h3>
-      <GoADetails mt="xl" heading={"Who are the primary users for the public form pattern?"}>
+      <GoabDetails mt="xl" heading={"Who are the primary users for the simple form pattern?"}>
         <p>
           <strong>Primary users:</strong> citizens, public, external
           <br />
@@ -22,7 +22,7 @@ export default function SimpleFormPage() {
           There is an emphasis on an accessible experience with a low cognitive load for users who
           use the service infrequently.
         </p>
-      </GoADetails>
+      </GoabDetails>
 
       <h2 id="toc-1">Form structure</h2>
       <p>

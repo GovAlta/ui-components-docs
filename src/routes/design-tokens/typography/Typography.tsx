@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import TYPO_TOKENS from "./typography.json";
 import { getTokenGroups } from "../getTokenGroups";
@@ -22,7 +22,7 @@ export default function TypographyPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th>Figma type style</th>
@@ -49,16 +49,16 @@ export default function TypographyPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens as Token[]).map(group =>
           group.map((token: TypographyToken, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <dl>
                 <dd style={{ font: getCssVarValue(`--${token.tokenName}`) }}>
                   {token.figmaTypeStyle}
@@ -71,10 +71,10 @@ export default function TypographyPage() {
                 <dt>Font size</dt> <dd>{token.fontSize}</dd>
                 <dt>Line height</dt> <dd>{token.lineHeight}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

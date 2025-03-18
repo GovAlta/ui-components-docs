@@ -1,6 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoATab, GoATabs, GoABadgeType, GoABadgeProps } from "@abgov/react-components";
-import { Sandbox, ComponentBinding } from "@components/sandbox";
+import { GoabBadge, GoabTab, GoabTabs, GoabBadgeProps } from "@abgov/react-components";
+import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import {
   ComponentProperties,
@@ -8,6 +8,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
+import { GoabBadgeType } from "@abgov/ui-components-common";
 
 // == Page props ==
 
@@ -17,20 +18,20 @@ const description =
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   {
-    link: "/components/chip", name: "Chip"
+    link: "/components/filter-chip", name: "Filter Chip"
   },
   {
-    link: "/components/Icons", name: "Icons"
+    link: "/components/icons", name: "Icons"
   },
   {
-    link: "/components/Table", name: "Table"
+    link: "/components/table", name: "Table"
   }
 ];
 
-type ComponentPropsType = GoABadgeProps;
+type ComponentPropsType = GoabBadgeProps;
 type CastingType = {
   // add any required props here
-  type: GoABadgeType;
+  type: GoabBadgeType;
   content: string;
   [key: string]: unknown;
 };
@@ -69,7 +70,7 @@ export default function BadgePage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "success | important | information | emergency | dark | midtone | light",
@@ -118,6 +119,41 @@ export default function BadgePage() {
     },
   ];
 
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "type",
+      type: "GoabBadgeType(success | important | information | emergency | dark | midtone | light)",
+      description: "Define the context and colour of the badge",
+      required: true,
+    },
+    {
+      name: "icon",
+      type: "boolean",
+      description: "Includes an icon in the badge.",
+      defaultValue: "false",
+    },
+    {
+      name: "content",
+      type: "string",
+      description: "Text label of the badge.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Accessible label.",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ]
+
   function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
     setBadgeBindings(badgeBindings);
     setBadgeProps(props as CastingType);
@@ -128,26 +164,25 @@ export default function BadgePage() {
       <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
-              <GoABadge {...badgeProps} />
+              <GoabBadge {...badgeProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             <BadgeExamples />
+          </GoabTab>
 
-          </GoATab>
-
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }
-          ></GoATab>
-        </GoATabs>
+          ></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );
