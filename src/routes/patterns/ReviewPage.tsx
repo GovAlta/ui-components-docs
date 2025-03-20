@@ -1,6 +1,6 @@
 import {
-  GoATab,
-  GoATabs
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "./patterns.module.css";
@@ -14,12 +14,12 @@ export default function ReviewPage() {
       <ComponentContent
         contentClassName="question-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             <ReviewPageExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab heading="Design guidelines">
+          <GoabTab heading="Design guidelines">
             <figure className={css.imageContainer}>
               <h2 id="overview" className="hidden">
                 Overview
@@ -60,8 +60,8 @@ export default function ReviewPage() {
                 src="/images/patterns/review-page-change-answers.png"
               />
             </figure>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

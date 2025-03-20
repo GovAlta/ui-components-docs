@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -6,18 +6,26 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAFormItem,
-  GoAInput,
-  GoAInputProps,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabFormItem,
+  GoabInput,
+  GoabInputProps,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import TextFieldExamples from "@examples/text-field/TextFieldExamples";
+import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties, MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
+import { omit } from "lodash";
 
 // == Page props ==
 const componentName = "Input";
@@ -27,20 +35,23 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/text-area", name: "Text area" }
 ];
-type ComponentPropsType = GoAInputProps;
+
+type ComponentPropsType = Omit<GoabInputProps, 'onChange'> & {
+  onChange?: (event: GoabInputOnChangeDetail) => void;
+};
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, value: string) => void;
+  onChange: (event: GoabInputOnChangeDetail) => void;
 };
 
 export default function TextFieldPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
     width: "20ch",
-    onChange: () => { },
   });
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
@@ -123,7 +134,7 @@ export default function TextFieldPage() {
     }
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "text | number | password | email | search | tel | date | datetime-local | time | url | week",
@@ -394,23 +405,174 @@ export default function TextFieldPage() {
       type: "(name: string, value: string | Date | number) => void",
       description: "Function invoked when a key is pressed",
     },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty,
+  ];
+  const componentProperties: ComponentProperty[] = [
     {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      name: "type",
+      type: "GoabInputType (text | number | password | email | search | tel | date | datetime-local | time | url | week)",
+      defaultValue: "text",
+      description: "Sets the type of the input field.",
     },
     {
-      name: "testid",
+      name: "name",
       type: "string",
+      required: true,
+      description: "Name of input value that is received in the onChange event.",
+    },
+    {
+      name: "value",
+      type: "string||null",
+      defaultValue: "''",
+      description: "Bound to value.",
+    },
+    {
+      name: "placeholder",
+      type: "string",
+      description: "Text displayed within the input when no value is set.",
+    },
+    {
+      name: "leadingIcon",
+      type: "GoabIconType",
+      description: "Icon shown to the left of the text.",
+    },
+    {
+      name: "trailingIcon",
+      type: "GoabIconType",
+      description: "Icon shown to the right of the text.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description:
+        "Disables this input. The input will not receive focus or events. Use [attr.disabled] with [formControl].",
+    },
+    {
+      name: "focused",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the cursor focus to the input.",
+    },
+    {
+      name: "readOnly",
+      type: "boolean",
+      description: "Makes the input readonly.",
+      defaultValue: "false",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Sets the input to an error state.",
+    },
+    {
+      name: "width",
+      type: "string",
+      defaultValue: "30ch",
+      description: "Sets the width of the text input area.",
+    },
+    {
+      name: "min",
+      type: "string",
+      description:
+        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type.",
+    },
+    {
+      name: "max",
+      type: "string",
+      description:
+        "A string value that supports any number, or an ISO 8601 format if using the date or datetime type.",
+    },
+    {
+      name: "step",
+      type: "number",
+      description: "How much a number or date should changed by.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description:
+        "Defines how the input will be translated for the screen reader. If not specified it will fall back to the name. If both arialabel and arialabelledby are specified, arialabelledby will be used.",
+    },
+    {
+      name: "ariaLabelledBy",
+      type: "string",
+      description:
+        "The aria-labelledby attribute identifies the element (or elements) that labels the dropdown it is applied to. Normally it is the id of the label.",
+    },
+    {
+      name: "maxlength",
+      type: "number",
+      description:
+        "Defines the maximum number of characters (as UTF-16 code units) the user can enter into the input.",
+    },
+    {
+      name: "maxLength",
+      type: "number",
+      description:
+        "Defines the maximum number of characters (as UTF-16 code units) the user can enter into the input.",
+    },
+    {
+      name: "autoCapitalize",
+      type: "GoabInputAutoCapitalize (on | off | none | sentences | words | characters)",
+      description:
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+      defaultValue: "off",
+    },
+    {
+      name: "onTrailingIconClick",
+      type: "() => void",
+      description: "onClick function invoked when trailing icon is clicked.",
+    },
+    {
+      name: "leadingContent",
       lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      type: "slot",
+      description: "Sets the content to the left of the input field.",
     },
     {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+      name: "leadingContent",
+      lang: "react",
+      type: "ReactNode",
+      description: "Sets the content to the left of the input field.",
     },
+    {
+      name: "trailingContent",
+      lang: "angular",
+      type: "slot",
+      description: "Sets the content to the right of the input field.",
+    },
+    {
+      name: "trailingContent",
+      lang: "react",
+      type: "ReactNode",
+      description: "Sets the content to the right of the input field.",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabInputOnChangeDetail) => void",
+      required: true,
+      description: "Callback function when input value is changed.",
+    },
+    {
+      name: "onFocus",
+      type: "(event: GoabInputOnFocusDetail) => void",
+      description: "Function invoked when an element receives focus.",
+    },
+    {
+      name: "onBlur",
+      type: "(event: GoabInputOnBlurDetail) => void",
+      description: "Function invoked when an element loses focus.",
+    },
+    {
+      name: "onKeyPress",
+      type: "(event: GoabInputOnKeyPressDetail) => void",
+      description: "Function invoked when a key is pressed",
+    },
+    TestIdProperty,
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -420,6 +582,7 @@ export default function TextFieldPage() {
 
   // For sandbox demo function
   const noop = () => { };
+
   return (
     <>
       <ComponentHeader
@@ -431,8 +594,8 @@ export default function TextFieldPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Input sandbox*/}
             <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
@@ -440,8 +603,9 @@ export default function TextFieldPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}>
-              <CodeSnippet
+              allow={["form"]}
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -455,8 +619,24 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                // non-reactive code
+                export class SomeComponent {
+                  value = "";
+                  inputOnChange(event: GoabInputOnChangeDetail) {
+                    // handle change
+                    console.log(event.value);
+                  }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -466,8 +646,41 @@ export default function TextFieldPage() {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "reactive"]}
+                allowCopy={true}
+                code={`
+                // reactive code
+                export class SomeComponent {
+                  form!: FormGroup;
+                  constructor(private fb: FormBuilder) {
+                    this.form = this.fb.group({
+                      item: [""]
+                    });
+                  }
+                }
+              `}
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags={["angular", "template-driven"]}
+                allowCopy={true}
+                code={`
+                import {FormsModule} from "@angular/forms";
+                export class SomeComponent {
+                  item = "";
+                  inputOnChange(event: GoabInputOnChangeDetail) {
+                    this.item = event.value;
+                  }
+                }
+              `}
+              />}
+
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
@@ -478,29 +691,47 @@ export default function TextFieldPage() {
                   setValue(value);
                 }
               `}
-              />
-
-              <GoAFormItem {...formItemProps}>
-                <GoAInput {...componentProps} name="item" value="" onChange={noop}/>
-              </GoAFormItem>
+              />}
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="react"
+                allowCopy={true}
+                code={`
+                const [value, setValue] = useState<string>("");
+              
+                function inputOnChange(event: GoabInputOnChangeDetail) {
+                  setValue(event.value);
+                }
+              `}
+              />}
+              <form>
+                <GoabFormItem {...formItemProps}>
+                  <GoabInput 
+                    {...(omit(componentProps, ['onFocus', 'onBlur', 'onKeyPress']))} 
+                    name="item" 
+                    value="" 
+                    onChange={noop}
+                  />
+                </GoabFormItem>
+              </form>
             </Sandbox>
 
             {/*Input component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
             {/*Examples*/}
             <TextFieldExamples/>
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
             }>
             <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

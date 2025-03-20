@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -6,17 +6,24 @@ import {
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoABadge,
-  GoAFormItem,
-  GoARadioGroup, GoARadioGroupProps,
-  GoARadioItem,
-  GoATab,
-  GoATabs
+  GoabBadge,
+  GoabFormItem,
+  GoabRadioGroup, GoabRadioGroupProps,
+  GoabRadioItem,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import RadioExamples from "@examples/radio/RadioExamples.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LegacyMarginProperty,
+  MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
+import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 // == Page props ==
 const componentName = "Radio";
@@ -27,19 +34,19 @@ const relatedComponents = [
   { link: "/components/dropdown", name: "Dropdown" },
   { link: "/components/form-item", name: "Form item" }
 ];
-type ComponentPropsType = GoARadioGroupProps;
+type ComponentPropsType = GoabRadioGroupProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
-  onChange: (name: string, value: string) => void;
+  onChange: (detail: GoabRadioGroupOnChangeDetail) => void;
 }
 
 export default function RadioPage() {
+  const {version} = useContext(LanguageVersionContext);
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
-    onChange: () => { },
   });
   const [radioBindings, setRadioBindings] = useState<ComponentBinding[]>([
     {
@@ -70,7 +77,7 @@ export default function RadioPage() {
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
 
-  const radioGroupProperties: ComponentProperty[] = [
+  const oldRadioGroupProperties: ComponentProperty[] = [
     {
       name: "name",
       type: "string",
@@ -135,13 +142,54 @@ export default function RadioPage() {
       required: true,
       description: "Callback function when radio value is changed.",
     },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
+    LegacyMarginProperty,
   ];
-  const radioItemProperties: ComponentProperty[] = [
+  const radioGroupProperties: ComponentProperty[] = [
+    {
+      name: "name",
+      type: "string",
+      required: true,
+      description: "Identifier for the radio group. Should be unique.",
+    },
+    {
+      name: "value",
+      type: "string",
+      description: "The value binding.",
+    },
+    {
+      name: "orientation",
+      type: "GoabRadioGroupOrientation (horizontal|vertical)",
+      description: "Orientation of the radio items.",
+      defaultValue: "vertical",
+    },
+    {
+      name: "error",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Set the component to an error state.",
+    },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Set the component to disabled. Use [attr.disabled] with [formControl].",
+    },
+    {
+      name: "ariaLabel",
+      description:
+        "Defines how the text will be translated for the screen reader.",
+      type: "string",
+    },
+    {
+      name: "onChange",
+      type: "(event: GoabRadioGroupOnChangeDetail) => void",
+      required: true,
+      description: "Callback function when radio value is changed.",
+    },
+    MarginProperty,
+    TestIdProperty,
+  ];
+  const oldRadioItemProperties: ComponentProperty[] = [
     {
       name: "value",
       type: "string",
@@ -189,11 +237,43 @@ export default function RadioPage() {
       type: "string",
       description: "Defines how the radio item will be translated for the screen reader.",
     },
+    LegacyMarginProperty,
+  ];
+  const radioItemProperties: ComponentProperty[] = [
     {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+      name: "value",
+      type: "string",
+      required: true,
+      description: "Value of the item that will be returned when selected.",
     },
+    {
+      name: "label",
+      type: "string",
+      description: "Text shown beside the radio.",
+    },
+    {
+      name: "description",
+      type: "string | TemplateRef",
+      description: "Additional content shown below the label.",
+      lang: "angular",
+    },
+    {
+      name: "description",
+      type: "string | ReactNode",
+      description: "Additional content shown below the label.",
+      lang: "react",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the radio."
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Defines how the radio item will be translated for the screen reader.",
+    },
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -205,25 +285,34 @@ export default function RadioPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} description={description} category={category} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        description={description}
+        category={category}
+        relatedComponents={relatedComponents}
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs>
+          <GoabTab heading="Code examples">
             {/*Radio sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox
               properties={radioBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={["reactive"]}>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              allow={["form"]}
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
+              {/*============ Angular code ========== */}
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
               // non-reactive code
               export class MyComponent {
                 onChange(e: Event) {
@@ -232,56 +321,146 @@ export default function RadioPage() {
                 }
               }
             `}
-              />
-              <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+                />
+              )}
+
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
+              // non-reactive code
+              export class MyComponent {
+                 radioOnChange(e: GoabRadioGroupOnChangeDetail) {
+                    // handle change
+                    console.log("onChange", e.name, e.value);
+                 }
+              }
+            `}
+                />
+              )}
+
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
               // reactive code
               import { FormControl } from "@angular/forms";
               export class MyComponent {
                itemFormCtrl = new FormControl("1");
               }
             `}
-              />
+                />
+              )}
 
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
+              // reactive code
+              import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from "@abgov/angular-components";
+              import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
+              
+              export class MyComponent {
+                fg!: FormGroup;
+                constructor(private fb: FormBuilder) {
+                  this.fg = this.fb.group({
+                    item: ""
+                  })
+                }
+              }
+            `}
+                />
+              )}
+
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
+              // reactive code
+              import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from "@abgov/angular-components";
+              import { FormsModule } from "@angular/forms";
+              import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
+              
+              export class MyComponent {
+                item = "1";
+
+                radioOnChange(event: GoabRadioGroupOnChangeDetail) {
+                  this.item = event.value;
+                }
+              }
+            `}
+                />
+              )}
+
+              {/*================ React code ===============*/}
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
               function onChange(name: string, value: string) {
                 console.log("onChange", name, value);
               }
             `}
-              />
+                />
+              )}
 
-              <GoAFormItem {...formItemProps}>
-                <GoARadioGroup {...radioProps} name="item" value="1" onChange={noop}>
-                  <GoARadioItem value="1" label="Label 1"></GoARadioItem>
-                  <GoARadioItem value="2" label="Label 2"></GoARadioItem>
-                  <GoARadioItem value="3" label="Label 3"></GoARadioItem>
-                </GoARadioGroup>
-              </GoAFormItem>
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+              function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
+                console.log("onChange", event.name, event.value);
+              }
+            `}
+                />
+              )}
+
+              <form>
+                <GoabFormItem {...formItemProps}>
+                  <GoabRadioGroup {...radioProps} name="item" value="1" onChange={noop}>
+                    <GoabRadioItem value="1" label="Label 1"></GoabRadioItem>
+                    <GoabRadioItem value="2" label="Label 2"></GoabRadioItem>
+                    <GoabRadioItem value="3" label="Label 3"></GoabRadioItem>
+                  </GoabRadioGroup>
+                </GoabFormItem>
+              </form>
             </Sandbox>
 
             {/*Radio Group properties*/}
-            <ComponentProperties heading="Radio group properties" properties={radioGroupProperties} />
+            <ComponentProperties
+              heading="Radio group properties"
+              properties={radioGroupProperties}
+              oldProperties={oldRadioGroupProperties}
+            />
             {/*Radio Item properties*/}
-            <ComponentProperties heading="Radio Item properties" properties={radioItemProperties} />
+            <ComponentProperties
+              heading="Radio Item properties"
+              properties={radioItemProperties}
+              oldProperties={oldRadioItemProperties}
+            />
             <RadioExamples />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
                 Design guidelines
-                <GoABadge type="information" content="In progress" />
+                <GoabBadge type="information" content="In progress" />
               </>
-            }
-          ></GoATab>
-        </GoATabs>
+            }></GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );
