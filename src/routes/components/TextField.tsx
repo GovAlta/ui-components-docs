@@ -25,6 +25,7 @@ import {
   LegacyTestIdProperties, MarginProperty,
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+import { omit } from "lodash";
 
 // == Page props ==
 const componentName = "Input";
@@ -34,7 +35,10 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/text-area", name: "Text area" }
 ];
-type ComponentPropsType = GoabInputProps;
+
+type ComponentPropsType = Omit<GoabInputProps, 'onChange'> & {
+  onChange?: (event: GoabInputOnChangeDetail) => void;
+};
 type CastingType = {
   name: string;
   value: string;
@@ -48,7 +52,6 @@ export default function TextFieldPage() {
     name: "item",
     value: "",
     width: "20ch",
-    onChange: () => { },
   });
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
@@ -703,7 +706,12 @@ export default function TextFieldPage() {
               />}
               <form>
                 <GoabFormItem {...formItemProps}>
-                  <GoabInput {...componentProps} name="item" value="" onChange={noop}/>
+                  <GoabInput 
+                    {...(omit(componentProps, ['onFocus', 'onBlur', 'onKeyPress']))} 
+                    name="item" 
+                    value="" 
+                    onChange={noop}
+                  />
                 </GoabFormItem>
               </form>
             </Sandbox>
