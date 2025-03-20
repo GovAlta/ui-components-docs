@@ -19,17 +19,18 @@ import { GoabTableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { omit } from "lodash";
 
 interface User {
   firstName: string;
   lastName: string;
   age: number;
 }
-type ComponentPropsType = GoabTableProps;
-type CastingType = {
-  width: string;
-  [key: string]: unknown;
-}
+
+type ComponentPropsType = Omit<GoabTableProps, 'onSort'> & {
+  onSort?: (sortBy: string, sortDir: number) => void;
+};
+
 export default function TablePage() {
   const {version} = useContext(LanguageVersionContext);
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
@@ -113,7 +114,7 @@ export default function TablePage() {
 
   function onSandboxChange(tableBindings: ComponentBinding[], props: Record<string, unknown>) {
     setTableBindings(tableBindings);
-    setTableProps(props as CastingType);
+    setTableProps(props as ComponentPropsType);
   }
 
   // For table demo -- needs to do sort functionality
@@ -171,7 +172,14 @@ export default function TablePage() {
         <GoabTabs>
           <GoabTab heading="Code examples">
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
-              <GoabTable {...tableProps}>
+              <GoabTable
+                {...(omit(tableProps, 'onSort'))}
+                onSort={(detail: GoabTableOnSortDetail) => {
+                  if (tableProps.onSort) {
+                    tableProps.onSort(detail.sortBy, detail.sortDir);
+                  }
+                }}
+              >
                 <thead>
                   <tr>
                     <th>Status</th>
