@@ -14,7 +14,6 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentProperties, ComponentProperty } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -158,7 +157,10 @@ export default function CalloutPage() {
               </GoACallout>
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-            
+
+          </GoATab>
+
+          <GoATab heading={<>Examples<GoABadge type="information" content="1" /></>}>
             <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
             <h3 id="component-example-confirm-application-submitted">Confirm that an application was submitted</h3>
@@ -232,10 +234,6 @@ export default function CalloutPage() {
                 <GoAButton type="secondary">Back to dashboard</GoAButton>
               </GoAButtonGroup>
             </Sandbox>
-          </GoATab>
-
-          <GoATab heading={<>Examples<GoABadge type="information" content="0" /></>}>
-            <ExamplesEmpty/>
           </GoATab>
 
           <GoATab heading="Design">

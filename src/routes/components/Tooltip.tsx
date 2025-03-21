@@ -21,7 +21,6 @@ import {
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 
@@ -139,10 +138,16 @@ export default function TooltipPage() {
             {/* Tooltip Properties */}
             <ComponentProperties properties={componentProperties} />
             
+
+          </GoATab>
+
+
+          <GoATab heading={<>Examples<GoABadge type="information" content="3" /></>}
+          >
             <h2 id="component-examples" className="hidden" aria-hidden="true">
               Examples
             </h2>
-        
+
             <h3 id="component-example-date-when-shortened">Use a tooltip to show a full date when shortened</h3>
             <Sandbox skipRender fullWidth>
               <CodeSnippet
@@ -189,7 +194,7 @@ export default function TooltipPage() {
                 type="non-interactive"
                 accent="thick"
                 heading={
-                <span>
+                  <span>
                   Joan Smith
                   <GoATooltip content="Nov 23, 2023 at 10:35 am">
                     <span style={{ color:"var(--goa-color-text-secondary)", font: "var(--goa-typography-body-xs)" }} >4 hours ago</span>
@@ -198,19 +203,19 @@ export default function TooltipPage() {
                 <p>Hover on the time it was added to see the full date and time.</p>
               </GoAContainer>
             </Sandbox>
-            
+
             <h3 id="component-example-label-icon-only">Show a label on an icon only button</h3>
             <Sandbox fullWidth>
               <GoAButtonGroup alignment="center">
-                  <GoATooltip content="Edit">
-                    <GoAIconButton icon="pencil" ariaLabel="Pencil icon"/>
-                  </GoATooltip>
-                  <GoATooltip content="Alerts">
-                    <GoAIconButton icon="notifications" ariaLabel="Alert icon"/>
-                  </GoATooltip>
-                  <GoATooltip content="Settings">
-                    <GoAIconButton icon="settings" ariaLabel="Settings icon"/>
-                  </GoATooltip>
+                <GoATooltip content="Edit">
+                  <GoAIconButton icon="pencil" ariaLabel="Pencil icon"/>
+                </GoATooltip>
+                <GoATooltip content="Alerts">
+                  <GoAIconButton icon="notifications" ariaLabel="Alert icon"/>
+                </GoATooltip>
+                <GoATooltip content="Settings">
+                  <GoAIconButton icon="settings" ariaLabel="Settings icon"/>
+                </GoATooltip>
               </GoAButtonGroup>
             </Sandbox>
 
@@ -310,13 +315,6 @@ export default function TooltipPage() {
                 </GoATooltip>
               </GoABlock>
             </Sandbox>
-          </GoATab>
-
-          {/* Since there are 0 examples, the "Examples" tab is omitted */}
-
-          <GoATab heading={<>Examples<GoABadge type="information" content="0" /></>}
-          >
-            <ExamplesEmpty/>
           </GoATab>
 
           <GoATab heading="Design">

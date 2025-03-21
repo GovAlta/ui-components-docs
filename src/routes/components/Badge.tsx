@@ -7,7 +7,6 @@ import {
   ComponentProperty
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { ExamplesEmpty } from "@components/examples-empty/ExamplesEmpty.tsx";
 import { DesignEmpty } from "@components/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/accessibility-empty/AccessibilityEmpty.tsx";
 import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
@@ -139,7 +138,7 @@ export default function BadgePage() {
               <GoABadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} />
-            <BadgeExamples />
+
 
           </GoATab>
 
@@ -147,11 +146,11 @@ export default function BadgePage() {
             heading={
               <>
                 Examples
-                <GoABadge type="information" content="0" />
+                <GoABadge type="information" content="3" />
               </>
             }
           >
-            <ExamplesEmpty/>
+            <BadgeExamples />
           </GoATab>
 
           <GoATab heading="Design">
