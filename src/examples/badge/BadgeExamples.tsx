@@ -40,7 +40,6 @@ export default function CheckboxExamples () {
     return (
         <> 
         {/* Examples*/}
-        <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
         <h3 id="component-example-show-status-table">Show status in a table</h3>
         <Sandbox fullWidth skipRender>
