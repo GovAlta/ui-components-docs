@@ -55,6 +55,7 @@ import ResultPage from "@routes/patterns/ResultPage.tsx";
 import SimpleFormPage from "@routes/patterns/SimpleFormPage.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
+import LinkPage from "@routes/components/Link.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -106,6 +107,7 @@ export const ComponentsRouter = () => {
     "icon-button": <IconButtonPage />,
     "input": <TextFieldPage />,
     "list": <ListPage />,
+    "link": <LinkPage />,
     "microsite-header": <MicrositeHeaderPage />,
     "modal": <ModalPage />,
     "notification-banner": <NotificationBannerPage />,
