@@ -12,6 +12,7 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
+    "@abgov/design-tokens": "^1.5.10",
     "@abgov/react-components": "6.2.1",
     "@abgov/ui-components-common": "1.2.1",
     "@abgov/web-components": "1.32.1",
