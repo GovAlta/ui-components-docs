@@ -144,7 +144,7 @@ export default function ButtonPage() {
       name: "size",
       type: "GoabButtonSize (normal | compact)",
       defaultValue: "normal",
-      description: "Sets the size of button.",
+      description: "Sets the sizesgit of button.",
     },
     {
       name: "variant",
