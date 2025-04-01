@@ -276,6 +276,14 @@ export default function AllComponentsPage() {
         "Let users navigate between related sections of content, displaying one section at a time.",
     },
     {
+      name: "drawer",
+      groups: ["structure"],
+      tags: ["sections", "structure and navigation", "tabbed interface"],
+      isNew: true,
+      description:
+        "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.",
+    },
+    {
       name: "block",
       groups: ["utilities"],
       tags: ["utility"],
@@ -330,6 +338,7 @@ export default function AllComponentsPage() {
         <ComponentCard
           key={card.name}
           name={card.name}
+          isNew={card.isNew}
           groups={card.groups}
           description={card.description}
         />

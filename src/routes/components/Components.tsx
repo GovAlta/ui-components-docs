@@ -1,10 +1,14 @@
-import { GoabNotification, GoabSideMenu } from "@abgov/react-components";
+import { GoabBadge, GoabBlock, GoabNotification, GoabSideMenu } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { getVersionedUrlPath } from "@components/version-language-switcher/version-language-constants.ts";
+import {
+  ANGULAR_VERSIONS,
+  getVersionedUrlPath, REACT_VERSIONS
+} from "@components/version-language-switcher/version-language-constants.ts";
 import { DEFAULT_VERSION } from "../../global-constants";
+
 
 export function Components() {
   const { language, version } = useContext(LanguageVersionContext);
@@ -15,6 +19,9 @@ export function Components() {
     return prefixUrl.length > 0 ? `${prefixUrl}/${path}` : path;
   };
 
+  const newComponentLabel = (componentName: string) => {
+    return <GoabBlock alignment="center">{componentName} <GoabBadge type={"important"} content={language === "angular" ? ANGULAR_VERSIONS.NEW.label : REACT_VERSIONS.NEW.label}></GoabBadge></GoabBlock>;
+  }
   return (
     <>
       {version !== DEFAULT_VERSION && (
@@ -47,6 +54,7 @@ export function Components() {
             <Link to={getUrl("checkbox")}>Checkbox</Link>
             <Link to={getUrl("container")}>Container</Link>
             <Link to={getUrl("date-picker")}>Date picker</Link>
+            <Link to={getUrl("drawer")}>{newComponentLabel("Drawer")}</Link>
             <Link to={getUrl("details")}>Details</Link>
             <Link to={getUrl("divider")}>Divider</Link>
             <Link to={getUrl("dropdown")}>Dropdown</Link>
