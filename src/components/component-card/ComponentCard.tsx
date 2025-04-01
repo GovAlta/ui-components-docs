@@ -13,6 +13,9 @@ type Group =
   | "Inputs and actions"
   | "Structure and navigation"
   | "Utilities";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
 
 export interface Props {
   name: string;
@@ -22,6 +25,7 @@ export interface Props {
   status: ComponentStatus;
   githubLink?: string;
   openIssues?: number;
+  isNew?: boolean; // if true, show a badge on the component card to let users know the component is available in the latest version
 }
 
 function dasherize(value: string): string {
@@ -52,6 +56,7 @@ export function ComponentCard(props: Props) {
 
   const badgeType = getBadgeType(props.status);
 
+  const {language} = useContext(LanguageVersionContext);
   return (
     <div className="card">
       {props.status === "Published" ? (
@@ -101,6 +106,7 @@ export function ComponentCard(props: Props) {
             </a>
           </GoabText>
         )}
+        {props.isNew && <GoabBadge type="important" mt="l" content={"Available in " + (language === "angular" ? ANGULAR_VERSIONS.NEW.label.substring(0,2).toUpperCase() : REACT_VERSIONS.NEW.label.substring(0,2).toUpperCase())}/>}
       </div>
     </div>
   );

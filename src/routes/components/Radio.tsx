@@ -50,6 +50,7 @@ export default function RadioPage() {
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
+    onChange: () => {},
   });
   const [radioBindings, setRadioBindings] = useState<ComponentBinding[]>([
     {

@@ -1,7 +1,8 @@
-import { GoabContainer, GoabFilterChip, GoabFormItem, GoabInput, GoabInputOnChangeDetail, GoabInputOnKeyPressDetail } from "@abgov/react-components";
+import { GoabContainer, GoabFilterChip, GoabFormItem, GoabInput } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { GoabInputOnChangeDetail, GoabInputOnKeyPressDetail } from "@abgov/ui-components-common";
 
 export const FilterChipTypedChipExample = () => {
   const {version} = useContext(LanguageVersionContext);
