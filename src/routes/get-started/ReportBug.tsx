@@ -133,9 +133,7 @@ export default function ReportBugPage() {
         repo: "ui-components",
         title: "Reported Bug",
         body: body,
-        labels: [
-          "bug"
-        ],
+        type: "Bug",
         headers: {
           "X-Github-Api-Version": "2022-11-28"
         }
