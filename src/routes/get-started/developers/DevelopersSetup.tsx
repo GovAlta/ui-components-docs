@@ -20,18 +20,16 @@ export default function DevelopersSetupPage() {
       <h4>1. Add Dependencies</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           npm i @abgov/web-components
-          npm i @abgov/angular-components@lts
+          npm i @abgov/angular-components
         `}
       />
 
       <h4>2. Link ionicons in app/index.html Add the following in the head element</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -42,7 +40,6 @@ export default function DevelopersSetupPage() {
       <h4>3. Update src/app/app.module.ts as per the four steps below</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           // 1. Import the CUSTOM_ELEMENTS_SCHEMA
@@ -70,7 +67,6 @@ export default function DevelopersSetupPage() {
       <h4>4. Add the styles link in the src/styles.css file</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`@import "@abgov/web-components/index.css";`}
       />
@@ -86,10 +82,9 @@ export default function DevelopersSetupPage() {
         <h4>1. Add Dependencies</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
-          npm i @abgov/react-components@lts
+          npm i @abgov/react-components
           npm i @abgov/web-components
         `}
         />
@@ -97,7 +92,6 @@ export default function DevelopersSetupPage() {
         <h4>2. Link ionicons in app/index.html Add the following to the head element</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -108,20 +102,18 @@ export default function DevelopersSetupPage() {
         <h4>3. Import the web-component styles in the src/index.css file</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
 
       <GoabDivider mt="2xl" mb="xl" />
 
-        <h3 id="vue">Vue web components</h3>
+        <h3 id="web-components">Web components</h3>
         <p>This library contains react components from the Government of Alberta.</p>
 
         <h4>1. Add Dependencies</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`npm i @abgov/web-components`}
         />
@@ -129,7 +121,6 @@ export default function DevelopersSetupPage() {
         <h4>2. Link ionicons in index.html Add the following in the head element</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -137,39 +128,19 @@ export default function DevelopersSetupPage() {
         `}
         />
 
-        <h4>3. Update vite.config.js with the following:</h4>
+        <h4>3. Import the web-components into src/main.js:</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-          plugins: [
-            vue({
-              template: {
-               compilerOptions: {
-                 // treat all tags with goa- as custom elements
-                 isCustomElement: (tag) => tag.includes('goa-')
-               }
-            }
-          })],
-        `}
-        />
-
-        <h4>4. Import the web-components into src/main.js:</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`import "@abgov/web-components";`}
         />
 
         <h4>
-          5. Add the styles link in the src/assets/main.css file or wherever your main css file is
+          4. Add the styles link in the src/assets/main.css file or wherever your main css file is
           located:
         </h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
@@ -211,8 +182,9 @@ export default function DevelopersSetupPage() {
                 <code>npm run build</code>
               </li>
               <li>
-                <code>npm run start</code>-- if using Angular, <code>npm run dev</code> --if using
-                react
+                <code>npm run start # Angular</code>
+                <br />
+                <code>npm run dev # React</code>
               </li>
             </ol>
           </li>
