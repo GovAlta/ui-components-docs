@@ -20,7 +20,6 @@ export default function DevelopersSetupPage() {
       <h4>1. Add Dependencies</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           npm i @abgov/web-components
@@ -31,7 +30,6 @@ export default function DevelopersSetupPage() {
       <h4>2. Link ionicons in app/index.html Add the following in the head element</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -42,7 +40,6 @@ export default function DevelopersSetupPage() {
       <h4>3. Update src/app/app.module.ts as per the four steps below</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`
           // 1. Import the CUSTOM_ELEMENTS_SCHEMA
@@ -70,7 +67,6 @@ export default function DevelopersSetupPage() {
       <h4>4. Add the styles link in the src/styles.css file</h4>
       <CodeSnippet
         lang="typescript"
-        tags="react"
         allowCopy={true}
         code={`@import "@abgov/web-components/index.css";`}
       />
@@ -86,7 +82,6 @@ export default function DevelopersSetupPage() {
         <h4>1. Add Dependencies</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           npm i @abgov/react-components
@@ -97,7 +92,6 @@ export default function DevelopersSetupPage() {
         <h4>2. Link ionicons in app/index.html Add the following to the head element</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -108,7 +102,6 @@ export default function DevelopersSetupPage() {
         <h4>3. Import the web-component styles in the src/index.css file</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
@@ -121,7 +114,6 @@ export default function DevelopersSetupPage() {
         <h4>1. Add Dependencies</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`npm i @abgov/web-components`}
         />
@@ -129,7 +121,6 @@ export default function DevelopersSetupPage() {
         <h4>2. Link ionicons in index.html Add the following in the head element</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
@@ -158,7 +149,6 @@ export default function DevelopersSetupPage() {
         <h4>4. Import the web-components into src/main.js:</h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`import "@abgov/web-components";`}
         />
@@ -169,7 +159,6 @@ export default function DevelopersSetupPage() {
         </h4>
         <CodeSnippet
           lang="typescript"
-          tags="react"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
