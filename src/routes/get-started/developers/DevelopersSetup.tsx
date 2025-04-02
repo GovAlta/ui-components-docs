@@ -108,7 +108,7 @@ export default function DevelopersSetupPage() {
 
       <GoabDivider mt="2xl" mb="xl" />
 
-        <h3 id="vue">Vue web components</h3>
+        <h3 id="web-components">Web components</h3>
         <p>This library contains react components from the Government of Alberta.</p>
 
         <h4>1. Add Dependencies</h4>
@@ -128,25 +128,7 @@ export default function DevelopersSetupPage() {
         `}
         />
 
-        <h4>3. Update vite.config.js with the following:</h4>
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-          plugins: [
-            vue({
-              template: {
-               compilerOptions: {
-                 // treat all tags with goa- as custom elements
-                 isCustomElement: (tag) => tag.includes('goa-')
-               }
-            }
-          })],
-        `}
-        />
-
-        <h4>4. Import the web-components into src/main.js:</h4>
+        <h4>3. Import the web-components into src/main.js:</h4>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
@@ -154,7 +136,7 @@ export default function DevelopersSetupPage() {
         />
 
         <h4>
-          5. Add the styles link in the src/assets/main.css file or wherever your main css file is
+          4. Add the styles link in the src/assets/main.css file or wherever your main css file is
           located:
         </h4>
         <CodeSnippet
@@ -200,8 +182,9 @@ export default function DevelopersSetupPage() {
                 <code>npm run build</code>
               </li>
               <li>
-                <code>npm run start</code>-- if using Angular, <code>npm run dev</code> --if using
-                react
+                <code>npm run start # Angular</code>
+                <br />
+                <code>npm run dev # React</code>
               </li>
             </ol>
           </li>
