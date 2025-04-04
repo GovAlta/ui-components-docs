@@ -62,6 +62,7 @@ export function Components() {
             <Link to={getUrl("icon-button")}>Icon button</Link>
             <Link to={getUrl("input")}>Input</Link>
             <Link to={getUrl("list")}>List</Link>
+            <Link to={getUrl("link")}>Link</Link>
             <Link to={getUrl("microsite-header")}>Microsite header</Link>
             <Link to={getUrl("modal")}>Modal</Link>
             <Link to={getUrl("notification-banner")}>Notification banner</Link>

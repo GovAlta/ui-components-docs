@@ -24,6 +24,7 @@ import IconsPage from "@routes/components/Icons.tsx";
 import IconButtonPage from "@routes/components/IconButton.tsx";
 import TextFieldPage from "@routes/components/TextField.tsx";
 import ListPage from "@routes/components/List.tsx";
+import LinkPage from "@routes/components/Link.tsx";
 import MicrositeHeaderPage from "@routes/components/MicrositeHeader.tsx";
 import ModalPage from "@routes/components/Modal.tsx";
 import NotificationBannerPage from "@routes/components/Notificationbanner.tsx";
@@ -106,6 +107,7 @@ export const ComponentsRouter = () => {
     "icon-button": <IconButtonPage />,
     "input": <TextFieldPage />,
     "list": <ListPage />,
+    "link": <LinkPage />,
     "microsite-header": <MicrositeHeaderPage />,
     "modal": <ModalPage />,
     "notification-banner": <NotificationBannerPage />,
