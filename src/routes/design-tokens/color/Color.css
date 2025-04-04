@@ -1,11 +1,19 @@
 .colors-page div.token-block {
   height: 22px;
   width: 24px;
-  border-radius: var(--goa-border-radius-m);
+  border-radius: var(--goa-border-radius-l);
+  margin-top: 4px;
 }
 
 .colors-page a {
   margin-right: 0.5rem;
+}
+.dd-style {
+  margin-left: 0;
+  margin-bottom: 12px;
+}
+.dd-style:last-of-type {
+  margin-bottom: 0;
 }
 
 .colors-page p.category {
@@ -14,10 +22,6 @@
   font-size: var(--goa-font-size-7);
   font-weight: var(--goa-font-weight-regular);
   line-height: var(--goa-line-height-4);
-}
-
-.colors-page td[rowspan] {
-  border-right: 1px solid #dcdcdc;
 }
 
 /*Tablet*/
@@ -30,9 +34,7 @@
 /*Mobile*/
 @media screen and (max-width: 623px) {
   .colors-page p.category {
-    font-size: var(--goa-font-size-4);
-    font-weight: var(--goa-font-weight-bold);
-    line-height: var(--goa-line-height-3);
     margin-top: 0;
+    margin-left: 0;
   }
 }

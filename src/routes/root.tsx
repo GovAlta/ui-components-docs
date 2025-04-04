@@ -60,9 +60,9 @@ export default function Root() {
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns</Link>
             <Link to="/components">Components</Link>
-            <Link to="/design-tokens">Styles</Link>
+            <Link to="/design-tokens">Tokens</Link>
             <Link to="/content/capitalization">Content</Link>
-            <Link to="/get-started/support">Support</Link>
+            <Link to="/get-started/support" className="interactive">Get support</Link>
           </GoabAppHeader>
         </section>
 
