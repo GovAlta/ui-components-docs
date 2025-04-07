@@ -7,9 +7,6 @@ export default function ContainerExamples() {
   return (
     <>
       {/*Container examples*/}
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
       <h3 id="component-example-1">User information</h3>
       <ContainerUserInformationExample/>
 

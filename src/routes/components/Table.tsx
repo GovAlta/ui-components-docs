@@ -20,6 +20,8 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { omit } from "lodash";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 interface User {
   firstName: string;
@@ -36,6 +38,7 @@ export default function TablePage() {
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
     width: "100%"
   });
+  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=3785-18038";
   const [tableBindings, setTableBindings] = useState<ComponentBinding[]>([
     {
       label: "Width",
@@ -165,12 +168,15 @@ export default function TablePage() {
           { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
+        githubLink="Table"
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoabTabs>
-          <GoabTab heading="Code examples">
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
               <GoabTable
                 {...(omit(tableProps, 'onSort'))}
@@ -234,8 +240,15 @@ export default function TablePage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
+          </GoabTab>
+            <GoabTab
+              heading={
+                <>
+                  Examples
+                  <GoabBadge type="information" content="2" />
+                </>
+              }
+            >
             <h3 id="component-example-sortable-columns">Sortable columns</h3>
             <GoabContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
@@ -604,13 +617,13 @@ export default function TablePage() {
             </Sandbox>
           </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }></GoabTab>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
         </GoabTabs>
       </ComponentContent>
     </>

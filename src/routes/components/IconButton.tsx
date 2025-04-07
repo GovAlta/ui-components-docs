@@ -16,10 +16,9 @@ import { useState } from "react";
 import ICONS from "./icons.json";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabIconType } from "@abgov/ui-components-common";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const componentName = "Icon button";
-const description = "A compact button with an icon and no text.";
-const componentCategory = Category.INPUTS_AND_ACTIONS;
 type ComponentPropsType = GoabIconButtonProps;
 type CastingType = {
   // add any required props here
@@ -31,6 +30,7 @@ export default function IconButtonPage() {
     icon: "refresh" as GoabIconType,
     ariaLabel: "Refresh icon",
   });
+  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302107";
   const [iconButtonBindings, setIconButtonBindings] = useState<ComponentBinding[]>([
     {
       label: "Variant",
@@ -206,16 +206,22 @@ export default function IconButtonPage() {
   return (
     <>
       <ComponentHeader
-        name={componentName}
-        category={componentCategory}
-        description={description}
+        name="Icon button"
+        category={Category.INPUTS_AND_ACTIONS}
+        description="An icon-only button for common or repetitive actions."
+        relatedComponents={[
+          { link: "/components/button", name: "Button" },
+          { link: "/components/button-group", name: "Button group" }
+        ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Icon button"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
               <GoabIconButton {...iconButtonProps} />
             </Sandbox>
@@ -223,9 +229,16 @@ export default function IconButtonPage() {
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
 
-            {/* Examples */}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+          </GoabTab>
 
+          <GoabTab
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="1" />
+              </>
+            }
+          >
             <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
             <Sandbox fullWidth>
               <GoabTable width="100%">
@@ -333,14 +346,12 @@ export default function IconButtonPage() {
             </Sandbox>
           </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

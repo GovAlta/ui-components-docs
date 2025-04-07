@@ -8,7 +8,6 @@ export default function CheckboxExamples () {
   const {version} = useContext(LanguageVersionContext);
   return (
     <>      
-      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
       <h3 id="component-example-expand-collapse-form">Use tags in the description</h3>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}

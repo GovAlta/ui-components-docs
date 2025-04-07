@@ -9,12 +9,9 @@ import { BadgeShowStatusOnCardExample } from "@examples/badge/BadgeShowStatusOnC
 export default function BadgeExamples() {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
 
       <h3 id="component-example-show-status-table">Show status in a table</h3>
-      <BadgeShowStatusInTableExample/>
+      <BadgeShowStatusInTableExample />
 
       <h3 id="component-example-multiple-tags-together">Show multiple tags together</h3>
       <Sandbox>

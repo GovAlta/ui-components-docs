@@ -144,7 +144,7 @@ const AllComponents = () => {
         status: "Published",
       },
       {
-        name: "skeleton loading",
+        name: "skeleton loader",
         groups: ["Feedback and alerts"],
         tags: ["content layout", "loading"],
         description:
@@ -619,11 +619,14 @@ const AllComponents = () => {
       {filteredCards.map((card) => (
         <tr key={card.name}>
           <td style={{ width: "100px" }}>
-            <GoabBadge type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"} content={card.status} />
+            <GoabBadge
+              mt="2xs"
+              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
+              content={card.status} />
           </td>
           <td>
             {card.status === "Published" ? (
-              <a href={`/components/${card.name.toLowerCase()}`}>
+              <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 {toSentenceCase(card.name)}
               </a>
             ) : (

@@ -9,9 +9,6 @@ import { ModalRouteChangeExample } from "@examples/modal/ModalRouteChangeExample
 export default function ModalExamples() {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
       <h3 id="component-example-basic">Basic Modal</h3>
       <ModalBasicExample/>
 

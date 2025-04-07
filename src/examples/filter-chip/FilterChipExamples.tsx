@@ -5,9 +5,6 @@ import { FilterChipTypedChipExample } from "@examples/filter-chip/FilterChipType
 export const FilterChipExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
       <h3 id="component-example-delete">Delete Event</h3>
       <FilterChipDeleteEventExample />
 

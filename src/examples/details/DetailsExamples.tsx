@@ -11,8 +11,6 @@ import {
 export const DetailsExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-
       <h3 id="component-example-show-more-information-for-basic-question">
         Show more information for a basic question
       </h3>

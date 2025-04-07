@@ -12,9 +12,6 @@ export default function MicrositeHeaderExamples() {
   };
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
       <h3 id="component-example-feedbackclick">Custom click event handler (for feedback)</h3>
       <Sandbox skipRender fullWidth>
         <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />

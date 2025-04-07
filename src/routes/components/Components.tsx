@@ -54,11 +54,11 @@ export function Components() {
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Feedback and alerts">
               <Link to={getUrl("badge")}>Badge</Link>
-              <Link to={getUrl("chip")}>Chip</Link>
+              <Link to={getUrl("filter-chip")}>Filter chip</Link>
               <Link to={getUrl("modal")}>Modal</Link>
               <Link to={getUrl("notification-banner")}>Notification banner</Link>
               <Link to={getUrl("progress-indicator")}>Progress indicator</Link>
-              <Link to={getUrl("skeleton-loader")}>Skeleton loading</Link>
+              <Link to={getUrl("skeleton-loader")}>Skeleton loader</Link>
               <Link to={getUrl("tooltip")}>Tooltip</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Inputs and actions">

@@ -73,12 +73,12 @@ export default function Root() {
         <Outlet />
 
         <section slot="footer">
-          <GoabAppFooter maxContentWidth={MAX_CONTENT_WIDTH}>
+          <GoabAppFooter url="/" maxContentWidth={MAX_CONTENT_WIDTH}>
             <GoabAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
               <Link to="/patterns">Patterns</Link>
               <Link to="/components">Components</Link>
-              <Link to="/design-tokens">Styles</Link>
+              <Link to="/design-tokens">Tokens</Link>
               <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
@@ -86,9 +86,9 @@ export default function Root() {
               <Link to="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-system-support</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterMetaSection>
-              <Link to="support/contribute">Contribute to the design system</Link>
-              <Link to="https://forms.microsoft.com/pages/responsepage.aspx?id=Bhy1K5uvxUKL9Tw7exCFCy-G9FVGUGFMnXc6L30n_ANUM0dTOFg4UU01VVY2QzJPT0k1Qzg2RUJMUy4u" target="_blank">Give feedback</Link>
-              <Link to="/support/release-notes">Release notes</Link>
+              <Link to="get-started/contribute">Contribute to the design system</Link>
+              <Link to="/get-started/roadmap">Roadmap</Link>
+              <Link to="https://github.com/GovAlta/ui-components/releases">Release notes</Link>
             </GoabAppFooterMetaSection>
           </GoabAppFooter>
         </section>

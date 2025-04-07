@@ -5,7 +5,6 @@ import { ButtonDisabledWithRequiredFieldExample } from "@examples/button/ButtonD
 export const ButtonExamples = () => {
 
   return <>
-    <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
     {/*Button Example 1*/}
     <h3 id="component-example-ask-address">Ask a user for an address</h3>
     <ButtonAskUserAddressExample/>
