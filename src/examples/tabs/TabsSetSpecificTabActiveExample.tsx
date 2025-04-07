@@ -10,7 +10,7 @@ export const TabsSetSpecificTabActiveExample = () => {
 
   return (
     <>
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <div style={{ padding: "40px" }}>
             <GoabTabs initialTab={2}>
               <GoabTab heading="All">

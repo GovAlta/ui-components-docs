@@ -12,8 +12,8 @@ html {
 a[href^="http"]::after,
 a[href^="https://"]::after {
   content: "";
-  width: var(--goa-icon-size-l);
-  height: var(--goa-icon-size-l);
+  width: var(--goa-icon-size-m);
+  height: var(--goa-icon-size-m);
   background-color: var(--goa-color-interactive-default);
   display: inline-block;
   margin-left: var(--goa-space-xs);
@@ -26,12 +26,18 @@ a[href^="https://"]:hover:after {
   background-color: var(--goa-color-interactive-hover);
 }
 
+/* Hide external link icon when the class .no-external-icon is present */
+a.no-external-icon::after {
+  content: none !important;
+  display: none !important;
+}
+
 /* Open in new tab */
 a[target="_blank"]::after {
   content: "";
   display: inline-block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: var(--goa-icon-size-m);
+  height: var(--goa-icon-size-m);
   vertical-align: middle;
   margin-left: var(--goa-space-2xs);
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" class="ionicon s-ion-icon" viewBox="0 0 512 512"><title>Open</title><path d="M384 224v184a40 40 0 01-40 40H104a40 40 0 01-40-40V168a40 40 0 0140-40h167.48M336 64h112v112M224 288L440 72" stroke="%230070C4" stroke-linecap="round" stroke-linejoin="round" stroke-width="32px"></path></svg>') center bottom no-repeat;

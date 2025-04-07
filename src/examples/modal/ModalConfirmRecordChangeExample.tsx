@@ -22,7 +22,7 @@ export const ModalConfirmRecordChangeExample = () => {
   return (
     <>
       {/*Don't use a Sandbox because Datepicker inside a modal will make the modal shifts everytime we click on datepicker*/}
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <GoabButtonGroup alignment="center">
           <GoabButton onClick={() => setInputModalOpen(true)}>Save and continue</GoabButton>
         </GoabButtonGroup>

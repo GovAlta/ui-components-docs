@@ -3,6 +3,7 @@ import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function MicrositeHeaderExamples() {
   const { version } = useContext(LanguageVersionContext);
@@ -12,7 +13,10 @@ export default function MicrositeHeaderExamples() {
   };
   return (
     <>
-      <h3 id="component-example-feedbackclick">Custom click event handler (for feedback)</h3>
+      <SandboxHeader
+        exampleTitle="Link to give feedback to the service"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59350-40601&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <Sandbox skipRender fullWidth>
         <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />
         {/*Angular code*/}
@@ -130,7 +134,11 @@ export default function MicrositeHeaderExamples() {
           />
         )}
       </Sandbox>
-      <h3 id="component-example-slotted-microsite-header-version">Slotted version</h3>
+
+      <SandboxHeader
+        exampleTitle="Show version number"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-89591&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}
         {version === "old" && <CodeSnippet

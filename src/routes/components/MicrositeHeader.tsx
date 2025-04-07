@@ -249,7 +249,7 @@ export default function MicrositeHeaderPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="2" />
               </>
             }
           >

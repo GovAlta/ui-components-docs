@@ -18,6 +18,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabIconType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 type ComponentPropsType = GoabIconButtonProps;
 type CastingType = {
@@ -239,7 +240,11 @@ export default function IconButtonPage() {
               </>
             }
           >
-            <h3 id="component-example-multiple-actions-table">Show multiple actions in a compact table</h3>
+
+            <SandboxHeader
+              exampleTitle="Show multiple actions in a compact table"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59346-93042&t=Zhk6rgZlHuDDA1M3-4">
+            </SandboxHeader>
             <Sandbox fullWidth>
               <GoabTable width="100%">
                 <thead>

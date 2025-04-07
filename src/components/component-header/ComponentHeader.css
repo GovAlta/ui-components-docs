@@ -27,6 +27,10 @@
   color: var(--goa-color-text-secondary);
 }
 
+.grey {
+  color: var(--goa-color-text-secondary);
+}
+
 @media screen and (max-width: 623px) {
   .component-header h1 {
     margin-bottom: 1rem;

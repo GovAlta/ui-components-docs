@@ -8,7 +8,6 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoabBadge,
   GoabButton,
-  GoabContainer,
   GoabTab,
   GoabTable,
   GoabTableSortHeader,
@@ -22,6 +21,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { omit } from "lodash";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 interface User {
   firstName: string;
@@ -249,9 +249,12 @@ export default function TablePage() {
                 </>
               }
             >
-            <h3 id="component-example-sortable-columns">Sortable columns</h3>
-            <GoabContainer mt="m" mb="none">
-              <div style={{ padding: "40px" }}>
+
+              <SandboxHeader
+                exampleTitle="Sortable columns"
+                figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-207598&t=Zhk6rgZlHuDDA1M3-4">
+              </SandboxHeader>
+              <Sandbox fullWidth>
                 <GoabTable onSort={sortData} width="100%">
                   <thead>
                     <tr>
@@ -278,9 +281,8 @@ export default function TablePage() {
                     ))}
                   </tbody>
                 </GoabTable>
-              </div>
-            </GoabContainer>
 
+              </Sandbox>
             {/*React code*/}
             {version === "old" && (
               <CodeSnippet
@@ -591,7 +593,10 @@ export default function TablePage() {
               />
             )}
 
-            <h3 id="component-example-number-column">Number column</h3>
+              <SandboxHeader
+                exampleTitle="Number column"
+                figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-222010&t=Zhk6rgZlHuDDA1M3-4">
+              </SandboxHeader>
             <Sandbox fullWidth>
               <GoabTable width="100%">
                 <thead>

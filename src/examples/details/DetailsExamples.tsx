@@ -7,23 +7,27 @@ import {
 import {
   DetailsShowDirectDepositInformationExample
 } from "@examples/details/DetailsShowDirectDepositInformationExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const DetailsExamples = () => {
   return (
     <>
-      <h3 id="component-example-show-more-information-for-basic-question">
-        Show more information for a basic question
-      </h3>
+      <SandboxHeader
+        exampleTitle="Show more information to help answer a question"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-252228&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <DetailsMoreInformationBasicQuestionExample />
 
-      <h3 id="component-example-additional-information-help">
-        Additional information to help a user understand and answer a question
-      </h3>
+      <SandboxHeader
+        exampleTitle="Show lists as more information to help answer a question "
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-252532&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <DetailsAdditionalInformationHelpUserExample />
 
-      <h3 id="component-example-direct-deposit-information">
-        Show more information to help a user fill out direct deposit information
-      </h3>
+      <SandboxHeader
+        exampleTitle="Show more information to help a user fill out direct deposit information"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-251933&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <DetailsShowDirectDepositInformationExample/>
     </>
   )

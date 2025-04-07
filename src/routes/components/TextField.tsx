@@ -731,7 +731,7 @@ export default function TextFieldPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="5" />
               </>
             }
           >

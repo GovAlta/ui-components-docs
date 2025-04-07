@@ -18,6 +18,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
 
@@ -240,7 +241,11 @@ export default function HeroBannerPage() {
               </>
             }
           >
-            <h3 id="component-example-actions">Hero Banner with actions</h3>
+
+            <SandboxHeader
+              exampleTitle="Hero Banner with actions"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59343-90211&t=Zhk6rgZlHuDDA1M3-4">
+            </SandboxHeader>
             <Sandbox skipRender fullWidth>
               {version === "old" && <CodeSnippet
                 lang="html"
