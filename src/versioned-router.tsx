@@ -52,7 +52,7 @@ import TaskListPage from "@routes/patterns/TaskListPage.tsx";
 import QuestionPage from "@routes/patterns/QuestionPage.tsx";
 import ReviewPage from "@routes/patterns/ReviewPage.tsx";
 import ResultPage from "@routes/patterns/ResultPage.tsx";
-import SimpleFormPage from "@routes/patterns/SimpleFormPage.tsx";
+import PublicFormPage from "@routes/patterns/PublicFormPage.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 
@@ -155,7 +155,7 @@ export const PatternsRouter = () => {
       <Route path="/" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         {/* Non-versioned paths components */}
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="/simple-form" element={<SimpleFormPage/>} />
+        <Route path="/public-form" element={<PublicFormPage/>} />
         <Route path=":component" element={<ComponentRoute versionedPaths={patternsPaths} />} />
         {/* Versioned paths components */}
         <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={patternsPaths} />} />

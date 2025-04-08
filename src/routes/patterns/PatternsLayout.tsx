@@ -19,7 +19,7 @@ export default function PatternsLayout() {
         <GoabSideMenu>
           <GoabSpacer vSpacing="m"></GoabSpacer>
           <Link to="">All</Link>
-          <Link to="simple-form">Simple form</Link>
+          <Link to="public-form">Public form</Link>
           <GoabSpacer vSpacing="m"></GoabSpacer>
           <GoabSideMenuHeading>Pages</GoabSideMenuHeading>
           <Link to={getUrl('layout')}>Basic page layout</Link>
