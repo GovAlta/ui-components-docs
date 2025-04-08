@@ -53,36 +53,6 @@ export default function TablePage() {
     },
   ]);
 
-  const oldComponentProperties: ComponentProperty[] = [
-    {
-      name: "width",
-      type: "string",
-      description: "Width of the table. By default it will fit the enclosed content.",
-    },
-    {
-      name: "variant",
-      type: "normal | relaxed",
-      description: "A relaxed variant of the table with more vertical padding for the cells",
-      defaultValue: "normal",
-    },
-    {
-      name: "_sort",
-      lang: "angular",
-      type: "CustomEvent({detail: {sortBy: string: sortDir: number}})",
-      description: "Sort event fired when a GoATableSortHeader component is used.",
-    },
-    {
-      name: "onSort",
-      lang: "react",
-      type: "(sortBy: string, sortDir: number) => void",
-      description: "Sort event fired when a GoATableSortHeader component is used.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
-  ];
   const componentProperties: ComponentProperty[] = [
     {
       name: "width",
@@ -168,18 +138,16 @@ export default function TablePage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs>
           <GoabTab heading="Code examples">
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
               <GoabTable
-                {...(omit(tableProps, 'onSort'))}
+                {...omit(tableProps, "onSort")}
                 onSort={(detail: GoabTableOnSortDetail) => {
                   if (tableProps.onSort) {
                     tableProps.onSort(detail.sortBy, detail.sortDir);
                   }
-                }}
-              >
+                }}>
                 <thead>
                   <tr>
                     <th>Status</th>
