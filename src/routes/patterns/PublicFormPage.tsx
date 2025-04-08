@@ -3,7 +3,7 @@ import { GoabDetails } from "@abgov/react-components";
 import css from "./patterns.module.css";
 import { Link } from "react-router-dom";
 
-export default function SimpleFormPage() {
+export default function PublicFormPage() {
   return (
     <ComponentContent contentClassName="simple-form-page" tocCssQuery={":is(h2[id], h3[id])"}>
       <h1>Public form</h1>
@@ -11,7 +11,7 @@ export default function SimpleFormPage() {
         Design forms that help Albertan citizens understand the task, focus on the question and its
         answer, and complete the form.
       </h3>
-      <GoabDetails mt="xl" heading={"Who are the primary users for the simple form pattern?"}>
+      <GoabDetails mt="xl" heading={"Who are the primary users for the public form pattern?"}>
         <p>
           <strong>Primary users:</strong> citizens, public, external
           <br />
