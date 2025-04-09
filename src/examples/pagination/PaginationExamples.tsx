@@ -12,6 +12,7 @@ import { useContext, useEffect, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 import { faker } from "@faker-js/faker";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 interface User {
   id: string;
@@ -58,11 +59,11 @@ export const PaginationExamples = () => {
 
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
 
-      <h3 id="component-example-1">Show X per page</h3>
+      <SandboxHeader
+        exampleTitle="Show # results per page"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-192194&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*============= React code ==============*/}
         {version === "old" && (

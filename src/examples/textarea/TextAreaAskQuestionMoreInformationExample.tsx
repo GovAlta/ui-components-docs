@@ -37,22 +37,22 @@ export const TextAreaAskQuestionMoreInformationExample = () => {
           Back
         </GoabButton>
 
-        <h2>Description</h2>
+        <h2>Submit a question about your benefits</h2>
         <p>
-          List all components and include a description, including the number of hours for
-          each.
+          If you need clarification about your benefit eligibility, payment schedule, or application status, submit your
+          question here.
         </p>
         <form>
         <GoabFormItem
-          label="Program outline"
-          helpText="Remember to maintain clarity, accuracy, and coherence throughout the program outline.">
-          <GoabTextarea name="program" value="Input text" onChange={noop} />
+          label="Provide details about your situation"
+          helpText="Include specific details to help us answer your question quickly.">
+          <GoabTextarea name="program" onChange={noop} maxCount={400} countBy={"character"} />
         </GoabFormItem>
         </form>
-        <GoabDetails heading="How to write a good outline">
+        <GoabDetails mt={"m"} heading="What kind of information is useful?">
           <p>
-            Break down your outline into easily digestible sections. This can help to ensure
-            that the document is well-organized and easy to navigate.
+            Include your benefit program name, mention any recent correspondence you received and/or provide any
+            relevant case or reference numbers.
           </p>
         </GoabDetails>
 

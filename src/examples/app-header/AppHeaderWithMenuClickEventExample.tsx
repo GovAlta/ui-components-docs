@@ -25,12 +25,12 @@ export const AppHeaderWithMenuClickEventExample = () => {
         heading="Design System"
         onMenuClick={handleMenuClick}
         fullMenuBreakpoint={+deviceWidth}>
-        <a href="#">Support</a>
-        <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+        <GoabAppHeaderMenu heading="Search" leadingIcon="search">
           <a href="#">Cases</a>
           <a href="#">Payments</a>
           <a href="#">Outstanding</a>
         </GoabAppHeaderMenu>
+        <a href="#">Support</a>
         <a href="#" className="interactive">
           Sign in
         </a>
@@ -88,12 +88,12 @@ export const AppHeaderWithMenuClickEventExample = () => {
                  </goa-radio-group>
                   
                  <goa-app-header url="https://example.com" heading="Design System" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
+                  <goa-app-header-menu heading="Search" leadingIcon="search">
                     <a href="#">Cases</a>
                     <a href="#">Payments</a>
                     <a href="#">Outstanding</a>
                   </goa-app-header-menu>
+                  <a href="#">Support</a>
                   <a href="#" className="interactive">Sign in</a>
                 </goa-app-header>
               `}
@@ -121,12 +121,12 @@ export const AppHeaderWithMenuClickEventExample = () => {
                   [fullMenuBreakpoint]="+deviceWidth"
                   (onMenuClick)="handleMenuClick()"
                 >
-                  <a href="#">Support</a>
-                  <goab-app-header-menu heading="Tickets" leadingIcon="ticket">
+                  <goab-app-header-menu heading="Search" leadingIcon="search">
                     <a href="#">Cases</a>
                     <a href="#">Payments</a>
                     <a href="#">Outstanding</a>
                   </goab-app-header-menu>
+                  <a href="#">Support</a>
                   <a href="#" class="interactive">Sign in</a>
                 </goab-app-header>
               `}
@@ -162,12 +162,12 @@ export const AppHeaderWithMenuClickEventExample = () => {
                     heading="Design System"
                     onMenuClick={handleMenuClick}
                     fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                    <GoAAppHeaderMenu heading="Search" leadingIcon="search">
                       <a href="#">Cases</a>
                       <a href="#">Payments</a>
                       <a href="#">Outstanding</a>
                     </GoAAppHeaderMenu>
+                    <a href="#">Support</a>
                     <a href="#" className="interactive">Sign in</a>
                   </GoAAppHeader>
               `}
@@ -189,12 +189,12 @@ export const AppHeaderWithMenuClickEventExample = () => {
                     heading="Design System"
                     onMenuClick={handleMenuClick}
                     fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoabAppHeaderMenu heading="Tickets" leadingIcon="ticket">
+                    <GoabAppHeaderMenu heading="Search" leadingIcon="search">
                       <a href="#">Cases</a>
                       <a href="#">Payments</a>
                       <a href="#">Outstanding</a>
                     </GoabAppHeaderMenu>
+                    <a href="#">Support</a>
                     <a href="#" class="interactive">Sign in</a>
                   </GoabAppHeader>
               `}

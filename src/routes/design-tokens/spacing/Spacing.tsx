@@ -25,10 +25,10 @@ export default function SpacingPage() {
         <thead>
           <tr>
             <th></th>
-            <th>Token name</th>
+            <th>Design token</th>
             <th>rem</th>
             <th>px</th>
-            <th>Figma variable</th>
+            <th>Figma</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +61,7 @@ export default function SpacingPage() {
 
   const renderMobile = () => {
     return (
-      <GoabGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="l">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
             <GoabContainer key={idx}>
@@ -75,11 +75,11 @@ export default function SpacingPage() {
                 ></div>
                 <div className="grey-circle"></div>
               </div>
-              <TokenSnippet code={token.tokenName} />
+              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
               <dl>
-                <dt>REM</dt> <dd>{token.rem}</dd>
-                <dt>PX</dt> <dd>{token.px}</dd>
-                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
+                <dt>REM</dt> <dd className="dd-style">{token.rem}</dd>
+                <dt>PX</dt> <dd className="dd-style">{token.px}</dd>
+                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
               </dl>
             </GoabContainer>
           ))

@@ -16,17 +16,17 @@ export const AppFooterShowQuickLinkExample = () => {
         code={`
                 <goa-app-footer maxcontentwidth="100%">
                   <goa-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
@@ -40,17 +40,17 @@ export const AppFooterShowQuickLinkExample = () => {
         code={`
                 <goab-app-footer maxContentWidth="100%">
                   <goab-app-footer-meta-section slot="meta">
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </goab-app-footer-meta-section>
                 </goab-app-footer>
@@ -66,17 +66,17 @@ export const AppFooterShowQuickLinkExample = () => {
         code={`
                  <GoAAppFooter maxContentWidth="100%">
                   <GoAAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
@@ -90,17 +90,17 @@ export const AppFooterShowQuickLinkExample = () => {
         code={`
                  <GoabAppFooter maxContentWidth="100%">
                   <GoabAppFooterMetaSection>
-                    <a href="privacy.html">
-                      Privacy
+                    <a href="#">
+                      Give feedback
                     </a>
-                    <a href="disclaimer.html">
-                      Disclaimer
-                    </a>
-                    <a href="accessibility.html">
+                    <a href="#">
                       Accessibility
                     </a>
-                    <a href="using-alberta.html">
-                      Using Alberta.ca
+                    <a href="#">
+                      Privacy
+                    </a>
+                    <a href="#">
+                      Contact us
                     </a>
                   </GoabAppFooterMetaSection>
                 </GoabAppFooter>
@@ -109,10 +109,10 @@ export const AppFooterShowQuickLinkExample = () => {
 
       <GoabAppFooter maxContentWidth={"100%"}>
         <GoabAppFooterMetaSection>
-          <a href="privacy.html">Privacy</a>
-          <a href="disclaimer.html">Disclaimer</a>
-          <a href="accessibility.html">Accessibility</a>
-          <a href="using-alberta.html">Using Alberta.ca</a>
+          <a href="#">Give feedback</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Privacy</a>
+          <a href="#">Contact us</a>
         </GoabAppFooterMetaSection>
       </GoabAppFooter>
     </Sandbox>

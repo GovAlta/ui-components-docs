@@ -71,7 +71,7 @@ export const DropdownAddItemExample = () => {
 
   return (
     <>
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <div style={{ padding: "40px" }}>
           <GoabFormItem
             requirement="required"

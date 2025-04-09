@@ -132,7 +132,7 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }
 
         {allowCopy && (
           <div className="goa-code-snippet-actions--copy">
-            <GoabTooltip content={isCopied ? `Copied` : `Copy?`} position="left">
+            <GoabTooltip content={isCopied ? `Copy.` : `Copy?`} position="left">
               <GoabIconButton icon="copy" onClick={copyCode} />
             </GoabTooltip>
           </div>

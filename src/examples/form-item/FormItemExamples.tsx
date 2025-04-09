@@ -1,17 +1,20 @@
 import { FormItemSlottedHelperTextExample } from "@examples/form-item/FormItemSlottedHelperTextExample.tsx";
 import { FormItemSlottedErrorTextExample } from "@examples/form-item/FormItemSlottedErrorTextExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const FormItemExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-
-      <h3 id="component-example-slotted-helper-text">Slotted Helper Text</h3>
+      <SandboxHeader
+        exampleTitle="Slotted Helper Text"
+        figmaExample="">
+      </SandboxHeader>
       <FormItemSlottedHelperTextExample />
 
-      <h3 id="component-example-slotted-error-text">Slotted Error Text</h3>
+      <SandboxHeader
+        exampleTitle="Slotted Error Text"
+        figmaExample="">
+      </SandboxHeader>
       <FormItemSlottedErrorTextExample />
     </>
   )

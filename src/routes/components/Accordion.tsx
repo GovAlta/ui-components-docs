@@ -20,6 +20,8 @@ import {
   LegacyTestIdProperties,
   MarginProperty, TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -29,6 +31,8 @@ const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/tabs", name: "Tabs" },
 ];
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
+
 
 type ComponentPropsType = GoabAccordionProps;
 type CastingType = {
@@ -41,24 +45,24 @@ type CastingType = {
 export default function AccordionPage() {
 
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
-    heading: "Heading",
+    heading: "Accordion",
     headingSize: "medium",
     children: <></>,
   });
 
   const [accordionBindings, setAccordionBindings] = useState<ComponentBinding[]>([
     {
-      label: "Heading",
-      type: "string",
-      name: "heading",
-      value: "Accordion heading",
-    },
-    {
       label: "Heading Size",
       type: "radio",
       name: "headingSize",
       options: ["small", "medium"],
       value: "medium",
+    },
+    {
+      label: "Heading",
+      type: "string",
+      name: "heading",
+      value: "Accordion heading",
     },
     {
       label: "Secondary Text",
@@ -68,18 +72,18 @@ export default function AccordionPage() {
       value: "",
     },
     {
-      label: "Open",
-      type: "boolean",
-      name: "open",
-      value: false,
-    },
-    {
       label: "Max Width",
       type: "string",
       name: "maxWidth",
       requirement: "optional",
       value: "",
     },
+    {
+      label: "Open",
+      type: "boolean",
+      name: "open",
+      value: false,
+    }
   ]);
 
   const oldComponentProperties: ComponentProperty[] = [
@@ -223,35 +227,42 @@ export default function AccordionPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink="Accordion"
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs>
-          <GoabTab heading="Code examples">
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
               <GoabAccordion {...accordionProps}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi
+                This is the content in an accordion item. This content can be anything that you want including rich
+                text, components, and more.
               </GoabAccordion>
             </Sandbox>
             <ComponentProperties
               properties={componentProperties}
               oldProperties={oldComponentProperties}
             />
+          </GoabTab>
+          <GoabTab
+            heading={<>
+              Examples
+              <GoabBadge type="information" content="2" />
+            </>}
+          >
             <AccordionExamples />
           </GoabTab>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }></GoabTab>
         </GoabTabs>
       </ComponentContent>
     </div>
