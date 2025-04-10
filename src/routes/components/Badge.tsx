@@ -21,11 +21,13 @@ const relatedComponents = [
     link: "/components/filter-chip", name: "Filter Chip"
   },
   {
-    link: "/components/icons", name: "Icons"
+    link: "/components/icons",
+    name: "Icons",
   },
   {
-    link: "/components/table", name: "Table"
-  }
+    link: "/components/table",
+    name: "Table",
+  },
 ];
 
 type ComponentPropsType = GoabBadgeProps;
@@ -152,7 +154,7 @@ export default function BadgePage() {
       type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
-  ]
+  ];
 
   function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
     setBadgeBindings(badgeBindings);
@@ -161,16 +163,25 @@ export default function BadgePage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs>
           <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Component
+            </h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoabBadge {...badgeProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
             <BadgeExamples />
           </GoabTab>
 
@@ -180,8 +191,7 @@ export default function BadgePage() {
                 Design guidelines
                 <GoabBadge type="information" content="In progress" />
               </>
-            }
-          ></GoabTab>
+            }></GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

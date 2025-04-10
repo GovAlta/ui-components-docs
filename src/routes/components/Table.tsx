@@ -27,14 +27,14 @@ interface User {
   age: number;
 }
 
-type ComponentPropsType = Omit<GoabTableProps, 'onSort'> & {
+type ComponentPropsType = Omit<GoabTableProps, "onSort"> & {
   onSort?: (sortBy: string, sortDir: number) => void;
 };
 
 export default function TablePage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
-    width: "100%"
+    width: "100%",
   });
   const [tableBindings, setTableBindings] = useState<ComponentBinding[]>([
     {
@@ -168,18 +168,16 @@ export default function TablePage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs>
           <GoabTab heading="Code examples">
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
               <GoabTable
-                {...(omit(tableProps, 'onSort'))}
+                {...omit(tableProps, "onSort")}
                 onSort={(detail: GoabTableOnSortDetail) => {
                   if (tableProps.onSort) {
                     tableProps.onSort(detail.sortBy, detail.sortDir);
                   }
-                }}
-              >
+                }}>
                 <thead>
                   <tr>
                     <th>Status</th>
@@ -233,8 +231,13 @@ export default function TablePage() {
               </GoabTable>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
+            <h2 id="component-examples" className="hidden" aria-hidden="true">
+              Examples
+            </h2>
 
             <h3 id="component-example-sortable-columns">Sortable columns</h3>
             <GoabContainer mt="m" mb="none">
