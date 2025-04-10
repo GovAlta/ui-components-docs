@@ -18,7 +18,8 @@ const description =
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   {
-    link: "/components/filter-chip", name: "Filter Chip"
+    link: "/components/filter-chip",
+    name: "Filter chip",
   },
   {
     link: "/components/icons",
