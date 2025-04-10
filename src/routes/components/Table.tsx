@@ -19,6 +19,7 @@ import { GoabTableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
 import { omit } from "lodash";
 
 interface User {
@@ -83,6 +84,7 @@ export default function TablePage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "width",
@@ -162,6 +164,7 @@ export default function TablePage() {
         relatedComponents={[
           { link: "/components/button", name: "Button" },
           { link: "/components/dropdown", name: "Dropdown" },
+          { link: "/components/filter-chip", name: "Filter chip" },
           { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
@@ -605,6 +608,9 @@ export default function TablePage() {
                 </tbody>
               </GoabTable>
             </Sandbox>
+
+						<h3 id="component-filter-table-data-example">Filter data in a table</h3>
+            <TableWithGlobalFiltersExample />
           </GoabTab>
 
           <GoabTab

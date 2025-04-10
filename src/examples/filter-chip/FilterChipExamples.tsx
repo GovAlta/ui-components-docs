@@ -1,3 +1,4 @@
+import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
 import { FilterChipDeleteEventExample } from "@examples/filter-chip/FilterChipDeleteEventExample.tsx";
 import { FilterChipInteractiveExample } from "@examples/filter-chip/FilterChipInteractiveExample.tsx";
 import { FilterChipTypedChipExample } from "@examples/filter-chip/FilterChipTypedChipExample.tsx";
@@ -14,8 +15,11 @@ export const FilterChipExamples = () => {
       <h3 id="component-interactive">Interactive Example</h3>
       <FilterChipInteractiveExample />
 
-      <h3 id="component-typed">Typed Chips Example</h3>
+      <h3 id="component-typed">Create a chip through typing</h3>
       <FilterChipTypedChipExample/>
+
+      <h3 id="component-filter-table-data-example">Filter data in a table</h3>
+      <TableWithGlobalFiltersExample />
     </>
   )
 }
