@@ -55,6 +55,7 @@ import ResultPage from "@routes/patterns/ResultPage.tsx";
 import PublicFormPage from "@routes/patterns/PublicFormPage.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
+import { DrawerPage } from "@routes/components/Drawer.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -95,6 +96,7 @@ export const ComponentsRouter = () => {
     "date-picker": <DatePickerPage />,
     "details": <DetailsPage />,
     "divider": <DividerPage />,
+    "drawer": <DrawerPage />,
     "dropdown": <DropdownPage />,
     "file-uploader": <FileUploaderPage />,
     "filter-chip": <FilterChipPage />,
