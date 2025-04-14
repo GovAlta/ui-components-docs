@@ -180,7 +180,7 @@ export default function AllComponentsPage() {
       groups: ["inputs"],
       tags: ["inputs and actions", "text field", "text box"],
       description: "A single-line field where users can input and edit text.",
-    },
+    }, 
     {
       name: "radio",
       groups: ["inputs"],
@@ -301,6 +301,12 @@ export default function AllComponentsPage() {
       tags: ["utilities"],
       description:
         "Arrange a number of components into a responsive grid pattern.",
+    },
+    {
+      name: "link",
+      groups: ["utilities"],
+      tags: ["utilities"],
+      description: "Wraps an anchor element to add icons or margins.",
     },
     {
       name: "icons",
