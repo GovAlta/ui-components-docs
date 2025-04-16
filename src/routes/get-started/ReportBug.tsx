@@ -262,10 +262,21 @@ export default function ReportBugPage() {
         <GoabFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
           <GoabTextarea name="replication" value={ formValues.replication } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!replicationError } />
         </GoabFormItem>
-        <GoabFormItem label="StackBlitz URL" mb="s" helpText="Share your code with us in an isolated environment." requirement="optional" error={ stackblitzError }>
+        <GoabFormItem label="StackBlitz URL" mb="s" 
+          helpText={
+            <>Share your code with us in an isolated environment.
+              <GoabBlock mt="xs" gap="m">
+                <a href="https://stackblitz.com/~/github.com/GovAlta/ui-components-react-sandbox" target="_blank">React Stackblitz</a>
+                <a href="https://stackblitz.com/~/github.com/GovAlta/ui-components-angular-sandbox" target="_blank">Angular Stackblitz</a>
+              </GoabBlock>
+            </>
+          }
+          requirement="optional"
+          error={ stackblitzError }
+        >
           <GoabInput name="stackblitz" value={ formValues.stackblitz } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="90%" error={ !!stackblitzError } />
         </GoabFormItem>
-        <GoabDetails heading="Why stackblitz?" maxWidth="90%" mb="s">
+        <GoabDetails heading="Why stackblitz?" maxWidth="90%" mb="xl">
           The design system team uses <a href="https://stackblitz.com/" target="_blank">StackBlitz</a> to create and share live code
           examples. It allows us to easily see your code in an environment that is unaffected by the rest of your project. Create a free
           account and share your work directly with the team.
@@ -273,7 +284,7 @@ export default function ReportBugPage() {
         <GoabFormItem label="Jam.dev URL" mb="s" helpText="Show us the bug." requirement="optional" error={ jamError }>
           <GoabInput name="jam" value={ formValues.jam } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="90%" error={ !!jamError } />
         </GoabFormItem>
-        <GoabDetails heading="Why jam.dev" maxWidth="90%" mb="s">
+        <GoabDetails heading="Why jam.dev?" maxWidth="90%" mb="xl">
           The design system team uses <a href="https://jam.dev/" target="_blank">jam.dev</a> to share and report bugs. This gives us
           a lot of the information we need to understand what's happening and how to fix it. Create a free account and record and share
           the issue.        
