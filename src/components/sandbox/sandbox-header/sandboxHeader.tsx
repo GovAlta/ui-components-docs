@@ -1,6 +1,7 @@
 import { GoabTooltip } from "@abgov/react-components";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import "./sandboxHeader.css";
+import { toKebabCase } from "../../../utils";
 
 export interface Props {
   exampleTitle: string;
@@ -10,23 +11,11 @@ export interface Props {
 export function SandboxHeader(props: Props) {
   const [isCopied, setIsCopied] = useState(false);
   const headingRef = useRef<HTMLDivElement>(null);
-  const [anchorId, setAnchorId] = useState("");
   const [isHovering, setIsHovering] = useState(false);
-
-  // Generate a unique anchor ID based on the heading text
-  useEffect(() => {
-    if (headingRef.current) {
-      const generatedId = props.exampleTitle
-        .toLowerCase()
-        .replace(/\s+/g, "-") // Replace spaces with dashes
-        .replace(/[^a-z0-9-]/g, ""); // Remove special characters
-      setAnchorId(generatedId);
-    }
-  }, [props.exampleTitle]);
+  const anchorId = toKebabCase(props.exampleTitle);
 
   function copyAnchorLink() {
     const url = `${window.location.origin}${window.location.pathname}#${anchorId}`;
-
     navigator.clipboard.writeText(url).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000); // Reset tooltip text after 2s
@@ -44,7 +33,7 @@ export function SandboxHeader(props: Props) {
           </h3>
 
           {/* Copy link icon (consistent with CodeSnippet.tsx) */}
-          <GoabTooltip content={isCopied ? "Copied" : "Copy link"}>
+          <GoabTooltip content={isCopied ? "Copied" : "Copy link"} key={isCopied ? "copied" : "copy"}>
             <button
               onClick={copyAnchorLink}
               className="copy-icon-button"

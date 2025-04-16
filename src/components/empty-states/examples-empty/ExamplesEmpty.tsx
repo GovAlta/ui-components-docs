@@ -1,8 +1,5 @@
 import { GoabContainer, GoabText } from "@abgov/react-components";
 
-export interface Props {
-  figmaLink?: string;
-}
 export function ExamplesEmpty( ) {
   return (
     <div className="examples-empty">
