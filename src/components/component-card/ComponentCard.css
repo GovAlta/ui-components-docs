@@ -28,3 +28,14 @@
   margin-top: 1rem;
   margin-bottom: 0;
 }
+
+.card-content a:focus {
+  outline: none;
+  box-shadow: none;
+  background: none;
+}
+
+.card:focus-within {
+  outline: 3px solid var(--goa-color-interactive-focus);
+  border-radius: 4px;
+}

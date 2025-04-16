@@ -2,6 +2,7 @@ import { GoabBadge, GoabBlock, GoabText } from "@abgov/react-components";
 import "./ComponentHeader.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { toSentenceCase, fetchIssueCount } from "../../utils";
 
 export enum Category {
   CONTENT_AND_LAYOUT = "Content and layout",
@@ -21,60 +22,18 @@ interface Props {
 }
 
 export const ComponentHeader: React.FC<Props> = (props) => {
-  // Helper to transform "button" -> "Button" for GitHub label
-  function toSentenceCase(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  }
-
   const [issueCount, setIssueCount] = useState<number | null>(null);
 
   useEffect(() => {
     if (!props.githubLink) return;
 
-    const fetchIssueCount = async () => {
-      const token =
-        import.meta.env.VITE_GITHUB_TOKEN ||
-        import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
-
-      if (!token) {
-        console.error("GitHub token not provided");
-        return;
-      }
-
+    const getCount = async () => {
       const label = toSentenceCase(props.githubLink!);
-      const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
-
-      const query = `
-        query {
-          issues: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) {
-            issueCount
-          }
-        }
-      `;
-
-      try {
-        const response = await fetch("https://api.github.com/graphql", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({ query })
-        });
-
-        const result = await response.json();
-        if (result.errors) {
-          console.error("GraphQL errors:", result.errors);
-          return;
-        }
-
-        setIssueCount(result.data.issues.issueCount);
-      } catch (error) {
-        console.error("Error fetching issue count:", error);
-      }
+      const count = await fetchIssueCount(label);
+      setIssueCount(count);
     };
 
-    fetchIssueCount();
+    getCount();
   }, [props.githubLink]);
 
   return (

@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { ComponentStatus } from "@components/component-card/ComponentCard";
+import { toSentenceCase, fetchAllIssueCounts } from "../../utils";
 import {
   GoabTable,
   GoabTableSortHeader,
@@ -461,7 +463,7 @@ const AllComponents = () => {
     ];
 
     return initialCards.sort((a, b) => {
-      const statusOrder = ["Published", "In Progress", "Not Published"];
+      const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
       const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
       if (statusComparison !== 0) return statusComparison;
       return a.name.localeCompare(b.name);
@@ -486,7 +488,7 @@ const AllComponents = () => {
     const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
     const sorted = [...cards].sort((a, b) => {
       if (sortBy === "status") {
-        const statusOrder = ["Published", "In Progress", "Not Published"];
+        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
         if (statusComparison !== 0) return statusComparison * newDirection;
       }
@@ -516,11 +518,6 @@ const AllComponents = () => {
     setSortDirection({ [sortBy]: newDirection });
   };
 
-  // Helper to convert to sentence case
-  const toSentenceCase = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-  };
-
   // Helper to format the label query for REST URLs
   const getLabelQuery = (name: string) => {
     const formatted = toSentenceCase(name);
@@ -528,66 +525,13 @@ const AllComponents = () => {
   };
 
   // Helper to format the label query for GraphQL (escaping inner quotes)
-  const getGraphQLLabelQuery = (name: string) => {
-    const formatted = toSentenceCase(name);
-    return formatted.includes(" ") ? `\\"${formatted}\\"` : formatted;
-  };
-
   useEffect(() => {
-    const fetchIssueCountsGraphQL = async () => {
-      const token =
-        import.meta.env.VITE_GITHUB_TOKEN ||
-        import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
-      if (!token) {
-        console.error("GitHub token not provided");
-        return;
-      }
-
-      // Build a single GraphQL query for all cards
-      const queryFields = cards.map((card) => {
-        const alias = card.name.replace(/\s+/g, "").toLowerCase();
-        const labelQuery = getGraphQLLabelQuery(card.name);
-        return `${alias}: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) { issueCount }`;
-      }).join("\n");
-
-      const graphQLQuery = `
-        query {
-          ${queryFields}
-        }
-      `;
-
-      try {
-        const response = await fetch("https://api.github.com/graphql", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ query: graphQLQuery }),
-        });
-
-        const result = await response.json();
-        if (result.errors) {
-          console.error("GraphQL errors:", result.errors);
-          return;
-        }
-
-        const newIssueCounts: Record<string, number> = {};
-        cards.forEach((card) => {
-          const alias = card.name.replace(/\s+/g, "").toLowerCase();
-          newIssueCounts[card.name] =
-            result.data[alias] && result.data[alias].issueCount
-              ? result.data[alias].issueCount
-              : 0;
-        });
-
-        setIssueCounts(newIssueCounts);
-      } catch (error) {
-        console.error("Error fetching issue counts:", error);
-      }
+    const loadIssueCounts = async () => {
+      const issueCounts = await fetchAllIssueCounts(cards);
+      setIssueCounts(issueCounts);
     };
 
-    fetchIssueCountsGraphQL();
+    loadIssueCounts();
   }, [cards]);
 
   const renderTable = () => (

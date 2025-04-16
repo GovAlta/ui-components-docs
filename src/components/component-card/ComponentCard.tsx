@@ -4,6 +4,8 @@ import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
 
+export type ComponentStatus = "Published" | "Not Published" | "In Progress";
+
 // Define allowed group options as a union type
 type Group =
   | "Content layout"
@@ -17,7 +19,7 @@ export interface Props {
   description: string;
   groups: Group[]; // Use the Group type here
   tags?: string[];
-  status: "Published" | "Not Published" | "In Progress";
+  status: ComponentStatus;
   githubLink?: string;
   openIssues?: number;
 }
@@ -35,7 +37,7 @@ export function ComponentCard(props: Props) {
     testImage.onerror = () => setImageUrl("/images/not-yet-available.png");
   }, [imageUrl]);
 
-  const getBadgeType = (status: string) => {
+  const getBadgeType = (status: ComponentStatus) => {
     switch (status) {
       case "Published":
         return null; // No badge for "Published"
@@ -53,7 +55,7 @@ export function ComponentCard(props: Props) {
   return (
     <div className="card">
       {props.status === "Published" ? (
-        <Link to={toKebabCase(props.name)}>
+        <Link to={toKebabCase(props.name)} tabIndex={-1}>
           <div
             className="card-image"
             style={{ backgroundImage: `url(${imageUrl})` }}
@@ -62,6 +64,7 @@ export function ComponentCard(props: Props) {
       ) : (
         <div
           className="card-image"
+          tabIndex={-1}
           style={{ backgroundImage: `url(${imageUrl})` }}
         />
       )}
