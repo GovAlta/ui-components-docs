@@ -262,7 +262,13 @@ export default function ReportBugPage() {
         <GoabFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
           <GoabTextarea name="replication" value={ formValues.replication } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!replicationError } />
         </GoabFormItem>
-        <GoabFormItem label="StackBlitz URL" mb="s" helpText="Share your code with us in an isolated environment." requirement="optional" error={ stackblitzError }>
+        <GoabFormItem label="StackBlitz URL" mb="s" 
+          helpText={
+            <>Share your code with us in an isolated environment. <a href="https://stackblitz.com/~/github.com/GovAlta/ui-components-react-sandbox">React Stackblitz</a> <a href="https://stackblitz.com/~/github.com/GovAlta/ui-components-angular-sandbox">Angular Stackblitz</a></>
+          }
+          requirement="optional"
+          error={ stackblitzError }
+        >
           <GoabInput name="stackblitz" value={ formValues.stackblitz } onChange={(event: GoabInputOnChangeDetail) => handleChange(event.name, event.value) } width="90%" error={ !!stackblitzError } />
         </GoabFormItem>
         <GoabDetails heading="Why stackblitz?" maxWidth="90%" mb="s">
