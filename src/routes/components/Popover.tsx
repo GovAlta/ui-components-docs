@@ -15,6 +15,11 @@ import {
   LegacyTestIdProperties, MarginProperty,
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
 
 export default function PopoverPage() {
   const {version} = useContext(LanguageVersionContext);
@@ -173,14 +178,15 @@ export default function PopoverPage() {
           { link: "/components/header", name: "Header" },
           { link: "/components/tooltip", name: "Tooltip" },
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Popover"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoabTabs>
-          <GoabTab heading="Code examples">
-            {/*Popover sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
               {/*Must be skipRender because Sandbox doesn't support slot target*/}
               {/*Angular*/}
@@ -277,19 +283,27 @@ export default function PopoverPage() {
                 It can be used for a number of different contexts.
               </GoabPopover>
             </Sandbox>
-
-            {/*Popover table properties*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="0" />
               </>
             }
-          ></GoabTab>
+          >
+            <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

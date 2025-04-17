@@ -13,10 +13,10 @@ export const ModalConfirmDestructiveActionExample = () => {
         type="tertiary"
         leadingIcon="trash"
         onClick={() => setDestructiveModalOpen(true)}>
-        Delete my application
+        Delete record
       </GoabButton>
       <GoabModal
-        heading="Are you sure you want to delete this application?"
+        heading="Are you sure you want to delete this record?"
         open={destructiveModalOpen}
         role="alertdialog"
         actions={
@@ -28,7 +28,7 @@ export const ModalConfirmDestructiveActionExample = () => {
               type="primary"
               variant="destructive"
               onClick={() => setDestructiveModalOpen(false)}>
-              Delete application
+              Delete record
             </GoabButton>
           </GoabButtonGroup>
         }>
@@ -56,13 +56,13 @@ export const ModalConfirmDestructiveActionExample = () => {
           tags="angular"
           allowCopy={true}
           code={`
-                  <goa-button type="tertiary" leadingIcon="trash" (_click)="toggleModal()">Delete my application</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" (_close)="toggleModal()" heading="Are you sure you want to delete this application?">
+                  <goa-button type="tertiary" leadingIcon="trash" (_click)="toggleModal()">Delete record</goa-button>
+                  <goa-modal [open]="open" role="alertdialog" (_close)="toggleModal()" heading="Are you sure you want to delete this record?">
                       <p>This action cannot be undone.</p>
                     <div slot="actions">
                       <goa-button-group alignment="end">
                         <goa-button type="tertiary" (_click)="toggleModal()">Cancel</goa-button>
-                        <goa-button type="primary" variant="destructive" (_click)="toggleModal()">Delete application</goa-button>
+                        <goa-button type="primary" variant="destructive" (_click)="toggleModal()">Delete record</goa-button>
                       </goa-button-group>
                     </div>
                   </goa-modal>
@@ -75,13 +75,13 @@ export const ModalConfirmDestructiveActionExample = () => {
           tags="angular"
           allowCopy={true}
           code={`
-            <goab-button type="tertiary" leadingIcon="trash" (onClick)="toggleModal()">Delete my application</goab-button>
-            <goab-modal [open]="open" role="alertdialog" (onClose)="toggleModal()" heading="Are you sure you want to delete this application?" [actions]="actions">
+            <goab-button type="tertiary" leadingIcon="trash" (onClick)="toggleModal()">Delete record</goab-button>
+            <goab-modal [open]="open" role="alertdialog" (onClose)="toggleModal()" heading="Are you sure you want to delete this record?" [actions]="actions">
               <p>This action cannot be undone.</p>
               <ng-template #actions>
                 <goab-button-group alignment="end">
                 <goab-button type="tertiary" (onClick)="toggleModal()">Cancel</goab-button>
-                <goab-button type="primary" variant="destructive" (onClick)="toggleModal()">Delete application</goab-button>
+                <goab-button type="primary" variant="destructive" (onClick)="toggleModal()">Delete record</goab-button>
                 </goab-button-group>
               </ng-template>
             </goab-modal>
@@ -105,9 +105,9 @@ export const ModalConfirmDestructiveActionExample = () => {
           tags="react"
           allowCopy={true}
           code={`
-                  <GoAButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete my application</GoAButton>
+                  <GoAButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete record</GoAButton>
                   <GoAModal
-                    heading="Are you sure you want to delete this application?"
+                    heading="Are you sure you want to delete this record?"
                     open={open}
                     role="alertdialog"
                     onClose={() => setOpen(false)}
@@ -117,7 +117,7 @@ export const ModalConfirmDestructiveActionExample = () => {
                           Cancel
                         </GoAButton>
                         <GoAButton type="primary" variant="destructive" onClick={() => setOpen(false)}>
-                           Delete application
+                           Delete record
                         </GoAButton>
                       </GoAButtonGroup>
                     }
@@ -134,9 +134,9 @@ export const ModalConfirmDestructiveActionExample = () => {
           tags="react"
           allowCopy={true}
           code={`
-                  <GoabButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete my application</GoabButton>
+                  <GoabButton type="tertiary" leadingIcon="trash" onClick={() => setOpen(true)}>Delete record</GoabButton>
                   <GoabModal
-                    heading="Are you sure you want to delete this application?"
+                    heading="Are you sure you want to delete this record?"
                     open={open}
                     role="alertdialog"
                     onClose={() => setOpen(false)}
@@ -146,7 +146,7 @@ export const ModalConfirmDestructiveActionExample = () => {
                           Cancel
                         </GoabButton>
                         <GoabButton type="primary" variant="destructive" onClick={() => setOpen(false)}>
-                           Delete application
+                           Delete record
                         </GoabButton>
                       </GoabButtonGroup>
                     }

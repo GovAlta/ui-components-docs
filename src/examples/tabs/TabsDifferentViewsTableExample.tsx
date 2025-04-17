@@ -10,7 +10,7 @@ export const TabsDifferentViewsTableExample = () => {
   
   return (
     <>
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <div style={{ padding: "40px" }}>
             <GoabTabs>
               <GoabTab heading="All">

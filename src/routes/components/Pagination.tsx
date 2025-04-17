@@ -23,6 +23,10 @@ import {
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
 import { PaginationExamples } from "@examples/pagination/PaginationExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13964";
 
 type ComponentPropsType = Omit<GoabPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
@@ -212,13 +216,15 @@ export default function PaginationPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Pagination"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs>
-          <GoabTab heading="Code examples">
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={paginationBindings}
@@ -508,18 +514,24 @@ export default function PaginationPage() {
             {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
-            <PaginationExamples/>
 
           </GoabTab>
-
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="1" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <PaginationExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

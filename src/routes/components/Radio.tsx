@@ -24,6 +24,8 @@ import {
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
 import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Radio";
@@ -34,6 +36,7 @@ const relatedComponents = [
   { link: "/components/dropdown", name: "Dropdown" },
   { link: "/components/form-item", name: "Form item" }
 ];
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=102-26";
 type ComponentPropsType = GoabRadioGroupProps;
 type CastingType = {
   name: string;
@@ -290,14 +293,16 @@ export default function RadioPage() {
         description={description}
         category={category}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Radio"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs>
-          <GoabTab heading="Code examples">
+          <GoabTab heading="Code playground">
             {/*Radio sandbox*/}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={radioBindings}
@@ -450,16 +455,26 @@ export default function RadioPage() {
               properties={radioItemProperties}
               oldProperties={oldRadioItemProperties}
             />
-            <RadioExamples />
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
-            }></GoabTab>
+            }
+          >
+            <RadioExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

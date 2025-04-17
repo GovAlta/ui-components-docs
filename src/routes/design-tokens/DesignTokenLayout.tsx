@@ -39,10 +39,10 @@ export function DesignTokenLayout() {
               </GoabBlock>
 
               <Link to="">All</Link>
-              <Link to="border-radius">Border Radius</Link>
-              <Link to="border-width">Border Width</Link>
+              <Link to="border-radius">Border radius</Link>
+              <Link to="border-width">Border width</Link>
               <Link to="color">Color</Link>
-              <Link to="icon-size">Icon Size</Link>
+              <Link to="icon-size">Icon size</Link>
               <Link to="opacity">Opacity</Link>
               <Link to="shadow">Shadow</Link>
               <Link to="spacing">Spacing</Link>

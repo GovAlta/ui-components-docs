@@ -1,4 +1,4 @@
-import { GoabAccordion, GoabBadge } from "@abgov/react-components";
+import { GoabBadge, GoabContainer, GoabText } from "@abgov/react-components";
 import { useContext, useEffect, useState } from "react";
 
 import css from "./ComponentProperties.module.css";
@@ -44,21 +44,25 @@ export const ComponentProperties = (props: Props) => {
 
   return (
     <>
-      <h3 
+      <h2
         id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"} 
         className="hidden" 
         aria-hidden="true"
       >
         {props.heading || "Properties"}
-      </h3>
-      <GoabAccordion heading={props.heading || "Properties"} mt="l" mb="none">
+      </h2> <GoabText size="heading-m" mb="l" mt="2xl">
+      {props.heading || "Properties"}
+    </GoabText>
+      <GoabContainer
+        type="interactive"
+      >
         <div>
           {filteredProperties.map((props, index) => (
 
             <ComponentProperty key={index} props={props} />
           ))}
         </div>
-      </GoabAccordion>
+      </GoabContainer>
     </>
   );
 };
@@ -86,9 +90,11 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
         {props.description}
         {props.defaultValue && (
           <span>
+                        <br/>
             {" "}
             Defaults to <code className={css.code}>{props.defaultValue}</code>.
           </span>
+
         )}
       </div>
     </div>

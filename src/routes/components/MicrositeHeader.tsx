@@ -15,10 +15,14 @@ import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import MicrositeHeaderExamples from "@examples/microsite-header/MicrositeHeaderExamples.tsx";
 import { GoabServiceLevel } from "@abgov/ui-components-common";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=2-81";
 
 const componentName = "Microsite header";
 const description =
-  "Communicate what stage the service is at, connect to <a href='https://www.alberta.ca' target='_blank'>Alberta.ca</a>, and gather feedback on your service.";
+  "Communicate what stage the service is at, connect to Alberta.ca, and gather feedback on your service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 type ComponentPropsType = GoabHeaderProps;
 const relatedComponents = [{ link: "/components/header", name: "Header" }];
@@ -214,7 +218,6 @@ export default function MicrositeHeaderPage() {
     },
   ];
 
-
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setMicrositeHeaderProps(props as CastingType);
     setMicrositeHeaderBindings(bindings);
@@ -227,30 +230,38 @@ export default function MicrositeHeaderPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Microsite header"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoabMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
-
-            {/*Component properties table*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-            <MicrositeHeaderExamples />
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <MicrositeHeaderExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>
