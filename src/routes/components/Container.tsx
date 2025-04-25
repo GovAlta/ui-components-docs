@@ -13,11 +13,14 @@ import {
 } from "@abgov/react-components";
 import ContainerExamples from "@examples/container/ContainerExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1789-12623";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Container";
 const description = "Group information, create hierarchy, and show related information.";
-const category = Category.FEEDBACK_AND_ALERTS;
+const category = Category.CONTENT_AND_LAYOUT;
 const relatedComponents = [
   { link: "/components/accordion", name: "Accordion" },
   { link: "/components/details", name: "Details" },
@@ -121,7 +124,7 @@ export default function ContainerPage() {
       type: "string",
       description: "Sets the maximum width of the container.",
       lang: "angular",
-    },    
+    },
     {
       name: "testId",
       type: "string",
@@ -222,34 +225,41 @@ export default function ContainerPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Container"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
         <GoabTabs>
-          <GoabTab heading={"Code examples"}>
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={containerBindings} onChange={onSandboxChange} fullWidth>
               <GoabContainer {...containerProps}>
                 <h2>Detach to use</h2>
                 <p>Add things inside me</p>
               </GoabContainer>
             </Sandbox>
-
-            {/*Container Table Properties*/}
             <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
-            <ContainerExamples />
-
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="4" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <ContainerExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

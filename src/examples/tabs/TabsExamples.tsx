@@ -1,17 +1,21 @@
 import { TabsDifferentViewsTableExample } from "@examples/tabs/TabsDifferentViewsTableExample.tsx";
 import { TabsSetSpecificTabActiveExample } from "@examples/tabs/TabsSetSpecificTabActiveExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const TabsExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-      <h3 id="component-example-different-views-data-table">
-        Show different views of data in a table
-      </h3>
+
+      <SandboxHeader
+        exampleTitle="Show different views of data in a table"
+        figmaExample="">
+      </SandboxHeader>
       <TabsDifferentViewsTableExample />
-      <h3 id="component-example-set-specific-tab-active">Set a specific tab to be active</h3>
+
+      <SandboxHeader
+        exampleTitle="Set a specific tab to be active"
+        figmaExample="">
+      </SandboxHeader>
       <TabsSetSpecificTabActiveExample/>
     </>
 

@@ -1,4 +1,4 @@
-import { GoabSideMenu, GoabSideMenuHeading } from "@abgov/react-components";
+import { GoabSideMenu, GoabSpacer } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import "./content.css";
 import { SupportInfo } from "@components/support-info/SupportInfo";
@@ -8,7 +8,7 @@ export default function ContentLayout() {
     <div className="content">
       <section className="side-menu">
         <GoabSideMenu>
-          <GoabSideMenuHeading>Content</GoabSideMenuHeading>
+          <GoabSpacer vSpacing="m"></GoabSpacer>
           <Link to="capitalization">Capitalization</Link>
           <Link to="date-format">Date format</Link>
           <Link to="error-messages">Error messages</Link>

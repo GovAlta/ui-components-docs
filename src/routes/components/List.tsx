@@ -2,6 +2,10 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303450";
 
 export default function ListPage() {
   return (
@@ -10,12 +14,26 @@ export default function ListPage() {
         name="List"
         category={Category.CONTENT_AND_LAYOUT}
         description="Organize information into brief and clear groups."
-      />
+        githubLink="List"
+        figmaLink={FIGMA_LINK}
+        relatedComponents={[
+          { link: "/components/details", name: "Details" },
+        ]}      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs>
-          <GoabTab heading="Code examples">
-            {/*We don't use sandbox because it isn't starting with "GoA" components*/}
-            <GoabContainer>
+          <GoabTab
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="2" />
+              </>
+            }
+          >
+            <SandboxHeader
+              exampleTitle="Ordered list"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21567-616878&t=Zhk6rgZlHuDDA1M3-4">
+            </SandboxHeader>
+            <GoabContainer mt="none" mb="none">
               <ol className="goa-ordered-list">
                 <li>
                   An ordered item
@@ -125,14 +143,12 @@ export default function ListPage() {
             </ol>
             `}
             />
-            {/* Examples*/}
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
-            <h3 id="component-example-unordered-list">Unordered list</h3>
-            <GoabContainer mt="m">
+            <SandboxHeader
+              exampleTitle="Unordered list"
+              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21567-616878&t=Zhk6rgZlHuDDA1M3-4">
+            </SandboxHeader>
+            <GoabContainer mt="none" mb="none">
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -144,6 +160,7 @@ export default function ListPage() {
                 </li>
               </ul>
             </GoabContainer>
+
             <CodeSnippet
               lang="html"
               tags="react"
@@ -181,15 +198,10 @@ export default function ListPage() {
             />
           </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
+
         </GoabTabs>
       </ComponentContent>
     </>

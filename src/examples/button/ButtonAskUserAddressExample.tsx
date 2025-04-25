@@ -7,7 +7,7 @@ import {
   GoabDropdown,
   GoabDropdownItem,
   GoabFormItem,
-  GoabInput,
+  GoabInput, GoabText
 } from "@abgov/react-components";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
@@ -91,25 +91,23 @@ export const ButtonAskUserAddressExample = () => {
                 `}
       />}
 
-
-
+      <GoabText size={"heading-l"} mb={"xl"}>What is your address?</GoabText>
       <GoabBlock gap="xl" direction="column">
-        <form>
           <GoabFormItem label="Street Address">
             <GoabInput name="address" type="text" value="" onChange={noop} width="100%" />
           </GoabFormItem>
           <GoabFormItem label="Suite or unit #">
             <GoabInput name="suite" type="text" value="" onChange={noop} width="100%" />
           </GoabFormItem>
-          <GoabFormItem label="City/town">
+        <GoabFormItem label="City or town">
             <GoabInput name="city" type="text" value="" onChange={noop} width="100%" />
           </GoabFormItem>
 
-          <GoabBlock direction={"row"}>
-            <GoabFormItem label="Provice/territory">
+        <GoabBlock direction={"row"} gap="xl">
+          <GoabFormItem label="Provice or territory">
               <GoabDropdown onChange={noop} name="province" value="alberta">
                 <GoabDropdownItem label="Alberta" value="alberta" />
-                <GoabDropdownItem label="BC" value="bc" />
+                <GoabDropdownItem label="British Columbia" value="bc" />
                 <GoabDropdownItem label="Manitoba" value="manitoba" />
                 <GoabDropdownItem label="New Brunswick" value="new-brunswick" />
                 <GoabDropdownItem label="Newfoundland and Labrador" value="newfoundland" />
@@ -122,15 +120,14 @@ export const ButtonAskUserAddressExample = () => {
             </GoabFormItem>
 
             <GoabFormItem label="Postal Code">
-              <GoabInput name="postalCode" type="text" value="" onChange={noop} width="100%" />
+              <GoabInput name="postalCode" type="text" value="" onChange={noop} width="7ch" />
             </GoabFormItem>
           </GoabBlock>
-        </form>
       </GoabBlock>
 
       <GoabButtonGroup alignment="start" mt="2xl">
         <GoabButton type="primary" onClick={noop}>
-          Submit and continue
+          Save and continue
         </GoabButton>
         <GoabButton type="secondary" onClick={noop}>
           Cancel

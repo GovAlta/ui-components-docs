@@ -32,7 +32,7 @@ export const ModalAddAnotherItemExample = () => {
   return (
     <>
       {/*Don't use a Sandbox because the Dropdown inside a modal will make the modal shifts everytime we tab from the dropdown*/}
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <GoabButtonGroup alignment="center">
           <GoabButton type="tertiary" leadingIcon="add" onClick={() => setAddItemModalOpen(true)}>
             Add another item

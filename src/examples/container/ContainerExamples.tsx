@@ -2,24 +2,36 @@ import { ContainerUserInformationExample } from "@examples/container/ContainerUs
 import { ContainerCaseFilesExample } from "@examples/container/ContainerCaseFilesExample.tsx";
 import { ContainerCardGridExample } from "@examples/container/ContainerCardGridExample.tsx";
 import { ContainerReviewActionExample } from "@examples/container/ContainerReviewActionExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function ContainerExamples() {
   return (
     <>
       {/*Container examples*/}
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-      <h3 id="component-example-1">User information</h3>
+
+      <SandboxHeader
+        exampleTitle="User information"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-148878&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <ContainerUserInformationExample/>
 
-      <h3 id="component-example-2">Card view of case files</h3>
+      <SandboxHeader
+        exampleTitle="Card view of case files"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-183806&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <ContainerCaseFilesExample/>
 
-      <h3 id="component-example-3">Card grid that links to different sections</h3>
+      <SandboxHeader
+        exampleTitle="Card grid"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-185614&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
       <ContainerCardGridExample/>
 
-      <h3 id="example-4">Review and action</h3>
+      <SandboxHeader
+        exampleTitle="Review and action"
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-197773&t=Zhk6rgZlHuDDA1M3-4">
+      </SandboxHeader>
+
       <ContainerReviewActionExample/>
     </>
   );

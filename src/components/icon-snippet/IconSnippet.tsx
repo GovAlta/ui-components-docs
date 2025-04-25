@@ -13,13 +13,13 @@ export const IconSnippet: FC<Props> = ({ type }) => {
   function copyIcon() {
     navigator.clipboard.writeText(type).then(() => {
       setCopied(true);
-      setTimeout(() => setCopied(false), 1000);
+      setTimeout(() => setCopied(false), 2000);
     });
   }
 
   return (
     <>
-      <div className="icon-snippet" role="button" onClick={copyIcon}>
+      <div className={`icon-snippet ${copied ? "active" : ""}`} role="button" onClick={copyIcon}>
         <GoabIcon type={type} />
         <span>{type}</span>
         <div
