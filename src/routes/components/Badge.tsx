@@ -21,14 +21,17 @@ const description =
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   {
-    link: "/components/filter-chip", name: "Filter Chip"
+    link: "/components/filter-chip",
+    name: "Filter chip",
   },
   {
-    link: "/components/icons", name: "Icons"
+    link: "/components/icons",
+    name: "Icons",
   },
   {
-    link: "/components/table", name: "Table"
-  }
+    link: "/components/table",
+    name: "Table",
+  },
 ];
 
 type ComponentPropsType = GoabBadgeProps;
@@ -155,7 +158,7 @@ export default function BadgePage() {
       type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
-  ]
+  ];
 
   function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
     setBadgeBindings(badgeBindings);
@@ -171,9 +174,9 @@ export default function BadgePage() {
         relatedComponents={relatedComponents}
         figmaLink={FIGMA_LINK}
         githubLink="Badge"
+
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
@@ -181,6 +184,7 @@ export default function BadgePage() {
               <GoabBadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+
           </GoabTab>
 
           <GoabTab
@@ -201,6 +205,7 @@ export default function BadgePage() {
           <GoabTab heading="Accessibility">
             <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
+
         </GoabTabs>
       </ComponentContent>
     </>

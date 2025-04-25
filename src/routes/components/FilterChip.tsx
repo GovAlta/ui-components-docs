@@ -1,9 +1,10 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   GoabBadge,
-  GoabFilterChip, GoabFilterChipProps,
+  GoabFilterChip,
+  GoabFilterChipProps,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -15,7 +16,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import {
   LegacyTestIdProperties,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { FilterChipExamples } from "@examples/filter-chip/FilterChipExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -28,6 +29,7 @@ const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
   { link: "/components/badge", name: "Badge" },
   { link: "/components/popover", name: "Popover" },
+  { link: "/components/input", name: "Input" },
   { link: "/components/table", name: "Table" },
 ];
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=911-5909";
@@ -132,6 +134,7 @@ export default function FilterChipPage() {
               properties={componentProperties}
               oldProperties={oldComponentProperties}
             />
+
           </GoabTab>
 
           <GoabTab

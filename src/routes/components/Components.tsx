@@ -4,7 +4,7 @@ import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { getVersionedUrlPath } from "@components/version-language-switcher/version-language-constants.ts";
-import { DEFAULT_VERSION } from "../../global-constants";
+import { MAX_CONTENT_WIDTH } from "../../global-constants.ts";
 
 export function Components() {
   const { language, version } = useContext(LanguageVersionContext);
@@ -18,23 +18,17 @@ export function Components() {
 
   return (
     <>
-      {version !== DEFAULT_VERSION && (
-        <GoabNotification type="important">
-          {DEFAULT_VERSION === "old" ? (
-            <>
-              Most teams should use the Long-term Support (LTS) version of the design system. If
-              you're ready to explore the latest features, check out our{" "}
-              <a href="/get-started/developers/update">upgrade guide</a>
-            </>
-          ) : (
-            <>
-              You are not on the latest version of the design system.{" "}
-              <a href="/get-started/developers/update">Upgrade to latest version</a>
-            </>
-          )}
+      {version === "old" && (
+        <GoabNotification type="important" maxContentWidth={MAX_CONTENT_WIDTH}>
+          Support for the Long Term Support (LTS) version of the Design system will be available until September 2025. <a href="/get-started/developers/update">View the upgrade guide</a>
         </GoabNotification>
       )}
-
+      {version === "new" && (
+        <GoabNotification type="information" maxContentWidth={MAX_CONTENT_WIDTH}>
+          Upgrading to the latest version of the design system?{" "}
+          <a href="/get-started/developers/update">View the upgrade guide</a>
+        </GoabNotification>
+      )}
       <section className="content">
         <section className="side-menu">
           <GoabSideMenu>
