@@ -1,12 +1,17 @@
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { Sandbox } from "@components/sandbox";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabButtonGroup, GoabButton, GoabFormItem, GoabInput } from "@abgov/react-components";
-
+import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
 
 export const ButtonDisabledWithRequiredFieldExample = () => {
   const { version } = useContext(LanguageVersionContext);
+  const [disabled, setDisabled] = useState(true);
+  function inputOnChange(event: GoabInputOnChangeDetail) {
+      setDisabled(event.value === "");
+    };
+    
   const noop = () => {}
   return (
     <Sandbox flags={version === "new" ? ["reactive", "template-driven"] : ["reactive"]} allow={["form"]}>
@@ -18,7 +23,10 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
         allowCopy={true}
         code={`
                   export class ExampleComponent {
-                     inputOnChange(event: GoabInputOnChangeDetail) {}
+                     disabled = true;
+                     inputOnChange(event: GoabInputOnChangeDetail) {
+                      this.disabled = event.value === "";
+                     }
                      onClick() {
                       // do nothing.
                      }
@@ -54,6 +62,7 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
                      input = '';
                      inputOnChange(event: GoabInputOnChangeDetail) {
                       this.input = event.value;
+                      setDisabled(event.value === "");
                      }
                      onClick() {
                       // do nothing.
@@ -68,10 +77,14 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
         tags={"react"}
         allowCopy={true}
         code={`
-                 function onClick() {
+                const [disabled, setDisabled] = useState(true);
+                 
+                function onClick() {
                   // do nothing.
                  }
-                 function inputOnChange(event: GoabInputOnChangeDetail) {}
+                 function inputOnChange(event: GoabInputOnChangeDetail) {
+                  setDisabled(event.value === "");
+                 }
                 `}
       />}
       {version === "old" && <CodeSnippet
@@ -79,20 +92,24 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
         tags={"react"}
         allowCopy={true}
         code={`
+                 const [disabled, setDisabled] = useState(true);
+
                  function onClick() {
                   // do nothing.
                  }
-                 onChange(name: string, value: string) {}
+                 onChange(name: string, value: string) {
+                  setDisabled(value === "");
+                 }
                 `}
       />}
 
       <form>
         <GoabFormItem label="Name" requirement="required">
-          <GoabInput name="input" type="text" onChange={noop} width="100%" />
+          <GoabInput name="input" type="text" onChange={inputOnChange} width="100%" />
         </GoabFormItem>
 
         <GoabButtonGroup alignment="start" mt="l">
-          <GoabButton disabled={true} onClick={noop}>
+          <GoabButton disabled={disabled} onClick={noop}>
             Confirm
           </GoabButton>
           <GoabButton type="secondary" onClick={noop}>
