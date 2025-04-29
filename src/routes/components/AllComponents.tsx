@@ -372,6 +372,13 @@ const AllComponents = () => {
         status: "Published",
       },
       {
+        name: "link",
+        groups: ["Utilities"],
+        tags: ["utilities"],
+        description: "Wraps an anchor element to add icons or margins.",
+        status: "Published",
+      },
+      {
         name: "spacer",
         groups: ["Utilities"],
         tags: ["gap", "margin", "padding", "space", "utilities"],

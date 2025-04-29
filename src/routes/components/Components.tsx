@@ -104,6 +104,7 @@ export function Components() {
               <Link to={getUrl("form-item")}>Form item</Link>
               <Link to={getUrl("grid")}>Grid</Link>
               <Link to={getUrl("icons")}>Icons</Link>
+              <Link to={getUrl("link")}>Link</Link>
               <Link to={getUrl("spacer")}>Spacer</Link>
             </GoabSideMenuGroup>
           </GoabSideMenu>
