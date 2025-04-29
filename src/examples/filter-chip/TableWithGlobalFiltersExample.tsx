@@ -14,7 +14,7 @@ import type {
   GoabBadgeType,
   GoabInputOnChangeDetail,
   GoabInputOnKeyPressDetail,
-} from "@abgov/react-components";
+} from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 

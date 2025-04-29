@@ -29,6 +29,7 @@ interface SandboxProps {
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
   skipRenderOnly?: string; // prevent rendering the snippet for a specific language. Ex: react/angular
+  skipRenderDom?: boolean; // rendering code snippets, but display none for the DOM because it isn't working as expected if inside sandbox
   allow?: string[]; // Be default the Sandbox is selective to what it renders out. This adds
   // additional elements to what is allowed to be rendered out
   variableNames?: string[]; // If we want to assign a variable such as step={step} render in code snippet, provides variableNames=["step"]
@@ -114,7 +115,7 @@ export const Sandbox = (props: SandboxProps) => {
 
   return (
     <>
-      <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />
+    {props.skipRenderDom ? null : <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />}
 
       {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (

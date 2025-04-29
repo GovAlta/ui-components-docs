@@ -1,9 +1,16 @@
-import { GoabNotification, GoabSideMenu, GoabSideMenuGroup, GoabSpacer } from "@abgov/react-components";
+import {
+  GoabBadge,
+  GoabBlock,
+  GoabNotification,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabSpacer
+} from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { getVersionedUrlPath } from "@components/version-language-switcher/version-language-constants.ts";
+import { getVersionedUrlPath, ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
 import { MAX_CONTENT_WIDTH } from "../../global-constants.ts";
 
 export function Components() {
@@ -15,6 +22,20 @@ export function Components() {
     return prefixUrl.length > 0 ? `${prefixUrl}/${path}` : path;
   };
 
+
+  const newComponentLabel = (componentName: string) => {
+    const getBadgeLabel = () => {
+      if (version === "new") return "New";
+      return language === "angular"
+        ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+        : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase();
+    };
+    return (
+      <GoabBlock alignment="center">
+        {componentName} <GoabBadge type={"important"} content={getBadgeLabel()}></GoabBadge>
+      </GoabBlock>
+    );
+  };
 
   return (
     <>
@@ -68,6 +89,7 @@ export function Components() {
               <Link to={getUrl("text-area")}>Text area</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Structure and navigation">
+              <Link to={getUrl("drawer")}>{newComponentLabel("Drawer")}</Link>
               <Link to={getUrl("footer")}>Footer</Link>
               <Link to={getUrl("form-stepper")}>Form stepper</Link>
               <Link to={getUrl("header")}>Header</Link>
@@ -97,5 +119,3 @@ export function Components() {
 }
 
 export default Components;
-
-

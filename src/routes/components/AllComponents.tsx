@@ -191,6 +191,15 @@ const AllComponents = () => {
         status: "Published",
       },
       {
+        name: "drawer",
+        groups: ["Structure and navigation"],
+        tags: ["sections", "structure and navigation", "tabbed interface"],
+        description:
+          "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.",
+        status: "Published",
+        isNew: true,
+      },
+      {
         name: "dropdown",
         groups: ["Inputs and actions"],
         tags: ["inputs and actions", "select", "single select dropdown"],
@@ -625,6 +634,7 @@ const AllComponents = () => {
                 status={card.status}
                 githubLink={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
                 openIssues={issueCounts[card.name]}
+                isNew={card.isNew}
               />
             ))}
           </GoabGrid>
