@@ -144,7 +144,7 @@ export const TableWithGlobalFiltersExample = () => {
 
         {typedChips.length > 0 && (
           <div>
-            <GoabText as="span" color="secondary" mb="xs" mr="xs">
+            <GoabText tag="span" color="secondary" mb="xs" mr="xs">
               Filter:
             </GoabText>
             {typedChips.length > 0 &&
@@ -687,7 +687,7 @@ export class TableComponent {
 </goab-form-item>
 
 <ng-container *ngIf="typedChips.length > 0">
-  <goab-text as="span" color="secondary" mb="xs" mr="xs">
+  <goab-text tag="span" color="secondary" mb="xs" mr="xs">
     Filter:
   </goab-text>
   <goab-filter-chip
@@ -860,7 +860,7 @@ export class TableComponent {
 
       {typedChips.length > 0 && (
         <div>
-          <GoabText as="span" color="secondary" mb="xs" mr="xs">
+          <GoabText tag="span" color="secondary" mb="xs" mr="xs">
             Filter:
           </GoabText>
           {typedChips.length > 0 &&

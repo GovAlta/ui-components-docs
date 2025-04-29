@@ -24,9 +24,9 @@ export default function TextPage() {
       value: "",
     },
     {
-      label: "As",
+      label: "Tag",
       type: "list",
-      name: "as",
+      name: "tag",
       options: ["", "h1", "h2", "h3", "h4", "h5", "span", "div", "p" ],
       value: "",
     },
@@ -61,7 +61,7 @@ export default function TextPage() {
 
   const componentProperties: ComponentProperty[] = [
     {
-      name: "as",
+      name: "tag",
       type: "h1 | h2 | h3 | h4 | h5 | span | div | p",
       description: "Sets the tag and text size.",
       defaultValue: "div"

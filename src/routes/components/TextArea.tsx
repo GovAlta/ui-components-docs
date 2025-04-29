@@ -9,8 +9,8 @@ import {
   GoabBadge,
   GoabFormItem,
   GoabTab,
-  GoabTabs, GoabTextarea,
-  GoabTextAreaProps
+  GoabTabs,
+  GoabTextarea,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
@@ -36,7 +36,7 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/input", name: "Input" },
 ];
-type ComponentPropsType = GoabTextAreaProps;
+
 type CastingType = {
   name: string;
   value: string;
@@ -46,7 +46,7 @@ type CastingType = {
 
 export default function TextAreaPage() {
   const {version} = useContext(LanguageVersionContext);
-  const [componentProps, setComponentProps] = useState<ComponentPropsType>({
+  const [componentProps, setComponentProps] = useState<CastingType>({
     name: "item",
     value: "",
     onChange: () => {},
