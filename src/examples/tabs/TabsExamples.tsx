@@ -5,7 +5,6 @@ import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.
 export const TabsExamples = () => {
   return (
     <>
-
       <SandboxHeader
         exampleTitle="Show different views of data in a table"
         figmaExample="">

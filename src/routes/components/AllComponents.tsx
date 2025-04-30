@@ -622,7 +622,7 @@ const AllComponents = () => {
           onChange={({ value }) => setFilter(value || "")}        />
       </GoabFormItem>
 
-      <GoabTabs>
+      <GoabTabs initialTab={1}>
         <GoabTab heading="Cards">
           <GoabGrid minChildWidth="15rem" gap="xl">
             {filteredCards.map((card) => (

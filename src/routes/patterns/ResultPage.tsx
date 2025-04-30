@@ -16,7 +16,7 @@ export default function ResultPage() {
       <ComponentContent
         contentClassName="question-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
+        <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
             <ResultPageExamples/>
           </GoabTab>

@@ -15,7 +15,9 @@ export function SandboxHeader(props: Props) {
   const anchorId = toKebabCase(props.exampleTitle);
 
   function copyAnchorLink() {
-    const url = `${window.location.origin}${window.location.pathname}#${anchorId}`;
+    const currentHash = window.location.hash;
+    const tabPart = currentHash.includes("#tab-") ? currentHash.split("#")[1]: "";
+    const url = `${window.location.origin}${window.location.pathname}${tabPart ? `#${tabPart}` : ''}#${anchorId}`;
     navigator.clipboard.writeText(url).then(() => {
       setIsCopied(true);
       setTimeout(() => setIsCopied(false), 2000); // Reset tooltip text after 2s
