@@ -1,5 +1,8 @@
 .sandbox-note {
   color: #666;
+  margin-top: var(--goa-space-m);
+  margin-bottom: var(--goa-space-2xl);
+  font: var(--goa-typography-body-s);
 }
 
 .sandbox-render {

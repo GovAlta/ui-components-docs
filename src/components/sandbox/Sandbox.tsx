@@ -1,4 +1,5 @@
 import { ReactElement, ReactNode, useContext, useEffect, useState } from "react";
+import { GoabCallout } from "@abgov/react-components";
 
 import SandboxProperties from "./SandboxProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
@@ -22,7 +23,7 @@ type Serializer = (el: any, properties: ComponentBinding[]) => string;
 interface SandboxProps {
   properties?: ComponentBinding[];
   formItemProperties?: ComponentBinding[];
-  note?: string;
+  note?: string | { type?: "important" | "success" | "information" | "emergency"; heading?: string; content: string };
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
@@ -140,7 +141,21 @@ export const Sandbox = (props: SandboxProps) => {
         </GoabAccordion>
       )}
       <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
-      {props.note && (<div className="sandbox-note">{props.note}</div>)}
+      {props.note &&
+        (typeof props.note === "string" ? (
+          <p className="sandbox-note">{props.note}</p>
+        ) : (
+          <GoabCallout
+            type={props.note.type || "important"}
+            size="medium"
+            heading={props.note.heading}
+            maxWidth="596px"
+            mt="m"
+            mb="2xl"
+          >
+            {props.note.content}
+          </GoabCallout>
+        ))}
     </>
   );
 };
