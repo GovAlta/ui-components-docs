@@ -133,7 +133,7 @@ export default function SideMenuPage() {
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
+        <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox fullWidth allow={["div"]} skipRender>

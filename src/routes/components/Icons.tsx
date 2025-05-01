@@ -217,7 +217,7 @@ export default function IconsPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
+        <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             {/*Icons Sandbox*/}
             <h2 id="component" style={{ display: "none" }}>

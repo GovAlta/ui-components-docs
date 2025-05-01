@@ -20,7 +20,7 @@ export default function ListPage() {
           { link: "/components/details", name: "Details" },
         ]}      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
+        <GoabTabs initialTab={1}>
           <GoabTab
             heading={
               <>

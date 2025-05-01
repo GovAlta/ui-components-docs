@@ -105,7 +105,7 @@ export default function TextPage() {
         githubLink="Text"
       />
 
-      <GoabTabs>
+      <GoabTabs initialTab={1}>
         <GoabTab heading="Code playground">
           <h2 id="component" style={{ display: "none" }}>Playground</h2>
           <Sandbox properties={textBindings} onChange={onSandboxChange}>
