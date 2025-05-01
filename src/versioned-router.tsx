@@ -56,6 +56,7 @@ import PublicFormPage from "@routes/patterns/PublicFormPage.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 import { DrawerPage } from "@routes/components/Drawer.tsx";
+import LinkPage from "@routes/components/Link.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -126,6 +127,7 @@ export const ComponentsRouter = () => {
     "text-field": <TextFieldPage />,
     "header": <AppHeaderPage />,
     "footer": <AppFooterPage />,
+    "link": <LinkPage />,
   };
 
   return (
