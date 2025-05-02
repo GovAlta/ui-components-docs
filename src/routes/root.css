@@ -112,10 +112,16 @@ code {
   .content {
     margin: 0;
   }
+
+  .main {
+    padding: 0 1rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
 }
 
 /*Mobile*/
-@media screen and (max-width: 623px) {
+@media screen and (max-width: 896px) {
   .container {
     flex-wrap: wrap;
   }
@@ -128,8 +134,8 @@ code {
   }
 
   .main {
-    margin-right: 1rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    margin: 0;
   }
 
   .content {
@@ -139,5 +145,11 @@ code {
   .side-menu {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--goa-color-greyscale-200);
+  }
+}
+
+@media screen and (max-width: 623px) {
+  .main {
+    padding: 0 1rem;
   }
 }

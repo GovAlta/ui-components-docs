@@ -25,8 +25,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/XwdpAM2ejssrXlzSuPiycT/Component---Drawer?node-id=2332-98665&m=dev";
-const ACCESSIBILITY_FIGMA_LINK = "https://www.figma.com/design/XwdpAM2ejssrXlzSuPiycT/Component---Drawer?node-id=2488-93239&m=dev";
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
+const ACCESSIBILITY_FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
 const componentName = "Drawer";
 const description =
   "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.";
@@ -133,6 +133,8 @@ export const DrawerPage = () => {
     <>
       <ComponentHeader
         name={componentName}
+        figmaLink={FIGMA_LINK}
+        githubLink={componentName}
         category={category}
         description={description}
         relatedComponents={relatedComponents}

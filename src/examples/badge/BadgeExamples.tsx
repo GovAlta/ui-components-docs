@@ -13,13 +13,13 @@ export default function BadgeExamples() {
 
       <SandboxHeader
         exampleTitle="Show status in a table"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=60735-350834&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-22364&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <BadgeShowStatusInTableExample />
 
       <SandboxHeader
         exampleTitle="Show multiple tags together"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=60735-375460&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=60735-375622&t=tGwTYaG8Orm4iOm7-4">
       </SandboxHeader>
       <Sandbox>
         <GoabBlock gap="xs">
@@ -31,7 +31,7 @@ export default function BadgeExamples() {
 
       <SandboxHeader
         exampleTitle="Show a status on a card"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=60735-375649&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-22768&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <BadgeShowStatusOnCardExample/>
     </>

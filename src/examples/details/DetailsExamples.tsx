@@ -14,19 +14,19 @@ export const DetailsExamples = () => {
     <>
       <SandboxHeader
         exampleTitle="Show more information to help answer a question"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-252228&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-197360&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <DetailsMoreInformationBasicQuestionExample />
 
       <SandboxHeader
-        exampleTitle="Show lists as more information to help answer a question "
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-252532&t=Zhk6rgZlHuDDA1M3-4">
+        exampleTitle="Show lists as more information to help answer a question"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-198753&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <DetailsAdditionalInformationHelpUserExample />
 
       <SandboxHeader
-        exampleTitle="Show more information to help a user fill out direct deposit information"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59148-251933&t=Zhk6rgZlHuDDA1M3-4">
+        exampleTitle="Ask a user for direct deposit information"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-202678&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <DetailsShowDirectDepositInformationExample/>
     </>

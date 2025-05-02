@@ -8,13 +8,13 @@ export default function RadioExamples () {
     <>
       <SandboxHeader
         exampleTitle="Include a link in the helper text of an option"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-25318&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-133375&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <RadioSlottedDescriptionExample/>
 
       <SandboxHeader
         exampleTitle="Max width on long radio items"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-75250&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-133539&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <RadioMaxWidthExample/>
     </>

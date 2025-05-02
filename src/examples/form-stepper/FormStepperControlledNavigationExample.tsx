@@ -23,20 +23,13 @@ export const FormStepperControlledNavigationExample = () => {
 
   return (
     <>
-      <p>
-        The user needs to partially or completely finish a step to be able to move forward to
-        the next step. In this case:</p>
-        <ul>
-          <li>A step that is “Not started” will not be clickable.</li>
-          <li>A user cannot use the stepper to navigate to another page.</li>
-          <li>
-            Clicking the Active step when you are on that step will do nothing. (no page
-            refresh).
-          </li>
-        </ul>
-      <p>To use the controlled type you must set a step value ≥ 1</p>
 
-      <Sandbox fullWidth skipRender allow={["div"]} variableNames={["step"]}>
+      <Sandbox fullWidth skipRender allow={["div"]} variableNames={["step"]} note={`The user needs to partially or completely finish a step to be able to move forward to the next step.\n
+• A step that is “Not started” will not be clickable.\n
+• A user cannot use the stepper to navigate to another page.\n
+• Clicking the Active step when you are on that step will do nothing. (no page refresh).\n
+\n
+To use the controlled type you must set a step value ≥ 1.`}>
         {/*Must skipRender because we must illustrate the Prev and Next button click logic which cannot be rendered by sandbox*/}
         {/*Angular code*/}
         {version === "old" && <CodeSnippet

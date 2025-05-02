@@ -193,7 +193,7 @@ const AllComponents = () => {
       {
         name: "drawer",
         groups: ["Structure and navigation"],
-        tags: ["sections", "structure and navigation", "tabbed interface"],
+        tags: ["sections", "structure and navigation", "Sheet", "Sidesheet", "Sidepanel"],
         description:
           "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.",
         status: "Published",
@@ -405,13 +405,6 @@ const AllComponents = () => {
         tags: ["breadcrumb"],
         description: "Currently tracking this need in services.",
         status: "Not Published",
-      },
-      {
-        name: "drawer",
-        groups: ["Structure and navigation"],
-        tags: ["Drawer", "Sheet", "Sidesheet", "Sidepanel"],
-        description: "There is currently an experimental drawer in development.",
-        status: "In Progress",
       },
       {
         name: "error summary",

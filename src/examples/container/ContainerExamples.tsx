@@ -11,25 +11,25 @@ export default function ContainerExamples() {
 
       <SandboxHeader
         exampleTitle="User information"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-148878&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-154067&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <ContainerUserInformationExample/>
 
       <SandboxHeader
         exampleTitle="Card view of case files"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-183806&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-161012&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <ContainerCaseFilesExample/>
 
       <SandboxHeader
         exampleTitle="Card grid"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-185614&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-165873&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <ContainerCardGridExample/>
 
       <SandboxHeader
         exampleTitle="Review and action"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59124-197773&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-173587&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
 
       <ContainerReviewActionExample/>

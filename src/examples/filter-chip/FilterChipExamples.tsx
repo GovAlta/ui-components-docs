@@ -9,7 +9,7 @@ export const FilterChipExamples = () => {
     <>
       <SandboxHeader
         exampleTitle="Remove a filter"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59337-131907&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-59262&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <FilterChipDeleteEventExample />
 
@@ -21,13 +21,15 @@ export const FilterChipExamples = () => {
 
 
       <SandboxHeader
-        exampleTitle="Type to create a new filter chip"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59337-138121&t=Zhk6rgZlHuDDA1M3-4">
+        exampleTitle="Type to create a new filter"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6308-51849&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
 
       <FilterChipTypedChipExample/>
 
-      <h3 id="component-filter-table-data-example">Filter data in a table</h3>
+      <SandboxHeader
+        exampleTitle="Filter data in a table">
+      </SandboxHeader>
       <TableWithGlobalFiltersExample />
     </>
   )

@@ -18,7 +18,7 @@ export const DrawerFiltersExample = () => {
   return (
     <>
       {/*Don't use a Sandbox because the animation slowing displaying the drawer isn't working if it is inside sandbox*/}
-      <GoabContainer mt="m" mb="none">
+      <GoabContainer mt="none" mb="none">
         <div style={{ display: "flex", justifyContent: "center" }}>
           <GoabButton onClick={() => setOpen(true)}>Filters</GoabButton>
         </div>

@@ -8,13 +8,13 @@ export default function AccordionExamples() {
     <>
       <SandboxHeader
         exampleTitle="Expand or collapse part of a form"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48375-268093&t=Qn4eyi9UxONVqqY7-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6302-491810&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <AccordionExpandOrCollapseExample/>
 
       <SandboxHeader
         exampleTitle="Hide and show many sections of information (FAQ)"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15932-571271&t=svCeesMW3bnHA7sm-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6469-76255&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <AccordionHideOrShowSectionExample/>
     </>

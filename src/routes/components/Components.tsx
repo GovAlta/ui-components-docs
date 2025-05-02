@@ -41,13 +41,14 @@ export function Components() {
     <>
       {version === "old" && (
         <GoabNotification type="important" maxContentWidth={MAX_CONTENT_WIDTH}>
-          Support for the Long Term Support (LTS) version of the Design system will be available until September 2025. <a href="/get-started/developers/update">View the upgrade guide</a>
+          Support for the Long Term Support (LTS) version of the Design system will be available until September
+          2025. <a href="/get-started/developers/update">View&nbsp;the&nbsp;upgrade&nbsp;guide</a>
         </GoabNotification>
       )}
       {version === "new" && (
         <GoabNotification type="information" maxContentWidth={MAX_CONTENT_WIDTH}>
           Upgrading to the latest version of the design system?{" "}
-          <a href="/get-started/developers/update">View the upgrade guide</a>
+          <a href="/get-started/developers/update">View&nbsp;the&nbsp;upgrade&nbsp;guide</a>
         </GoabNotification>
       )}
       <section className="content">

@@ -56,7 +56,7 @@ export default function Root() {
             maxContentWidth={MAX_CONTENT_WIDTH}
             version={<VersionLanguageSwitcher/>}
           />
-          <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"} fullMenuBreakpoint={1140}>
+          <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"} fullMenuBreakpoint={978}>
             <Link to="/get-started">Get started</Link>
             <Link to="/patterns">Patterns</Link>
             <Link to="/components">Components</Link>
@@ -78,11 +78,11 @@ export default function Root() {
               <Link to="/get-started">Get started</Link>
               <Link to="/patterns">Patterns</Link>
               <Link to="/components">Components</Link>
-              <Link to="/design-tokens">Tokens</Link>
+              <Link to="/design-tokens">Design tokens</Link>
               <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
-              <Link to="https://design.alberta.ca/get-started/support/report-bug" target="_blank">Submit an issue</Link>
+              <Link to="/get-started/support/report-bug" target="_blank">Submit an issue</Link>
               <Link to="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-system-support</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterMetaSection>

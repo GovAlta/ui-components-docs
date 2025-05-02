@@ -30,8 +30,7 @@ export default function ListPage() {
             }
           >
             <SandboxHeader
-              exampleTitle="Ordered list"
-              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21567-616878&t=Zhk6rgZlHuDDA1M3-4">
+              exampleTitle="Ordered list">
             </SandboxHeader>
             <GoabContainer mt="none" mb="none">
               <ol className="goa-ordered-list">
@@ -145,8 +144,7 @@ export default function ListPage() {
             />
 
             <SandboxHeader
-              exampleTitle="Unordered list"
-              figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21567-616878&t=Zhk6rgZlHuDDA1M3-4">
+              exampleTitle="Unordered list">
             </SandboxHeader>
             <GoabContainer mt="none" mb="none">
               <ul className="goa-unordered-list">

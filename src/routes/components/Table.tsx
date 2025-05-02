@@ -253,8 +253,8 @@ export default function TablePage() {
 
 
               <SandboxHeader
-                exampleTitle="Sortable columns"
-                figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-207598&t=Zhk6rgZlHuDDA1M3-4">
+                exampleTitle="Sort data in a table"
+                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97462&t=X0IQW5flDDaj8Vyg-4">
               </SandboxHeader>
               <Sandbox fullWidth>
                 <GoabTable onSort={sortData} width="100%">
@@ -596,8 +596,8 @@ export default function TablePage() {
             )}
 
               <SandboxHeader
-                exampleTitle="Number column"
-                figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59357-222010&t=Zhk6rgZlHuDDA1M3-4">
+                exampleTitle="Display numbers in a table so they can be scanned easily"
+                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97673&t=X0IQW5flDDaj8Vyg-4">
               </SandboxHeader>
             <Sandbox fullWidth>
               <GoabTable width="100%">
@@ -623,7 +623,9 @@ export default function TablePage() {
               </GoabTable>
             </Sandbox>
 
-						<h3 id="component-filter-table-data-example">Filter data in a table</h3>
+              <SandboxHeader
+                exampleTitle="Sort data in a table">
+              </SandboxHeader>
             <TableWithGlobalFiltersExample />
           </GoabTab>
 
