@@ -28,9 +28,9 @@ export const TextFieldAskBirthdayExample = () => {
         tags="react"
         allowCopy={true}
         code={`
-           <GoabFormItem label="When is your birthday?" labelSize="large" helpText={<>For example, 27 November 2004</>}>
+           <GoabFormItem label="What is your date of birth?" >
             <GoabBlock gap="m" direction="row">
-            <GoabFormItem label="Month">
+            <GoabFormItem helpText={"Month"}>
                 <GoabDropdown onChange={(event: GoabDropdownOnChangeDetail) => setMonth(event.value)} name="month" value={month}>
                   <GoabDropdownItem label="January" value="January"></GoabDropdownItem>
                   <GoabDropdownItem label="February" value="February"></GoabDropdownItem>
@@ -46,10 +46,11 @@ export const TextFieldAskBirthdayExample = () => {
                   <GoabDropdownItem label="December" value="December"></GoabDropdownItem>
                 </GoabDropdown>
               </GoabFormItem>
-              <GoabFormItem label="Day">
+              
+              <GoabFormItem  helpText={"Day (DD)"}>
                 <GoabInput onChange={(event: GoabInputOnChangeDetail) => setDay(event.value)} value={day} name="day" width="2ch"></GoabInput>
               </GoabFormItem>
-              <GoabFormItem label="Year">
+              <GoabFormItem helpText={"Year (YYYY)"}>
                 <GoabInput onChange={(event: GoabInputOnChangeDetail) => setYear(event.value)} value={year} name="year" width="4ch"></GoabInput>
               </GoabFormItem>
             </GoabBlock>
@@ -77,11 +78,11 @@ export const TextFieldAskBirthdayExample = () => {
       />}
 
       <GoabFormItem
-        label="When is your birthday?"
-        labelSize="large"
-        helpText={"For example, 27 November 2004"}>
+        label="What is your date of birth?">
         <GoabBlock gap="m" direction="row">
-          <GoabFormItem label="Month">
+          <GoabFormItem
+            helpText={"Month"}>
+
             <GoabDropdown onChange={noop} name="month" value="">
               <GoabDropdownItem label="January" value="January" />
               <GoabDropdownItem label="February" value="February" />
@@ -97,7 +98,9 @@ export const TextFieldAskBirthdayExample = () => {
               <GoabDropdownItem label="December" value="December" />
             </GoabDropdown>
           </GoabFormItem>
-          <GoabFormItem label="Day">
+
+          <GoabFormItem
+            helpText={"Day (DD)"}>
             <GoabInput
               onChange={noop}
               value=""
@@ -105,7 +108,9 @@ export const TextFieldAskBirthdayExample = () => {
               width="2ch"
             />
           </GoabFormItem>
-          <GoabFormItem label="Year">
+
+          <GoabFormItem
+            helpText={"Year (YYYY)"}>
             <GoabInput
               onChange={noop}
               value=""
@@ -113,6 +118,7 @@ export const TextFieldAskBirthdayExample = () => {
               width="4ch"
             />
           </GoabFormItem>
+
         </GoabBlock>
       </GoabFormItem>
     </Sandbox>

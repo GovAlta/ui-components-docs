@@ -97,7 +97,7 @@ export default function LinkPage() {
         ]}
       />
 
-      <GoabTabs>
+      <GoabTabs initialTab={1}>
         <GoabTab heading="Code playground">
           <Sandbox properties={linkBindings} onChange={onSandboxChange}>
 

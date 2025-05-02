@@ -15,7 +15,7 @@ export default function MicrositeHeaderExamples() {
     <>
       <SandboxHeader
         exampleTitle="Link to give feedback to the service"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59350-40601&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92884&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <Sandbox skipRender fullWidth>
         <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />
@@ -137,7 +137,7 @@ export default function MicrositeHeaderExamples() {
 
       <SandboxHeader
         exampleTitle="Show version number"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=59354-89591&t=Zhk6rgZlHuDDA1M3-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92885&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}

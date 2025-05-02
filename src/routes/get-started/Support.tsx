@@ -76,13 +76,13 @@ export default function SupportPage() {
         <p>
           Mark Elamatha | <a href="mailto:mark.elamatha@gov.ab.ca">mark.elamatha@gov.ab.ca</a>
         </p>
-        <GoabText tag="h3" mb="2xs">Scrum master and DevOps</GoabText>
-        <p>
-          Dustin Nielsen | <a href="mailto:dustin.nielsen@gov.ab.ca">dustin.nielsen@gov.ab.ca</a>
-        </p>
         <GoabText tag="h3" mb="2xs">Digital architect and Lead developer</GoabText>
         <p>
           Chris Olsen | <a href="mailto:chris.olsen@gov.ab.ca">chris.olsen@gov.ab.ca</a>
+        </p>
+        <GoabText tag="h3" mb="2xs">Scrum master and DevOps</GoabText>
+        <p>
+          Dustin Nielsen | <a href="mailto:dustin.nielsen@gov.ab.ca">dustin.nielsen@gov.ab.ca</a>
         </p>
         <GoabText tag="h3" mb="2xs">Developers</GoabText>
         <p>
@@ -90,19 +90,9 @@ export default function SupportPage() {
           <br />
           Syed Zeeshan | <a href="mailto:syed.zeeshan@gov.ab.ca">syed.zeeshan@gov.ab.ca</a>
         </p>
-        <GoabText tag="h3" mb="2xs">QA Automation Developer</GoabText>
-        <p>
-          Ken Li | <a href="mailto:ken.li@gov.ab.ca">ken.li@gov.ab.ca</a>
-        </p>
-        <GoabText tag="h3" mb="2xs">Service designer</GoabText>
-        <p>
-          Ali Nicholls Asikinack | <a href="mailto:ali.nicholls-asikinack@gov.ab.ca">ali.nicholls-asikinack@gov.ab.ca</a>
-        </p>
-        <GoabText tag="h3" mb="2xs">UX designers</GoabText>
+        <GoabText tag="h3" mb="2xs">Designer</GoabText>
         <p>
           Thomas Jeffery | <a href="mailto:thomas.jeffery@gov.ab.ca">thomas.jeffery@gov.ab.ca</a>
-          <br />
-          Rianna Alizadeh | <a href="mailto:rianna.alizadeh@gov.ab.ca">rianna.alizadeh@gov.ab.ca</a>
         </p>
       </div>
     </ComponentContent>

@@ -58,6 +58,7 @@ export const ComponentHeader: React.FC<Props> = (props) => {
                      )}%22`}
                      target="_blank"
                      rel="noopener noreferrer"
+                     style={{ whiteSpace: "nowrap" }}
                   >
                     GitHub issues{issueCount !== null ? ` (${issueCount})` : ""}
                   </a>

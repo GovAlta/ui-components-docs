@@ -11,7 +11,7 @@ export const CalloutExamples = () => {
     <>
       <SandboxHeader
         exampleTitle="Confirm that an application was submitted"
-        figmaExample="https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=48481-156993&t=GS4XDg4VdrwarZux-4">
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-125026&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <Sandbox fullWidth allow={['h2', 'h3', 'p']} skipRender>
         {/*Angular code*/}
