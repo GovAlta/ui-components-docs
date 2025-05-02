@@ -3,12 +3,16 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { GoabButton, GoabButtonGroup, GoabCallout, GoabSpacer } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const CalloutExamples = () => {
   const {version} = useContext(LanguageVersionContext);
   return (
     <>
-      <h3 id="component-example-confirm-application-submitted">Confirm that an application was submitted</h3>
+      <SandboxHeader
+        exampleTitle="Confirm that an application was submitted"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-125026&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <Sandbox fullWidth allow={['h2', 'h3', 'p']} skipRender>
         {/*Angular code*/}
         {version === "old" && <CodeSnippet

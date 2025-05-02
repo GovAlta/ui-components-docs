@@ -288,7 +288,7 @@ export const BadgeShowStatusInTableExample = () => {
                                         1234567890
                                     </td>
                                     <td>
-                                        <GoabButton type="tertiary" onClick={onClick}>
+                                        <GoabButton size="compact" type="tertiary" onClick={onClick}>
                                             Assign
                                         </GoabButton>
                                     </td>
@@ -317,7 +317,7 @@ export const BadgeShowStatusInTableExample = () => {
             <td>Lorem ipsum dolor sit amet consectetur</td>
             <td className="goa-table-number-column">1234567890</td>
             <td>
-              <GoabButton type="tertiary" onClick={noop}>
+              <GoabButton size={"compact"} type="tertiary" onClick={noop}>
                 Assign
               </GoabButton>
             </td>

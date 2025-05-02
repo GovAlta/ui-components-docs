@@ -1,15 +1,21 @@
 import "./accordion-example.css";
 import { AccordionExpandOrCollapseExample } from "@examples/accordion/AccordionExpandOrCollapseExample.tsx";
 import { AccordionHideOrShowSectionExample } from "@examples/accordion/AccordionHideOrShowSectionExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function AccordionExamples() {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-      <h3 id="component-example-expand-collapse-form">Expand or collapse part of a form</h3>
+      <SandboxHeader
+        exampleTitle="Expand or collapse part of a form"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6302-491810&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <AccordionExpandOrCollapseExample/>
 
-      <h3 id="component-example-faq">Hide and show many sections of information (FAQ)</h3>
+      <SandboxHeader
+        exampleTitle="Hide and show many sections of information (FAQ)"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6469-76255&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <AccordionHideOrShowSectionExample/>
     </>
   );

@@ -15,9 +15,12 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { useState, useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { AppFooterExamples } from "@examples/app-footer/AppFooterExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=582-5939";
 const componentName = "Footer";
 const description = "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
@@ -97,12 +100,14 @@ export default function AppFooterPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Footer"
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <h3>Basic Footer</h3>
             <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
@@ -110,32 +115,36 @@ export default function AppFooterPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties heading="Basic footer properties" properties={componentProperties} />
             <ComponentProperties
-              heading="App Footer Nav Section"
+              heading="Nav section properties"
               properties={secondaryNavProperties}
             />
 
             {language === "angular" && (
               <ComponentProperties
-                heading="App Footer Meta Section"
+                heading="Meta links properties"
                 properties={metaLinkProperties}
               />
             )}
-
-            {/* Examples*/}
-            <AppFooterExamples/>
 
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
             }>
-            <p>Coming Soon</p>
+            <AppFooterExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

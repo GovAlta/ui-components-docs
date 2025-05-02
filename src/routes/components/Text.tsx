@@ -6,6 +6,11 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoabText, GoabTab, GoabTabs, GoabBadge } from "@abgov/react-components";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303449";
 
 export default function TextPage() {
   const [textProps, setTextProps] = useState({});
@@ -19,9 +24,9 @@ export default function TextPage() {
       value: "",
     },
     {
-      label: "As",
+      label: "Tag",
       type: "list",
-      name: "as",
+      name: "tag",
       options: ["", "h1", "h2", "h3", "h4", "h5", "span", "div", "p" ],
       value: "",
     },
@@ -30,7 +35,7 @@ export default function TextPage() {
       type: "string",
       name: "maxWidth",
       value: ""
-    },    
+    },
     {
       label: "Color",
       type: "list",
@@ -56,7 +61,7 @@ export default function TextPage() {
 
   const componentProperties: ComponentProperty[] = [
     {
-      name: "as",
+      name: "tag",
       type: "h1 | h2 | h3 | h4 | h5 | span | div | p",
       description: "Sets the tag and text size.",
       defaultValue: "div"
@@ -96,28 +101,40 @@ export default function TextPage() {
         name="Text"
         category={Category.CONTENT_AND_LAYOUT}
         description="Provides consistent sizing, spacing, and colour to written content."
+        figmaLink={FIGMA_LINK}
+        githubLink="Text"
       />
 
-      <GoabTabs>
-        <GoabTab heading="Code examples">
+      <GoabTabs initialTab={1}>
+        <GoabTab heading="Code playground">
+          <h2 id="component" style={{ display: "none" }}>Playground</h2>
           <Sandbox properties={textBindings} onChange={onSandboxChange}>
-            
             <GoabText {...textProps}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
             </GoabText>
-
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
         </GoabTab>
-        
+
         <GoabTab
           heading={
             <>
-              Design guidelines
-              <GoabBadge type="information" content="In progress" />
+              Examples
+              <GoabBadge type="information" content="0" />
             </>
           }
-        ></GoabTab>
+        >
+          <ExamplesEmpty />
+        </GoabTab>
+
+        <GoabTab heading="Design">
+          <DesignEmpty figmaLink={FIGMA_LINK} />
+        </GoabTab>
+
+        <GoabTab heading="Accessibility">
+          <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+        </GoabTab>
       </GoabTabs>
     </>
   );

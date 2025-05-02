@@ -3,12 +3,13 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import { propsToString } from "@components/sandbox/BaseSerializer"
 import {
+  GoabBadge,
   GoabFileUploadCard,
   GoabFileUploadInput,
   GoabFileUploadInputProps,
   GoabFormItem,
   GoabTab,
-  GoabTabs,
+  GoabTabs
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -18,6 +19,9 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { MarginProperty, TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
 interface Uploader {
   upload: (url: string | ArrayBuffer) => void;
@@ -63,6 +67,7 @@ const relatedComponents = [
   { link: "/components/container", name: "Container" },
   { link: "/components/progress-indicator", name: "Progress indicator" }
 ];
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=804-5767";
 type ComponentPropsType = Omit<GoabFileUploadInputProps, "onSelectFile">;
 type CastingType = {
   maxFileSize: string;
@@ -301,12 +306,19 @@ export default function FileUploaderPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="File uploader"
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code Playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
 
               {/* ******* */}
@@ -657,6 +669,24 @@ export default function FileUploaderPage() {
               oldProperties={oldFileUploadCardProperties}
             />
 
+          </GoabTab>
+          <GoabTab
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="0" />
+              </>
+            }
+          >
+            <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

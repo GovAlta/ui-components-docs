@@ -7,6 +7,10 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303446";
 
 export default function SpacerPage() {
   const [hSpacerProps, setHSpacerProps] = useState({});
@@ -111,13 +115,15 @@ export default function SpacerPage() {
           { link: "/components/grid", name: "Grid" },
           { link: "/patterns/layout", name: "Layout" },
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Spacer"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
               <GoabBlock gap="none">
                 <div style={styles}>
@@ -151,6 +157,14 @@ export default function SpacerPage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

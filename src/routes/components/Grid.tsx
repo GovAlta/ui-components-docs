@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { GoabBadge, GoabGrid, GoabTab, GoabTabs } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function GridPage() {
@@ -97,14 +97,17 @@ export default function GridPage() {
           { link: "/patterns/layout", name: "Layout" },
           { link: "/components/spacer", name: "Spacer" },
         ]}
+        githubLink="Grid"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             {/*Grid sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
               <GoabGrid {...gridProps}>
                 <div
@@ -158,14 +161,19 @@ export default function GridPage() {
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }
-          ></GoabTab>
+          <GoabTab heading="Design">
+            <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoabText size="body-m" mt="none" mb="none">
+                To use grid in design, set Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                   target="_blank" rel="noreferrer">
+                  auto layout
+                </a>{" "}
+                to <i>wrap</i>. This will create a responsive grid pattern that can respond to different screen
+                sizes, similar to the Grid component in code.
+              </GoabText>
+            </GoabContainer>
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

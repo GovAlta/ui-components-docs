@@ -21,12 +21,15 @@ import {
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
 import { CalloutExamples } from "@examples/callout/CalloutExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
 const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
-const category = Category.FEEDBACK_AND_ALERTS;
+const category = Category.CONTENT_AND_LAYOUT;
 const relatedComponents = [
   { link: "/components/notification-banner", name: "Notification banner" },
 ];
@@ -172,33 +175,40 @@ export default function CalloutPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        githubLink="Callout"
+        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoabCallout {...componentProps}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Callout important information for the user.
               </GoabCallout>
             </Sandbox>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-
-            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-            <CalloutExamples/>
-
           </GoabTab>
 
           <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }></GoabTab>
+            heading={<>
+              Examples
+              <GoabBadge type="information" content="1" />
+            </>}
+          >
+          <CalloutExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

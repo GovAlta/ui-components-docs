@@ -158,36 +158,37 @@ export default function ContributePage() {
         <h4>Setup contribution environment</h4>
         <ol start={ 3 }>
           <li>
-            Go to ui-components page and choose the “Fork” link in the top-right of the page
+            Go to <a href="https://github.com/GovAlta/ui-components" target="_blank">ui-components</a> repo and clone the repo
           </li>
-          <li>Create a Fork, choose an owner and a repo name</li>
-          <ul>
-            <li>Make sure you&#39;re forking our repo and not directly cloning our repo</li>
-          </ul>
-          <li>Clone the newly created repo</li>
           <li>Open the repo&rsquo;s folder in your IDE</li>
+          <li>Create a branch to work on with the name "contributions/story-number"</li>
           <li>
-            Run the following commands in order:
+            Run the following command:
             <CodeSnippet lang="css" allowCopy={true} code={`npm i`} />
-            <CodeSnippet lang="css" allowCopy={true} code={`npm run build`} />
           </li>
           <li>
             Run the bash script:
             <CodeSnippet lang="css" allowCopy={true} code={`./playground-setup.sh`} />
           </li>
-          <li>The commands above will create a “playground” folder containing both React and Angular environments. Since nothing in this folder is committed to the repository, you can freely make any changes you want. These environments are designed for testing purposes.</li>
+          <li>The commands above will install all necessary packages and create a “playground” folder containing both React and Angular environments. Since nothing in this folder is committed to the repository, you can freely make any changes you want. These environments are designed for testing purposes.</li>
           <li>
             Use the following commands to run your playground environments:
             <br />
             <b>Angular</b>
-            <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:angular`}/>
+            <CodeSnippet lang="css" allowCopy={true} code={
+              `npm run dev:watch
+              npm run serve:angular`
+            }/>
             <GoabSpacer vSpacing="s" />
             <b>React</b>
-            <CodeSnippet lang="css" allowCopy={true} code={`npm run dev:react`}/>
+            <CodeSnippet lang="css" allowCopy={true} code={
+              `npm run dev:watch
+              npm run serve:react`
+            }/>
           </li>
         </ol>
         <GoabSpacer vSpacing="l" />
-        <h3 id="react-and-web-wrappers">React and Web wrappers</h3>
+        <h3 id="react-and-web-wrappers">React and Angular wrappers</h3>
         <GoabSpacer vSpacing="s" />
         <p>
           <strong>React wrappers</strong> <br/>
@@ -197,7 +198,13 @@ export default function ContributePage() {
         </p>
         <GoabSpacer vSpacing="l"></GoabSpacer>
         <p>
-          <strong>Web wrappers</strong> <br /> 
+          <strong>Angular wrappers</strong> <br /> 
+          <CodeSnippet lang="css" allowCopy={true} code={`/libs/angular-components/src/lib/components`}/>
+          <GoabSpacer vSpacing="s"></GoabSpacer>
+          Each folder represents a single component with its associated unit tests and wrapper code
+        </p>
+        <h3 id="web-components">Web Components</h3>
+        <p>
           <CodeSnippet lang="css" allowCopy={true} code={`/libs/web-components/src/components`}/>
           <GoabSpacer vSpacing="s"></GoabSpacer>
           Each folder represents a single component with:
@@ -209,22 +216,20 @@ export default function ContributePage() {
           <li>
             Component code as <code>*.ts</code>
           </li>
-          <li>
-            Documentation as <code>doc.md&nbsp;</code>
-          </li>
         </ul>
         <GoabSpacer vSpacing="s"></GoabSpacer>
         <h3 id="testing-procedures">Testing procedures</h3>
         <p>All unit tests must be written in Svelte.</p>
         <ul>
           <li>
-            If you&#39;re updating/modifying React wrappers, you will need to write unit tests in
-            React
+            If you&#39;re updating/modifying React and/or Angular wrappers, you will need to write unit tests in
+            React and/or Angular
           </li>
+          <li>It would also be recommended to add proper browser testing using jest for React wrappers and Svelte components.</li>
           <li>Manually test in React and Angular</li>
         </ul>
         <p>
-          Additionally, our QA automation developer will perform a comprehensive series of tests to
+          Additionally, one of our developers will manually test the PR to
           ensure the components&#39; quality and functionality.
         </p>
         <GoabSpacer vSpacing="s"></GoabSpacer>

@@ -20,9 +20,12 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import ModalExamples from "@examples/modal/ModalExamples.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13874";
 const componentName = "Modal";
 const description =
   "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
@@ -285,14 +288,14 @@ export default function ModalPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Modal"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{ display: "none" }}>
-              Component
-            </h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} allow={["p"]}>
               <CodeSnippet
                 lang="typescript"
@@ -368,18 +371,27 @@ export default function ModalPage() {
                 </GoabModal>
               )}
             </Sandbox>
-
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-            <ModalExamples/>
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="6" />
               </>
-            }></GoabTab>
+            }
+          >
+            <ModalExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

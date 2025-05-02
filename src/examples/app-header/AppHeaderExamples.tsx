@@ -1,17 +1,20 @@
 import { AppHeaderWithNavigationExample } from "@examples/app-header/AppHeaderWithNavigationExample.tsx";
 import { AppHeaderWithMenuClickEventExample } from "@examples/app-header/AppHeaderWithMenuClickEventExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const AppHeaderExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-
-      <h3 id="component-example-header-navigation">Header with navigation</h3>
+      <SandboxHeader
+        exampleTitle="Header with navigation"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-90004&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <AppHeaderWithNavigationExample/>
 
-      <h3 id="component-example-with-menu-click">Header with menu click event</h3>
+      <SandboxHeader
+        exampleTitle="Header with menu click event"
+        figmaExample="">
+      </SandboxHeader>
       <AppHeaderWithMenuClickEventExample/>
     </>
   );

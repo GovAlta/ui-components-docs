@@ -16,6 +16,11 @@ import { Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24089-474089";
 
 const componentName = "Side menu";
 const description =
@@ -122,13 +127,15 @@ export default function SideMenuPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Side menu"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
 
               {/*Angular code*/}
@@ -284,11 +291,20 @@ export default function SideMenuPage() {
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="0" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

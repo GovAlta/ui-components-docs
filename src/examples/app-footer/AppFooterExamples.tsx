@@ -1,18 +1,20 @@
 import { AppFooterShowQuickLinkExample } from "@examples/app-footer/AppFooterShowQuickLinkExample.tsx";
 import { AppFooterShowNavigationItemsExample } from "@examples/app-footer/AppFooterShowNavigationItemsExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const AppFooterExamples = () => {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-      <h3 id="component-example-footer-meta">Show quick links</h3>
+      <SandboxHeader
+        exampleTitle="Show quick links"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-60928&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <AppFooterShowQuickLinkExample />
 
-      <h3 id="component-example-footer-secondary-nav">
-        Show links to navigation items
-      </h3>
+      <SandboxHeader
+        exampleTitle="Show links to navigation items"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-65947&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <AppFooterShowNavigationItemsExample/>
     </>
   )

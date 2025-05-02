@@ -21,14 +21,17 @@ import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { LegacyMarginProperty, MarginProperty } from "@components/component-properties/common-properties.ts";
 import { DatePickerExamples } from "@examples/date-picker/DatePickerExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-33175";
 const componentName = "Date picker";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
-  // { link: "/content/date-format", name: "Date format" },
-  { link: "/components/form-item", name: "Form item" },
+  { link: "/content/date-format", name: "Date format" },
+  { link: "/components/form-item", name: "Form item" }
 ];
 const description =
   "Lets users select a date through a calendar without the need to manually type it in a field.";
@@ -179,13 +182,15 @@ export default function DatePickerPage() {
         category={category}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Date picker"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{ display: "none" }}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
@@ -303,18 +308,27 @@ export default function DatePickerPage() {
             </Sandbox>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
-            <DatePickerExamples/>
 
           </GoabTab>
-
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="1" />
               </>
-            }></GoabTab>
+            }
+          >
+            <DatePickerExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

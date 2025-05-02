@@ -9,6 +9,11 @@ import { GoabBadge, GoabButton, GoabButtonGroup, GoabTab, GoabTabs } from "@abgo
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabButtonGroupAlignment } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302108";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
@@ -102,24 +107,19 @@ export default function ButtonGroupPage() {
       <ComponentHeader
         name="Button Group"
         category={Category.INPUTS_AND_ACTIONS}
-        description={
-          "Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
-        }
+        description="Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
         relatedComponents={[
           { link: "/components/button", name: "Button" },
-          /* 
-          { link: "/components/icon-button", name: "Icon button" },
-          { link: "/components/link", name: "Link" }, 
-          */
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Button Group"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            {/*Button Group Sandbox*/}
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={buttonGroupBindings} onChange={onSandboxChange} fullWidth>
               <CodeSnippet
                 lang="typescript"
@@ -133,7 +133,6 @@ export default function ButtonGroupPage() {
                   }
                 `}
               />
-
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -145,28 +144,32 @@ export default function ButtonGroupPage() {
                 `}
               />
               <GoabButtonGroup {...buttonGroupProps}>
-                <GoabButton type="primary" onClick={noop}>
-                  Button
-                </GoabButton>
-                <GoabButton type="secondary" onClick={noop}>
-                  Button
-                </GoabButton>
-                <GoabButton type="tertiary" onClick={noop}>
-                  Button
-                </GoabButton>
+                <GoabButton type="primary" onClick={noop}>Button</GoabButton>
+                <GoabButton type="secondary" onClick={noop}>Button</GoabButton>
+                <GoabButton type="tertiary" onClick={noop}>Button</GoabButton>
               </GoabButtonGroup>
             </Sandbox>
-
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
           </GoabTab>
+
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="0" />
               </>
             }
-          ></GoabTab>
+          >
+            <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

@@ -1,34 +1,45 @@
-import { TextFieldAskUserAddressExample } from "@examples/text-field/TextFieldAskUserAddressExample.tsx";
 import { TextFieldAskBirthdayExample } from "@examples/text-field/TextFieldAskBirthdayExample.tsx";
 import { TextFieldSearchExample } from "@examples/text-field/TextFieldSearchExample.tsx";
 import { TextFieldAskUserAmountExample } from "@examples/text-field/TextFieldAskUserAmountExample.tsx";
 import {
   TextFieldAskUserIndianRegistrationExample
 } from "@examples/text-field/TextFieldAskUserIndianRegistrationExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+import { ButtonAskUserAddressExample } from "@examples/button/ButtonAskUserAddressExample.tsx";
+
 
 export default function TextFieldExamples() {
   return (
     <>
       {/*Examples*/}
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
+      <SandboxHeader
+        exampleTitle="Ask a user for an address"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-43250&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
+      <ButtonAskUserAddressExample />
 
-      <h3 id="component-example-ask-user-for-an-address">Ask a user for an address </h3>
-      <TextFieldAskUserAddressExample/>
-
-      <h3 id="component-example-ask-user-for-birthday">Ask a user for their birthday</h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for their birthday"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6334-80568&t=X0IQW5flDDaj8Vyg-44">
+      </SandboxHeader>
       <TextFieldAskBirthdayExample/>
 
-      <h3 id="component-example-search">Search</h3>
+      <SandboxHeader
+        exampleTitle="Search"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-68872&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <TextFieldSearchExample/>
 
-      <h3 id="component-example-ask-for-costs">Ask a user for dollar amounts or costs</h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for dollar amounts"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=1896-179629&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <TextFieldAskUserAmountExample/>
 
-      <h3 id="component-example-registration-number">
-        Ask a user for their indian registration number
-      </h3>
+      <SandboxHeader
+        exampleTitle="Ask a user for an indian registration number"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=1896-179631&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <TextFieldAskUserIndianRegistrationExample/>
     </>
   );

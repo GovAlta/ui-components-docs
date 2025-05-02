@@ -15,12 +15,15 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
 import { TestIdProperty } from "@components/component-properties/common-properties.ts";
 import { TabsExamples } from "@examples/tabs/TabsExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Tabs";
 const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
 export default function TabsPage() {
   const { version } = useContext(LanguageVersionContext);
   const oldComponentProperties: ComponentProperty[] = [
@@ -91,13 +94,19 @@ export default function TabsPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        figmaLink={FIGMA_LINK}
+        githubLink="Tabs"
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             {/*Cannot use Sandbox because if we change the language/version, the tabs inside the tabs will make the below bugs:*/}
             {/*1. Scroll down to an example*/}
@@ -275,15 +284,23 @@ export default function TabsPage() {
               oldProperties={oldTabProperties}
             />
 
-            <TabsExamples />
           </GoabTab>
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
-            }></GoabTab>
+            }
+          >
+            <TabsExamples />
+          </GoabTab>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

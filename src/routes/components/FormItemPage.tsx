@@ -15,6 +15,10 @@ import {
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
 import { FormItemExamples } from "@examples/form-item/FormItemExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27284-300347";
 
 export default function FormItemPage() {
   const {version} = useContext(LanguageVersionContext);
@@ -209,7 +213,7 @@ export default function FormItemPage() {
     <>
       <ComponentHeader
         name="Form Item"
-        category={Category.INPUTS_AND_ACTIONS}
+        category={Category.UTILITIES}
         description="Wraps an input control with a text label, requirement label, helper text, and error text."
         relatedComponents={[
           { link: "/components/checkbox", name: "Checkbox" },
@@ -218,13 +222,15 @@ export default function FormItemPage() {
           { link: "/components/text-area", name: "Text area" },
           { link: "/components/text-field", name: "Text field" },
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Form item"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox
               properties={formItemBindings}
@@ -362,16 +368,22 @@ export default function FormItemPage() {
             </Sandbox>
 
             <ComponentProperties properties={componentProps} oldProperties={oldComponentProps} />
-            <FormItemExamples />
           </GoabTab>
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <FormItemExamples />
+          </GoabTab>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

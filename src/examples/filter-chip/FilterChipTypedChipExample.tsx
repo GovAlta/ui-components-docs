@@ -1,68 +1,63 @@
-import { GoabContainer, GoabFilterChip, GoabInput } from "@abgov/react-components";
+import { GoabContainer, GoabFilterChip, GoabFormItem, GoabInput } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { GoabInputOnChangeDetail, GoabInputOnKeyPressDetail } from "@abgov/ui-components-common";
 
 export const FilterChipTypedChipExample = () => {
   const {version} = useContext(LanguageVersionContext);
-  const [typedChips, setTypedChips] = useState<string[]>([
-    "Typed Chip 1",
-    "Typed Chip 2",
-    "Typed Chip 3",
-  ]);
-
+  const [typedChips, setTypedChips] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const handleInputChange = (_name: string, value: string) => {
-    setInputValue(value);
-  };
-  const handleInputKeyDown = (_name: string, value: string, key: string) => {
-    if (key === "Enter" && value.trim() !== "") {
-      setTypedChips(prevChips => [...prevChips, value.trim()]);
-      setTimeout(() => {
-        setInputValue("");
-      }, 0);
-    } else if (key === "Backspace" && value === "" && typedChips.length > 0) {
-      setTypedChips(prevChips => prevChips.slice(0, -1));
-    }
-  };
+
+	const handleInputChange = (detail: GoabInputOnChangeDetail) => {
+		const newValue = detail.value.trim();
+		setInputValue(newValue);
+	};
+
+	const handleInputKeyPress = (detail: GoabInputOnKeyPressDetail) => {
+		const newValue = detail.value.trim();
+		if (detail.key === "Enter" && newValue !== "") {
+			setTypedChips(prevChips => [...prevChips, newValue]);
+			setTimeout(() => {
+				setInputValue("");
+			}, 0);
+		} else if (detail.key === "Backspace" && newValue === "" && typedChips.length > 0) {
+			setTypedChips(prevChips => prevChips.slice(0, -1));
+		}
+	};
 
   const removeTypedChip = (chip: string) => {
     setTypedChips(prevChips => prevChips.filter(c => c !== chip));
   };
+
   return (
+    // NOTE: Input onKeyPress functionality breaks when wrapped in Sandbox component
+    // <Sandbox fullWidth skipRender>
     <>
       <GoabContainer mb="none">
-        <div
-          className="chip-input-wrapper"
-          style={{
-            border: "1px solid #ddd",
-            padding: "8px",
-            borderRadius: "4px",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}>
-          <GoabInput
-            name="chipInput"
-            placeholder="Type and press Enter"
-            value={inputValue}
-            onChange={detail => handleInputChange(detail.name, detail.value)}
-            onKeyPress={detail => handleInputKeyDown(detail.name, detail.value, detail.key)}
-            width="30ch"
-            mr="s"
-          />
-          {typedChips.map((chip, index) => (
-            <GoabFilterChip
-              key={index}
-              content={chip}
-              onClick={() => removeTypedChip(chip)}
-              mr="s"
-              mt="s"
-              mb="s"
-            />
-          ))}
-        </div>
-      </GoabContainer>
+				<GoabFormItem label="Type to create a chip" mb="m">
+					<GoabInput
+						name="chipInput"
+						value={inputValue}
+						onChange={handleInputChange}
+						onKeyPress={handleInputKeyPress}
+						width="100%"
+					/>
+				</GoabFormItem>
+				<div>
+					{typedChips.length > 0 &&
+						typedChips.map((typedChip, index) => (
+							<GoabFilterChip
+								key={index}
+								content={typedChip}
+								mb="xs"
+								mr="xs"
+								onClick={() => removeTypedChip(typedChip)}
+							/>
+						))}
+				</div>
+			</GoabContainer>
+
       {version === "old" && (
         <>
           <CodeSnippet
@@ -70,43 +65,35 @@ export const FilterChipTypedChipExample = () => {
             tags="angular"
             allowCopy={true}
             code={`
+export class FilterChipComponent {
+  typedChips: string[] = [];
+  inputValue = "";
 
-                  import { Component } from "@angular/core";
+  handleInputChange(event: Event): void {
+    const newValue = (event.target as HTMLInputElement).value.trim();
+    this.inputValue = newValue;
+  }
 
-                  @Component({
-                    selector: "abgov-chip",
-                    templateUrl: "./filter-chip.component.html",
-                    styleUrl: "./filter-chip.component.css",
-                  })
-                  export class FilterChipComponent {
-                   
-                    typedChips: string[] = ["Typed Chip 1", "Typed Chip 2", "Typed Chip 3"];
-                    inputValue = "";
+  handleInputKeyPress(event: KeyboardEvent): void {
+			const newValue = (event.target as HTMLInputElement).value.trim();
+    if (event.key === "Enter" && newValue !== "") {
+      this.addChip();
+    } else if (!this.inputValue && this.typedChips.length > 0 && event.key === "Backspace") {
+      this.typedChips.pop();
+    }
+  }
 
+  addChip(): void {
+    if (this.inputValue.trim()) {
+      this.typedChips.push(this.inputValue.trim());
+      this.inputValue = "";
+    }
+  }
 
-                    onInput(event: Event): void {
-                      this.inputValue = (event.target as HTMLInputElement).value;
-                    }
-
-                    addChip(): void {
-                      if (this.inputValue.trim()) {
-                        this.typedChips.push(this.inputValue.trim());
-                        this.inputValue = "";
-                      }
-                    }
-
-                    removeTypedChip(chip: string): void {
-                      this.typedChips = this.typedChips.filter((c) => c !== chip);
-                    }
-
-                    handleBackspace(event: KeyboardEvent): void {
-                      if (!this.inputValue && this.typedChips.length > 0 && event.key === "Backspace") {
-                        this.typedChips.pop();
-                        event.preventDefault();
-                      }
-                    }
-                  }
-                
+  removeTypedChip(chip: string): void {
+    this.typedChips = this.typedChips.filter((c) => c !== chip);
+  }
+}
                 `}
           />
           <CodeSnippet
@@ -114,24 +101,26 @@ export const FilterChipTypedChipExample = () => {
             tags="angular"
             allowCopy={true}
             code={`
-              <goa-input
-                id="chipInput"
-                type="text"
-                [value]="inputValue"
-                (_change)="onInput($event)"
-                (keydown)="handleBackspace($event)"
-                (keydown.enter)="addChip()"
-                placeholder="Type and press Enter"
-                mr="s">
-              </goa-input>
-              <goa-filter-chip
-                *ngFor="let chip of typedChips"
-                [content]="chip"
-                (_click)="removeTypedChip(chip)"
-                mr="s"
-                mt="s"
-                mb="s">
-              </goa-filter-chip>
+<goa-form-item label="Type to create a chip" mb="m">
+  <goa-input
+    id="chipInput"
+    [value]="inputValue"
+    (_change)="handleInputChange($event)"
+		(keydown)="handleInputKeyPress($event)"
+    width="100%"
+  >
+  </goa-input>
+</goa-form-item>
+<div *ngIf="typedChips.length > 0">
+  <goa-filter-chip
+    *ngFor="let typedChip of typedChips"
+    [content]="typedChip"
+    mb="xs"
+    mr="xs"
+    (_click)="removeTypedChip(typedChip)"
+  >
+  </goa-filter-chip>
+</div>
             `}
           />
         </>
@@ -144,151 +133,193 @@ export const FilterChipTypedChipExample = () => {
             tags="angular"
             allowCopy={true}
             code={`
-                  export class FilterChipComponent {
-                    typedChips: string[] = ["Typed Chip 1", "Typed Chip 2", "Typed Chip 3"];
-                    inputValue = "";
+export class FilterChipComponent {
+  typedChips: string[] = [];
+  inputValue = "";
 
-                    onInput(detail: GoabInputOnChangeDetail): void {
-                      this.inputValue = detail.value;
-                    }
+  handleInputChange(detail: GoabInputOnChangeDetail): void {
+    const newValue = detail.value.trim();
+    this.inputValue = newValue;
+  }
 
-                    addChip(): void {
-                      if (this.inputValue.trim()) {
-                        this.typedChips.push(this.inputValue.trim());
-                        this.inputValue = "";
-                      }
-                    }
+  handleInputKeyPress(detail: GoabInputOnKeyPressDetail): void {
+    const newValue = detail.value.trim();
+    if (detail.key === "Enter" && newValue !== "") {
+      this.addChip();
+    } else if (!this.inputValue && this.typedChips.length > 0 && detail.key === "Backspace") {
+      this.typedChips.pop();
+    }
+  }
 
-                    removeTypedChip(chip: string): void {
-                      this.typedChips = this.typedChips.filter((c) => c !== chip);
-                    }
+  addChip(): void {
+    if (this.inputValue.trim()) {
+      this.typedChips.push(this.inputValue.trim());
+      this.inputValue = "";
+    }
+  }
 
-                    handleBackspace(event: KeyboardEvent): void {
-                      if (!this.inputValue && this.typedChips.length > 0 && event.key === "Backspace") {
-                        this.typedChips.pop();
-                        event.preventDefault();
-                      }
-                    }
-                `}
+  removeTypedChip(chip: string): void {
+    this.typedChips = this.typedChips.filter((c) => c !== chip);
+  }
+}
+            `}
           />
           <CodeSnippet
             lang="html"
             tags="angular"
             allowCopy={true}
             code={`
-                      <h2>Typed Chip</h2>
-                      <goab-input
-                        id="chipInput"
-                        type="text"
-                        [value]="inputValue"
-                        (onChange)="onInput($event)"
-                        (keydown)="handleBackspace($event)"
-                        (keydown.enter)="addChip()"
-                        placeholder="Type and press Enter"
-                        mr="s">
-                      </goab-input>
-                      <goab-filter-chip
-                        *ngFor="let chip of typedChips"
-                        [content]="chip"
-                        (_click)="removeTypedChip(chip)"
-                        mr="s"
-                        mt="s"
-                        mb="s">
-                      </goab-filter-chip>
-                  `}
+<goab-form-item label="Type to create a chip" mb="m">
+  <goab-input
+    id="chipInput"
+    [value]="inputValue"
+    (onChange)="handleInputChange($event)"
+    (onKeyPress)="handleInputKeyPress($event)"
+    width="100%"
+  >
+  </goab-input>
+</goab-form-item>
+<div *ngIf="typedChips.length > 0">
+  <goab-filter-chip
+    *ngFor="let typedChip of typedChips"
+    [content]="typedChip"
+    mb="xs"
+    mr="xs"
+    (onClick)="removeTypedChip(typedChip)"
+  >
+  </goab-filter-chip>
+</div>
+            `}
           />
         </>
       )}
 
-      <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
-                      const [typedChips, setTypedChips] = useState<string[]>([
-                        "Typed Chip 1",
-                        "Typed Chip 2",
-                        "Typed Chip 3",
-                      ]);
-                      const [inputValue, setInputValue] = useState("");
-                      const handleInputChange = (name: string, value: string) => {
-                        setInputValue(value);
-                      };
-
-                      const handleInputKeyDown = (name: string, 
-                                                  value: string, 
-                                                  key: string) => {
-                        if (key === "Enter" && value.trim() !== "") {
-                          setTypedChips((prevChips) => [...prevChips, value.trim()]);
-                          setTimeout(() => {
-                            setInputValue("");
-                          }, 0);
-                        } else if (key === "Backspace" 
-                                    && value === "" 
-                                    && typedChips.length > 0) {
-                          setTypedChips((prevChips) => prevChips.slice(0, -1));
-                        }
-                      };
-
-                      const removeTypedChip = (chip: string) => {
-                        setTypedChips((prevChips) => prevChips.filter((c) => c !== chip));
-                      };
-                `}
-      />
       {version === "old" && (
-        <CodeSnippet
-          lang="html"
-          tags="react"
-          allowCopy={true}
-          code={`
-                        <GoAInput
-                          name="chipInput"
-                          placeholder="Type and press Enter"
-                          value={inputValue}
-                          onChange={handleInputChange}
-                          onKeyPress={handleInputKeyDown}
-                          width="30ch"
-                          mr="s"
-                        />    
-                        {typedChips.map((chip, index) => (
-                          <GoAFilterChip
-                            key={index}
-                            content={chip}
-                            onClick={() => removeTypedChip(chip)}
-                            mr="s"
-                            mt="s"
-                            mb="s"/>
-                        ))}
-                `}
+        <>
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+  const [typedChips, setTypedChips] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleInputChange = (_name: string, value: string) => {
+    const newValue = value.trim();
+		setInputValue(newValue);
+	};
+
+  const handleInputKeyPress = (_name: string, value: string, key: string) => {
+		const newValue = value.trim();
+		if (key === "Enter" && newValue !== "") {
+			setTypedChips(prevChips => [...prevChips, newValue]);
+			setTimeout(() => {
+				setInputValue("");
+			}, 0);
+		} else if (key === "Backspace" && newValue === "" && typedChips.length > 0) {
+			setTypedChips(prevChips => prevChips.slice(0, -1));
+		}
+	};
+
+  const removeTypedChip = (chip: string) => {
+    setTypedChips(prevChips => prevChips.filter(c => c !== chip));
+  };
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+      <GoAFormItem label="Type to create a chip" mb="m">
+        <GoAInput
+          name="chipInput"
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyPress={handleInputKeyPress}
+          width="100%"
         />
+      </GoAFormItem>
+      <div>
+        {typedChips.length > 0 &&
+          typedChips.map((typedChip, index) => (
+            <GoAFilterChip
+              key={index}
+              content={typedChip}
+              mb="xs"
+              mr="xs"
+              onClick={() => removeTypedChip(typedChip)}
+            />
+          ))}
+      </div>
+            `}
+          />
+        </>
       )}
+
       {version === "new" && (
-        <CodeSnippet
-          lang="html"
-          tags="react"
-          allowCopy={true}
-          code={`
-                        <GoabInput
-                          name="chipInput"
-                          placeholder="Type and press Enter"
-                          value={inputValue}
-                          onChange={(detail) => handleInputChange(detail.name, detail.value)}
-                          onKeyPress={(detail) => handleInputKeyDown(detail.name, detail.value, detail.key)}
-                          width="30ch"
-                          mr="s"
-                        />    
-                        {typedChips.map((chip, index) => (
-                          <GoabFilterChip
-                            key={index}
-                            content={chip}
-                            onClick={() => removeTypedChip(chip)}
-                            mr="s"
-                            mt="s"
-                            mb="s"/>
-                        ))}
-                `}
+        <>
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
+  const [typedChips, setTypedChips] = useState<string[]>([]);
+  const [inputValue, setInputValue] = useState("");
+
+	const handleInputChange = (detail: GoabInputOnChangeDetail) => {
+		const newValue = detail.value.trim();
+		setInputValue(newValue);
+	};
+
+	const handleInputKeyPress = (detail: GoabInputOnKeyPressDetail) => {
+		const newValue = detail.value.trim();
+		if (detail.key === "Enter" && newValue !== "") {
+			setTypedChips(prevChips => [...prevChips, newValue]);
+			setTimeout(() => {
+				setInputValue("");
+			}, 0);
+		} else if (detail.key === "Backspace" && newValue === "" && typedChips.length > 0) {
+			setTypedChips(prevChips => prevChips.slice(0, -1));
+		}
+	};
+
+  const removeTypedChip = (chip: string) => {
+    setTypedChips(prevChips => prevChips.filter(c => c !== chip));
+  };
+            `}
+          />
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
+      <GoabFormItem label="Type to create a chip" mb="m">
+        <GoabInput
+          name="chipInput"
+          value={inputValue}
+          onChange={handleInputChange}
+          onKeyPress={handleInputKeyPress}
+          width="100%"
         />
+      </GoabFormItem>
+      <div>
+        {typedChips.length > 0 &&
+          typedChips.map((typedChip, index) => (
+            <GoabFilterChip
+              key={index}
+              content={typedChip}
+              mb="xs"
+              mr="xs"
+              onClick={() => removeTypedChip(typedChip)}
+            />
+          ))}
+      </div>
+            `}
+          />
+        </>
       )}
     </>
+    // </Sandbox>
   );
 }

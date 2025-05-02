@@ -59,7 +59,7 @@ export default function TEMPLATE_Page() {
         relatedComponents={relatedComponents}
       />
 
-      <GoabTabs>
+      <GoabTabs initialTab={1}>
         <GoabTab heading="Code examples">
           <Sandbox properties={componentBindings} onChange={onSandboxChange}>
             <></>

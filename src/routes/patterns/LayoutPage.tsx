@@ -18,7 +18,7 @@ export default function LayoutPage() {
       <h3>
         A structural template that supports consistency across applications by defining visual grids, spacing, and sections.
       </h3>
-      <GoabTabs>
+      <GoabTabs initialTab={1}>
         <GoabTab heading="Code examples">
           <h3>Basic page layout</h3>
           <Sandbox fullWidth allow={["Browser"]}>

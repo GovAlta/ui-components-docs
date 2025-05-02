@@ -13,9 +13,13 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabNotificationType } from "@abgov/ui-components-common";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import {ExamplesEmpty} from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
 // == Page props ==
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-12949";
 const componentName = "Notification Banner";
 const description = "Display important page level information or notifications.";
 const category = Category.FEEDBACK_AND_ALERTS;
@@ -133,13 +137,20 @@ export default function NotificationBannerPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Notification Banner"
+      />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
               <GoabNotification {...componentProps}>Notification banner message</GoabNotification>
             </Sandbox>
@@ -149,11 +160,21 @@ export default function NotificationBannerPage() {
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="0" />
               </>
             }
-          ></GoabTab>
+          >
+          <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
         </GoabTabs>
       </ComponentContent>
     </>

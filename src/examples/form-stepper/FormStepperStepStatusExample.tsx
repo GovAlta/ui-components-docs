@@ -23,9 +23,9 @@ export const FormStepperStepStatusExample = () => {
   }
   return (
     <>
-      The status of each step can be configured to either “complete” or “incomplete” using the
-      status property.
-      <Sandbox fullWidth skipRender allow={["div"]}>
+
+      <Sandbox fullWidth skipRender allow={["div"]}
+               note={"The status of each step can be configured to either “complete” or “incomplete” using the status property."}>
         {/*Angular code*/}
         {version === "old" && <CodeSnippet
           lang="typescript"

@@ -5,29 +5,45 @@ import { ModalWarnUserDeadlineExample } from "@examples/modal/ModalWarnUserDeadl
 import { ModalConfirmRecordChangeExample } from "@examples/modal/ModalConfirmRecordChangeExample.tsx";
 import { ModalAddAnotherItemExample } from "@examples/modal/ModalAddAnotherItemExample.tsx";
 import { ModalRouteChangeExample } from "@examples/modal/ModalRouteChangeExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function ModalExamples() {
   return (
     <>
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-      <h3 id="component-example-basic">Basic Modal</h3>
+
+        <SandboxHeader
+          exampleTitle="Basic Modal">
+        </SandboxHeader>
       <ModalBasicExample/>
 
-      <h3 id="component-example-destructive">Confirm a destructive action</h3>
+        <SandboxHeader
+          exampleTitle="Confirm a destructive action"
+          figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-43038&t=X0IQW5flDDaj8Vyg-4">
+        </SandboxHeader>
       <ModalConfirmDestructiveActionExample/>
 
-      <h3 id="component-example-warning">Warn a user of a deadline</h3>
+        <SandboxHeader
+          exampleTitle="Warn a user of a deadline"
+          figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-43225&t=X0IQW5flDDaj8Vyg-4">
+        </SandboxHeader>
       <ModalWarnUserDeadlineExample/>
 
-      <h3 id="component-example-with-input">Confirm record change</h3>
+        <SandboxHeader
+          exampleTitle="Confirm a change"
+          figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-44272&t=X0IQW5flDDaj8Vyg-4">
+        </SandboxHeader>
       <ModalConfirmRecordChangeExample/>
 
-      <h3 id="component-example-add-item">Add another item</h3>
+        <SandboxHeader
+          exampleTitle="Add another item"
+          figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-50217&t=X0IQW5flDDaj8Vyg-4">
+        </SandboxHeader>
       <ModalAddAnotherItemExample/>
 
-      <h3 id="component-example-route-change">Route changes</h3>
+        <SandboxHeader
+          exampleTitle="Route changes"
+          figmaExample="">
+        </SandboxHeader>
       <ModalRouteChangeExample/>
     </>
   );

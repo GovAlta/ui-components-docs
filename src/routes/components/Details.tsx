@@ -18,6 +18,10 @@ import {
   TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DetailsExamples } from "@examples/details/DetailsExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
 
 export default function DetailsPage() {
   const [detailsProps, setDetailsProps] = useState({
@@ -100,6 +104,8 @@ export default function DetailsPage() {
         name="Details"
         category={Category.CONTENT_AND_LAYOUT}
         description="Let users reveal more detailed information when they need it."
+        figmaLink={FIGMA_LINK}
+        githubLink="Details"
         relatedComponents={[
           { link: "/components/accordion", name: "Accordion" },
           { link: "/components/form-item", name: "Form item" },
@@ -107,10 +113,10 @@ export default function DetailsPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={detailsBindings} onChange={onSandboxChange} fullWidth>
               <GoabDetails {...detailsProps}>
@@ -124,23 +130,29 @@ export default function DetailsPage() {
                 facilisi.
               </GoabDetails>
             </Sandbox>
-
             <ComponentProperties
               oldProperties={oldComponentProperties}
               properties={componentProperties}
             />
-
-            <DetailsExamples />
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="3" />
               </>
-            }>
-            <p>Coming Soon</p>
+            }
+          >
+            <DetailsExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

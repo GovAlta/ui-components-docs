@@ -18,12 +18,12 @@ export default function OpacityPage() {
     {
       tokenName: "goa-opacity-background-modal",
       percentage: "50%",
-      figmaUsage: "Fill: opacity/background/modal",
+      figmaUsage: "Fill: Opacity/Background/Modal",
     },
     {
       tokenName: "goa-opacity-background-loading",
       percentage: "90%",
-      figmaUsage: "Fill: opacity/background/loading",
+      figmaUsage: "Fill: Opacity/Background/Loading",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
@@ -34,16 +34,16 @@ export default function OpacityPage() {
         <thead>
           <tr>
             <th></th>
-            <th>Token name</th>
+            <th>Design token</th>
             <th>%</th>
-            <th>Figma style</th>
+            <th>Figma</th>
           </tr>
         </thead>
         <tbody>
           {tokens.map((token, index) => (
             <tr key={index}>
               <td>
-                <div style={{ display: "flex" }}>
+                <div className="opacity-thumbnail" style={{ display: "flex" }}>
                   <div className="blue-box"></div>
                   <div
                     className="grey-box"
@@ -67,7 +67,7 @@ export default function OpacityPage() {
 
   const renderMobile = () => {
     return (
-      <GoabGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="l">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
             <GoabContainer key={idx}>
@@ -80,10 +80,10 @@ export default function OpacityPage() {
                   }}
                 ></div>
               </div>
-              <TokenSnippet code={token.tokenName} />
+              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
               <dl>
-                <dt>%</dt> <dd>{token.percentage}</dd>
-                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
+                <dt>%</dt> <dd className="dd-style">{token.percentage}</dd>
+                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
               </dl>
             </GoabContainer>
           ))

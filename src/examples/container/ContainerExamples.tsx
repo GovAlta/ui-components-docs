@@ -2,24 +2,36 @@ import { ContainerUserInformationExample } from "@examples/container/ContainerUs
 import { ContainerCaseFilesExample } from "@examples/container/ContainerCaseFilesExample.tsx";
 import { ContainerCardGridExample } from "@examples/container/ContainerCardGridExample.tsx";
 import { ContainerReviewActionExample } from "@examples/container/ContainerReviewActionExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function ContainerExamples() {
   return (
     <>
       {/*Container examples*/}
-      <h2 id="component-examples" className="hidden" aria-hidden="true">
-        Examples
-      </h2>
-      <h3 id="component-example-1">User information</h3>
+
+      <SandboxHeader
+        exampleTitle="User information"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-154067&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <ContainerUserInformationExample/>
 
-      <h3 id="component-example-2">Card view of case files</h3>
+      <SandboxHeader
+        exampleTitle="Card view of case files"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-161012&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <ContainerCaseFilesExample/>
 
-      <h3 id="component-example-3">Card grid that links to different sections</h3>
+      <SandboxHeader
+        exampleTitle="Card grid"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-165873&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
       <ContainerCardGridExample/>
 
-      <h3 id="example-4">Review and action</h3>
+      <SandboxHeader
+        exampleTitle="Review and action"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-173587&t=X0IQW5flDDaj8Vyg-4">
+      </SandboxHeader>
+
       <ContainerReviewActionExample/>
     </>
   );

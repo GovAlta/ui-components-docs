@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoabBadge, GoabBlock, GoabTab, GoabTabs } from "@abgov/react-components";
+import { GoabBlock, GoabContainer, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function BlockPage() {
@@ -60,7 +60,7 @@ export default function BlockPage() {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },  
+    },
   ];
 
   const componentProperties: ComponentProperty[] = [
@@ -112,13 +112,13 @@ export default function BlockPage() {
           { link: "/patterns/layout", name: "Layout" },
           { link: "/components/spacer", name: "Spacer" },
         ]}
+        githubLink="Block"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
               <GoabBlock {...blockProps}>
                 <div
@@ -137,7 +137,8 @@ export default function BlockPage() {
                     backgroundColor: "rgba(0, 150, 255, 0.2)",
                     whiteSpace: "nowrap",
                     width: "5rem",
-                  }}>
+                  }}
+                >
                   <div>Item 2</div>
                   <div>Item 2</div>
                 </div>
@@ -153,18 +154,22 @@ export default function BlockPage() {
                 </div>
               </GoabBlock>
             </Sandbox>
-            {/*Block table properties*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
-          <GoabTab
-            heading={
-              <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
-              </>
-            }
-          ></GoabTab>
+          <GoabTab heading="Design">
+            <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoabText size="body-m" mt="none" mb="none">
+                To use Block in design, use Figma's built-in{" "}
+                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                   target="_blank" rel="noreferrer">
+                  auto layout
+                </a>.{" "} This will group multiple things with consistent spacing between them, similar to the Block
+                component in code.
+              </GoabText>
+            </GoabContainer>
+          </GoabTab>
+
         </GoabTabs>
       </ComponentContent>
     </>

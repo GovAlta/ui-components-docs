@@ -13,6 +13,7 @@ import React from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { AngularTemplateDrivenSerializer } from "@components/sandbox/AngularTemplateDrivenSerializer.ts";
 import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
+import { GoabAccordion } from "@abgov/react-components";
 
 type Flag = "reactive" | "template-driven" | "event";
 type ComponentType = "goa" | "codesnippet";
@@ -28,15 +29,18 @@ interface SandboxProps {
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
   skipRenderOnly?: string; // prevent rendering the snippet for a specific language. Ex: react/angular
+  skipRenderDom?: boolean; // rendering code snippets, but display none for the DOM because it isn't working as expected if inside sandbox
   allow?: string[]; // Be default the Sandbox is selective to what it renders out. This adds
   // additional elements to what is allowed to be rendered out
   variableNames?: string[]; // If we want to assign a variable such as step={step} render in code snippet, provides variableNames=["step"]
   children: ReactNode;
+  background?: string;
 }
 
 type SandboxViewProps = {
   fullWidth?: boolean;
   sandboxProps: SandboxProps;
+  background?: string;
 };
 
 export const Sandbox = (props: SandboxProps) => {
@@ -100,7 +104,9 @@ export const Sandbox = (props: SandboxProps) => {
   }
 
   function SandboxView(props: SandboxViewProps): ReactElement {
-    return <div className="sandbox-render">
+    const { background } = props;
+
+    return <div className="sandbox-render" style={{ background }}>
       <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
         <ComponentList type="goa" sandboxProps={props.sandboxProps} />
       </div>
@@ -109,15 +115,29 @@ export const Sandbox = (props: SandboxProps) => {
 
   return (
     <>
-      <SandboxView fullWidth={props.fullWidth} sandboxProps={props} />
-      {props.formItemProperties && props.formItemProperties.length > 0 && (
-        <SandboxProperties
-          onChange={onChangeFormItemBindings}
-          properties={props.formItemProperties}
-        />
-      )}
+    {props.skipRenderDom ? null : <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />}
+
+      {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (
-        <SandboxProperties properties={props.properties} onChange={onChange} />
+        <GoabAccordion
+          heading="Playground controls"
+          secondaryText="Change component properties to update code"
+          headingSize="small"
+          mt="m"
+          open={true}
+        >
+          {props.formItemProperties && props.formItemProperties.length > 0 && (
+            <SandboxProperties
+              onChange={onChangeFormItemBindings}
+              properties={props.formItemProperties}
+            />
+          )}
+
+          <SandboxProperties
+            properties={props.properties}
+            onChange={onChange}
+          />
+        </GoabAccordion>
       )}
       <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
       {props.note && (<div className="sandbox-note">{props.note}</div>)}

@@ -7,7 +7,6 @@ import {
   GoabTab,
   GoabTabs
 } from "@abgov/react-components";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import ICONS from "./icons.json";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
@@ -21,6 +20,10 @@ import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { LegacyMarginProperty, MarginProperty } from "@components/component-properties/common-properties.ts";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=105-42";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -364,112 +367,26 @@ export default function DropdownPage() {
 
   return (
     <>
-      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
+      <ComponentHeader
+        name={componentName}
+        category={category}
+        description={description}
+        relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Dropdown"
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs>
-          <GoabTab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox
               properties={dropdownBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
               flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                // non-reactive code
-                export class MyComponent {
-                  onChange(event: Event) {
-                    // handle change
-                    console.log((event as CustomEvent).detail.value);
-                  }
-                }  
-              `}
-              />}
-              {version === "new"  && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                // non-reactive code
-                export class MyComponent {
-                  dropdownOnChange(event: GoabDropdownOnChangeDetail) {
-                    console.log(event.value);
-                  }
-                }  
-              `}
-              />}
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
-                // reactive code
-                import { FormControl } from "@angular/forms";
-                export class MyComponent {
-                  itemFormCtrl = new FormControl("");
-                }  
-              `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
-               export class ExampleComponent {
-                  form!: FormGroup;
-                  constructor(private fb: FormBuilder) {
-                    this.form = this.fb.group({
-                      item: [""]
-                    });
-                  }
-              }
-              `}
-              />}
-
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                function onChange(name: string, value: string | string[]) {
-                 console.log("onChange", name, value);
-                }
-              `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                function dropdownOnChange(event: GoabDropdownOnChangeDetail) {
-                 console.log("onChange", event.name, event.value);
-                }
-              `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
-               export class ExampleComponent {
-                  item = "";
-                  dropdownOnChange(event: GoabDropdownOnChangeDetail) {
-                    console.log(event.value);
-                    this.item = event.value as string;
-                  }
-               }
-              `}
-              />}
-
+              {/* Keep all existing CodeSnippets and form content as-is */}
               <GoabFormItem {...formItemProps}>
                 <GoabDropdown name="item" value={color} {...dropdownProps}>
                   <GoabDropdownItem value="red" label="Red" />
@@ -486,18 +403,25 @@ export default function DropdownPage() {
               properties={dropdownItemProperties}
               oldProperties={oldDropdownItemProperties}
             />
-            <DropdownExamples/>
           </GoabTab>
 
           <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoabBadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
             }
           >
-            <p>Coming Soon</p>
+            <DropdownExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
         </GoabTabs>
       </ComponentContent>

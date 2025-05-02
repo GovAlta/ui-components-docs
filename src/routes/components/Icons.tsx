@@ -5,7 +5,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoabGrid, GoabIcon, GoabTab, GoabTabs } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabIcon, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -15,6 +15,8 @@ import {
   LegacyTestIdProperties, MarginProperty,
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -210,14 +212,16 @@ export default function IconsPage() {
           { link: "/components/icon-button", name: "Icon button" },
           { link: "/components/tooltip", name: "Tooltip" },
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Icons"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs>
-          <GoabTab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             {/*Icons Sandbox*/}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
               <GoabIcon {...iconsProps} />
@@ -225,14 +229,12 @@ export default function IconsPage() {
 
             {/*Icons Properties*/}
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+          </GoabTab>
 
-            {/*Icons example*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoabTab heading="Core icon set">
 
             <h3 id="component-example-alert-messaging">Alert and messaging</h3>
-            <GoabGrid minChildWidth="230px" gap="l" mt="m">
+            <GoabGrid minChildWidth="230px" gap="l" mt="l">
               <IconSnippet type={"information-circle"} />
               <IconSnippet type={"warning"} />
               <IconSnippet type={"add-circle"} />
@@ -244,7 +246,7 @@ export default function IconsPage() {
             </GoabGrid>
 
             <h3 id="component-example-basic">Basic</h3>
-            <GoabGrid minChildWidth="230px" gap="l" mt="m">
+            <GoabGrid minChildWidth="230px" gap="l" mt="l">
               <IconSnippet type={"close"} />
               <IconSnippet type={"checkmark"} />
               <IconSnippet type={"add"} />
@@ -252,7 +254,7 @@ export default function IconsPage() {
             </GoabGrid>
 
             <h3 id="component-example-direction">Direction</h3>
-            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"chevron-down"} />
               <IconSnippet type={"chevron-up"} />
               <IconSnippet type={"chevron-back"} />
@@ -268,7 +270,7 @@ export default function IconsPage() {
             </GoabGrid>
 
             <h3 id="component-example-interaction">Interactions</h3>
-            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"menu"} />
               <IconSnippet type={"reload"} />
               <IconSnippet type={"search"} />
@@ -290,13 +292,29 @@ export default function IconsPage() {
             </GoabGrid>
 
             <h3 id="component-example-accounts">Accounts</h3>
-            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"person-circle"} />
               <IconSnippet type={"settings"} />
               <IconSnippet type={"mail"} />
               <IconSnippet type={"call"} />
             </GoabGrid>
           </GoabTab>
+
+          <GoabTab heading="Extended icon set">
+            <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoabText size="body-m" mt="none" mb="none">
+                The extended icon set includes the full
+                {" "}<a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                        target="_blank" rel="noreferrer">
+                Ionicon library.
+              </a>{" "}
+                When you need additional icons outside of the core icon set, use these icons to maintain a consistent
+                visual language.
+              </GoabText>
+            </GoabContainer>
+          </GoabTab>
+
+
         </GoabTabs>
       </ComponentContent>
     </>
