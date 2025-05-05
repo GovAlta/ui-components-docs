@@ -9,7 +9,7 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
+import { CheckboxExamples } from "@examples/checkbox/CheckboxExamples.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyTestIdProperties,
@@ -328,7 +328,7 @@ export default function CheckboxPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="2" />
               </>
             }
           >
