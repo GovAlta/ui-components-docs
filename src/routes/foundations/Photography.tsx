@@ -11,7 +11,7 @@ export default function ImagesPage() {
         <div className="max-width-72ch">
 
           <h2 id="goa-photo-library">Government of Alberta photo library</h2>
-          <p>The photo library is owned by Alberta.ca and offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta brand and content guidelines and are free to use for all our projects.</p>
+          <p>The photo library is owned by Communications and Public Engagement (CPE) and offers an extensive collection of photos on various subjects. All these photos comply with the Government of Alberta brand and content guidelines and are free to use for all our projects.</p>
           <p>The library can be accessed by all Government of Alberta staff and contractors. To learn how to access our photo library, please see our detailed instructions on <a href="https://goa-dio.atlassian.net/l/cp/3TYiz5gU" target="_blank">Confluence</a>.</p>
 
           <h2 id="best-practices">Best practices</h2>
