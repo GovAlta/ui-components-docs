@@ -120,6 +120,7 @@ import ResultPage from "@routes/patterns/ResultPage";
 import FoundationsLayout from "@routes/foundations/FoundationsLayout";
 import DesignAtGoAPage from "@routes/foundations/DesignAtGoA";
 import AccessibilityPage from "@routes/foundations/Accessibility";
+import BrandGuidelinesPage from "@routes/foundations/BrandGuidelines";
 import FoundationsColorPage from "@routes/foundations/Color";
 import IconographyPage from "@routes/foundations/Iconography";
 import ImagesPage from "@routes/foundations/Photography";
@@ -239,6 +240,7 @@ const router = createBrowserRouter(
       <Route path="foundations" element={<FoundationsLayout />}>
         <Route index element={<DesignAtGoAPage />} />
         <Route path="accessibility" element={<AccessibilityPage />} />
+        <Route path="brand-guidelines" element={<BrandGuidelinesPage />} />
         <Route path="color" element={<FoundationsColorPage />} />
         <Route path="iconography" element={<IconographyPage />} />
         <Route path="photography" element={<ImagesPage />} />

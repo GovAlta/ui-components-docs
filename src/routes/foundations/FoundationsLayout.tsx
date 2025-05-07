@@ -11,6 +11,7 @@ export default function GetStartedLayout() {
           <GoASideMenuHeading>Foundations</GoASideMenuHeading>
           <Link to="">Design at GoA</Link>
           <Link to="accessibility">Accessibility</Link>
+          <Link to="brand-guidelines">Brand guidelines</Link>
           <GoASideMenuHeading>Style Guide</GoASideMenuHeading>
           <Link to="color">Color</Link>
           <Link to="iconography">Iconography</Link>

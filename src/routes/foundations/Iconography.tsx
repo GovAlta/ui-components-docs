@@ -178,15 +178,6 @@ export default function IconographyPage() {
               </div>
           </GoAContainer>
 
-          <h4>Icon generator</h4>
-          <p>Alberta.ca uses an <a href="https://corporateidentity.alberta.ca/goaaccess/icongen/" target="_blank">icon generator</a> that is accessible to all Government of Alberta employees. Staff and contractors can access this library using their government credentials.</p>
-
-          <GoAContainer mt="xl" mb="m">
-              <div style={{ textAlign: "center" }}>
-                <img src="/images/iconography/goa-icon-generator.jpg" width="100%"></img>
-              </div>
-          </GoAContainer>
-
           <h3>Logo icons</h3>
           <p>Our <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=36-7" target="_blank">Figma component library</a> contains popular brand logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
 
