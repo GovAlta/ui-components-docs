@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode, useContext, useEffect, useState } from "react";
 import { GoabCallout } from "@abgov/react-components";
+import { GoabCalloutType } from "@abgov/ui-components-common";
 
 import SandboxProperties from "./SandboxProperties";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
@@ -23,7 +24,7 @@ type Serializer = (el: any, properties: ComponentBinding[]) => string;
 interface SandboxProps {
   properties?: ComponentBinding[];
   formItemProperties?: ComponentBinding[];
-  note?: string | { type?: "important" | "success" | "information" | "emergency"; heading?: string; content: string };
+  note?: string | { type?: GoabCalloutType; heading?: string; content: string };
   fullWidth?: boolean;
   onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
