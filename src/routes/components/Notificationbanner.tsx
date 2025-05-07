@@ -15,7 +15,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabNotificationType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import {ExamplesEmpty} from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+import { NotificationExamples } from "@examples/notification/NotificationExamples.tsx";
 
 // == Page props ==
 
@@ -161,11 +161,11 @@ export default function NotificationBannerPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="0" />
+                <GoabBadge type="information" content="1" />
               </>
             }
           >
-          <ExamplesEmpty />
+          <NotificationExamples />
           </GoabTab>
 
           <GoabTab heading="Design">
