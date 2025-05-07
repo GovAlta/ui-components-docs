@@ -1,11 +1,11 @@
 .toc {
   position: sticky;
   top: 0;
-  padding: 3.75rem var(--goa-space-xl) var(--goa-space-l) 0;
+  padding: 3.75rem 0 var(--goa-space-l) 0;
   overscroll-behavior: contain;
   width: 12rem;
   height: fit-content;
-  @media screen and (max-width: 1230px) {
+  @media screen and (max-width: 1152px) {
     display: none;
   }
 }
