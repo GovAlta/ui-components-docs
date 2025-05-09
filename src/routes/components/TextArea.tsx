@@ -506,7 +506,7 @@ export default function TextAreaPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="2" />
               </>
             }
           >
