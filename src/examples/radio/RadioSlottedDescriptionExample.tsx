@@ -16,13 +16,14 @@ export const RadioSlottedDescriptionExample = () => {
           tags="angular"
           allowCopy={true}
           code={`
-              <goa-form-item label="Select one option">
-              <goa-radio-group name="selectOne" value="1" (_change)="onChange($event)">
-                <goa-radio-item value="1" label="Option one">
-                  <span slot="description">Help text with a <a href="#">link</a>.</span>
+            <goa-form-item label="How do you want to sign in?">
+              <goa-radio-group name="selectOne" (_change)="onChange($event)">
+                <goa-radio-item value="1" label="Sign in as a business">
+                  <span slot="description">Use the account associated with the business</span>
                 </goa-radio-item>
-                <goa-radio-item value="2" label="Option two" />
-                <goa-radio-item value="3" label="Option three" />
+                <goa-radio-item value="2" label="Sign in as an individual">
+                  <span slot="description">If you don't have a Alberta.ca login, you can create one</span>
+                </goa-radio-item>
               </goa-radio-group>
             </goa-form-item>     
             `}
@@ -53,15 +54,18 @@ export const RadioSlottedDescriptionExample = () => {
           tags="angular"
           allowCopy={true}
           code={`
-              <goab-form-item label="Select one option" [formGroup]="form">
+              <goab-form-item label="How do you want to sign in?" [formGroup]="form">
                 <goab-radio-group name="selectOne"  formControlName="selectOne">
-                  <goab-radio-item value="1" label="Option one" [description]="optionOneDescription">
+                  <goab-radio-item value="1" label="Sign in as a business" [description]="optionOneDescription">
                     <ng-template #optionOneDescription>
-                      Help text with a <a href="#">link</a>.
+                      Use the account associated with the business
                     </ng-template>
                   </goab-radio-item>
-                  <goab-radio-item value="2" label="Option two"></goab-radio-item>
-                  <goab-radio-item value="3" label="Option three"></goab-radio-item>
+                  <goab-radio-item value="2" label="Sign in as an individual" [description]="optionTwoDescription">
+                    <ng-template #optionTwoDescription>
+                      If you don't have a Alberta.ca login, you can create one
+                    </ng-template>
+                  </goab-radio-item>
                 </goab-radio-group>
               </goab-form-item>
             `}
@@ -75,15 +79,18 @@ export const RadioSlottedDescriptionExample = () => {
           tags="react"
           allowCopy={true}
           code={`
-            <GoAFormItem label="Select one option">
-              <GoARadioGroup name="selectOne" value="1" onChange={onChange}>
+            <GoAFormItem label="How do you want to sign in?">
+              <GoARadioGroup name="selectOne" onChange={onChange}>
                 <GoARadioItem
-                    value="1"
-                    label="Option one"
-                    description={<span>Help text with a <a href="#">link</a>.</span>}
-                    />
-                <GoARadioItem value="2" label="Option two" />
-                <GoARadioItem value="3" label="Option three" />
+                  value="1"
+                  label="Sign in as a business"
+                  description="Use the account associated with the business"
+                />
+                <GoARadioItem
+                  value="2"
+                  label="Sign in as an individual"
+                  description="If you don't have a Alberta.ca login, you can create one"
+                />
               </GoARadioGroup>
             </GoAFormItem> 
             `}
@@ -96,34 +103,36 @@ export const RadioSlottedDescriptionExample = () => {
           tags="react"
           allowCopy={true}
           code={`
-            <GoabFormItem label="Select one option">
-              <GoabRadioGroup name="selectOne" value="1" onChange={onChange}>
+            <GoabFormItem label="How do you want to sign in?">
+              <GoabRadioGroup name="selectOne" onChange={onChange}>
                 <GoabRadioItem
-                    value="1"
-                    label="Option one"
-                    description={<span>Help text with a <a href="#">link</a>.</span>}
-                    />
-                <GoabRadioItem value="2" label="Option two" />
-                <GoabRadioItem value="3" label="Option three" />
+                  value="1"
+                  label="Sign in as a business"
+                  description="Use the account associated with the business"
+                />
+                <GoabRadioItem
+                  value="2"
+                  label="Sign in as an individual"
+                  description="If you don't have a Alberta.ca login, you can create one"
+                />
               </GoabRadioGroup>
             </GoabFormItem> 
             `}
         />
       )}
 
-      <GoabFormItem label="Select one option">
-        <GoabRadioGroup name="selectOne" value="1" onChange={noop}>
+      <GoabFormItem label="How do you want to sign in?">
+        <GoabRadioGroup name="selectOne" onChange={noop}>
           <GoabRadioItem
             value="1"
-            label="Option one"
-            description={
-              <span>
-                  Help text with a <a href="#">link</a>.
-                </span>
-            }
+            label="Sign in as a business"
+            description="Use the account associated with the business"
           />
-          <GoabRadioItem value="2" label="Option two" />
-          <GoabRadioItem value="3" label="Option three" />
+          <GoabRadioItem
+            value="2"
+            label="Sign in as an individual"
+            description="If you don't have a Alberta.ca login, you can create one"
+          />
         </GoabRadioGroup>
       </GoabFormItem>
     </Sandbox>
