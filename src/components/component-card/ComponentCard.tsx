@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 export type ComponentStatus = "Published" | "Not Published" | "In Progress";
 
 // Define allowed group options as a union type
-type Group =
+export type Group =
   | "Content layout"
   | "Feedback and alerts"
   | "Inputs and actions"
@@ -20,19 +20,22 @@ import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-s
 export interface Props {
   name: string;
   description: string;
-  groups: Group[]; // Use the Group type here
   tags?: string[];
   status: ComponentStatus;
   githubLink?: string;
   openIssues?: number;
   isNew?: boolean; // if true, show a badge on the component card to let users know the component is available in the latest version
+  designSystemUrl?: string;
+  designComponentFigmaUrl?: string;
+  designContributionFigmaUrl?: string;
 }
 
 function dasherize(value: string): string {
-  return value.split(" ").join("-");
+  return value.toLowerCase().split(" ").join("-");
 }
 
 export function ComponentCard(props: Props) {
+  console.log("Rendering card for:", props.name);
   const [imageUrl, setImageUrl] = useState(`/images/${dasherize(props.name)}.png`);
 
   useEffect(() => {
@@ -53,11 +56,10 @@ export function ComponentCard(props: Props) {
         return "information"; // Fallback for unknown status
     }
   };
-
-  const badgeType = getBadgeType(props.status);
-
+  getBadgeType(props.status);
   const {language} = useContext(LanguageVersionContext);
   return (
+
     <div className="card">
       {props.status === "Published" ? (
         <Link to={toKebabCase(props.name)} tabIndex={-1}>
@@ -69,44 +71,61 @@ export function ComponentCard(props: Props) {
       ) : (
         <div
           className="card-image"
-          tabIndex={-1}
           style={{ backgroundImage: `url(${imageUrl})` }}
-        />
+        ></div>
       )}
       <div className="card-content">
-        <div className="card-title-with-badge">
-          {badgeType && <GoabBadge mt="none" mb="m" type={badgeType} content={props.status} />}
+        {props.isNew && (
+          <GoabBadge
+            type="important"
+            mt="l"
+            content={
+              "Available in " +
+              (language === "angular"
+                ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+            }
+          />
+        )}
 
+        <h3 style={{ marginTop: 0, marginBottom: 12 }}>
           {props.status === "Published" ? (
-
-            <Link to={toKebabCase(props.name)}>
-              {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
-            </Link>
-
+            <Link to={toKebabCase(props.name)}>{props.name}</Link>
           ) : (
-
-            <GoabText size="body-l" mt="none" mb="none">
-              {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
-            </GoabText>
-
+            props.name
           )}
-        </div>
-        <GoabText size="body-m" mt="m" mb="none">
+        </h3>
+
+        <GoabText size="body-m">
           {props.description}
         </GoabText>
+
+        {props.status !== "Published" && (
+          <GoabBadge
+            mt="xs"
+            type={
+              props.status === "In Progress"
+                ? "important"
+                : "information"
+            }
+            content={props.status}
+          />
+        )}
+
         {props.status !== "Published" && props.githubLink && (
-          <GoabText size="body-s">
+          <GoabText tag="div" mt="s" size="body-s">
             <a
               href={props.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="github-link"
             >
-             View issues{typeof props.openIssues === 'number' && ` (${props.openIssues})`}
+              View open issues
+              {props.openIssues !== undefined ? ` (${props.openIssues})` : ""}
             </a>
           </GoabText>
         )}
-        {props.isNew && <GoabBadge type="important" mt="l" content={"Available in " + (language === "angular" ? ANGULAR_VERSIONS.NEW.label.substring(0,2).toUpperCase() : REACT_VERSIONS.NEW.label.substring(0,2).toUpperCase())}/>}
+
+
       </div>
     </div>
   );
