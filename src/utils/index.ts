@@ -12,13 +12,41 @@ export const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
-  const token = import.meta.env.VITE_GITHUB_TOKEN;
+async function executeGraphQLQuery(query: string): Promise<any> {
+  const token =
+    import.meta.env.VITE_GITHUB_TOKEN ||
+    import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
+
   if (!token) {
-    console.error("GitHub token missing");
-    return [];
+    console.error("GitHub token not provided");
+    return null;
   }
 
+  try {
+    const response = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({ query })
+    });
+
+    const result = await response.json();
+
+    if (result.errors) {
+      console.error("GraphQL errors:", result.errors);
+      return null;
+    }
+
+    return result.data;
+  } catch (error) {
+    console.error("Error executing GraphQL query:", error);
+    return null;
+  }
+}
+
+export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
   const allItems: any[] = [];
   let hasNextPage = true;
   let endCursor = null;
@@ -28,7 +56,7 @@ export async function fetchComponentMetadataFromProject(): Promise<ComponentProp
       query {
         node(id: "PVT_kwDOBQjO6M4A1oga") {
           ... on ProjectV2 {
-            items(first: 100${endCursor ? `, after: "${endCursor}"` : ""}) {
+            items(first: 100${endCursor ? `, after: \"${endCursor}\"` : ""}) {
               pageInfo {
                 hasNextPage
                 endCursor
@@ -73,28 +101,14 @@ export async function fetchComponentMetadataFromProject(): Promise<ComponentProp
       }
     `;
 
-    const response = await fetch("https://api.github.com/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ query })
-    });
+    const result = await executeGraphQLQuery(query);
+    if (!result) return [];
 
-    const result = await response.json();
-    if (result.errors) {
-      console.error("GraphQL errors:", result.errors.map((e: any) => e.message));
-      console.error("Full error object:", result.errors);
-      console.error("Query that caused error:", query);
-      return [];
-    }
-
-    const pageItems = result.data.node.items.nodes;
+    const pageItems = result.node.items.nodes;
     allItems.push(...pageItems);
 
-    hasNextPage = result.data.node.items.pageInfo.hasNextPage;
-    endCursor = result.data.node.items.pageInfo.endCursor;
+    hasNextPage = result.node.items.pageInfo.hasNextPage;
+    endCursor = result.node.items.pageInfo.endCursor;
   }
 
   const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
@@ -151,19 +165,11 @@ export async function fetchComponentMetadataFromProject(): Promise<ComponentProp
 
   return components;
 }
+
 export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
-  const token =
-    import.meta.env.VITE_GITHUB_TOKEN ||
-    import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
-
-  if (!token) {
-    console.error("GitHub token not provided");
-    return {};
-  }
-
   const results = await Promise.all(cards.map(async (card) => {
     const label = toSentenceCase(card.name.replace(/-/g, " "));
-    const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
+    const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
 
     const query = `
       query {
@@ -173,44 +179,17 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
       }
     `;
 
-    try {
-      const response = await fetch("https://api.github.com/graphql", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`
-        },
-        body: JSON.stringify({ query })
-      });
+    const result = await executeGraphQLQuery(query);
+    if (!result) return { [card.name]: 0 };
 
-      const result = await response.json();
-
-      if (result.errors) {
-        console.error(`Error fetching issue count for label ${label}:`, result.errors);
-        return { [card.name]: 0 };
-      }
-
-      return { [card.name]: result.data.search.issueCount || 0 };
-    } catch (error) {
-      console.error(`Error fetching issue count for label ${label}:`, error);
-      return { [card.name]: 0 };
-    }
+    return { [card.name]: result.search.issueCount || 0 };
   }));
 
   return results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
-  const token =
-    import.meta.env.VITE_GITHUB_TOKEN ||
-    import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
-
-  if (!token) {
-    console.error("GitHub token not provided");
-    return null;
-  }
-
-  const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
+  const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
 
   const query = `
     query {
@@ -220,26 +199,8 @@ export async function fetchIssueCount(label: string): Promise<number | null> {
     }
   `;
 
-  try {
-    const response = await fetch("https://api.github.com/graphql", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify({ query })
-    });
+  const result = await executeGraphQLQuery(query);
+  if (!result) return null;
 
-    const result = await response.json();
-
-    if (result.errors) {
-      console.error("GraphQL errors:", result.errors);
-      return null;
-    }
-
-    return result.data.issues.issueCount;
-  } catch (error) {
-    console.error("Error fetching issue count:", error);
-    return null;
-  }
+  return result.issues.issueCount;
 }
