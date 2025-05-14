@@ -1,31 +1,34 @@
 import {
-  GoAAppHeader,
-  GoAAppHeaderMenu,
-  GoAAppHeaderProps,
-  GoABadge, GoARadioGroup, GoARadioItem,
-  GoATab,
-  GoATabs
+  GoabAppHeader,
+  GoabAppHeaderProps,
+  GoabBadge,
+  GoabTab,
+  GoabTabs
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LegacyTestIdProperties, TestIdProperty } from "@components/component-properties/common-properties.ts";
+import { AppHeaderExamples } from "@examples/app-header/AppHeaderExamples.tsx";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=4576-224884";
 const componentName = "Header";
 const description =
   "Provide structure to help users find their way around the service.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/footer", name: "Footer" },
-  { link: "/patterns", name: "Layout" },
+  { link: "/patterns/layout", name: "Layout" },
   { link: "/components/microsite-header", name: "Microsite header" }
 ];
-type ComponentPropsType = GoAAppHeaderProps;
+type ComponentPropsType = GoabAppHeaderProps;
 type CastingType = {
   // add any required props here
   [key: string]: unknown;
@@ -56,7 +59,7 @@ export default function AppHeaderPage() {
     },
   ]);
 
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "url",
       type: "string",
@@ -93,18 +96,7 @@ export default function AppHeaderPage() {
       description: "Sets the breakpoint in px for the full menu to display.",
       lang: "react"
     },
-    {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
+    ...LegacyTestIdProperties,
     {
       name: "hasmenuclickhandler",
       type: "boolean",
@@ -124,16 +116,42 @@ export default function AppHeaderPage() {
       description: "Function invoked when the menu hamburger button (on mobile/tablet device) is clicked."
     }
   ];
+  const componentProperties: ComponentProperty[] = [
+    {
+      name: "url",
+      type: "string",
+      description: "Set the URL to link from the alberta.ca logo. A full url is required.",
+    },
+    {
+      name: "heading",
+      type: "string",
+      description: "Set the service name to display in the app header.",
+    },
+    {
+      name: "maxContentWidth",
+      type: "string",
+      description: "Maximum width of the content area.",
+      defaultValue: "100%",
+    },
+    {
+      name: "fullMenuBreakpoint",
+      type: "number",
+      description: "Sets the breakpoint in px for the full menu to display.",
+    },
+    TestIdProperty,
+    {
+      name: "onMenuClick",
+      type: "() => void",
+      description: "Function invoked when the menu hamburger button (on mobile/tablet device) is clicked."
+    }
+  ];
+
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setAppHeaderProps(props as CastingType);
     setAppHeaderBindings(bindings);
   }
 
-  const [deviceWidth, setDeviceWidth] = useState("5000");
-  function handleMenuClick() {
-    alert("Menu not being displayed and you can do anything");
-  }
   return (
     <>
       <ComponentHeader
@@ -141,183 +159,43 @@ export default function AppHeaderPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Header"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
-              <GoAAppHeader {...appHeaderProps} />
+              <GoabAppHeader {...appHeaderProps} />
             </Sandbox>
 
             {/*Component properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
 
-            {/*Examples*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          </GoabTab>
 
-            <h3 id="component-example-header-navigation">Header with navigation</h3>
-            <Sandbox fullWidth skipRender>
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goa-microsite-header type="live"></goa-microsite-header>
-                <goa-app-header url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goa-app-header-menu>
-                  <a href="#" className="interactive">Sign in</a>
-                </goa-app-header>
-              `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                <GoAAppHeader url="https://example.com" heading="Ticket and Fine Payments">
-                  <a href="#">Support</a>
-                  <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </GoAAppHeaderMenu>
-                  <a href="#" className="interactive">Sign in</a>
-                </GoAAppHeader>
-              `}
-              />
-              <GoAAppHeader url="https://www.alberta.ca" heading="Ticket and Fine Payments">
-                <a href="">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                  <a>Cases</a>
-                  <a>Payments</a>
-                  <a>Outstanding</a>
-                </GoAAppHeaderMenu>
-                <a className="interactive">Sign in</a>
-              </GoAAppHeader>
-            </Sandbox>
-
-            <h3 id="component-example-with-menu-click">Header with menu click event</h3>
-            <Sandbox fullWidth skipRender>
-              <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
-                <GoARadioItem value="600" label="Desktop"></GoARadioItem>
-                <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
-              </GoARadioGroup>
-              <GoAAppHeader
-                url="https://example.com"
-                heading="Design System"
-                onMenuClick={handleMenuClick}
-                fullMenuBreakpoint={+deviceWidth}>
-                <a href="#">Support</a>
-                <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                  <a href="#">Cases</a>
-                  <a href="#">Payments</a>
-                  <a href="#">Outstanding</a>
-                </GoAAppHeaderMenu>
-                <a href="#" className="interactive">
-                  Sign in
-                </a>
-              </GoAAppHeader>
-
-              <CodeSnippet
-                lang="typescript"
-                tags={"angular"}
-                allowCopy={true}
-                code={`
-                export class MyComponent {
-                  deviceWidth = '5000';
-                  changeDeviceWidth(event: Event) {
-                    this.deviceWidth = (event as CustomEvent).detail.value;
-                  }
-                  
-                  handleMenuClick() {
-                    alert("Menu not being displayed and you can do anything");
-                  }
-                }
-              `}/>
-
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                 <goa-radio-group name="device" value="deviceWidth" (_change)="changeDeviceWidth($event)">
-                  <goa-radio-item value="600" label="Desktop"></goa-radio-item>
-                  <goa-radio-item value="5000" label="Mobile"></goa-radio-item>
-                 </goa-radio-group>
-                  
-                 <goa-app-header url="https://example.com" heading="Design System" [fullmenubreakpoint]="deviceWidth" [hasmenuclickhandler]="true" (_menuClick)="handleMenuClick()">
-                  <a href="#">Support</a>
-                  <goa-app-header-menu heading="Tickets" leadingIcon="ticket">
-                    <a href="#">Cases</a>
-                    <a href="#">Payments</a>
-                    <a href="#">Outstanding</a>
-                  </goa-app-header-menu>
-                  <a href="#" className="interactive">Sign in</a>
-                </goa-app-header>
-              `}
-              />
-
-              <CodeSnippet
-                lang="typescript"
-                tags={"react"}
-                allowCopy={true}
-                code={`
-                const [deviceWidth, setDeviceWidth] = useState("5000");
-                function handleMenuClick() {
-                  alert("Menu not being displayed and you can do anything");
-                }
-              `}/>
-
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoARadioGroup name="device" value={deviceWidth} onChange={(_, value) => setDeviceWidth(value)}>
-                    <GoARadioItem value="600" label="Desktop"></GoARadioItem>
-                    <GoARadioItem value="5000" label="Mobile"></GoARadioItem>
-                  </GoARadioGroup>
-                  
-                  <GoAAppHeader
-                    url="https://example.com"
-                    heading="Design System"
-                    onMenuClick={handleMenuClick}
-                    fullMenuBreakpoint={+deviceWidth}>
-                    <a href="#">Support</a>
-                    <GoAAppHeaderMenu heading="Tickets" leadingIcon="ticket">
-                      <a href="#">Cases</a>
-                      <a href="#">Payments</a>
-                      <a href="#">Outstanding</a>
-                    </GoAAppHeaderMenu>
-                    <a href="#" className="interactive">Sign in</a>
-                  </GoAAppHeader>
-              `}
-              />
-            </Sandbox>
-          </GoATab>
-
-          <GoATab
+          <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="2" />
               </>
-            }>
-            <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+            }
+          >
+            <AppHeaderExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );

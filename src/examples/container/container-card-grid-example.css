@@ -1,0 +1,10 @@
+.container-example-3--container-title {
+    color: var(--goa-color-interactive-default);
+    font: var(--goa-typography-heading-m);
+    text-decoration-line: underline;
+    margin-top:0;
+    margin-bottom: var(--goa-space-m);
+}
+.container-example-3--container-content {
+    font: var(--goa-typography-body-m);
+}
