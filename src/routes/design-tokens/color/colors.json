@@ -395,6 +395,125 @@
         "description": ""
       }
     ]
+  },
+  {
+    "name": "Additional colours",
+    "tokens": [
+      {
+        "code": "goa-color-aqua-default",
+        "value": "#7FEBE6",
+        "figmaColorStyle": "Aqua/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-aqua-light",
+        "value": "#DCFBF8",
+        "figmaColorStyle": "Aqua/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-black-default",
+        "value": "#333333",
+        "figmaColorStyle": "Black/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-black-light",
+        "value": "#E7E7E7",
+        "figmaColorStyle": "Black/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-blue-default",
+        "value": "#AAC9E7",
+        "figmaColorStyle": "Blue/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-blue-light",
+        "value": "#DDEFFF",
+        "figmaColorStyle": "Blue/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-green-default",
+        "value": "#BBFCB4",
+        "figmaColorStyle": "Green/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-green-light",
+        "value": "#CCE2D9",
+        "figmaColorStyle": "Green/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-orange-default",
+        "value": "#FFC76D",
+        "figmaColorStyle": "Orange/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-orange-light",
+        "value": "#FCD6C3",
+        "figmaColorStyle": "Orange/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-pink-default",
+        "value": "#FF8FC5",
+        "figmaColorStyle": "Pink/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-pink-light",
+        "value": "#F9E1EB",
+        "figmaColorStyle": "Pink/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-red-default",
+        "value": "#ED948D",
+        "figmaColorStyle": "Red/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-red-light",
+        "value": "#F4CDC6",
+        "figmaColorStyle": "Red/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-violet-default",
+        "value": "#D4C2FF",
+        "figmaColorStyle": "Violet/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-violet-light",
+        "value": "#EFE2FB",
+        "figmaColorStyle": "Violet/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-white-default",
+        "value": "#FFFFFF",
+        "figmaColorStyle": "White",
+        "description": ""
+      },
+      {
+        "code": "goa-color-yellow-default",
+        "value": "#FCE796",
+        "figmaColorStyle": "Yellow/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-yellow-light",
+        "value": "#FFF7BF",
+        "figmaColorStyle": "Yellow/Light",
+        "description": ""
+      }
+    ]
   }
 ]
 
