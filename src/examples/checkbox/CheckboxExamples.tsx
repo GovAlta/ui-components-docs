@@ -1,57 +1,21 @@
-import { GoACheckbox, GoAFormItem } from "@abgov/react-components";
-import { Sandbox } from "@components/sandbox";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
+import CheckboxDescriptionExample from "@examples/checkbox/CheckboxDescriptionExample.tsx";
+import CheckboxNoneOrManyExample from "@examples/checkbox/CheckboxNoneOrManyExample.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
-export default function CheckboxExamples () {
-  return (
-    <>      
-      <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
-      <h3 id="component-example-expand-collapse-form">Use tags in the description</h3>
-      <Sandbox fullWidth skipRender>
-        {/*Angular*/}
-        <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
-              <goa-form-item label="Select one or more options">
-                <goa-checkbox checked="true" name="optionOne" text="Option one">
-                  <span slot="description">Help text with a <a href="#">link</a>.</span>
-                </goa-checkbox>
-                <goa-checkbox checked="false" name="optionTwo" text="Option two" />
-                <goa-checkbox checked="false" name="optionThree" text="Option three" />
-              </goa-form-item>
-            `}
-        />
-        {/*React*/}
-        <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
-              <GoAFormItem label="Select one or more options">
-                <GoACheckbox
-                  checked={true}
-                  name="optionOne"
-                  text="Option one"
-                  description={<span>Help text with a <a href="#">link</a>.</span>}
-                  />
-                <GoACheckbox checked={false} name="optionTwo" text="Option two" />
-                <GoACheckbox checked={false} name="optionThree" text="Option three" />
-              </GoAFormItem>
-            `}
-        />
-        <GoAFormItem label="Select one or more options">
-          <GoACheckbox
-            checked={true}
-            name="optionOne"
-            text="Option one"
-            description={<span>Help text with a <a href="#">link</a>.</span>}
-            />
-          <GoACheckbox checked={false} name="optionTwo" text="Option two" />
-          <GoACheckbox checked={false} name="optionThree" text="Option three" />
-        </GoAFormItem>
-      </Sandbox>
-    </>
-  );
+export const CheckboxExamples = () => {
+  return <>
+    {/*Checkbox example 1*/}
+    <SandboxHeader
+      exampleTitle="Include descriptions for items in a checkbox list"
+      figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131778&t=X0IQW5flDDaj8Vyg-4">
+    </SandboxHeader>
+    <CheckboxDescriptionExample/>
+
+    {/*Checkbox example 2*/}
+    <SandboxHeader
+      exampleTitle="Select one, any, all, or no options from a list"
+      figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6564-70176&t=kFEYlzR03SibmVz9-1">
+    </SandboxHeader>
+    <CheckboxNoneOrManyExample/>
+  </>;
 }

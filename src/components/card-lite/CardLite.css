@@ -1,23 +1,25 @@
-.card-lite .title {
-  font: var(--goa-typography-heading-l);
-  margin-bottom: var(--goa-space-m);
+.card-lite {
+    text-decoration: none;
 }
 
-.card-lite .description {
-  font-size: var(--goa-font-size-4);
-  margin-bottom: var(--goa-space-xs);
+.card-heading {
+    color: black;
+    display: inline-block;
 }
 
-.card-content a {
-  font-size: var(--goa-font-size-5);
+.card-description {
+    color: black;
+    display: block;
 }
 
-.card-lite .link {
-  font-size: var(--goa-font-size-5);
+a:hover .card-heading {
+    color: var(--goa-color-interactive-hover);
+    text-decoration: underline;
 }
 
-@media screen and (min-width: 1231px) {
-  .card-lite {
-    max-width: 300px;
-  }
+.card-lite:focus-visible {
+    outline: 3px solid var(--goa-color-interactive-focus);
+    outline-offset: 4px;
+    border-radius: 4px;
 }
+

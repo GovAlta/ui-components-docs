@@ -13,7 +13,7 @@ export default function PatternsOverviewPage() {
         <h3>Patterns</h3>
         <ul>
           <li>
-            <Link to="/patterns/simple-form">Simple form</Link>
+            <Link to="/patterns/public-form">Public form</Link>
           </li>
         </ul>
       </div>

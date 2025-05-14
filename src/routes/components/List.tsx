@@ -1,25 +1,38 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoABadge, GoAContainer, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { useContext } from "react";
-import { LanguageContext } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303450";
 
 export default function ListPage() {
-  const language = useContext(LanguageContext);
-
   return (
     <>
       <ComponentHeader
         name="List"
         category={Category.CONTENT_AND_LAYOUT}
         description="Organize information into brief and clear groups."
-      />
+        githubLink="List"
+        figmaLink={FIGMA_LINK}
+        relatedComponents={[
+          { link: "/components/details", name: "Details" },
+        ]}      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
-            {/*We don't use sandbox because it isn't starting with "GoA" components*/}
-            <GoAContainer>
+        <GoabTabs initialTab={1}>
+          <GoabTab
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="2" />
+              </>
+            }
+          >
+            <SandboxHeader
+              exampleTitle="Ordered list">
+            </SandboxHeader>
+            <GoabContainer mt="none" mb="none">
               <ol className="goa-ordered-list">
                 <li>
                   An ordered item
@@ -51,14 +64,13 @@ export default function ListPage() {
                   </ul>
                 </li>
               </ol>
-            </GoAContainer>
+            </GoabContainer>
 
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ol className="goa-ordered-list">
               <li>
                 An ordered item
@@ -91,15 +103,12 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
-
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            />
+            <CodeSnippet
+              lang="html"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ol class="goa-ordered-list">
               <li>
                 An ordered item
@@ -132,16 +141,12 @@ export default function ListPage() {
               </li>
             </ol>
             `}
-              />
-            )}
-            {/* Examples*/}
+            />
 
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
-
-            <h3 id="component-example-unordered-list">Unordered list</h3>
-            <GoAContainer mt="m">
+            <SandboxHeader
+              exampleTitle="Unordered list">
+            </SandboxHeader>
+            <GoabContainer mt="none" mb="none">
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -152,14 +157,13 @@ export default function ListPage() {
                   </ul>
                 </li>
               </ul>
-            </GoAContainer>
+            </GoabContainer>
 
-            {language === "react" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="html"
+              tags="react"
+              allowCopy={true}
+              code={`
               <ul className="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -171,15 +175,13 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
+            />
 
-            {language === "angular" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+            <CodeSnippet
+              lang="typescript"
+              tags="angular"
+              allowCopy={true}
+              code={`
               <ul class="goa-unordered-list">
                 <li>Milk</li>
                 <li>
@@ -191,20 +193,14 @@ export default function ListPage() {
                 </li>
               </ul>
             `}
-              />
-            )}
-          </GoATab>
+            />
+          </GoabTab>
 
-          <GoATab
-            heading={
-              <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
-              </>
-            }>
-            <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+        </GoabTabs>
       </ComponentContent>
     </>
   );

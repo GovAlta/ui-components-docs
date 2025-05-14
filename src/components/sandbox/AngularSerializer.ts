@@ -1,15 +1,17 @@
 import { ComponentBinding } from "./ComponentBinding";
 import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
+import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 export class AngularSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
   private nativeEls =
-    "table th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 img label ul li ol hr section dl dt dd strong u".split(
+    "table form th thead tbody tr td div span p br header footer blockquote input textarea a button h1 h2 h3 h4 h5 h6 img label ul li ol hr section dl dt dd strong u".split(
       " "
     );
 
-  constructor(properties: ComponentBinding[]) {
-    super(properties);
+  constructor(properties: ComponentBinding[], version: LanguageVersion, protected variableNames: string[]) {
+    super(properties, version);
+
   }
 
   setIsRoot(isRoot: boolean) {
@@ -25,21 +27,30 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
   }
 
   #toFunc(name: string): string {
-    let _name = name.replace(/^on/, "");
-    _name = _name.substring(0, 1).toLowerCase() + _name.substring(1);
+    if (this.version === "old") {
+      let _name = name.replace(/^on/, "");
+      _name = _name.substring(0, 1).toLowerCase() + _name.substring(1);
+      return `(_${_name})="${name}($event)"`;
+    }
 
-    return `(_${_name})="${name}($event)"`;
+
+    if (name === "onClick" || name === "onClose") {
+      return `(${name})="${name}()"`;
+    }
+
+    // New version has onChange with event strict to different type, so we must have different names to handle that
+    // camel case componentName above for me
+    return `(${name})="${this.getNewVersionFunctionName(name)}($event)"`;
   }
 
   stringToProp(name: string, item: string): string {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-
     if (name === "value" && item === "") return `value=""`;
     if (item === "") return "";
     if (name === "className") name = "class";
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : name}="${item}"`;
   }
 
   dateToProp(name: string, item: Date): string {
@@ -50,15 +61,18 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : `[${name}]`}="${item}"`;
   }
 
   booleanToProp(name: string, item: boolean): string {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
+    if (this.variableNames.includes(name)) {
+      return `[${name}]="${name}"`;
+    }
     if (!item) return "";
-    return `${name.toLowerCase()}="${item}"`;
+    return `${this.version === "old" ? name.toLowerCase() : `[${name}]`}="${item}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -69,16 +83,18 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return delimit ? `${name.toLowerCase()}=[${items}]` : `${name.toLowerCase()}=${items}`;
+    return delimit ? `${this.version === "old" ? name.toLowerCase() : name}=[${items}]` : `${this.version === "old" ? name.toLowerCase(): name}=${items}`;
   }
 
   componentNameToString(name: string): string {
     if (this.nativeEls.includes(name)) {
       return name;
     }
-    const prefix = "GoA";
-    const tail = name.replace(prefix, "");
-    return `${prefix.toLowerCase()}-${this.dasherize(tail)}`;
+    let tail = name.replace("Goab", "");
+    if (tail === "OneColumnLayout" && this.version === "new") {
+      tail = "ColumnLayout";
+    }
+    return `${this.version === "old" ? "goa" : "goab"}-${this.dasherize(tail)}`;
   }
 
   componentToString(name: string): string {

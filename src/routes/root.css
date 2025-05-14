@@ -15,7 +15,7 @@
 }
 
 .content {
-  max-width: 1360px;
+  max-width: 1440px;
   width: 100%;
   margin: 0 auto;
   display: flex;
@@ -26,7 +26,8 @@
   Side Menu
 ==================*/
 .side-menu {
-  width: 192px;
+  min-width: 180px;
+  width: 180px;
   border-right: 1px solid var(--goa-color-greyscale-200);
   padding-bottom: var(--goa-space-l);
 }
@@ -103,7 +104,7 @@ a.back:hover::before {
 }
 
 code {
-  font: var(--goa-typography-number-m);
+  font: var(--goa-typography-number-s);
 }
 
 /*Tablet*/
@@ -111,10 +112,16 @@ code {
   .content {
     margin: 0;
   }
+
+  .main {
+    padding: 0 1rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
 }
 
 /*Mobile*/
-@media screen and (max-width: 623px) {
+@media screen and (max-width: 896px) {
   .container {
     flex-wrap: wrap;
   }
@@ -127,8 +134,8 @@ code {
   }
 
   .main {
-    margin-right: 1rem;
-    padding: 0 1rem;
+    padding: 0 2rem;
+    margin: 0;
   }
 
   .content {
@@ -138,5 +145,11 @@ code {
   .side-menu {
     padding-bottom: 1.5rem;
     border-bottom: 1px solid var(--goa-color-greyscale-200);
+  }
+}
+
+@media screen and (max-width: 623px) {
+  .main {
+    padding: 0 1rem;
   }
 }

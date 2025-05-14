@@ -1,4 +1,4 @@
-import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import TYPO_TOKENS from "./typography.json";
 import { getTokenGroups } from "../getTokenGroups";
@@ -22,10 +22,10 @@ export default function TypographyPage() {
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
-            <th>Figma type style</th>
+            <th></th>
             <th>Design token</th>
             <th>Type family</th>
             <th>Weight</th>
@@ -49,32 +49,32 @@ export default function TypographyPage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="27rem" gap="l">
         {getTokenGroups(tokens as Token[]).map(group =>
           group.map((token: TypographyToken, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <dl>
                 <dd style={{ font: getCssVarValue(`--${token.tokenName}`) }}>
                   {token.figmaTypeStyle}
                 </dd>
                 <dd>
-                  <TokenSnippet code={token.tokenName} />
+                  <TokenSnippet code={token.tokenName} className="mobile-token-view" />
                 </dd>
-                <dt>Type family</dt> <dd>{token.typeFamily}</dd>
-                <dt>Weight</dt> <dd>{token.weight}</dd>
-                <dt>Font size</dt> <dd>{token.fontSize}</dd>
-                <dt>Line height</dt> <dd>{token.lineHeight}</dd>
+                <dt>Type family</dt> <dd className="dd-style">{token.typeFamily}</dd>
+                <dt>Weight</dt> <dd className="dd-style">{token.weight}</dd>
+                <dt>Font size</dt> <dd className="dd-style">{token.fontSize}</dd>
+                <dt>Line height</dt> <dd className="dd-style">{token.lineHeight}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

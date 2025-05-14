@@ -1,10 +1,10 @@
 import {
-  GoABadge,
-  GoASideMenu,
-  GoASideMenuGroup,
-  GoASideMenuHeading,
-  GoATab,
-  GoATabs,
+  GoabBadge,
+  GoabSideMenu,
+  GoabSideMenuGroup,
+  GoabSideMenuHeading,
+  GoabTab,
+  GoabTabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
@@ -14,6 +14,13 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Sandbox } from "@components/sandbox";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { useContext } from "react";
+import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24089-474089";
 
 const componentName = "Side menu";
 const description =
@@ -21,11 +28,13 @@ const description =
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns", name: "Layout" }
+  { link: "/patterns/layout", name: "Layout" }
 ];
 
 export default function SideMenuPage() {
-  const sideMenuGroupProperties: ComponentProperty[] = [
+  const {version} = useContext(LanguageVersionContext);
+
+  const oldSideMenuGroupProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -43,8 +52,31 @@ export default function SideMenuPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
+  const sideMenuGroupProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      required: true,
+      description: "Group header text",
+    },
+    {
+      name: "icon",
+      type: "GoabIconType",
+      description: "Icon placed left of the heading",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "Spacing(none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
-  const sideMenuHeadingProperties: ComponentProperty[] = [
+  const oldSideMenuHeadingProperties: ComponentProperty[] = [
     {
       name: "icon",
       type: "GoAIconType",
@@ -63,6 +95,30 @@ export default function SideMenuPage() {
       description: "Add badges to the right of the heading",
     },
   ];
+  const sideMenuHeadingProperties: ComponentProperty[] = [
+    {
+      name: "icon",
+      type: "GoabIconType",
+      description: "Icon to position to the left of heading",
+    },
+    {
+      name: "testId",
+      type: "string",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "meta",
+      type: "ReactNode",
+      lang: "react",
+      description: "Add badges to the right of the heading",
+    },
+    {
+      name: "meta",
+      type: "TemplateRef",
+      lang: "angular",
+      description: "Add badges to the right of the heading",
+    },
+  ];
 
   return (
     <>
@@ -71,15 +127,19 @@ export default function SideMenuPage() {
         category={componentCategory}
         description={description}
         relatedComponents={relatedComponents}
+        figmaLink={FIGMA_LINK}
+        githubLink="Side menu"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoATabs>
-          <GoATab heading="Code examples">
-            <h2 id="component" style={{display: "none"}}>Component</h2>
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
-              <CodeSnippet
+
+              {/*Angular code*/}
+              {version === "old" && <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
@@ -93,6 +153,7 @@ export default function SideMenuPage() {
                     <a href="#">Profile</a>
                     <goa-side-menu-heading icon="home">
                       Nav section 2
+                      <div slot="meta"><goa-badge type="midtone" content="details"></goa-badge></div>
                     </goa-side-menu-heading>
                     <a href="#">About</a>
                     <a href="#">Contact</a>
@@ -106,27 +167,57 @@ export default function SideMenuPage() {
                   </goa-side-menu>
                 </div>
               `}
-              />
-              <CodeSnippet
+              />}
+
+              {version === "new" && <CodeSnippet
+                lang="typescript"
+                tags="angular"
+                allowCopy={true}
+                code={`
+                <div style="max-width: 250px">
+                  <goab-side-menu>
+                    <goab-side-menu-heading>
+                      Nav section 1
+                    </goab-side-menu-heading>
+                      <a href="#">Home</a>
+                      <a href="#">Profile</a>
+                    <goab-side-menu-heading icon="home" [meta]="meta">
+                      Nav section 2
+                      <ng-template #meta><goab-badge type="midtone" content="Details"></goab-badge></ng-template>
+                    </goab-side-menu-heading>
+                      <a href="#">About</a>
+                      <a href="#">Contact</a>
+                    <goab-side-menu-heading>
+                      Nav with sub nav
+                    </goab-side-menu-heading>
+                    <goab-side-menu-group heading="Group heading" icon="person">
+                      <a href="#">Foo</a>
+                      <a href="#">Bar</a>
+                    </goab-side-menu-group>
+                  </goab-side-menu>
+                </div>
+              `}
+              />}
+
+              {/*React code*/}
+              {version === "old" && <CodeSnippet
                 allowCopy={true}
                 lang="typescript"
                 tags={["react"]}
                 code={`
                   <div style={{ maxWidth: "250px" }}>
                   <GoASideMenu>
-                    <GoASideMenuHeading>
-                      Nav section 1
-                    </GoASideMenuHeading>
+                    <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
                     <a href="#">Home</a>
                     <a href="#">Profile</a>
-                    <GoASideMenuHeading icon="home">
-                      Nav section 2
+                    <GoASideMenuHeading
+                      meta={<GoabBadge type="midtone" content="Details"></GoabBadge>}
+                      icon="home">
+                        Nav section 2
                     </GoASideMenuHeading>
                     <a href="#">About</a>
                     <a href="#">Contact</a>
-                    <GoASideMenuHeading>
-                      Nav with sub nav
-                    </GoASideMenuHeading>
+                    <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
                     <GoASideMenuGroup heading="Group heading" icon="person">
                       <a href="#">Foo</a>
                       <a href="#">Bar</a>
@@ -134,25 +225,53 @@ export default function SideMenuPage() {
                   </GoASideMenu>
                 </div>
                 `}
-              />
-              <div style={{ maxWidth: "250px" }}>
-                <GoASideMenu>
-                  <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
+              />}
+
+              {version === "new" && <CodeSnippet
+                allowCopy={true}
+                lang="typescript"
+                tags={["react"]}
+                code={`
+                  <div style={{ maxWidth: "250px" }}>
+                  <GoabSideMenu>
+                  <GoabSideMenuHeading>Nav section 1</GoabSideMenuHeading>
                   <a>Home</a>
                   <a>Profile</a>
-                  <GoASideMenuHeading
-                    meta={<GoABadge type="midtone" content="Details"></GoABadge>}
+                  <GoabSideMenuHeading
+                    meta={<GoabBadge type="midtone" content="Details"></GoabBadge>}
                     icon="home">
                     Nav section 2
-                  </GoASideMenuHeading>
+                  </GoabSideMenuHeading>
                   <a>About</a>
                   <a>Contact</a>
-                  <GoASideMenuHeading>Nav with sub nav</GoASideMenuHeading>
-                  <GoASideMenuGroup heading="Group heading" icon="person">
+                  <GoabSideMenuHeading>Nav with sub nav</GoabSideMenuHeading>
+                  <GoabSideMenuGroup heading="Group heading" icon="person">
                     <a>Foo</a>
                     <a>Bar</a>
-                  </GoASideMenuGroup>
-                </GoASideMenu>
+                  </GoabSideMenuGroup>
+                </GoabSideMenu>
+                </div>
+                `}
+              />}
+
+              <div style={{ maxWidth: "250px" }}>
+                <GoabSideMenu>
+                  <GoabSideMenuHeading>Nav section 1</GoabSideMenuHeading>
+                  <a>Home</a>
+                  <a>Profile</a>
+                  <GoabSideMenuHeading
+                    meta={<GoabBadge type="midtone" content="Details"></GoabBadge>}
+                    icon="home">
+                    Nav section 2
+                  </GoabSideMenuHeading>
+                  <a>About</a>
+                  <a>Contact</a>
+                  <GoabSideMenuHeading>Nav with sub nav</GoabSideMenuHeading>
+                  <GoabSideMenuGroup heading="Group heading" icon="person">
+                    <a>Foo</a>
+                    <a>Bar</a>
+                  </GoabSideMenuGroup>
+                </GoabSideMenu>
               </div>
             </Sandbox>
 
@@ -160,23 +279,34 @@ export default function SideMenuPage() {
             <ComponentProperties
               heading="Side menu group properties"
               properties={sideMenuGroupProperties}
+              oldProperties={oldSideMenuGroupProperties}
             />
             <ComponentProperties
               heading="Side menu heading properties"
               properties={sideMenuHeadingProperties}
+              oldProperties={oldSideMenuHeadingProperties}
             />
-          </GoATab>
+          </GoabTab>
 
-          <GoATab
+          <GoabTab
             heading={
               <>
-                Design guidelines
-                <GoABadge type="information" content="In progress" />
+                Examples
+                <GoabBadge type="information" content="0" />
               </>
-            }>
-            <p>Coming Soon</p>
-          </GoATab>
-        </GoATabs>
+            }
+          >
+            <ExamplesEmpty />
+          </GoabTab>
+
+          <GoabTab heading="Design">
+            <DesignEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+
+          <GoabTab heading="Accessibility">
+            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
+          </GoabTab>
+        </GoabTabs>
       </ComponentContent>
     </>
   );
