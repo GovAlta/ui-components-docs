@@ -46,7 +46,61 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   }
 }
 
-export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
+function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
+  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+
+  return items
+    .filter((item: any) =>
+      item.fieldValues.nodes.some(
+        (f: any) => f.field?.name === "Category" && f.name === category
+      )
+    )
+    .map((item: any) => {
+      const title = item.content?.title || "";
+      const name = toSentenceCase(title.trim());
+      const body = item.content?.body || "";
+      const labels = item.content?.labels?.nodes.map((l: any) => l.name) || [];
+
+      const group = labels.find((l: string) =>
+        ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation"].includes(l)
+      );
+
+      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
+      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
+
+      const rawStatus = statusField?.name;
+      const status: ComponentStatus =
+        validStatuses.includes(rawStatus as ComponentStatus)
+          ? (rawStatus as ComponentStatus)
+          : "Not Published";
+
+      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
+      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
+      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
+      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
+
+      let metatags: string[] = [];
+      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
+      if (metatagField?.text) {
+        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
+      }
+
+      return {
+        name,
+        groups: group ? [group as Group] : [],
+        tags: labels.filter((l: string) => l !== group),
+        metatags,
+        description: descriptionField?.text || body,
+        status,
+        designSystemUrl,
+        designComponentFigmaUrl,
+        designContributionFigmaUrl,
+        openIssuesUrl
+      };
+    });
+}
+
+export async function fetchMetadataFromProject(category: string): Promise<ComponentProps[]> {
   const allItems: any[] = [];
   let hasNextPage = true;
   let endCursor = null;
@@ -111,179 +165,15 @@ export async function fetchComponentMetadataFromProject(): Promise<ComponentProp
     endCursor = result.node.items.pageInfo.endCursor;
   }
 
-  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+  return mapItemsToMetadata(allItems, category);
+}
 
-  const components = allItems
-    .filter((item: any) =>
-      item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Components"
-      )
-    )
-    .map((item: any) => {
-      const title = item.content?.title || "";
-      const name = toSentenceCase(title.trim());
-      const body = item.content?.body || "";
-      const labels = item.content?.labels?.nodes.map((l: any) => l.name) || [];
-
-      const group = labels.find((l: string) =>
-        ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation"].includes(l)
-      );
-
-      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
-      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
-
-      const rawStatus = statusField?.name;
-      const status: ComponentStatus =
-        validStatuses.includes(rawStatus as ComponentStatus)
-          ? (rawStatus as ComponentStatus)
-          : "Not Published";
-
-      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
-      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
-      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
-      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
-
-      let metatags: string[] = [];
-      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
-      if (metatagField?.text) {
-        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
-      }
-
-      return {
-        name,
-        groups: group ? [group as Group] : [],
-        tags: labels.filter((l: string) => l !== group),
-        metatags,
-        description: descriptionField?.text || body,
-        status,
-        designSystemUrl,
-        designComponentFigmaUrl,
-        designContributionFigmaUrl,
-        openIssuesUrl
-      };
-    });
-
-  return components;
+export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
+  return fetchMetadataFromProject("Components");
 }
 
 export async function fetchExampleMetadataFromProject(): Promise<ComponentProps[]> {
-  const allItems: any[] = [];
-  let hasNextPage = true;
-  let endCursor = null;
-
-  while (hasNextPage) {
-    const query = `
-      query {
-        node(id: "PVT_kwDOBQjO6M4A1oga") {
-          ... on ProjectV2 {
-            items(first: 100${endCursor ? `, after: \"${endCursor}\"` : ""}) {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              nodes {
-                content {
-                  ... on Issue {
-                    title
-                    body
-                    url
-                    labels(first: 10) {
-                      nodes {
-                        name
-                      }
-                    }
-                  }
-                }
-                fieldValues(first: 20) {
-                  nodes {
-                    ... on ProjectV2ItemFieldSingleSelectValue {
-                      name
-                      field {
-                        ... on ProjectV2SingleSelectField {
-                          name
-                        }
-                      }
-                    }
-                    ... on ProjectV2ItemFieldTextValue {
-                      text
-                      field {
-                        ... on ProjectV2FieldCommon {
-                          name
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    `;
-
-    const result = await executeGraphQLQuery(query);
-    if (!result) return [];
-
-    const pageItems = result.node.items.nodes;
-    allItems.push(...pageItems);
-
-    hasNextPage = result.node.items.pageInfo.hasNextPage;
-    endCursor = result.node.items.pageInfo.endCursor;
-  }
-
-  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
-
-  const examples = allItems
-    .filter((item: any) =>
-      item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Examples"
-      )
-    )
-    .map((item: any) => {
-      const title = item.content?.title || "";
-      const name = toSentenceCase(title.trim());
-      const body = item.content?.body || "";
-      const labels = item.content?.labels?.nodes.map((l: any) => l.name) || [];
-
-      const group = labels.find((l: string) =>
-        ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation"].includes(l)
-      );
-
-      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
-      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
-
-      const rawStatus = statusField?.name;
-      const status: ComponentStatus =
-        validStatuses.includes(rawStatus as ComponentStatus)
-          ? (rawStatus as ComponentStatus)
-          : "Not Published";
-
-      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
-      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
-      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
-      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
-
-      let metatags: string[] = [];
-      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
-      if (metatagField?.text) {
-        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
-      }
-
-      return {
-        name,
-        groups: group ? [group as Group] : [],
-        tags: labels.filter((l: string) => l !== group),
-        metatags,
-        description: descriptionField?.text || body,
-        status,
-        designSystemUrl,
-        designComponentFigmaUrl,
-        designContributionFigmaUrl,
-        openIssuesUrl
-      };
-    });
-
-  return examples;
+  return fetchMetadataFromProject("Examples");
 }
 
 export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
