@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import css from "./Modal.module.css";
-import { GoabIcon } from "@abgov/react-components";
-import { GoabIconType } from "@abgov/ui-components-common";
+import { GoAIcon, GoAIconType } from "@abgov/react-components";
 
 type Variant = "information" | "important" | "emergency" | "success" | "event";
 
@@ -11,12 +10,12 @@ interface Props {
   children: ReactNode;
 }
 
-export function GoabModal({ heading, calloutVariant, children }: Props) {
+export function GoAModal({ heading, calloutVariant, children }: Props) {
   return (
     <div className={css.modal}>
       {calloutVariant && (
         <div className={`${css.variant} ${css[calloutVariant]}`}>
-          <GoabIcon type={`${calloutVariant}-circle` as GoabIconType} />
+          <GoAIcon type={`${calloutVariant}-circle` as GoAIconType} />
         </div>
       )}
       <div className={css.content}>
@@ -27,4 +26,4 @@ export function GoabModal({ heading, calloutVariant, children }: Props) {
   );
 }
 
-export default GoabModal;
+export default GoAModal;

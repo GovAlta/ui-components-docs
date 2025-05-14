@@ -1,8 +1,5 @@
 .sandbox-note {
   color: #666;
-  margin-top: var(--goa-space-m);
-  margin-bottom: var(--goa-space-2xl);
-  font: var(--goa-typography-body-s);
 }
 
 .sandbox-render {
@@ -10,6 +7,7 @@
   border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
   background: var(--goa-color-greyscale-white);
   padding: var(--goa-space-3xl);
+  margin: var(--goa-space-xs) 0 0;
   display: flex;
   justify-content: space-around;
 }
@@ -20,8 +18,9 @@
 
 .sandbox-container {
   display: flex;
-  gap: 1.5rem 2.5rem;
+  gap: 1rem 2rem;
   flex-flow: wrap;
+  margin-top: var(--goa-space-l);
 }
 
 .sandbox-render-centered {
@@ -32,6 +31,10 @@
   .sandbox-render {
     /*make sure preview element will inherit component width*/
     display: block;
-    padding: var(--goa-space-xl);
+    padding: var(--goa-space-xs);
+  }
+  .sandbox-container {
+    gap: 0;
+    display: block;
   }
 }

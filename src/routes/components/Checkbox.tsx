@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { GoabBadge, GoabCheckbox, GoabCheckboxProps, GoabFormItem, GoabTab, GoabTabs } from "@abgov/react-components";
+import { useState } from "react";
+import { GoABadge, GoACheckbox, GoACheckboxProps, GoAFormItem, GoATab, GoATabs } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -9,15 +9,7 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { CheckboxExamples } from "@examples/checkbox/CheckboxExamples.tsx";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import {
-  LegacyTestIdProperties,
-  MarginProperty,
-  TestIdProperty
-} from "@components/component-properties/common-properties.ts";
-import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import CheckboxExamples from "@examples/checkbox/CheckboxExamples.tsx";
 
 // == Page props ==
 const componentName = "Checkbox";
@@ -28,15 +20,13 @@ const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
   { link: "/components/radio", name: "Radio" }
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
-type ComponentPropsType = GoabCheckboxProps;
+type ComponentPropsType = GoACheckboxProps;
 type CastingType = {
   name: string;
   checked: boolean;
   [key: string]: unknown;
 };
 export default function CheckboxPage() {
-  const {version} = useContext(LanguageVersionContext);
   const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
     name: "item",
     checked: false,
@@ -60,7 +50,8 @@ export default function CheckboxPage() {
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
   });
-  const oldComponentProperties: ComponentProperty[] = [
+
+  const componentProperties: ComponentProperty[] = [
     {
       name: "name",
       type: "string",
@@ -140,76 +131,24 @@ export default function CheckboxPage() {
       description: "Sets the maximum width of the checkbox.",
       lang: "angular",
     },
-    ...LegacyTestIdProperties,
-    MarginProperty
-  ];
-
-  const componentProperties: ComponentProperty[] = [
     {
-      name: "name",
+      name: "testId",
       type: "string",
-      description: "Unique name to identify the checkbox.",
-    },
-    {
-      name: "checked",
-      type: "boolean",
-      description: "Marks the checkbox item as selected.",
-    },
-    {
-      name: "disabled",
-      type: "boolean",
-      defaultValue: "false",
-      description:
-        "Disable this control. It will not receive focus or events.",
-    },
-    {
-      name: "error",
-      type: "boolean",
-      defaultValue: "false",
-      description: "Shows an error on the checkbox item.",
-    },
-    {
-      name: "text",
-      type: "string",
-      description: "Label shown beside the checkbox.",
-    },
-    {
-      name: "value",
-      type: "string | number | boolean",
-      description: "The value binding.",
-    },
-    {
-      name: "description",
-      type: "string | TemplateRef<any>",
-      description: "Additional content shown below the label.",
-      lang: "angular",
-    },
-    {
-      name: "description",
-      type: "string | ReactNode",
-      description: "Additional content shown below the label.",
       lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
     {
-      name: "ariaLabel",
+      name: "testid",
       type: "string",
-      description:
-        "Defines how the text will be translated for the screen reader. If not specified it will fall back to the name.",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
     },
     {
-      name: "maxWidth",
-      type: "string",
-      description: "Sets the maximum width of the checkbox.",
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
-    {
-      name: "onChange",
-      type: "(event: GoabCheckboxOnChangeDetail) => void",
-      description: "Callback function when checkbox value is changed.",
-    },
-    TestIdProperty,
-    MarginProperty,
   ];
-
   const noop = () => { };
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -226,40 +165,34 @@ export default function CheckboxPage() {
 
   return (
     <>
-      <ComponentHeader
-        name={componentName}
-        category={category}
-        description={description}
-        relatedComponents={relatedComponents}
-        figmaLink={FIGMA_LINK}
-        githubLink="Checkbox"
-      />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox
               properties={checkboxBindings}
               formItemProperties={formItemBindings}
               onChange={onChange}
-              allow={["form"]}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
+              flags={["reactive"]}>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
                   export class SomeOtherComponent {
-                    checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
-                      console.log(event);
+                    checked = false;
+                    onChange(event: Event) {
+                      const {name, checked, value} = (event as CustomEvent).detail;
+                      // or this.checked = !this.checked;
                     }
                   }
                 `}
               />
 
-              {version === "old" && <CodeSnippet
+              <CodeSnippet
                 lang="typescript"
                 tags={["angular", "reactive"]}
                 allowCopy={true}
@@ -269,80 +202,24 @@ export default function CheckboxPage() {
                     itemFormCtrl = new FormControl();
                   }
                 `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                   form!: FormGroup;
-                   constructor(private fb: FormBuilder) {
-                    this.form = this.fb.group({
-                      item: [""]
-                    })
-                   }
-                  }
-                `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
-                  export class SomeOtherComponent {
-                   item=false;
-                   checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
-                    console.log(event);
-                    this.item = event.checked;
-                   }
-                  }
-                `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  function checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
-                    console.log(event.value);
-                  }
-                `}
               />
-              }
-
-              <form>
-                <GoabFormItem {...formItemProps}>
-                  <GoabCheckbox {...checkboxProps} onChange={noop} />
-                </GoabFormItem>
-              </form>
+              <GoAFormItem {...formItemProps}>
+                <GoACheckbox {...checkboxProps} onChange={noop} />
+              </GoAFormItem>
             </Sandbox>
 
-            <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
-          </GoabTab>
+            <ComponentProperties properties={componentProperties} />
+            <CheckboxExamples />
+          </GoATab>
 
-          <GoabTab
+          <GoATab
             heading={
               <>
-                Examples
-                <GoabBadge type="information" content="2" />
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
               </>
-            }
-          >
-            <CheckboxExamples />
-          </GoabTab>
-
-          <GoabTab heading="Design">
-            <DesignEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-
-          <GoabTab heading="Accessibility">
-            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-        </GoabTabs>
+            }></GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );

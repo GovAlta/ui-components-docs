@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./BorderWidth.css";
 import { Token } from "../token";
@@ -11,60 +11,36 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function BorderWidthPage() {
   const tokens: Token[] = [
     {
-      tokenName: "goa-border-width-none",
-      rem: "0rem",
-      px: "0px",
-      figmaUsage: "Border-width/None",
-    },
-    {
-      tokenName: "goa-border-width-2xs",
-      rem: "0.03125rem",
-      px: "0.5px",
-      figmaUsage: "Border-width/2XSmall",
-    },
-    {
-      tokenName: "goa-border-width-xs",
-      rem: "0.04375rem",
-      px: "0.7px",
-      figmaUsage: "Border-width/XSmall",
-    },
-    {
       tokenName: "goa-border-width-s",
       rem: "0.0625rem",
       px: "1px",
-      figmaUsage: "Border-width/Small",
+      figmaUsage: "Use a border width of 1px.",
     },
     {
       tokenName: "goa-border-width-m",
       rem: "0.125rem",
       px: "2px",
-      figmaUsage: "Border-width/Medium",
+      figmaUsage: "Use a border width of 2px.",
     },
     {
       tokenName: "goa-border-width-l",
       rem: "0.1875rem",
       px: "3px",
-      figmaUsage: "Border-width/Large",
-    },
-    {
-      tokenName: "goa-border-width-xl",
-      rem: "0.25rem",
-      px: "4px",
-      figmaUsage: "Border-width/XLarge",
+      figmaUsage: "Use a border width of 3px.",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
 
   const renderDesktop = () => {
     return (
-      <GoabTable variant="normal" width="100%">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
-            <th>Design token</th>
+            <th>Token name</th>
             <th>rem</th>
             <th>px</th>
-            <th>Figma</th>
+            <th>Figma usage</th>
           </tr>
         </thead>
         <tbody>
@@ -87,32 +63,32 @@ export default function BorderWidthPage() {
             </tr>
           ))}
         </tbody>
-      </GoabTable>
+      </GoATable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoabGrid minChildWidth="22rem" gap="l">
+      <GoAGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token, idx) => (
-            <GoabContainer key={idx}>
+            <GoAContainer key={idx}>
               <div
                 className="token-block"
                 style={{
                   height: getCssVarValue(`--${token.tokenName}`),
                 }}
               />
-              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
+              <TokenSnippet code={token.tokenName} />
               <dl>
-                <dt>rem</dt> <dd className="dd-style">{token.rem}</dd>
-                <dt>px</dt> <dd className="dd-style">{token.px}</dd>
-                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
+                <dt>rem</dt> <dd>{token.rem}</dd>
+                <dt>px</dt> <dd>{token.px}</dd>
+                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoabContainer>
+            </GoAContainer>
           ))
         )}
-      </GoabGrid>
+      </GoAGrid>
     );
   };
 

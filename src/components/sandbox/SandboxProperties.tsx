@@ -1,20 +1,15 @@
 import {
-  GoabCheckbox,
-  GoabDatePicker,
-  GoabDropdown,
-  GoabDropdownItem,
-  GoabFormItem,
-  GoabInput,
-  GoabRadioGroup,
-  GoabRadioItem,
+  GoACheckbox,
+  GoADatePicker,
+  GoADropdown,
+  GoADropdownItem,
+  GoAFormItem,
+  GoAInput,
+  GoARadioGroup,
+  GoARadioItem,
 } from "@abgov/react-components";
 import { ComponentBinding } from "./ComponentBinding";
-import {
-  GoabCheckboxOnChangeDetail, GoabDatePickerOnChangeDetail,
-  GoabDropdownOnChangeDetail,
-  GoabFormItemRequirement,
-  GoabRadioGroupOnChangeDetail
-} from "@abgov/ui-components-common";
+import { GoAFormItemRequirement } from "@abgov/react-components";
 
 interface Props {
   properties?: ComponentBinding[];
@@ -22,24 +17,24 @@ interface Props {
 }
 
 export function SandboxProperties({ properties = [], onChange }: Props) {
-  function onListChange(event: GoabDropdownOnChangeDetail) {
-    const prop = properties.find(p => ["list", "dropdown"].includes(p.type) && p.name === event.name);
+  function onListChange(name: string, value: string | string[]) {
+    const prop = properties.find(p => ["list", "dropdown"].includes(p.type) && p.name === name);
     if (!prop || !["list", "dropdown"].includes(prop.type)) return;
-    prop.value = !event.value ? "" : event.value;
+    prop.value = !value ? "" : typeof value === "string" ? value : value[0];
     onChange([...properties]);
   }
 
-  function onRadioChange(event: GoabRadioGroupOnChangeDetail) {
-    const prop = properties.find(p => p.type === "radio" && p.name === event.name);
+  function onRadioChange(name: string, value: string | string[]) {
+    const prop = properties.find(p => p.type === "radio" && p.name === name);
     if (!prop || prop.type !== "radio") return;
-    prop.value = !event.value ? "" : event.value;
+    prop.value = !value ? "" : typeof value === "string" ? value : value[0];
     onChange([...properties]);
   }
 
-  function onComboboxChange(event: GoabDropdownOnChangeDetail) {
-    const prop = properties.find(p => p.type === "combobox" && p.name === event.name);
+  function onComboboxChange(name: string, value: string | string[]) {
+    const prop = properties.find(p => p.type === "combobox" && p.name === name);
     if (!prop || prop.type !== "combobox") return;
-    prop.value = !event.value ? "" : event.value;
+    prop.value = !value ? "" : typeof value === "string" ? value : value[0];
     onChange([...properties]);
   }
 
@@ -57,17 +52,17 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
     onChange([...properties]);
   }
 
-  function onCheckboxChange(event: GoabCheckboxOnChangeDetail): void {
-    const prop = properties.find(p => p.type === "boolean" && p.name === event.name);
+  function onCheckboxChange(name: string, checked: boolean, _value: string): void {
+    const prop = properties.find(p => p.type === "boolean" && p.name === name);
     if (!prop || prop.type !== "boolean") return;
-    prop.value = event.checked;
+    prop.value = checked;
     onChange([...properties]);
   }
 
-  function onDateChange(event: GoabDatePickerOnChangeDetail): void {
-    const prop = properties.find(p => p.type === "date" && p.name === event.name);
+  function onDateChange(name: string, value: Date | undefined): void {
+    const prop = properties.find(p => p.type === "date" && p.name === name);
     if (!prop || prop.type !== "date") return;
-    prop.value = event.value;
+    prop.value = value;
     onChange([...properties]);
   }
 
@@ -80,19 +75,19 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
       case "list":
       case "dropdown":
         return (
-          <GoabDropdown key={p.name} name={p.name} value={p.value} onChange={onListChange}>
+          <GoADropdown key={p.name} name={p.name} value={p.value} onChange={onListChange}>
             {p.options.map(option => (
-              <GoabDropdownItem
+              <GoADropdownItem
                 value={option || ""}
                 key={option}
                 label={toUpperCase(option) || "-"}
               />
             ))}
-          </GoabDropdown>
+          </GoADropdown>
         );
       case "combobox":
         return (
-          <GoabDropdown
+          <GoADropdown
             key={p.name}
             name={p.name}
             filterable
@@ -101,25 +96,25 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
             onChange={onComboboxChange}
           >
             {p.options.map(option => (
-              <GoabDropdownItem
+              <GoADropdownItem
                 value={option || ""}
                 key={option}
                 label={toUpperCase(option) || "-"}
               />
             ))}
-          </GoabDropdown>
+          </GoADropdown>
         );
       case "radio":
         return (
-          <GoabRadioGroup name={p.name} value={p.value} onChange={onRadioChange}>
+          <GoARadioGroup name={p.name} value={p.value} onChange={onRadioChange}>
             {p.options.map(option => {
-              return <GoabRadioItem value={option} label={toUpperCase(option) || "None (default)"} key={option} />;
+              return <GoARadioItem value={option} label={toUpperCase(option) || "None (default)"} key={option} />;
             })}
-          </GoabRadioGroup>
+          </GoARadioGroup>
         );
       case "boolean":
         return (
-          <GoabCheckbox
+          <GoACheckbox
             name={p.name}
             checked={p.value}
             onChange={onCheckboxChange}
@@ -128,14 +123,14 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
           />
         );
       case "string":
-        return <GoabInput name={p.name} value={p.value} width={p.width} onChange={(event) => onTextChange(p.name, event.value)} />;
+        return <GoAInput name={p.name} value={p.value} width={p.width} onChange={onTextChange} />;
       case "number":
         return (
-          <GoabInput step={p.step || 1} type="number" name={p.name} value={`${p.value}`}  width={p.width} onChange={(event) => onNumberChange(p.name, event.value)} />
+          <GoAInput type="number" name={p.name} value={`${p.value}`} onChange={onNumberChange} />
         );
       case "date":
         return (
-          <GoabDatePicker onChange={onDateChange} name={p.name} value={p.value as Date|undefined} />
+          <GoADatePicker onChange={onDateChange} name={p.name} value={p.value} />
         )
     }
   }
@@ -143,9 +138,9 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
   return (
     <div className="sandbox-container">
       {properties.filter(p => !p.hidden).map(p => (
-        <GoabFormItem key={p.name} label={p.label || ""} requirement={p.requirement as GoabFormItemRequirement || null} helpText={p.helpText}>
+        <GoAFormItem key={p.name} label={p.label || ""} requirement={p.requirement as GoAFormItemRequirement || null} helpText={p.helpText}>
           {renderProps(p)}
-        </GoabFormItem>
+        </GoAFormItem>
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Opacity.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -18,32 +18,32 @@ export default function OpacityPage() {
     {
       tokenName: "goa-opacity-background-modal",
       percentage: "50%",
-      figmaUsage: "Fill: Opacity/Background/Modal",
+      figmaUsage: "Fill: opacity/background/modal",
     },
     {
       tokenName: "goa-opacity-background-loading",
       percentage: "90%",
-      figmaUsage: "Fill: Opacity/Background/Loading",
+      figmaUsage: "Fill: opacity/background/loading",
     },
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
 
   const renderDesktop = () => {
     return (
-      <GoabTable variant="normal" width="100%">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
-            <th>Design token</th>
+            <th>Token name</th>
             <th>%</th>
-            <th>Figma</th>
+            <th>Figma style</th>
           </tr>
         </thead>
         <tbody>
           {tokens.map((token, index) => (
             <tr key={index}>
               <td>
-                <div className="opacity-thumbnail" style={{ display: "flex" }}>
+                <div style={{ display: "flex" }}>
                   <div className="blue-box"></div>
                   <div
                     className="grey-box"
@@ -61,16 +61,16 @@ export default function OpacityPage() {
             </tr>
           ))}
         </tbody>
-      </GoabTable>
+      </GoATable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoabGrid minChildWidth="22rem" gap="l">
+      <GoAGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
-            <GoabContainer key={idx}>
+            <GoAContainer key={idx}>
               <div style={{ display: "flex" }}>
                 <div className="blue-box"></div>
                 <div
@@ -80,15 +80,15 @@ export default function OpacityPage() {
                   }}
                 ></div>
               </div>
-              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
+              <TokenSnippet code={token.tokenName} />
               <dl>
-                <dt>%</dt> <dd className="dd-style">{token.percentage}</dd>
-                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
+                <dt>%</dt> <dd>{token.percentage}</dd>
+                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoabContainer>
+            </GoAContainer>
           ))
         )}
-      </GoabGrid>
+      </GoAGrid>
     );
   };
 

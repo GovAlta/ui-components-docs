@@ -3,7 +3,7 @@ div.icon-snippet {
   border: 1px var(--goa-color-greyscale-200) solid;
   border-radius: 4px;
   padding: var(--goa-space-m);
-  color: var(--goa-color-greyscale-black);
+  color: var(--goa-color-text-secondary);
   cursor: pointer;
   /*Below to make icons and text on the same row*/
   display: inline-flex;
@@ -11,7 +11,6 @@ div.icon-snippet {
   gap: var(--goa-space-m);
   align-items: center;
   justify-content: start;
-  position: relative;
 }
 
 div.icon-snippet goa-icon {
@@ -25,15 +24,8 @@ div.icon-snippet span {
 
 div.icon-snippet:hover,
 div.icon-snippet:focus {
-  border-color: var(--goa-color-interactive-hover);
-  color: var(--goa-color-interactive-hover);
-  background-color: var(--goa-color-greyscale-100);
-}
-
-div.icon-snippet.active {
   border-color: var(--goa-color-greyscale-black);
   color: var(--goa-color-greyscale-black);
-  background-color: var(--goa-color-greyscale-200);
 }
 
 /*Will remove when we have temporary notification component*/
@@ -45,10 +37,7 @@ div.icon-snippet div.copy-feedback {
   padding: var(--goa-space-m) var(--goa-space-l) var(--goa-space-m) var(--goa-space-l);
   z-index: 10000;
   position: absolute;
-  top: 100%;
-  left: 0;
-  margin-top: var(--goa-space-xs);
-  font: var(--goa-typography-body-s);
+  margin-top: 100px;
 }
 
 div.icon-snippet div.copy-feedback span {

@@ -1,15 +1,14 @@
 import { FC, useContext, useState } from "react";
 
 import "./TokenSnippet.css";
-import { GoabIcon } from "@abgov/react-components";
-import { DesignTokensLanguageContext } from "@contexts/DesignTokensLanguageContext";
+import { GoAIcon } from "@abgov/react-components";
+import { DesignTokensLanguageContext } from "@components/sandbox";
 
 interface Props {
   code: string;
-  className?: string;
 }
 
-export const TokenSnippet: FC<Props> = ({ code, className }) => {
+export const TokenSnippet: FC<Props> = ({ code }) => {
   const [isCopied, setIsCopied] = useState(false);
   const lang = useContext(DesignTokensLanguageContext);
 
@@ -17,19 +16,23 @@ export const TokenSnippet: FC<Props> = ({ code, className }) => {
     let codeToCopy = lang === "css" ? `--${code}` : `$${code}`;
     navigator.clipboard.writeText(codeToCopy).then(() => {
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000);
+      setTimeout(() => setIsCopied(false), 1000);
     });
   }
 
   return (
-    <div className={`goa-token-snippet ${className || ""}`}>
+    <div className="goa-token-snippet">
+      <pre className="goa-token-snippet">
         <a onClick={copyCode}>
           <u>
             {lang === "css" ? "--" : "$"}
             {code}
           </u>
-            <GoabIcon ml="xs" mt="3xs" type="copy" />
+          <span style={{ marginTop: "5px", marginLeft: "10px" }}>
+            <GoAIcon type="copy" />
+          </span>
         </a>
+      </pre>
       <span
         className="copy-feedback"
         style={isCopied ? { visibility: "visible" } : { visibility: "hidden" }}

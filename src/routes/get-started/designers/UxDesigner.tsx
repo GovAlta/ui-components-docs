@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabCallout } from "@abgov/react-components";
 
 export default function UxDesignerPage() {
   return ( <ComponentContent tocCssQuery="h2[id], h3[id]">
@@ -36,7 +35,7 @@ export default function UxDesignerPage() {
         The design system tokens, styles, components and page templates are all available to pull
         into your file in Figma.
       </p>
-    <GoabCallout heading="Design with development in mind" type="information" size="large" ariaLive="off">When selecting components, prioritize those with a “goa-” prefix in the name such as “goa-input.” These components are available in both design and development, which means that developers can avoid unnecessary custom development.</GoabCallout>
+    <goa-callout heading="Design with development in mind" type="information" size="large" arialive="off">When selecting components, prioritize those with a “goa-” prefix in the name such as “goa-input.” These components are available in both design and development, which means that developers can avoid unnecessary custom development.</goa-callout>
       <p>
         <a
           href="https://www.figma.com/files/project/36119371/%E2%9D%96-Design-System-libraries?fuid=997916706634348976"

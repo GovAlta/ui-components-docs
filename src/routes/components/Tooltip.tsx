@@ -7,26 +7,17 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 
 import {
-  GoabIcon,
-  GoabBadge,
-  GoabTab,
-  GoabTabs,
-  GoabTooltip,
-  GoabTooltipProps,
+  GoAIcon,
+  GoABadge,
+  GoATab,
+  GoATabs,
+  GoATooltip,
+  GoATooltipProps,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import {
-  LegacyMarginProperty,
-  MarginProperty,
-  TestIdProperty
-} from "@components/component-properties/common-properties.ts";
-import { TooltipExamples } from "@examples/tooltip/TooltipExamples.tsx";
-import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21932-557049";
 const componentName = "Tooltip";
 const description = "A small popover that displays more information about an item.";
 const relatedComponents = [
@@ -35,14 +26,13 @@ const relatedComponents = [
   { link: "/components/icon-button", name: "Icon button" },
   { link: "/components/popover", name: "Popover" }
 ];
-type ComponentPropsType = GoabTooltipProps;
+type ComponentPropsType = GoATooltipProps;
 type CastingType = {
   content: string;
   [key: string]: unknown;
 };
 
-export default function TooltipPage() {
-
+export default function TEMPLATE_Page() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
   });
@@ -70,7 +60,7 @@ export default function TooltipPage() {
     },
   ]);
 
-  const oldComponentProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
     {
       name: "content",
       type: "string",
@@ -88,28 +78,11 @@ export default function TooltipPage() {
       description: "Horizontal alignment to the child element",
       defaultValue: "center",
     },
-    LegacyMarginProperty,
-  ];
-  const componentProperties: ComponentProperty[] = [
     {
-      name: "content",
-      type: "string",
-      description: "The content of the tooltip",
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
-    {
-      name: "position",
-      type: "GoabTooltipPosition (top | bottom | left | right)",
-      description: "Position wrt the child element",
-      defaultValue: "top",
-    },
-    {
-      name: "hAlign",
-      type: "GoabTooltipHorizontalAlignment (left | center | right)",
-      description: "Horizontal alignment to the child element",
-      defaultValue: "center",
-    },
-    TestIdProperty,
-    MarginProperty
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -124,42 +97,30 @@ export default function TooltipPage() {
         category={Category.FEEDBACK_AND_ALERTS}
         description={description}
         relatedComponents={relatedComponents}
-        figmaLink={FIGMA_LINK}
-        githubLink="Tooltip"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
-              <GoabTooltip {...componentProps}>
-                <GoabIcon type="information-circle" />
-              </GoabTooltip>
+              <GoATooltip {...componentProps}>
+                <GoAIcon type="information-circle" />
+              </GoATooltip>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-          </GoabTab>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-          <GoabTab
+          <GoATab
             heading={
               <>
-                Examples
-                <GoabBadge type="information" content="2" />
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
               </>
             }
-          >
-            <TooltipExamples />
-          </GoabTab>
-
-          <GoabTab heading="Design">
-            <DesignEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-
-          <GoabTab heading="Accessibility">
-            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-        </GoabTabs>
+          ></GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );
