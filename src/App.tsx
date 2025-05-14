@@ -63,18 +63,6 @@ import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 
-// Patterns Pages
-
-import PatternsLayout from "@routes/patterns/PatternsLayout";
-import LayoutPage from "@routes/patterns/LayoutPage";
-import PatternsOverviewPage from "@routes/patterns/PatternsOverview";
-import SimpleFormPage from "@routes/patterns/SimpleFormPage";
-import StartPage from "@routes/patterns/StartPage";
-import TaskListPage from "@routes/patterns/TaskListPage";
-import QuestionPage from "@routes/patterns/QuestionPage";
-import ReviewPage from "@routes/patterns/ReviewPage";
-import ResultPage from "@routes/patterns/ResultPage";
-
 // Foundations Pages
 import FoundationsLayout from "@routes/foundations/FoundationsLayout";
 import DesignAtGoAPage from "@routes/foundations/DesignAtGoA";
