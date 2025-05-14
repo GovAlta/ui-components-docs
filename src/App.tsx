@@ -46,6 +46,7 @@ import ReportBugPage from "@routes/get-started/ReportBug";
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
+import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 
 // Content Pages
 
@@ -61,6 +62,7 @@ import { ComponentsRouter, PatternsRouter } from "./versioned-router";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -95,6 +97,9 @@ const router = createBrowserRouter(
         </Route>
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
+        </Route>
+        <Route path="lts-policy">
+          <Route index element={<LtsPolicyPage />} />
         </Route>
         <Route path="contribute">
           <Route index element={<ContributePage />} />
