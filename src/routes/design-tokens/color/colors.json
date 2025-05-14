@@ -15,6 +15,18 @@
         "description": "Hover state for interactive elements."
       },
       {
+        "code": "goa-color-interactive-disabled",
+        "value": "#80B7E1",
+        "figmaColorStyle": "Interactive/Disabled",
+        "description": "Disabled state for interactive elements."
+      },
+      {
+        "code": "goa-color-interactive-visited",
+        "value": "#756693",
+        "figmaColorStyle": "Interactive/Visited",
+        "description": "Visited state for links."
+      },
+      {
         "code": "goa-color-interactive-focus",
         "value": "#FEBA35",
         "figmaColorStyle": "Interactive/Focus",
@@ -25,12 +37,6 @@
         "value": "#EC040B",
         "figmaColorStyle": "Interactive/Error",
         "description": "Error state for interactive elements."
-      },
-      {
-        "code": "goa-color-interactive-disabled",
-        "value": "#80B7E1",
-        "figmaColorStyle": "Interactive/Disabled",
-        "description": "Disabled state for interactive elements."
       },
       {
         "code": "goa-color-interactive-error-hover",
@@ -114,7 +120,7 @@
         "description": ""
       },
       {
-        "code": "goa-color-brand-light",
+        "code": "goa-color-info-dark",
         "value": "#003B70",
         "figmaColorStyle": "Status/Info/Dark",
         "description": ""
@@ -215,15 +221,33 @@
         "description": ""
       },
       {
+        "code": "goa-color-greyscale-50",
+        "value": "#F8F8F8",
+        "figmaColorStyle": "Greyscale/50",
+        "description": ""
+      },
+      {
         "code": "goa-color-greyscale-100",
         "value": "#F1F1F1",
         "figmaColorStyle": "Greyscale/100",
         "description": ""
       },
       {
+        "code": "goa-color-greyscale-150",
+        "value": "#E7E7E7",
+        "figmaColorStyle": "Greyscale/150",
+        "description": ""
+      },
+      {
         "code": "goa-color-greyscale-200",
         "value": "#DCDCDC",
         "figmaColorStyle": "Greyscale/200",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-300",
+        "value": "#C2C2C2",
+        "figmaColorStyle": "Greyscale/300",
         "description": ""
       },
       {
@@ -251,9 +275,123 @@
         "description": ""
       },
       {
+        "code": "goa-color-greyscale-800",
+        "value": "#5C5C5C",
+        "figmaColorStyle": "Greyscale/800",
+        "description": ""
+      },
+      {
+        "code": "goa-color-greyscale-900",
+        "value": "#474747",
+        "figmaColorStyle": "Greyscale/900",
+        "description": ""
+      },
+      {
         "code": "goa-color-greyscale-black",
         "value": "#333333",
         "figmaColorStyle": "Greyscale/Black",
+        "description": ""
+      }
+
+    ]
+  },
+  {
+    "name": "Extended",
+    "tokens": [
+      {
+        "code": "goa-color-extended-aqua",
+        "value": "#7FEBE6",
+        "figmaColorStyle": "Extended/Aqua",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-aqua",
+        "value": "#DCFBF8",
+        "figmaColorStyle": "Extended/Light/Aqua",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-blue",
+        "value": "#AAC9E7",
+        "figmaColorStyle": "Extended/Blue",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-blue",
+        "value": "#DDEFFF",
+        "figmaColorStyle": "Extended/Light/Blue",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-green",
+        "value": "#BBFCB4",
+        "figmaColorStyle": "Extended/Green",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-green",
+        "value": "#CCE2D9",
+        "figmaColorStyle": "Extended/Light/Green",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-orange",
+        "value": "#FFC76D",
+        "figmaColorStyle": "Extended/Orange",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-orange",
+        "value": "#FCD6C3",
+        "figmaColorStyle": "Extended/Light/Orange",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-pink",
+        "value": "#FF8FC5",
+        "figmaColorStyle": "Extended/Pink",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-pink",
+        "value": "#F9E1EB",
+        "figmaColorStyle": "Extended/Light/Pink",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-red",
+        "value": "#ED948D",
+        "figmaColorStyle": "Extended/Red",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-red",
+        "value": "#F4CDC6",
+        "figmaColorStyle": "Extended/Light/Red",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-violet",
+        "value": "#D4C2FF",
+        "figmaColorStyle": "Extended/Violet",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-violet",
+        "value": "#EFE2FB",
+        "figmaColorStyle": "Extended/Light/Violet",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-yellow",
+        "value": "#FCE796",
+        "figmaColorStyle": "Extended/Yellow",
+        "description": ""
+      },
+      {
+        "code": "goa-color-extended-light-yellow",
+        "value": "#FFF7BF",
+        "figmaColorStyle": "Extended/Light/Yellow",
         "description": ""
       }
     ]
@@ -378,3 +516,4 @@
     ]
   }
 ]
+

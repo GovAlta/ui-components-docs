@@ -40,7 +40,7 @@
     "lineHeight": "24px | 1.5rem"
   },
   {
-    "figmaTypeStyle": "Large text",
+    "figmaTypeStyle": "Large body",
     "tokenName": "goa-typography-body-l",
     "typeFamily": "Acumin Pro SemiCondensed",
     "weight": "Regular",
@@ -48,7 +48,7 @@
     "lineHeight": "32px | 2rem"
   },
   {
-    "figmaTypeStyle": "Medium text",
+    "figmaTypeStyle": "Medium body",
     "tokenName": "goa-typography-body-m",
     "typeFamily": "Acumin Pro SemiCondensed",
     "weight": "Regular",
@@ -56,7 +56,7 @@
     "lineHeight": "28px  | 1.75rem"
   },
   {
-    "figmaTypeStyle": "Small text",
+    "figmaTypeStyle": "Small body",
     "tokenName": "goa-typography-body-s",
     "typeFamily": "Acumin Pro SemiCondensed",
     "weight": "Regular",
@@ -64,12 +64,20 @@
     "lineHeight": "24px | 1.5rem"
   },
   {
-    "figmaTypeStyle": "XSmall text",
+    "figmaTypeStyle": "XSmall body",
     "tokenName": "goa-typography-body-xs",
     "typeFamily": "Acumin Pro SemiCondensed",
     "weight": "Regular",
     "fontSize": "14px | 0.875rem",
     "lineHeight": "20px | 1.25rem"
+  },
+  {
+    "figmaTypeStyle": "Large number",
+    "tokenName": "goa-typography-number-l",
+    "typeFamily": "Roboto Mono",
+    "weight": "Regular",
+    "fontSize": "24px | 1.5rem",
+    "lineHeight": "32px | 2rem"
   },
   {
     "figmaTypeStyle": "Medium number",
@@ -78,5 +86,13 @@
     "weight": "Regular",
     "fontSize": "18px | 1.125rem",
     "lineHeight": "28px | 1.75rem"
+  },
+  {
+    "figmaTypeStyle": "Small number",
+    "tokenName": "goa-typography-number-s",
+    "typeFamily": "Roboto Mono",
+    "weight": "Regular",
+    "fontSize": "16px | 1rem",
+    "lineHeight": "24px | 1.5rem"
   }
 ]

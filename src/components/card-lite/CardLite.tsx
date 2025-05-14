@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 import "./CardLite.css";
+import { ReactNode } from "react";
+import { GoabLink, GoabText } from "@abgov/react-components";
 
 export interface Props {
   title: string;
@@ -11,13 +11,17 @@ export interface Props {
 
 export function CardLite(props: Props) {
   return (
-    <div className="card-lite">
-      <div className="title">{props.title}</div>
-      <div className="description">{props.description}</div>
-      <div className="link">
-        <Link to={props.linkTo}>{props.linkDisplay}</Link>
+    <a href={props.linkTo} className="card-lite">
+      <div>
+        <GoabText size="heading-m" mt="none" mb="m">
+          <b className="card-heading">{props.title}</b>
+        </GoabText>
+        <GoabText size="body-m" mt="none" mb="xs">
+          <div className="card-description">{props.description}</div>
+        </GoabText>
+        <GoabLink>{props.linkDisplay}</GoabLink>
       </div>
-    </div>
+    </a>
   );
 }
 

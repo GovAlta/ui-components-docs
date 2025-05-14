@@ -1,7 +1,41 @@
 .shadow-page .token-block {
-  height: 24px;
-  width: 24px;
+  height: 64px;
+  width: 64px;
   border-radius: var(--goa-border-radius-none);
-  background-color: var(--goa-color-greyscale-black);
+  background-color: var(--goa-color-greyscale-50);
+  margin-top: 2px;
+}
+
+/* Individual shadow tokens */
+
+.goa-shadow-modal {
   box-shadow: 6px 6px 6px 0 rgba(0, 0, 0, 0.16);
+}
+
+.goa-shadow-100 {
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.16);
+}
+
+.goa-shadow-150 {
+  box-shadow: 0 1px 0 0 #1a1a1a40;
+}
+
+.goa-shadow-200 {
+  box-shadow: 0 3px 1px -1px #1a1a1a12;
+}
+
+.goa-shadow-300 {
+  box-shadow: 0 4px 6px -2px #1a1a1a33;
+}
+
+.goa-shadow-400 {
+  box-shadow: 0 8px 16px -4px #1a1a1a38;
+}
+
+.goa-shadow-500 {
+  box-shadow: 0 12px 20px -8px #1a1a1a3D;
+}
+
+.goa-shadow-600 {
+  box-shadow: 0 20px 20px -8px #1a1a1a47;
 }
