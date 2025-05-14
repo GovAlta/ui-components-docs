@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { toSentenceCase, fetchAllIssueCounts, fetchComponentMetadataFromProject } from "../../utils";
+import { toSentenceCase, fetchAllIssueCounts, fetchExampleMetadataFromProject } from "../../utils";
 import {
   GoabTable,
   GoabTableSortHeader,
@@ -28,7 +28,7 @@ export default function PatternsOverviewPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const metadata = await fetchComponentMetadataFromProject();
+      const metadata = await fetchExampleMetadataFromProject();
       console.log("Fetched metadata from GitHub:", metadata);
       const sorted = metadata.sort((a, b) => {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
@@ -130,11 +130,7 @@ export default function PatternsOverviewPage() {
             Name
           </GoabTableSortHeader>
         </th>
-        <th>
-          <GoabTableSortHeader name="tags">
-            Category
-          </GoabTableSortHeader>
-        </th>
+        <th style={{ minWidth: "130px" }}>Tag</th>
         <th style={{ width: "130px", minWidth: "130px" }}>Open issues</th>
       </tr>
       </thead>
@@ -156,7 +152,18 @@ export default function PatternsOverviewPage() {
               <span>{toSentenceCase(card.name)}</span>
             )}
           </td>
-          <td>{card.tags?.[0] || ""}</td>
+          <td>
+            {card.tags?.map((tag) => (
+              <GoabBadge
+                key={tag}
+                type="information"
+                mt="2xs"
+                mb="2xs"
+                mr="2xs"
+                content={tag}
+              />
+            ))}
+          </td>
           <td style={{ minWidth: "135px", maxWidth: "170px" }}>
             <a
               href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
@@ -179,7 +186,8 @@ export default function PatternsOverviewPage() {
         Examples
       </GoabText>
       <GoabText size="body-l" mt="m" mb="xl">
-        A description of examples.
+        Common patterns, pages, tasks, component configurations, flows, and more to use as a starting point when
+        creating government digital services.
       </GoabText>
 
       <GoabFormItem helpText="Search by keyword, category, or name" mb="xl">
