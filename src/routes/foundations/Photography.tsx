@@ -1,4 +1,4 @@
-import { GoADivider } from "@abgov/react-components";
+import { GoabDivider } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function ImagesPage() {
@@ -7,7 +7,7 @@ export default function ImagesPage() {
         <h1>Photography</h1>
         <h3>The Government of Alberta maintains a library of photos specifically taken for government use, ensuring they are relevant to our citizens. This collection meets our established criteria for quality and accessibility. </h3>
 
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
 
           <h2 id="goa-photo-library">Government of Alberta photo library</h2>

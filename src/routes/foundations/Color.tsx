@@ -1,4 +1,4 @@
-import { GoADivider, GoAGrid, GoAContainer, GoASpacer, GoATable } from "@abgov/react-components";
+import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer, GoabTable } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsColorPage() {
@@ -7,7 +7,7 @@ export default function FoundationsColorPage() {
         
         <h1>Color</h1>
         <h3>Colors play a major role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
           <p>Our palette is divided into these categories:</p>
           <ul>
@@ -21,9 +21,9 @@ export default function FoundationsColorPage() {
           <p>For more information about how to use our colors in your digital product, see <a href="https://design.alberta.ca/design-tokens/color">design tokens</a>.</p>
           <h2 id="brand">Brand colors</h2>
           <p>Brand colors represent our identity and are aligned to the Alberta.ca brand guidelines.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px">
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px">
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#0081A2",
@@ -34,8 +34,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#005072",
@@ -46,8 +46,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Dark</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#C8EEFA",
@@ -58,14 +58,14 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Brand - Light</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
           
           <h2 id="interactive">Interactive colors</h2>
           <p>Interactive colors are used to assign colors to specific actions and states, such as buttons and links. This helps in enhancing usability and promoting user engagement in our digital products.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px">
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px">
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#0070C4",
@@ -76,8 +76,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#004F84",
@@ -88,8 +88,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Hover</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FEBA35",
@@ -100,8 +100,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Focus</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#EC040B",
@@ -112,8 +112,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#80B7E1",
@@ -124,8 +124,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Disabled</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#BA0000",
@@ -136,8 +136,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error Hover</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#F58185",
@@ -148,14 +148,14 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Interactive - Error Disabled</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
           
           <h2 id="text">Text colors</h2>
           <p>Headings, body text, and labels adopt our text colors to ensure visual hierarchy in our layouts and readability across various contexts.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px">
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px">
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#333333",
@@ -166,8 +166,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#666666",
@@ -178,8 +178,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Secondary</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFFFFF",
@@ -191,8 +191,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#666666",
@@ -203,15 +203,15 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Text - Disabled</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
           
           <h2 id="status">Status colors</h2>
           <p>Status colors are used to show various states such as success, warning, error and critical, helping users easily interpret the messages in our products.</p>
           <h3 id="info">Info</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px">     
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px">     
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#004A8F",
@@ -222,8 +222,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>Info - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#AAC9E7",
@@ -236,8 +236,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Info - Light</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#003B70",
@@ -250,8 +250,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Info - Dark</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#EFF8FF",
@@ -264,12 +264,12 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Info - Background</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid> 
+            </GoabContainer>
+          </GoabGrid> 
           <h3 id="warning">Warning</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#F9CE2D",
@@ -282,8 +282,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Default</strong> 
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFEAB6",
@@ -296,8 +296,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Light</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#BF8D23",
@@ -310,8 +310,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Dark</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFF6E5",
@@ -324,12 +324,12 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Warning - Background</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid> 
+            </GoabContainer>
+          </GoabGrid> 
           <h3 id="emergency">Emergency</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#DA291C",
@@ -342,8 +342,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Default</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FBD1CE",
@@ -356,8 +356,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Light</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#A91A10",
@@ -371,8 +371,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Dark</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFF1F2",
@@ -385,12 +385,12 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Emergency - Background</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid> 
+            </GoabContainer>
+          </GoabGrid> 
           <h3 id="success">Success</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#006F4C",
@@ -403,8 +403,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Default</strong> 
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#CCE4DC",
@@ -417,8 +417,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Light</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#00563A",
@@ -432,8 +432,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Dark</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#EEF9F3",
@@ -446,12 +446,12 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Success - Background</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid> 
+            </GoabContainer>
+          </GoabGrid> 
           <h3 id="critical">Critical</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px"> 
-            <GoAContainer maxWidth="150px" accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px"> 
+            <GoabContainer maxWidth="150px" accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#171D23",
@@ -464,13 +464,13 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Critical</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid>          
+            </GoabContainer>
+          </GoabGrid>          
           <h2 id="greyscale">Greyscale colors</h2>
           <p>Greyscale are neutral colors that range from black to white and provide a base for accents, backgrounds and layouts.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px">  
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px">  
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#FFFFFF",height: "85px",
@@ -483,8 +483,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - White</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#F1F1F1",height: "85px",
@@ -496,8 +496,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 100</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#DCDCDC",height: "85px",
@@ -509,8 +509,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 200</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#ADADAD",height: "85px",
@@ -522,8 +522,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 400</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#949494",height: "85px",
@@ -536,8 +536,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 500</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#858585",height: "85px",
@@ -549,8 +549,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 600</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#666666",height: "85px",
@@ -562,8 +562,8 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - 800</strong>
               </div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
                 <div
                   style={{
                     backgroundColor: "#333333",height: "85px",
@@ -575,14 +575,14 @@ export default function FoundationsColorPage() {
               <div>
                 <strong>Greyscale - Black</strong>
               </div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
 
           <h2 id="extended">Additional colors</h2>
           <p>Additional colours can be used If you need more badge colours or need colours to differentiate between data categories in charts.</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="m" minChildWidth="150px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="m" minChildWidth="150px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#7FEBE6",
@@ -602,8 +602,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Aqua</strong></div>
               <div><strong>Aqua - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#333333",
@@ -623,8 +623,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Black</strong></div>
               <div><strong>Black - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#AAC9E7",
@@ -644,8 +644,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Blue</strong></div>
               <div><strong>Blue - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#BBFCB4",
@@ -665,8 +665,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Green</strong></div>
               <div><strong>Green - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFC76D",
@@ -686,8 +686,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Orange</strong></div>
               <div><strong>Orange - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FF8FC5",
@@ -707,8 +707,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Pink</strong></div>
               <div><strong>Pink - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#ED948D",
@@ -728,8 +728,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Red</strong></div>
               <div><strong>Red - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#D4C2FF",
@@ -749,8 +749,8 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Violet</strong></div>
               <div><strong>Violet - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FFFFFF",
@@ -762,8 +762,8 @@ export default function FoundationsColorPage() {
                 }}
               />
               <div><strong>White</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div
                 style={{
                   backgroundColor: "#FCE796",
@@ -783,13 +783,13 @@ export default function FoundationsColorPage() {
               />
               <div><strong>Yellow</strong></div>
               <div><strong>Yellow - Light</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
       
           <h2 id="usage">Color usage</h2>
           <p>All government of Alberta products are designed to meet the Web Content and Accessibility Guidelines (WCAG) standards. Level AA compliance is the minimum requirement for accessible design.</p>
 
-          <GoATable width="100%" variant="relaxed" mt="l" mb="xl">
+          <GoabTable width="100%" variant="relaxed" mt="l" mb="xl">
             <thead>
               <tr>
                 <th>
@@ -818,105 +818,105 @@ export default function FoundationsColorPage() {
                 </td>
               </tr>
             </tbody>
-          </GoATable>
+          </GoabTable>
 
           <p><em style={{color: "var(--goa-color-greyscale-black)", fontSize: "var(--goa-font-size-3)"}}>Use an <a href="https://www.figma.com/community/plugin/734693888346260052/able-friction-free-accessibility" target="_blank">accessibility contrast checker</a> to check color combinations or use our guide below. Logos, decorative objects, disabled form fields, and disabled buttons should be excluded from this test and don't need to be tested for contrast.</em></p>
 
           <h3 id="accessible">Accessible combinations</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoabSpacer vSpacing="l"></GoabSpacer>
 
-          <GoAGrid gap="m" minChildWidth="250px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabGrid gap="m" minChildWidth="250px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Default passes the minimum color contrast ratio with 4.5:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-Dark.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Dark passes the minimum color contrast ratio with of 8.78:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Dark</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-hover.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and interactive Hover passes the minimum color contrast ratio with 8.56:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Interactive - Hover</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-Info-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and info default passes the minimum color contrast ratio with 8.84:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Info - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-Interactive-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and interactive default passes the minimum color contrast ratio with 5.1:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Interactive - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Accessible-White-Interactive-Hover.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Greyscale Black passes the minimum color contrast ratio with 8.84:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Greyscale - Black</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
           
           <h3 id="inaccessible">Inaccessible combinations</h3>
-          <GoASpacer vSpacing="l"></GoASpacer>
+          <GoabSpacer vSpacing="l"></GoabSpacer>
 
-          <GoAGrid gap="m" minChildWidth="250px"> 
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+          <GoabGrid gap="m" minChildWidth="250px"> 
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-White-Light.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Brand Light fails the minimum color contrast ratio with 1.23:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Brand - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-White-Info-Light.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Info light fails the minimum color contrast ratio with 1.72:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Info - Light</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-White-Warning.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Warning Dark fails the minimum color contrast ratio with 2.97:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Warning - Dark</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-White-warning-def.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Greyscale White and Warning Default fails the minimum color contrast ratio with 1.51:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Greyscale - White</strong></div>
               <div><strong>Warning - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-Light-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Brand Light and Warning Default fails the minimum color contrast ratio with 1.23:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Brand - Light</strong></div>
               <div><strong>Warning - Default</strong></div>
-            </GoAContainer>
-            <GoAContainer accent="filled" padding="relaxed" width="full">
+            </GoabContainer>
+            <GoabContainer accent="filled" padding="relaxed" width="full">
               <div style={{ textAlign: "center" }}>
                 <img src="/images/color/Inaccessible-Dark-Default.png" style={{margin: "0 0 24px" }} width="100%" alt="The combination of two colors, Brand Default and Brand Dark fails the minimum color contrast ratio with 1.95:1 as per Level AA compliance."></img>
               </div>
               <div><strong>Brand - Default</strong></div>
               <div><strong>Brand - Dark</strong></div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
 
         </div>
       </ComponentContent>

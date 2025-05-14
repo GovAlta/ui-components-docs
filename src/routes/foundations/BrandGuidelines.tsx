@@ -1,4 +1,4 @@
-import { GoADivider } from "@abgov/react-components";
+import { GoabDivider } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function BrandGuidelinesPage() {
@@ -6,7 +6,7 @@ export default function BrandGuidelinesPage() {
       <ComponentContent tocCssQuery="h2[id], h3[id]">
         <h1>Brand guidelines</h1>
         <h3>Communications and Public Engagement (CPE) plays an important role in providing and maintaining brand identity guidelines across the Government of Alberta. These guidelines ensure all digital products are consistent and easily recognizable, building trust with users.</h3>
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
           
           <h2 id="brand-guideslines-resources">Brand guidelines resources</h2>

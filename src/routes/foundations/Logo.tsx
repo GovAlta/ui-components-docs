@@ -1,4 +1,4 @@
-import { GoADivider, GoAGrid, GoAContainer, GoASpacer } from "@abgov/react-components"
+import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer } from "@abgov/react-components"
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function LogoPage() {
@@ -7,7 +7,7 @@ export default function LogoPage() {
         <h1>Logo</h1>
         <h3>Our logo is an important part of our brand identity and serves as a symbol that distinguishes our digital products from others. To keep our brand consistent and recognizable, we encourage following the guidelines for proper usage.</h3>
 
-        <GoADivider mt="2xl" mb="2xl"></GoADivider>
+        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
           <h2 id="anatomy">Anatomy</h2>
             <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>
@@ -25,30 +25,30 @@ export default function LogoPage() {
           
           <h3 id="alternate">Alternate usage</h3>
           <p>Alternate versions of the logo may be used in contexts where the default version isn't suitable. These are the only alternate usage allowed:</p>
-          <GoASpacer vSpacing="l"></GoASpacer>
-          <GoAGrid gap="l" minChildWidth="150px">
-            <GoAContainer>
+          <GoabSpacer vSpacing="l"></GoabSpacer>
+          <GoabGrid gap="l" minChildWidth="150px">
+            <GoabContainer>
                 <div style={{ width: "100%", textAlign: "center" }}>
                   <img src="/images/logo/reverse-version.png" width="100%"></img>
                 </div>
               <div style={{ margin: "12px 0" }}><strong>Reverse version (Dark)</strong></div>
               <div>When the logo is placed on a darker background, the reversed version of the wordmark can be used while still retaining the blue (sky) color of the symbol.</div>
-            </GoAContainer>
-            <GoAContainer>
+            </GoabContainer>
+            <GoabContainer>
                 <div style={{ width: "100%", textAlign: "center" }}>
                   <img src="/images/logo/white-version.png" width="100%"></img>
                 </div>
               <div style={{ margin: "12px 0" }}><strong>White version</strong></div>
               <div>This version can be used in cases where simplicity is needed. The chosen background color must be one of the official brand colors. </div>
-            </GoAContainer>
-            <GoAContainer>
+            </GoabContainer>
+            <GoabContainer>
                 <div style={{ textAlign: "center"}}>
                   <img src="/images/logo/black-version.png" width="100%"></img>
                 </div>
               <div style={{ margin: "12px 0" }}><strong>Black version</strong></div>
               <div>For cases where color usage is limited, such as lo-fi prototyping, the black version of the logo can be used.</div>
-            </GoAContainer>
-          </GoAGrid>
+            </GoabContainer>
+          </GoabGrid>
 
           <h2 id="alberta-service-logo">Alberta service logo</h2>
           <div style={{ textAlign: "center", padding:"var(--goa-space-l) 0"  }}>
@@ -64,8 +64,8 @@ export default function LogoPage() {
           <h2 id="variations">Variations</h2>
           <p>The Alberta logo includes a few variations to suit different design requirements and spacing constraints. Each version maintains our brand identity while adapting to its specific use case.</p>
           
-          <h3 id="circle">Circle</h3>
-          <p>The circular logo is used in place of our primary logo when space is limited, such as on mobile devices. This ensures that our products are branded and remain identifiable.</p>
+          <h3 id="circle">Circular Symbol</h3>
+          <p>The circular symbol is used in place of our primary logo when space is limited, such as on mobile devices. This ensures that our products are branded and remain identifiable.</p>
           
           <div style={{  width: "auto", textAlign: "left", padding:"var(--goa-space-l) 0" }}>
             <img src="/images/logo/circle.png" width="60px"></img>
