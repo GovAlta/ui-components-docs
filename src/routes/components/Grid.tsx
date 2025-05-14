@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { GoabContainer, GoabGrid, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
+import { GoABadge, GoAGrid, GoATab, GoATabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function GridPage() {
@@ -27,7 +27,7 @@ export default function GridPage() {
       value: "320px",
     },
   ]);
-  const oldComponentProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
     {
       name: "gap",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -54,31 +54,6 @@ export default function GridPage() {
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
   ];
-  const componentProperties: ComponentProperty[] = [
-    {
-      name: "gap",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Gap between child items",
-      defaultValue: "m",
-    },
-    {
-      name: "minChildWidth",
-      type: "string",
-      description: "Minimum width of the child elements",
-      required: true,
-    },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
-  ];
-
 
   function onSandboxChange(gridBindings: ComponentBinding[], props: Record<string, unknown>) {
     setGridBindings(gridBindings);
@@ -94,22 +69,19 @@ export default function GridPage() {
         relatedComponents={[
           { link: "/components/block", name: "Block" },
           { link: "/components/divider", name: "Divider" },
-          { link: "/patterns/layout", name: "Layout" },
+          { link: "/patterns", name: "Layout" },
           { link: "/components/spacer", name: "Spacer" },
         ]}
-        githubLink="Grid"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>
-              Playground
-            </h2>
+        <GoATabs>
+          <GoATab heading="Code examples">
             {/*Grid sandbox*/}
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={gridBindings} onChange={onSandboxChange} fullWidth>
-              <GoabGrid {...gridProps}>
+              <GoAGrid {...gridProps}>
                 <div
                   style={{
                     padding: "1rem",
@@ -155,26 +127,21 @@ export default function GridPage() {
                 >
                   5
                 </div>
-              </GoabGrid>
+              </GoAGrid>
             </Sandbox>
             {/*Grid component properties*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-          </GoabTab>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-          <GoabTab heading="Design">
-            <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
-              <GoabText size="body-m" mt="none" mb="none">
-                To use grid in design, set Figma's built-in{" "}
-                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
-                   target="_blank" rel="noreferrer">
-                  auto layout
-                </a>{" "}
-                to <i>wrap</i>. This will create a responsive grid pattern that can respond to different screen
-                sizes, similar to the Grid component in code.
-              </GoabText>
-            </GoabContainer>
-          </GoabTab>
-        </GoabTabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }
+          ></GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );

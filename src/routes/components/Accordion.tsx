@@ -1,9 +1,9 @@
 import {
-  GoabAccordion,
-  GoabAccordionProps,
-  GoabBadge,
-  GoabTab,
-  GoabTabs,
+  GoAAccordion,
+  GoAAccordionProps,
+  GoABadge,
+  GoATab,
+  GoATabs
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -13,15 +13,8 @@ import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
+import { GoAHeadingSize } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
-import {
-  LegacyMarginProperty,
-  LegacyTestIdProperties,
-  MarginProperty, TestIdProperty
-} from "@components/component-properties/common-properties.ts";
-import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 const componentName = "Accordion";
@@ -31,38 +24,35 @@ const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/tabs", name: "Tabs" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
 
-
-type ComponentPropsType = GoabAccordionProps;
+type ComponentPropsType = GoAAccordionProps;
 type CastingType = {
   heading: string;
-  headingSize: GoabAccordionHeadingSize;
+  headingSize: GoAHeadingSize;
   children: React.ReactNode;
   [key: string]: unknown;
 };
 
-export default function AccordionPage() {
-
+export default function AccordionPage() {  
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
-    heading: "Accordion",
+    heading: "Heading",
     headingSize: "medium",
     children: <></>,
   });
 
   const [accordionBindings, setAccordionBindings] = useState<ComponentBinding[]>([
     {
+      label: "Heading",
+      type: "string",
+      name: "heading",
+      value: "Accordion heading",
+    },
+    {
       label: "Heading Size",
       type: "radio",
       name: "headingSize",
       options: ["small", "medium"],
       value: "medium",
-    },
-    {
-      label: "Heading",
-      type: "string",
-      name: "heading",
-      value: "Accordion heading",
     },
     {
       label: "Secondary Text",
@@ -72,21 +62,21 @@ export default function AccordionPage() {
       value: "",
     },
     {
+      label: "Open",
+      type: "boolean",
+      name: "open", 
+      value: false
+    },
+    {
       label: "Max Width",
       type: "string",
       name: "maxWidth",
       requirement: "optional",
       value: "",
     },
-    {
-      label: "Open",
-      type: "boolean",
-      name: "open",
-      value: false,
-    }
   ]);
 
-  const oldComponentProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
     {
       name: "heading",
       type: "string",
@@ -150,6 +140,23 @@ export default function AccordionPage() {
       lang: "angular",
     },
     {
+      name: "testId",
+      type: "string",
+      lang: "react",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "testid",
+      type: "string",
+      lang: "angular",
+      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+    {
       name: "_change",
       lang: "angular",
       type: "CustomEvent",
@@ -160,59 +167,7 @@ export default function AccordionPage() {
       lang: "react",
       type: "(open: boolean) => void",
       description: "Callback function when accordion heading is clicked.",
-    },
-    ...LegacyTestIdProperties,
-    LegacyMarginProperty
-  ];
-
-  const componentProperties: ComponentProperty[] = [
-    {
-      name: "heading",
-      type: "string",
-      required: true,
-      description: "Sets the heading text.",
-    },
-    {
-      name: "secondaryText",
-      type: "string",
-      description: "Sets secondary text.",
-    },
-    {
-      name: "open",
-      type: "boolean",
-      defaultValue: "false",
-      description: "Sets the state of the accordion container open or closed.",
-    },
-    {
-      name: "headingSize",
-      type: "GoabAccordionHeadingSize (small | medium)",
-      defaultValue: "small",
-      description: "Sets the heading size of the accordion container heading.",
-    },
-    {
-      name: "headingContent",
-      type: "ReactNode",
-      lang: "react",
-      description: "Add components to the accordion container heading such as badges.",
-    },
-    {
-      name: "headingContent",
-      type: "TemplateRef<any>",
-      lang: "angular",
-      description: "Add components to the accordion container heading such as badges.",
-    },
-    {
-      name: "maxWidth",
-      type: "string",
-      description: "Sets the maximum width of the accordion.",
-    },
-    {
-      name: "onChange",
-      type: "(open: boolean) => void",
-      description: "Callback function when accordion heading is clicked.",
-    },
-    TestIdProperty,
-    MarginProperty,
+    }
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -222,48 +177,31 @@ export default function AccordionPage() {
 
   return (
     <div className="accordion-page">
-      <ComponentHeader
-        name={`${componentName}`}
-        category={category}
-        description={description}
-        relatedComponents={relatedComponents}
-        githubLink="Accordion"
-        figmaLink={FIGMA_LINK}
-      />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>
-              Playground
-            </h2>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
-              <GoabAccordion {...accordionProps}>
-                This is the content in an accordion item. This content can be anything that you want including rich
-                text, components, and more.
-              </GoabAccordion>
+              <GoAAccordion {...accordionProps}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation ullamco laboris nisi
+              </GoAAccordion>
             </Sandbox>
-            <ComponentProperties
-              properties={componentProperties}
-              oldProperties={oldComponentProperties}
-            />
-          </GoabTab>
-          <GoabTab
+            <ComponentProperties properties={componentProperties} />
+            <AccordionExamples />
+          </GoATab>
+
+          <GoATab
             heading={<>
-              Examples
-              <GoabBadge type="information" content="2" />
+              Design guidelines
+              <GoABadge type="information" content="In progress" />
             </>}
           >
-            <AccordionExamples />
-          </GoabTab>
-          <GoabTab heading="Design">
-            <DesignEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-          <GoabTab heading="Accessibility">
-            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-
-        </GoabTabs>
+            </GoATab>
+        </GoATabs>
       </ComponentContent>
     </div>
   );

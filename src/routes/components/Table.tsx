@@ -1,45 +1,37 @@
 import { useContext, useEffect, useState } from "react";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { ComponentBinding, LanguageContext, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
-  GoabBadge,
-  GoabButton,
-  GoabTab,
-  GoabTable,
-  GoabTableSortHeader,
-  GoabTabs,
+  GoABadge,
+  GoAButton,
+  GoAContainer,
+  GoATab,
+  GoATable,
+  GoATableSortHeader,
+  GoATabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoabTableProps } from "@abgov/react-components";
+import { GoATableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
-import { omit } from "lodash";
-import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 interface User {
   firstName: string;
   lastName: string;
   age: number;
 }
-
-type ComponentPropsType = Omit<GoabTableProps, "onSort"> & {
-  onSort?: (sortBy: string, sortDir: number) => void;
-};
-
+type ComponentPropsType = GoATableProps;
+type CastingType = {
+  width: string;
+  [key: string]: unknown;
+}
 export default function TablePage() {
-  const { version } = useContext(LanguageVersionContext);
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
-    width: "100%",
+    width: "100%"
   });
-  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=3785-18038";
   const [tableBindings, setTableBindings] = useState<ComponentBinding[]>([
     {
       label: "Width",
@@ -57,7 +49,7 @@ export default function TablePage() {
     },
   ]);
 
-  const oldComponentProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
     {
       name: "width",
       type: "string",
@@ -88,41 +80,13 @@ export default function TablePage() {
     },
   ];
 
-  const componentProperties: ComponentProperty[] = [
-    {
-      name: "width",
-      type: "string",
-      description: "Width of the table. By default it will fit the enclosed content.",
-    },
-    {
-      name: "variant",
-      type: "GoabTableVariant (normal | relaxed)",
-      description: "A relaxed variant of the table with more vertical padding for the cells",
-      defaultValue: "normal",
-    },
-    {
-      name: "onSort",
-      type: "(event: GoabTableOnSortDetail) => void",
-      description: "Sort event fired when a GoATableSortHeader component is used.",
-    },
-    {
-      name: "mt,mr,mb,ml",
-      type: "Spacing (none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl)",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },
-    {
-      name: "testId",
-      type: "string",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },
-  ];
-
   function onSandboxChange(tableBindings: ComponentBinding[], props: Record<string, unknown>) {
     setTableBindings(tableBindings);
-    setTableProps(props as ComponentPropsType);
+    setTableProps(props as CastingType);
   }
 
   // For table demo -- needs to do sort functionality
+  const language = useContext(LanguageContext);
   const [users, setUsers] = useState<User[]>([]);
   useEffect(() => {
     const _users: User[] = [
@@ -150,10 +114,10 @@ export default function TablePage() {
     setUsers(_users);
   }, []);
 
-  function sortData(event: GoabTableOnSortDetail) {
+  function sortData(sortBy: string, sortDir: number) {
     const _users = [...users];
     _users.sort((a: any, b: any) => {
-      return (a[event.sortBy] > b[event.sortBy] ? 1 : -1) * event.sortDir;
+      return (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir;
     });
     setUsers(_users);
   }
@@ -167,26 +131,17 @@ export default function TablePage() {
         relatedComponents={[
           { link: "/components/button", name: "Button" },
           { link: "/components/dropdown", name: "Dropdown" },
-          { link: "/components/filter-chip", name: "Filter chip" },
           { link: "/components/pagination", name: "Pagination" },
           { link: "/components/tabs", name: "Tabs" },
         ]}
-        githubLink="Table"
-        figmaLink={FIGMA_LINK}
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+
+        <GoATabs>
+          <GoATab heading="Code examples">
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
-              <GoabTable
-                {...omit(tableProps, "onSort")}
-                onSort={(detail: GoabTableOnSortDetail) => {
-                  if (tableProps.onSort) {
-                    tableProps.onSort(detail.sortBy, detail.sortDir);
-                  }
-                }}>
+              <GoATable {...tableProps}>
                 <thead>
                   <tr>
                     <th>Status</th>
@@ -198,78 +153,67 @@ export default function TablePage() {
                 <tbody>
                   <tr>
                     <td>
-                      <GoabBadge type="information" content="Badge text" />
+                      <GoABadge type="information" content="Badge text" />
                     </td>
                     <td>Lorem ipsum</td>
                     <td>1234567890</td>
                     <td>
-                      <GoabButton type="tertiary">Action</GoabButton>
+                      <GoAButton type="tertiary">Action</GoAButton>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <GoabBadge type="information" content="Badge text" />
+                      <GoABadge type="information" content="Badge text" />
                     </td>
                     <td>Lorem ipsum</td>
                     <td>1234567890</td>
                     <td>
-                      <GoabButton type="tertiary">Action</GoabButton>
+                      <GoAButton type="tertiary">Action</GoAButton>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <GoabBadge type="information" content="Badge text" />
+                      <GoABadge type="information" content="Badge text" />
                     </td>
                     <td>Lorem ipsum</td>
                     <td>1234567890</td>
                     <td>
-                      <GoabButton type="tertiary">Action</GoabButton>
+                      <GoAButton type="tertiary">Action</GoAButton>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <GoabBadge type="information" content="Badge text" />
+                      <GoABadge type="information" content="Badge text" />
                     </td>
                     <td>Lorem ipsum</td>
                     <td>1234567890</td>
                     <td>
-                      <GoabButton type="tertiary">Action</GoabButton>
+                      <GoAButton type="tertiary">Action</GoAButton>
                     </td>
                   </tr>
                 </tbody>
-              </GoabTable>
+              </GoATable>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-          </GoabTab>
-            <GoabTab
-              heading={
-                <>
-                  Examples
-                  <GoabBadge type="information" content="2" />
-                </>
-              }
-            >
+            <ComponentProperties properties={componentProperties} />
+            <h2 id="component-examples" className="hidden" aria-hidden="true">Examples</h2>
 
-
-              <SandboxHeader
-                exampleTitle="Sort data in a table"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97462&t=X0IQW5flDDaj8Vyg-4">
-              </SandboxHeader>
-              <Sandbox fullWidth>
-                <GoabTable onSort={sortData} width="100%">
+            <h3 id="component-example-sortable-columns">Sortable columns</h3>
+            <GoAContainer mt="m" mb="none">
+              <div style={{ padding: "40px" }}>
+                <GoATable onSort={sortData} width="100%">
                   <thead>
                     <tr>
                       <th>
-                        <GoabTableSortHeader name="firstName">First name</GoabTableSortHeader>
+                        <GoATableSortHeader name="firstName">First name</GoATableSortHeader>
                       </th>
                       <th>
-                        <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
+                        <GoATableSortHeader name="lastName">Last name</GoATableSortHeader>
                       </th>
                       <th>
-                        <GoabTableSortHeader name="age" direction="asc">
+                        <GoATableSortHeader name="age" direction="asc">
                           Age
-                        </GoabTableSortHeader>
+                        </GoATableSortHeader>
                       </th>
                     </tr>
                   </thead>
@@ -282,11 +226,10 @@ export default function TablePage() {
                       </tr>
                     ))}
                   </tbody>
-                </GoabTable>
-
-              </Sandbox>
-            {/*React code*/}
-            {version === "old" && (
+                </GoATable>
+              </div>
+            </GoAContainer>
+            {language === "react" && (
               <CodeSnippet
                 lang="typescript"
                 tags="react"
@@ -334,7 +277,7 @@ export default function TablePage() {
               }
               
               return (
-                <GoATable onSort={sortData} width="100%">
+                <GoATable onSort={sortData}>
                   <thead>
                     <tr>
                       <th>
@@ -363,85 +306,7 @@ export default function TablePage() {
               />
             )}
 
-            {version === "new" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-              interface User {
-                firstName: string;
-                lastName: string;
-                age: number;
-              }
-              const [users, setUsers] = useState<User[]>([]);
-              
-              useEffect(() => {
-                const _users: User[] = [
-                  {
-                    firstName: "Christian",
-                    lastName: "Batz",
-                    age: 18
-                  },
-                  {
-                    firstName: "Brain",
-                    lastName: "Wisozk",
-                    age: 19
-                  },
-                  {
-                    firstName: "Neha",
-                    lastName: "Jones",
-                    age: 23
-                  },
-                  {
-                    firstName: "Tristin",
-                    lastName: "Buckridge",
-                    age: 31
-                  }
-                ];
-                setUsers(_users);
-              }, []);
-              
-              function sortData(event: GoabTableOnSortDetail) {
-                const _users = [...users];
-                _users.sort((a: any, b: any) => {
-                  return (a[event.sortBy] > b[event.sortBy] ? 1 : -1) * event.sortDir;
-                });
-                setUsers(_users);
-              }
-              
-              return (
-                <GoabTable onSort={sortData} width="100%">
-                  <thead>
-                    <tr>
-                      <th>
-                        <GoabTableSortHeader name="firstName">First name</GoabTableSortHeader>
-                      </th>
-                      <th>
-                        <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
-                      </th>
-                      <th>
-                        <GoabTableSortHeader name="age" direction="asc">Age</GoabTableSortHeader>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  {users.map(user =>
-                    <tr key={user.firstName}>
-                     <td>{user.firstName}</td>
-                     <td>{user.lastName}</td>
-                     <td>{user.age}</td>
-                    </tr>
-                  )}
-                  </tbody>
-                </GoabTable>
-              )
-           `}
-              />
-            )}
-
-            {/*Angular code*/}
-            {version === "old" && (
+            {language === "angular" && (
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -492,7 +357,7 @@ export default function TablePage() {
               />
             )}
 
-            {version === "old" && (
+            {language === "angular" && (
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -518,89 +383,9 @@ export default function TablePage() {
               />
             )}
 
-            {version === "new" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-              interface User {
-                firstName: string;
-                lastName: string;
-                age: number;
-              }
-              
-              export class TableComponent() {
-                users: User[] = [];
-                
-                constructor() {
-                  this.users = [
-                    {
-                      firstName: "Christian",
-                      lastName: "Batz",
-                      age: 18
-                    },
-                    {
-                      firstName: "Brain",
-                      lastName: "Wisozk",
-                      age: 19
-                    },
-                    {
-                      firstName: "Neha",
-                      lastName: "Jones",
-                      age: 23
-                    },
-                    {
-                      firstName: "Tristin",
-                      lastName: "Buckridge",
-                      age: 31
-                    }
-                  ];                
-                }
-                
-                handleSort(event: GoabTableOnSortDetail) {
-                  const { sortBy, sortDir } = event;
-                  this.users.sort(
-                    (a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir
-                  );
-                }
-              }
-              `}
-              />
-            )}
-
-            {version === "new" && (
-              <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <goab-table width="100%" mb="xl" (onSort)="handleSort($event)">
-                  <thead>
-                    <tr>
-                      <th><goab-table-sort-header name="firstName">First name and really long header</goab-table-sort-header></th>
-                      <th><goab-table-sort-header name="lastName">Last name</goab-table-sort-header></th>
-                      <th><goab-table-sort-header name="age" direction="asc">Age</goab-table-sort-header></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let user of users; index as i">
-                      <td>{{ user.firstName }}</td>
-                      <td>{{ user.lastName }}</td>
-                      <td>{{ user.age }}</td>
-                    </tr>
-                  </tbody>
-                </goab-table>
-              `}
-              />
-            )}
-
-              <SandboxHeader
-                exampleTitle="Display numbers in a table so they can be scanned easily"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97673&t=X0IQW5flDDaj8Vyg-4">
-              </SandboxHeader>
+            <h3 id="component-example-number-column">Number column</h3>
             <Sandbox fullWidth>
-              <GoabTable width="100%">
+              <GoATable width="100%">
                 <thead>
                   <tr>
                     <th>Col 1</th>
@@ -620,23 +405,18 @@ export default function TablePage() {
                     <td className="goa-table-number-column">4567</td>
                   </tr>
                 </tbody>
-              </GoabTable>
+              </GoATable>
             </Sandbox>
+          </GoATab>
 
-              <SandboxHeader
-                exampleTitle="Sort data in a table">
-              </SandboxHeader>
-            <TableWithGlobalFiltersExample />
-          </GoabTab>
-
-          <GoabTab heading="Design">
-            <DesignEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-          <GoabTab heading="Accessibility">
-            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-
-        </GoabTabs>
+          <GoATab
+            heading={
+              <>
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
+              </>
+            }></GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );

@@ -17,24 +17,13 @@ export function TOC(props: TOCProps) {
   const [activeByScroll, setActiveByScroll] = useState<TOCItem | null>(null);
   const [previousUrl, setPreviousUrl] = useState<string>("");
 
-  const getAnchorIdFromHash = (hash: string) => {
-    if (hash.includes("#tab-")) {
-      const parts = hash.split("#");
-      if (parts.length > 2) {
-        return parts[2];
-      }
-    }
-    return hash.replace("#", "");
-  }
   useEffect(() => {
     // set first link as current by default if no hash exists
     setTimeout(() => {
-      const hash = document.location.hash;
-      if (hash === "") {
+      if (document.location.hash === "") {
         setActiveByScroll(queryItems()?.[0]);
       } else {
-        const idPart = getAnchorIdFromHash(hash);
-        const el = document.getElementById(idPart);
+        const el = document.querySelector(document.location.hash);
         el?.scrollIntoView();
       }
     }, 100)
@@ -111,30 +100,8 @@ export function TOC(props: TOCProps) {
   function isActive(id: string, index: number): boolean {
     if (activeByScroll == null && index === 0) return true;
     if (activeByScroll?.id === id) return true;
-    const currentHash = location.hash;
-    const idPart = getAnchorIdFromHash(currentHash);
-    return !activeByScroll && idPart === id;
-  }
-
-  function getAnchorLink(id: string): string {
-    const currentHash = window.location.hash;
-    
-    if (currentHash.includes('#tab-')) {
-      // If URL contains #tab-, append our ID after it
-      return `${currentHash}#${id}`;
-    }
-    
-    return `#${id}`;
-  }
-
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({behavior: "smooth"});
-      const newHash = getAnchorLink(id);
-      window.history.replaceState(null, "", newHash);
-    }
+    if (!activeByScroll && location.hash === "#"+id) return true;
+    return false;
   }
 
   return (
@@ -146,8 +113,7 @@ export function TOC(props: TOCProps) {
               ${css[`toc-item-${element.toLowerCase()}`]}
               ${isActive(id, index) ? css["active"] : ""}
             `}
-            href={getAnchorLink(id)}
-            onClick={(e) => handleClick(e, id)}
+            href={`#${id}`}
           >
             {title}
           </a>

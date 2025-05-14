@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoAContainer, GoAGrid, GoATable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Spacing.css";
 import SPACING_TOKENS from "./spacing.json";
@@ -21,14 +21,14 @@ export default function SpacingPage() {
 
   const renderDesktop = () => {
     return (
-      <GoabTable variant="normal" width="100%">
+      <GoATable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
-            <th>Design token</th>
+            <th>Token name</th>
             <th>rem</th>
             <th>px</th>
-            <th>Figma</th>
+            <th>Figma variable</th>
           </tr>
         </thead>
         <tbody>
@@ -55,16 +55,16 @@ export default function SpacingPage() {
             </tr>
           ))}
         </tbody>
-      </GoabTable>
+      </GoATable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoabGrid minChildWidth="22rem" gap="l">
+      <GoAGrid minChildWidth="22rem" gap="xl">
         {getTokenGroups(tokens).map(group =>
           group.map((token: Token, idx: number) => (
-            <GoabContainer key={idx}>
+            <GoAContainer key={idx}>
               <div className="represent">
                 <div className="grey-circle"></div>
                 <div
@@ -75,16 +75,16 @@ export default function SpacingPage() {
                 ></div>
                 <div className="grey-circle"></div>
               </div>
-              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
+              <TokenSnippet code={token.tokenName} />
               <dl>
-                <dt>REM</dt> <dd className="dd-style">{token.rem}</dd>
-                <dt>PX</dt> <dd className="dd-style">{token.px}</dd>
-                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
+                <dt>REM</dt> <dd>{token.rem}</dd>
+                <dt>PX</dt> <dd>{token.px}</dd>
+                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
               </dl>
-            </GoabContainer>
+            </GoAContainer>
           ))
         )}
-      </GoabGrid>
+      </GoAGrid>
     );
   };
 

@@ -21,9 +21,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
     "paths": {
-      "@abgov/ui-components-common": ["node_modules/@abgov/ui-components-common"],
       "@": [
         "./src/*"
       ],

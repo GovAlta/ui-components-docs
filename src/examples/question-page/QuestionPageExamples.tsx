@@ -1,19 +1,16 @@
 import { Sandbox } from "@components/sandbox";
+import {
+  GoAButton,
+  GoADetails, GoADropdown, GoADropdownItem,
+  GoAFormItem, GoAInput,
+  GoARadioGroup,
+  GoARadioItem
+} from "@abgov/react-components";
 import "./question-page-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import {
-  GoabButton,
-  GoabDetails, GoabDropdown, GoabDropdownItem,
-  GoabFormItem,
-  GoabInput,
-  GoabRadioGroup,
-  GoabRadioItem
-} from "@abgov/react-components";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { useContext } from "react";
 
 export default function QuestionPageExamples() {
-  const {version} = useContext(LanguageVersionContext);
+
   return (
     <div className="question-page-example">
       <div className="component-example-header">
@@ -54,21 +51,21 @@ export default function QuestionPageExamples() {
         <a href="#" className="back-link">
           Back
         </a>
-        <GoabFormItem
+        <GoAFormItem
           mt="2xl"
           label="Are you currently in school?"
           labelSize="large"
           helpText="School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education.">
-          <GoabRadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
-            <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
-            <GoabRadioItem value="no" label="No">
+          <GoARadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
+            <GoARadioItem value="yes" label="Yes"></GoARadioItem>
+            <GoARadioItem value="no" label="No">
               No
-            </GoabRadioItem>
-          </GoabRadioGroup>
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+            </GoARadioItem>
+          </GoARadioGroup>
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -129,15 +126,15 @@ export default function QuestionPageExamples() {
           categorized under 'school'.
         </p>
         <p>Contact your provider if you’re concerned about your school status.</p>
-        <GoabFormItem label="Are you currently in school?" mt="xl">
-          <GoabRadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
-            <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
-            <GoabRadioItem value="no" label="No"></GoabRadioItem>
-          </GoabRadioGroup>
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+        <GoAFormItem label="Are you currently in school?" mt="xl">
+          <GoARadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
+            <GoARadioItem value="yes" label="Yes"></GoARadioItem>
+            <GoARadioItem value="no" label="No"></GoARadioItem>
+          </GoARadioGroup>
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -179,26 +176,26 @@ export default function QuestionPageExamples() {
         <a href="#" className="back-link">
           Back
         </a>
-        <GoabFormItem
+        <GoAFormItem
           mt="2xl"
           label="Do you pay for child care?"
           labelSize="large"
           helpText="Examples of child care are daycares, day homes and baby-sisters.">
-          <GoabRadioGroup
+          <GoARadioGroup
             name="child-care"
             ariaLabel="Do you pay for child care?"
             onChange={() => {}}>
-            <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
-            <GoabRadioItem value="no" label="No"></GoabRadioItem>
-          </GoabRadioGroup>
-        </GoabFormItem>
+            <GoARadioItem value="yes" label="Yes"></GoARadioItem>
+            <GoARadioItem value="no" label="No"></GoARadioItem>
+          </GoARadioGroup>
+        </GoAFormItem>
 
-        <GoabDetails heading="Why are we asking this question?" mt="xl">
+        <GoADetails heading="Why are we asking this question?" mt="xl">
           <p>We ask this question to determine if you are eligible for child care benefits.</p>
-        </GoabDetails>
-        <GoabButton type="submit" mt="2xl">
+        </GoADetails>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -249,18 +246,18 @@ export default function QuestionPageExamples() {
           Back
         </a>
         <h3 className="section-title">Personal information</h3>
-        <GoabFormItem mt="xs" label="Do you currently live in Canada?" labelSize="large">
-          <GoabRadioGroup
+        <GoAFormItem mt="xs" label="Do you currently live in Canada?" labelSize="large">
+          <GoARadioGroup
             name="canada"
             ariaLabel="Do you currently live in Canada?"
             onChange={() => {}}>
-            <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
-            <GoabRadioItem value="no" label="No"></GoabRadioItem>
-          </GoabRadioGroup>
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+            <GoARadioItem value="yes" label="Yes"></GoARadioItem>
+            <GoARadioItem value="no" label="No"></GoARadioItem>
+          </GoARadioGroup>
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -310,18 +307,18 @@ export default function QuestionPageExamples() {
           Back
         </a>
         <h3 className="section-title">Question 3 of 9</h3>
-        <GoabFormItem mt="xs" label="Do you currently live in Canada?" labelSize="large">
-          <GoabRadioGroup
+        <GoAFormItem mt="xs" label="Do you currently live in Canada?" labelSize="large">
+          <GoARadioGroup
             name="canada"
             ariaLabel="Do you currently live in Canada?"
             onChange={() => {}}>
-            <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
-            <GoabRadioItem value="no" label="No"></GoabRadioItem>
-          </GoabRadioGroup>
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+            <GoARadioItem value="yes" label="Yes"></GoARadioItem>
+            <GoARadioItem value="no" label="No"></GoARadioItem>
+          </GoARadioGroup>
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -376,53 +373,53 @@ export default function QuestionPageExamples() {
         </a>
         <h2 className="section-title">Your address</h2>
         <h3>This is the home address of the person applying</h3>
-        <GoabFormItem label="Address line 1" mt="l">
-          <GoabInput
+        <GoAFormItem label="Address line 1" mt="l">
+          <GoAInput
             onChange={() => {}}
             name="address-line-1"
             ariaLabel="Address line 1"
             width="100%"
           />
-        </GoabFormItem>
-        <GoabFormItem label="Address line 2" mt="xl">
-          <GoabInput
+        </GoAFormItem>
+        <GoAFormItem label="Address line 2" mt="xl">
+          <GoAInput
             onChange={() => {}}
             name="address-line-2"
             ariaLabel="Address line 2"
             width="100%"
           />
-        </GoabFormItem>
-        <GoabFormItem label="Town or city" mt="xl">
-          <GoabInput
+        </GoAFormItem>
+        <GoAFormItem label="Town or city" mt="xl">
+          <GoAInput
             onChange={() => {}}
             name="town-city"
             ariaLabel="Town or city name"
             width={"460px"}
           />
-        </GoabFormItem>
-        <GoabFormItem label="Province or territory" mt="xl" id="provinceLabel">
-          <GoabDropdown onChange={() => {}} name="province-territory" ariaLabelledBy="provinceLabel">
-            <GoabDropdownItem value="AB" label="Alberta" />
-            <GoabDropdownItem value="BC" label="British Columbia" />
-            <GoabDropdownItem value="MB" label="Manitoba" />
-            <GoabDropdownItem value="NB" label="New Brunswick" />
-            <GoabDropdownItem value="NL" label="Newfoundland and Labrador" />
-            <GoabDropdownItem value="NS" label="Nova Scotia" />
-            <GoabDropdownItem value="ON" label="Ontario" />
-            <GoabDropdownItem value="PE" label="Prince Edward Island" />
-            <GoabDropdownItem value="QC" label="Quebec" />
-            <GoabDropdownItem value="SK" label="Saskatchewan" />
-            <GoabDropdownItem value="NT" label="Northwest Territories" />
-            <GoabDropdownItem value="NU" label="Nunavut" />
-            <GoabDropdownItem value="YT" label="Yukon" />
-          </GoabDropdown>
-        </GoabFormItem>
-        <GoabFormItem label="Postal code" mt="xl">
-          <GoabInput onChange={() => {}} name="postal-code" width={"105px"} />
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+        </GoAFormItem>
+        <GoAFormItem label="Province or territory" mt="xl" id="provinceLabel">
+          <GoADropdown onChange={() => {}} name="province-territory" ariaLabelledBy="provinceLabel">
+            <GoADropdownItem value="AB" label="Alberta" />
+            <GoADropdownItem value="BC" label="British Columbia" />
+            <GoADropdownItem value="MB" label="Manitoba" />
+            <GoADropdownItem value="NB" label="New Brunswick" />
+            <GoADropdownItem value="NL" label="Newfoundland and Labrador" />
+            <GoADropdownItem value="NS" label="Nova Scotia" />
+            <GoADropdownItem value="ON" label="Ontario" />
+            <GoADropdownItem value="PE" label="Prince Edward Island" />
+            <GoADropdownItem value="QC" label="Quebec" />
+            <GoADropdownItem value="SK" label="Saskatchewan" />
+            <GoADropdownItem value="NT" label="Northwest Territories" />
+            <GoADropdownItem value="NU" label="Nunavut" />
+            <GoADropdownItem value="YT" label="Yukon" />
+          </GoADropdown>
+        </GoAFormItem>
+        <GoAFormItem label="Postal code" mt="xl">
+          <GoAInput onChange={() => {}} name="postal-code" width={"105px"} />
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
 
       <div className="component-example-header">
@@ -474,8 +471,7 @@ export default function QuestionPageExamples() {
         />
 
         {/*Angular Code Snippet - need for leadingContent slot*/}
-
-        {version === "old" && <CodeSnippet
+        <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -504,41 +500,10 @@ export default function QuestionPageExamples() {
               Save and continue
             </goa-button>
           `}
-        />}
-
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
-            <a href="#" class="back-link">
-              Back
-            </a>
-            <h3 class="section-title text-secondary">
-              Step 1 of 5
-            </h3>
-            <h2>
-              Personal information
-            </h2>
-            <goab-form-item label="What is your name?" mt="xl">
-              <goab-input (onChange)="onChange($event)" name="name" ariaLabel="what is your name?" width="50ch"></goab-input>
-            </goab-form-item>
-            <goab-form-item label="What is your phone number?" mt="xl">
-              <goab-input (onChange)="onChange($event)" name="phone-number" ariaLabel="what is your phone number?">
-                <div slot="leadingContent">+1</div>
-              </goab-input>
-            </goab-form-item>
-            <goab-form-item label="What is your home postal code?" mt="xl">
-              <goab-input (onChange)="onChange($event)" name="postal-code" width="14ch" ariaLabel="what is your home postal code"></goab-input>
-            </goab-form-item>
-            <goab-button type="submit" mt="2xl">
-              Save and continue
-            </goab-button>
-          `}
-        />}
+        />
 
         {/*React Code Snippet - need for leadingContent slot*/}
-        {version === "old" && <CodeSnippet
+        <CodeSnippet
           lang="typescript"
           tags="react"
           allowCopy={true}
@@ -570,41 +535,7 @@ export default function QuestionPageExamples() {
               Save and continue
             </GoAButton>
           `}
-        />}
-
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-            <a href="#" className="back-link">
-              Back
-            </a>
-            <h3 className="section-title text-secondary">Step 1 of 5</h3>
-            <h2>Personal information</h2>
-            <GoabFormItem label="What is your name?" mt="xl">
-              <GoabInput onChange={() => {}} name="name" ariaLabel="what is your name?" width="50ch" />
-            </GoabFormItem>
-            <GoabFormItem label="What is your phone number?" mt="xl">
-              <GoabInput
-                onChange={() => {}}
-                name="phone-number"
-                ariaLabel="what is your phone number?"
-                leadingContent="+1"
-              />
-            </GoabFormItem>
-            <GoabFormItem label="What is your home postal code?" mt="xl">
-              <GoabInput
-              onChange={() => {}}
-              name="postal-code"
-              width="14ch"
-              ariaLabel="what is your home postal code"></GoabInput>
-            </GoabFormItem>
-            <GoabButton type="submit" mt="2xl">
-              Save and continue
-            </GoabButton>
-          `}
-        />}
+        />
 
         <a href="#" className="back-link">
           Back
@@ -612,27 +543,27 @@ export default function QuestionPageExamples() {
         <h3 className="section-title text-secondary">Step 1 of 5</h3>
         <h2>Personal information</h2>
 
-        <GoabFormItem label="What is your name?" mt="xl">
-          <GoabInput onChange={() => {}} name="name" ariaLabel="what is your name?" width="50ch" />
-        </GoabFormItem>
-        <GoabFormItem label="What is your phone number?" mt="xl">
-          <GoabInput
+        <GoAFormItem label="What is your name?" mt="xl">
+          <GoAInput onChange={() => {}} name="name" ariaLabel="what is your name?" width="50ch" />
+        </GoAFormItem>
+        <GoAFormItem label="What is your phone number?" mt="xl">
+          <GoAInput
             onChange={() => {}}
             name="phone-number"
             ariaLabel="what is your phone number?"
             leadingContent="+1"
           />
-        </GoabFormItem>
-        <GoabFormItem label="What is your home postal code?" mt="xl">
-          <GoabInput
+        </GoAFormItem>
+        <GoAFormItem label="What is your home postal code?" mt="xl">
+          <GoAInput
             onChange={() => {}}
             name="postal-code"
             width="14ch"
-            ariaLabel="what is your home postal code"></GoabInput>
-        </GoabFormItem>
-        <GoabButton type="submit" mt="2xl">
+            ariaLabel="what is your home postal code"></GoAInput>
+        </GoAFormItem>
+        <GoAButton type="submit" mt="2xl">
           Save and continue
-        </GoabButton>
+        </GoAButton>
       </Sandbox>
     </div>
   );

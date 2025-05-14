@@ -1,15 +1,18 @@
+import {
+  GoAAppFooter,
+  GoAAppHeader,
+  GoABadge,
+  GoAGrid,
+  GoAMicrositeHeader,
+  GoAOneColumnLayout,
+  GoAPageBlock,
+  GoASkeleton,
+  GoATab,
+  GoATabs,
+} from "@abgov/react-components";
 import {Sandbox} from "@components/sandbox";
 import Browser from "@components/browser/Browser";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import {
-  GoabAppFooter,
-  GoabAppHeader, GoabBadge, GoabGrid,
-  GoabMicrositeHeader,
-  GoabOneColumnLayout,
-  GoabPageBlock, GoabSkeleton,
-  GoabTab,
-  GoabTabs
-} from "@abgov/react-components";
 
 export default function LayoutPage() {
   return (
@@ -18,48 +21,48 @@ export default function LayoutPage() {
       <h3>
         A structural template that supports consistency across applications by defining visual grids, spacing, and sections.
       </h3>
-      <GoabTabs initialTab={1}>
-        <GoabTab heading="Code examples">
+      <GoATabs>
+        <GoATab heading="Code examples">
           <h3>Basic page layout</h3>
           <Sandbox fullWidth allow={["Browser"]}>
             <Browser ignore>
-            <GoabOneColumnLayout>
+            <GoAOneColumnLayout>
               <section slot="header">
-                <GoabMicrositeHeader type="alpha" version="UAT" />
-                <GoabAppHeader url="/" heading="Design System">
+                <GoAMicrositeHeader type="alpha" version="UAT" />
+                <GoAAppHeader url="/" heading="Design System">
                   <a href="/login">Sign in</a>
-                </GoabAppHeader>
+                </GoAAppHeader>
               </section>
-              <GoabPageBlock width="704px">
+              <GoAPageBlock width="704px">
                 <p>
-                  <GoabSkeleton type="header" size={'4'} />
-                  <GoabSkeleton type="text" size={'1'} />
+                  <GoASkeleton type="header" size={4} />
+                  <GoASkeleton type="text" size={1} />
                 </p>
                 <p>
-                  <GoabSkeleton type="header" size={'4'} />
-                  <GoabSkeleton type="text" size={'1'} />
+                  <GoASkeleton type="header" size={4} />
+                  <GoASkeleton type="text" size={1} />
                 </p>
-                <GoabGrid minChildWidth="30ch">
-                  <GoabSkeleton type="card" size={'2'} />
-                  <GoabSkeleton type="card" size={'2'} />
-                </GoabGrid>
-              </GoabPageBlock>
+                <GoAGrid minChildWidth="30ch">
+                  <GoASkeleton type="card" size={2} />
+                  <GoASkeleton type="card" size={2} />
+                </GoAGrid>
+              </GoAPageBlock>
               <section slot="footer">
-                <GoabAppFooter />
+                <GoAAppFooter />
               </section>
-            </GoabOneColumnLayout>
+            </GoAOneColumnLayout>
             </Browser>
           </Sandbox>
-        </GoabTab>
+        </GoATab>
 
-        <GoabTab
+        <GoATab
           heading={
             <>
               Design guidelines
-              <GoabBadge type="information" content="In progress" />
+              <GoABadge type="information" content="In progress" />
             </>
-          }></GoabTab>
-      </GoabTabs>
+          }></GoATab>
+      </GoATabs>
     </ComponentContent>
   );
 }

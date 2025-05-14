@@ -1,6 +1,6 @@
 import {
-  GoabTab,
-  GoabTabs,
+  GoATab,
+  GoATabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { StartPageExamples } from "@examples/start-page/StartPageExamples";
@@ -17,12 +17,12 @@ export default function StartPage() {
       <ComponentContent
         contentClassName="start-page"
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code examples">
+        <GoATabs>
+          <GoATab heading="Code examples">
             <StartPageExamples />
-          </GoabTab>
+          </GoATab>
 
-          <GoabTab heading="Design guidelines">
+          <GoATab heading="Design guidelines">
             <figure className={css.imageContainer}>
               <h2 id="overview" className="hidden">
                 Overview
@@ -116,8 +116,8 @@ export default function StartPage() {
             <p>
               Below the call to action, include any additional information as applicable such as customer support, frequently asked questions, or related links.
             </p>
-          </GoabTab>
-        </GoabTabs>
+          </GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );

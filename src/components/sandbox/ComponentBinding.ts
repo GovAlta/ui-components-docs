@@ -31,8 +31,6 @@ export interface BooleanBinding extends BaseBinding {
 export interface NumberBinding extends BaseBinding {
   type: "number";
   value?: number;
-  step?: number;
-  width?: string;
 }
 
 export interface StringBinding extends BaseBinding {
@@ -71,5 +69,5 @@ export interface RadioBinding extends BaseBinding {
 
 export interface DateBinding extends BaseBinding {
   type: "date",
-  value?: Date|string;
+  value?: Date;
 }

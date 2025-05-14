@@ -1,4 +1,4 @@
-import { GoabCallout } from "@abgov/react-components";
+import { GoACallout } from "@abgov/react-components";
 import "./SupportInfo.css";
 
 export const SupportInfo = (props: { hidden?: boolean }) => {
@@ -7,7 +7,7 @@ export const SupportInfo = (props: { hidden?: boolean }) => {
   }
   return (
     <div className="support-info">
-      <GoabCallout
+      <GoACallout
         type="information"
         heading="Need help building a government service?"
       >
@@ -17,7 +17,7 @@ export const SupportInfo = (props: { hidden?: boolean }) => {
         <a href="https://outlook.office365.com/book/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/" target="_blank">
           Book time in drop in hours
         </a>{" "}
-      </GoabCallout>
+      </GoACallout>
     </div>
   );
 };

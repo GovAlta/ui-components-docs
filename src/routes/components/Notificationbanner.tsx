@@ -1,9 +1,10 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
-  GoabBadge,
-  GoabNotification,
-  GoabTab,
-  GoabTabs,
+  GoABadge,
+  GoANotification,
+  GoATab,
+  GoATabs,
+  NotificationType,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -12,14 +13,9 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabNotificationType } from "@abgov/ui-components-common";
-import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { NotificationExamples } from "@examples/notification/NotificationExamples.tsx";
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-12949";
 const componentName = "Notification Banner";
 const description = "Display important page level information or notifications.";
 const category = Category.FEEDBACK_AND_ALERTS;
@@ -27,7 +23,7 @@ const relatedComponents = [
   { link: "/components/callout", name: "Callout" },
 ];
 type ComponentPropsType = {
-  type: GoabNotificationType;
+  type: NotificationType;
   content?: string;
   [key: string]: unknown;
 };
@@ -60,7 +56,7 @@ export default function NotificationBannerPage() {
     },
   ]);
 
-  const oldComponentProperties: ComponentProperty[] = [
+  const componentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "success | important | information | emergency",
@@ -105,30 +101,6 @@ export default function NotificationBannerPage() {
       lang: "react",
     },
   ];
-  const componentProperties: ComponentProperty[] = [
-    {
-      name: "type",
-      type: "GoabNotificationType(success | important | information | emergency)",
-      description: "Define the context and colour of the badge",
-      defaultValue: "information"
-    },
-    {
-      name: "maxContentWidth",
-      type: "string",
-      description: "Maximum width of the content area",
-    },
-    {
-      name: "ariaLive",
-      type: "GoabAriaLiveType (polite | assertive | off)",
-      description: "Indicates how assistive technology should handle updates to the live region",
-      defaultValue: "polite",
-    },
-    {
-      name: "onDismiss",
-      type: "() => void",
-      description: "Dispatched when notification banner is closed.",
-    },
-  ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
@@ -137,45 +109,28 @@ export default function NotificationBannerPage() {
 
   return (
     <>
-      <ComponentHeader
-        name={componentName}
-        category={category}
-        description={description}
-        relatedComponents={relatedComponents}
-        figmaLink={FIGMA_LINK}
-        githubLink="Notification Banner"
-      />
+      <ComponentHeader name={componentName} category={category} description={description} relatedComponents={relatedComponents} />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
 
-        <GoabTabs initialTab={1}>
-          <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+        <GoATabs>
+          <GoATab heading="Code examples">
+            <h2 id="component" style={{display: "none"}}>Component</h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
-              <GoabNotification {...componentProps}>Notification banner message</GoabNotification>
+              <GoANotification {...componentProps}>Notification banner message</GoANotification>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
-          </GoabTab>
+            <ComponentProperties properties={componentProperties} />
+          </GoATab>
 
-          <GoabTab
+          <GoATab
             heading={
               <>
-                Examples
-                <GoabBadge type="information" content="1" />
+                Design guidelines
+                <GoABadge type="information" content="In progress" />
               </>
             }
-          >
-          <NotificationExamples />
-          </GoabTab>
-
-          <GoabTab heading="Design">
-            <DesignEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-
-          <GoabTab heading="Accessibility">
-            <AccessibilityEmpty figmaLink={FIGMA_LINK} />
-          </GoabTab>
-        </GoabTabs>
+          ></GoATab>
+        </GoATabs>
       </ComponentContent>
     </>
   );

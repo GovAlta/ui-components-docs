@@ -1,12 +1,12 @@
 import {
-  GoabBlock,
-  GoabCheckbox,
-  GoabContainer,
-  GoabDivider,
-  GoabFormItem,
-  GoabGrid,
-  GoabInput,
-  GoabTable,
+  GoABlock,
+  GoACheckbox,
+  GoAContainer,
+  GoADivider,
+  GoAFormItem,
+  GoAGrid,
+  GoAInput,
+  GoATable,
 } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
 import { Link } from "react-router-dom";
@@ -30,25 +30,25 @@ export default function HelperTextPage() {
         <Link to="/components/checkbox">Checkbox</Link>, <Link to="/components/button">Button</Link>
       </span>
       <h3></h3>
-      <GoabContainer type="non-interactive" mt="2xl" mb="2xl">
+      <GoAContainer type="non-interactive" mt="2xl" mb="2xl">
         <div
           className="example"
           style={{
             margin: "0 auto",
             textAlign: "left",
           }}>
-          <GoabFormItem
+          <GoAFormItem
             label="Project name"
             labelSize="regular"
             helpText="Select an existing or create a new project name.">
-            <GoabInput name="item" onChange={() => {}} value=""></GoabInput>
-          </GoabFormItem>
+            <GoAInput name="item" onChange={() => {}} value=""></GoAInput>
+          </GoAFormItem>
         </div>
-      </GoabContainer>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      </GoAContainer>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="considerations">Considerations</h2>
       <p>Consider the following ways to convey more information:</p>      
-      <GoabTable width="100%" mb="xl">
+      <GoATable width="100%" mb="xl">
         <thead>
           <tr>
             <th style={{ font: "var(--goa-typography-body-s)" }}>Is your content...</th>
@@ -66,119 +66,119 @@ export default function HelperTextPage() {
               <a></a>Helper text
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Accordion</td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Callout</td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Details</td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
           </tr>
           <tr>
             <td>Tooltip</td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked={false} name="helper-text" disabled={true} />
+              <GoACheckbox checked={false} name="helper-text" disabled={true} />
             </td>
             <td>
-              <GoabCheckbox checked name="helper-text" disabled={true} />
+              <GoACheckbox checked name="helper-text" disabled={true} />
             </td>
           </tr>
         </tbody>
-      </GoabTable>
+      </GoATable>
       <p>View a pattern and guide on how to show more information.</p>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="anatomy">Anatomy</h2>
       <p>Helper text can be used with any input.</p>
-      <GoabContainer>
+      <GoAContainer>
         <div style={{ textAlign: "center" }}>
           <img src="/images/helper-text/anatomy.png" width="80%"></img>
         </div>
-      </GoabContainer>
+      </GoAContainer>
       <ol>
         <li>Input label + optional / required</li>
         <li>Text Input</li>
@@ -191,7 +191,7 @@ export default function HelperTextPage() {
         <li>Input control(s)</li>
         <li>Helper Text</li>
       </ol>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="language-and-tone">Language and Tone</h2>
       <h3>Keep it concise</h3>
       <p>
@@ -227,18 +227,18 @@ export default function HelperTextPage() {
           Web writing style guide – Numbers and measurements
         </a>
       </p>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="usage">Usage</h2>
       <p>
         Helper text generally falls into 3 different categories. Examine the patterns and examples
         below to use helper text properly.
       </p>
-      <GoabBlock direction="column" gap="xs">
+      <GoABlock direction="column" gap="xs">
         <a href="#disclosure">Disclosure</a>
         <a href="#instructional">Instructional</a>
         <a href="#restrictive">Restrictive</a>
-      </GoabBlock>
-      <GoabDivider mb="xl" mt="2xl"></GoabDivider>
+      </GoABlock>
+      <GoADivider mb="xl" mt="2xl"></GoADivider>
       <h3 id="disclosure">Disclosure – Why are we asking this question</h3>
       <p>
         Disclosive helper text helps a user understand the data, task or system associated with the
@@ -257,7 +257,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
             description="Refer directly to the content in the Text field using words such as This, These, and The when possible.">
@@ -286,7 +286,7 @@ export default function HelperTextPage() {
               <img src="/images/helper-text/disclosure-dont-2.png" width="80%"></img>
             </div>
           </DoDont>
-        </GoabGrid>
+        </GoAGrid>
       </div>
       <h3 id="instructional">Instructional – Directions for how to use the input</h3>
       <p>
@@ -308,7 +308,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
             description="Begin with an Action (Directive Verb) e.g. Search, Start, Select, Find, Deposit; phrasing that follows should briefly describe or summarize directions.">
@@ -333,7 +333,7 @@ export default function HelperTextPage() {
               <img src="/images/helper-text/instructions-dont-2.png" width="80%"></img>
             </div>
           </DoDont>
-        </GoabGrid>
+        </GoAGrid>
       </div>
       <h3 id="restrictive">Restrictive – Rules and requirements that the input needs to meet</h3>
       <p>
@@ -353,7 +353,7 @@ export default function HelperTextPage() {
         </ul>
       </p>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoAGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Be specific about the information you are asking for.">
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/restrictive-do-1.png" width="80%"></img>
@@ -378,16 +378,16 @@ export default function HelperTextPage() {
               <img src="/images/helper-text/restrictive-dont-2.png" width="80%"></img>
             </div>
           </DoDont>
-        </GoabGrid>
+        </GoAGrid>
       </div>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="formatting">Formatting</h2>
       <p>
         Helper text should be a short succinct statement, sentence case, with no period or
         punctuation.
       </p>
       <div className="dodont-wrapper">
-        <GoabGrid gap="2xl" minChildWidth={minGridWidth}>
+        <GoAGrid gap="2xl" minChildWidth={minGridWidth}>
           <DoDont
             type="do"
             description="Use sentence case with no punctuation at the end of the helper text.">
@@ -400,16 +400,16 @@ export default function HelperTextPage() {
               <img src="/images/helper-text/formatting-dont.png" width="80%"></img>
             </div>
           </DoDont>
-        </GoabGrid>
+        </GoAGrid>
       </div>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="accessibility">Accessibility</h2>
       <p>
         For screen reader accessibility, consider using the aria-describedby attribute as helper
         text for the input control. This allows screen readers to provide additional context that
         would be present for a sighted user.
       </p>
-      <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
+      <GoADivider mb="2xl" mt="2xl"></GoADivider>
       <h2 id="references">References</h2>
       <p>
         <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA1.html" target="_blank">

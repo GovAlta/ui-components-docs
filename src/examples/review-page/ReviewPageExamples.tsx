@@ -1,7 +1,11 @@
 import { Sandbox } from "@components/sandbox";
+import {
+  GoAButton,
+  GoAButtonGroup,
+  GoATable
+} from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./review-page-example.css";
-import { GoabButton, GoabButtonGroup, GoabTable } from "@abgov/react-components";
 
 export function ReviewPageExamples() {
 
@@ -34,7 +38,7 @@ export function ReviewPageExamples() {
         />
         <h2 className="section-title">Review your answers</h2>
         <h3>Your situation</h3>
-        <GoabTable mt="l">
+        <GoATable mt="l">
           <tbody>
             <tr>
               <td>
@@ -42,7 +46,7 @@ export function ReviewPageExamples() {
               </td>
               <td>Other</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -51,7 +55,7 @@ export function ReviewPageExamples() {
               </td>
               <td>Manager</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -63,7 +67,7 @@ export function ReviewPageExamples() {
               </td>
               <td>No</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -72,7 +76,7 @@ export function ReviewPageExamples() {
               </td>
               <td>No</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -81,7 +85,7 @@ export function ReviewPageExamples() {
               </td>
               <td>Married</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -90,7 +94,7 @@ export function ReviewPageExamples() {
               </td>
               <td>No</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
             <tr>
@@ -99,15 +103,15 @@ export function ReviewPageExamples() {
               </td>
               <td>Yes</td>
               <td>
-                <GoabButton type="tertiary">Change</GoabButton>
+                <GoAButton type="tertiary">Change</GoAButton>
               </td>
             </tr>
           </tbody>
-        </GoabTable>
-        <GoabButtonGroup alignment="start" mt="2xl">
-          <GoabButton type="primary">Confirm and continue</GoabButton>
-          <GoabButton type="tertiary">Back to application overview</GoabButton>
-        </GoabButtonGroup>
+        </GoATable>
+        <GoAButtonGroup alignment="start" mt="2xl">
+          <GoAButton type="primary">Confirm and continue</GoAButton>
+          <GoAButton type="tertiary">Back to application overview</GoAButton>
+        </GoAButtonGroup>
       </Sandbox>
     </div>
   );

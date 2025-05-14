@@ -92,18 +92,8 @@ export class ComponentSerializer {
       props = " " + props;
     }
 
-      // Define void elements (HTML elements that should be self-closing)
-  const voidElements = [
-    'area', 'base', 'br', 'col', 'embed', 'hr', 'img',
-    'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'
-  ];
-
-
     if (!component.props.children) {
-       if (voidElements.includes(elementType.toLowerCase())) {
-        return `<${elementType}${props} />`;
-    }
-    return `<${elementType}${props}></${elementType}>`;
+      return `<${elementType}${props}></${elementType}>`;
     }
 
     let children: string = "";
