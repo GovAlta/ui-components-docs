@@ -5,14 +5,22 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoAGrid, GoAIcon, GoAIconType, GoATab, GoATabs } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabIcon, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabIconType } from "@abgov/ui-components-common";
+import {
+  LegacyMarginProperty,
+  LegacyTestIdProperties, MarginProperty,
+  TestIdProperty
+} from "@components/component-properties/common-properties.ts";
+
+const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
-    type: ICONS[0] as GoAIconType,
+    type: ICONS[0] as GoabIconType,
   });
   const [iconsBindings, setIconsBindings] = useState<ComponentBinding[]>([
     {
@@ -43,6 +51,7 @@ export default function IconsPage() {
       type: "number",
       name: "opacity",
       value: 1,
+      step: 0.1,
     },
     {
       label: "Fill Color",
@@ -69,7 +78,7 @@ export default function IconsPage() {
       value: "",
     },
   ]);
-  const componentProperties: ComponentProperty[] = [
+  const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
       type: "GoAIconType",
@@ -131,28 +140,64 @@ export default function IconsPage() {
       lang: "react",
       description: "Sets the accessible name of the icon.",
     },
+    ...LegacyTestIdProperties,
+    LegacyMarginProperty
+  ];
+  const componentProperties: ComponentProperty[] = [
     {
-      name: "testId",
-      type: "string",
-      lang: "react",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
+      name: "type",
+      type: "GoabIconType",
+      description: "Sets the icon.",
+      required: true,
     },
     {
-      name: "testid",
-      type: "string",
-      lang: "angular",
-      description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    },  
+      name: "size",
+      type: "GoabIconSize (small | medium | large)",
+      description: "Sets the size of icon.",
+      defaultValue: "medium",
+    },
     {
-      name: "mt,mr,mb,ml",
-      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
-      description: "Apply margin to the top, right, bottom, and/or left of the component.",
-    },  
+      name: "theme",
+      type: "GoabIconTheme (outline | filled)",
+      description: "Styles the icon to show outline or filled.",
+      defaultValue: "outline",
+    },
+    {
+      name: "inverted",
+      type: "boolean",
+      description: "Colors the icon white for use on dark backgrounds.",
+      defaultValue: "false",
+    },
+    {
+      name: "fillColor",
+      type: "string",
+      description: "Sets the fill colour of the icon.",
+      defaultValue: "false",
+    },
+    {
+      name: "opacity",
+      type: "number",
+      description: "Sets the opacity of the icon between 0 and 1.",
+      defaultValue: "1",
+    },
+    {
+      name: "title",
+      type: "string",
+      description: "Sets the title of the icon.",
+    },
+    {
+      name: "ariaLabel",
+      type: "string",
+      description: "Sets the accessible name of the icon.",
+    },
+    TestIdProperty,
+    MarginProperty
   ];
+
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
-    setIconsProps(props as { type: GoAIconType; [key: string]: unknown });
+    setIconsProps(props as { type: GoabIconType; [key: string]: unknown });
   }
 
   return (
@@ -165,31 +210,31 @@ export default function IconsPage() {
           { link: "/components/badge", name: "Badge" },
           { link: "/components/callout", name: "Callout" },
           { link: "/components/icon-button", name: "Icon button" },
-          { link: "/components/Tooltip", name: "Tooltip" },
+          { link: "/components/tooltip", name: "Tooltip" },
         ]}
+        figmaLink={FIGMA_LINK}
+        githubLink="Icons"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-        <GoATabs>
-          <GoATab heading="Code examples">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code playground">
             {/*Icons Sandbox*/}
             <h2 id="component" style={{ display: "none" }}>
-              Component
+              Playground
             </h2>
             <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
-              <GoAIcon {...iconsProps} />
+              <GoabIcon {...iconsProps} />
             </Sandbox>
 
             {/*Icons Properties*/}
-            <ComponentProperties properties={componentProperties} />
+            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+          </GoabTab>
 
-            {/*Icons example*/}
-            <h2 id="component-examples" className="hidden" aria-hidden="true">
-              Examples
-            </h2>
+          <GoabTab heading="Core icon set">
 
             <h3 id="component-example-alert-messaging">Alert and messaging</h3>
-            <GoAGrid minChildWidth="230px" gap="l" mt="m">
+            <GoabGrid minChildWidth="230px" gap="l" mt="l">
               <IconSnippet type={"information-circle"} />
               <IconSnippet type={"warning"} />
               <IconSnippet type={"add-circle"} />
@@ -198,18 +243,18 @@ export default function IconsPage() {
               <IconSnippet type={"close-circle"} />
               <IconSnippet type={"help-circle"} />
               <IconSnippet type={"remove-circle"} />
-            </GoAGrid>
+            </GoabGrid>
 
             <h3 id="component-example-basic">Basic</h3>
-            <GoAGrid minChildWidth="230px" gap="l" mt="m">
+            <GoabGrid minChildWidth="230px" gap="l" mt="l">
               <IconSnippet type={"close"} />
               <IconSnippet type={"checkmark"} />
               <IconSnippet type={"add"} />
               <IconSnippet type={"remove"} />
-            </GoAGrid>
+            </GoabGrid>
 
             <h3 id="component-example-direction">Direction</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"chevron-down"} />
               <IconSnippet type={"chevron-up"} />
               <IconSnippet type={"chevron-back"} />
@@ -222,10 +267,10 @@ export default function IconsPage() {
               <IconSnippet type={"caret-up"} />
               <IconSnippet type={"caret-back"} />
               <IconSnippet type={"caret-forward"} />
-            </GoAGrid>
+            </GoabGrid>
 
             <h3 id="component-example-interaction">Interactions</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"menu"} />
               <IconSnippet type={"reload"} />
               <IconSnippet type={"search"} />
@@ -244,17 +289,33 @@ export default function IconsPage() {
               <IconSnippet type={"eye-off"} />
               <IconSnippet type={"cloud-upload"} />
               <IconSnippet type={"download"} />
-            </GoAGrid>
+            </GoabGrid>
 
             <h3 id="component-example-accounts">Accounts</h3>
-            <GoAGrid minChildWidth={"230px"} gap={"l"} mt="m">
+            <GoabGrid minChildWidth={"230px"} gap={"l"} mt="l">
               <IconSnippet type={"person-circle"} />
               <IconSnippet type={"settings"} />
               <IconSnippet type={"mail"} />
               <IconSnippet type={"call"} />
-            </GoAGrid>
-          </GoATab>
-        </GoATabs>
+            </GoabGrid>
+          </GoabTab>
+
+          <GoabTab heading="Extended icon set">
+            <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
+              <GoabText size="body-m" mt="none" mb="none">
+                The extended icon set includes the full
+                {" "}<a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                        target="_blank" rel="noreferrer">
+                Ionicon library.
+              </a>{" "}
+                When you need additional icons outside of the core icon set, use these icons to maintain a consistent
+                visual language.
+              </GoabText>
+            </GoabContainer>
+          </GoabTab>
+
+
+        </GoabTabs>
       </ComponentContent>
     </>
   );

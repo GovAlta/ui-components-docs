@@ -1,53 +1,96 @@
-import { GoAContainer, GoAGrid, GoAIcon, GoATable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabIcon, GoabTable } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./IconSize.css";
 import { getTokenGroups } from "../getTokenGroups";
-import { IconSize } from "@abgov/react-components";
 import { Token } from "../token";
 import { useContext } from "react";
 import { DeviceWidthContext } from "../../../contexts/DeviceWidthContext";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabIconSize } from "@abgov/ui-components-common";
 
 interface IconSizeToken extends Token {
-  size: IconSize | string;
+  size: GoabIconSize | string;
 }
 
 export default function IconSizePage() {
   const tokens: IconSizeToken[] = [
     {
+      tokenName: "goa-icon-size-1",
+      rem: "1rem",
+      px: "16px",
+      figmaUsage: "Icon-size/1",
+      size: "1",
+    },
+    {
+      tokenName: "goa-icon-size-2",
+      rem: "1.125rem",
+      px: "18px",
+      figmaUsage: "Icon-size/2",
+      size: "2",
+    },
+    {
+      tokenName: "goa-icon-size-3",
+      rem: "1.25rem",
+      px: "20px",
+      figmaUsage: "Icon-size/3",
+      size: "3",
+    },
+    {
+      tokenName: "goa-icon-size-4",
+      rem: "1.5rem",
+      px: "24px",
+      figmaUsage: "Icon-size/4",
+      size: "4",
+    },
+    {
+      tokenName: "goa-icon-size-5",
+      rem: "2rem",
+      px: "32px",
+      figmaUsage: "Icon-size/5",
+      size: "5",
+    },
+    {
+      tokenName: "goa-icon-size-6",
+      rem: "2.5rem",
+      px: "40px",
+      figmaUsage: "Icon-size/6",
+      size: "6",
+    },
+    {
       tokenName: "goa-icon-size-s",
       rem: "1rem",
       px: "16px",
-      figmaUsage: "Icon Size/Small",
+      figmaUsage: "Icon-size/Small",
       size: "small",
     },
     {
       tokenName: "goa-icon-size-m",
       rem: "1.25rem",
       px: "20px",
-      figmaUsage: "Icon Size/Medium",
+      figmaUsage: "Icon-size/Medium",
       size: "medium",
     },
     {
       tokenName: "goa-icon-size-l",
       rem: "1.5rem",
       px: "24px",
-      figmaUsage: "Icon Size/Large",
+      figmaUsage: "Icon-size/Large",
       size: "large",
     },
+
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
 
   const renderDesktop = () => {
     return (
-      <GoATable variant="normal" width="100%">
+      <GoabTable variant="normal" width="100%">
         <thead>
           <tr>
             <th></th>
-            <th>Token name</th>
+            <th>Design token</th>
             <th>rem</th>
             <th>px</th>
-            <th>Figma usage</th>
+            <th>Figma</th>
           </tr>
         </thead>
         <tbody>
@@ -55,7 +98,7 @@ export default function IconSizePage() {
             <tr key={index}>
               <td>
                 <div className={`icon ${token.tokenName}`}>
-                  <GoAIcon type="add" size={token.size as IconSize}></GoAIcon>
+                  <GoabIcon type="add-circle" size={token.size as GoabIconSize}></GoabIcon>
                 </div>
               </td>
               <td>
@@ -67,29 +110,29 @@ export default function IconSizePage() {
             </tr>
           ))}
         </tbody>
-      </GoATable>
+      </GoabTable>
     );
   };
 
   const renderMobile = () => {
     return (
-      <GoAGrid minChildWidth="22rem" gap="xl">
+      <GoabGrid minChildWidth="22rem" gap="l">
         {getTokenGroups(tokens).map(group =>
           group.map((token: IconSizeToken, idx: number) => (
-            <GoAContainer key={idx}>
+            <GoabContainer key={idx}>
               <div className={`icon ${token.tokenName}`}>
-                <GoAIcon type="add" size={token.size as IconSize}></GoAIcon>
+                <GoabIcon type="add" size={token.size as GoabIconSize}></GoabIcon>
               </div>
-              <TokenSnippet code={token.tokenName} />
+              <TokenSnippet code={token.tokenName} className="mobile-token-view" />
               <dl>
-                <dt>rem</dt> <dd>{token.rem}</dd>
-                <dt>px</dt> <dd>{token.px}</dd>
-                <dt>Figma usage</dt> <dd>{token.figmaUsage}</dd>
+                <dt>rem</dt> <dd className="dd-style">{token.rem}</dd>
+                <dt>px</dt> <dd className="dd-style">{token.px}</dd>
+                <dt>Figma usage</dt> <dd className="dd-style">{token.figmaUsage}</dd>
               </dl>
-            </GoAContainer>
+            </GoabContainer>
           ))
         )}
-      </GoAGrid>
+      </GoabGrid>
     );
   };
 

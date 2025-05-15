@@ -1,0 +1,31 @@
+.version-language-switcher__heading {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--goa-space-2xs);
+    font-size: var(--goa-font-size-2);
+    margin-left: var(--goa-space-m);
+    white-space: nowrap;
+    height: 20px;
+}
+.version-language-switcher__menu {
+    display: block;
+    font: var(--goa-typography-body-s);
+    padding: var(--goa-space-s) var(--goa-space-s) var(--goa-space-s) var(--goa-space-s);
+    text-decoration: none;
+    color: var(--goa-color-text-default)!important;
+    white-space: nowrap;
+}
+.version-language-switcher__menu:hover:not(.version-language-switcher__menu--current) {
+    background: #cedfee;
+}
+.version-language-switcher__menu--current {
+    color: var(--goa-color-text-light)!important;;
+    background-color: var(--goa-color-interactive-default);
+}
+
+[slot="version"] {
+    height: 20px;
+    margin-top: 4px;
+    display: flex; /* if needed to align items horizontally */
+    align-items: center; /* vertically align content */
+}

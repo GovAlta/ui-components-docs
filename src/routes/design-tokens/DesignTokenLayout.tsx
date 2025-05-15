@@ -1,15 +1,15 @@
 import {
-  GoABlock,
-  GoADropdown,
-  GoADropdownItem,
-  GoASideMenu,
-  GoASideMenuHeading,
+  GoabBlock,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabSideMenu,
 } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo";
 import { useEffect, useState } from "react";
-import { DesignTokensLanguageContext } from "@components/sandbox";
 import "./DesignToken.css";
+import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
+import { DesignTokensLanguageContext } from "@contexts/DesignTokensLanguageContext";
 
 export function DesignTokenLayout() {
   const [tokenLanguage, setLanguage] = useState("");
@@ -19,8 +19,8 @@ export function DesignTokenLayout() {
     setLanguage(lang || "scss");
   }, []);
 
-  function designTokenLanguageChange(_name: string, value: string[] | string) {
-    const lang = Array.isArray(value) ? value[0] : value;
+  function designTokenLanguageChange(event: GoabDropdownOnChangeDetail) {
+    const lang = event.value || "react6";
     setLanguage(lang);
     localStorage.setItem("goa-docs-design-tokens-lang", lang);
   }
@@ -30,25 +30,24 @@ export function DesignTokenLayout() {
       <DesignTokensLanguageContext.Provider value={tokenLanguage}>
         <div className="content design-tokens">
           <section className="side-menu">
-            <GoASideMenu>
-              <GoASideMenuHeading>Styles</GoASideMenuHeading>
-              <GoABlock direction="column" mt="m" mb="m" ml="m" mr="m">
-                <GoADropdown value={tokenLanguage} onChange={designTokenLanguageChange}>
-                  <GoADropdownItem label="SCSS" value="scss" />
-                  <GoADropdownItem label="CSS" value="css" />
-                </GoADropdown>
-              </GoABlock>
+            <GoabSideMenu>
+              <GoabBlock direction="column" mt="s" mb="s" ml="l" mr="l">
+                <GoabDropdown value={tokenLanguage} onChange={designTokenLanguageChange}>
+                  <GoabDropdownItem label="SCSS" value="scss" />
+                  <GoabDropdownItem label="CSS" value="css" />
+                </GoabDropdown>
+              </GoabBlock>
 
-              <Link to="">Overview</Link>
-              <Link to="border-radius">Border Radius</Link>
-              <Link to="border-width">Border Width</Link>
+              <Link to="">All</Link>
+              <Link to="border-radius">Border radius</Link>
+              <Link to="border-width">Border width</Link>
               <Link to="color">Color</Link>
-              <Link to="icon-size">Icon Size</Link>
+              <Link to="icon-size">Icon size</Link>
               <Link to="opacity">Opacity</Link>
               <Link to="shadow">Shadow</Link>
               <Link to="spacing">Spacing</Link>
               <Link to="typography">Typography</Link>
-            </GoASideMenu>
+            </GoabSideMenu>
           </section>
 
           <main className="main">
