@@ -299,99 +299,117 @@
     "name": "Extended",
     "tokens": [
       {
-        "code": "goa-color-extended-aqua",
+        "code": "goa-color-aqua-default",
         "value": "#7FEBE6",
-        "figmaColorStyle": "Extended/Aqua",
+        "figmaColorStyle": "Aqua/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-aqua",
+        "code": "goa-color-aqua-light",
         "value": "#DCFBF8",
-        "figmaColorStyle": "Extended/Light/Aqua",
+        "figmaColorStyle": "Aqua/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-blue",
+        "code": "goa-color-black-default",
+        "value": "#333333",
+        "figmaColorStyle": "Black/Default",
+        "description": ""
+      },
+      {
+        "code": "goa-color-black-light",
+        "value": "#E7E7E7",
+        "figmaColorStyle": "Black/Light",
+        "description": ""
+      },
+      {
+        "code": "goa-color-blue-default",
         "value": "#AAC9E7",
-        "figmaColorStyle": "Extended/Blue",
+        "figmaColorStyle": "Blue/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-blue",
+        "code": "goa-color-blue-light",
         "value": "#DDEFFF",
-        "figmaColorStyle": "Extended/Light/Blue",
+        "figmaColorStyle": "Blue/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-green",
+        "code": "goa-color-green-default",
         "value": "#BBFCB4",
-        "figmaColorStyle": "Extended/Green",
+        "figmaColorStyle": "Green/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-green",
+        "code": "goa-color-green-light",
         "value": "#CCE2D9",
-        "figmaColorStyle": "Extended/Light/Green",
+        "figmaColorStyle": "Green/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-orange",
+        "code": "goa-color-orange-default",
         "value": "#FFC76D",
-        "figmaColorStyle": "Extended/Orange",
+        "figmaColorStyle": "Orange/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-orange",
+        "code": "goa-color-orange-light",
         "value": "#FCD6C3",
-        "figmaColorStyle": "Extended/Light/Orange",
+        "figmaColorStyle": "Orange/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-pink",
+        "code": "goa-color-pink-default",
         "value": "#FF8FC5",
-        "figmaColorStyle": "Extended/Pink",
+        "figmaColorStyle": "Pink/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-pink",
+        "code": "goa-color-pink-light",
         "value": "#F9E1EB",
-        "figmaColorStyle": "Extended/Light/Pink",
+        "figmaColorStyle": "Pink/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-red",
+        "code": "goa-color-red-default",
         "value": "#ED948D",
-        "figmaColorStyle": "Extended/Red",
+        "figmaColorStyle": "Red/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-red",
+        "code": "goa-color-red-light",
         "value": "#F4CDC6",
-        "figmaColorStyle": "Extended/Light/Red",
+        "figmaColorStyle": "Red/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-violet",
+        "code": "goa-color-violet-default",
         "value": "#D4C2FF",
-        "figmaColorStyle": "Extended/Violet",
+        "figmaColorStyle": "Violet/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-violet",
+        "code": "goa-color-violet-light",
         "value": "#EFE2FB",
-        "figmaColorStyle": "Extended/Light/Violet",
+        "figmaColorStyle": "Violet/Light",
         "description": ""
       },
       {
-        "code": "goa-color-extended-yellow",
+        "code": "goa-color-white-default",
+        "value": "#FFFFFF",
+        "figmaColorStyle": "White",
+        "description": ""
+      },
+      {
+        "code": "goa-color-yellow-default",
         "value": "#FCE796",
-        "figmaColorStyle": "Extended/Yellow",
+        "figmaColorStyle": "Yellow/Default",
         "description": ""
       },
       {
-        "code": "goa-color-extended-light-yellow",
+        "code": "goa-color-yellow-light",
         "value": "#FFF7BF",
-        "figmaColorStyle": "Extended/Light/Yellow",
+        "figmaColorStyle": "Yellow/Light",
         "description": ""
       }
     ]
