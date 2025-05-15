@@ -61,7 +61,7 @@ export default function LogoPage() {
             <img src="/images/logo/alberta-service-logo.png" width="100%" style={{maxWidth: "400px"}}></img>
           </div>
           
-          <h2 id="circle">Circular Symbol</h2>
+          <h2 id="circle">Circular symbol</h2>
           <p>The circular symbol is used in place of our primary logo when space is limited, such as on mobile devices. This ensures that our products are branded and remain identifiable. It also acts as a favicon, an icon that is commonly used in browser tabs to help users easily identify our product when multiple tabs are open.</p>
           
           <div style={{  width: "auto", textAlign: "left", padding:"var(--goa-space-l) 0" }}>
