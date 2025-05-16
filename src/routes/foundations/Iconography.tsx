@@ -75,7 +75,7 @@ export default function IconographyPage() {
           <h2 id="style">Style</h2>
           <p>Our icon style is simple, rounded, featuring thin line strokes, or filled shapes. They are designed to scale proportionally, ensuring that they integrate seamlessly into various interface sizes. They are divided into three categories: Core, Extended and Logo icon set.</p>
 
-          <h3>Core icon set</h3>
+          <h3 id="core">Core icon set</h3>
           <p>Our core icon set is the main icon library in the design system, helping you maintain visual consistency across all our digital products.</p>
           <GoabSpacer vSpacing="l"></GoabSpacer>
           <GoabGrid gap="s" minChildWidth="250px">
@@ -168,7 +168,7 @@ export default function IconographyPage() {
           <GoabSpacer vSpacing="l"></GoabSpacer>
           <p>Explore core icons set and their properties <Link to="/components/icons">on the component page</Link>.</p>
 
-          <h3>Extended icon set</h3>
+          <h3 id="extended">Extended icon set</h3>
           <h4>Ionicons</h4>
           <p>We use the open-source icon library, <a href="https://ionic.io/ionicons" target="_blank">Ionicons</a>, which provides a wide variety of high-quality icons. Use these icons when you need options beyond the core icon set.</p>
 
@@ -178,7 +178,7 @@ export default function IconographyPage() {
               </div>
           </GoabContainer>
 
-          <h3>Logo icons</h3>
+          <h3 id="logo">Logo icons</h3>
           <p>Our <a href="https://www.figma.com/design/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?node-id=36-7" target="_blank">Figma component library</a> contains popular brand logos and are kept in accordance with their respective logo usage guidelines. When using any of these brand logos, please make sure to refer to their brand guideline to ensure compliance with their usage standards.</p>
 
           <h2 id="icon-size">Icon size</h2>

@@ -8,7 +8,6 @@ export default function LogoPage() {
         <h3>Our logo is an important part of our brand identity and serves as a symbol that distinguishes our digital products from others. To keep our brand consistent and recognizable, we encourage following the guidelines for proper usage.</h3>
 
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
-        <div className="max-width-72ch">
           <h2 id="anatomy">Anatomy</h2>
             <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>
               <img src="/images/logo/logo-anatomy.png" width="60%"></img>
@@ -77,7 +76,6 @@ export default function LogoPage() {
             <li>Use the provided logo variations only for their specific purposes.</li>
             <li>Do not use the logo for commercial purposes unless granted permission. For more information, please review the <a href="https://open.alberta.ca/publications/government-identity-policy" target="_blank">Government Identity Policy</a>.</li>
           </ul>
-        </div>
       </ComponentContent>
   );
 }
