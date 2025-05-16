@@ -311,18 +311,6 @@
         "description": ""
       },
       {
-        "code": "goa-color-black-default",
-        "value": "#333333",
-        "figmaColorStyle": "Black/Default",
-        "description": ""
-      },
-      {
-        "code": "goa-color-black-light",
-        "value": "#E7E7E7",
-        "figmaColorStyle": "Black/Light",
-        "description": ""
-      },
-      {
         "code": "goa-color-blue-default",
         "value": "#AAC9E7",
         "figmaColorStyle": "Blue/Default",
@@ -392,12 +380,6 @@
         "code": "goa-color-violet-light",
         "value": "#EFE2FB",
         "figmaColorStyle": "Violet/Light",
-        "description": ""
-      },
-      {
-        "code": "goa-color-white-default",
-        "value": "#FFFFFF",
-        "figmaColorStyle": "White",
         "description": ""
       },
       {
