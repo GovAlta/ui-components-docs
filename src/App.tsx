@@ -63,6 +63,17 @@ import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 
+// Foundations Pages
+import FoundationsLayout from "@routes/foundations/FoundationsLayout";
+import DesignAtGoAPage from "@routes/foundations/DesignAtGoA";
+import BrandGuidelinesPage from "@routes/foundations/BrandGuidelines";
+import AccessibilityPage from "@routes/foundations/Accessibility";
+import FoundationsColorPage from "@routes/foundations/Color";
+import IconographyPage from "@routes/foundations/Iconography";
+import ImagesPage from "@routes/foundations/Photography";
+import LogoPage from "@routes/foundations/Logo";
+import FoundationsTypographyPage from "@routes/foundations/Typography";
+import FoundationsLayoutPage from "@routes/foundations/Layout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -111,6 +122,18 @@ const router = createBrowserRouter(
         </Route>
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
+      </Route>
+
+       <Route path="foundations" element={<FoundationsLayout />}>
+        <Route index element={<DesignAtGoAPage />} />
+        <Route path="accessibility" element={<AccessibilityPage />} />
+        <Route path="brand-guidelines" element={<BrandGuidelinesPage />} />
+        <Route path="color" element={<FoundationsColorPage />} />
+        <Route path="iconography" element={<IconographyPage />} />
+        <Route path="photography" element={<ImagesPage />} />
+        <Route path="logo" element={<LogoPage />} />
+        <Route path="typography" element={<FoundationsTypographyPage />} />
+        <Route path="layout" element={<FoundationsLayoutPage />} />
       </Route>
 
       <Route path="content" element={<ContentLayout />}>
