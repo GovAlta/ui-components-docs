@@ -57,6 +57,7 @@ import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 import { DrawerPage } from "@routes/components/Drawer.tsx";
 import LinkPage from "@routes/components/Link.tsx";
+import BirthdayExample from "@routes/examples/Birthday.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -152,6 +153,7 @@ export const PatternsRouter = () => {
     "question-page": <QuestionPage/>,
     "review-page": <ReviewPage/>,
     "result-page": <ResultPage/>,
+    "ask-a-user-for-their-birthday": <BirthdayExample/>,
   };
 
   return (

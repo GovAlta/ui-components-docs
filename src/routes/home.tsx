@@ -54,7 +54,7 @@ const HomePage = () => {
           <CardLite
             title="Patterns"
             description="Common patterns and examples to use as a starting point for a government service."
-            linkTo="/patterns"
+            linkTo="/examples"
             linkDisplay="View patterns"
           />
           <CardLite

@@ -138,7 +138,7 @@ export default function PublicFormPage() {
 
       <div className={css.linkWithDescription}>
         <h3>
-          <Link to="/patterns/start-page">1. Start page</Link>
+          <Link to="/examples/start-page">1. Start page</Link>
         </h3>
         <p>
           This is the starting point for a citizen to begin your form from within your service or
@@ -148,7 +148,7 @@ export default function PublicFormPage() {
 
       <div className={css.linkWithDescription}>
         <h3>
-          <Link to="/patterns/task-list-page">2. Task list page (optional)</Link>
+          <Link to="/examples/task-list-page">2. Task list page (optional)</Link>
         </h3>
         <p>
           Outline the entire process for the user and help them through the process by breaking down
@@ -158,21 +158,21 @@ export default function PublicFormPage() {
 
       <div className={css.linkWithDescription}>
         <h3>
-          <Link to="/patterns/question-page">3. Question pages</Link>
+          <Link to="/examples/question-page">3. Question pages</Link>
         </h3>
         <p>Ask a user a question or a small set of related questions. </p>
       </div>
 
       <div className={css.linkWithDescription}>
         <h3>
-          <Link to="/patterns/review-page">4. Review page</Link>
+          <Link to="/examples/review-page">4. Review page</Link>
         </h3>
         <p>Let users check answers before submitting information to a service.</p>
       </div>
 
       <div className={css.linkWithDescription}>
         <h3>
-          <Link to="/patterns/result-page">5. Results page</Link>
+          <Link to="/examples/result-page">5. Results page</Link>
         </h3>
         <p>
           Let users know that they’ve completed a form, application, or task and tell them what to

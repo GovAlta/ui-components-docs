@@ -117,7 +117,7 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="/patterns/*" element={<PatternsRouter />}></Route>
+      <Route path="/examples/*" element={<PatternsRouter />}></Route>
     </Route>
   )
 );
