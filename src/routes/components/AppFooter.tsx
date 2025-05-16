@@ -26,7 +26,7 @@ const description = "Provides information related your service at the bottom of 
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns/layout", name: "Layout" },
+  { link: "/examples/layout", name: "Layout" },
 ];
 type ComponentPropsType = GoabAppFooterProps;
 

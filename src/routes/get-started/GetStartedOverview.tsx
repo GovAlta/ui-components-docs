@@ -91,7 +91,7 @@ export default function GetStartedOverviewPage() {
       <h3 id="How"> How do I use the design system in my service?</h3>
       <GoabText size="body-m" mb="m">
         Start by using the design system <a href={"/components"}> components</a> and <a
-        href={"/patterns"}>patterns.</a> You should expect that this will cover about 80% of your needs in a service.
+        href={"/examples"}>patterns.</a> You should expect that this will cover about 80% of your needs in a service.
         When usability testing shows that a new solution or an improvement to an existing solution is needed, design a
         better solution. Use a 3rd party library, code your own, and/or share solutions with other teams.
       </GoabText>
