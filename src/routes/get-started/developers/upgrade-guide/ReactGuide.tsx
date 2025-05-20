@@ -1,3 +1,4 @@
+import { GoabText } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { GoabTable } from "@abgov/react-components";
 import { InlineCode } from "@components/inline-code/InlineCode.tsx";
@@ -8,12 +9,12 @@ export const ReactGuide = () => {
   return (
     <>
       <h2 id="react">Migrating a React app</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         The React components for the DDD Design System are still located in the{" "}
         <InlineCode>@abgov/react-components</InlineCode> package.
-      </p>
+      </GoabText>
 
-      <h4>1. Update dependencies</h4>
+      <GoabText size="heading-s" mt="xl" mb="s">1. Update dependencies</GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -23,15 +24,15 @@ export const ReactGuide = () => {
         `}
       />
 
-      <h4>
+      <GoabText size="heading-s" mt="xl" mb="s">
         2. Rename all components name from <InlineCode>GoAName</InlineCode> to{" "}
         <InlineCode>GoabName</InlineCode>
-      </h4>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         After updating your packages, use your preferred code editor to perform a find/replace
         operation. Replace the prefix <InlineCode>GoA--</InlineCode> with{" "}
         <InlineCode>Goab--</InlineCode> for all component names. For example:
-      </p>
+      </GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -44,20 +45,20 @@ export const ReactGuide = () => {
         `}
       />
 
-      <h4>3. Update components' props that have changed</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">3. Update components' props that have changed</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         In v6, some of our properties have changed, go through the following table and make changes as necessary in your codebase.
-      </p>
-      <GoabTable width={"100%"} mb={"m"}>
+      </GoabText>
+      <GoabTable width={"100%"} mb={"3xl"}>
         <thead>
-        <th>Component Name</th>
-        <th>v5(lts)</th>
+        <th>Component</th>
+        <th>v5(LTS)</th>
         <th>v6(latest)</th>
         </thead>
         <tbody>
         {componentNames.map((component, index) => (
           <tr key={index}>
-            <td>{component.name}</td>
+            <td><b>{component.name}</b></td>
             <td>
               <ul>
                 {component.react?.map((prop, propsIndex) => (
