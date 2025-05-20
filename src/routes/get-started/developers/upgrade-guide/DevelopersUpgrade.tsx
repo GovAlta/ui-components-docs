@@ -1,4 +1,4 @@
-import { GoabContainer } from "@abgov/react-components";
+import { GoabCallout, GoabContainer } from "@abgov/react-components";
 import "../Developers.css";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "@routes/patterns/patterns.module.css";
@@ -13,13 +13,23 @@ export default function DevelopersUpgradePage() {
         <h1>Version update guide</h1>
         <h3>Step-by-step guide to updating your code from DDD Design System v3 to v4 (Angular) and v5 to v6 (React)</h3>
         <p>
-          This guide will help you update your project to DDD Design System v4 (Angular) and v6 (React). The update
-          introduces key improvements, including enhanced alignment between Angular and React
-          properties, better error checking during builds, and type-ahead suggestions for Angular
-          components. These changes aim to improve the developer experience when working with the
-          design system.
+          The update introduces the following key improvements:
         </p>
-        <GoabContainer>
+        <ul>
+          <li><strong>Type-ahead support for Angular components:</strong> Get coding faster with smart suggestions directly in your IDE.</li>
+          <li><strong>New features and properties added across existing components:</strong> More flexibility, and improved accessibility.</li>
+          <li><strong>New components available:</strong> Build more complex interfaces with less custom code.</li>
+          <li><strong>Improved error checking during builds:</strong> Catch issues earlier for a smoother development experience.</li>
+        </ul>
+        <p>
+          This guide will help you update your project to DDD Design System v4 (Angular) and v6 (React).
+        </p>
+
+        <GoabCallout size="medium" type="important" heading={"Legacy component: Form stepper"} mb={"l"}>
+          The component is stable and supported in the latest major release. However, we recommend using the <a href="/patterns/public-form">public form pattern</a> for a more modular, flexible, and accessible approach.
+        </GoabCallout>
+
+        <GoabContainer mt="xl">
           <h3>Major differences between current and new version</h3>
           <p>
             One of the most significant changes in v4 (Angular) and v6 (React) is the renaming of component prefixes to align
