@@ -9,8 +9,9 @@ export default function DevelopersSetupPage() {
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
       <GoabText size="heading-xl" mb="m">Setup</GoabText>
-      <GoabText size="body-l" mb="2xl">Once you are setup, you can use the project template to quickly get
-        started. <br /> <a href="#templates">View project templates</a></GoabText>
+      <GoabText size="body-l" mb="m">Once you are setup, you can use the project template to quickly get
+        started.</GoabText>
+      <GoabText size="body-m" mb="2xl"><a href="#templates">View project templates</a></GoabText>
 
 
       <h2 id="angular">Angular UI components</h2>
