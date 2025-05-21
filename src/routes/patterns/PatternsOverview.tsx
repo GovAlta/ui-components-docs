@@ -8,7 +8,8 @@ import {
   GoabText,
   GoabFormItem,
   GoabInput,
-  GoabBadge
+  GoabBadge,
+  GoabSkeleton
 } from "@abgov/react-components";
 import { ComponentCard, Props as RawComponentProps, ComponentStatus } from "@components/component-card/ComponentCard";
 
@@ -211,6 +212,16 @@ export default function PatternsOverviewPage() {
               width: "100%"
             }}
           >
+
+            {cards.length === 0 &&
+              <>
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+              </>
+            }
+            
             {filteredCards.map((card) => (
               <ComponentCard
                 key={card.name}
