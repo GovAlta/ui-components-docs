@@ -10,7 +10,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function GetStartedOverviewPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-xl" mb="m" mt="2xl">
+      <GoabText size="heading-xl" mb="m" mt="xl">
         Starting with the design system
       </GoabText>
       <GoabText size="heading-m" mb="xl">
@@ -40,10 +40,9 @@ export default function GetStartedOverviewPage() {
       </GoabBlock>
 
       <GoabContainer type="non-interactive" padding="relaxed" maxWidth="740px">
-            Start with the design system. You don't need to reinvent the wheel. The design system is
-            the floor, not the ceiling. Start with it to save time building the common parts of a
-            service, so that you can spend time on the unique challenges within your service
-            context.
+        Start with the design system to align with standards, reduce duplication, and move faster. It gives you a solid
+        foundation for the common parts of government services, so your team can focus on solving the specific
+        challenges of your product. Build on it — don’t build from scratch.
           </GoabContainer>
       <h3 id="Why">Why start with the design system?</h3>
       <GoabText size="body-m" mb="m">
