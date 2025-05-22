@@ -306,7 +306,7 @@ export default function IconsPage() {
                 The extended icon set includes the full
                 {" "}<a href="https://ionic.io/ionicons"
                         target="_blank" rel="noreferrer">
-                Ionicon library.
+                Ionicons library.
               </a>{" "}
                 When you need additional icons outside of the core icon set, use these icons to maintain a consistent
                 visual language.
