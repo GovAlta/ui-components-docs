@@ -3,9 +3,9 @@ import { ModalBasicExample } from "@examples/modal/ModalBasicExample.tsx";
 import { ModalConfirmDestructiveActionExample } from "@examples/modal/ModalConfirmDestructiveActionExample.tsx";
 import { ModalWarnUserDeadlineExample } from "@examples/modal/ModalWarnUserDeadlineExample.tsx";
 import { ModalConfirmRecordChangeExample } from "@examples/modal/ModalConfirmRecordChangeExample.tsx";
-import { ModalAddAnotherItemExample } from "@examples/modal/ModalAddAnotherItemExample.tsx";
 import { ModalRouteChangeExample } from "@examples/modal/ModalRouteChangeExample.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+import AddAnotherItemInAModal from "@examples/add-another-item-in-a-modal.tsx";
 
 export default function ModalExamples() {
   return (
@@ -38,7 +38,7 @@ export default function ModalExamples() {
           exampleTitle="Add another item"
           figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-50217&t=X0IQW5flDDaj8Vyg-4">
         </SandboxHeader>
-      <ModalAddAnotherItemExample/>
+      <AddAnotherItemInAModal />
 
         <SandboxHeader
           exampleTitle="Route changes"

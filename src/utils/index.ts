@@ -95,7 +95,8 @@ function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
         designSystemUrl,
         designComponentFigmaUrl,
         designContributionFigmaUrl,
-        openIssuesUrl
+        openIssuesUrl,
+        url: item.content?.url
       };
     });
 }

@@ -1,4 +1,4 @@
-import { GoabSideMenu, GoabSideMenuHeading, GoabSpacer } from "@abgov/react-components";
+import { GoabSideMenu, GoabSideMenuGroup, GoabSpacer } from "@abgov/react-components";
 import {Link, Outlet} from "react-router-dom";
 import {SupportInfo} from "@components/support-info/SupportInfo.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
@@ -7,11 +7,7 @@ import { getVersionedUrlPath } from "@components/version-language-switcher/versi
 
 export default function PatternsLayout() {
   const {language, version} = useContext(LanguageVersionContext);
-  const prefixUrl = getVersionedUrlPath(version, language);
-
-  const getUrl = (path: string) => {
-    return prefixUrl.length > 0 ? `${prefixUrl}/${path}`: path;
-  }
+  getVersionedUrlPath(version, language);
 
   return (
     <div className="content">
@@ -19,15 +15,27 @@ export default function PatternsLayout() {
         <GoabSideMenu>
           <GoabSpacer vSpacing="m"></GoabSpacer>
           <Link to="">All</Link>
-          <Link to="public-form">Public form</Link>
-          <GoabSpacer vSpacing="m"></GoabSpacer>
-          <GoabSideMenuHeading>Pages</GoabSideMenuHeading>
-          <Link to={getUrl('layout')}>Basic page layout</Link>
-          <Link to={getUrl('start-page')}>Start page</Link>
-          <Link to={getUrl('task-list-page')}>Task list page</Link>
-          <Link to={getUrl('question-page')}>Question pages</Link>
-          <Link to={getUrl('review-page')}>Review page</Link>
-          <Link to={getUrl('result-page')}>Results page</Link>
+          <GoabSideMenuGroup heading="Pages">
+            <Link to="public-form">Start page</Link>
+            <Link to="public-form">Question page</Link>
+          </GoabSideMenuGroup>
+          <GoabSideMenuGroup heading="Tasks">
+            <Link to="public-form">Task 1</Link>
+            <Link to="public-form">Task 2</Link>
+            <Link to="public-form">Task 3</Link>
+          </GoabSideMenuGroup>
+          <GoabSideMenuGroup heading="Interactions">
+            <Link to="public-form">A</Link>
+            <Link to="public-form">B</Link>
+            <Link to="public-form">C</Link>
+            <Link to="public-form">D</Link>
+            <Link to="public-form">E</Link>
+          </GoabSideMenuGroup>
+          <GoabSideMenuGroup heading="How to">
+            <Link to="public-form">A</Link>
+            <Link to="public-form">B</Link>
+          </GoabSideMenuGroup>
+
         </GoabSideMenu>
       </section>
       <main className="main">

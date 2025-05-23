@@ -4,7 +4,7 @@ import { GoabAccordion, GoabBadge } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
-export const AccordionExpandOrCollapseExample = () => {
+const ExpandOrCollapsePartOfAForm = () => {
   const {version} = useContext(LanguageVersionContext);
   return (
     <Sandbox fullWidth skipRender allow={["h3"]}>
@@ -204,3 +204,6 @@ export const AccordionExpandOrCollapseExample = () => {
     </Sandbox>
   )
 }
+
+
+export default ExpandOrCollapsePartOfAForm;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { toSentenceCase, fetchAllIssueCounts, fetchExampleMetadataFromProject } from "../../utils";
 import {
   GoabTable,
@@ -20,6 +21,7 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
   designContributionFigmaUrl?: string;
   openIssuesUrl?: string;
   metatags?: string[];
+  url?: string;
 };
 
 export default function PatternsOverviewPage() {
@@ -95,13 +97,7 @@ export default function PatternsOverviewPage() {
     setSortDirection({ [sortBy]: newDirection });
   };
 
-  // Helper to format the label query for REST URLs
-  const getLabelQuery = (name: string) => {
-    const formatted = toSentenceCase(name);
-    return formatted.includes(" ") ? `"${formatted}"` : formatted;
-  };
-
-  // Helper to format the label query for GraphQL (escaping inner quotes)
+// Helper to format the label query for GraphQL (escaping inner quotes)
   useEffect(() => {
     if (cards.length === 0) return;
 
@@ -131,8 +127,8 @@ export default function PatternsOverviewPage() {
             Name
           </GoabTableSortHeader>
         </th>
-        <th style={{ minWidth: "130px" }}>Tag</th>
-        <th style={{ width: "130px", minWidth: "130px" }}>Open issues</th>
+        <th style={{ minWidth: "130px" }}>Category</th>
+        <th style={{ width: "140px", minWidth: "130px" }}>Github</th>
       </tr>
       </thead>
       <tbody>
@@ -146,9 +142,9 @@ export default function PatternsOverviewPage() {
           </td>
           <td>
             {card.status === "Published" ? (
-              <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
+              <Link to={`/examples/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 {toSentenceCase(card.name)}
-              </a>
+              </Link>
             ) : (
               <span>{toSentenceCase(card.name)}</span>
             )}
@@ -166,14 +162,23 @@ export default function PatternsOverviewPage() {
             ))}
           </td>
           <td style={{ minWidth: "135px", maxWidth: "170px" }}>
-            <a
-              href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View
-              {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
-            </a>
+            {card.url ? (
+              <a
+                href={card.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View issue
+              </a>
+            ) : (
+              <a
+                href={`https://github.com/GovAlta/design-system-backlog/issues?q=${encodeURIComponent(card.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View issue
+              </a>
+            )}
           </td>
         </tr>
       ))}
@@ -221,7 +226,7 @@ export default function PatternsOverviewPage() {
                 <GoabSkeleton type="card" size="3" />
               </>
             }
-            
+
             {filteredCards.map((card) => (
               <ComponentCard
                 key={card.name}
@@ -229,10 +234,10 @@ export default function PatternsOverviewPage() {
                 tags={card.tags}
                 description={card.description}
                 status={card.status}
-                githubLink={card.openIssuesUrl || `https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
+                githubLink={card.url}
                 openIssues={issueCounts[card.name]}
                 isNew={card.isNew}
-                designSystemUrl={card.designSystemUrl}
+                designSystemUrl={`/examples/${card.name.toLowerCase().replace(/\s+/g, "-")}`}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
               />
