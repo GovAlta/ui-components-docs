@@ -11,7 +11,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabDropdownOnChangeDetail, GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
 
-export const ModalAddAnotherItemExample = () => {
+const AddAnotherItemInAModal = () => {
   const {version} = useContext(LanguageVersionContext);
   const [addItemModalOpen, setAddItemModalOpen] = useState<boolean>();
   const [type, setType] = useState<string>();
@@ -329,3 +329,5 @@ export const ModalAddAnotherItemExample = () => {
     </>
   )
 }
+
+export default AddAnotherItemInAModal;

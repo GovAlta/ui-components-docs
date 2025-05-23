@@ -109,7 +109,7 @@ export default function BlockPage() {
         relatedComponents={[
           { link: "/components/divider", name: "Divider" },
           { link: "/components/grid", name: "Grid" },
-          { link: "/patterns/layout", name: "Layout" },
+          { link: "/examples/layout", name: "Layout" },
           { link: "/components/spacer", name: "Spacer" },
         ]}
         githubLink="Block"
