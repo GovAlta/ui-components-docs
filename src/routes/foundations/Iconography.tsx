@@ -166,7 +166,7 @@ export default function IconographyPage() {
           </GoabGrid>
 
           <GoabSpacer vSpacing="l"></GoabSpacer>
-          <p>Explore core icons set and their properties <Link to="/components/icons">on the component page</Link>.</p>
+          <p>Explore the core icon set and its properties <Link to="/components/icons">on the component page</Link>.</p>
 
           <h3 id="extended">Extended icon set</h3>
           <h4>Ionicons</h4>
@@ -187,7 +187,7 @@ export default function IconographyPage() {
           <GoabSpacer vSpacing="l"></GoabSpacer>
           <p>You can access the <Link to="/design-tokens/icon-size">design tokens for icon sizes here</Link>.</p>
           
-          <p>When icons are interactive, it's best to make it 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>.</p>
+          <p>When icons are interactive, it's best to make them 24 x 24 CSS pixels to meet <a href="https://www.w3.org/WAI/WCAG22/Understanding/target-size-enhanced.html" target="_blank">WCAG guidelines</a>.</p>
 
           <h2 id="best-practices">Best practices</h2>
           <ul>

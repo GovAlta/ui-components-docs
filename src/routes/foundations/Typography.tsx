@@ -68,7 +68,7 @@ export default function FoundationsTypographyPage() {
             <li><strong>Links</strong>
               <ul>
                 <li>We offer three text sizes for links based on your design needs and context.</li>
-                <li>Links are styled with underlined text in interactive-default blue, for better accessibility and usability.</li>
+                <li>Links are styled with underlined text in interactive-default blue for better accessibility and usability.</li>
               </ul>
             </li>
           </ul>

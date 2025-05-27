@@ -123,7 +123,7 @@ export default function AccessibilityPage() {
           <h4>ARIA roles and headings</h4>
           <p>The system uses ARIA roles to help assistive tools understand the purpose of different elements. These roles communicate what each element is for to screen readers and other assistive technologies.</p>
           <ul>
-            <li><strong>Headings</strong> - Use structured headings (H1, H2, etc.) to organize content. H tags don't have to match the text size. For example, a Large Heading can be labeled as H1. Just keep headings consistent across pages, as this helps users find information quickly.</li>
+            <li><strong>Headings</strong> - Use structured headings (H1, H2, etc.) to organize content. H tags don't have to match the text size. For example, a Large Heading can be labelled as H1. Just keep headings consistent across pages, as this helps users find information quickly.</li>
           </ul>
           
           <h3 id="dynamic-content">Dynamic content</h3>

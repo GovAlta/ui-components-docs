@@ -13,7 +13,7 @@ export default function LogoPage() {
               <img src="/images/logo/logo-anatomy.png" width="60%"></img>
             </div>
 
-          <p>The Alberta logo consists of two elements — the Wordmark and symbol.</p>
+          <p>The Alberta logo consists of two elements — the wordmark and symbol.</p>
 
           <h3 id="primary">Primary usage</h3>
           <p>The primary Alberta logo is the preferred choice for all our digital products. The default color combination for the signature is the grey (stone) and blue (sky) color.</p>
