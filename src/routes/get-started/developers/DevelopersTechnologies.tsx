@@ -1,24 +1,27 @@
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { GoabText } from "@abgov/react-components";
 
 export default function DevelopersTechnologiesPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <h1>Developers</h1>
-      <h2>Design system technologies</h2>
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
+      <GoabText size="heading-xl" mb="m">Technologies</GoabText>
+      <GoabText size="body-l" mb="2xl">An overview of the technologies that make up the design system.</GoabText>
+
       <div className="design-system-image">
         <img src="/images/design-system-technologies.png" />
       </div>
 
-      <h3 id="web-components">Web components</h3>
-      <p>
+      <h2 id="web-components">Web components</h2>
+      <GoabText size="body-m" mt="l" mb="l">
         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_components" target="_blank">
           Web Components
         </a>{" "}
         is a suite of different technologies allowing you to create reusable custom elements with
         styling and functionality encapsulated away from the rest of your code.
-      </p>
+      </GoabText>
 
-      <h4>Benefits of using web components</h4>
+      <GoabText size="heading-s" mt="xl" mb="s">Benefits of using web components</GoabText>
       <ul>
         <li>
           <strong>Reuse:</strong> A component is made once and can be reused across different pages,
@@ -48,29 +51,29 @@ export default function DevelopersTechnologiesPage() {
         </li>
       </ul>
 
-      <h4>Using web components in your project</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">Using web components in your project</GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">
         Web Components generated from Svelte can be used along side various other front-end
         frameworks or used with our Angular or React implementations.
-      </p>
+      </GoabText>
 
-      <h3 id="svelte">Svelte</h3>
-      <p>
+      <h2 id="svelte">Svelte</h2>
+      <GoabText size="body-m" mt="l" mb="l">
         <a href="https://svelte.dev/" target="_blank">
           Svelte
         </a>{" "}
         is a JavaScript framework that we are using to generate web components.
-      </p>
+      </GoabText>
 
-      <h4>Why use Svelte</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">Why use Svelte</GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">
         We use Svelte to build our web components. Svelte gathers the logic (JavaScript), the
         structure (HTML), and the style (CSS) in the same file. Then, Svelte is used to build single
         and reusable components for larger applications written with various front-end frameworks.
-      </p>
+      </GoabText>
 
-      <h3 id="angular">Angular</h3>
-      <p>
+      <h2 id="angular">Angular</h2>
+      <GoabText size="body-m" mt="l" mb="l">
         <a href="https://angular.io/" target="_blank">
           Angular
         </a>{" "}
@@ -78,35 +81,38 @@ export default function DevelopersTechnologiesPage() {
         create single-page applications using TypeScript and HTML. It uses HTML to define the UI of
         the application. It is a declarative and intuitive language with directives like ng-app,
         ng-model, ng-repeat, and forms control.
-      </p>
-      <p>Angular is the most used web application framework in this organization.</p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">Angular is the most used web application framework in this
+        organization.</GoabText>
 
-      <h4>How Web Components and Angular work together</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">How Web Components and Angular work together</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Our Angular implementation adds form binding, both Reactive and Template, to our web
         components.
-      </p>
-      <p>Angular applications will need to use our web components and Angular components.</p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">Angular applications will need to use our web components and Angular
+        components.</GoabText>
 
-      <h3 id="react">React</h3>
-      <p>
+      <h2 id="react">React</h2>
+      <GoabText size="body-m" mt="l" mb="l">
         <a href="https://react.dev/" target="_blank">
           React
         </a>{" "}
         is an open-source JavaScript library commonly used to create user interfaces for single-page
         applications from isolated components.
-      </p>
-      <p>React is the 2nd most used web application framework in this organization.</p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">React is the 2nd most used web application framework in this
+        organization.</GoabText>
 
-      <h4>How Web Components and React work together</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">How Web Components and React work together</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         We use React to create wrappers around our web components. This helps manage events and
         properties of the web components rather than trying to use our web components by themselves.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         The React wrappers are used inside a React app, which then makes requests back to our web
         components to create the actual component.
-      </p>
+      </GoabText>
     </ComponentContent>
   );
 }

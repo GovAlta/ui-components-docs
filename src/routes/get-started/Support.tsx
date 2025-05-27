@@ -29,10 +29,13 @@ export default function SupportPage() {
 
   return (
     <ComponentContent tocCssQuery="h2[id]">
-      <h1>Support</h1>
-      <h3>
+      <GoabText size="heading-xl" mt="xl" mb="m">
+        Get support
+      </GoabText>
+      <GoabText size="body-l">
         Get help from our team with using the design system, including components, guidelines, best practices, and accessibility.
-      </h3>
+      </GoabText>
+
       <div className="max-width-72ch">
         <h2 id="raise-issue">
           Raise an issue

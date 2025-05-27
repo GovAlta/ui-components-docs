@@ -1,4 +1,4 @@
-import { GoabCallout, GoabTable } from "@abgov/react-components";
+import { GoabCallout, GoabTable, GoabText } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { InlineCode } from "@components/inline-code/InlineCode.tsx";
 import { components } from "@routes/get-started/developers/upgrade-guide/components.ts";
@@ -11,13 +11,11 @@ export const AngularGuide = () => {
   return (
     <>
       <h2 id="angular">Migrating an Angular app</h2>
-      <GoabCallout>
-        <p>
+      <GoabCallout maxWidth={"640px"}>
           <InlineCode>@abgov/angular-components</InlineCode> supports only Angular v16 and above.
-        </p>
       </GoabCallout>
 
-      <h4>1. Update dependencies</h4>
+      <GoabText size="heading-s" mt="xl" mb="s">1. Update dependencies</GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -27,7 +25,7 @@ export const AngularGuide = () => {
         `}
       />
 
-      <h4>2. Update angular component dependencies and import paths</h4>
+      <GoabText size="heading-s" mt="xl" mb="s">2. Update angular component dependencies and import paths</GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -56,14 +54,14 @@ export const AngularGuide = () => {
         `}
       />
 
-      <h4>
+      <GoabText size="heading-s" mt="xl" mb="s">
         3. Rename all components name from <InlineCode>goa-name</InlineCode> to{" "}
         <InlineCode>goab-name</InlineCode> in HTML templates
-      </h4>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         In v4, all Angular component names have been updated from <InlineCode>goa-</InlineCode> to{" "}
         <InlineCode>goab-</InlineCode>, with the following exceptions:
-      </p>
+      </GoabText>
       <ul>
         <li>
           <strong>TwoColumnLayout</strong>: remains <InlineCode>goa-two-column-layout</InlineCode>
@@ -73,21 +71,21 @@ export const AngularGuide = () => {
           <InlineCode>goa-three-column-layout</InlineCode>
         </li>
       </ul>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         As a result, imports and dependencies for pages using these components will not need to be
         changed.
-      </p>
-      <h4>Special Case:</h4>
-      <p>
+      </GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">Special Case:</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         The <InlineCode>goa-one-column-layout</InlineCode> component has been renamed to{" "}
         <InlineCode>goab-column-layout</InlineCode>
-      </p>
-      <h4>Next Steps:</h4>
-      <p>
+      </GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">Next Steps:</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         After updating your packages and imports, perform a find/replace in your code editor to
         change <InlineCode>goa-</InlineCode> to <InlineCode>goab-</InlineCode> for all component
         names. For example:
-      </p>
+      </GoabText>
       <CodeSnippet
         lang="html"
         allowCopy={true}
@@ -103,12 +101,12 @@ export const AngularGuide = () => {
         `}
       />
 
-      <h4>4. Update component margin properties</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">4. Update component margin properties</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         The margin properties for components have been standardized. Previously, margin values in
         Angular components were defined as <InlineCode>string</InlineCode>. Now, these margin
         properties are categorized under <InlineCode>Spacing</InlineCode>, ensuring consistency:
-      </p>
+      </GoabText>
       <GoabTable width="100%">
         <thead>
         <th>Property Name</th>
@@ -163,29 +161,29 @@ export const AngularGuide = () => {
         </tbody>
       </GoabTable>
 
-      <h4>5. Update component properties</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">5. Update component properties</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         In version 4, we have updated all Angular component properties from lowercase to camelCase.
         For example, a property previously named <InlineCode>headingsize</InlineCode> is now{" "}
         <InlineCode>headingSize</InlineCode>.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Additionally, in version 3, our Angular component properties were defined using basic types
         like <InlineCode>string</InlineCode> or <InlineCode>boolean</InlineCode>. In version 4, we
         introduced custom types for these properties and function arguments to ensure that the type
         checker validates the data structure specific to our components. You can find these changes
         detailed in the tables below:
-      </p>
+      </GoabText>
       <GoabTable width={"100%"} mb={"m"}>
         <thead>
-        <th>Component Name</th>
+        <th>Component</th>
         <th>v3</th>
         <th>v4</th>
         </thead>
         <tbody>
         {angularComponents.map((component, index) => (
           <tr key={index}>
-            <td>{component.name}</td>
+            <td><b>{component.name}</b></td>
             <td>
               <ul>
                 {component.angular?.map((prop, propsIndex) => (
@@ -212,11 +210,11 @@ export const AngularGuide = () => {
         </tbody>
       </GoabTable>
 
-      <h4>6. Update component slot content using Angular's ng-template</h4>
-      <p>
+      <GoabText size="heading-s" mt="xl" mb="s">6. Update component slot content using Angular's ng-template</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         The most common manual update that teams will need to make involves adjusting slot content
         that uses <InlineCode>slot="name"</InlineCode> to reference a property. For example,
-      </p>
+      </GoabText>
 
       <CodeSnippet
         lang="html"
@@ -245,20 +243,20 @@ export const AngularGuide = () => {
       />
 
       <div className="descriptionWithList">
-        <h4>
+        <GoabText size="heading-s" mt="xl" mb="s">
           Components with <InlineCode>slot</InlineCode> replaced by Angular{" "}
           <InlineCode>ng-template</InlineCode> references:
-        </h4>
+        </GoabText>
         <GoabTable>
           <thead>
-          <th>Component Name</th>
+          <th>Component</th>
           <th>v3</th>
           <th>v4</th>
           </thead>
           <tbody>
           {componentsWithTemplateRef.map((component, index) => (
             <tr key={index}>
-              <td>{component.name}</td>
+              <td><b>{component.name}</b></td>
               <td>
                 <ul>
                   {component.angular?.map(
@@ -289,15 +287,15 @@ export const AngularGuide = () => {
         </GoabTable>
       </div>
 
-      <h4>
+      <GoabText size="heading-s" mt="xl" mb="s">
         7. Remove <InlineCode>goaValue</InlineCode> and <InlineCode>goaChecked</InlineCode> from the
         Angular input components
-      </h4>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         In v4, the <InlineCode>goaValue</InlineCode> and <InlineCode>goaChecked</InlineCode>{" "}
         directives can be removed from our input components when using Angular Forms. This applies
         to the following components:
-      </p>
+      </GoabText>
       <ul>
         <li>Checkbox</li>
         <li>Date picker</li>
@@ -307,11 +305,11 @@ export const AngularGuide = () => {
         <li>Textarea</li>
       </ul>
 
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         To handle user input in your app, you can use Angular's reactive forms, template-driven
         forms, or simply add an event handler. Below are examples of how to use our Angular checkbox
         component in these three different approaches:
-      </p>
+      </GoabText>
 
       <h5>1. Reactive</h5>
       <CodeSnippet
