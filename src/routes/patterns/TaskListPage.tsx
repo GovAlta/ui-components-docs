@@ -4,7 +4,6 @@ import {
   GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { TaskListPage } from "@examples/task-list-page.tsx";
 import css from "./patterns.module.css";
 import { Link } from "react-router-dom";
 

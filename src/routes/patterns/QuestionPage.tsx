@@ -3,7 +3,6 @@ import {
   GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import QuestionPageExamples from "@examples/question-page/QuestionPageExamples.tsx";
 import css from "./patterns.module.css";
 
 export default function QuestionPage() {

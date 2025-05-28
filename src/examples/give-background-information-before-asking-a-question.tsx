@@ -8,7 +8,7 @@ import {
   GoabRadioItem
 } from "@abgov/react-components";
 
-export default function QuestionPage() {
+export default function GiveBackgroundInformationBeforeAskingAQuestion() {
   return (
     <div className="question-page-example">
 

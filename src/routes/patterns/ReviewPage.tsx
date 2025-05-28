@@ -4,7 +4,6 @@ import {
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "./patterns.module.css";
-import { ReviewPage } from "@examples/review-page.tsx";
 
 export default function ReviewPage() {
   return (

@@ -3,7 +3,6 @@ import {
   GoabTabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { StartPage } from "@examples/start-page.tsx";
 import css from "./patterns.module.css";
 
 export default function StartPage() {

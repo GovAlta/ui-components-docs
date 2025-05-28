@@ -10,7 +10,7 @@ import {
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
 
-export default function QuestionPage() {
+export default function AskAUserOneQuestionAtATime() {
   useContext(LanguageVersionContext);
   return (
     <div className="question-page-example">
