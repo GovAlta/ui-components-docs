@@ -6,7 +6,7 @@ import {
   GoabFormItem,
   GoabInput,
   GoabRadioItem,
-  GoabRadioGroup, GoabTextarea
+  GoabRadioGroup, GoabTextarea, GoabText
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 import { useEffect, useState } from "react";
@@ -230,12 +230,16 @@ export default function ReportBugPage() {
     return (
       <ComponentContent>
         <a href="/get-started/support" className="back">Back</a>
-        <h1>Report a bug</h1>
-        <h3>
+        <GoabText size="heading-xl" mb="m" mt="l">
+          Report a bug
+        </GoabText>
+        <GoabText size="body-l" mb="xl">
           Let us know if you find a problem or inconsistency in the design system. Providing complete details in your bug report
           helps our team understand, prioritize, and fix the issue faster.
-        </h3>
-        <GoabCallout type="information" heading="Ensure you're using the latest package versions" mb="2xl">
+        </GoabText>
+
+        <GoabCallout type="information" heading="Ensure you're using the latest package versions" mb="2xl"
+                     maxWidth={"640px"}>
           <ul>
             <li>Web Components - { versions["web"] }</li>
             <li>Angular Components - 3.2.2</li>
@@ -292,7 +296,7 @@ export default function ReportBugPage() {
         <GoabFormItem label="Any additional information" mb="2xl" helpText="Add any other relevant context." requirement="optional">
           <GoabTextarea name="additional" value={ formValues.additional } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" />
         </GoabFormItem>
-        <GoabButton onClick={ submitBug }>Submit bug</GoabButton>
+        <GoabButton onClick={submitBug}>Submit bug report</GoabButton>
       </ComponentContent>
     );
   } else {

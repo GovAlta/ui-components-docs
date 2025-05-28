@@ -246,7 +246,7 @@ export default function TablePage() {
               heading={
                 <>
                   Examples
-                  <GoabBadge type="information" content="2" />
+                  <GoabBadge type="information" content="3" />
                 </>
               }
             >
@@ -624,7 +624,8 @@ export default function TablePage() {
             </Sandbox>
 
               <SandboxHeader
-                exampleTitle="Sort data in a table">
+                exampleTitle="Filter data in a table"
+                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7104-1626357&t=WrSJODVw0mryQrrA-4">
               </SandboxHeader>
               <FilterDataInATable />
           </GoabTab>

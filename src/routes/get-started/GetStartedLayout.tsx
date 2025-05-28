@@ -9,21 +9,25 @@ export default function GetStartedLayout() {
         <GoabSideMenu>
           <GoabSpacer vSpacing="m"></GoabSpacer>
           <Link to="">Start with the design system</Link>
-          <Link to="designers">UX Designers</Link>
+          <GoabSideMenuGroup heading="Designers">
+            <Link to="designers">Overview</Link>
+            <Link to="user-experience-guidelines">User experience guidelines</Link>
+          </GoabSideMenuGroup>
           <GoabSideMenuGroup heading="Developers">
             <Link to="developers">Overview</Link>
             <Link to="developers/setup">Setup</Link>
             <Link to="developers/bug">Verify a bug</Link>
             <Link to="developers/vscode">VS Code</Link>
-            <Link to="developers/technologies">Technologies</Link>
+            <Link to="developers/technologies">Technologies </Link>
             <Link to="developers/browsers">Supported Browsers</Link>
             <Link to="developers/update">Version update guide</Link>
           </GoabSideMenuGroup>
           <Link to="qa-testing">QA testing</Link>
           <Link to="contribute">Contribute</Link>
-          <Link to="support">Support</Link>
           <Link to="roadmap">Roadmap</Link>
-          <Link to="user-experience-guidelines">User experience guidelines</Link>
+          <Link to="lts-policy">Long Term Support (LTS)</Link>
+          <Link to="support">Get support</Link>
+
         </GoabSideMenu>
       </section>
 
