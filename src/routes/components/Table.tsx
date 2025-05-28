@@ -18,7 +18,7 @@ import { GoabTableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
+import { FilterDataInATable } from "@examples/filter-data-in-a-table.tsx";
 import { omit } from "lodash";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
@@ -626,7 +626,7 @@ export default function TablePage() {
               <SandboxHeader
                 exampleTitle="Sort data in a table">
               </SandboxHeader>
-            <TableWithGlobalFiltersExample />
+              <FilterDataInATable />
           </GoabTab>
 
           <GoabTab heading="Design">

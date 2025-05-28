@@ -17,7 +17,11 @@ export default function PatternsLayout() {
           <Link to="">All</Link>
           <GoabSideMenuGroup heading="Pages">
             <Link to="public-form">Start page</Link>
+            <Link to="public-form">Task list page</Link>
             <Link to="public-form">Question page</Link>
+            <Link to="public-form">Information page</Link>
+            <Link to="public-form">Review page</Link>
+            <Link to="public-form">Results page</Link>
           </GoabSideMenuGroup>
           <GoabSideMenuGroup heading="Tasks">
             <Link to="public-form">Task 1</Link>
@@ -32,8 +36,8 @@ export default function PatternsLayout() {
             <Link to="public-form">E</Link>
           </GoabSideMenuGroup>
           <GoabSideMenuGroup heading="How to">
-            <Link to="public-form">A</Link>
-            <Link to="public-form">B</Link>
+            <Link to="public-form">Upgrade to the latest component version</Link>
+            <Link to="public-form">Generate a review page from branch form questions</Link>
           </GoabSideMenuGroup>
 
         </GoabSideMenu>

@@ -6,7 +6,7 @@ export default function DevelopersTechnologiesPage() {
       <h1>Developers</h1>
       <h2>Design system technologies</h2>
       <div className="design-system-image">
-        <img src="/images/design-system-technologies.png" />
+        <img src="/images/component-thumbnails/design-system-technologies.png" />
       </div>
 
       <h3 id="web-components">Web components</h3>

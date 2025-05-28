@@ -114,7 +114,7 @@ const HomePage = () => {
                 rel="noopener noreferrer"
                 className="no-external-icon"
               >
-                <img src="/images/governance-process.png" alt="Design system workflow diagram"
+                <img src="/images/component-thumbnails/governance-process.png" alt="Design system workflow diagram"
                      style={{ maxWidth: "100%" }} />
               </a>
               <GoabLink mt="l">

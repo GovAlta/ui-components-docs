@@ -1,38 +1,39 @@
 import "./modal-examples.css";
-import { ModalBasicExample } from "@examples/modal/ModalBasicExample.tsx";
-import { ModalConfirmDestructiveActionExample } from "@examples/modal/ModalConfirmDestructiveActionExample.tsx";
-import { ModalWarnUserDeadlineExample } from "@examples/modal/ModalWarnUserDeadlineExample.tsx";
-import { ModalConfirmRecordChangeExample } from "@examples/modal/ModalConfirmRecordChangeExample.tsx";
-import { ModalRouteChangeExample } from "@examples/modal/ModalRouteChangeExample.tsx";
+import { RequireUserActionBeforeContinuing } from "@examples/require-user-action-before-continuing.tsx";
+import { ConfirmADestructiveAction } from "@examples/confirm-a-destructive-action.tsx";
+import { WarnAUserOfADeadline } from "@examples/warn-a-user-of-a-deadline.tsx";
+import { ConfirmAChange } from "@examples/confirm-a-change.tsx";
+import { ConfirmBeforeNavigatingAway } from "@examples/confirm-before-navigating-away.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
-import AddAnotherItemInAModal from "@examples/add-another-item-in-a-modal.tsx";
+import { AddAnotherItemInAModal } from "@examples/add-another-item-in-a-modal.tsx";
 
 export default function ModalExamples() {
   return (
     <>
 
         <SandboxHeader
-          exampleTitle="Basic Modal">
+          exampleTitle="Basic Modal"
+          figmaExample={"https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=26318-184965&t=Mgdr0KBlqhEz1RXF-4"}>
         </SandboxHeader>
-      <ModalBasicExample/>
+      <RequireUserActionBeforeContinuing />
 
         <SandboxHeader
           exampleTitle="Confirm a destructive action"
           figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-43038&t=X0IQW5flDDaj8Vyg-4">
         </SandboxHeader>
-      <ModalConfirmDestructiveActionExample/>
+      <ConfirmADestructiveAction />
 
         <SandboxHeader
           exampleTitle="Warn a user of a deadline"
           figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-43225&t=X0IQW5flDDaj8Vyg-4">
         </SandboxHeader>
-      <ModalWarnUserDeadlineExample/>
+      <WarnAUserOfADeadline />
 
         <SandboxHeader
           exampleTitle="Confirm a change"
           figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-44272&t=X0IQW5flDDaj8Vyg-4">
         </SandboxHeader>
-      <ModalConfirmRecordChangeExample/>
+      <ConfirmAChange />
 
         <SandboxHeader
           exampleTitle="Add another item"
@@ -44,7 +45,7 @@ export default function ModalExamples() {
           exampleTitle="Route changes"
           figmaExample="">
         </SandboxHeader>
-      <ModalRouteChangeExample/>
+      <ConfirmBeforeNavigatingAway />
     </>
   );
 }

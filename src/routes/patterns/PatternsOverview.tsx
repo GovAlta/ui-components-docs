@@ -22,6 +22,7 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
   openIssuesUrl?: string;
   metatags?: string[];
   url?: string;
+  slug?: string;
 };
 
 export default function PatternsOverviewPage() {
@@ -33,7 +34,14 @@ export default function PatternsOverviewPage() {
     const fetchData = async () => {
       const metadata = await fetchExampleMetadataFromProject();
       console.log("Fetched metadata from GitHub:", metadata);
-      const sorted = metadata.sort((a, b) => {
+      const withSlugs = metadata.map((item) => ({
+        ...item,
+        slug: item.name
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "-")
+      }));
+      const sorted = withSlugs.sort((a, b) => {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison =
           statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
@@ -142,7 +150,7 @@ export default function PatternsOverviewPage() {
           </td>
           <td>
             {card.status === "Published" ? (
-              <Link to={`/examples/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
+              <Link to={`/examples/${card.slug}`}>
                 {toSentenceCase(card.name)}
               </Link>
             ) : (
@@ -224,6 +232,10 @@ export default function PatternsOverviewPage() {
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
               </>
             }
 
@@ -237,9 +249,10 @@ export default function PatternsOverviewPage() {
                 githubLink={card.url}
                 openIssues={issueCounts[card.name]}
                 isNew={card.isNew}
-                designSystemUrl={`/examples/${card.name.toLowerCase().replace(/\s+/g, "-")}`}
+                designSystemUrl={`/examples/${card.slug}`}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
+                imageFolder="example-thumbnails"
               />
             ))}
           </div>

@@ -4,7 +4,7 @@ import {
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "./patterns.module.css";
-import { ResultPageExamples } from "@examples/result-page/ResultPageExamples";
+import { ResultsPage } from "@examples/results-page.tsx";
 
 export default function ResultPage() {
   return (
@@ -18,7 +18,7 @@ export default function ResultPage() {
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
-            <ResultPageExamples/>
+            <ResultsPage />
           </GoabTab>
 
           <GoabTab heading="Design guidelines">

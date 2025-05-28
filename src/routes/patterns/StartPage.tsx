@@ -3,7 +3,7 @@ import {
   GoabTabs,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { StartPageExamples } from "@examples/start-page/StartPageExamples";
+import { StartPage } from "@examples/start-page.tsx";
 import css from "./patterns.module.css";
 
 export default function StartPage() {
@@ -19,7 +19,7 @@ export default function StartPage() {
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
-            <StartPageExamples />
+            <StartPage />
           </GoabTab>
 
           <GoabTab heading="Design guidelines">

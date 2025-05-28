@@ -341,12 +341,12 @@ export default function DateFormatPage() {
           <DoDont
             type="do"
             description="Use standard time between the months of November and March.">
-            <img src="/images/date-st.png" width="80%"></img>
+            <img src="/images/component-thumbnails/date-st.png" width="80%"></img>
           </DoDont>
           <DoDont
             type="do"
             description="Use daylight time between the months of April and October.">
-            <img src="/images/date-dst.png" width="80%"></img>
+            <img src="/images/component-thumbnails/date-dst.png" width="80%"></img>
           </DoDont>
         </GoabGrid>
         <GoabGrid minChildWidth={minGridWidth} mt="2xl">

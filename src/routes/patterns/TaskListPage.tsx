@@ -4,7 +4,7 @@ import {
   GoabTabs
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { TaskListPageExamples } from "@examples/task-list-page/TaskListPageExamples";
+import { TaskListPage } from "@examples/task-list-page.tsx";
 import css from "./patterns.module.css";
 import { Link } from "react-router-dom";
 
@@ -21,7 +21,7 @@ export default function TaskListPage() {
         tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
-            <TaskListPageExamples />
+            <TaskListPage />
           </GoabTab>
 
           <GoabTab heading="Design guidelines">

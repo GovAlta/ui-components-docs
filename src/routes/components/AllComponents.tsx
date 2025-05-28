@@ -180,7 +180,8 @@ const AllComponents = () => {
         Components
       </GoabText>
       <GoabText size="body-l" mt="m" mb="xl">
-        Components are reusable parts of the user interface that have been made to support a variety of applications. You can use individual components in many different patterns and contexts.
+        Reusable parts of the user interface that have been made to support a variety of applications. You can use
+        individual components in many different patterns and contexts.
       </GoabText>
 
       <GoabFormItem helpText="Search by keyword, category, or name" mb="xl">
@@ -211,6 +212,10 @@ const AllComponents = () => {
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
+                <GoabSkeleton type="card" size="3" />
               </>
             }
 
@@ -227,6 +232,7 @@ const AllComponents = () => {
                 designSystemUrl={card.designSystemUrl}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
+                imageFolder="component-thumbnails"
               />
             ))}
           </div>

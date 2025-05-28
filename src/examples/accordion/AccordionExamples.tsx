@@ -1,4 +1,4 @@
-import { AccordionHideOrShowSectionExample } from "@examples/accordion/AccordionHideOrShowSectionExample.tsx";
+import { HideAndShowManySectionsOfInformation } from "@examples/hide-and-show-many-sections-of-information.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 import ExpandOrCollapsePartOfAForm from "@examples/expand-or-collapse-part-of-a-form.tsx";
 
@@ -15,7 +15,7 @@ export default function AccordionExamples() {
         exampleTitle="Hide and show many sections of information (FAQ)"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6469-76255&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <AccordionHideOrShowSectionExample/>
+      <HideAndShowManySectionsOfInformation />
     </>
   );
 }

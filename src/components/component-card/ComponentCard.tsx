@@ -28,15 +28,21 @@ export interface Props {
   designSystemUrl?: string;
   designComponentFigmaUrl?: string;
   designContributionFigmaUrl?: string;
+  imageFolder?: "component-thumbnails" | "example-thumbnails";
 }
 
 function dasherize(value: string): string {
   return value.toLowerCase().split(" ").join("-");
 }
 
+function isRelativeUrl(url?: string): boolean {
+  return url !== undefined && !/^https?:\/\//i.test(url);
+}
+
 export function ComponentCard(props: Props) {
   console.log("Rendering card for:", props.name);
-  const [imageUrl, setImageUrl] = useState(`/images/${dasherize(props.name)}.png`);
+  const folder = props.imageFolder ?? "components";
+  const [imageUrl, setImageUrl] = useState(`/images/${folder}/${dasherize(props.name)}.png`);
 
   useEffect(() => {
     const testImage = new Image();
@@ -62,7 +68,8 @@ export function ComponentCard(props: Props) {
 
     <div className="card">
       {props.status === "Published" ? (
-        <Link to={toKebabCase(props.name)} tabIndex={-1}>
+        <Link to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}
+              tabIndex={-1}>
           <div
             className="card-image"
             style={{ backgroundImage: `url(${imageUrl})` }}
@@ -87,22 +94,9 @@ export function ComponentCard(props: Props) {
             }
           />
         )}
-
-        <h3 style={{ marginTop: 0, marginBottom: 12 }}>
-          {props.status === "Published" ? (
-            <Link to={toKebabCase(props.name)}>{props.name}</Link>
-          ) : (
-            props.name
-          )}
-        </h3>
-
-        <GoabText size="body-m">
-          {props.description}
-        </GoabText>
-
         {props.status !== "Published" && (
           <GoabBadge
-            mt="xs"
+            mb="m"
             type={
               props.status === "In Progress"
                 ? "important"
@@ -111,20 +105,31 @@ export function ComponentCard(props: Props) {
             content={props.status}
           />
         )}
+        <h3 style={{ marginTop: 0, marginBottom: 12 }}>
+          {props.status === "Published" ? (
+            <Link
+              to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}>{props.name}</Link>
+          ) : (
+            props.name
+          )}
+        </h3>
+        <GoabText size="body-m" mb="s">
+          {props.description}
+        </GoabText>
+
 
         {props.status !== "Published" && props.githubLink && (
-          <GoabText tag="div" mt="s" size="body-s">
+          <GoabText tag="div" mt="m" size="body-s">
             <a
               href={props.githubLink}
               target="_blank"
               rel="noopener noreferrer"
             >
-              View open issues
-              {props.openIssues !== undefined ? ` (${props.openIssues})` : ""}
+              {props.imageFolder === "example-thumbnails" ? "View issue" : "View open issues"}
+              {props.imageFolder === "example-thumbnails" ? "" : props.openIssues !== undefined ? ` (${props.openIssues})` : ""}
             </a>
           </GoabText>
         )}
-
 
       </div>
     </div>

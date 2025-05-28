@@ -24,9 +24,7 @@ export default function ExamplePageTemplate() {
     console.log("Looking for slug:", slug);
     fetchExampleMetadataFromProject().then(data => {
       console.log("Fetched metadata:", data);
-      const match = data.find((item: any) =>
-        item.name?.toLowerCase().replace(/\s+/g, "-") === slug
-      );
+      const match = data.find((item: any) => item.slug === slug);
       console.log("Matched example:", match);
       setExample(match);
     }).catch(error => {

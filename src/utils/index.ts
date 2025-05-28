@@ -58,6 +58,7 @@ function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
     .map((item: any) => {
       const title = item.content?.title || "";
       const name = toSentenceCase(title.trim());
+      const slug = name.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
       const body = item.content?.body || "";
       const labels = item.content?.labels?.nodes.map((l: any) => l.name) || [];
 
@@ -87,6 +88,7 @@ function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
 
       return {
         name,
+        slug,
         groups: group ? [group as Group] : [],
         tags: labels.filter((l: string) => l !== group),
         metatags,
