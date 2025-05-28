@@ -52,10 +52,10 @@ const HomePage = () => {
       <GoabPageBlock width={MAX_CONTENT_WIDTH}>
         <GoabGrid minChildWidth="240px" mt="2xl" gap="xl">
           <CardLite
-            title="Patterns"
+            title="Examples"
             description="Common patterns and examples to use as a starting point for a government service."
             linkTo="/examples"
-            linkDisplay="View patterns"
+            linkDisplay="View examples"
           />
           <CardLite
             title="Components"
@@ -70,8 +70,8 @@ const HomePage = () => {
             linkDisplay="View tokens"
           />
           <CardLite
-            title="Content"
-            description="Content guidelines to simplify understanding and communication for the user."
+            title="Foundations"
+            description="Guidelines on design, brand, content, styles, and accessibility."
             linkTo="/content/capitalization"
             linkDisplay="View content"
           />

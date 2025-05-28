@@ -1,6 +1,6 @@
 import { GoabBlock, GoabDivider, GoabFormItem, GoabGrid, GoabSideMenu } from "@abgov/react-components";
-import { DoDont } from "@components/do-dont/DoDont";
-import { ComponentContent } from "@components/component-content/ComponentContent";
+import { DoDont } from "@components/do-dont/DoDont.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 const minGridWidth = "36ch";
 

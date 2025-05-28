@@ -51,10 +51,10 @@ import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 // Content Pages
 
 import ContentLayout from "@routes/content/ContentLayout";
-import CapitalizationPage from "@routes/content/Capitalization";
-import DateFormatPage from "@routes/content/DateFormat";
-import ErrorMessagesPage from "@routes/content/ErrorMessages";
-import HelperTextPage from "@routes/content/HelperText";
+import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
+import DateFormatPage from "@routes/foundations/DateFormat.tsx";
+import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
+import HelperTextPage from "@routes/foundations/HelperText.tsx";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
@@ -137,6 +137,10 @@ const router = createBrowserRouter(
         <Route path="logo" element={<LogoPage />} />
         <Route path="typography" element={<FoundationsTypographyPage />} />
         <Route path="layout" element={<FoundationsLayoutPage />} />
+         <Route path="capitalization" element={<CapitalizationPage />} />
+         <Route path="date-format" element={<DateFormatPage />} />
+         <Route path="error-messages" element={<ErrorMessagesPage />} />
+         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
       <Route path="content" element={<ContentLayout />}>

@@ -196,7 +196,7 @@ const AllComponents = () => {
       </GoabFormItem>
 
       <GoabTabs initialTab={1}>
-        <GoabTab heading="Cards">
+        <GoabTab heading="Grid">
           <div
             style={{
               display: "grid",

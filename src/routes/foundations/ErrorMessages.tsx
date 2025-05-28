@@ -1,4 +1,4 @@
-import { DoDont } from "@components/do-dont/DoDont";
+import { DoDont } from "@components/do-dont/DoDont.tsx";
 import {
   GoabCheckbox,
   GoabDivider,
@@ -9,7 +9,7 @@ import {
   GoabRadioItem,
 } from "@abgov/react-components";
 import { Link } from "react-router-dom";
-import { ComponentContent } from "@components/component-content/ComponentContent";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 const minGridWidth = "36ch";
 
