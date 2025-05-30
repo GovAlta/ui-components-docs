@@ -143,8 +143,8 @@ export default function PatternsOverviewPage() {
       </tr>
       </thead>
       <tbody>
-      {filteredCards.map((card) => (
-        <tr key={card.name}>
+      {filteredCards.map((card, index) => (
+        <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#F8F8F8" }}>
           <td style={{ width: "100px" }}>
             <GoabBadge
               mt="2xs"
