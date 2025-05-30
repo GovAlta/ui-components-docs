@@ -44,20 +44,18 @@ import {
   VERSIONED_ANGULAR_URL_SEGMENT,
   VERSIONED_REACT_URL_SEGMENT,
 } from "@components/version-language-switcher/version-language-constants.ts";
-import PatternsLayout from "@routes/patterns/PatternsLayout.tsx";
-import PatternsOverviewPage from "@routes/patterns/PatternsOverview.tsx";
-import LayoutPage from "@routes/patterns/LayoutPage.tsx";
-import StartPage from "@routes/patterns/StartPage.tsx";
-import TaskListPage from "@routes/patterns/TaskListPage.tsx";
-import QuestionPage from "@routes/patterns/QuestionPage.tsx";
-import ReviewPage from "@routes/patterns/ReviewPage.tsx";
-import ResultPage from "@routes/patterns/ResultPage.tsx";
-import PublicFormPage from "@routes/patterns/PublicFormPage.tsx";
+import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
+import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
+import LayoutPage from "@routes/examples/LayoutPage.tsx";
+import TaskListPage from "@examples/task-list-page.tsx";
+import QuestionPage from "@examples/question-page.tsx";
+import ReviewPage from "@examples/review-page.tsx";
+import ResultPage from "@examples/result-page.tsx";
+import PublicForm from "@examples/public-form.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 import { DrawerPage } from "@routes/components/Drawer.tsx";
 import LinkPage from "@routes/components/Link.tsx";
-import BirthdayExample from "@routes/examples/Birthday.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -148,20 +146,18 @@ export const ComponentsRouter = () => {
 export const PatternsRouter = () => {
   const patternsPaths = {
     "layout": <LayoutPage/>,
-    "start-page": <StartPage/>,
     "task-list-page": <TaskListPage/>,
     "question-page": <QuestionPage/>,
     "review-page": <ReviewPage/>,
     "result-page": <ResultPage/>,
-    "ask-a-user-for-their-birthday": <BirthdayExample/>,
   };
 
   return (
     <Routes>
-      <Route path="/" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
+      <Route path="/" element={<ExamplesLayout />} errorElement={<ComponentNotFoundPage />}>
         {/* Non-versioned paths components */}
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="/public-form" element={<PublicFormPage/>} />
+        <Route path="/public-form" element={<PublicForm />} />
         <Route path=":component" element={<ComponentRoute versionedPaths={patternsPaths} />} />
         {/* Versioned paths components */}
         <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={patternsPaths} />} />

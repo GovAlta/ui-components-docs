@@ -59,12 +59,12 @@ import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuid
 
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
 import { ComponentsRouter } from "./versioned-router";
-import ExamplePageTemplate from "@routes/patterns/ExamplePageTemplate";
-import PatternsOverviewPage from "@routes/patterns/PatternsOverview";
+import ExamplePageTemplate from "@routes/examples/ExamplePageTemplate";
+import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
-import PatternsLayout from "@routes/patterns/PatternsLayout.tsx";
+import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
 
 // Foundations Pages
 import FoundationsLayout from "@routes/foundations/FoundationsLayout";
@@ -152,7 +152,7 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="/examples" element={<PatternsLayout />}>
+      <Route path="/examples" element={<ExamplesLayout />}>
         <Route index element={<PatternsOverviewPage />} />
       </Route>
       <Route path="/examples/:slug" element={<ExamplePageTemplate />} />

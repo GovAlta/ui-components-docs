@@ -4,9 +4,10 @@ import { GoabBlock, GoabCallout } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
-export function ResultsPage() {
+export function ResultPageExamples() {
   const {version} = useContext(LanguageVersionContext);
   return (
+
       <Sandbox fullWidth skipRender>
         {/*CSS Code Snippet*/}
         <CodeSnippet
@@ -156,7 +157,6 @@ export function ResultsPage() {
           </p>
         </GoabBlock>
       </Sandbox>
+    
   );
 }
-
-export default ResultsPage;
