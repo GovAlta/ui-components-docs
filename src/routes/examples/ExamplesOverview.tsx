@@ -12,11 +12,14 @@ import {
   GoabBadge,
   GoabSkeleton
 } from "@abgov/react-components";
-import { ComponentCard, Props as RawComponentProps, ComponentStatus } from "@components/component-card/ComponentCard";
+import {
+  ExampleCard,
+  ExampleCardProps as RawExampleProps,
+  ComponentStatus
+} from "@components/example-card/ExampleCard.tsx";
 
-type ComponentProps = Omit<RawComponentProps, "status"> & {
+type ExampleProps = Omit<RawExampleProps, "status"> & {
   status: ComponentStatus;
-  designSystemUrl?: string;
   designComponentFigmaUrl?: string;
   designContributionFigmaUrl?: string;
   openIssuesUrl?: string;
@@ -28,7 +31,7 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
 export default function PatternsOverviewPage() {
   const [filter, setFilter] = useState<string>("");
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
-  const [cards, setCards] = useState<ComponentProps[]>([]);
+  const [cards, setCards] = useState<ExampleProps[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,7 +82,7 @@ export default function PatternsOverviewPage() {
           statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
         if (statusComparison !== 0) return statusComparison * newDirection;
       }
-      const key = sortBy as keyof ComponentProps;
+      const key = sortBy as keyof ExampleProps;
       const aField = (a as any)[key];
       const bField = (b as any)[key];
 
@@ -145,7 +148,7 @@ export default function PatternsOverviewPage() {
           <td style={{ width: "100px" }}>
             <GoabBadge
               mt="2xs"
-              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
+              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "light"}
               content={card.status} />
           </td>
           <td>
@@ -240,19 +243,18 @@ export default function PatternsOverviewPage() {
             }
 
             {filteredCards.map((card) => (
-              <ComponentCard
+              <ExampleCard
                 key={card.name}
                 name={card.name}
                 tags={card.tags}
                 description={card.description}
                 status={card.status}
-                githubLink={card.url}
                 openIssues={issueCounts[card.name]}
                 isNew={card.isNew}
-                designSystemUrl={`/examples/${card.slug}`}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
                 imageFolder="example-thumbnails"
+                githubLink={card.url}
               />
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./ComponentCard.css";
+import "./ExampleCard.css";
 import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
@@ -17,20 +17,6 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
 
-export interface ComponentCardProps {
-  name: string;
-  description: string;
-  tags?: string[];
-  status: ComponentStatus;
-  githubLink?: string;
-  openIssues?: number;
-  isNew?: boolean; // if true, show a badge on the component card to let users know the component is available in the latest version
-  designSystemUrl?: string;
-  designComponentFigmaUrl?: string;
-  designContributionFigmaUrl?: string;
-  imageFolder?: "component-thumbnails" | "example-thumbnails";
-}
-
 function dasherize(value: string): string {
   return value.toLowerCase().split(" ").join("-");
 }
@@ -39,16 +25,36 @@ function isRelativeUrl(url?: string): boolean {
   return url !== undefined && !/^https?:\/\//i.test(url);
 }
 
-export function ComponentCard(props: ComponentCardProps) {
-  console.log("Rendering card for:", props.name);
-  const folder = props.imageFolder ?? "components";
+export interface ExampleCardProps {
+  name: string;
+  description: string;
+  tags?: string[];
+  status: ComponentStatus;
+  githubLink?: string;
+  openIssues?: number;
+  isNew?: boolean; // if true, show a badge on the component card to let users know the component is available in the latest version
+  exampleUrl?: string;
+  designComponentFigmaUrl?: string;
+  designContributionFigmaUrl?: string;
+  imageFolder?: "component-thumbnails" | "example-thumbnails";
+}
+
+export function ExampleCard(props: ExampleCardProps) {
+  console.log("Rendering example card for:", props.name);
+  const folder = props.imageFolder ?? "example-thumbnails";
   const [imageUrl, setImageUrl] = useState(`/images/${folder}/${dasherize(props.name)}.png`);
 
   useEffect(() => {
     const testImage = new Image();
     testImage.src = imageUrl;
-    testImage.onerror = () => setImageUrl("/images/component-thumbnails/not-yet-available.png");
-  }, [imageUrl]);
+    testImage.onerror = () => {
+      if (props.status !== "Published") {
+        setImageUrl("/images/component-thumbnails/not-yet-available.png");
+      } else {
+        setImageUrl("");
+      }
+    };
+  }, [imageUrl, props.status]);
 
   const getBadgeType = (status: ComponentStatus) => {
     switch (status) {
@@ -63,12 +69,12 @@ export function ComponentCard(props: ComponentCardProps) {
     }
   };
   getBadgeType(props.status);
-  const {language} = useContext(LanguageVersionContext);
+  const { language } = useContext(LanguageVersionContext);
   return (
 
     <div className="card">
       {props.status === "Published" ? (
-        <Link to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}
+        <Link to={isRelativeUrl(props.exampleUrl) ? props.exampleUrl! : toKebabCase(props.name)}
               tabIndex={-1}>
           <div
             className="card-image"
@@ -100,7 +106,7 @@ export function ComponentCard(props: ComponentCardProps) {
             type={
               props.status === "In Progress"
                 ? "important"
-                : "information"
+                : "light"
             }
             content={props.status}
           />
@@ -108,15 +114,25 @@ export function ComponentCard(props: ComponentCardProps) {
         <h3 style={{ marginTop: 0, marginBottom: 12 }}>
           {props.status === "Published" ? (
             <Link
-              to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}>{props.name}</Link>
+              to={isRelativeUrl(props.exampleUrl) ? props.exampleUrl! : toKebabCase(props.name)}>{props.name}</Link>
           ) : (
             props.name
           )}
         </h3>
-        <GoabText size="body-m" mb="s">
+        <GoabText size="body-m" mb="m">
           {props.description}
         </GoabText>
 
+        {props.tags?.map((tag) => (
+          <GoabBadge
+            key={tag}
+            type="information"
+            mt="2xs"
+            mb="2xs"
+            mr="2xs"
+            content={tag}
+          />
+        ))}
 
         {props.status !== "Published" && props.githubLink && (
           <GoabText tag="div" mt="m" size="body-s">
@@ -125,8 +141,7 @@ export function ComponentCard(props: ComponentCardProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              {props.imageFolder === "example-thumbnails" ? "View issue" : "View open issues"}
-              {props.imageFolder === "example-thumbnails" ? "" : props.openIssues !== undefined ? ` (${props.openIssues})` : ""}
+              View issue
             </a>
           </GoabText>
         )}

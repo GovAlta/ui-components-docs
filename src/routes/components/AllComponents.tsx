@@ -11,11 +11,14 @@ import {
   GoabBadge,
   GoabSkeleton
 } from "@abgov/react-components";
-import { ComponentCard, Props as RawComponentProps, ComponentStatus } from "@components/component-card/ComponentCard";
+import {
+  ComponentCard,
+  ComponentCardProps as RawComponentProps,
+  ComponentStatus
+} from "@components/component-card/ComponentCard";
 
 type ComponentProps = Omit<RawComponentProps, "status"> & {
   status: ComponentStatus;
-  designSystemUrl?: string;
   designComponentFigmaUrl?: string;
   designContributionFigmaUrl?: string;
   openIssuesUrl?: string;
@@ -229,7 +232,6 @@ const AllComponents = () => {
                 githubLink={card.openIssuesUrl || `https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
                 openIssues={issueCounts[card.name]}
                 isNew={card.isNew}
-                designSystemUrl={card.designSystemUrl}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
                 imageFolder="component-thumbnails"

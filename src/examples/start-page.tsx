@@ -1,218 +1,171 @@
-import { Sandbox } from "@components/sandbox";
 import {
-  GoabButton,
+  GoabGrid, GoabTab, GoabTabs, GoabText
 } from "@abgov/react-components";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { useContext } from "react";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+
+import css from "@routes/examples/patterns.module.css";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
+import { StartPageExamples } from "@examples/start-page/StartPageExamples.tsx";
 
 export function StartPage() {
-  const {version} = useContext(LanguageVersionContext);
 
   return (
-      <Sandbox fullWidth allow={["h1", "h2", "h3", "p", "ul", "strong"]} skipRender>
-        <CodeSnippet
-          lang="css"
-          allowCopy={true}
-          code={`
-                  h1.page-title {
-                    margin-bottom: var(--goa-space-l);
-                  }
-                  h2 {
-                    margin-top: var(--goa-space-xl);
-                    margin-bottom: 0;
-                  }
-                  h2 + p {
-                    margin-top: var(--goa-space-l);
-                  }
-                `}
-        />
 
-        {/*Angular code*/}
+    <ComponentContent
+      contentClassName="start-page"
+      tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+      <GoabTabs initialTab={1}>
+        <GoabTab heading="Code">
+          <StartPageExamples />
+        </GoabTab>
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
-            <h1 class="page-title">
-              Name of service
-            </h1>
-            <h3>
-              A short overview of the service. This is a couple sentences that helps the user understand what the service is.
-            </h3>
-            <p>
-              Use this service to apply for [service]. You can use this service to:
-            </p>
-            <ul>
-              <li>see of you or a family member is eligible for [service]</li>
-              <li>create and submit an application for [service]</li>
-              <li>continue an application for [service] that you already started</li>
-            </ul>
-            <h2>Before you begin</h2>
-            <p>The application form should take about 20 minutes to complete.</p>
-            <p><strong>In order to complete the application you will need:</strong></p>
-            <ul>
-              <li>government issued ID for the person applying</li>
-            </ul>
-            <goa-button mt="m" mb="xl" type="start" (_click)="onClick($event)">
-              Get started
-            </goa-button>
-            <h2>Other information about the service</h2>
-            <p>This section contains supplementary details about the service, including descriptions of less common scenarios, exceptions, and additional resources available. It provides context and additional insights that may be relevant to your specific circumstances or interests, helping you understand the full scope and utility of the service offered.</p>
-            <h2>Support</h2>
-            <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help&#64;gov.ab.ca</a></p>
-        `}
-        />}
+        <GoabTab heading="Design guidelines">
+          <GoabGrid gap="2xl" minChildWidth="400px">
+            <div>
+              <h2 id="when-to-use" className="hidden">
+                When to use a start page
+              </h2>
+              <GoabText size="heading-l" mt="none" mb="l">
+                When to use a start page
+              </GoabText>
+              <GoabText size="body-m" mt="l" mb="l">
+                A start page is the front door to a government service for a citizen. It is the way
+                into the service, how they access the service. Each government service has a start
+                page on Alberta.ca. Contact the relevant person at Alberta.ca to make changes to the
+                start page for your service.
+              </GoabText>
+              <GoabText size="body-m" mt="l" mb="l">
+                This is the starting point for a citizen to begin your form from within your service
+                or from Alberta.ca.
+              </GoabText>
+              <GoabText size="body-m" mt="l" mb="l">
+                Provide the user with any information that is important before starting the form such
+                as how long it should take, list documents or information they may need to complete
+                the form, if there are any costs involved, or alternative ways to access the service.
+              </GoabText>
+            </div>
+            <figure className={css.imageContainer}>
+              <img
+                alt="form pattern start page image"
+                src="/images/patterns/form-pattern_start-page.png"
+              />
+            </figure>
+          </GoabGrid>
+          <h2 id="toc-2">A service's start page should</h2>
+          <ul>
+            <li>
+              <GoabText size="body-m" mt="l" mb="xs">
+                give the user just enough information to help them understand what the service does
+                and whether it will meet their need
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                a service's name should reflects the problem it solves for users
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                be written in plain language — <a href="https://www.alberta.ca/web-writing-style-guide" target="_blank">GOA
+                web writing style guide</a>.
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                include a "start button" linking into the service, with text that's consistent with
+                the action you're asking users to take — for example, "Start now", "Sign in" or
+                "Register or update your details"
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                a service's name should reflects the problem it solves for users
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                include any other information that most users are likely to need before they start
+                using the service online — for example, how much it costs to use the service and
+                roughly how long it will take
+              </GoabText>
+            </li>
+            <li>
+              <GoabText size="body-m" mt="none" mb="xs">
+                include additional information about the service such as other ways to access the
+                service (eg. by telephone or by completing a paper form). This should be included
+                after the main call to action to start the digital service.
+              </GoabText>
+            </li>
+          </ul>
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
-            <h1 class="page-title">
-              Name of service
-            </h1>
-            <h3>
-              A short overview of the service. This is a couple sentences that helps the user understand what the service is.
-            </h3>
-            <p>
-              Use this service to apply for [service]. You can use this service to:
-            </p>
-            <ul>
-              <li>see of you or a family member is eligible for [service]</li>
-              <li>create and submit an application for [service]</li>
-              <li>continue an application for [service] that you already started</li>
-            </ul>
-            <h2>Before you begin</h2>
-            <p>The application form should take about 20 minutes to complete.</p>
-            <p><strong>In order to complete the application you will need:</strong></p>
-            <ul>
-              <li>government issued ID for the person applying</li>
-            </ul>
-            <goab-button mt="m" mb="xl" type="start" (onClick)="onClick()">
-              Get started
-            </goab-button>
-            <h2>Other information about the service</h2>
-            <p>This section contains supplementary details about the service, including descriptions of less common scenarios, exceptions, and additional resources available. It provides context and additional insights that may be relevant to your specific circumstances or interests, helping you understand the full scope and utility of the service offered.</p>
-            <h2>Support</h2>
-            <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help&#64;gov.ab.ca</a></p>
-        `}
-        />}
+          <GoabGrid gap="2xl" minChildWidth="400px" mt={"4xl"}>
+            <div>
+              <h2 id="page-content" className="hidden">
+                Page content
+              </h2>
+              <GoabText size="heading-l" mt="none" mb="l">
+                Page content
+              </GoabText>
+              <GoabText size="body-m" mt="l" mb="l">
+                Consider what is the primary information that the user needs to know before entering
+                into the service. Provide that information to the user clearly, and then provide a
+                link to start using the service. Provide additional secondary information below the
+                call to action.
+              </GoabText>
+              <h3 id="toc-3-1">Overview</h3>
+              <GoabText size="body-m" mt="l" mb="l">
+                What the user needs to know before they enter into the service. A high level description of what the
+                service
+                is and what you can use it to do
+              </GoabText>
 
-        {/*React code*/}
+              <h3 id="toc-3-2">Before you begin</h3>
+              <ul>
+                <li>
+                  <GoabText size="body-m" mt="none" mb="xs">
+                    how long it will take
+                  </GoabText>
+                </li>
+                <li>
+                  <GoabText size="body-m" mt="none" mb="xs">
+                    what you will need to complete the service
+                  </GoabText>
+                </li>
+                <ul>
+                  <li>
+                    <GoabText size="body-m" mt="none" mb="xs">
+                      e.g. specific documents
+                    </GoabText>
+                  </li>
+                </ul>
+                <li>
+                  <GoabText size="body-m" mt="none" mb="xs">
+                    other important information
+                  </GoabText>
+                </li>
+              </ul>
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-            <h1 className="page-title">
-              Name of service
-            </h1>
-            <h3>
-              A short overview of the service. This is a couple sentences that helps the user understand what the service is.
-            </h3>
-            <p>Use this service to apply for [service]. You can use this service to:</p>
-            <ul>
-              <li>see of you or a family member is eligible for [service]</li>
-              <li>create and submit an application for [service]</li>
-              <li>continue an application for [service] that you already started</li>
-            </ul>
-            <h2>Before you begin</h2>
-            <p>The application form should take about 20 minutes to complete.</p>
-            <p><strong>In order to complete the application you will need:</strong></p>
-            <ul>
-              <li>government issued ID for the person applying</li>
-            </ul>
-            <GoAButton mt="m" mb="xl" type="start" onClick={onClick}>
-              Get started
-            </GoAButton>
-            <h2>
-              Other information about the service
-            </h2>
-            <p>
-              This section contains supplementary details about the service, including descriptions of less common scenarios, exceptions, and additional resources available. It provides context and additional insights that may be relevant to your specific circumstances or interests, helping you understand the full scope and utility of the service offered.
-            </p>
-            <h2>Support</h2>
-            <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a></p>
-          `}
-        />}
+              <h3 id="toc-3-3">Call to action</h3>
+              <GoabText size="body-m" mt="l" mb="l">
+                Below the primary information, include an obvious call to action to get started with the service.
+              </GoabText>
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
-            <h1 className="page-title">
-              Name of service
-            </h1>
-            <h3>
-              A short overview of the service. This is a couple sentences that helps the user understand what the service is.
-            </h3>
-            <p>Use this service to apply for [service]. You can use this service to:</p>
-            <ul>
-              <li>see of you or a family member is eligible for [service]</li>
-              <li>create and submit an application for [service]</li>
-              <li>continue an application for [service] that you already started</li>
-            </ul>
-            <h2>Before you begin</h2>
-            <p>The application form should take about 20 minutes to complete.</p>
-            <p><strong>In order to complete the application you will need:</strong></p>
-            <ul>
-              <li>government issued ID for the person applying</li>
-            </ul>
-            <GoabButton mt="m" mb="xl" type="start" onClick={onClick}>
-              Get started
-            </GoabButton>
-            <h2>
-              Other information about the service
-            </h2>
-            <p>
-              This section contains supplementary details about the service, including descriptions of less common scenarios, exceptions, and additional resources available. It provides context and additional insights that may be relevant to your specific circumstances or interests, helping you understand the full scope and utility of the service offered.
-            </p>
-            <h2>Support</h2>
-            <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a></p>
-          `}
-        />}
+              <h3 id="toc-3-4">Other information</h3>
+              <GoabText size="body-m" mt="l" mb="l">
+                Below the call to action, include any additional information as applicable such as customer support,
+                frequently asked questions, or related links.
+              </GoabText>
+            </div>
+            <figure className={css.imageContainer}>
+              <img
+                alt="service page content image"
+                src="/images/patterns/start-page-overview.png"
+              />
+            </figure>
+          </GoabGrid>
 
-        <h1 className="page-title">Name of service</h1>
-        <h3>
-          A short overview of the service. This is a couple sentences that helps the user understand
-          what the service is.
-        </h3>
-        <p>Use this service to apply for [service]. You can use this service to:</p>
-        <ul>
-          <li>see of you or a family member is eligible for [service]</li>
-          <li>create and submit an application for [service]</li>
-          <li>continue an application for [service] that you already started</li>
-        </ul>
-
-        <h2>Before you begin</h2>
-        <p>The application form should take about 20 minutes to complete.</p>
-        <p>
-          <strong>In order to complete the application you will need:</strong>
-        </p>
-        <ul>
-          <li>government issued ID for the person applying</li>
-        </ul>
-        <GoabButton mt="m" mb="xl" type="start" onClick={() => {}}>
-          Get started
-        </GoabButton>
-
-        <h2>Other information about the service</h2>
-        <p>
-          This section contains supplementary details about the service, including descriptions of
-          less common scenarios, exceptions, and additional resources available. It provides context
-          and additional insights that may be relevant to your specific circumstances or interests,
-          helping you understand the full scope and utility of the service offered.
-        </p>
-
-        <h2>Support</h2>
-        <p>
-          <span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a>
-        </p>
-      </Sandbox>
+        </GoabTab>
+      </GoabTabs>
+    </ComponentContent>
   );
 }
 

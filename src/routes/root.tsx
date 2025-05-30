@@ -59,10 +59,10 @@ export default function Root() {
           <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}
                          fullMenuBreakpoint={996}>
             <Link to="/get-started">Get started</Link>
+            <Link to="/foundations">Foundations</Link>
             <Link to="/examples">Examples</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Tokens</Link>
-            <Link to="/foundations">Foundations</Link>
             <Link to="/get-started/support" className="interactive">Get support</Link>
           </GoabAppHeader>
         </section>

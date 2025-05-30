@@ -14,7 +14,7 @@ export default function ExamplePageTemplate() {
     if (!slug) return () => <div>Invalid slug</div>;
     return lazy(() =>
       import(`../../examples/${slug}.tsx`).catch(() =>
-        import("../patterns/FallbackExample.tsx")
+        import("@routes/examples/FallbackExample.tsx")
       )
     );
   }, [slug]);
@@ -32,8 +32,11 @@ export default function ExamplePageTemplate() {
     });
   }, [slug]);
   return (
-    <main className="main">
-      <GoabBlock mb="l">
+    <main
+      className="main">
+      <div style={{ maxWidth: "1440px", margin: "0 auto" }}>
+
+        <GoabBlock mb="l">
         <GoabLink leadingIcon="chevron-back" mt="l" mb={"none"}>
           <a href="/examples">Back</a>
         </GoabLink>
@@ -59,6 +62,7 @@ export default function ExamplePageTemplate() {
       <Suspense fallback={<GoabSkeleton type="card" size="3" />}>
         <ExampleComponent />
       </Suspense>
+      </div>
     </main>
   );
 }

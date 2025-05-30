@@ -1,103 +1,70 @@
-import { Sandbox } from "@components/sandbox";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoabButton, GoabButtonGroup, GoabTable } from "@abgov/react-components";
+import {
+  GoabTab,
+  GoabTabs,
+  GoabText
+} from "@abgov/react-components";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
+import css from "@routes/examples/patterns.module.css";
+import { ReviewPageExamples } from "@examples/review-page/ReviewPageExamples.tsx";
+
 
 export function ReviewPage() {
-
   return (
-      <Sandbox fullWidth allow={["h2", "h3"]}>
-        {/*CSS Code Snippet*/}
-        <CodeSnippet
-          lang="css"
-          allowCopy={true}
-          code={`
-            h2.section-title {
-              margin-top: 0;
-              margin-bottom: 0;
-            }
-            h2.section-title + h3 {
-              margin-top: var(--goa-space-l);
-              color: var(--goa-color-text-secondary);
-            }
-          `}
-        />
-        <h2 className="section-title">Review your answers</h2>
-        <h3>Your situation</h3>
-        <GoabTable mt="l">
-          <tbody>
-            <tr>
-              <td>
-                <strong>What was your (the applicant's) relationship to the deceased?</strong>
-              </td>
-              <td>Other</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>My relationship to the deceased was</strong>
-              </td>
-              <td>Manager</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>
-                  Was the deceased part of a household that was receiving Assured Income for the
-                  Severely Handicapped (AISH) or Income Support?
-                </strong>
-              </td>
-              <td>No</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Was the deceased a minor?</strong>
-              </td>
-              <td>No</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>What was the deceased's marital status at time of death?</strong>
-              </td>
-              <td>Married</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Did the deceased have any dependents?</strong>
-              </td>
-              <td>No</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Was the deceased a sponsored immigrant?</strong>
-              </td>
-              <td>Yes</td>
-              <td>
-                <GoabButton type="tertiary">Change</GoabButton>
-              </td>
-            </tr>
-          </tbody>
-        </GoabTable>
-        <GoabButtonGroup alignment="start" mt="2xl">
-          <GoabButton type="primary">Confirm and continue</GoabButton>
-          <GoabButton type="tertiary">Back to application overview</GoabButton>
-        </GoabButtonGroup>
-      </Sandbox>
+    <>
+      <ComponentContent
+        contentClassName="question-page"
+        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        <GoabTabs initialTab={1}>
+          <GoabTab heading="Code examples">
+            <ReviewPageExamples />
+          </GoabTab>
+
+          <GoabTab heading="Design guidelines">
+            <figure className={css.imageContainer}>
+              <h2 id="overview" className="hidden">
+                Overview
+              </h2>
+              <img
+                alt="review page overview image"
+                src="/images/patterns/form-pattern_review-page.png"
+              />
+            </figure>
+            <h2 id="toc-1">When to use a review page</h2>
+            <div className={css.descriptionWithList}>
+              <GoabText size="body-m" mt="l" mb="l">Review and submit your answers at the end of a form or
+                section.</GoabText>
+              <GoabText size="body-m" mt="l" mb="l">
+                When designing a very large transaction with multiple sections, it may help to
+                include a check answers pages at the end of each section.
+              </GoabText>
+            </div>
+
+            <h2 id="toc-2">Let users go back and change their answers</h2>
+            <GoabText size="body-m" mt="l" mb="l">
+              Provide a "change" link next to each section so that users can add or change the
+              information they are submitting.
+            </GoabText>
+            <GoabText size="body-m" mt="l" mb="l">
+              If you have questions that are optional, let users know that they've skipped it
+              without giving an answer by showing their response as "Not provided".
+            </GoabText>
+            <GoabText size="body-m" mt="l" mb="l">
+              Include the full question name again in the change button as "visually hidden" so that
+              the screen reader reads out "change [question]" instead of just "change". This gives
+              context to a user using assistive technologies while keeping the link simple for most
+              users.
+            </GoabText>
+
+            <figure className={css.imageContainer}>
+              <img
+                alt="let users go back and change their answer example image"
+                src="/images/patterns/review-page-change-answers.png"
+              />
+            </figure>
+          </GoabTab>
+        </GoabTabs>
+      </ComponentContent>
+    </>
   );
 }
 

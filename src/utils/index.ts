@@ -1,4 +1,8 @@
-import { Props as ComponentProps, ComponentStatus, Group } from "@components/component-card/ComponentCard.tsx";
+import {
+  ComponentCardProps as ComponentProps,
+  ComponentStatus,
+  Group
+} from "@components/component-card/ComponentCard.tsx";
 
 export function toKebabCase(str: string) {
   return str
