@@ -77,10 +77,10 @@ export default function Root() {
           <GoabAppFooter url="/" maxContentWidth={MAX_CONTENT_WIDTH}>
             <GoabAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
+              <Link to="/foundations">Foundations</Link>
               <Link to="/examples">Examples</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Design tokens</Link>
-              <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
               <Link to="/get-started/support/report-bug" target="_blank">Submit an issue</Link>
