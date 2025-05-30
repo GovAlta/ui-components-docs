@@ -1,6 +1,7 @@
-
-import { RadioSlottedDescriptionExample } from "@examples/radio/RadioSlottedDescriptionExample.tsx";
-import { RadioYesNoExample } from "@examples/radio/RadioYesNoExample.tsx";
+import {
+  IncludeALinkInTheHelperTextOfAnOption
+} from "@examples/include-a-link-in-the-helper-text-of-an-option.tsx";
+import { SetAMaxWidthOnALongRadioItem } from "@examples/set-a-max-width-on-a-long-radio-item.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function RadioExamples () {
@@ -8,16 +9,16 @@ export default function RadioExamples () {
   return (
     <>
       <SandboxHeader
-        exampleTitle="Radio items with description"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6844-1982128&t=esZgJXviyArNDmmo-1">
+        exampleTitle="Include a link in the helper text of an option"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-133375&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <RadioSlottedDescriptionExample/>
+      <IncludeALinkInTheHelperTextOfAnOption />
 
       <SandboxHeader
-        exampleTitle="Yes or no question horizontally"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6844-165351&t=esZgJXviyArNDmmo-1">
+        exampleTitle="Max width on long radio items"
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-133539&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <RadioYesNoExample/>
+      <SetAMaxWidthOnALongRadioItem />
     </>
   );
 }

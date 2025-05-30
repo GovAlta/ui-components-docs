@@ -51,17 +51,20 @@ import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 // Content Pages
 
 import ContentLayout from "@routes/content/ContentLayout";
-import CapitalizationPage from "@routes/content/Capitalization";
-import DateFormatPage from "@routes/content/DateFormat";
-import ErrorMessagesPage from "@routes/content/ErrorMessages";
-import HelperTextPage from "@routes/content/HelperText";
+import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
+import DateFormatPage from "@routes/foundations/DateFormat.tsx";
+import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
+import HelperTextPage from "@routes/foundations/HelperText.tsx";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
-import { ComponentsRouter, PatternsRouter } from "./versioned-router";
+import { ComponentsRouter } from "./versioned-router";
+import ExamplePageTemplate from "@routes/examples/ExamplePageTemplate";
+import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
+import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
 
 // Foundations Pages
 import FoundationsLayout from "@routes/foundations/FoundationsLayout";
@@ -134,6 +137,10 @@ const router = createBrowserRouter(
         <Route path="logo" element={<LogoPage />} />
         <Route path="typography" element={<FoundationsTypographyPage />} />
         <Route path="layout" element={<FoundationsLayoutPage />} />
+         <Route path="capitalization" element={<CapitalizationPage />} />
+         <Route path="date-format" element={<DateFormatPage />} />
+         <Route path="error-messages" element={<ErrorMessagesPage />} />
+         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
       <Route path="content" element={<ContentLayout />}>
@@ -145,7 +152,10 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="/patterns/*" element={<PatternsRouter />}></Route>
+      <Route path="/examples" element={<ExamplesLayout />}>
+        <Route index element={<PatternsOverviewPage />} />
+      </Route>
+      <Route path="/examples/:slug" element={<ExamplePageTemplate />} />
     </Route>
   )
 );

@@ -25,7 +25,7 @@ const description =
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/footer", name: "Footer" },
-  { link: "/patterns/layout", name: "Layout" },
+  { link: "/examples/layout", name: "Layout" },
   { link: "/components/microsite-header", name: "Microsite header" }
 ];
 type ComponentPropsType = GoabAppHeaderProps;

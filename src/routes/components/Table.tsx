@@ -18,7 +18,7 @@ import { GoabTableProps } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabTableOnSortDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
+import { FilterDataInATable } from "@examples/filter-data-in-a-table.tsx";
 import { omit } from "lodash";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
@@ -627,7 +627,7 @@ export default function TablePage() {
                 exampleTitle="Filter data in a table"
                 figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7104-1626357&t=WrSJODVw0mryQrrA-4">
               </SandboxHeader>
-            <TableWithGlobalFiltersExample />
+              <FilterDataInATable />
           </GoabTab>
 
           <GoabTab heading="Design">
