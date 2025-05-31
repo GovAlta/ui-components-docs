@@ -12,12 +12,16 @@ import Root from "@routes/root";
 import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
-// Support
+import {
+  VersionUpdateNotificationProvider
+} from "@components/version-language-switcher/VersionUpdateNotificationContext";
+import { SiteWideNotificationProvider } from "@contexts/SiteWideNotificationContext";
+
+// (Your full route definitions below this remain exactly the same...)
 
 import HomePage from "@routes/home";
 
 // Design Tokens
-
 import DesignTokensOverviewPage from "@routes/design-tokens/overview/Overview";
 import BorderRadiusPage from "@routes/design-tokens/border-radius/BorderRadius";
 import BorderWidthPage from "@routes/design-tokens/border-width/BorderWidth";
@@ -30,7 +34,6 @@ import SpacingPage from "@routes/design-tokens/spacing/Spacing";
 import TypographyPage from "@routes/design-tokens/typography/Typography";
 
 // Get Started
-
 import DevelopersOverviewPage from "@routes/get-started/developers/DevelopersOverview";
 import DevelopersSetupPage from "@routes/get-started/developers/DevelopersSetup";
 import DevelopersTechnologiesPage from "@routes/get-started/developers/DevelopersTechnologies";
@@ -49,8 +52,6 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 
 // Content Pages
-
-import ContentLayout from "@routes/content/ContentLayout";
 import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
 import DateFormatPage from "@routes/foundations/DateFormat.tsx";
 import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
@@ -62,7 +63,7 @@ import { ComponentsRouter } from "./versioned-router";
 import ExamplePageTemplate from "@routes/examples/ExamplePageTemplate";
 import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
-import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
+import { LanguageVersionContext, LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
 
@@ -82,7 +83,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
-      <Route path="/components/*" element={<ComponentsRouter />}></Route>
+      <Route path="/components/*" element={<ComponentsRouter />} />
       <Route path="design-tokens" element={<DesignTokens />} errorElement={<ComponentNotFound />}>
         <Route index element={<DesignTokensOverviewPage />} />
         <Route path="border-width" element={<BorderWidthPage />} />
@@ -97,9 +98,7 @@ const router = createBrowserRouter(
 
       <Route path="get-started" element={<GetStartedLayout />}>
         <Route index element={<GetStartedOverviewPage />} />
-        <Route path="designers">
-          <Route index element={<UxDesignerPage />} />
-        </Route>
+        <Route path="designers" element={<UxDesignerPage />} />
         <Route path="developers">
           <Route index element={<DevelopersOverviewPage />} />
           <Route path="browsers" element={<SupportedBrowsersPage />} />
@@ -109,25 +108,17 @@ const router = createBrowserRouter(
           <Route path="bug" element={<BugVerificationPage />} />
           <Route path="update" element={<DevelopersUpgradePage />} />
         </Route>
-        <Route path="qa-testing">
-          <Route index element={<QATestingOverviewPage />} />
-        </Route>
-        <Route path="lts-policy">
-          <Route index element={<LtsPolicyPage />} />
-        </Route>
-        <Route path="contribute">
-          <Route index element={<ContributePage />} />
-        </Route>
-        <Route path="support">
-          <Route index element={<SupportPage />} />
-          <Route path="report-bug" element={<ReportBugPage />} />
-          <Route path="request-feature" element={<RequestFeaturePage />} />
-        </Route>
+        <Route path="qa-testing" element={<QATestingOverviewPage />} />
+        <Route path="lts-policy" element={<LtsPolicyPage />} />
+        <Route path="contribute" element={<ContributePage />} />
+        <Route path="support" element={<SupportPage />} />
+        <Route path="support/report-bug" element={<ReportBugPage />} />
+        <Route path="support/request-feature" element={<RequestFeaturePage />} />
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
 
-       <Route path="foundations" element={<FoundationsLayout />}>
+      <Route path="foundations" element={<FoundationsLayout />}>
         <Route index element={<DesignAtGoAPage />} />
         <Route path="accessibility" element={<AccessibilityPage />} />
         <Route path="brand-guidelines" element={<BrandGuidelinesPage />} />
@@ -137,20 +128,16 @@ const router = createBrowserRouter(
         <Route path="logo" element={<LogoPage />} />
         <Route path="typography" element={<FoundationsTypographyPage />} />
         <Route path="layout" element={<FoundationsLayoutPage />} />
-         <Route path="capitalization" element={<CapitalizationPage />} />
-         <Route path="date-format" element={<DateFormatPage />} />
-         <Route path="error-messages" element={<ErrorMessagesPage />} />
-         <Route path="helper-text" element={<HelperTextPage />} />
-      </Route>
-
-      <Route path="content" element={<ContentLayout />}>
-        <Route path="capitalization">
-          <Route index element={<CapitalizationPage />} />
-        </Route>
+        <Route path="capitalization" element={<CapitalizationPage />} />
         <Route path="date-format" element={<DateFormatPage />} />
         <Route path="error-messages" element={<ErrorMessagesPage />} />
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
+
+      <Route path="/content/capitalization" element={<CapitalizationPage />} />
+      <Route path="/content/date-format" element={<DateFormatPage />} />
+      <Route path="/content/error-messages" element={<ErrorMessagesPage />} />
+      <Route path="/content/helper-text" element={<HelperTextPage />} />
 
       <Route path="/examples" element={<ExamplesLayout />}>
         <Route index element={<PatternsOverviewPage />} />
@@ -165,7 +152,15 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <LanguageVersionProvider>
       <VersionFromUrlProvider>
         <DeviceWidthProvider>
-          <RouterProvider router={router} />
+          <LanguageVersionContext.Consumer>
+            {({ version }) => (
+              <SiteWideNotificationProvider>
+                <VersionUpdateNotificationProvider version={version}>
+                  <RouterProvider router={router} />
+                </VersionUpdateNotificationProvider>
+              </SiteWideNotificationProvider>
+            )}
+          </LanguageVersionContext.Consumer>
         </DeviceWidthProvider>
       </VersionFromUrlProvider>
     </LanguageVersionProvider>
