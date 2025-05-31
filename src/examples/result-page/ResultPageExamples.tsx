@@ -1,6 +1,5 @@
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import "./result-page-example.css";
 import { GoabBlock, GoabCallout } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
@@ -8,16 +7,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 export function ResultPageExamples() {
   const {version} = useContext(LanguageVersionContext);
   return (
-    <div className="result-page-example">
-      <div className="component-example-header">
-        <h3 id="component-example-1">Result page</h3>
-        <a
-          href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4110&mode=design"
-          target="_blank"
-          rel="noreferrer">
-          View in Figma
-        </a>
-      </div>
+
       <Sandbox fullWidth skipRender>
         {/*CSS Code Snippet*/}
         <CodeSnippet
@@ -167,6 +157,6 @@ export function ResultPageExamples() {
           </p>
         </GoabBlock>
       </Sandbox>
-    </div>
+    
   );
 }

@@ -6,7 +6,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { GoabBadge, GoabTab, GoabTabs, GoabLink } from "@abgov/react-components";
-import { LinkExamples } from "@examples/link/LinkExamples.tsx";
+import LinkExamples from "@examples/link/LinkExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import ICONS from "@routes/components/icons.json";

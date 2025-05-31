@@ -1,7 +1,6 @@
 import {
   GoabBadge,
   GoabBlock,
-  GoabNotification,
   GoabSideMenu,
   GoabSideMenuGroup,
   GoabSpacer
@@ -11,7 +10,7 @@ import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { getVersionedUrlPath, ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
-import { MAX_CONTENT_WIDTH } from "../../global-constants.ts";
+
 
 export function Components() {
   const { language, version } = useContext(LanguageVersionContext);
@@ -39,18 +38,6 @@ export function Components() {
 
   return (
     <>
-      {version === "old" && (
-        <GoabNotification type="important" maxContentWidth={MAX_CONTENT_WIDTH}>
-          Support for the Long Term Support (LTS) version of the Design system will be available until September
-          2025. <a href="/get-started/developers/update">View&nbsp;the&nbsp;upgrade&nbsp;guide</a>
-        </GoabNotification>
-      )}
-      {version === "new" && (
-        <GoabNotification type="information" maxContentWidth={MAX_CONTENT_WIDTH}>
-          Upgrading to the latest version of the design system?{" "}
-          <a href="/get-started/developers/update">View&nbsp;the&nbsp;upgrade&nbsp;guide</a>
-        </GoabNotification>
-      )}
       <section className="content">
         <section className="side-menu">
           <GoabSideMenu>
