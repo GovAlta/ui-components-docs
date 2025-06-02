@@ -14,8 +14,8 @@ export function SiteWideNotification() {
 
   return (
     <GoabNotification type="information" onDismiss={dismiss} maxContentWidth={MAX_CONTENT_WIDTH}>
-      Select your development framework to see all code in your development languages. You can change this in the top
-      right of the screen.
+      Select your development framework to see all code in your development language. Change framework and version at
+      the top right of the screen.
     </GoabNotification>
   );
 }
