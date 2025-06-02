@@ -123,10 +123,29 @@ export default function CheckboxPage() {
       lang: "angular",
     },
     {
+      name: "reveal",
+      type: "slot",
+      lang: "angular",
+      description: "Additional content shown when the checkbox is checked.",
+    },
+    {
+      name: "revealariallabel",
+      type: "string",
+      lang: "angular",
+      description:
+        "Defines how the text will be translated for the screen reader when the checkbox is checked and reveal the reveal slot content.",
+    },
+    {
       name: "onChange",
       type: "(name: string, checked: boolean, value: string) => void",
       description: "Callback function when checkbox value is changed.",
       lang: "react"
+    },
+    {
+      name: "_change",
+      type: "(event: CustomEvent) => void",
+      description: "Callback function when checkbox value is changed.",
+      lang: "angular"
     },
     {
       name: "maxWidth",
@@ -200,6 +219,24 @@ export default function CheckboxPage() {
       name: "maxWidth",
       type: "string",
       description: "Sets the maximum width of the checkbox.",
+    },
+    {
+      name: "reveal",
+      type: "ReactNode",
+      lang: "react",
+      description: "Additional content shown when the checkbox is checked.",
+    },
+    {
+      name: "reveal",
+      type: "TemplateRef<any>",
+      lang: "angular",
+      description: "Additional content shown when the checkbox is checked.",
+    },
+    {
+      name: "revealArialLabel",
+      type: "string",
+      description:
+        "Defines how the text will be translated for the screen reader when the checkbox is checked and reveal the reveal slot content.",
     },
     {
       name: "onChange",
@@ -328,7 +365,7 @@ export default function CheckboxPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="2" />
+                <GoabBadge type="information" content="3" />
               </>
             }
           >

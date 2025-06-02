@@ -185,6 +185,24 @@ export default function RadioPage() {
       type: "string",
     },
     {
+      name: "reveal",
+      type: "ReactNode",
+      lang: "react",
+      description: "Additional content shown when the checkbox is checked.",
+    },
+    {
+      name: "reveal",
+      type: "TemplateRef<any>",
+      lang: "angular",
+      description: "Additional content shown when the checkbox is checked.",
+    },
+    {
+      name: "revealArialLabel",
+      type: "string",
+      description:
+        "Defines how the text will be translated for the screen reader when the checkbox is checked and reveal the reveal slot content.",
+    },
+    {
       name: "onChange",
       type: "(event: GoabRadioGroupOnChangeDetail) => void",
       required: true,
@@ -462,7 +480,7 @@ export default function RadioPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="2" />
+                <GoabBadge type="information" content="3" />
               </>
             }
           >
