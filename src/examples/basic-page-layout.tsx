@@ -1,26 +1,17 @@
 import {Sandbox} from "@components/sandbox";
-import Browser from "@components/browser/Browser";
-import { ComponentContent } from "@components/component-content/ComponentContent";
+import Browser from "@components/browser/Browser.tsx";
+import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 import {
   GoabAppFooter,
-  GoabAppHeader, GoabBadge, GoabGrid,
+  GoabAppHeader, GoabGrid,
   GoabMicrositeHeader,
   GoabOneColumnLayout,
-  GoabPageBlock, GoabSkeleton,
-  GoabTab,
-  GoabTabs
+  GoabPageBlock, GoabSkeleton
 } from "@abgov/react-components";
 
-export default function LayoutPage() {
+export const BasicPageLayout = () => {
   return (
     <ComponentContent>
-      <h1>Layout</h1>
-      <h3>
-        A structural template that supports consistency across applications by defining visual grids, spacing, and sections.
-      </h3>
-      <GoabTabs initialTab={1}>
-        <GoabTab heading="Code examples">
-          <h3>Basic page layout</h3>
           <Sandbox fullWidth allow={["Browser"]}>
             <Browser ignore>
             <GoabOneColumnLayout>
@@ -50,16 +41,8 @@ export default function LayoutPage() {
             </GoabOneColumnLayout>
             </Browser>
           </Sandbox>
-        </GoabTab>
-
-        <GoabTab
-          heading={
-            <>
-              Design guidelines
-              <GoabBadge type="information" content="In progress" />
-            </>
-          }></GoabTab>
-      </GoabTabs>
     </ComponentContent>
   );
 }
+
+export default BasicPageLayout;
