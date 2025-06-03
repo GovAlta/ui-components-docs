@@ -1,5 +1,7 @@
-import { DropdownAddItemExample } from "@examples/dropdown/DropdownAddItemExample.tsx";
-import { DropdownChangeItemExample } from "@examples/dropdown/DropdownChangeItemExample.tsx";
+import { DynamicallyAddAnItemToADropdownList } from "@examples/dynamically-add-an-item-to-a-dropdown-list.tsx";
+import {
+  DynamicallyChangeItemsInADropdownList
+} from "@examples/dynamically-change-items-in-a-dropdown-list.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const DropdownExamples = () => {
@@ -9,13 +11,13 @@ export const DropdownExamples = () => {
         exampleTitle="Dynamically add an item to a dropdown list"
         figmaExample="">
       </SandboxHeader>
-      <DropdownAddItemExample />
+      <DynamicallyAddAnItemToADropdownList />
 
       <SandboxHeader
         exampleTitle="Dynamically change items in a dropdown"
         figmaExample="">
       </SandboxHeader>
-      <DropdownChangeItemExample/>
+      <DynamicallyChangeItemsInADropdownList />
     </>
   );
 }

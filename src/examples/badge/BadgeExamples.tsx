@@ -3,8 +3,8 @@ import {
   GoabBlock,
 } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
-import { BadgeShowStatusInTableExample } from "@examples/badge/BadgeShowStatusInTableExample.tsx";
-import { BadgeShowStatusOnCardExample } from "@examples/badge/BadgeShowStatusOnCardExample.tsx";
+import { ShowStatusInATable } from "@examples/show-status-in-a-table.tsx";
+import { ShowStatusOnACard } from "@examples/show-status-on-a-card.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function BadgeExamples() {
@@ -15,7 +15,7 @@ export default function BadgeExamples() {
         exampleTitle="Show status in a table"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-22364&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <BadgeShowStatusInTableExample />
+      <ShowStatusInATable />
 
       <SandboxHeader
         exampleTitle="Show multiple tags together"
@@ -33,7 +33,7 @@ export default function BadgeExamples() {
         exampleTitle="Show a status on a card"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-22768&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <BadgeShowStatusOnCardExample/>
+      <ShowStatusOnACard />
     </>
   );
 }
