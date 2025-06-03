@@ -6,6 +6,7 @@ p {
   font: var(--goa-typography-body-l);
   text-align: center;
   min-height: 28px;
+  display: flex;
 }
 
 .month-container {

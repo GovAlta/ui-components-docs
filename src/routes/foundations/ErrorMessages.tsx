@@ -7,6 +7,7 @@ import {
   GoabInput,
   GoabRadioGroup,
   GoabRadioItem,
+  GoabText
 } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
@@ -17,16 +18,19 @@ export default function ErrorMessagesPage() {
   const noop = () => { };
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <h1>Error messages</h1>
-      <h3>Error messages appear when the user’s proposed action fails.</h3>
+      <GoabText size="heading-xl" mb="m" mt="xl">
+        Error messages
+      </GoabText>
+      <GoabText size="heading-m" mb="xl">
+        Error messages appear when the user’s proposed action fails.
+      </GoabText>
 
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <GoabGrid minChildWidth={minGridWidth} gap="3xl">
         <GoabFormItem
           label="First name"
-          helpText="Enter your legal name."
-          error="Error message"
+          error="Enter your legal first name"
           key=".0">
           <GoabInput onChange={noop} name="firstName" value="" error></GoabInput>
         </GoabFormItem>
@@ -34,20 +38,18 @@ export default function ErrorMessagesPage() {
         <GoabFormItem
           label="How would you prefer to be contacted"
           labelSize="regular"
-          error="Error message">
-          <GoabRadioGroup name="item" value="1" onChange={noop} error>
+          error="Choose how you would like to be contacted">
+          <GoabRadioGroup name="item" onChange={noop} error>
             <GoabRadioItem value="1" label="Email"></GoabRadioItem>
             <GoabRadioItem value="2" label="Phone"></GoabRadioItem>
             <GoabRadioItem value="3" label="Text message"></GoabRadioItem>
           </GoabRadioGroup>
         </GoabFormItem>
 
-        <GoabFormItem label="Tuition" error="Tuition cost must be lower than $5,000." key=".0">
+        <GoabFormItem label="Tuition" error="Tuition cost must be lower than $5,000" key=".0">
           <GoabInput
             name="input"
             value="5420.00"
-            prefix="$"
-            suffix="per semester"
             onChange={noop}
             error
           />
@@ -56,7 +58,7 @@ export default function ErrorMessagesPage() {
         <GoabFormItem
           label="Acknowledgment"
           labelSize="regular"
-          error="Confirm the information accuracy.">
+          error="Confirm that the contact information is correct">
           <GoabCheckbox
             name="item"
             text="I confirm the contact information is correct."
@@ -69,16 +71,16 @@ export default function ErrorMessagesPage() {
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="anatomy">Anatomy</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         When a user inputs an unexpected value in the input field, an error message will appear
         below the field followed by a 16 pixels error icon. Both the icon and the error text are in
         red. The input field frame is displayed in red.
-      </p>
-      <h3>Helper text</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Helper text</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         When helper text and error message are both shown, the error message always appears above
         the helper text.
-      </p>
+      </GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
@@ -91,7 +93,7 @@ export default function ErrorMessagesPage() {
         </GoabGrid>
       </div>
 
-      <h3>Border</h3>
+      <GoabText size="heading-m" mt="2xl" mb="m">Border</GoabText>
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Display input field border in red when there is an error.">
@@ -105,7 +107,7 @@ export default function ErrorMessagesPage() {
         </GoabGrid>
       </div>
 
-      <h3>Button/upload area</h3>
+      <GoabText size="heading-m" mt="2xl" mb="m">Button/upload area</GoabText>
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Display an error message below the upload button.">
@@ -134,38 +136,38 @@ export default function ErrorMessagesPage() {
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="language-and-tone">Language and tone</h2>
-      <h3>Be clear and concise</h3>
-      <p>
+      <GoabText size="heading-m" mt="2xl" mb="m">Be clear and concise</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Communicate errors with a brief, clear, positive and solution-oriented approach. Be direct
         and natural.
-      </p>
-      <h3>Be specific</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Be specific</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Be specific about required information and what users should do to recover from the error.
-      </p>
-      <h3>Provide a solution</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Provide a solution</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Always provide a solution to the user through clear instruction. When applicable, provide an
         example.
-      </p>
-      <h3>Be empathetic</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Be empathetic</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Speak in a humanized tone to be empathetic to the user. Let the user know that you
         understand their frustration.
-      </p>
+      </GoabText>
 
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
 
       <h2 id="common-error-message-templates">Common error message templates</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Follow the templates and examples below for common errors to create an error message that
         fits your context.
-      </p>
+      </GoabText>
 
       <GoabDivider mb="xl" mt="xl"></GoabDivider>
 
       <h3 id="input-empty">Input is empty</h3>
-      <p>This error appears when user leaves a required field blank.</p>
+      <GoabText size="body-m" mt="l" mb="l">This error appears when user leaves a required field blank.</GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth}>
@@ -175,7 +177,7 @@ export default function ErrorMessagesPage() {
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} mt="2xl" gap="2xl">
+        <GoabGrid minChildWidth={minGridWidth} mt="2xl" gap="2xl" mb={"2xl"}>
           <DoDont
             type="do"
             description="Provide a clear solution for the user to correct the error.">
@@ -200,14 +202,14 @@ export default function ErrorMessagesPage() {
       </div>
 
       <h3 id="incorrect-information">Incorrect information format</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         This error appears when the user fails to input valid/correct information such as entering
         an invalid postal code or phone number.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         To keep messages clear and concise, provide the solution to the user and include an example
         of a valid entry.
-      </p>
+      </GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
@@ -217,7 +219,7 @@ export default function ErrorMessagesPage() {
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb={"2xl"}>
           <DoDont type="do" description="Provide a clear positive solution with an example.">
             <div className="example">
               Enter a valid postal code,
@@ -246,13 +248,13 @@ export default function ErrorMessagesPage() {
       </div>
 
       <h3 id="error-date-input">Error with a date input</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         This error appears when the user fails to input a valid/correct date. Date range/duration
         information should be provided in the error message.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         <Link to="/content/date-format">View more information on date formatting.</Link>
-      </p>
+      </GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth}>
@@ -262,7 +264,7 @@ export default function ErrorMessagesPage() {
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb={"2xl"}>
           <DoDont type="do" description="Provide adequate information.">
             <div className="example">
               The student must be 16 years old or older to be eligible for funding.
@@ -290,7 +292,8 @@ export default function ErrorMessagesPage() {
       </div>
 
       <h3 id="error-value-range">Error within a value range</h3>
-      <p>This error appears when user fails to input a valid/correct amount.</p>
+      <GoabText size="body-m" mt="l" mb="l">This error appears when user fails to input a valid/correct
+        amount.</GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth}>
@@ -300,7 +303,7 @@ export default function ErrorMessagesPage() {
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb={"2xl"}>
           <DoDont type="do" description="Provide a correct value if it is known.">
             <div className="example">Books and Materials cost must be lower than $4,000.</div>
           </DoDont>
@@ -309,16 +312,18 @@ export default function ErrorMessagesPage() {
           </DoDont>
         </GoabGrid>
       </div>
+
       <div className="dodont-wrapper">
+
         <h3 id="error-outside-accepted">Input outside accepted values</h3>
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/input-outside-expected.png" width="60%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb={"2xl"}>
           <DoDont type="do" description="Give a ranged value when possible.">
             <div className="example">PID must be between 10 and 15 digits.</div>
           </DoDont>
@@ -331,14 +336,14 @@ export default function ErrorMessagesPage() {
       </div>
 
       <h2 id="upload-errors">Upload errors</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         When there is an error with the requested file, error message appears below the file upload
         button or area.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         <Link to="/components/file-uploader">View more information on file upload.</Link>
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">
         File upload errors can appear when a user does any of the following:
         <ul>
           <li>Wrong file format uploaded.</li>
@@ -347,18 +352,18 @@ export default function ErrorMessagesPage() {
           <li>Duplicate file is uploaded.</li>
           <li>Required file is missing.</li>
         </ul>
-      </p>
+      </GoabText>
 
       <h3 id="wrong-file-type">Wrong file type</h3>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/wrong-file-types.png" width="60%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont type="do" description="Provide user with the list of accepted formats.">
             <div className="example">The selected file must be a PDF, JPG, PNG, or TIFF.</div>
           </DoDont>
@@ -373,14 +378,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="file-too-large">File too large</h3>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/file-too-large.png" width="60%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont type="do" description="Provide user with the exact file size limit.">
             <div className="example">The selected file must be less than 5MB.</div>
           </DoDont>
@@ -394,14 +399,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="upload-failed">File upload failed</h3>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/file-upload-failed.png" width="70%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont
             type="do"
             description="Use humanized tone when stating the problem. In this example, the service accepts the responsibility for the failed upload and eases the frustration that user might feel.">
@@ -419,14 +424,14 @@ export default function ErrorMessagesPage() {
 
       <h3 id="duplicate-upload">Duplicate file uploaded</h3>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/duplicate-file-upload.png" width="70%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont
             type="do"
             description="State the problem in a clear language and provide a solution as to what action should be taken.">
@@ -444,14 +449,14 @@ export default function ErrorMessagesPage() {
 
       <div className="dodont-wrapper">
         <h3 id="no-file-selected">No file selected</h3>
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/no-file-selected.png" width="60%"></img>
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont type="do" description="Provide a clear solution as to what user should do.">
             <div className="example">Upload a work permit.</div>
           </DoDont>
@@ -464,10 +469,10 @@ export default function ErrorMessagesPage() {
       </div>
 
       <h3 id="invalid-characters">Invalid characters used</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         This error appears when user inputs invalid characters. To keep messages clear and concise,
         provide a guided solution.
-      </p>
+      </GoabText>
 
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth}>
@@ -494,7 +499,8 @@ export default function ErrorMessagesPage() {
         </GoabGrid>
       </div>
 
-      <p>When the accepted characters are known, include an example in the error message.</p>
+      <GoabText size="body-m" mt="l" mb="l">When the accepted characters are known, include an example in the error
+        message.</GoabText>
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth}>
           <DoDont type="generic" description="*Use “only” when relevant.">
@@ -503,7 +509,7 @@ export default function ErrorMessagesPage() {
             </div>
           </DoDont>
         </GoabGrid>
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="2xl">
           <DoDont type="do" description="Provide clear guided solution.">
             <div className="example">
               Alberta Bar ID must include numbers only, such as “12345.”
@@ -519,7 +525,7 @@ export default function ErrorMessagesPage() {
 
       <h3 id="incorrect-number-of-characters">Incorrect number of characters</h3>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth}>
+        <GoabGrid minChildWidth={minGridWidth} mt={"l"}>
           <DoDont type="generic">
             <div style={{ textAlign: "center" }}>
               <img src="/images/error-messages/invalid-number-of-characters.png" width="60%"></img>

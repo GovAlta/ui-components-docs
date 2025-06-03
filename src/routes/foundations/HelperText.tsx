@@ -7,6 +7,7 @@ import {
   GoabGrid,
   GoabInput,
   GoabTable,
+  GoabText
 } from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont.tsx";
 import { Link } from "react-router-dom";
@@ -17,20 +18,25 @@ const minGridWidth = "36ch";
 export default function HelperTextPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <h1>Helper text</h1>
-      <h3>
-        Helper text is additional context and guidance that is always visible below an input. The
+
+      <GoabText size="heading-xl" mb="m" mt="xl">
+        Helper text
+      </GoabText>
+      <GoabText size="heading-m" mb="m">
+        Additional context and guidance that is always visible below an input. The
         text instructs a user on what needs to be completed to move to the next question in the form
         or process.
-      </h3>
-      <span>Helper text is available within: </span>
-      <span>
+      </GoabText>
+
+      <GoabBlock direction={"row"} gap={"xs"}>
+        <GoabText size="body-m">Helper text is available within: </GoabText>
+        <GoabText size="body-m">
         <Link to="/components/text-field">Text Input</Link>,{" "}
         <Link to="/components/radio">Radio</Link>, <Link to="/components/dropdown">Dropdown</Link>,{" "}
         <Link to="/components/checkbox">Checkbox</Link>, <Link to="/components/button">Button</Link>
-      </span>
-      <h3></h3>
-      <GoabContainer type="non-interactive" mt="2xl" mb="2xl">
+        </GoabText>
+      </GoabBlock>
+      <GoabContainer type="non-interactive" mt="l">
         <div
           className="example"
           style={{
@@ -47,7 +53,7 @@ export default function HelperTextPage() {
       </GoabContainer>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="considerations">Considerations</h2>
-      <p>Consider the following ways to convey more information:</p>      
+      <GoabText size="body-m" mt="l" mb="l">Consider the following ways to convey more information:</GoabText>
       <GoabTable width="100%" mb="xl">
         <thead>
           <tr>
@@ -170,36 +176,48 @@ export default function HelperTextPage() {
           </tr>
         </tbody>
       </GoabTable>
-      <p>View a pattern and guide on how to show more information.</p>
+      <GoabText size="body-m" mt="l" mb="l">View a pattern and guide on how to show more information.</GoabText>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="anatomy">Anatomy</h2>
-      <p>Helper text can be used with any input.</p>
+      <GoabText size="body-m" mt="l" mb="l">Helper text can be used with any input.</GoabText>
       <GoabContainer>
         <div style={{ textAlign: "center" }}>
           <img src="/images/helper-text/anatomy.png" width="80%"></img>
         </div>
       </GoabContainer>
       <ol>
-        <li>Input label + optional / required</li>
-        <li>Text Input</li>
-        <li>Helper Text</li>
+        <li>
+          <GoabText size="body-m" mt="none">Input label + optional / required</GoabText>
+        </li>
+        <li>
+          <GoabText size="body-m" mt="none">Text Input</GoabText>
+        </li>
+        <li>
+          <GoabText size="body-m" mt="none">Helper Text</GoabText>
+        </li>
       </ol>
-      <p>Examples of helper text within different inputs</p>
+      <GoabText size="body-m" mt="l" mb="l">Examples of helper text within different inputs</GoabText>
       <img src="/images/helper-text/examples.png" width="80%"></img>
       <ol>
-        <li>Input label + optional / required</li>
-        <li>Input control(s)</li>
-        <li>Helper Text</li>
+        <li>
+          <GoabText size="body-m" mt="none">Input label + optional / required</GoabText>
+        </li>
+        <li>
+          <GoabText size="body-m" mt="none">Input control(s)</GoabText>
+        </li>
+        <li>
+          <GoabText size="body-m" mt="none">Helper Text</GoabText>
+        </li>
       </ol>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="language-and-tone">Language and Tone</h2>
-      <h3>Keep it concise</h3>
-      <p>
+      <GoabText size="heading-m" mt="2xl" mb="m">Keep it concise</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Helper text should be short and to the point. Avoid long paragraphs or complicated
         explanations.
-      </p>
-      <h3>Use plain language</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Use plain language</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Write in a language that is easy to understand for your target audience. Avoid technical
         jargon or complex terms.
         <br />
@@ -208,31 +226,34 @@ export default function HelperTextPage() {
           target="_blank">
           Web writing style guide - Plain language
         </a>
-      </p>
-      <h3>Provide examples</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Provide examples</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Examples can help clarify the type of input you are looking for. For example: if you are
         asking for a phone number, provide an example of the format you are expecting.
-      </p>
-      <h3>Be specific</h3>
-      <p>Use specific language to describe what type of information you are looking for.</p>
-      <h3>Use specific language to describe what type of information you are looking for.</h3>
-      <p>
+      </GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Be specific</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">Use specific language to describe what type of information you are looking
+        for.</GoabText>
+      <GoabText size="heading-m" mt="2xl" mb="m">Use specific language to describe what type of information you are
+        looking for.</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         Write numbers using digits E.g. “342” except when the number starts the sentence or is the
         number ‘one’.
-        <br />
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         <a
           href="https://www.alberta.ca/web-writing-style-guide-numbers-and-measurements"
           target="_blank">
           Web writing style guide – Numbers and measurements
         </a>
-      </p>
+      </GoabText>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="usage">Usage</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Helper text generally falls into 3 different categories. Examine the patterns and examples
         below to use helper text properly.
-      </p>
+      </GoabText>
       <GoabBlock direction="column" gap="xs">
         <a href="#disclosure">Disclosure</a>
         <a href="#instructional">Instructional</a>
@@ -240,24 +261,36 @@ export default function HelperTextPage() {
       </GoabBlock>
       <GoabDivider mb="xl" mt="2xl"></GoabDivider>
       <h3 id="disclosure">Disclosure – Why are we asking this question</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Disclosive helper text helps a user understand the data, task or system associated with the
         input. It can be used to provide context or to explain what is expected from the user and
         can help users understand what information they need to provide and why it is needed.
-      </p>
-      <p>
-        <strong>Examples of disclosive helper text:</strong>
+      </GoabText>
+      <GoabText size="body-m" mt="none" mb="l">
+        <strong>Examples of disclosure helper text:</strong>
         <ul>
-          <li>Your full name is used for verification</li>
-          <li>Emails will be sent in your language of choice</li>
-          <li>This will be viewable to clients</li>
-          <li>Providing optional info helps us assist you better</li>
-          <li>This address will receive your printed certificate</li>
-          <li>Your birthdate is used to verify your eligibility</li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Your full name is used for verification</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Emails will be sent in your language of choice</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">This will be viewable to clients</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Providing optional info helps us assist you better</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">This address will receive your printed certificate</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Your birthdate is used to verify your eligibility</GoabText>
+          </li>
         </ul>
-      </p>
+      </GoabText>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mb={"2xl"}>
           <DoDont
             type="do"
             description="Refer directly to the content in the Text field using words such as This, These, and The when possible.">
@@ -289,26 +322,43 @@ export default function HelperTextPage() {
         </GoabGrid>
       </div>
       <h3 id="instructional">Instructional – Directions for how to use the input</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Instructional helper text is used to provide instructions on how to interact with a
         particular input field or control. It can be used to explain how to use a particular
         feature, what actions are possible, or what the result of a certain action will be.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         <strong>Examples of instructional helper text:</strong>
         <ul>
-          <li>Search by staff name or certification number</li>
-          <li>Select an existing project or create a new project name</li>
-          <li>Use arrow keys to choose from options</li>
-          <li>Type in your search terms to see results</li>
-          <li>Select a file to upload for verification</li>
-          <li>Select a date from the calendar for scheduling</li>
-          <li>Drag and drop files to upload for review</li>
-          <li>Select an option from the dropdown menu to filter results</li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Search by staff name or certification number</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Select an existing project or create a new project name</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Use arrow keys to choose from options</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Type in your search terms to see results</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Select a file to upload for verification</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Select a date from the calendar for scheduling</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Drag and drop files to upload for review</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Select an option from the dropdown menu to filter
+              results</GoabText>
+          </li>
         </ul>
-      </p>
+      </GoabText>
       <div className="dodont-wrapper">
-        <GoabGrid minChildWidth={minGridWidth} gap="2xl">
+        <GoabGrid minChildWidth={minGridWidth} gap="2xl" mb={"2xl"}>
           <DoDont
             type="do"
             description="Begin with an Action (Directive Verb) e.g. Search, Start, Select, Find, Deposit; phrasing that follows should briefly describe or summarize directions.">
@@ -336,22 +386,33 @@ export default function HelperTextPage() {
         </GoabGrid>
       </div>
       <h3 id="restrictive">Restrictive – Rules and requirements that the input needs to meet</h3>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Restrictive helper text indicates limitations or requirements that must be met when filling
         out a form or using a control. It can be used to communicate restrictions on input format,
         length, or content. Restrictive helper text can help users avoid errors and ensure that
         their input meets the required criteria.
-      </p>
-      <p>
+      </GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
         <strong>Examples of restrictive helper text:</strong>
         <ul>
-          <li>Must be 8 or more characters with one uppercase letter and one number</li>
-          <li>Must be 5MB or smaller</li>
-          <li>Choose a date within the last six months</li>
-          <li>Password must contain 1 uppercase letter and 1 number</li>
-          <li>File size limit: 5MB</li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Must be 8 or more characters with one uppercase letter and one
+              number</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Must be 5MB or smaller</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Choose a date within the last six months</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">Password must contain 1 uppercase letter and 1 number</GoabText>
+          </li>
+          <li>
+            <GoabText size="body-m" mt="none" mb="xs">File size limit: 5MB</GoabText>
+          </li>
         </ul>
-      </p>
+      </GoabText>
       <div className="dodont-wrapper">
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont type="do" description="Be specific about the information you are asking for.">
@@ -382,10 +443,10 @@ export default function HelperTextPage() {
       </div>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="formatting">Formatting</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         Helper text should be a short succinct statement, sentence case, with no period or
         punctuation.
-      </p>
+      </GoabText>
       <div className="dodont-wrapper">
         <GoabGrid gap="2xl" minChildWidth={minGridWidth}>
           <DoDont
@@ -404,14 +465,14 @@ export default function HelperTextPage() {
       </div>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="accessibility">Accessibility</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         For screen reader accessibility, consider using the aria-describedby attribute as helper
         text for the input control. This allows screen readers to provide additional context that
         would be present for a sighted user.
-      </p>
+      </GoabText>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="references">References</h2>
-      <p>
+      <GoabText size="body-m" mt="l" mb="l">
         <a href="https://www.w3.org/TR/WCAG20-TECHS/ARIA1.html" target="_blank">
           W3C - Using the aria-describedby property to provide a descriptive label for ui controls
         </a>
@@ -419,7 +480,7 @@ export default function HelperTextPage() {
         <a href="https://a11y-101.com/development/aria-describedby" target="_blank">
           Aria described by Introduction to Accessibility
         </a>
-      </p>
+      </GoabText>
     </ComponentContent>
   );
 }

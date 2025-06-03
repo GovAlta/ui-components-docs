@@ -10,9 +10,10 @@ import {
   GoabFormItem,
   GoabInput,
   GoabBadge,
-  GoabSkeleton
+  GoabSkeleton, GoabBlock
 } from "@abgov/react-components";
 import { GoabCheckbox, GoabButton } from "@abgov/react-components";
+import { useDebounce } from "use-debounce";
 import {
   ExampleCard,
   ExampleCardProps as RawExampleProps,
@@ -32,6 +33,7 @@ type ExampleProps = Omit<RawExampleProps, "status"> & {
 
 export default function ExamplesOverviewPage() {
   const [filter, setFilter] = useState<string>("");
+  const [debouncedFilter] = useDebounce(filter, 300);
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
   const [cards, setCards] = useState<ExampleProps[]>([]);
 
@@ -102,6 +104,9 @@ export default function ExamplesOverviewPage() {
         return a.name.localeCompare(b.name);
       });
       setCards(sorted);
+
+      const issueCounts = await fetchAllIssueCounts(sorted);
+      setIssueCounts(issueCounts);
     };
     fetchData();
   }, []);
@@ -115,7 +120,7 @@ export default function ExamplesOverviewPage() {
   });
 
   const filteredCards = (() => {
-    const search = filter.toLowerCase();
+    const search = debouncedFilter.toLowerCase();
 
     const matchesSearch = (card: ExampleProps) =>
       card.name.toLowerCase().includes(search) ||
@@ -164,15 +169,12 @@ export default function ExamplesOverviewPage() {
     const strictFiltered = cards.filter(strictMatch);
     const looseFiltered = cards.filter((card) => looseMatch(card) && !strictMatch(card));
 
-    return [...strictFiltered, ...looseFiltered];
-  })();
+    const result = [...strictFiltered, ...looseFiltered];
 
-  const sortData = (detailOrSortBy: string | { sortBy: string }) => {
-    // If a string is passed, use it directly; otherwise extract the sortBy property
-    const sortBy = typeof detailOrSortBy === "string" ? detailOrSortBy : detailOrSortBy.sortBy;
+    const sortBy = Object.keys(sortDirection)[0];
+    const newDirection = sortDirection[sortBy];
 
-    const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
-    const sorted = [...cards].sort((a, b) => {
+    const sortedFiltered = [...result].sort((a, b) => {
       if (sortBy === "status") {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison =
@@ -183,40 +185,26 @@ export default function ExamplesOverviewPage() {
       const aField = (a as any)[key];
       const bField = (b as any)[key];
 
-      const aValue =
-        sortBy === "name"
-          ? a.name.toLowerCase()
-          : Array.isArray(aField)
-            ? (aField.length > 0 ? aField[0] : "")
-            : (aField ?? "");
-      const bValue =
-        sortBy === "name"
-          ? b.name.toLowerCase()
-          : Array.isArray(bField)
-            ? (bField.length > 0 ? bField[0] : "")
-            : (bField ?? "");
+      const aValue = sortBy === "name"
+        ? a.name.toLowerCase()
+        : Array.isArray(aField) ? (aField.length > 0 ? aField[0] : "") : (aField ?? "");
+      const bValue = sortBy === "name"
+        ? b.name.toLowerCase()
+        : Array.isArray(bField) ? (bField.length > 0 ? bField[0] : "") : (bField ?? "");
 
       if (aValue > bValue) return newDirection;
       if (aValue < bValue) return -newDirection;
       return 0;
     });
 
-    setCards(sorted);
+    return sortedFiltered;
+  })();
+
+  const sortData = (detailOrSortBy: string | { sortBy: string }) => {
+    const sortBy = typeof detailOrSortBy === "string" ? detailOrSortBy : detailOrSortBy.sortBy;
+    const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
     setSortDirection({ [sortBy]: newDirection });
   };
-
-// Helper to format the label query for GraphQL (escaping inner quotes)
-  useEffect(() => {
-    if (cards.length === 0) return;
-
-    const loadIssueCounts = async () => {
-      console.log("cards passed to fetchAllIssueCounts:", cards);
-      const issueCounts = await fetchAllIssueCounts(cards);
-      setIssueCounts(issueCounts);
-    };
-
-    loadIssueCounts();
-  }, [cards]);
 
   const renderTable = () => (
     <GoabTable width="100%" onSort={sortData}>
@@ -291,6 +279,17 @@ export default function ExamplesOverviewPage() {
             <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
           </tr>
         </>
+      ) : filteredCards.length === 0 ? (
+        <tr>
+          <td colSpan={4}>
+            <GoabBlock direction={"row"} mt={"2xl"} mb={"2xl"}>
+              <GoabText size="body-l">
+                No matching examples found.{" "}
+              </GoabText>
+              <GoabButton type="tertiary" onClick={resetFilters} ml={"s"}>Reset filters</GoabButton>
+            </GoabBlock>
+          </td>
+        </tr>
       ) : (
         filteredCards.map((card, index) => (
           <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#F8F8F8" }}>
@@ -373,7 +372,7 @@ export default function ExamplesOverviewPage() {
       </div>
 
       {showFilters && (
-        <div style={{ display: "flex", gap: "2rem", marginBottom: "1rem" }}>
+        <div style={{ display: "flex", gap: "3rem", marginBottom: "1rem" }}>
           <GoabFormItem label="Size">
             {sizes.map((sz) => (
               <GoabCheckbox
@@ -441,10 +440,16 @@ export default function ExamplesOverviewPage() {
                 <GoabSkeleton type="card" size="3" />
               </>
             ) : filteredCards.length === 0 ? (
-              <GoabText size="body-l" mt="l" mb="l">
-                No matching examples found.{" "}
-                <GoabButton type="tertiary" onClick={resetFilters}>Reset filters</GoabButton>
+
+              <GoabBlock direction={"row"} mt={"2xl"} mb={"3xl"}>
+                <GoabText size="body-l">
+                  <div style={{ whiteSpace: "nowrap" }}>
+                    No matching examples found.{" "}
+                  </div>
               </GoabText>
+                <GoabButton type="tertiary" onClick={resetFilters} ml={"s"}>Reset filters</GoabButton>
+              </GoabBlock>
+
             ) : (
               filteredCards.map((card) => (
                 <ExampleCard

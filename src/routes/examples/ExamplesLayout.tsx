@@ -23,6 +23,7 @@ export default function ExamplesLayout() {
             <Link to="review-page">Review page</Link>
             <Link to="result-page">Result page</Link>
           </GoabSideMenuGroup>
+          <Link to="basic-page-layout">Basic layout</Link>
           {/*
           <GoabSideMenuGroup heading="Tasks">
             <Link to="approve-or-reject-a-submission">Approve or reject a submission</Link>

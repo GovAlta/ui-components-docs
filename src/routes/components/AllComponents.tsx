@@ -9,13 +9,14 @@ import {
   GoabFormItem,
   GoabInput,
   GoabBadge,
-  GoabSkeleton
+  GoabSkeleton, GoabButton, GoabBlock
 } from "@abgov/react-components";
 import {
   ComponentCard,
   ComponentCardProps as RawComponentProps,
   ComponentStatus
 } from "@components/component-card/ComponentCard";
+import { useDebounce } from "use-debounce";
 
 type ComponentProps = Omit<RawComponentProps, "status"> & {
   status: ComponentStatus;
@@ -26,10 +27,15 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
   groups?: string[];
 };
 
+
 const AllComponents = () => {
   const [filter, setFilter] = useState<string>("");
+  const [debouncedFilter] = useDebounce(filter, 300);
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
   const [cards, setCards] = useState<ComponentProps[]>([]);
+  const resetFilters = () => {
+    setFilter("");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +49,8 @@ const AllComponents = () => {
         return a.name.localeCompare(b.name);
       });
       setCards(sorted);
+      const issueCounts = await fetchAllIssueCounts(sorted);
+      setIssueCounts(issueCounts);
     };
     fetchData();
   }, []);
@@ -51,28 +59,29 @@ const AllComponents = () => {
     name: 1,
   });
 
-  const filteredCards = cards.filter((card) => {
-    const search = filter.toLowerCase();
-    return (
-      card.name.toLowerCase().includes(search) ||
-      card.description.toLowerCase().includes(search) ||
-      card.tags?.some((tag) => tag.toLowerCase().includes(search)) ||
-      card.metatags?.some((tag) => tag.toLowerCase().includes(search))
-    );
-  });
+  const filteredCards = (() => {
+    const search = debouncedFilter.toLowerCase();
+    const result = cards.filter((card) => {
+      return (
+        card.name.toLowerCase().includes(search) ||
+        card.description.toLowerCase().includes(search) ||
+        card.tags?.some((tag) => tag.toLowerCase().includes(search)) ||
+        card.metatags?.some((tag) => tag.toLowerCase().includes(search))
+      );
+    });
 
-  const sortData = (detailOrSortBy: string | { sortBy: string }) => {
-    // If a string is passed, use it directly; otherwise extract the sortBy property
-    const sortBy = typeof detailOrSortBy === "string" ? detailOrSortBy : detailOrSortBy.sortBy;
 
-    const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
-    const sorted = [...cards].sort((a, b) => {
+    const sortBy = Object.keys(sortDirection)[0];
+    const newDirection = sortDirection[sortBy];
+
+    const sortedFiltered = [...result].sort((a, b) => {
       if (sortBy === "status") {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison =
           statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
         if (statusComparison !== 0) return statusComparison * newDirection;
       }
+
       const key = sortBy as keyof ComponentProps;
       const aField = (a as any)[key];
       const bField = (b as any)[key];
@@ -95,7 +104,13 @@ const AllComponents = () => {
       return 0;
     });
 
-    setCards(sorted);
+    return sortedFiltered;
+  })();
+
+  const sortData = (detailOrSortBy: string | { sortBy: string }) => {
+    // If a string is passed, use it directly; otherwise extract the sortBy property
+    const sortBy = typeof detailOrSortBy === "string" ? detailOrSortBy : detailOrSortBy.sortBy;
+    const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
     setSortDirection({ [sortBy]: newDirection });
   };
 
@@ -104,19 +119,6 @@ const AllComponents = () => {
     const formatted = toSentenceCase(name);
     return formatted.includes(" ") ? `"${formatted}"` : formatted;
   };
-
-  // Helper to format the label query for GraphQL (escaping inner quotes)
-  useEffect(() => {
-    if (cards.length === 0) return;
-
-    const loadIssueCounts = async () => {
-      console.log("cards passed to fetchAllIssueCounts:", cards);
-      const issueCounts = await fetchAllIssueCounts(cards);
-      setIssueCounts(issueCounts);
-    };
-
-    loadIssueCounts();
-  }, [cards]);
 
   const renderTable = () => (
     <GoabTable width="100%" onSort={sortData}>
@@ -144,7 +146,7 @@ const AllComponents = () => {
       </tr>
       </thead>
       <tbody>
-      {cards.length === 0 ? (
+      {cards.length === 0 && (
         <>
           <tr>
             <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
@@ -195,38 +197,50 @@ const AllComponents = () => {
             <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
           </tr>
         </>
-      ) : (
-        filteredCards.map((card, index) => (
-          <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#f8f8f8" }}>
-            <td style={{ width: "100px" }}>
-              <GoabBadge
-                mt="2xs"
-                type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
-                content={card.status} />
-            </td>
-            <td>
-              {card.status === "Published" ? (
-                <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
-                  {toSentenceCase(card.name)}
-                </a>
-              ) : (
-                <span>{toSentenceCase(card.name)}</span>
-              )}
-            </td>
-            <td>{card.groups?.[0] || ""}</td>
-            <td style={{ minWidth: "135px", maxWidth: "170px" }}>
-              <a
-                href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View
-                {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
-              </a>
-            </td>
-          </tr>
-        ))
       )}
+
+      {cards.length > 0 && filteredCards.length === 0 && (
+        <tr>
+          <td colSpan={4}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+              <GoabText size="body-l" mt="l" mb="l">No matching components found.</GoabText>
+              <GoabButton ml="l" type="tertiary" onClick={resetFilters}>Reset filters</GoabButton>
+            </div>
+          </td>
+        </tr>
+      )}
+
+      {filteredCards.map((card, index) => (
+        <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#f8f8f8" }}>
+          <td style={{ width: "100px" }}>
+            <GoabBadge
+              mt="2xs"
+              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
+              content={card.status}
+            />
+          </td>
+          <td>
+            {card.status === "Published" ? (
+              <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                {toSentenceCase(card.name)}
+              </a>
+            ) : (
+              <span>{toSentenceCase(card.name)}</span>
+            )}
+          </td>
+          <td>{card.groups?.[0] || ""}</td>
+          <td style={{ minWidth: "135px", maxWidth: "170px" }}>
+            <a
+              href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View
+              {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
+            </a>
+          </td>
+        </tr>
+      ))}
       </tbody>
     </GoabTable>
   );
@@ -263,7 +277,7 @@ const AllComponents = () => {
             }}
           >
 
-            {cards.length === 0 &&
+            {cards.length === 0 && (
               <>
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
@@ -274,7 +288,18 @@ const AllComponents = () => {
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
               </>
-            }
+            )}
+
+            {cards.length > 0 && filteredCards.length === 0 && (
+              <GoabBlock direction={"row"} mt={"2xl"} mb={"3xl"}>
+                <GoabText size="body-l">
+                  <div style={{ whiteSpace: "nowrap" }}>
+                    No matching examples found.{" "}
+                  </div>
+                </GoabText>
+                <GoabButton type="tertiary" onClick={resetFilters} ml={"s"}>Reset filters</GoabButton>
+              </GoabBlock>
+            )}
 
             {filteredCards.map((card) => (
               <ComponentCard
