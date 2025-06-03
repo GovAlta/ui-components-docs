@@ -50,13 +50,13 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   }
 }
 
-function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
+function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
   const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
 
   return items
     .filter((item: any) =>
       item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === category
+        (f: any) => f.field?.name === "Category" && f.name === "Components"
       )
     )
     .map((item: any) => {
@@ -64,10 +64,12 @@ function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
       const name = toSentenceCase(title.trim());
       const slug = name.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
       const body = item.content?.body || "";
-      const labels = item.content?.labels?.nodes.map((l: any) => l.name) || [];
+      const labels = item.content?.labels?.nodes.map((l: any) => toSentenceCase(l.name.trim())) || [];
 
       const group = labels.find((l: string) =>
-        ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation"].includes(l)
+        ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation", "Utilities"]
+          .map(toSentenceCase)
+          .includes(toSentenceCase(l))
       );
 
       const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
@@ -107,7 +109,59 @@ function mapItemsToMetadata(items: any[], category: string): ComponentProps[] {
     });
 }
 
-export async function fetchMetadataFromProject(category: string): Promise<ComponentProps[]> {
+function mapExampleItemsToMetadata(items: any[]): ComponentProps[] {
+  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+
+  return items
+    .filter((item: any) =>
+      item.fieldValues.nodes.some(
+        (f: any) => f.field?.name === "Category" && f.name === "Examples"
+      )
+    )
+    .map((item: any) => {
+      const title = item.content?.title || "";
+      const name = toSentenceCase(title.trim());
+      const slug = name.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+      const body = item.content?.body || "";
+      const labels = item.content?.labels?.nodes.map((l: any) => toSentenceCase(l.name.trim())) || [];
+
+      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
+      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
+
+      const rawStatus = statusField?.name;
+      const status: ComponentStatus =
+        validStatuses.includes(rawStatus as ComponentStatus)
+          ? (rawStatus as ComponentStatus)
+          : "Not Published";
+
+      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
+      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
+      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
+      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
+
+      let metatags: string[] = [];
+      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
+      if (metatagField?.text) {
+        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
+      }
+
+      return {
+        name,
+        slug,
+        tags: labels,
+        metatags,
+        description: descriptionField?.text || body,
+        status,
+        designSystemUrl,
+        designComponentFigmaUrl,
+        designContributionFigmaUrl,
+        openIssuesUrl,
+        url: item.content?.url
+      };
+    });
+}
+
+export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
   const allItems: any[] = [];
   let hasNextPage = true;
   let endCursor = null;
@@ -172,15 +226,17 @@ export async function fetchMetadataFromProject(category: string): Promise<Compon
     endCursor = result.node.items.pageInfo.endCursor;
   }
 
-  return mapItemsToMetadata(allItems, category);
+  return allItems;
 }
 
 export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
-  return fetchMetadataFromProject("Components");
+  const allItems = await fetchMetadataFromProject();
+  return mapComponentItemsToMetadata(allItems);
 }
 
 export async function fetchExampleMetadataFromProject(): Promise<ComponentProps[]> {
-  return fetchMetadataFromProject("Examples");
+  const allItems = await fetchMetadataFromProject();
+  return mapExampleItemsToMetadata(allItems);
 }
 
 export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {

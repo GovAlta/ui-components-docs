@@ -12,6 +12,7 @@ import {
   GoabBadge,
   GoabSkeleton
 } from "@abgov/react-components";
+import { GoabCheckbox, GoabButton } from "@abgov/react-components";
 import {
   ExampleCard,
   ExampleCardProps as RawExampleProps,
@@ -26,12 +27,61 @@ type ExampleProps = Omit<RawExampleProps, "status"> & {
   metatags?: string[];
   url?: string;
   slug?: string;
+  groups?: string[];
 };
 
-export default function PatternsOverviewPage() {
+export default function ExamplesOverviewPage() {
   const [filter, setFilter] = useState<string>("");
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
   const [cards, setCards] = useState<ExampleProps[]>([]);
+
+  const [showFilters, setShowFilters] = useState(false);
+  const sizes = ["Interaction", "Task", "Page", "Service"];
+  const userGoals = ["Ask a user for...", "Help a user to..."];
+  const categories = [
+    "Content layout",
+    "Feedback and alerts",
+    "Inputs and actions",
+    "Public form",
+    "Structure and navigation",
+    "Technical"
+  ];
+  const [selectedFilters, setSelectedFilters] = useState<{
+    size: string[];
+    userGoal: string[];
+    category: string[];
+  }>({
+    size: [],
+    userGoal: [],
+    category: []
+  });
+
+  function handleCheckboxChange(category: "size" | "userGoal" | "category", value: string, checked: boolean) {
+    setSelectedFilters((prev) => {
+      const prevSet = new Set(prev[category]);
+      if (checked) {
+        prevSet.add(value);
+      } else {
+        prevSet.delete(value);
+      }
+      return { ...prev, [category]: Array.from(prevSet) };
+    });
+  }
+
+  const resetFilters = () => {
+    setSelectedFilters({
+      size: [],
+      userGoal: [],
+      category: []
+    });
+    setFilter("");
+  };
+
+  // Calculate if all or any filters are selected
+  userGoals.every((p) => selectedFilters.userGoal.includes(p)) &&
+  categories.every((t) => selectedFilters.category.includes(t));
+  userGoals.some((p) => selectedFilters.userGoal.includes(p)) ||
+  categories.some((t) => selectedFilters.category.includes(t));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,20 +105,67 @@ export default function PatternsOverviewPage() {
     };
     fetchData();
   }, []);
+  useEffect(() => {
+    console.log("Selected filters updated:", selectedFilters);
+  }, [selectedFilters]);
+
   const [sortDirection, setSortDirection] = useState<{ [key: string]: number }>({
     status: -1,
     name: 1,
   });
 
-  const filteredCards = cards.filter((card) => {
+  const filteredCards = (() => {
     const search = filter.toLowerCase();
-    return (
+
+    const matchesSearch = (card: ExampleProps) =>
       card.name.toLowerCase().includes(search) ||
       card.description.toLowerCase().includes(search) ||
       card.tags?.some((tag) => tag.toLowerCase().includes(search)) ||
-      card.metatags?.some((tag) => tag.toLowerCase().includes(search))
-    );
-  });
+      card.metatags?.some((tag) => tag.toLowerCase().includes(search));
+
+    const safeIncludes = (tags: string[] | undefined, value: string) => (tags ?? []).includes(value);
+
+    const strictMatch = (card: ExampleProps) => {
+      const tags = card.tags ?? [];
+
+      const sizeMatch =
+        selectedFilters.size.length === 0 ||
+        selectedFilters.size.every((sz) => safeIncludes(tags, sz));
+
+      const userGoalMatch =
+        selectedFilters.userGoal.length === 0 ||
+        selectedFilters.userGoal.every((goal) => safeIncludes(tags, goal));
+
+      const categoryMatch =
+        selectedFilters.category.length === 0 ||
+        selectedFilters.category.every((cat) => safeIncludes(tags, cat));
+
+      return sizeMatch && userGoalMatch && categoryMatch && matchesSearch(card);
+    };
+
+    const looseMatch = (card: ExampleProps) => {
+      const tags = card.tags ?? [];
+
+      const sizeMatch =
+        selectedFilters.size.length > 0 &&
+        selectedFilters.size.some((sz) => safeIncludes(tags, sz));
+
+      const userGoalMatch =
+        selectedFilters.userGoal.length > 0 &&
+        selectedFilters.userGoal.some((goal) => safeIncludes(tags, goal));
+
+      const categoryMatch =
+        selectedFilters.category.length > 0 &&
+        selectedFilters.category.some((cat) => safeIncludes(tags, cat));
+
+      return (sizeMatch || userGoalMatch || categoryMatch) && matchesSearch(card);
+    };
+
+    const strictFiltered = cards.filter(strictMatch);
+    const looseFiltered = cards.filter((card) => looseMatch(card) && !strictMatch(card));
+
+    return [...strictFiltered, ...looseFiltered];
+  })();
 
   const sortData = (detailOrSortBy: string | { sortBy: string }) => {
     // If a string is passed, use it directly; otherwise extract the sortBy property
@@ -143,56 +240,109 @@ export default function PatternsOverviewPage() {
       </tr>
       </thead>
       <tbody>
-      {filteredCards.map((card, index) => (
-        <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#F8F8F8" }}>
-          <td style={{ width: "100px" }}>
-            <GoabBadge
-              mt="2xs"
-              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "light"}
-              content={card.status} />
-          </td>
-          <td>
-            {card.status === "Published" ? (
-              <Link to={`/examples/${card.slug}`}>
-                {toSentenceCase(card.name)}
-              </Link>
-            ) : (
-              <span>{toSentenceCase(card.name)}</span>
-            )}
-          </td>
-          <td>
-            {card.tags?.map((tag) => (
+      {cards.length === 0 ? (
+        <>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+        </>
+      ) : (
+        filteredCards.map((card, index) => (
+          <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#F8F8F8" }}>
+            <td style={{ width: "100px" }}>
               <GoabBadge
-                key={tag}
-                type="information"
                 mt="2xs"
-                mb="2xs"
-                mr="2xs"
-                content={tag}
-              />
-            ))}
-          </td>
-          <td style={{ minWidth: "135px", maxWidth: "170px" }}>
-            {card.url ? (
-              <a
-                href={card.url}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View issue
-              </a>
-            ) : (
-              <a
-                href={`https://github.com/GovAlta/design-system-backlog/issues?q=${encodeURIComponent(card.name)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View issue
-              </a>
-            )}
-          </td>
-        </tr>
-      ))}
+                type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "light"}
+                content={card.status} />
+            </td>
+            <td>
+              {card.status === "Published" ? (
+                <Link to={`/examples/${card.slug}`}>
+                  {toSentenceCase(card.name)}
+                </Link>
+              ) : (
+                <span>{toSentenceCase(card.name)}</span>
+              )}
+            </td>
+            <td>
+              {card.tags?.map((tag) => (
+                <GoabBadge
+                  key={tag}
+                  type="information"
+                  mt="2xs"
+                  mb="2xs"
+                  mr="2xs"
+                  content={tag}
+                />
+              ))}
+            </td>
+            <td style={{ minWidth: "135px", maxWidth: "170px" }}>
+              {card.url ? (
+                <a
+                  href={card.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View issue
+                </a>
+              ) : (
+                <a
+                  href={`https://github.com/GovAlta/design-system-backlog/issues?q=${encodeURIComponent(card.name)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View issue
+                </a>
+              )}
+            </td>
+          </tr>
+        ))
+      )}
       </tbody>
     </GoabTable>
   );
@@ -206,8 +356,7 @@ export default function PatternsOverviewPage() {
         Common patterns, pages, tasks, component configurations, flows, and more to use as a starting point when
         creating government digital services.
       </GoabText>
-
-      <GoabFormItem helpText="Search by keyword, category, or name" mb="xl">
+      <GoabFormItem helpText="Search by keyword, category, or name">
         <GoabInput
           leadingIcon="search"
           name="filter"
@@ -217,9 +366,60 @@ export default function PatternsOverviewPage() {
           onChange={({ value }) => setFilter(value || "")}
         />
       </GoabFormItem>
+      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+        <GoabButton mt={"m"} mb={"m"} type={"tertiary"} onClick={() => setShowFilters((prev) => !prev)}>
+          {showFilters ? "Hide filters" : "Filter"}
+        </GoabButton>
+      </div>
+
+      {showFilters && (
+        <div style={{ display: "flex", gap: "2rem", marginBottom: "1rem" }}>
+          <GoabFormItem label="Size">
+            {sizes.map((sz) => (
+              <GoabCheckbox
+                key={sz}
+                name={sz}
+                text={sz}
+                checked={selectedFilters.size.includes(sz)}
+                onChange={(detail) => {
+                  handleCheckboxChange("size", sz, detail.checked);
+                }}
+              />
+            ))}
+          </GoabFormItem>
+
+          <GoabFormItem label="User Goal">
+            {userGoals.map((goal) => (
+              <GoabCheckbox
+                key={goal}
+                name={goal}
+                text={goal}
+                checked={selectedFilters.userGoal.includes(goal)}
+                onChange={(detail) => {
+                  handleCheckboxChange("userGoal", goal, detail.checked);
+                }}
+              />
+            ))}
+          </GoabFormItem>
+
+          <GoabFormItem label="Category">
+            {categories.map((cat) => (
+              <GoabCheckbox
+                key={cat}
+                name={cat}
+                text={cat}
+                checked={selectedFilters.category.includes(cat)}
+                onChange={(detail) => {
+                  handleCheckboxChange("category", cat, detail.checked);
+                }}
+              />
+            ))}
+          </GoabFormItem>
+        </div>
+      )}
 
       <GoabTabs initialTab={1}>
-        <GoabTab heading="Grid">
+        <GoabTab heading="Card view">
           <div
             style={{
               display: "grid",
@@ -229,7 +429,7 @@ export default function PatternsOverviewPage() {
             }}
           >
 
-            {cards.length === 0 &&
+            {cards.length === 0 ? (
               <>
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
@@ -240,23 +440,28 @@ export default function PatternsOverviewPage() {
                 <GoabSkeleton type="card" size="3" />
                 <GoabSkeleton type="card" size="3" />
               </>
-            }
-
-            {filteredCards.map((card) => (
-              <ExampleCard
-                key={card.name}
-                name={card.name}
-                tags={card.tags}
-                description={card.description}
-                status={card.status}
-                openIssues={issueCounts[card.name]}
-                isNew={card.isNew}
-                designComponentFigmaUrl={card.designComponentFigmaUrl}
-                designContributionFigmaUrl={card.designContributionFigmaUrl}
-                imageFolder="example-thumbnails"
-                githubLink={card.url}
-              />
-            ))}
+            ) : filteredCards.length === 0 ? (
+              <GoabText size="body-l" mt="l" mb="l">
+                No matching examples found.{" "}
+                <GoabButton type="tertiary" onClick={resetFilters}>Reset filters</GoabButton>
+              </GoabText>
+            ) : (
+              filteredCards.map((card) => (
+                <ExampleCard
+                  key={card.name}
+                  name={card.name}
+                  tags={card.tags}
+                  description={card.description}
+                  status={card.status}
+                  openIssues={issueCounts[card.name]}
+                  isNew={card.isNew}
+                  designComponentFigmaUrl={card.designComponentFigmaUrl}
+                  designContributionFigmaUrl={card.designContributionFigmaUrl}
+                  imageFolder="example-thumbnails"
+                  githubLink={card.url}
+                />
+              ))
+            )}
           </div>
         </GoabTab>
         <GoabTab heading="List">{renderTable()}</GoabTab>

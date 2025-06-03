@@ -46,27 +46,22 @@ import ReportBugPage from "@routes/get-started/ReportBug";
 import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
+import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
 import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 
-// Content Pages
-
-import ContentLayout from "@routes/content/ContentLayout";
-import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
-import DateFormatPage from "@routes/foundations/DateFormat.tsx";
-import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
-import HelperTextPage from "@routes/foundations/HelperText.tsx";
-import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
+// Examples Pages
 
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
 import { ComponentsRouter } from "./versioned-router";
 import ExamplePageTemplate from "@routes/examples/ExamplePageTemplate";
-import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
 import { LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
+import ExamplesOverviewPage from "@routes/examples/ExamplesOverview.tsx";
 
 // Foundations Pages
+
 import FoundationsLayout from "@routes/foundations/FoundationsLayout";
 import DesignAtGoAPage from "@routes/foundations/DesignAtGoA";
 import BrandGuidelinesPage from "@routes/foundations/BrandGuidelines";
@@ -77,12 +72,22 @@ import ImagesPage from "@routes/foundations/Photography";
 import LogoPage from "@routes/foundations/Logo";
 import FoundationsTypographyPage from "@routes/foundations/Typography";
 import FoundationsLayoutPage from "@routes/foundations/Layout";
+import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
+import DateFormatPage from "@routes/foundations/DateFormat.tsx";
+import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
+import HelperTextPage from "@routes/foundations/HelperText.tsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
       <Route path="/" element={<HomePage />} />
+
+      // Component Pages
+
       <Route path="/components/*" element={<ComponentsRouter />}></Route>
+
+      // Design tokens Pages
+
       <Route path="design-tokens" element={<DesignTokens />} errorElement={<ComponentNotFound />}>
         <Route index element={<DesignTokensOverviewPage />} />
         <Route path="border-width" element={<BorderWidthPage />} />
@@ -94,6 +99,8 @@ const router = createBrowserRouter(
         <Route path="spacing" element={<SpacingPage />} />
         <Route path="typography" element={<TypographyPage />} />
       </Route>
+
+      // Get started Pages
 
       <Route path="get-started" element={<GetStartedLayout />}>
         <Route index element={<GetStartedOverviewPage />} />
@@ -127,7 +134,9 @@ const router = createBrowserRouter(
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>
 
-       <Route path="foundations" element={<FoundationsLayout />}>
+      // Foundations Pages
+
+      <Route path="foundations" element={<FoundationsLayout />}>
         <Route index element={<DesignAtGoAPage />} />
         <Route path="accessibility" element={<AccessibilityPage />} />
         <Route path="brand-guidelines" element={<BrandGuidelinesPage />} />
@@ -143,17 +152,10 @@ const router = createBrowserRouter(
          <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="content" element={<ContentLayout />}>
-        <Route path="capitalization">
-          <Route index element={<CapitalizationPage />} />
-        </Route>
-        <Route path="date-format" element={<DateFormatPage />} />
-        <Route path="error-messages" element={<ErrorMessagesPage />} />
-        <Route path="helper-text" element={<HelperTextPage />} />
-      </Route>
+      // Examples Pages
 
       <Route path="/examples" element={<ExamplesLayout />}>
-        <Route index element={<PatternsOverviewPage />} />
+        <Route index element={<ExamplesOverviewPage />} />
       </Route>
       <Route path="/examples/:slug" element={<ExamplePageTemplate />} />
     </Route>

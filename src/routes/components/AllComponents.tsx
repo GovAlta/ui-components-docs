@@ -23,6 +23,7 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
   designContributionFigmaUrl?: string;
   openIssuesUrl?: string;
   metatags?: string[];
+  groups?: string[];
 };
 
 const AllComponents = () => {
@@ -135,7 +136,7 @@ const AllComponents = () => {
           </GoabTableSortHeader>
         </th>
         <th>
-          <GoabTableSortHeader name="tags">
+          <GoabTableSortHeader name="groups">
             Category
           </GoabTableSortHeader>
         </th>
@@ -143,36 +144,89 @@ const AllComponents = () => {
       </tr>
       </thead>
       <tbody>
-      {filteredCards.map((card, index) => (
-        <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#f8f8f8" }}>
-          <td style={{ width: "100px" }}>
-            <GoabBadge
-              mt="2xs"
-              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
-              content={card.status} />
-          </td>
-          <td>
-            {card.status === "Published" ? (
-              <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
-                {toSentenceCase(card.name)}
+      {cards.length === 0 ? (
+        <>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+          <tr>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+            <td colSpan={1}><GoabSkeleton type="title" size="3" /></td>
+          </tr>
+        </>
+      ) : (
+        filteredCards.map((card, index) => (
+          <tr key={card.name} style={{ backgroundColor: index % 2 === 0 ? "#ffffff" : "#f8f8f8" }}>
+            <td style={{ width: "100px" }}>
+              <GoabBadge
+                mt="2xs"
+                type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
+                content={card.status} />
+            </td>
+            <td>
+              {card.status === "Published" ? (
+                <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
+                  {toSentenceCase(card.name)}
+                </a>
+              ) : (
+                <span>{toSentenceCase(card.name)}</span>
+              )}
+            </td>
+            <td>{card.groups?.[0] || ""}</td>
+            <td style={{ minWidth: "135px", maxWidth: "170px" }}>
+              <a
+                href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View
+                {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
               </a>
-            ) : (
-              <span>{toSentenceCase(card.name)}</span>
-            )}
-          </td>
-          <td>{card.tags?.[0] || ""}</td>
-          <td style={{ minWidth: "135px", maxWidth: "170px" }}>
-            <a
-              href={`https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View
-              {issueCounts[card.name] !== undefined && ` (${issueCounts[card.name]})`}
-            </a>
-          </td>
-        </tr>
-      ))}
+            </td>
+          </tr>
+        ))
+      )}
       </tbody>
     </GoabTable>
   );
@@ -199,7 +253,7 @@ const AllComponents = () => {
       </GoabFormItem>
 
       <GoabTabs initialTab={1}>
-        <GoabTab heading="Grid">
+        <GoabTab heading="Cards">
           <div
             style={{
               display: "grid",

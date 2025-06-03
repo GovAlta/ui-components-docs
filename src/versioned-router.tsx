@@ -46,7 +46,7 @@ import {
 } from "@components/version-language-switcher/version-language-constants.ts";
 import ExamplesLayout from "@routes/examples/ExamplesLayout.tsx";
 import PatternsOverviewPage from "@routes/examples/ExamplesOverview.tsx";
-import LayoutPage from "@routes/examples/LayoutPage.tsx";
+import BasicPageLayout from "@examples/basic-page-layout.tsx";
 import TaskListPage from "@examples/task-list-page.tsx";
 import QuestionPage from "@examples/question-page.tsx";
 import ReviewPage from "@examples/review-page.tsx";
@@ -145,7 +145,7 @@ export const ComponentsRouter = () => {
 
 export const PatternsRouter = () => {
   const patternsPaths = {
-    "layout": <LayoutPage/>,
+    "layout": <BasicPageLayout />,
     "task-list-page": <TaskListPage/>,
     "question-page": <QuestionPage/>,
     "review-page": <ReviewPage/>,
