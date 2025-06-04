@@ -15,7 +15,9 @@
     "@abgov/react-components": "6.4.1",
     "@abgov/ui-components-common": "1.4.0",
     "@abgov/web-components": "1.34.0",
+    "@apollo/client": "^3.13.8",
     "@faker-js/faker": "^8.3.1",
+    "graphql": "^16.11.0",
     "highlight.js": "^11.8.0",
     "js-cookie": "^3.0.5",
     "octokit": "^4.0.2",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.6",
+    "@types/lodash": "^4.17.16",
     "@types/react": "^18.2.13",
     "@types/react-dom": "^18.2.6",
     "@types/react-router-dom": "^5.3.3",
@@ -35,10 +38,9 @@
     "eslint": "^8.43.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.5",
+    "lodash": "^4.17.21",
     "prettier": "2.4.1",
     "typescript": "^5.4.2",
-    "vite": "^5.4.16",
-    "lodash": "^4.17.21",
-    "@types/lodash": "^4.17.16"
+    "vite": "^5.4.16"
   }
 }

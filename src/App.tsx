@@ -10,6 +10,7 @@ import "@abgov/web-components";
 
 import Root from "@routes/root";
 import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import "./index.css";
 
 // Support
@@ -76,6 +77,18 @@ import CapitalizationPage from "@routes/foundations/Capitalization.tsx";
 import DateFormatPage from "@routes/foundations/DateFormat.tsx";
 import ErrorMessagesPage from "@routes/foundations/ErrorMessages.tsx";
 import HelperTextPage from "@routes/foundations/HelperText.tsx";
+
+const token =
+  import.meta.env.VITE_GITHUB_TOKEN ||
+  import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
+
+const client = new ApolloClient({
+  uri: 'https://api.github.com/graphql',
+  cache: new InMemoryCache(),
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -164,12 +177,14 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <LanguageVersionProvider>
-      <VersionFromUrlProvider>
-        <DeviceWidthProvider>
-          <RouterProvider router={router} />
-        </DeviceWidthProvider>
-      </VersionFromUrlProvider>
-    </LanguageVersionProvider>
+    <ApolloProvider client={client}>
+      <LanguageVersionProvider>
+        <VersionFromUrlProvider>
+          <DeviceWidthProvider>
+            <RouterProvider router={router} />
+          </DeviceWidthProvider>
+        </VersionFromUrlProvider>
+      </LanguageVersionProvider>
+    </ApolloProvider> 
   </React.StrictMode>
 );
