@@ -23,6 +23,7 @@ export default function GetStartedLayout() {
             <Link to="developers/update">Version update guide</Link>
           </GoabSideMenuGroup>
           <Link to="qa-testing">QA testing</Link>
+          <Link to="component-lifecycle">Component lifecycle</Link>
           <Link to="contribute">Contribute</Link>
           <Link to="roadmap">Roadmap</Link>
           <Link to="lts-policy">Long Term Support (LTS)</Link>
