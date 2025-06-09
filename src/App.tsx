@@ -17,8 +17,6 @@ import {
 } from "@components/version-language-switcher/VersionUpdateNotificationContext";
 import { SiteWideNotificationProvider } from "@contexts/SiteWideNotificationContext";
 
-// (Your full route definitions below this remain exactly the same...)
-
 import HomePage from "@routes/home";
 
 // Design Tokens
@@ -52,6 +50,7 @@ import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
 
 // Content Pages
+import ContentLayout from "@routes/content/ContentLayout";
 import CapitalizationPage from "@routes/content/Capitalization.tsx";
 import DateFormatPage from "@routes/content/DateFormat.tsx";
 import ErrorMessagesPage from "@routes/content/ErrorMessages.tsx";
@@ -131,10 +130,12 @@ const router = createBrowserRouter(
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
 
-      <Route path="/content/capitalization" element={<CapitalizationPage />} />
-      <Route path="/content/date-format" element={<DateFormatPage />} />
-      <Route path="/content/error-messages" element={<ErrorMessagesPage />} />
-      <Route path="/content/helper-text" element={<HelperTextPage />} />
+      <Route path="content" element={<ContentLayout />}>
+        <Route path="/content/capitalization" element={<CapitalizationPage />} />
+        <Route path="/content/date-format" element={<DateFormatPage />} />
+        <Route path="/content/error-messages" element={<ErrorMessagesPage />} />
+        <Route path="/content/helper-text" element={<HelperTextPage />} />
+      </Route>
 
       <Route path="/patterns/*" element={<PatternsRouter />}></Route>
     </Route>

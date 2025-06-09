@@ -24,7 +24,7 @@ export function HelpButton() {
   };
 
   return (
-    <GoabTooltip content="Show more info">
+    <GoabTooltip content="More information">
       <GoabIconButton ml={"s"}
                       mr={"s"}
                       variant="color"

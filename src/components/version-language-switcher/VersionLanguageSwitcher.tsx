@@ -103,7 +103,7 @@ export const VersionLanguageSwitcher = () => {
 
   return (
     <>
-      <GoabTooltip content="Frontend framework">
+      <GoabTooltip content="Framework">
       <GoabPopover
         target={
           <a className="version-language-switcher__heading" href="#" id="language-switcher" onClick={e => openLanguagePopOver(e)}>
