@@ -46,8 +46,7 @@ export default function ErrorMessagesPage() {
           <GoabInput
             name="input"
             value="5420.00"
-            prefix="$"
-            suffix="per semester"
+            leadingContent="$"
             onChange={noop}
             error
           />
