@@ -10,7 +10,7 @@ export default function ComponentLifecyclePage() {
         <GoabText size="body-m" mb="2xl">
           This lifecycle defines the stages every component in the Design System undergoes, from Alpha to Production to Legacy. Each stage describes the component's maturity, adoption level, and support status.<br /><br />
           To request new components or enhancements, please follow the{' '}
-          <a href="https://github.com/GovAlta/ui-components/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener noreferrer">Design contribution process</a>.
+          <a href="/get-started/contribute">Design contribution process</a>.
         </GoabText>
 
         {/* Alpha Section */}
