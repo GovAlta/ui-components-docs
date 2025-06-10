@@ -1231,7 +1231,7 @@ export const components: UpgradedComponent[] = [
       {
         name: "onChange",
         v5: "(name: string, value: string) => void;",
-        v6: "(details: GoabTextAreaOnKeyPressDetail) => void;",
+        v6: "(details: GoabTextAreaOnChangeDetail) => void;",
       },
       {
         name: "onKeyPress",
