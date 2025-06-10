@@ -304,9 +304,9 @@ export default function IconsPage() {
             <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
               <GoabText size="body-m" mt="none" mb="none">
                 The extended icon set includes the full
-                {" "}<a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                {" "}<a href="https://ionic.io/ionicons"
                         target="_blank" rel="noreferrer">
-                Ionicon library.
+                Ionicons library.
               </a>{" "}
                 When you need additional icons outside of the core icon set, use these icons to maintain a consistent
                 visual language.

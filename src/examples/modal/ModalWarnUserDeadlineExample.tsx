@@ -8,7 +8,12 @@ export const ModalWarnUserDeadlineExample = () => {
   const {version} = useContext(LanguageVersionContext);
   const [warnCalloutModalOpen, setWarnCalloutModalOpen] = useState<boolean>();
   return (
-    <Sandbox skipRender>
+    <Sandbox skipRender
+             note={{
+               type: "important",
+               heading: "AlertDialog Accessibility",
+               content: "Do not make the modal closeable or add any focusable elements before the action button when using an AlertDialog. This ensures that the screen reader will announce the full content."
+             }}>
       <GoabButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
         Save for later
       </GoabButton>

@@ -1,14 +1,14 @@
 import { GoabCheckbox, GoabContainer, GoabTable } from "@abgov/react-components";
+import { GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
 export default function SupportedBrowsersPage() {
   return (
     <ComponentContent>
-      <h1>Developers</h1>
-      <h2>Supported browsers</h2>
-      <h3 className="introduction">
-        The design system components are tested on the following browsers and devices:
-      </h3>
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
+      <GoabText size="heading-xl" mb="m">Supported browsers</GoabText>
+      <GoabText size="body-l" mb="2xl">The design system components are tested on the following browsers and devices:
+      </GoabText>
 
       <GoabTable width="564px">
         <thead>
@@ -81,14 +81,16 @@ export default function SupportedBrowsersPage() {
       </GoabTable>
 
       <div className="max-width-72ch">
-        <GoabContainer type="non-interactive" mt="2xl">
-          <h3>Representative mobile OS used in testing</h3>
-          <p>
+        <GoabContainer type="non-interactive" mt="2xl" width={"content"}>
+          <GoabText size="heading-m" mb="m">
+            Representative mobile OS used in testing
+          </GoabText>
+          <GoabText size="body-m">
             <strong>Android OS:</strong> 10+
-          </p>
-          <p>
+          </GoabText>
+          <GoabText size="body-m">
             <strong>iOS: </strong> 15+
-          </p>
+          </GoabText>
         </GoabContainer>
       </div>
     </ComponentContent>
