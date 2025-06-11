@@ -174,18 +174,15 @@ export const FormStepperStepStatusExample = () => {
             code={`
                 const [step, setStep] = useState<number>(-1);
                 // controlled by the user based on form completion
-                const [status, setStatus] = useState<GoabFormStepStatus[]>([
+                const status: GoabFormStepStatus[] = [
                   "complete",
                   "complete",
                   "incomplete",
                   "not-started"
-                ])
+                ]
                 function setPage(page: number) {
                   if (page < 1 || page > 4) return;
                   setStep(page);
-                  setStatus((prevStatus) =>
-                    prevStatus.map((_, index) => (index < page ? "complete" : "incomplete"))
-                  );
                 }
               `}
           />
