@@ -39,6 +39,7 @@ import BugVerificationPage from "@routes/get-started/developers/BugVerification"
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
+import ComponentLifecyclePage from "@routes/get-started/ComponentLifecycle";
 import ContributePage from "@routes/get-started/Contribute";
 import SupportPage from "@routes/get-started/Support";
 import RequestFeaturePage from "@routes/get-started/RequestFeature";
@@ -109,6 +110,7 @@ const router = createBrowserRouter(
         <Route path="qa-testing">
           <Route index element={<QATestingOverviewPage />} />
         </Route>
+        <Route path="component-lifecycle" element={<ComponentLifecyclePage />} />
         <Route path="lts-policy">
           <Route index element={<LtsPolicyPage />} />
         </Route>
