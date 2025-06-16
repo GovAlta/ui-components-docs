@@ -18,7 +18,8 @@ import { GoabServiceLevel } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=2-81";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=2-81";
 
 const componentName = "Microsite header";
 const description =
@@ -158,7 +159,7 @@ export default function MicrositeHeaderPage() {
         "Set to true to handle the feedback click via _feedbackClick custom event handler.",
     },
     {
-      name: "_feedbackclick",
+      name: "_feedbackClick",
       lang: "angular",
       type: "CustomEvent",
       description: "Function invoked when feedback link is clicked.",
@@ -235,14 +236,18 @@ export default function MicrositeHeaderPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={micrositeHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoabMicrositeHeader {...micrositeHeaderProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -251,8 +256,7 @@ export default function MicrositeHeaderPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }
-          >
+            }>
             <MicrositeHeaderExamples />
           </GoabTab>
 
