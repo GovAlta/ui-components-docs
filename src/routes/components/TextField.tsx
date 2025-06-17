@@ -11,7 +11,7 @@ import {
   GoabInput,
   GoabInputProps,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import ICONS from "./icons.json";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
@@ -22,12 +22,14 @@ import { GoabInputOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
-  LegacyTestIdProperties, MarginProperty,
-  TestIdProperty
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { omit } from "lodash";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-34641";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-34641";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
@@ -37,10 +39,10 @@ const description = "A single-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/form-item", name: "Form item" },
-  { link: "/components/text-area", name: "Text area" }
+  { link: "/components/text-area", name: "Text area" },
 ];
 
-type ComponentPropsType = Omit<GoabInputProps, 'onChange'> & {
+type ComponentPropsType = Omit<GoabInputProps, "onChange"> & {
   onChange?: (event: GoabInputOnChangeDetail) => void;
 };
 type CastingType = {
@@ -51,7 +53,7 @@ type CastingType = {
 };
 
 export default function TextFieldPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -111,6 +113,14 @@ export default function TextFieldPage() {
       name: "maxLength",
     },
     {
+      label: "Text Align",
+      type: "list",
+      name: "textAlign",
+      options: ["", "left", "right"],
+      value: "",
+      defaultValue: "left",
+    },
+    {
       label: "Disabled",
       type: "boolean",
       name: "disabled",
@@ -135,9 +145,11 @@ export default function TextFieldPage() {
       value: "",
       hidden: true,
       dynamic: true,
-    }
+    },
   ]);
-  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
+    label: "Basic",
+  });
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
@@ -329,6 +341,20 @@ export default function TextFieldPage() {
       description:
         "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
       defaultValue: "off",
+    },
+    {
+      name: "textAlign",
+      lang: "react",
+      type: "GoAInputTextAlign (left | right)",
+      description: "Sets the text alignment within the input field.",
+      defaultValue: "left",
+    },
+    {
+      name: "textalign",
+      lang: "angular",
+      type: "left | right",
+      description: "Sets the text alignment within the input field.",
+      defaultValue: "left",
     },
     {
       name: "_trailingIconClick",
@@ -526,6 +552,12 @@ export default function TextFieldPage() {
       defaultValue: "off",
     },
     {
+      name: "textAlign",
+      type: "GoabInputTextAlign (left | right)",
+      description: "Sets the text alignment within the input field.",
+      defaultValue: "left",
+    },
+    {
       name: "onTrailingIconClick",
       type: "() => void",
       description: "onClick function invoked when trailing icon is clicked.",
@@ -585,7 +617,7 @@ export default function TextFieldPage() {
   }
 
   // For sandbox demo function
-  const noop = () => { };
+  const noop = () => {};
 
   return (
     <>
@@ -599,11 +631,12 @@ export default function TextFieldPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             {/*Input sandbox*/}
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
@@ -611,11 +644,12 @@ export default function TextFieldPage() {
               onChangeFormItemBindings={onFormItemChange}
               allow={["form"]}
               flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                   value: string = "";
@@ -625,12 +659,14 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class SomeComponent {
                   value = "";
@@ -640,25 +676,29 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 export class SomeComponent {
                   itemFormCtrl = new FormControl("");
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 export class SomeComponent {
                   form!: FormGroup;
@@ -669,13 +709,15 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
                 import {FormsModule} from "@angular/forms";
                 export class SomeComponent {
                   item = "";
@@ -684,38 +726,43 @@ export default function TextFieldPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [value, setValue] = useState<string>("");
               
                 onChange(name: string, value: string) {
                   setValue(value);
                 }
               `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [value, setValue] = useState<string>("");
               
                 function inputOnChange(event: GoabInputOnChangeDetail) {
                   setValue(event.value);
                 }
               `}
-              />}
+                />
+              )}
               <form>
                 <GoabFormItem {...formItemProps}>
-                  <GoabInput 
-                    {...(omit(componentProps, ['onFocus', 'onBlur', 'onKeyPress']))} 
-                    name="item" 
-                    value="" 
+                  <GoabInput
+                    {...omit(componentProps, ["onFocus", "onBlur", "onKeyPress"])}
+                    name="item"
+                    value=""
                     onChange={noop}
                   />
                 </GoabFormItem>
@@ -723,7 +770,10 @@ export default function TextFieldPage() {
             </Sandbox>
 
             {/*Input component properties table*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
             {/*Examples*/}
           </GoabTab>
 
@@ -731,10 +781,9 @@ export default function TextFieldPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="5" />
+                <GoabBadge type="information" content="6" />
               </>
-            }
-          >
+            }>
             <TextFieldExamples />
           </GoabTab>
 
@@ -749,4 +798,3 @@ export default function TextFieldPage() {
     </>
   );
 }
-
