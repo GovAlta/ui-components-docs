@@ -49,8 +49,9 @@ export const ISSUE_FRAGMENTS = gql`
   fragment IssueFields on Issue {
     id
     title
+    body
     url
-    labels(first: 5) {
+    labels(first: 10) {
       edges {
         node {
           name
@@ -87,16 +88,52 @@ export const DS_BACKLOG_ISSUES_QUERY = gql`
             content {
               ... IssueFields
             }
+            status: fieldValueByName(name:"Status") {
+              ... on ProjectV2ItemFieldSingleSelectValue {
+                name
+              }
+            }
+              
             category: fieldValueByName(name:"Category") {
               ... on ProjectV2ItemFieldSingleSelectValue {
                 name
               }
             }
-            description: fieldValueByName(name:"Description") {
+            designSystemUrl: fieldValueByName(name:"Design System website URL") {
+              ... on ProjectV2ItemFieldTextValue {
+                text
+              }
+            }
+
+            openIssuesUrl: fieldValueByName(name:"Open issues (Github)") {
+              ... on ProjectV2ItemFieldTextValue {
+                text
+              }
+            }
+
+            figmaComponentUrl: fieldValueByName(name:"Design component (Figma)") {
+              ... on ProjectV2ItemFieldTextValue {
+                text
+              }
+            }
+             
+            figmaContributionUrl: fieldValueByName(name:"Design contribution file (Figma)") {
               ... on ProjectV2ItemFieldTextValue {
                 text
               }
             }  
+          
+            description: fieldValueByName(name:"Description") {
+              ... on ProjectV2ItemFieldTextValue {
+                text
+              }
+            }
+              
+            metatags: fieldValueByName(name:"Metatags") {
+              ... on ProjectV2ItemFieldTextValue {
+                text
+              }
+            }
           }
         }
       }

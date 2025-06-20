@@ -3,6 +3,10 @@ import { lazy, Suspense, useEffect, useState, useMemo } from "react";
 import { GoabBlock, GoabSkeleton, GoabLink } from "@abgov/react-components";
 import { fetchExampleMetadataFromProject } from "../../utils";
 import { ExampleHeader } from "@components/example-header/ExampleHeader.tsx";
+import { useQuery } from "@apollo/client";
+import { DS_BACKLOG_ISSUES_QUERY } from "../../utils/github.ts";
+import { set } from "lodash";
+import { toKebabCase } from "../../utils/index.ts";
 
 
 export default function ExamplePageTemplate() {
@@ -18,19 +22,9 @@ export default function ExamplePageTemplate() {
       )
     );
   }, [slug]);
-  console.log("Loaded example metadata:", example);
-  useEffect(() => {
-    if (!slug) return;
-    console.log("Looking for slug:", slug);
-    fetchExampleMetadataFromProject().then(data => {
-      console.log("Fetched metadata:", data);
-      const match = data.find((item: any) => item.slug === slug);
-      console.log("Matched example:", match);
-      setExample(match);
-    }).catch(error => {
-      console.error("Error fetching metadata:", error);
-    });
-  }, [slug]);
+  
+  const { loading, error, data } = useQuery(DS_BACKLOG_ISSUES_QUERY);
+
   return (
     <main
       className="main">
@@ -41,7 +35,7 @@ export default function ExamplePageTemplate() {
           <a href="/examples">Back</a>
         </GoabLink>
       </GoabBlock>
-      {!example ? (
+      {loading && (
         <GoabBlock gap="none" direction="column" mb="xl" mt="none">
           <GoabSkeleton type="header" size="4" />
           <GoabBlock gap="none" direction="column">
@@ -49,14 +43,10 @@ export default function ExamplePageTemplate() {
             <GoabSkeleton type="text-small" size="4" />
           </GoabBlock>
         </GoabBlock>
-      ) : (
-        <ExampleHeader
-          name={example.name}
-          description={example.description}
-          githubLink={example.url ?? ""}
-          figmaLink={example.designComponentFigmaUrl}
-          tags={example.tags}
-        />
+      )}
+
+      {data && (
+        <h1>{data?.repository?.projectV2?.items?.nodes.find((item: any) => toKebabCase(item.content.title) === slug).content.title}</h1>
       )}
 
       <Suspense fallback={<GoabSkeleton type="card" size="3" />}>
