@@ -1,17 +1,13 @@
 import { useParams } from "react-router-dom";
-import { lazy, Suspense, useEffect, useState, useMemo } from "react";
+import { lazy, Suspense, useMemo } from "react";
 import { GoabBlock, GoabSkeleton, GoabLink } from "@abgov/react-components";
-import { fetchExampleMetadataFromProject } from "../../utils";
-import { ExampleHeader } from "@components/example-header/ExampleHeader.tsx";
 import { useQuery } from "@apollo/client";
 import { DS_BACKLOG_ISSUES_QUERY } from "../../utils/github.ts";
-import { set } from "lodash";
 import { toKebabCase } from "../../utils/index.ts";
 
 
 export default function ExamplePageTemplate() {
   const { slug } = useParams(); // assumes route like /examples/:slug
-  const [example, setExample] = useState<any>(null);
 
   // Dynamic import based on slug
   const ExampleComponent = useMemo(() => {
@@ -45,6 +41,9 @@ export default function ExamplePageTemplate() {
         </GoabBlock>
       )}
 
+      {error && (
+        <span>Error!</span>
+      )}
       {data && (
         <h1>{data?.repository?.projectV2?.items?.nodes.find((item: any) => toKebabCase(item.content.title) === slug).content.title}</h1>
       )}
