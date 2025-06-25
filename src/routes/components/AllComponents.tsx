@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { toSentenceCase, fetchAllIssueCounts, fetchComponentMetadataFromProject } from "../../utils";
+import { toSentenceCase, fetchAllIssueCounts, fetchItemsFromProject } from "../../utils";
 import {
   GoabTable,
   GoabTableSortHeader,
@@ -39,8 +39,7 @@ const AllComponents = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const metadata = await fetchComponentMetadataFromProject();
-      console.log("Fetched metadata from GitHub:", metadata);
+      const metadata = await fetchItemsFromProject("Components");
       const sorted = metadata.sort((a, b) => {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison =

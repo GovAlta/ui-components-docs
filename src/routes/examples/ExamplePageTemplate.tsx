@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState, useMemo } from "react";
 import { GoabBlock, GoabSkeleton, GoabLink } from "@abgov/react-components";
-import { fetchExampleMetadataFromProject } from "../../utils";
+import { fetchItemsFromProject } from "../../utils";
 import { ExampleHeader } from "@components/example-header/ExampleHeader.tsx";
 
 
@@ -22,7 +22,7 @@ export default function ExamplePageTemplate() {
   useEffect(() => {
     if (!slug) return;
     console.log("Looking for slug:", slug);
-    fetchExampleMetadataFromProject().then(data => {
+    fetchItemsFromProject("Examples").then(data => {
       console.log("Fetched metadata:", data);
       const match = data.find((item: any) => item.slug === slug);
       console.log("Matched example:", match);

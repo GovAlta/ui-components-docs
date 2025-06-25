@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { toSentenceCase, fetchAllIssueCounts, fetchExampleMetadataFromProject } from "../../utils";
+import { toSentenceCase, fetchAllIssueCounts, fetchItemsFromProject } from "../../utils";
 import {
   GoabTable,
   GoabTableSortHeader,
@@ -87,8 +87,7 @@ export default function ExamplesOverviewPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const metadata = await fetchExampleMetadataFromProject();
-      console.log("Fetched metadata from GitHub:", metadata);
+      const metadata = await fetchItemsFromProject("Examples");
       const withSlugs = metadata.map((item) => ({
         ...item,
         slug: item.name

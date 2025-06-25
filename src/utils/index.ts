@@ -4,6 +4,8 @@ import {
   Group
 } from "@components/component-card/ComponentCard.tsx";
 
+type issueGroup = "Components" | "Examples";
+
 export function toKebabCase(str: string) {
   return str
   .replace(/\s+/g, '-')        // Replace spaces with -
@@ -16,7 +18,19 @@ export const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-async function executeGraphQLQuery(query: string): Promise<any> {
+function setCache(name: string, data: any) {
+  window.localStorage.setItem(`github-${name}`, JSON.stringify(data));
+}
+
+function getCache(name: string): any | null {
+  const cachedData = window.localStorage.getItem(`github-${name}`);
+  if (cachedData) {
+    return cachedData
+  }
+  return null;
+}
+
+async function executeGraphQLQuery(name: string, query: string): Promise<any> {
   const token =
     import.meta.env.VITE_GITHUB_TOKEN ||
     import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
@@ -24,6 +38,19 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   if (!token) {
     console.error("GitHub token not provided");
     return null;
+  }
+
+  const cachedData = getCache(name);
+  if (cachedData) {
+    try {
+      const parsedData = JSON.parse(cachedData);
+      if (parsedData) {
+        console.log(`Using cached data for ${name}`);
+        return parsedData;
+      }
+    } catch (error) {
+      console.error(`Error parsing cache for ${name}:`, error);
+    }
   }
 
   try {
@@ -43,6 +70,7 @@ async function executeGraphQLQuery(query: string): Promise<any> {
       return null;
     }
 
+    setCache(name, result.data);
     return result.data;
   } catch (error) {
     console.error("Error executing GraphQL query:", error);
@@ -50,13 +78,13 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   }
 }
 
-function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
+function mapItemsToMetadata(items: any[], group: issueGroup): ComponentProps[] {
   const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
 
   return items
     .filter((item: any) =>
       item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Components"
+        (f: any) => f.field?.name === "Category" && f.name === group
       )
     )
     .map((item: any) => {
@@ -97,58 +125,6 @@ function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
         slug,
         groups: group ? [group as Group] : [],
         tags: labels.filter((l: string) => l !== group),
-        metatags,
-        description: descriptionField?.text || body,
-        status,
-        designSystemUrl,
-        designComponentFigmaUrl,
-        designContributionFigmaUrl,
-        openIssuesUrl,
-        url: item.content?.url
-      };
-    });
-}
-
-function mapExampleItemsToMetadata(items: any[]): ComponentProps[] {
-  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
-
-  return items
-    .filter((item: any) =>
-      item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Examples"
-      )
-    )
-    .map((item: any) => {
-      const title = item.content?.title || "";
-      const name = toSentenceCase(title.trim());
-      const slug = name.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
-      const body = item.content?.body || "";
-      const labels = item.content?.labels?.nodes.map((l: any) => toSentenceCase(l.name.trim())) || [];
-
-      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
-      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
-
-      const rawStatus = statusField?.name;
-      const status: ComponentStatus =
-        validStatuses.includes(rawStatus as ComponentStatus)
-          ? (rawStatus as ComponentStatus)
-          : "Not Published";
-
-      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
-      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
-      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
-      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
-
-      let metatags: string[] = [];
-      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
-      if (metatagField?.text) {
-        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
-      }
-
-      return {
-        name,
-        slug,
-        tags: labels,
         metatags,
         description: descriptionField?.text || body,
         status,
@@ -216,7 +192,7 @@ export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
       }
     `;
 
-    const result = await executeGraphQLQuery(query);
+    const result = await executeGraphQLQuery("project-items", query);
     if (!result) return [];
 
     const pageItems = result.node.items.nodes;
@@ -229,51 +205,20 @@ export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
   return allItems;
 }
 
-export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
+export async function fetchItemsFromProject(group: issueGroup): Promise<ComponentProps[]> {
   const allItems = await fetchMetadataFromProject();
-  return mapComponentItemsToMetadata(allItems);
-}
-
-export async function fetchExampleMetadataFromProject(): Promise<ComponentProps[]> {
-  const allItems = await fetchMetadataFromProject();
-  return mapExampleItemsToMetadata(allItems);
+  return mapItemsToMetadata(allItems, group);
 }
 
 export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
   const results = await Promise.all(cards.map(async (card) => {
-    const label = toSentenceCase(card.name.replace(/-/g, " "));
-    const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
-
-    const query = `
-      query {
-        search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) {
-          issueCount
-        }
-      }
-    `;
-
-    const result = await executeGraphQLQuery(query);
-    if (!result) return { [card.name]: 0 };
-
-    return { [card.name]: result.search.issueCount || 0 };
+    return { [card.name]: 1 };
   }));
 
   return results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
-  const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
-
-  const query = `
-    query {
-      issues: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) {
-        issueCount
-      }
-    }
-  `;
-
-  const result = await executeGraphQLQuery(query);
-  if (!result) return null;
-
-  return result.issues.issueCount;
+  
+  return 1;
 }
