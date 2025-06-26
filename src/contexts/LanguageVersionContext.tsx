@@ -7,7 +7,7 @@ import {
 } from "@components/version-language-switcher/version-language-constants.ts";
 import { DEFAULT_LANGUAGE, DEFAULT_VERSION } from "../global-constants";
 
-interface LanguageVersionContextProps {
+export interface LanguageVersionContextProps {
   language: Language;
   version: LanguageVersion;
   setLanguage: (lang: Language) => void;
