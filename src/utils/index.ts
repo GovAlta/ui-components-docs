@@ -219,6 +219,6 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
-  
+  console.log(label)
   return 1;
 }
