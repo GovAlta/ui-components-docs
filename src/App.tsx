@@ -40,6 +40,7 @@ import BugVerificationPage from "@routes/get-started/developers/BugVerification"
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
 import QATestingOverviewPage from "@routes/get-started/qa-testing/QATestingOverview";
+import ComponentLifecyclePage from "@routes/get-started/ComponentLifecycle";
 import ContributePage from "@routes/get-started/Contribute";
 import SupportPage from "@routes/get-started/Support";
 import RequestFeaturePage from "@routes/get-started/RequestFeature";
@@ -104,12 +105,23 @@ const router = createBrowserRouter(
           <Route path="bug" element={<BugVerificationPage />} />
           <Route path="update" element={<DevelopersUpgradePage />} />
         </Route>
-        <Route path="qa-testing" element={<QATestingOverviewPage />} />
-        <Route path="lts-policy" element={<LtsPolicyPage />} />
-        <Route path="contribute" element={<ContributePage />} />
-        <Route path="support" element={<SupportPage />} />
-        <Route path="support/report-bug" element={<ReportBugPage />} />
-        <Route path="support/request-feature" element={<RequestFeaturePage />} />
+
+        <Route path="qa-testing">
+          <Route index element={<QATestingOverviewPage />} />
+        </Route>
+        <Route path="component-lifecycle" element={<ComponentLifecyclePage />} />
+        <Route path="lts-policy">
+          <Route index element={<LtsPolicyPage />} />
+        </Route>
+        <Route path="contribute">
+          <Route index element={<ContributePage />} />
+        </Route>
+        <Route path="support">
+          <Route index element={<SupportPage />} />
+          <Route path="report-bug" element={<ReportBugPage />} />
+          <Route path="request-feature" element={<RequestFeaturePage />} />
+        </Route>
+
         <Route path="roadmap" element={<RoadmapPage />} />
         <Route path="user-experience-guidelines" element={<UserExperienceGuidelinesPage />} />
       </Route>

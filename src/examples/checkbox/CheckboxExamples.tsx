@@ -1,5 +1,6 @@
 import CheckboxDescriptionExample from "@examples/checkbox/CheckboxDescriptionExample.tsx";
 import CheckboxNoneOrManyExample from "@examples/checkbox/CheckboxNoneOrManyExample.tsx";
+import { CheckboxRevealSlotExample } from "@examples/checkbox/CheckboxRevealSlotExample.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const CheckboxExamples = () => {
@@ -17,5 +18,11 @@ export const CheckboxExamples = () => {
       figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6564-70176&t=kFEYlzR03SibmVz9-1">
     </SandboxHeader>
     <CheckboxNoneOrManyExample/>
+
+    <SandboxHeader
+      exampleTitle="Reveal input based on selection"
+      figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131069&m=dev">
+    </SandboxHeader>
+    <CheckboxRevealSlotExample/>
   </>;
 }
