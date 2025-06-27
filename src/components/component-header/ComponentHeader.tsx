@@ -28,8 +28,7 @@ export const ComponentHeader: React.FC<Props> = (props) => {
     if (!props.githubLink) return;
 
     const getCount = async () => {
-      const label = toSentenceCase(props.githubLink!);
-      const count = await fetchIssueCount(label);
+      const count = 0;
       setIssueCount(count);
     };
 

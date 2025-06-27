@@ -10,6 +10,7 @@ import "@abgov/web-components";
 
 import Root from "@routes/root";
 import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
+import { GitHubDataProvider } from "@contexts/GitHubDataContext.tsx";
 import "./index.css";
 
 // Support
@@ -157,7 +158,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <LanguageVersionProvider>
       <VersionFromUrlProvider>
         <DeviceWidthProvider>
-          <RouterProvider router={router} />
+          <GitHubDataProvider>
+            <RouterProvider router={router} />
+          </GitHubDataProvider>
         </DeviceWidthProvider>
       </VersionFromUrlProvider>
     </LanguageVersionProvider>
