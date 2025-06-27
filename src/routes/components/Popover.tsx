@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Link } from "react-router-dom";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoabBadge, GoabButton, GoabPopover, GoabTab, GoabTabs } from "@abgov/react-components";
+import { GoabBadge, GoabButton, GoabCallout, GoabPopover, GoabSpacer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -16,8 +17,8 @@ import {
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
+import { PopoverPageExamples } from "@examples/popover/PopoverPageExamples.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
 
@@ -283,6 +284,8 @@ export default function PopoverPage() {
                 It can be used for a number of different contexts.
               </GoabPopover>
             </Sandbox>
+            <GoabSpacer vSpacing="m"></GoabSpacer>
+            <GoabCallout type="information">Popovers are used as a base layer in other components like <Link to="/components/tooltip">tooltips</Link>, and <Link to="/components/dropdown">dropdown menus</Link>.</GoabCallout>
             <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
           </GoabTab>
 
@@ -290,11 +293,11 @@ export default function PopoverPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="0" />
+                <GoabBadge type="information" content="1" />
               </>
             }
           >
-            <ExamplesEmpty />
+            <PopoverPageExamples />
           </GoabTab>
 
           <GoabTab heading="Design">
