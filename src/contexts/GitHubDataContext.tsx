@@ -1,7 +1,9 @@
 import React, { createContext, useEffect, useState } from "react";
 
 interface GitHubDataContextProps {
-  data: any[] | null;
+  components: any[] | null;
+  examples: any[] | null;
+  issues: any[] | null;
   loading: boolean;
 }
 
@@ -15,12 +17,12 @@ function setCache(name: string, data: any, ttlMs: number = 1000 * 60 * 10) { // 
     data,
     expiry: Date.now() + ttlMs,
   };
-  window.localStorage.setItem(`github-${name}`, JSON.stringify(record));
+  window.localStorage.setItem(`goa-github-${name}`, JSON.stringify(record));
 }
 
 // Get cache and check expiration
 function getCache(name: string): any | null {
-  const cachedData = window.localStorage.getItem(`github-${name}`);
+  const cachedData = window.localStorage.getItem(`goa-github-${name}`);
   if (cachedData) {
     try {
       const record = JSON.parse(cachedData);
@@ -28,19 +30,19 @@ function getCache(name: string): any | null {
         return record.data;
       } else {
         // Expired, remove from cache
-        window.localStorage.removeItem(`github-${name}`);
+        window.localStorage.removeItem(`goa-github-${name}`);
         return null;
       }
     } catch {
       // If parsing fails, treat as no cache
-      window.localStorage.removeItem(`github-${name}`);
+      window.localStorage.removeItem(`goa-github-${name}`);
       return null;
     }
   }
   return null;
 }
 
-async function executeGraphQLQuery(name: string, query: string): Promise<any> {
+async function executeGraphQLQuery(query: string): Promise<any> {
   const token =
     import.meta.env.VITE_GITHUB_TOKEN ||
     import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
@@ -48,12 +50,6 @@ async function executeGraphQLQuery(name: string, query: string): Promise<any> {
   if (!token) {
     console.error("GitHub token not provided");
     return null;
-  }
-
-  const cachedData = getCache(name);
-  if (cachedData) {
-    console.log(`Using cached data for ${name}`);
-    return cachedData;
   }
 
   try {
@@ -72,8 +68,6 @@ async function executeGraphQLQuery(name: string, query: string): Promise<any> {
       console.error("GraphQL errors:", result.errors);
       return null;
     }
-
-    setCache(name, result.data);
     return result.data;
   } catch (error) {
     console.error("Error executing GraphQL query:", error);
@@ -81,49 +75,56 @@ async function executeGraphQLQuery(name: string, query: string): Promise<any> {
   }
 }
 
-export async function fetchDataFromGitHub(): Promise<any[]> {
+export async function fetchDataFromGitHub(name: string, project: number): Promise<any[]> {
+  const cachedData = getCache(name);
+  if (cachedData) {
+    return cachedData;
+  }
+
   const allItems: any[] = [];
   let hasNextPage = true;
   let endCursor = null;
 
   while (hasNextPage) {
     const query = `
-      query {
-        node(id: "PVT_kwDOBQjO6M4A1oga") {
-          ... on ProjectV2 {
-            items(first: 100${endCursor ? `, after: \"${endCursor}\"` : ""}) {
-              pageInfo {
-                hasNextPage
-                endCursor
-              }
-              nodes {
-                content {
-                  ... on Issue {
-                    title
-                    body
-                    url
-                    labels(first: 10) {
-                      nodes {
-                        name
-                      }
-                    }
-                  }
+        query {
+          repository(owner:"govalta", name: "${name}") {
+            projectV2(number: ${project}) {
+              items(first: 100${endCursor ? `, after: \"${endCursor}\"` : ""}) {
+                pageInfo {
+                  hasNextPage
+                  endCursor
                 }
-                fieldValues(first: 20) {
-                  nodes {
-                    ... on ProjectV2ItemFieldSingleSelectValue {
-                      name
-                      field {
-                        ... on ProjectV2SingleSelectField {
+                nodes {
+                  content {
+                    ... on Issue {
+                      title
+                      body
+                      url
+                      state
+                      labels(first: 10) {
+                        nodes {
                           name
                         }
                       }
                     }
-                    ... on ProjectV2ItemFieldTextValue {
-                      text
-                      field {
-                        ... on ProjectV2FieldCommon {
-                          name
+                  }
+                  fieldValues(first: 20) {
+                    nodes {
+                      ... on ProjectV2ItemFieldSingleSelectValue {
+                        name
+                        field {
+                          ... on ProjectV2SingleSelectField {
+                            name
+                          }
+                        }
+                      }
+                      ... on ProjectV2ItemFieldTextValue {
+                        text
+                        field {
+                          ... on ProjectV2FieldCommon {
+                            name
+                          }
                         }
                       }
                     }
@@ -133,37 +134,49 @@ export async function fetchDataFromGitHub(): Promise<any[]> {
             }
           }
         }
-      }
     `;
 
-    const result = await executeGraphQLQuery("project-items", query);
+    const result = await executeGraphQLQuery(query);
     if (!result) return [];
 
-    const pageItems = result?.node?.items?.nodes;
+    console.log("Result", result);
+
+    const pageItems = result.repository?.projectV2?.items?.nodes;
     allItems.push(...pageItems);
 
-    hasNextPage = result.node.items.pageInfo.hasNextPage;
-    endCursor = result.node.items.pageInfo.endCursor;
+    hasNextPage = result.repository?.projectV2?.items?.pageInfo?.hasNextPage;
+    endCursor = result.repository?.projectV2?.items?.pageInfo?.endCursor;
   }
 
+  setCache(name, allItems);
   return allItems;
 }
 
-export const GitHubDataContext = createContext<GitHubDataContextProps>({ data:  null, loading: true });
+export const GitHubDataContext = createContext<GitHubDataContextProps>({ components: null, examples: null, issues: null, loading: true });
 
 export const GitHubDataProvider:React.FC<GitHubDataProviderProps> = ({ children }) => {
-  const [data, setData] = useState([]);
+  const [components, setComponents] = useState<any[]>([]);
+  const [examples, setExamples] = useState<any[]>([]);
+  const [issues, setIssues] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("Fetching GitHub data...");
-
     const getItems = async () => {
-    const allItems = await fetchDataFromGitHub();
-      if (allItems) {
-        setData(allItems);
+      const allItems = await fetchDataFromGitHub("design-system-backlog", 38);
+      const components = allItems.filter((item: any) =>
+        item.fieldValues.nodes.some(
+          (f: any) => f.field?.name === "Category" && f.name === "Components"
+        ));
+      const examples = allItems.filter((item: any) =>
+        item.fieldValues.nodes.some(
+          (f: any) => f.field?.name === "Category" && f.name === "Examples"
+        ));
+      const issues = await fetchDataFromGitHub("ui-components", 35);
+      if (components && examples && issues) {
+        setComponents(components);
+        setExamples(examples);
+        setIssues(issues);
         setLoading(false);
-        console.log("GitHub data fetched successfully:", allItems.length, "items");
       }
     };
     getItems().catch((error) => {
@@ -174,7 +187,7 @@ export const GitHubDataProvider:React.FC<GitHubDataProviderProps> = ({ children 
   }, []);
 
   return (
-    <GitHubDataContext.Provider value={{ data, loading }}>
+    <GitHubDataContext.Provider value={{ components, examples, issues, loading }}>
       {children}
     </GitHubDataContext.Provider>
   );
