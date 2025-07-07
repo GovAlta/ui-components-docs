@@ -1,86 +1,15 @@
-import { GoabCheckbox, GoabFormItem, GoabInput, GoabSpacer } from "@abgov/react-components";
+import { GoabCheckbox, GoabFormItem, GoabInput } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { OldComponentBanner } from "@components/old-component-banner/OldComponentBanner.tsx";
 
 export const CheckboxRevealSlotExample = () => {
-  const { version, language } = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <>
       {/*Skip rendering because we use reveal that isn't supported by sandbox*/}
       <Sandbox fullWidth skipRender>
-        {/*Angular*/}
-        {version === "old" && (
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
-              <goa-form-item label="How would you like to be contacted?">
-                <goa-checkbox name="optionOne" text="Email" value="email" [checked]="optionOneChecked" (_change)="updateContactMethod($event)">
-                  <div slot="reveal">
-                    <goa-form-item label="Email address">
-                      <goa-input name="email" [value]="emailAddress" (_change)="updateEmailAddress($event)"></goa-input>
-                    </goa-form-item>
-                  </div>
-                </goa-checkbox>
-                <goa-checkbox name="optionTwo" text="Phone" value="phone" [checked]="optionTwoChecked" (_change)="updateContactMethod($event)">
-                  <div slot="reveal">
-                    <goa-form-item label="Phone number">
-                        <goa-input name="phone" [value]="phoneNumber" (_change)="updatePhoneNumber($event)"></goa-input>
-                    </goa-form-item>
-                  </div>
-                </goa-checkbox>
-                <goa-checkbox name="optionThree" text="Text message" value="text" [checked]="optionThreeChecked" (_change)="updateContactMethod($event)">
-                    <div slot="reveal">
-                      <goa-form-item label="Mobile phone number">
-                        <goa-input name="phone" [value]="phoneNumber" (_change)="updatePhoneNumber($event)"></goa-input>
-                      </goa-form-item>
-                    </div>
-                </goa-checkbox>
-              </goa-form-item>
-            `}
-          />
-        )}
-
-        {version === "old" && (
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
-        export class ExampleComponent {
-          phoneNumber = "";
-          emailAddress = "";
-          optionOneChecked = false;
-          optionTwoChecked = false;
-          optionThreeChecked = false;
-
-          updateContactMethod(event: any) {
-            const value = (event as CustomEvent).detail.value;
-            if (value === "email") {
-              this.optionOneChecked = true;
-            }
-            if (value === "phone") {
-              this.optionTwoChecked = true;
-            }
-            if (value === "text") {
-              this.optionThreeChecked = true;
-            }
-          }
-          updatePhoneNumber(event: any) {
-            this.phoneNumber = (event as CustomEvent).detail.value;
-          }
-          updateEmailAddress(event: any) {
-            this.emailAddress = (event as CustomEvent).detail.value;
-          }
-        }
-     `}
-          />
-        )}
-
         {/*Angular*/}
         {version === "new" && (
           <CodeSnippet
@@ -213,14 +142,6 @@ export const CheckboxRevealSlotExample = () => {
           />
         </GoabFormItem>
       </Sandbox>
-      <GoabSpacer vSpacing={"1"}></GoabSpacer>
-      {version === "old" && language === "react" && (
-        <OldComponentBanner
-          componentName={"Reveal input based on selection"}
-          language={language}
-          type="example"
-        />
-      )}
     </>
   );
 };
