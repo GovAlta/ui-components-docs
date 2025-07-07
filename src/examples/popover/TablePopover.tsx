@@ -13,7 +13,6 @@ import {
 import "./popover-page-examples.css";
 import { GoabBadgeType } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const TablePopover = () => {
     const noop = () => {}
