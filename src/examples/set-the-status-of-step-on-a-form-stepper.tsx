@@ -15,7 +15,7 @@ import { GoabFormStepStatus } from "@abgov/ui-components-common";
 export const SetTheStatusOfStepOnAFormStepper = () => {
   const { version } = useContext(LanguageVersionContext);
   const [statusStep, setStatusStep] = useState(-1);
-  const status: GoabFormStepStatus[] = ["complete", "incomplete", "unstarted"];
+  const status: GoabFormStepStatus[] = ["complete", "incomplete", "not-started"];
 
   function setStatusPage(page: number) {
     if (page < 1 || page > 4) return;
