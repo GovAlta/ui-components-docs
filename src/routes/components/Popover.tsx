@@ -18,7 +18,6 @@ import {
   TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
-import { PopoverPageExamples } from "@examples/popover/PopoverPageExamples.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 //import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 import { PopoverExamples } from "@examples/popover/PopoverExamples";
