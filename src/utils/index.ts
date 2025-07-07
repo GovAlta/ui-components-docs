@@ -4,19 +4,43 @@ import {
   Group
 } from "@components/component-card/ComponentCard.tsx";
 
+type IssueGroup = "Components" | "Examples";
+
 export function toKebabCase(str: string) {
   return str
-  .replace(/\s+/g, '-')        // Replace spaces with -
-  .replace(/_/g, '-')          // Replace underscores with -
-  .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
-  .toLowerCase();              // Convert to lowercase
+    .replace(/\s+/g, "-")        // Replace spaces with -
+    .replace(/_/g, "-")          // Replace underscores with -
+    .replace(/([a-z])([A-Z])/g, "$1-$2") // Convert camelCase to kebab-case
+    .toLowerCase();              // Convert to lowercase
 }
 
 export const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-async function executeGraphQLQuery(query: string): Promise<any> {
+// Cache management functions from Benji's approach
+function setCache(name: string, data: any) {
+  try {
+    window.localStorage.setItem(`github-${name}`, JSON.stringify(data));
+  } catch (error) {
+    console.warn(`Failed to cache ${name}:`, error);
+  }
+}
+
+function getCache(name: string): any | null {
+  try {
+    const cachedData = window.localStorage.getItem(`github-${name}`);
+    if (cachedData) {
+      return JSON.parse(cachedData);
+    }
+  } catch (error) {
+    console.warn(`Failed to parse cache for ${name}:`, error);
+  }
+  return null;
+}
+
+// Enhanced GraphQL execution with caching
+async function executeGraphQLQuery(cacheName: string, query: string): Promise<any> {
   const token =
     import.meta.env.VITE_GITHUB_TOKEN ||
     import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
@@ -24,6 +48,13 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   if (!token) {
     console.error("GitHub token not provided");
     return null;
+  }
+
+  // Check cache first
+  const cachedData = getCache(cacheName);
+  if (cachedData) {
+    console.log(`Using cached data for ${cacheName}`);
+    return cachedData;
   }
 
   try {
@@ -43,6 +74,8 @@ async function executeGraphQLQuery(query: string): Promise<any> {
       return null;
     }
 
+    // Cache the successful result
+    setCache(cacheName, result.data);
     return result.data;
   } catch (error) {
     console.error("Error executing GraphQL query:", error);
@@ -50,13 +83,14 @@ async function executeGraphQLQuery(query: string): Promise<any> {
   }
 }
 
-function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
+// Unified mapping function (Benji's consolidation approach)
+function mapItemsToMetadata(items: any[], group: IssueGroup): ComponentProps[] {
   const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
 
   return items
     .filter((item: any) =>
       item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Components"
+        (f: any) => f.field?.name === "Category" && f.name === group
       )
     )
     .map((item: any) => {
@@ -66,11 +100,12 @@ function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
       const body = item.content?.body || "";
       const labels = item.content?.labels?.nodes.map((l: any) => toSentenceCase(l.name.trim())) || [];
 
-      const group = labels.find((l: string) =>
+      // Only apply groups for Components, not Examples
+      const componentGroup = group === "Components" ? labels.find((l: string) =>
         ["Content layout", "Inputs and actions", "Feedback and alerts", "Structure and navigation", "Utilities"]
           .map(toSentenceCase)
           .includes(toSentenceCase(l))
-      );
+      ) : undefined;
 
       const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
       const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
@@ -95,8 +130,8 @@ function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
       return {
         name,
         slug,
-        groups: group ? [group as Group] : [],
-        tags: labels.filter((l: string) => l !== group),
+        groups: componentGroup ? [componentGroup as Group] : [],
+        tags: labels.filter((l: string) => l !== componentGroup),
         metatags,
         description: descriptionField?.text || body,
         status,
@@ -109,64 +144,16 @@ function mapComponentItemsToMetadata(items: any[]): ComponentProps[] {
     });
 }
 
-function mapExampleItemsToMetadata(items: any[]): ComponentProps[] {
-  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
-
-  return items
-    .filter((item: any) =>
-      item.fieldValues.nodes.some(
-        (f: any) => f.field?.name === "Category" && f.name === "Examples"
-      )
-    )
-    .map((item: any) => {
-      const title = item.content?.title || "";
-      const name = toSentenceCase(title.trim());
-      const slug = name.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
-      const body = item.content?.body || "";
-      const labels = item.content?.labels?.nodes.map((l: any) => toSentenceCase(l.name.trim())) || [];
-
-      const statusField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Status");
-      const descriptionField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Description");
-
-      const rawStatus = statusField?.name;
-      const status: ComponentStatus =
-        validStatuses.includes(rawStatus as ComponentStatus)
-          ? (rawStatus as ComponentStatus)
-          : "Not Published";
-
-      const designSystemUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design System website URL")?.text;
-      const designComponentFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design component (Figma)")?.text;
-      const designContributionFigmaUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Design contribution file (Figma)")?.text;
-      const openIssuesUrl = item.fieldValues.nodes.find((f: any) => f.field?.name === "Open issues (Github)")?.text;
-
-      let metatags: string[] = [];
-      const metatagField = item.fieldValues.nodes.find((f: any) => f.field?.name === "Metatags");
-      if (metatagField?.text) {
-        metatags = metatagField.text.split(",").map((t: string) => t.trim().toLowerCase());
-      }
-
-      return {
-        name,
-        slug,
-        tags: labels,
-        metatags,
-        description: descriptionField?.text || body,
-        status,
-        designSystemUrl,
-        designComponentFigmaUrl,
-        designContributionFigmaUrl,
-        openIssuesUrl,
-        url: item.content?.url
-      };
-    });
-}
-
-export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
+// Core data fetching with caching
+export async function fetchMetadataFromProject(): Promise<any[]> {
   const allItems: any[] = [];
   let hasNextPage = true;
   let endCursor = null;
+  let pageNumber = 0;
 
   while (hasNextPage) {
+    const cacheName = `project-items-page-${pageNumber}`;
+
     const query = `
       query {
         node(id: "PVT_kwDOBQjO6M4A1oga") {
@@ -216,7 +203,7 @@ export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
       }
     `;
 
-    const result = await executeGraphQLQuery(query);
+    const result = await executeGraphQLQuery(cacheName, query);
     if (!result) return [];
 
     const pageItems = result.node.items.nodes;
@@ -224,22 +211,42 @@ export async function fetchMetadataFromProject(): Promise<ComponentProps[]> {
 
     hasNextPage = result.node.items.pageInfo.hasNextPage;
     endCursor = result.node.items.pageInfo.endCursor;
+    pageNumber++;
   }
 
   return allItems;
 }
 
-export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
+// Benji's unified approach
+export async function fetchItemsFromProject(group: IssueGroup): Promise<ComponentProps[]> {
   const allItems = await fetchMetadataFromProject();
-  return mapComponentItemsToMetadata(allItems);
+  return mapItemsToMetadata(allItems, group);
+}
+
+// Your original specific functions (maintained for backwards compatibility)
+export async function fetchComponentMetadataFromProject(): Promise<ComponentProps[]> {
+  return fetchItemsFromProject("Components");
 }
 
 export async function fetchExampleMetadataFromProject(): Promise<ComponentProps[]> {
-  const allItems = await fetchMetadataFromProject();
-  return mapExampleItemsToMetadata(allItems);
+  return fetchItemsFromProject("Examples");
 }
 
+// Issue count fetching with caching
 export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
+  const cacheName = "all-issue-counts";
+
+  // Check if we have cached counts for all cards
+  const cachedCounts = getCache(cacheName);
+  if (cachedCounts) {
+    const hasAllCards = cards.every(card => card.name in cachedCounts);
+    if (hasAllCards) {
+      console.log("Using cached issue counts");
+      return cachedCounts;
+    }
+  }
+
+  // Fetch fresh data
   const results = await Promise.all(cards.map(async (card) => {
     const label = toSentenceCase(card.name.replace(/-/g, " "));
     const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
@@ -252,16 +259,23 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
       }
     `;
 
-    const result = await executeGraphQLQuery(query);
+    const result = await executeGraphQLQuery(`issue-count-${card.name}`, query);
     if (!result) return { [card.name]: 0 };
 
     return { [card.name]: result.search.issueCount || 0 };
   }));
 
-  return results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+  const allCounts = results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
+
+  // Cache the combined results
+  setCache(cacheName, allCounts);
+
+  return allCounts;
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
+  const cacheName = `single-issue-count-${label}`;
+
   const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
 
   const query = `
@@ -272,8 +286,23 @@ export async function fetchIssueCount(label: string): Promise<number | null> {
     }
   `;
 
-  const result = await executeGraphQLQuery(query);
+  const result = await executeGraphQLQuery(cacheName, query);
   if (!result) return null;
 
   return result.issues.issueCount;
+}
+
+// Utility function to clear cache (useful for development/debugging)
+export function clearCache(): void {
+  try {
+    const keys = Object.keys(localStorage);
+    keys.forEach(key => {
+      if (key.startsWith("github-")) {
+        localStorage.removeItem(key);
+      }
+    });
+    console.log("GitHub cache cleared");
+  } catch (error) {
+    console.warn("Failed to clear cache:", error);
+  }
 }
