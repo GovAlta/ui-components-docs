@@ -18,23 +18,33 @@ export const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-// Cache management functions from Benji's approach
-function setCache(name: string, data: any) {
-  try {
-    window.localStorage.setItem(`github-${name}`, JSON.stringify(data));
-  } catch (error) {
-    console.warn(`Failed to cache ${name}:`, error);
-  }
+// Set cache with expiration (in ms)
+function setCache(name: string, data: any, ttlMs: number = 1000 * 60 * 60 * 24) { // default: 24 hours
+  const record = {
+    data,
+    expiry: Date.now() + ttlMs,
+  };
+  window.localStorage.setItem(`goa-github-${name}`, JSON.stringify(record));
 }
 
+// Get cache and check expiration
 function getCache(name: string): any | null {
-  try {
-    const cachedData = window.localStorage.getItem(`github-${name}`);
-    if (cachedData) {
-      return JSON.parse(cachedData);
+  const cachedData = window.localStorage.getItem(`goa-github-${name}`);
+  if (cachedData) {
+    try {
+      const record = JSON.parse(cachedData);
+      if (record.expiry && Date.now() < record.expiry) {
+        return record.data;
+      } else {
+        // Expired, remove from cache
+        window.localStorage.removeItem(`goa-github-${name}`);
+        return null;
+      }
+    } catch {
+      // If parsing fails, treat as no cache
+      window.localStorage.removeItem(`goa-github-${name}`);
+      return null;
     }
-  } catch (error) {
-    console.warn(`Failed to parse cache for ${name}:`, error);
   }
   return null;
 }
