@@ -13,9 +13,9 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabFormStepStatus } from "@abgov/ui-components-common";
 
 export const SetTheStatusOfStepOnAFormStepper = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [statusStep, setStatusStep] = useState(-1);
-  const status: GoabFormStepStatus[] = ["complete", "complete", "incomplete", "incomplete"];
+  const status: GoabFormStepStatus[] = ["complete", "incomplete", "unstarted"];
 
   function setStatusPage(page: number) {
     if (page < 1 || page > 4) return;
@@ -23,19 +23,24 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
   }
   return (
     <>
-
-      <Sandbox fullWidth skipRender allow={["div"]}
-               note={"The status of each step can be configured to either “complete” or “incomplete” using the status property."}>
+      <Sandbox
+        fullWidth
+        skipRender
+        allow={["div"]}
+        note={
+          "The status of each step can be configured to \"complete\", \"incomplete\" or \"not-started\" using the status property."
+        }>
         {/*Angular code*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                 export class SomeComponent {
                   step = -1;
                   // controlled by the user based on form completion
-                  status = ["complete", "complete", "incomplete", "incomplete"]
+                  status = ["complete", "complete", "incomplete", "not-started"]
                   updateStep(event: Event) {
                     this.step = (event as CustomEvent).detail.step;
                   }
@@ -45,16 +50,18 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                   }
                 }
               `}
-        />}
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                 export class SomeComponent {
                   step = -1;
                   // controlled by the user based on form completion
-                  status: GoabFormStepStatus[] = ["complete", "complete", "incomplete", "incomplete"]
+                  status: GoabFormStepStatus[] = ["complete", "complete", "incomplete", "not-started"]
                   updateStep(event: GoabFormStepperOnChangeDetail) {
                     this.step = event.step;
                   }
@@ -64,12 +71,14 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                   }
                 }
               `}
-        />}
-        {version === "old" && <CodeSnippet
-          lang="html"
-          tags="angular"
-          allowCopy={true}
-          code={`
+          />
+        )}
+        {version === "old" && (
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
                 <goa-form-stepper ml="s" mr="s" [step]="step" (_change)="updateStep($event)">
                   <goa-form-step text="Personal details" [status]="status[0]"></goa-form-step>
                   <goa-form-step text="Employment history" [status]="status[1]"></goa-form-step>
@@ -87,12 +96,14 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                   <goa-button (_click)="setPage(step+1)" type="primary">Next</goa-button>
                 </div>
               `}
-        />}
-        {version === "new" && <CodeSnippet
-          lang="html"
-          tags="angular"
-          allowCopy={true}
-          code={`
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="html"
+            tags="angular"
+            allowCopy={true}
+            code={`
                 <goab-form-stepper ml="s" mr="s" [step]="step" (onChange)="updateStep($event)">
                   <goab-form-step text="Personal details" [status]="status[0]"></goab-form-step>
                   <goab-form-step text="Employment history" [status]="status[1]"></goab-form-step>
@@ -110,20 +121,22 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                 <goab-button (onClick)="setPage(step+1)" type="primary">Next</goab-button>
               </div>
             `}
-        />}
+          />
+        )}
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                 const [step, setStep] = useState<number>(-1);
                 // controlled by the user based on form completion
                 const [status, setStatus] = useState<GoAFormStepStatusType[]>([
                         "complete",
                         "complete",
                         "incomplete",
-                        "incomplete"
+                        "not-started"
                     ])
                 function setPage(page) {
                   if (page < 1 || page > 4) return;
@@ -150,36 +163,37 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                   </>
                 )
               `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                 const [step, setStep] = useState<number>(-1);
                 // controlled by the user based on form completion
-                const [status, setStatus] = useState<GoabFormStepStatus[]>([
+                const status: GoabFormStepStatus[] = [
                   "complete",
                   "complete",
                   "incomplete",
-                  "incomplete"
-                ])
+                  "not-started"
+                ]
                 function setPage(page: number) {
                   if (page < 1 || page > 4) return;
                   setStep(page);
-                  setStatus((prevStatus) =>
-                    prevStatus.map((_, index) => (index < page ? "complete" : "incomplete"))
-                  );
                 }
               `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="html"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="html"
+            tags="react"
+            allowCopy={true}
+            code={`
                 <GoabFormStepper step={step} onChange={(event) => setStep(event.step)}>
                   <GoabFormStep text="Personal details" status={status[0]} />
                   <GoabFormStep text="Employment history" status={status[1]} />
@@ -197,9 +211,10 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
                   <GoabButton type="primary" onClick={() => setPage(step + 1)}>Next</GoabButton>
                 </div>
               `}
-        />}
+          />
+        )}
 
-        <GoabFormStepper step={statusStep} onChange={(event) => setStatusStep(+event.step)}>
+        <GoabFormStepper step={statusStep} onChange={event => setStatusStep(+event.step)}>
           <GoabFormStep text="Personal details" status={status[0]} />
           <GoabFormStep text="Employment history" status={status[1]} />
           <GoabFormStep text="References" status={status[2]} />
@@ -210,9 +225,9 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
             <GoabSkeleton type="article" />
           </div>
           <div>
-            <GoabSkeleton type="header" size={'2'} />
+            <GoabSkeleton type="header" size={"2"} />
             <GoabSkeleton type="text" />
-            <GoabSkeleton type="header" size={'2'} />
+            <GoabSkeleton type="header" size={"2"} />
             <GoabSkeleton type="text" />
           </div>
           <div>
@@ -221,7 +236,7 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
             <GoabSkeleton type="text" />
           </div>
           <div>
-            <GoabSkeleton type="header" size={'2'} />
+            <GoabSkeleton type="header" size={"2"} />
             <GoabSkeleton type="text" />
             <GoabSpacer vSpacing="m" />
             <GoabSkeleton type="text" />
@@ -237,7 +252,7 @@ export const SetTheStatusOfStepOnAFormStepper = () => {
         </div>
       </Sandbox>
     </>
-  )
-}
+  );
+};
 
 export default SetTheStatusOfStepOnAFormStepper;

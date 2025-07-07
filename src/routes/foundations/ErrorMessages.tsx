@@ -50,9 +50,11 @@ export default function ErrorMessagesPage() {
           <GoabInput
             name="input"
             value="5420.00"
+            leadingContent="$"
             onChange={noop}
             error
           />
+       
         </GoabFormItem>
 
         <GoabFormItem
