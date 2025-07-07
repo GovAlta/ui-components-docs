@@ -13,17 +13,21 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
-  LegacyTestIdProperties, MarginProperty,
-  TestIdProperty
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { PopoverPageExamples } from "@examples/popover/PopoverPageExamples.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+//import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+import { PopoverExamples } from "@examples/popover/PopoverExamples";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302109";
 
 export default function PopoverPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [popoverProps, setPopoverProps] = useState({});
   const [popoverBindings, setPopoverBindings] = useState<ComponentBinding[]>([
     {
@@ -120,7 +124,7 @@ export default function PopoverPage() {
       name: "maxWidth",
       type: "string",
       description: "Sets the maximum width of the popover container.",
-      defaultValue: "320px"
+      defaultValue: "320px",
     },
     {
       name: "minWidth",
@@ -184,18 +188,20 @@ export default function PopoverPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={popoverBindings} skipRender onChange={onSandboxChange}>
               {/*Must be skipRender because Sandbox doesn't support slot target*/}
               {/*Angular*/}
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <goa-popover ${propsToString(popoverProps, "angular", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
@@ -204,13 +210,15 @@ export default function PopoverPage() {
                   </div>
                 </goa-popover>
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <goab-popover ${propsToString(popoverProps, "angular", version)} [target]="target">
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
@@ -219,58 +227,67 @@ export default function PopoverPage() {
                   </ng-template>
                 </goab-popover>
               `}
-              />}
+                />
+              )}
 
               {/*React*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const target = (
                   <GoAButton type="secondary" size="compact">
                     Click me
                   </GoAButton>
                 );
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const target = (
                   <GoabButton type="secondary" size="compact">
                     Click me
                   </GoabButton>
                 );
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 <GoAPopover target={target} ${propsToString(popoverProps, "react", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                 </GoAPopover>
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 <GoabPopover target={target} ${propsToString(popoverProps, "react", version)}>
                   <p>This is a popover</p>
                   It can be used for a number of different contexts.
                 </GoabPopover>
               `}
-              />}
+                />
+              )}
 
               <GoabPopover
                 {...popoverProps}
@@ -278,26 +295,27 @@ export default function PopoverPage() {
                   <GoabButton type="secondary" size="compact">
                     Click me
                   </GoabButton>
-                }
-              >
+                }>
                 <p>This is a popover</p>
                 It can be used for a number of different contexts.
               </GoabPopover>
             </Sandbox>
             <GoabSpacer vSpacing="m"></GoabSpacer>
-            <GoabCallout type="information">Popovers are used as a base layer in other components like <Link to="/components/tooltip">tooltips</Link>, and <Link to="/components/dropdown">dropdown menus</Link>.</GoabCallout>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <GoabCallout type="information">Popovers are used as a base layer in other components like <Link to="/components/tooltip">tooltips</Link> and <Link to="/components/dropdown">dropdown menus</Link>.</GoabCallout>
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="4" />
               </>
-            }
-          >
-            <PopoverPageExamples />
+            }>
+            <PopoverExamples />
           </GoabTab>
 
           <GoabTab heading="Design">

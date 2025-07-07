@@ -15,7 +15,7 @@ import { GoabBadgeType } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
-export const PopoverPageExamples = () => {
+export const TablePopover = () => {
     const noop = () => {}
     const { version } = useContext(LanguageVersionContext);
     const target = (
@@ -57,10 +57,6 @@ export const PopoverPageExamples = () => {
     ];
     return (
         <>
-        <SandboxHeader
-                exampleTitle="Filter data in a table"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7104-1626357&t=r6QOKdLIJuKEXs1I-4">
-        </SandboxHeader>
         <Sandbox fullWidth skipRender allow={["h3", "div"]}>
             {/*============= React code ==============*/}
             {version === "old" && (
