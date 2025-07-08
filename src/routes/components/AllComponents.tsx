@@ -40,7 +40,6 @@ const AllComponents = () => {
   useEffect(() => {
     const fetchData = async () => {
       const metadata = await fetchComponentMetadataFromProject();
-      console.log("Fetched metadata from GitHub:", metadata);
       const sorted = metadata.sort((a, b) => {
         const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
         const statusComparison =

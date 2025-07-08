@@ -63,7 +63,6 @@ async function executeGraphQLQuery(cacheName: string, query: string): Promise<an
   // Check cache first
   const cachedData = getCache(cacheName);
   if (cachedData) {
-    console.log(`Using cached data for ${cacheName}`);
     return cachedData;
   }
 
@@ -251,7 +250,6 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
   if (cachedCounts) {
     const hasAllCards = cards.every(card => card.name in cachedCounts);
     if (hasAllCards) {
-      console.log("Using cached issue counts");
       return cachedCounts;
     }
   }
@@ -311,7 +309,6 @@ export function clearCache(): void {
         localStorage.removeItem(key);
       }
     });
-    console.log("GitHub cache cleared");
   } catch (error) {
     console.warn("Failed to clear cache:", error);
   }

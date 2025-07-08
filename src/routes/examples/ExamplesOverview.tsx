@@ -88,7 +88,6 @@ export default function ExamplesOverviewPage() {
   useEffect(() => {
     const fetchData = async () => {
       const metadata = await fetchExampleMetadataFromProject();
-      console.log("Fetched metadata from GitHub:", metadata);
       const withSlugs = metadata.map((item) => ({
         ...item,
         slug: item.name
@@ -111,7 +110,6 @@ export default function ExamplesOverviewPage() {
     fetchData();
   }, []);
   useEffect(() => {
-    console.log("Selected filters updated:", selectedFilters);
   }, [selectedFilters]);
 
   const [sortDirection, setSortDirection] = useState<{ [key: string]: number }>({

@@ -40,7 +40,6 @@ function isRelativeUrl(url?: string): boolean {
 }
 
 export function ComponentCard(props: ComponentCardProps) {
-  console.log("Rendering card for:", props.name);
   const folder = props.imageFolder ?? "components";
   const [imageUrl, setImageUrl] = useState(`/images/${folder}/${dasherize(props.name)}.png`);
 

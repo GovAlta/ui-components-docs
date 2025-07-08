@@ -40,7 +40,6 @@ export interface ExampleCardProps {
 }
 
 export function ExampleCard(props: ExampleCardProps) {
-  console.log("Rendering example card for:", props.name);
   const folder = props.imageFolder ?? "example-thumbnails";
   const [imageUrl, setImageUrl] = useState(`/images/${folder}/${dasherize(props.name)}.png`);
 
