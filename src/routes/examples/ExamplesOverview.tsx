@@ -108,10 +108,8 @@ export default function ExamplesOverviewPage() {
       setIssueCounts(issueCounts);
     };
     fetchData();
-  }, []);
-  useEffect(() => {
   }, [selectedFilters]);
-
+  
   const [sortDirection, setSortDirection] = useState<{ [key: string]: number }>({
     status: -1,
     name: 1,
