@@ -276,25 +276,6 @@ export async function fetchAllIssueCounts(group: IssueGroup, cards: { name: stri
   return issueCounts;
 }
 
-export async function fetchIssueCount(label: string): Promise<number | null> {
-  const cacheName = `single-issue-count-${label}`;
-
-  const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
-
-  const query = `
-    query {
-      issues: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) {
-        issueCount
-      }
-    }
-  `;
-
-  const result = await executeGraphQLQuery(cacheName, query);
-  if (!result) return null;
-
-  return result.issues.issueCount;
-}
-
 // Utility function to clear cache (useful for development/debugging)
 export function clearCache(): void {
   try {
