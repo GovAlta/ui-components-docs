@@ -48,7 +48,7 @@ const AllComponents = () => {
         return a.name.localeCompare(b.name);
       });
       setCards(sorted);
-      const issueCounts = await fetchAllIssueCounts(sorted);
+      const issueCounts = await fetchAllIssueCounts("Components", sorted);
       setIssueCounts(issueCounts);
     };
     fetchData();

@@ -104,7 +104,7 @@ export default function ExamplesOverviewPage() {
       });
       setCards(sorted);
 
-      const issueCounts = await fetchAllIssueCounts(sorted);
+      const issueCounts = await fetchAllIssueCounts("Examples", sorted);
       setIssueCounts(issueCounts);
     };
     fetchData();

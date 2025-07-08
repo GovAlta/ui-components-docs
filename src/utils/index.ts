@@ -242,43 +242,38 @@ export async function fetchExampleMetadataFromProject(): Promise<ComponentProps[
 }
 
 // Issue count fetching with caching
-export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
-  const cacheName = "all-issue-counts";
+export async function fetchAllIssueCounts(group: IssueGroup, cards: { name: string }[]): Promise<Record<string, number>> {
+  const cacheName = `all-${group.toLowerCase()}-issue-counts`;
 
-  // Check if we have cached counts for all cards
-  const cachedCounts = getCache(cacheName);
-  if (cachedCounts) {
-    const hasAllCards = cards.every(card => card.name in cachedCounts);
-    if (hasAllCards) {
-      return cachedCounts;
+  const queryFields = cards.map((card) => {
+    const alias = card.name.replace(/\s+/g, "").replace(/[^a-zA-Z ]/g, "").toLowerCase();
+    const label = card.name.charAt(0).toUpperCase() + card.name.slice(1).toLowerCase();
+    const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
+    return `${alias}: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) { issueCount }`;
+  }).join('\n      ');
+
+  const query = `
+    query {
+      ${queryFields}
     }
+  `;
+
+  const result = await executeGraphQLQuery(cacheName, query);
+  if (result.errors) {
+    console.error("GraphQL errors:", result.errors);
+    return {};
   }
 
-  // Fetch fresh data
-  const results = await Promise.all(cards.map(async (card) => {
-    const label = toSentenceCase(card.name.replace(/-/g, " "));
-    const labelQuery = label.includes(" ") ? `\\\"${label}\\\"` : label;
+  const issueCounts: Record<string, number> = {};
+  cards.forEach((card) => {
+    const alias = card.name.replace(/\s+/g, "").replace(/[^a-zA-Z ]/g, "").toLowerCase();
+    issueCounts[card.name] =
+      result[alias] && result[alias]?.issueCount
+        ? result[alias].issueCount
+        : 0;
+  });
 
-    const query = `
-      query {
-        search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) {
-          issueCount
-        }
-      }
-    `;
-
-    const result = await executeGraphQLQuery(`issue-count-${card.name}`, query);
-    if (!result) return { [card.name]: 0 };
-
-    return { [card.name]: result.search.issueCount || 0 };
-  }));
-
-  const allCounts = results.reduce((acc, curr) => ({ ...acc, ...curr }), {});
-
-  // Cache the combined results
-  setCache(cacheName, allCounts);
-
-  return allCounts;
+  return issueCounts;
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
