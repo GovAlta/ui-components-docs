@@ -52,10 +52,16 @@ const HomePage = () => {
       <GoabPageBlock width={MAX_CONTENT_WIDTH}>
         <GoabGrid minChildWidth="240px" mt="2xl" gap="xl">
           <CardLite
-            title="Patterns"
+            title="Foundations"
+            description="Guidelines on design, brand, content, styles, and accessibility."
+            linkTo="/content/capitalization"
+            linkDisplay="View content"
+          />
+          <CardLite
+            title="Examples"
             description="Common patterns and examples to use as a starting point for a government service."
-            linkTo="/patterns"
-            linkDisplay="View patterns"
+            linkTo="/examples"
+            linkDisplay="View examples"
           />
           <CardLite
             title="Components"
@@ -68,12 +74,6 @@ const HomePage = () => {
             description="All of the styles within your service, shared across design and development."
             linkTo="/design-tokens"
             linkDisplay="View tokens"
-          />
-          <CardLite
-            title="Content"
-            description="Content guidelines to simplify understanding and communication for the user."
-            linkTo="/content/capitalization"
-            linkDisplay="View content"
           />
         </GoabGrid>
 
@@ -114,7 +114,7 @@ const HomePage = () => {
                 rel="noopener noreferrer"
                 className="no-external-icon"
               >
-                <img src="/images/governance-process.png" alt="Design system workflow diagram"
+                <img src="/images/component-thumbnails/governance-process.png" alt="Design system workflow diagram"
                      style={{ maxWidth: "100%" }} />
               </a>
               <GoabLink mt="l">

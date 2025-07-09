@@ -1,6 +1,6 @@
 import { GoabSideMenu, GoabSpacer } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
-import "./content.css";
+import "../foundations/content.css";
 import { SupportInfo } from "@components/support-info/SupportInfo";
 
 export default function ContentLayout() {

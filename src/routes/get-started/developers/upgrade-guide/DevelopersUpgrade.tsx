@@ -2,7 +2,7 @@ import { GoabCallout, GoabContainer } from "@abgov/react-components";
 import { GoabText } from "@abgov/react-components";
 import "../Developers.css";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import css from "@routes/patterns/patterns.module.css";
+import css from "@routes/examples/patterns.module.css";
 import { ReactGuide } from "@routes/get-started/developers/upgrade-guide/ReactGuide.tsx";
 import { AngularGuide } from "@routes/get-started/developers/upgrade-guide/AngularGuide.tsx";
 import { InlineCode } from "@components/inline-code/InlineCode.tsx";
