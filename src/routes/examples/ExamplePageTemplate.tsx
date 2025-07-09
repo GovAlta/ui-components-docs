@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { lazy, Suspense, useEffect, useState, useMemo } from "react";
 import { GoabBlock, GoabSkeleton, GoabLink } from "@abgov/react-components";
 import { fetchExampleMetadataFromProject } from "../../utils";
@@ -38,7 +39,7 @@ export default function ExamplePageTemplate() {
 
         <GoabBlock mb="l">
         <GoabLink leadingIcon="chevron-back" mt="l" mb={"none"}>
-          <a href="/examples">Back</a>
+          <Link to="/examples">Back</Link>
         </GoabLink>
       </GoabBlock>
       {!example ? (
