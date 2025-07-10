@@ -45,7 +45,7 @@ export const ConfirmBeforeNavigatingAway = () => {
           allowCopy={true}
           code={`
                   <goa-button (_click)="onOpen();">Open</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" heading="Are you sure you want to change route?">
+                  <goa-modal [open]="open" heading="Are you sure you want to change route?">
                     <div slot="actions">
                       <goa-button-group alignment="end">
                         <goa-button type="secondary" (_click)="onClose()">Cancel</goa-button>
@@ -62,7 +62,7 @@ export const ConfirmBeforeNavigatingAway = () => {
           allowCopy={true}
           code={`
                   <goab-button (onClick)="onOpen();">Open</goab-button>
-                  <goab-modal [open]="open" role="alertdialog" heading="Are you sure you want to change route?" [actions]="actions">
+                  <goab-modal [open]="open" heading="Are you sure you want to change route?" [actions]="actions">
                     <ng-template #actions>
                       <goab-button-group alignment="end">
                         <goab-button type="secondary" (onClick)="onClose()">Cancel</goab-button>
@@ -98,7 +98,6 @@ export const ConfirmBeforeNavigatingAway = () => {
                   <GoAModal
                     heading="Are you sure you want to change route?"
                     open={open}
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoAButtonGroup alignment="end">
@@ -127,7 +126,6 @@ export const ConfirmBeforeNavigatingAway = () => {
                   <GoabModal
                     heading="Are you sure you want to change route?"
                     open={open}
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoabButtonGroup alignment="end">

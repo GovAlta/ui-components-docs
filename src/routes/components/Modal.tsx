@@ -44,7 +44,6 @@ export default function ModalPage() {
   const {language} = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     heading: "Are you sure you want to exit your application?",
-    role: "alertdialog",
   });
 
   useEffect(() => {
@@ -87,14 +86,6 @@ export default function ModalPage() {
       type: "boolean",
       name: "closable",
       value: false,
-    },
-    {
-      label: "Role",
-      type: "list",
-      name: "role",
-      options: ["", "dialog", "alertdialog"],
-      value: "alertdialog",
-      helpText: "Select an ARIA role to determine what is announced by the screen reader.",
     },
     {
       label: "Open",
@@ -159,13 +150,6 @@ export default function ModalPage() {
       lang: "angular",
     },
     {
-      name: "role",
-      type: "dialog | alertdialog",
-      description:
-        "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
-      defaultValue: "dialog",
-    },
-    {
       name: "_close",
       type: "CustomEvent",
       description: "",
@@ -225,13 +209,6 @@ export default function ModalPage() {
       type: "boolean",
       description: "Show close icon and allow clicking the background to close the modal",
       defaultValue: "false",
-    },
-    {
-      name: "role",
-      type: "dialog | alertdialog",
-      description:
-        "'dialog' will announce header and the 1st input element, and requires at least one interactive element. 'alert-dialog' will read the entire contents of the modal. If the modal does not include any interactive elements, use the 'alertdialog' role.",
-      defaultValue: "dialog",
     },
     TestIdProperty,
     {

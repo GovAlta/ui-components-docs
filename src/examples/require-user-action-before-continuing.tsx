@@ -12,7 +12,6 @@ export const RequireUserActionBeforeContinuing = () => {
       <GoabButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoabButton>
       <GoabModal
         heading="Are you sure you want to continue?"
-        role="dialog"
         open={basicModalOpen}
         onClose={() => setBasicModalOpen(false)}
         actions={
@@ -101,7 +100,6 @@ export const RequireUserActionBeforeContinuing = () => {
                   <GoAButton onClick={() => setOpen(true)}>Open Basic Modal</GoAButton>
                   <GoAModal
                     heading="Are you sure you want to continue?"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
@@ -130,7 +128,6 @@ export const RequireUserActionBeforeContinuing = () => {
                   <GoabButton onClick={() => setOpen(true)}>Open Basic Modal</GoabButton>
                   <GoabModal
                     heading="Are you sure you want to continue?"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={

@@ -8,19 +8,13 @@ export const WarnAUserOfADeadline = () => {
   const {version} = useContext(LanguageVersionContext);
   const [warnCalloutModalOpen, setWarnCalloutModalOpen] = useState<boolean>();
   return (
-    <Sandbox skipRender
-             note={{
-               type: "important",
-               heading: "AlertDialog Accessibility",
-               content: "Do not make the modal closeable or add any focusable elements before the action button when using an AlertDialog. This ensures that the screen reader will announce the full content."
-             }}>
+    <Sandbox skipRender>
       <GoabButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
         Save for later
       </GoabButton>
       <GoabModal
         heading="Complete submission prior to 1PM"
         calloutVariant="important"
-        role="alertdialog"
         open={warnCalloutModalOpen}
         onClose={() => setWarnCalloutModalOpen(false)}
         actions={
@@ -58,7 +52,7 @@ export const WarnAUserOfADeadline = () => {
           allowCopy={true}
           code={`
                   <goa-button type="secondary" (_click)="toggleModal()">Save for later</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" calloutvariant="important"
+                  <goa-modal [open]="open" calloutvariant="important"
                     (_close)="toggleModal()" heading="Complete submission prior to 1PM">
                       <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
                     <div slot="actions">
@@ -79,7 +73,7 @@ export const WarnAUserOfADeadline = () => {
           allowCopy={true}
           code={`
           <goab-button type="secondary" (onClick)="toggleModal()">Save for later</goab-button>
-          <goab-modal [open]="open" role="alertdialog" calloutVariant="important"
+          <goab-modal [open]="open" calloutVariant="important"
             (onClose)="toggleModal()" heading="Complete submission prior to 1PM" [actions]="actions">
             <p>You’ve selected to adjourn a matter that is required to appear today. This Calgary court location does not accept adjournment requests past 1PM MST. Please submit your adjournment request as soon as possible.</p>
             <ng-template #actions>
@@ -115,7 +109,6 @@ export const WarnAUserOfADeadline = () => {
                     heading="Complete submission prior to 1PM"
                     open={open}
                     calloutVariant="important"
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoAButtonGroup alignment="end">
@@ -140,7 +133,6 @@ export const WarnAUserOfADeadline = () => {
                     heading="Complete submission prior to 1PM"
                     open={open}
                     calloutVariant="important"
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoabButtonGroup alignment="end">
