@@ -12,7 +12,6 @@ export const ModalBasicExample = () => {
       <GoabButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoabButton>
       <GoabModal
         heading="Heading"
-        role="dialog"
         open={basicModalOpen}
         onClose={() => setBasicModalOpen(false)}
         actions={
@@ -101,7 +100,6 @@ export const ModalBasicExample = () => {
                   <GoAButton onClick={() => setOpen(true)}>Open Basic Modal</GoAButton>
                   <GoAModal
                     heading="Heading"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
@@ -130,7 +128,6 @@ export const ModalBasicExample = () => {
                   <GoabButton onClick={() => setOpen(true)}>Open Basic Modal</GoabButton>
                   <GoabModal
                     heading="Heading"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
