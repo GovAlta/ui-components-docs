@@ -452,6 +452,11 @@ export default function TextFieldPage() {
       description: "Name of input value that is received in the onChange event.",
     },
     {
+      name: "autoComplete",
+      type: "string",
+      description: "Specifies the autocomplete attribute for the input field.",
+    },
+    {
       name: "value",
       type: "string||null",
       defaultValue: "''",
