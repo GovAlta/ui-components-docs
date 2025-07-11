@@ -57,6 +57,7 @@ import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 import { DrawerPage } from "@routes/components/Drawer.tsx";
 import LinkPage from "@routes/components/Link.tsx";
+import TemporaryNotificationPage from "@routes/components/TemporaryNotification.tsx";
 
 const ComponentRoute: React.FC<{
   versionedPaths: Record<string, React.ReactElement>;
@@ -121,6 +122,7 @@ export const ComponentsRouter = () => {
     "spacer": <SpacerPage />,
     "table": <TablePage />,
     "tabs": <TabsPage />,
+    "temporary-notification": <TemporaryNotificationPage />,
     "text": <TextPage/>,
     "text-area": <TextAreaPage />,
     "tooltip": <TooltipPage />,

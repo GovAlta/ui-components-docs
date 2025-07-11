@@ -6,7 +6,7 @@ import {
   GoabModal,
   GoabModalProps,
   GoabTab,
-  GoabTabs,
+  GoabTabs
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
@@ -291,7 +291,6 @@ export default function ModalPage() {
         figmaLink={FIGMA_LINK}
         githubLink="Modal"
       />
-
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">

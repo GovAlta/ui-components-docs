@@ -444,9 +444,10 @@ const AllComponents = () => {
       {
         name: "temporary notification",
         groups: ["Feedback and alerts"],
-        tags: ["Snackbar", "Toast", "Temporary notification"],
-        description: "Planned for development",
-        status: "Not Published",
+        tags: ["Snackbar", "Toast", "Temporary notification", "feedback", "alerts", "notification"],
+        description: "Temporary notifications provide brief feedback about an action or event.",
+        status: "Published",
+        isNew: true,
       },
       {
         name: "menu button",

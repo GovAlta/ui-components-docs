@@ -62,6 +62,7 @@ export function Components() {
               <Link to={getUrl("notification-banner")}>Notification banner</Link>
               <Link to={getUrl("progress-indicator")}>Progress indicator</Link>
               <Link to={getUrl("skeleton-loader")}>Skeleton loader</Link>
+              <Link to={getUrl("temporary-notification")}>{newComponentLabel("Temporary notification")}</Link>
               <Link to={getUrl("tooltip")}>Tooltip</Link>
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Inputs and actions">
