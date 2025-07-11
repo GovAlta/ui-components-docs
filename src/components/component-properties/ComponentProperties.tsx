@@ -70,7 +70,7 @@ interface ComponentPropertyProps {
   props: ComponentProperty;
 }
 
-function ComponentProperty({ props }: ComponentPropertyProps) {
+export function ComponentProperty({ props }: ComponentPropertyProps) {
   return (
     <div className={css["component-props"]}>
       <div className={css.details}>
