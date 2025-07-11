@@ -39,12 +39,18 @@ export default function TemporaryNotificationPage() {
   
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
+      label: "Vertical position",
+      type: "dropdown",
+      name: "verticalPosition",
+      options: ["top", "bottom"],
+      value: "bottom",
+    },
+    {
       label: "Horizontal position",
       type: "dropdown",
       name: "horizontalPosition",
       options: ["left", "center", "right"],
       value: "center",
-      helpText: "Controller position",
     },
     {
       label: "Message",
@@ -89,15 +95,20 @@ export default function TemporaryNotificationPage() {
       duration: props.duration !== undefined ? props.duration : 4000,
     };
     
+    let notificationId: string;
+    
     if (props.actionText) {
       options.actionText = props.actionText;
       options.action = () => {
         console.log("Action clicked!");
+        if (notificationId) {
+          TemporaryNotification.dismiss(notificationId);
+        }
         TemporaryNotification.show("Action performed!", { type: "success", duration: 2000 });
       };
     }
     
-    TemporaryNotification.show(props.message || "Default message", options);
+    notificationId = TemporaryNotification.show(props.message || "Default message", options);
   };
 
   function onSandboxChange(bindings: ComponentBinding[]) {
@@ -190,6 +201,7 @@ export default function TemporaryNotificationPage() {
                   allowCopy={true}
                   code={`<!-- In your app.component.html -->
 <goab-temporary-notification-ctrl 
+  [verticalPosition]="'${componentBindings.find(b => b.name === 'verticalPosition')?.value}'" 
   [horizontalPosition]="'${componentBindings.find(b => b.name === 'horizontalPosition')?.value}'">
 </goab-temporary-notification-ctrl>`}
                 />
@@ -224,6 +236,7 @@ function App() {
   return (
     <>
       <GoabTemporaryNotificationCtrl 
+        verticalPosition="${componentBindings.find(b => b.name === 'verticalPosition')?.value}" 
         horizontalPosition="${componentBindings.find(b => b.name === 'horizontalPosition')?.value}" 
       />
       {/* Your app content */}
@@ -248,6 +261,7 @@ const showNotification = () => {
 
                 <GoabButton onClick={handleShowNotification}>Show Notification</GoabButton>
                 <GoabTemporaryNotificationCtrl
+                  verticalPosition={componentBindings.find(b => b.name === 'verticalPosition')?.value as any || "bottom"}
                   horizontalPosition={componentBindings.find(b => b.name === 'horizontalPosition')?.value as any || "center"}
                 />
               </Sandbox>

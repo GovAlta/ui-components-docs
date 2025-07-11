@@ -31,7 +31,7 @@ export function Components() {
     };
     return (
       <GoabBlock alignment="center">
-        {componentName} <GoabBadge type={"important"} content={getBadgeLabel()}></GoabBadge>
+        {componentName} <GoabBadge type={"success"} content={getBadgeLabel()}></GoabBadge>
       </GoabBlock>
     );
   };
