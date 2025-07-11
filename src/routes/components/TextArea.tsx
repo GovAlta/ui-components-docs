@@ -5,13 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import {
-  GoabBadge,
-  GoabFormItem,
-  GoabTab,
-  GoabTabs,
-  GoabTextarea,
-} from "@abgov/react-components";
+import { GoabBadge, GoabFormItem, GoabTab, GoabTabs, GoabTextarea } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -20,7 +14,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { TextAreaExamples } from "@examples/textarea/TextAreaExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -28,7 +22,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=133-186";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=133-186";
 const componentName = "Text area";
 const description = "A multi-line field where users can input and edit text.";
 const category = Category.INPUTS_AND_ACTIONS;
@@ -45,7 +40,7 @@ type CastingType = {
 };
 
 export default function TextAreaPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<CastingType>({
     name: "item",
     value: "",
@@ -254,6 +249,11 @@ export default function TextAreaPage() {
       name: "value",
       type: "string",
       description: "Bound to value",
+    },
+    {
+      name: "autoComplete",
+      type: "string",
+      description: "Specifies the autocomplete attribute for the textarea input.",
     },
     {
       name: "placeholder",
@@ -508,8 +508,7 @@ export default function TextAreaPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }
-          >
+            }>
             <TextAreaExamples />
           </GoabTab>
 

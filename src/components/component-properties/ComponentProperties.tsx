@@ -1,4 +1,5 @@
 import { GoabBadge, GoabContainer, GoabText } from "@abgov/react-components";
+import { GoabBadgeType } from "@abgov/ui-components-common";
 import { useContext, useEffect, useState } from "react";
 
 import css from "./ComponentProperties.module.css";
@@ -10,6 +11,7 @@ export type ComponentProperty = {
   required?: boolean;
   description?: string;
   defaultValue?: string;
+  badge?: { content: string; type: GoabBadgeType };
 };
 
 interface Props {
@@ -19,7 +21,7 @@ interface Props {
 }
 
 export const ComponentProperties = (props: Props) => {
-  const {language, version} = useContext(LanguageVersionContext);
+  const { language, version } = useContext(LanguageVersionContext);
 
   const [filteredProperties, setFilteredProperties] = useState<ComponentProperty[]>([]);
 
@@ -45,20 +47,17 @@ export const ComponentProperties = (props: Props) => {
   return (
     <>
       <h2
-        id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"} 
-        className="hidden" 
-        aria-hidden="true"
-      >
+        id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"}
+        className="hidden"
+        aria-hidden="true">
         {props.heading || "Properties"}
-      </h2> <GoabText size="heading-m" mb="l" mt="2xl">
-      {props.heading || "Properties"}
-    </GoabText>
-      <GoabContainer
-        type="interactive"
-      >
+      </h2>{" "}
+      <GoabText size="heading-m" mb="l" mt="2xl">
+        {props.heading || "Properties"}
+      </GoabText>
+      <GoabContainer type="interactive">
         <div>
           {filteredProperties.map((props, index) => (
-
             <ComponentProperty key={index} props={props} />
           ))}
         </div>
@@ -78,6 +77,7 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
         <code className={`${css.code} ${css.name}`}>{props.name}</code>
 
         {props.required && <GoabBadge type="important" content="Required" />}
+        {props.badge && <GoabBadge type={props.badge.type} content={props.badge.content} />}
 
         {props.type && (
           <code className={`${css.code} ${css.type}`}>
@@ -90,11 +90,8 @@ function ComponentProperty({ props }: ComponentPropertyProps) {
         {props.description}
         {props.defaultValue && (
           <span>
-                        <br/>
-            {" "}
-            Defaults to <code className={css.code}>{props.defaultValue}</code>.
+            <br /> Defaults to <code className={css.code}>{props.defaultValue}</code>.
           </span>
-
         )}
       </div>
     </div>
