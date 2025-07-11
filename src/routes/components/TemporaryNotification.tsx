@@ -39,14 +39,6 @@ export default function TemporaryNotificationPage() {
   
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
-      label: "Vertical position",
-      type: "dropdown",
-      name: "verticalPosition",
-      options: ["top", "bottom"],
-      value: "bottom",
-      helpText: "Controller position",
-    },
-    {
       label: "Horizontal position",
       type: "dropdown",
       name: "horizontalPosition",
@@ -82,13 +74,6 @@ export default function TemporaryNotificationPage() {
       value: "",
       helpText: "Optional action button text",
     },
-    {
-      label: "Animation direction",
-      type: "dropdown",
-      name: "animationDirection",
-      options: ["up", "down"],
-      value: "down",
-    },
   ]);
 
   const handleShowNotification = () => {
@@ -101,8 +86,7 @@ export default function TemporaryNotificationPage() {
     
     const options: any = {
       type: props.type || "basic",
-      duration: props.duration || 4000,
-      animationDirection: props.animationDirection || "down",
+      duration: props.duration !== undefined ? props.duration : 4000,
     };
     
     if (props.actionText) {
@@ -206,7 +190,6 @@ export default function TemporaryNotificationPage() {
                   allowCopy={true}
                   code={`<!-- In your app.component.html -->
 <goab-temporary-notification-ctrl 
-  [verticalPosition]="'${componentBindings.find(b => b.name === 'verticalPosition')?.value}'" 
   [horizontalPosition]="'${componentBindings.find(b => b.name === 'horizontalPosition')?.value}'">
 </goab-temporary-notification-ctrl>`}
                 />
@@ -221,8 +204,7 @@ import { TemporaryNotification } from "@abgov/angular-components";
 showNotification() {
   TemporaryNotification.show("${componentBindings.find(b => b.name === 'message')?.value}", {
     type: "${componentBindings.find(b => b.name === 'type')?.value}",
-    duration: ${componentBindings.find(b => b.name === 'duration')?.value},
-    animationDirection: "${componentBindings.find(b => b.name === 'animationDirection')?.value}"${componentBindings.find(b => b.name === 'actionText')?.value ? `,
+    duration: ${componentBindings.find(b => b.name === 'duration')?.value}${componentBindings.find(b => b.name === 'actionText')?.value ? `,
     actionText: "${componentBindings.find(b => b.name === 'actionText')?.value}",
     action: () => {
       console.log("Action clicked!");
@@ -242,7 +224,6 @@ function App() {
   return (
     <>
       <GoabTemporaryNotificationCtrl 
-        verticalPosition="${componentBindings.find(b => b.name === 'verticalPosition')?.value}" 
         horizontalPosition="${componentBindings.find(b => b.name === 'horizontalPosition')?.value}" 
       />
       {/* Your app content */}
@@ -256,8 +237,7 @@ import { TemporaryNotification } from "@abgov/react-components";
 const showNotification = () => {
   TemporaryNotification.show("${componentBindings.find(b => b.name === 'message')?.value}", {
     type: "${componentBindings.find(b => b.name === 'type')?.value}",
-    duration: ${componentBindings.find(b => b.name === 'duration')?.value},
-    animationDirection: "${componentBindings.find(b => b.name === 'animationDirection')?.value}"${componentBindings.find(b => b.name === 'actionText')?.value ? `,
+    duration: ${componentBindings.find(b => b.name === 'duration')?.value}${componentBindings.find(b => b.name === 'actionText')?.value ? `,
     actionText: "${componentBindings.find(b => b.name === 'actionText')?.value}",
     action: () => {
       console.log("Action clicked!");
@@ -268,7 +248,6 @@ const showNotification = () => {
 
                 <GoabButton onClick={handleShowNotification}>Show Notification</GoabButton>
                 <GoabTemporaryNotificationCtrl
-                  verticalPosition={componentBindings.find(b => b.name === 'verticalPosition')?.value as any || "bottom"}
                   horizontalPosition={componentBindings.find(b => b.name === 'horizontalPosition')?.value as any || "center"}
                 />
               </Sandbox>
