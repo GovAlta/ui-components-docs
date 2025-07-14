@@ -1,12 +1,17 @@
-import { GoabDivider } from "@abgov/react-components";
+import { GoabDivider, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function ImagesPage() {
   return (
       <ComponentContent>
-        <h1>Photography</h1>
-        <h3>The Government of Alberta maintains a library of photos specifically taken for government use, ensuring they are relevant to our citizens. This collection meets our established criteria for quality and accessibility. </h3>
-
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Photography
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          The Government of Alberta maintains a library of photos specifically taken for government use, ensuring they
+          are
+          relevant to our citizens. This collection meets our established criteria for quality and accessibility.
+        </GoabText>
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
 

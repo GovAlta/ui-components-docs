@@ -1,4 +1,4 @@
-import { GoabDivider, GoabContainer, GoabSpacer } from "@abgov/react-components";
+import { GoabDivider, GoabContainer, GoabSpacer, GoabText } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
@@ -6,9 +6,16 @@ export default function FoundationsTypographyPage() {
 
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Typography</h1>
-        <h3>Our typography system is designed to create a consistent and accessible experience across all Government of Alberta digital products. When paired with an effective content strategy, it enhances accessibility and makes content easy to navigate, enabling citizens to find information quickly.</h3>
-        <GoabDivider mt="2xl" mb="xl"></GoabDivider>
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Typography
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          Our typography system is designed to create a consistent and accessible experience across all Government of
+          Alberta
+          digital products. When paired with an effective content strategy, it enhances accessibility and makes content
+          easy to
+          navigate, enabling citizens to find information quickly.
+        </GoabText> <GoabDivider mt="2xl" mb="xl"></GoabDivider>
 
         <div className="max-width-72ch">
           <h2 id="typefaces">Our fonts</h2>

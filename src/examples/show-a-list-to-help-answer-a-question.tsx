@@ -43,14 +43,15 @@ export const ShowAListToHelpAnswerAQuestion = () => {
         <GoabFormItem
         label="Do you have additional education expense?"
         helpText="You can request this money now or at any time during your program."
+        mb={"m"}
       >
-        <GoabRadioGroup name="additional" onChange={noop}>
+          <GoabRadioGroup name="additional" onChange={noop}>
           <GoabRadioItem label="Yes" value="yes" name="additional" />
           <GoabRadioItem label="No" value="no" name="additional" />
         </GoabRadioGroup>
       </GoabFormItem>
 
-      <GoabDetails heading="What is an additional education expense?">
+        <GoabDetails heading="What is considered an additional education expense?">
         <GoabBlock gap="m" mt="m">
           <div>
             <strong>Examples of education expenses</strong>

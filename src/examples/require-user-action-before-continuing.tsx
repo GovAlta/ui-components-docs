@@ -11,21 +11,21 @@ export const RequireUserActionBeforeContinuing = () => {
     <Sandbox skipRender>
       <GoabButton onClick={() => setBasicModalOpen(true)}>Open Basic Modal</GoabButton>
       <GoabModal
-        heading="Heading"
+        heading="Are you sure you want to continue?"
         role="dialog"
         open={basicModalOpen}
         onClose={() => setBasicModalOpen(false)}
         actions={
           <GoabButtonGroup alignment="end">
             <GoabButton type="secondary" onClick={() => setBasicModalOpen(false)}>
-              Secondary
+              Back
             </GoabButton>
             <GoabButton type="primary" onClick={() => setBasicModalOpen(false)}>
-              Primary
+              Continue
             </GoabButton>
           </GoabButtonGroup>
         }>
-        <p>Content</p>
+        <p>You cannot return to this page.</p>
       </GoabModal>
       {/*Angular*/}
       <CodeSnippet
@@ -49,12 +49,12 @@ export const RequireUserActionBeforeContinuing = () => {
           allowCopy={true}
           code={`
                   <goa-button (_click)="toggleModal();">Open Basic Modal</goa-button>
-                  <goa-modal [open]="open" (_close)="toggleModal()" heading="Heading">
-                      <p>Content</p>
+                  <goa-modal [open]="open" (_close)="toggleModal()" heading="Are you sure you want to continue?">
+                      <p>You cannot return to this page.</p>
                       <div slot="actions">
                       <goa-button-group alignment="end">
-                        <goa-button type="secondary" (_click)="toggleModal()">Secondary</goa-button>
-                        <goa-button type="primary" (_click)="toggleModal()">Primary</goa-button>
+                        <goa-button type="secondary" (_click)="toggleModal()">Back</goa-button>
+                        <goa-button type="primary" (_click)="toggleModal()">Continue</goa-button>
                       </goa-button-group>
                     </div>
                   </goa-modal>
@@ -69,12 +69,12 @@ export const RequireUserActionBeforeContinuing = () => {
           allowCopy={true}
           code={`
                   <goab-button (onClick)="toggleModal();">Open Basic Modal</goab-button>
-                  <goab-modal [open]="open" (close)="toggleModal()" heading="Heading" [actions]="actions">
-                    <p>Content</p>
+                  <goab-modal [open]="open" (close)="toggleModal()" heading="Are you sure you want to continue?" [actions]="actions">
+                    <p>You cannot return to this page.</p>
                     <ng-template #actions>
                       <goab-button-group alignment="end">
-                        <goab-button type="secondary" (onClick)="toggleModal()">Secondary</goab-button>
-                        <goab-button type="primary" (onClick)="toggleModal()">Primary</goab-button>
+                        <goab-button type="secondary" (onClick)="toggleModal()">Back</goab-button>
+                        <goab-button type="primary" (onClick)="toggleModal()">Continue</goab-button>
                       </goab-button-group>
                     </ng-template>
                   </goab-modal>
@@ -100,22 +100,22 @@ export const RequireUserActionBeforeContinuing = () => {
           code={`
                   <GoAButton onClick={() => setOpen(true)}>Open Basic Modal</GoAButton>
                   <GoAModal
-                    heading="Heading"
+                    heading="Are you sure you want to continue?"
                     role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
                       <GoAButtonGroup alignment="end">
                         <GoAButton type="secondary" onClick={() => setOpen(false)}>
-                          Secondary
+                          Back
                         </GoAButton>
                         <GoAButton type="primary" onClick={() => setOpen(false)}>
-                          Primary
+                          Continue
                         </GoAButton>
                       </GoAButtonGroup>
                     }
                   >
-                    <p>Content</p>
+                    <p>You cannot return to this page.</p>
                   </GoAModal>
                 `}
         />
@@ -129,22 +129,22 @@ export const RequireUserActionBeforeContinuing = () => {
           code={`
                   <GoabButton onClick={() => setOpen(true)}>Open Basic Modal</GoabButton>
                   <GoabModal
-                    heading="Heading"
+                    heading="Are you sure you want to continue?"
                     role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
                       <GoabButtonGroup alignment="end">
                         <GoabButton type="secondary" onClick={() => setOpen(false)}>
-                          Secondary
+                          Back
                         </GoabButton>
                         <GoabButton type="primary" onClick={() => setOpen(false)}>
-                          Primary
+                          Continue
                         </GoabButton>
                       </GoabButtonGroup>
                     }
                   >
-                    <p>Content</p>
+                    <p>You cannot return to this page.</p>
                   </GoabModal>
                 `}
         />

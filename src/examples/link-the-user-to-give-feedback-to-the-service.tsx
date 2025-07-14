@@ -9,7 +9,7 @@ export default function GiveFeedbackLinkExample() {
   return (
     <>
 
-      <Sandbox fullWidth skipRender>
+      <Sandbox fullWidth>
         <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />
         {/* ...React + Angular code snippets here (same as original)... */}
       </Sandbox>

@@ -1,4 +1,4 @@
-import GiveFeedbackLinkExample from "../give-feedback-link.tsx";
+import GiveFeedbackLinkExample from "../link-the-user-to-give-feedback-to-the-service.tsx";
 import ShowVersionNumberExample from "../show-version-number.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 

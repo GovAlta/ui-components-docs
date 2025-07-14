@@ -1,4 +1,13 @@
-import { GoabDivider, GoabContainer, GoabTable, GoabSpacer, GoabIcon, GoabBlock, GoabGrid } from "@abgov/react-components";
+import {
+  GoabDivider,
+  GoabContainer,
+  GoabTable,
+  GoabSpacer,
+  GoabIcon,
+  GoabBlock,
+  GoabGrid,
+  GoabText
+} from "@abgov/react-components";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { DeviceWidthContext } from "../../contexts/DeviceWidthContext";
@@ -66,9 +75,16 @@ export default function IconographyPage() {
 
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Iconography</h1>
-        <h3>Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional aspects of our products. While they can be used with descriptors, they can also be self-expressive and convey meaning where words cannot. </h3>
-
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Iconography
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional
+          aspects
+          of our products. While they can be used with descriptors, they can also be self-expressive and convey meaning
+          where
+          words cannot.
+        </GoabText>
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
 
         <div className="max-width-72ch">

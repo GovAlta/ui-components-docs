@@ -12,7 +12,7 @@ export const SetASpecificTabToBeActive = () => {
     <>
       <GoabContainer mt="none" mb="none">
         <div style={{ padding: "40px" }}>
-          <GoabTabs initialTab={3}>
+          <GoabTabs initialTab={2}>
               <GoabTab heading="All">
                 <GoabTable width="100%">
                   <thead>
@@ -113,7 +113,7 @@ export const SetASpecificTabToBeActive = () => {
           tags="angular"
           allowCopy={true}
           code={`
-            <goa-tabs initialTab={3}>
+            <goa-tabs initialTab={2}>
               <goa-tab>
                 <div slot="heading">All</div>
                 <goa-table width="100%">
@@ -208,7 +208,7 @@ export const SetASpecificTabToBeActive = () => {
           tags="angular"
           allowCopy={true}
           code={`
-            <goab-tabs [initialTab]="3">
+            <goab-tabs [initialTab]="2">
               <goab-tab heading="All">
                 <goab-table width="100%">
                   <thead>
@@ -312,7 +312,7 @@ export const SetASpecificTabToBeActive = () => {
           tags="react"
           allowCopy={true}
           code={`
-            <GoATabs initialTab={3}>
+            <GoATabs initialTab={2}>
               <GoATab heading="All">
                 <GoATable width="100%">
                   <thead>
@@ -411,7 +411,7 @@ export const SetASpecificTabToBeActive = () => {
           tags="react"
           allowCopy={true}
           code={`
-            <GoabTabs initialTab={3}>
+            <GoabTabs initialTab={2}>
               <GoabTab heading="All">
                 <GoabTable width="100%">
                   <thead>

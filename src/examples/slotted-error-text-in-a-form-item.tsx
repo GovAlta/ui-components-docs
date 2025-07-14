@@ -16,7 +16,7 @@ export const SlottedErrorTextInAFormItem = () => {
   return (
     <Sandbox skipRender>
       <GoabFormItem label="First name" error={errorReactNode}>
-        <GoabInput onChange={noop} value="" name="item" />
+        <GoabInput onChange={noop} value="" name="item" error={true} />
       </GoabFormItem>
 
       {/* *********** React code ************/}

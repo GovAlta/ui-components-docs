@@ -4,7 +4,7 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
-export default function SelectOneAnyAllOrNoOptionsFromAList() {
+export default function SelectOneOrMoreFromAListOfOptions() {
   const {version} = useContext(LanguageVersionContext);
   return (
     <>
