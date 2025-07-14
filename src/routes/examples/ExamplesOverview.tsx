@@ -414,7 +414,7 @@ export default function ExamplesOverviewPage() {
       )}
 
       <GoabTabs initialTab={1}>
-        <GoabTab heading="Card view">
+        <GoabTab heading="Cards">
           <div
             style={{
               display: "grid",
