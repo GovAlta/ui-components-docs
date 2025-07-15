@@ -138,12 +138,12 @@ export default function TextFieldPage() {
       value: "",
       name: "ariaLabel",
     },
-    {
+    ...(version === "new" ? [{
       label: "Trailing icon ARIA label",
-      type: "string",
+      type: "string" as const,
       value: "",
       name: "trailingIconAriaLabel",
-    },
+    }] : []),
     {
       label: "Value",
       type: "string",
@@ -218,18 +218,7 @@ export default function TextFieldPage() {
       type: "GoAIconType",
       description: "Icon shown to the right of the text.",
     },
-    {
-      name: "trailingIconAriaLabel",
-      lang: "react",
-      type: "string",
-      description: "Aria label for the trailing icon.",
-    },
-    {
-      name: "trailingiconarialabel",
-      lang: "angular",
-      type: "string",
-      description: "Aria label for the trailing icon.",
-    },
+
     {
       name: "disabled",
       type: "boolean",
