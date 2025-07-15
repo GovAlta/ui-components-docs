@@ -10,6 +10,7 @@ import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { getVersionedUrlPath, ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
+import { GoabBadgeType } from "@abgov/ui-components-common";
 
 
 export function Components() {
@@ -29,12 +30,28 @@ export function Components() {
         ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
         : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase();
     };
+
+    const getBadgeType = () => {
+      if (version === "new" && componentName === "Drawer") {
+        return "success";
+      }
+      return "important";
+    };
+
     return (
       <GoabBlock alignment="center">
-        {componentName} <GoabBadge type={"important"} content={getBadgeLabel()}></GoabBadge>
+        {componentName} <GoabBadge type={getBadgeType()} content={getBadgeLabel()}></GoabBadge>
       </GoabBlock>
     );
-  };
+  };  
+
+  const customComponentLabel = (componentName: string, badgeType: GoabBadgeType, customLabel: string) => {
+      return (
+        <GoabBlock alignment="center">
+          {componentName} <GoabBadge type={badgeType} content={customLabel}></GoabBadge>
+        </GoabBlock>
+      );
+    };
 
   return (
     <>
@@ -79,7 +96,7 @@ export function Components() {
             <GoabSideMenuGroup heading="Structure and navigation">
               <Link to={getUrl("drawer")}>{newComponentLabel("Drawer")}</Link>
               <Link to={getUrl("footer")}>Footer</Link>
-              <Link to={getUrl("form-stepper")}>Form stepper</Link>
+              <Link to={getUrl("form-stepper")}>{customComponentLabel("Form stepper", "information", "Legacy")}</Link>
               <Link to={getUrl("header")}>Header</Link>
               <Link to={getUrl("microsite-header")}>Microsite header</Link>
               <Link to={getUrl("pagination")}>Pagination</Link>

@@ -10,11 +10,26 @@ import {
   GoabText,
   GoabFormItem,
   GoabInput,
-  GoabBadge
+  GoabBadge,
 } from "@abgov/react-components";
 import { ComponentCard, Props as ComponentProps } from "@components/component-card/ComponentCard";
+import { GoabBadgeType } from "@abgov/ui-components-common";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
+
+
+// Helper function to determine badge type based on status
+const getBadgeType = (status: ComponentStatus): GoabBadgeType => {
+  const successStatuses = ["Published", "Available"];
+  if (successStatuses.includes(status)) return "success";
+  if (status === "Legacy") return "information";
+  if (status === "In Progress") return "important";
+  return "light"; // Default or "Not Published"
+};
 
 const AllComponents = () => {
+  const { version, language } = useContext(LanguageVersionContext);
   const [filter, setFilter] = useState<string>("");
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
   const [cards, setCards] = useState<ComponentProps[]>(() => {
@@ -24,21 +39,21 @@ const AllComponents = () => {
         groups: ["Content layout"],
         tags: ["blind", "collapse", "content layout", "expandable panel", "expand"],
         description: "Let users show and hide sections of related content on a page.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "callout",
         groups: ["Content layout"],
         tags: ["alert", "feedback and alerts", "show more information"],
         description: "Communicate important information through a strong visual emphasis.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "container",
         groups: ["Content layout"],
         tags: ["card", "content", "content layout", "group", "structure"],
         description: "Group information, create hierarchy, and show related information.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "details",
@@ -63,28 +78,28 @@ const AllComponents = () => {
           "show more information",
         ],
         description: "Let users reveal more detailed information when they need it.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "hero banner",
         groups: ["Content layout"],
         tags: ["promotion banner", "hero panel", "structure and navigation"],
         description: "A visual band of text, including an image and a call to action.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "list",
         groups: ["Content layout"],
         tags: ["content layout"],
         description: "Organize information into brief and clear groups.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "popover",
         groups: ["Content layout"],
         tags: ["content layout", "show more information"],
         description: "A small overlay that opens on demand, used in other components.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "table",
@@ -92,7 +107,7 @@ const AllComponents = () => {
         tags: ["data table", "content layout", "interactive table", "sortable table"],
         description:
           "A set of structured data that is easy for a user to scan, examine, and compare.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "badge",
@@ -100,14 +115,14 @@ const AllComponents = () => {
         tags: ["feedback and alerts", "label", "lozenge", "status", "tag", "token"],
         description:
           "Small labels which hold small amounts of information, system feedback, or states.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "filter chip",
         groups: ["Feedback and alerts"],
         tags: ["inputs and actions", "pill"],
         description: "Allow the user to enter information, filter content, and make selections.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "modal",
@@ -121,14 +136,14 @@ const AllComponents = () => {
         ],
         description:
           "An overlay that appears in front of all other content, and requires a user to take an action before continuing.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "notification banner",
         groups: ["Feedback and alerts"],
         tags: ["alert banner", "banner", "feedback and alerts"],
         description: "Display important page level information or notifications.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "progress indicator",
@@ -143,7 +158,7 @@ const AllComponents = () => {
           "spinner",
         ],
         description: "Provide feedback of progress to users while loading.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "skeleton loader",
@@ -151,21 +166,21 @@ const AllComponents = () => {
         tags: ["content layout", "loading"],
         description:
           "Provide visual feedback to users while loading a content heavy page or page element.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "tooltip",
         groups: ["Feedback and alerts"],
         tags: ["feedback and alerts"],
         description: "A small popover that displays more information about an item.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "button",
         groups: ["Inputs and actions"],
         tags: ["action", "inputs and actions", "submit"],
         description: "Carry out an important action or navigate to another page.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "button group",
@@ -173,14 +188,14 @@ const AllComponents = () => {
         tags: ["action", "inputs and actions", "submit"],
         description:
           "Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "checkbox",
         groups: ["Inputs and actions"],
         tags: ["checkbox", "checklist", "input", "inputs and actions", "options"],
         description: "Let the user select one or more options.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "date picker",
@@ -188,7 +203,7 @@ const AllComponents = () => {
         tags: ["calendar, date, date picker, inputs and actions, input"],
         description:
           "Lets users select a date through a calendar without the need to manually type it in a field.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "drawer",
@@ -196,7 +211,7 @@ const AllComponents = () => {
         tags: ["sections", "structure and navigation", "Sheet", "Sidesheet", "Sidepanel"],
         description:
           "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.",
-        status: "Published",
+        status: "Available",
         isNew: true,
       },
       {
@@ -204,35 +219,35 @@ const AllComponents = () => {
         groups: ["Inputs and actions"],
         tags: ["inputs and actions", "select", "single select dropdown"],
         description: "Present a list of options to the user to select from.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "file uploader",
         groups: ["Inputs and actions"],
         tags: ["drag and drop", "file upload", "inputs and actions", "uploader"],
         description: "Help users select and upload a file.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "icon button",
         groups: ["Inputs and actions"],
         tags: ["action", "inputs and actions", "submit"],
         description: "A compact button with an icon and no text.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "input",
         groups: ["Inputs and actions"],
         tags: ["inputs and actions", "text field", "text box", "search", "text input"],
         description: "A single-line field where users can input and edit text.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "radio",
         groups: ["Inputs and actions"],
         tags: ["inputs and actions", "option button", "radio button group", "radio buttons"],
         description: "Allow users to select one option from a set.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "text area",
@@ -246,14 +261,14 @@ const AllComponents = () => {
           "text input area",
         ],
         description: "A multi-line field where users can input and edit text.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "footer",
         groups: ["Structure and navigation"],
         tags: ["page footer", "structure and navigation"],
         description: "Provides information related your service at the bottom of every page.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "form stepper",
@@ -268,7 +283,7 @@ const AllComponents = () => {
           "wizard",
         ],
         description: "Provides a visual representation of a form through a series of steps.",
-        status: "Published",
+        status: "Legacy",
       },
       {
         name: "header",
@@ -287,7 +302,7 @@ const AllComponents = () => {
           "top navigation",
         ],
         description: "Provide structure to help users find their way around the service.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "microsite header",
@@ -307,7 +322,7 @@ const AllComponents = () => {
         ],
         description:
           "Communicate what stage the service is at, connect to Alberta.ca, and gather feedback on your service.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "pagination",
@@ -315,14 +330,14 @@ const AllComponents = () => {
         tags: ["pager", "pagination controls", "structure and navigation"],
         description:
           "Help users navigation between multiple pages or screens as part of a set.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "side menu",
         groups: ["Structure and navigation"],
         tags: ["secondary navigation", "side nav", "side bar", "structure and navigation"],
         description: "A side navigation that helps the user navigate between pages.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "tabs",
@@ -330,7 +345,7 @@ const AllComponents = () => {
         tags: ["sections", "structure and navigation", "tabbed interface"],
         description:
           "Let users navigate between related sections of content, displaying one section at a time.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "block",
@@ -338,7 +353,7 @@ const AllComponents = () => {
         tags: ["utility"],
         description:
           "Used when grouping components into a block with consistent space between.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "divider",
@@ -346,7 +361,7 @@ const AllComponents = () => {
         tags: ["dividing line", "page divider", "utilities"],
         description:
           "Indicate a separation of layout, or to distinguish large chunks of information on a page.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "form item",
@@ -354,14 +369,14 @@ const AllComponents = () => {
         tags: ["form", "input", "inputs and actions"],
         description:
           "Wraps an input control with a text label, requirement label, helper text, and error text.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "grid",
         groups: ["Utilities"],
         tags: ["utilities"],
         description: "Arrange a number of components into a responsive grid pattern.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "icons",
@@ -369,21 +384,21 @@ const AllComponents = () => {
         tags: ["utilities"],
         description:
           "A simple and universal graphic symbol representing an action, object, or concept to help guide the user.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "link",
         groups: ["Utilities"],
         tags: ["utilities"],
         description: "Wraps an anchor element to add icons or margins.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "spacer",
         groups: ["Utilities"],
         tags: ["gap", "margin", "padding", "space", "utilities"],
         description: "Negative area between the components and the interface.",
-        status: "Published",
+        status: "Available",
       },
       {
         name: "toggle button",
@@ -467,12 +482,12 @@ const AllComponents = () => {
         groups: ["Content layout"],
         tags: ["text", "body", "copy"],
         description: "Provides consistent sizing, spacing, and colour to written content.",
-        status: "Published"
+        status: "Available",
       },
     ];
 
     return initialCards.sort((a, b) => {
-      const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+      const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Legacy", "Not Published"];
       const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
       if (statusComparison !== 0) return statusComparison;
       return a.name.localeCompare(b.name);
@@ -497,7 +512,7 @@ const AllComponents = () => {
     const newDirection = sortDirection[sortBy] === 1 ? -1 : 1;
     const sorted = [...cards].sort((a, b) => {
       if (sortBy === "status") {
-        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Legacy", "Not Published"];
         const statusComparison = statusOrder.indexOf(a.status) - statusOrder.indexOf(b.status);
         if (statusComparison !== 0) return statusComparison * newDirection;
       }
@@ -574,11 +589,23 @@ const AllComponents = () => {
           <td style={{ width: "100px" }}>
             <GoabBadge
               mt="2xs"
-              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
-              content={card.status} />
+              type={
+                version === "old" && card.name === "drawer" 
+                  ? "important" 
+                  : getBadgeType(card.status)
+              }
+              content={
+                version === "old" && card.name === "drawer"
+                  ? "Available in " + 
+                    (language === "angular"
+                      ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                      : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+                  : card.status
+              }
+            />
           </td>
           <td>
-            {card.status === "Published" ? (
+            {card.status === "Published" || card.status === "Available" ? (
               <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 {toSentenceCase(card.name)}
               </a>
