@@ -14,7 +14,9 @@ export const ReactGuide = () => {
         <InlineCode>@abgov/react-components</InlineCode> package.
       </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">1. Update dependencies</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        1. Update dependencies
+      </GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -45,41 +47,46 @@ export const ReactGuide = () => {
         `}
       />
 
-      <GoabText size="heading-s" mt="xl" mb="s">3. Update components' props that have changed</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        3. Update components' props that have changed
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
-        In v6, some of our properties have changed, go through the following table and make changes as necessary in your codebase.
+        In v6, some of our properties have changed, go through the following table and make changes
+        as necessary in your codebase.
       </GoabText>
       <GoabTable width={"100%"} mb={"3xl"}>
         <thead>
-        <th>Component</th>
-        <th>v5(LTS)</th>
-        <th>v6(latest)</th>
+          <th>Component</th>
+          <th>v5(LTS)</th>
+          <th>v6(latest)</th>
         </thead>
         <tbody>
-        {componentNames.map((component, index) => (
-          <tr key={index}>
-            <td><b>{component.name}</b></td>
-            <td>
-              <ul>
-                {component.react?.map((prop, propsIndex) => (
-                  <li key={propsIndex}>
-                    {prop.name}: {prop.v5 && <span>{prop.v5}</span>} {prop.v5 == null && "N/A"}
-                  </li>
-                ))}
-              </ul>
-            </td>
-            <td>
-              <ul>
-                {component.react?.map((prop, propsIndex) => (
-                  <li key={propsIndex}>
-                    {prop.name}: {prop.v6 && <span>{prop.v6}</span>}{" "}
-                    {prop.v6 == null && <strong>Removed</strong>}{" "}
-                  </li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        ))}
+          {componentNames.map((component, index) => (
+            <tr key={index}>
+              <td>
+                <b>{component.name}</b>
+              </td>
+              <td>
+                <ul>
+                  {component.react?.map((prop, propsIndex) => (
+                    <li key={propsIndex}>
+                      {prop.name}: {prop.v5 && <span>{prop.v5}</span>} {prop.v5 == null && "N/A"}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {component.react?.map((prop, propsIndex) => (
+                    <li key={propsIndex}>
+                      {prop.name}: {prop.v6 && <span>{prop.v6}</span>}{" "}
+                      {prop.v6 == null && <strong>Removed</strong>}{" "}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </GoabTable>
     </>

@@ -1,25 +1,24 @@
 .card-lite {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .card-heading {
-    color: black;
-    display: inline-block;
+  color: black;
+  display: inline-block;
 }
 
 .card-description {
-    color: black;
-    display: block;
+  color: black;
+  display: block;
 }
 
 a:hover .card-heading {
-    color: var(--goa-color-interactive-hover);
-    text-decoration: underline;
+  color: var(--goa-color-interactive-hover);
+  text-decoration: underline;
 }
 
 .card-lite:focus-visible {
-    outline: 3px solid var(--goa-color-interactive-focus);
-    outline-offset: 4px;
-    border-radius: 4px;
+  outline: 3px solid var(--goa-color-interactive-focus);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
-

@@ -5,14 +5,11 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const ModalConfirmDestructiveActionExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [destructiveModalOpen, setDestructiveModalOpen] = useState<boolean>();
   return (
     <Sandbox skipRender>
-      <GoabButton
-        type="tertiary"
-        leadingIcon="trash"
-        onClick={() => setDestructiveModalOpen(true)}>
+      <GoabButton type="tertiary" leadingIcon="trash" onClick={() => setDestructiveModalOpen(true)}>
         Delete record
       </GoabButton>
       <GoabModal
@@ -27,11 +24,13 @@ export const ModalConfirmDestructiveActionExample = () => {
             <GoabButton
               type="primary"
               variant="destructive"
-              onClick={() => setDestructiveModalOpen(false)}>
+              onClick={() => setDestructiveModalOpen(false)}
+            >
               Delete record
             </GoabButton>
           </GoabButtonGroup>
-        }>
+        }
+      >
         <p>This action cannot be undone.</p>
       </GoabModal>
 
@@ -157,5 +156,5 @@ export const ModalConfirmDestructiveActionExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

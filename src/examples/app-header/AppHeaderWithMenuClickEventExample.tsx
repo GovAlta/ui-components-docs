@@ -1,12 +1,17 @@
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoabAppHeader, GoabAppHeaderMenu, GoabRadioGroup, GoabRadioItem } from "@abgov/react-components";
+import {
+  GoabAppHeader,
+  GoabAppHeaderMenu,
+  GoabRadioGroup,
+  GoabRadioItem,
+} from "@abgov/react-components";
 import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const AppHeaderWithMenuClickEventExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [deviceWidth, setDeviceWidth] = useState("5000");
   function handleMenuClick() {
     alert("Menu not being displayed and you can do anything");
@@ -16,7 +21,8 @@ export const AppHeaderWithMenuClickEventExample = () => {
       <GoabRadioGroup
         name="device"
         value={deviceWidth}
-        onChange={(event: GoabRadioGroupOnChangeDetail) => setDeviceWidth(event.value)}>
+        onChange={(event: GoabRadioGroupOnChangeDetail) => setDeviceWidth(event.value)}
+      >
         <GoabRadioItem value="600" label="Desktop"></GoabRadioItem>
         <GoabRadioItem value="5000" label="Mobile"></GoabRadioItem>
       </GoabRadioGroup>
@@ -24,7 +30,8 @@ export const AppHeaderWithMenuClickEventExample = () => {
         url="https://example.com"
         heading="Design System"
         onMenuClick={handleMenuClick}
-        fullMenuBreakpoint={+deviceWidth}>
+        fullMenuBreakpoint={+deviceWidth}
+      >
         <GoabAppHeaderMenu heading="Search" leadingIcon="search">
           <a href="#">Cases</a>
           <a href="#">Payments</a>
@@ -201,5 +208,5 @@ export const AppHeaderWithMenuClickEventExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

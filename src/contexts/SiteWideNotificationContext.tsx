@@ -6,7 +6,9 @@ interface SiteWideNotificationContextType {
   reset: () => void;
 }
 
-const SiteWideNotificationContext = createContext<SiteWideNotificationContextType | undefined>(undefined);
+const SiteWideNotificationContext = createContext<SiteWideNotificationContextType | undefined>(
+  undefined
+);
 
 export const SiteWideNotificationProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDismissed, setIsDismissed] = useState(() => {

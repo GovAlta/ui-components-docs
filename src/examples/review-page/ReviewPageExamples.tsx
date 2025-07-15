@@ -4,7 +4,6 @@ import "./review-page-example.css";
 import { GoabButton, GoabButtonGroup, GoabTable } from "@abgov/react-components";
 
 export function ReviewPageExamples() {
-
   return (
     <div className="review-page-example">
       <div className="component-example-header">
@@ -12,7 +11,8 @@ export function ReviewPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4109&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>

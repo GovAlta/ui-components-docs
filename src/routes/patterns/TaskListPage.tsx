@@ -1,8 +1,4 @@
-import {
-  GoabCallout,
-  GoabTab,
-  GoabTabs
-} from "@abgov/react-components";
+import { GoabCallout, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { TaskListPageExamples } from "@examples/task-list-page/TaskListPageExamples";
 import css from "./patterns.module.css";
@@ -18,7 +14,8 @@ export default function TaskListPage() {
       </h3>
       <ComponentContent
         contentClassName="task-list-page"
-        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])"
+      >
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
             <TaskListPageExamples />
@@ -36,11 +33,22 @@ export default function TaskListPage() {
             </figure>
 
             <h2 id="toc-1">When to use a task list page</h2>
-            <p>Use a task list page to provide a structure for multiple steps in a service. Show a task list page when a citizen begins a service, and when they return to the service.</p>
-            <p>When using a task list, group related actions into tasks and show the status of the tasks.</p>
+            <p>
+              Use a task list page to provide a structure for multiple steps in a service. Show a
+              task list page when a citizen begins a service, and when they return to the service.
+            </p>
+            <p>
+              When using a task list, group related actions into tasks and show the status of the
+              tasks.
+            </p>
 
             <h2 id="toc-2">How to define a task</h2>
-            <p>The size and complexity of a task is determined by the service and content. A task can be defined as small as a single action, such as: “sign a document”, or “upload a file”, or can be as big as an entire section of a form with multiple question pages and a review page.</p>
+            <p>
+              The size and complexity of a task is determined by the service and content. A task can
+              be defined as small as a single action, such as: “sign a document”, or “upload a
+              file”, or can be as big as an entire section of a form with multiple question pages
+              and a review page.
+            </p>
             <p>Use tasks to break down the steps in a service in an understandable way.</p>
 
             <h2 id="toc-2">Show status of tasks</h2>
@@ -54,18 +62,19 @@ export default function TaskListPage() {
 
             <h3>Suggested statuses</h3>
             <p>
-              Completed (success), In progress (dark grey), Not started (information), Cannot start yet (light grey)
+              Completed (success), In progress (dark grey), Not started (information), Cannot start
+              yet (light grey)
             </p>
             <p>
-              Include a summary above the task list to say how many tasks have been completed. This also makes it clearer to the user that there are still tasks left to complete.
+              Include a summary above the task list to say how many tasks have been completed. This
+              also makes it clearer to the user that there are still tasks left to complete.
             </p>
 
-            <div style={{maxWidth: "22rem", marginTop: "0.5rem"}}>
+            <div style={{ maxWidth: "22rem", marginTop: "0.5rem" }}>
               <GoabCallout type="important" size="medium" heading="Application incomplete" mb="3xl">
                 You have completed 0 of 3 sections.
               </GoabCallout>
             </div>
-
 
             <h3>How is a task list different than a stepper?</h3>
             <div className={css.descriptionWithList}>
@@ -104,9 +113,7 @@ export default function TaskListPage() {
               <li>
                 Status of completed sections: <Link to="/components/callout">goa-callout</Link>
               </li>
-              <li>
-                Section: task-list-section
-              </li>
+              <li>Section: task-list-section</li>
               <li>
                 Section heading: <Link to="/design-tokens/typography">heading-medium</Link>
               </li>

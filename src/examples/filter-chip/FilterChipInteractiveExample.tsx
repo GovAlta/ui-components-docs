@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const FilterChipInteractiveExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
   const addFilter = () => {
     const randomFilter = `Filter ${Math.floor(Math.random() * 100)}`;
@@ -167,5 +167,5 @@ export const FilterChipInteractiveExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

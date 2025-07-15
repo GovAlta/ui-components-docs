@@ -6,10 +6,16 @@ import { GoabBlock, GoabSpacer, GoabText } from "@abgov/react-components";
 export default function DevelopersOverviewPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Overview</GoabText>
-      <GoabText size="body-l" mb="xl">As a developer, you can consume the design system using tokens, components,
-        templates, and the demo application.</GoabText>
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>
+        Developers
+      </GoabText>
+      <GoabText size="heading-xl" mb="m">
+        Overview
+      </GoabText>
+      <GoabText size="body-l" mb="xl">
+        As a developer, you can consume the design system using tokens, components, templates, and
+        the demo application.
+      </GoabText>
 
       <GoabText size="body-m" mt="l" mb="l">
         The DDD Design System is built with Web Components. Web Components are technology agnostic.
@@ -17,7 +23,9 @@ export default function DevelopersOverviewPage() {
         web components. All components include sample HTML and only use JavaScript when necessary.
       </GoabText>
 
-      <GoabText size="heading-s" mt="l" mb="s">The design system consists of:</GoabText>
+      <GoabText size="heading-s" mt="l" mb="s">
+        The design system consists of:
+      </GoabText>
       <GoabBlock gap="xs" direction="column" mb="m">
         <a href="#design-token-intro">Design tokens</a>
         <a href="#components-intro">Components</a>
@@ -70,9 +78,13 @@ export default function DevelopersOverviewPage() {
         </a>
         .
       </GoabText>
-      <Link to="/get-started/developers/technologies">Read more about design system technologies</Link>
+      <Link to="/get-started/developers/technologies">
+        Read more about design system technologies
+      </Link>
 
-      <GoabText size="heading-s" mt="xl" mb="s">Visual Studio Code support</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Visual Studio Code support
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         In order to use VS Code's{" "}
         <a href="https://github.com/microsoft/vscode-custom-data" target="_blank">
@@ -114,8 +126,9 @@ export default function DevelopersOverviewPage() {
 
       <h2 id="demo-application">Demo application</h2>
 
-      <GoabText size="body-m" mt="l" mb="l">This is a demo application to see and interact with the design system
-        components.</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
+        This is a demo application to see and interact with the design system components.
+      </GoabText>
       <a href="https://abgov-ui-react.netlify.app/" target="_blank">
         View demo application
       </a>

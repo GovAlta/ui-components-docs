@@ -3,17 +3,19 @@ import "./question-page-example.css";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabButton,
-  GoabDetails, GoabDropdown, GoabDropdownItem,
+  GoabDetails,
+  GoabDropdown,
+  GoabDropdownItem,
   GoabFormItem,
   GoabInput,
   GoabRadioGroup,
-  GoabRadioItem
+  GoabRadioItem,
 } from "@abgov/react-components";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext } from "react";
 
 export default function QuestionPageExamples() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <div className="question-page-example">
       <div className="component-example-header">
@@ -21,7 +23,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -58,8 +61,13 @@ export default function QuestionPageExamples() {
           mt="2xl"
           label="Are you currently in school?"
           labelSize="large"
-          helpText="School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education.">
-          <GoabRadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
+          helpText="School includes foundational, skills and employment training, micro-credentials, post-secondary and continuing education."
+        >
+          <GoabRadioGroup
+            name="school"
+            ariaLabel="are you currently in school?"
+            onChange={() => {}}
+          >
             <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
             <GoabRadioItem value="no" label="No">
               No
@@ -76,7 +84,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -130,7 +139,11 @@ export default function QuestionPageExamples() {
         </p>
         <p>Contact your provider if you’re concerned about your school status.</p>
         <GoabFormItem label="Are you currently in school?" mt="xl">
-          <GoabRadioGroup name="school" ariaLabel="are you currently in school?" onChange={() => {}}>
+          <GoabRadioGroup
+            name="school"
+            ariaLabel="are you currently in school?"
+            onChange={() => {}}
+          >
             <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
             <GoabRadioItem value="no" label="No"></GoabRadioItem>
           </GoabRadioGroup>
@@ -145,7 +158,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -183,11 +197,13 @@ export default function QuestionPageExamples() {
           mt="2xl"
           label="Do you pay for child care?"
           labelSize="large"
-          helpText="Examples of child care are daycares, day homes and baby-sisters.">
+          helpText="Examples of child care are daycares, day homes and baby-sisters."
+        >
           <GoabRadioGroup
             name="child-care"
             ariaLabel="Do you pay for child care?"
-            onChange={() => {}}>
+            onChange={() => {}}
+          >
             <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
             <GoabRadioItem value="no" label="No"></GoabRadioItem>
           </GoabRadioGroup>
@@ -206,7 +222,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -253,7 +270,8 @@ export default function QuestionPageExamples() {
           <GoabRadioGroup
             name="canada"
             ariaLabel="Do you currently live in Canada?"
-            onChange={() => {}}>
+            onChange={() => {}}
+          >
             <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
             <GoabRadioItem value="no" label="No"></GoabRadioItem>
           </GoabRadioGroup>
@@ -268,7 +286,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -314,7 +333,8 @@ export default function QuestionPageExamples() {
           <GoabRadioGroup
             name="canada"
             ariaLabel="Do you currently live in Canada?"
-            onChange={() => {}}>
+            onChange={() => {}}
+          >
             <GoabRadioItem value="yes" label="Yes"></GoabRadioItem>
             <GoabRadioItem value="no" label="No"></GoabRadioItem>
           </GoabRadioGroup>
@@ -329,7 +349,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -401,7 +422,11 @@ export default function QuestionPageExamples() {
           />
         </GoabFormItem>
         <GoabFormItem label="Province or territory" mt="xl" id="provinceLabel">
-          <GoabDropdown onChange={() => {}} name="province-territory" ariaLabelledBy="provinceLabel">
+          <GoabDropdown
+            onChange={() => {}}
+            name="province-territory"
+            ariaLabelledBy="provinceLabel"
+          >
             <GoabDropdownItem value="AB" label="Alberta" />
             <GoabDropdownItem value="BC" label="British Columbia" />
             <GoabDropdownItem value="MB" label="Manitoba" />
@@ -430,7 +455,8 @@ export default function QuestionPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4108&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -475,11 +501,12 @@ export default function QuestionPageExamples() {
 
         {/*Angular Code Snippet - need for leadingContent slot*/}
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
             <a href="#" class="back-link">
               Back
             </a>
@@ -504,13 +531,15 @@ export default function QuestionPageExamples() {
               Save and continue
             </goa-button>
           `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
             <a href="#" class="back-link">
               Back
             </a>
@@ -535,14 +564,16 @@ export default function QuestionPageExamples() {
               Save and continue
             </goab-button>
           `}
-        />}
+          />
+        )}
 
         {/*React Code Snippet - need for leadingContent slot*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
             <a href="#" className="back-link">
               Back
             </a>
@@ -570,13 +601,15 @@ export default function QuestionPageExamples() {
               Save and continue
             </GoAButton>
           `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
             <a href="#" className="back-link">
               Back
             </a>
@@ -604,7 +637,8 @@ export default function QuestionPageExamples() {
               Save and continue
             </GoabButton>
           `}
-        />}
+          />
+        )}
 
         <a href="#" className="back-link">
           Back
@@ -628,7 +662,8 @@ export default function QuestionPageExamples() {
             onChange={() => {}}
             name="postal-code"
             width="14ch"
-            ariaLabel="what is your home postal code"></GoabInput>
+            ariaLabel="what is your home postal code"
+          ></GoabInput>
         </GoabFormItem>
         <GoabButton type="submit" mt="2xl">
           Save and continue

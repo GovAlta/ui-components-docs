@@ -5,17 +5,18 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const TextFieldAskUserAmountExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
-  const noop = () => {}
+  const noop = () => {};
   return (
     <Sandbox flags={["reactive"]} skipRender>
       {/*Angular Code Snippet - need for leadingContent slot*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   export class ExampleComponent {
                     tuitionAmount: number|undefined;
                     suppliesAmount: number|undefined;
@@ -32,12 +33,14 @@ export const TextFieldAskUserAmountExample = () => {
                     }
                   }
                 `}
-      />}
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-form-item label="Tuition">
                     <goa-input (_change)="onChangeTuitionAmount($event)" value="" name="tuition" mb="xl">
                       <div slot="leadingContent">$</div>
@@ -54,10 +57,11 @@ export const TextFieldAskUserAmountExample = () => {
                     </goa-input>
                   </goa-form-item>
                 `}
-      />}
+        />
+      )}
 
       {/*Reactive FormControl Angular Code Snippet*/}
-       <CodeSnippet
+      <CodeSnippet
         lang="typescript"
         tags={["angular", "reactive"]}
         allowCopy={true}
@@ -72,11 +76,12 @@ export const TextFieldAskUserAmountExample = () => {
                 `}
       />
 
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
                 <form [formGroup]="costFormGroup">
                   <goa-form-item label="Tuition">
                     <goa-input goaValue name="tuition" formControlName="tuitionFeeAmount">
@@ -95,13 +100,15 @@ export const TextFieldAskUserAmountExample = () => {
                   </goa-form-item>                
                 </form>
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="html"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="html"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
                 <form [formGroup]="costFormGroup">
                   <goab-form-item label="Tuition">
                     <goab-input name="tuition" formControlName="tuitionFeeAmount">
@@ -120,14 +127,16 @@ export const TextFieldAskUserAmountExample = () => {
                   </goab-form-item>                
                 </form>
                 `}
-      />}
+        />
+      )}
 
       {/*React Code Snippet - need for leadingContent slot*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [tuitionAmount, setTuitionAmount] = useState<string>("");
                   const [suppliesAmount, setSuppliesAmount] = useState<string>("");
                   const [othersAmount, setOthersAmount] = useState<string>("");
@@ -141,13 +150,15 @@ export const TextFieldAskUserAmountExample = () => {
                     setOthersAmount(value);
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [tuitionAmount, setTuitionAmount] = useState<string>("");
                   const [suppliesAmount, setSuppliesAmount] = useState<string>("");
                   const [othersAmount, setOthersAmount] = useState<string>("");
@@ -161,13 +172,15 @@ export const TextFieldAskUserAmountExample = () => {
                     setOthersAmount(event.value);
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoAFormItem label="Tuition">
                     <GoAInput onChange={onChangeTuitionAmount} value={tuitionAmount} name="tuitionAmount" leadingContent="$"></GoAInput>
                   </GoAFormItem>
@@ -178,13 +191,15 @@ export const TextFieldAskUserAmountExample = () => {
                     <GoAInput onChange={onChangeOthersAmount} value={othersAmount} name="others" leadingContent="$"></GoAInput>
                   </GoAFormItem>
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoabFormItem label="Tuition">
                     <GoabInput onChange={onChangeTuitionAmount} value={tuitionAmount} name="tuitionAmount" leadingContent="$"></GoabInput>
                   </GoabFormItem>
@@ -195,7 +210,8 @@ export const TextFieldAskUserAmountExample = () => {
                     <GoabInput onChange={onChangeOthersAmount} value={othersAmount} name="others" leadingContent="$"></GoabInput>
                   </GoabFormItem>
                 `}
-      />}
+        />
+      )}
 
       <GoabFormItem label="Tuition">
         <GoabInput onChange={noop} value="" name="tuitionAmount" leadingContent="$" mb="xl" />
@@ -207,6 +223,5 @@ export const TextFieldAskUserAmountExample = () => {
         <GoabInput onChange={noop} value="" name="othersAmount" leadingContent="$" />
       </GoabFormItem>
     </Sandbox>
-
-  )
-}
+  );
+};

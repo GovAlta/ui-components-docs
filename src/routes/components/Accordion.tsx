@@ -18,7 +18,8 @@ import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
   LegacyTestIdProperties,
-  MarginProperty, TestIdProperty
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
@@ -31,8 +32,8 @@ const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/tabs", name: "Tabs" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
-
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
 
 type ComponentPropsType = GoabAccordionProps;
 type CastingType = {
@@ -43,7 +44,6 @@ type CastingType = {
 };
 
 export default function AccordionPage() {
-
   const [accordionProps, setAccordionProps] = useState<ComponentPropsType>({
     heading: "Accordion",
     headingSize: "medium",
@@ -83,7 +83,7 @@ export default function AccordionPage() {
       type: "boolean",
       name: "open",
       value: false,
-    }
+    },
   ]);
 
   const oldComponentProperties: ComponentProperty[] = [
@@ -162,7 +162,7 @@ export default function AccordionPage() {
       description: "Callback function when accordion heading is clicked.",
     },
     ...LegacyTestIdProperties,
-    LegacyMarginProperty
+    LegacyMarginProperty,
   ];
 
   const componentProperties: ComponentProperty[] = [
@@ -239,8 +239,8 @@ export default function AccordionPage() {
             </h2>
             <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
               <GoabAccordion {...accordionProps}>
-                This is the content in an accordion item. This content can be anything that you want including rich
-                text, components, and more.
+                This is the content in an accordion item. This content can be anything that you want
+                including rich text, components, and more.
               </GoabAccordion>
             </Sandbox>
             <ComponentProperties
@@ -249,10 +249,12 @@ export default function AccordionPage() {
             />
           </GoabTab>
           <GoabTab
-            heading={<>
-              Examples
-              <GoabBadge type="information" content="2" />
-            </>}
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="2" />
+              </>
+            }
           >
             <AccordionExamples />
           </GoabTab>
@@ -262,7 +264,6 @@ export default function AccordionPage() {
           <GoabTab heading="Accessibility">
             <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </div>

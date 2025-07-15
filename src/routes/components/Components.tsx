@@ -3,14 +3,17 @@ import {
   GoabBlock,
   GoabSideMenu,
   GoabSideMenuGroup,
-  GoabSpacer
+  GoabSpacer,
 } from "@abgov/react-components";
 import { Link, Outlet } from "react-router-dom";
 import { SupportInfo } from "@components/support-info/SupportInfo.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { getVersionedUrlPath, ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
-
+import {
+  getVersionedUrlPath,
+  ANGULAR_VERSIONS,
+  REACT_VERSIONS,
+} from "@components/version-language-switcher/version-language-constants.ts";
 
 export function Components() {
   const { language, version } = useContext(LanguageVersionContext);
@@ -20,7 +23,6 @@ export function Components() {
   const getUrl = (path: string) => {
     return prefixUrl.length > 0 ? `${prefixUrl}/${path}` : path;
   };
-
 
   const newComponentLabel = (componentName: string) => {
     const getBadgeLabel = () => {
@@ -53,7 +55,6 @@ export function Components() {
               <Link to={getUrl("popover")}>Popover</Link>
               <Link to={getUrl("table")}>Table</Link>
               <Link to={getUrl("text")}>Text</Link>
-
             </GoabSideMenuGroup>
             <GoabSideMenuGroup heading="Feedback and alerts">
               <Link to={getUrl("badge")}>Badge</Link>

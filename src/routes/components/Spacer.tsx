@@ -10,7 +10,8 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303446";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303446";
 
 export default function SpacerPage() {
   const [hSpacerProps, setHSpacerProps] = useState({});
@@ -101,7 +102,7 @@ export default function SpacerPage() {
     padding: "1rem",
     backgroundColor: "rgba(0, 150, 255, 0.2)",
     whiteSpace: "nowrap",
-  }
+  };
 
   return (
     <>
@@ -120,43 +121,35 @@ export default function SpacerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={hSpacerBindings} onChange={onHSandboxChange}>
               <GoabBlock gap="none">
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
                 <GoabSpacer {...hSpacerProps} />
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
                 <GoabSpacer {...hSpacerProps} />
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
               </GoabBlock>
             </Sandbox>
 
             <Sandbox properties={vSpacerBindings} onChange={onVSandboxChange}>
               <GoabBlock direction="column" gap="none">
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
                 <GoabSpacer {...vSpacerProps} />
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
                 <GoabSpacer {...vSpacerProps} />
-                <div style={styles}>
-                  Item 1
-                </div>
+                <div style={styles}>Item 1</div>
               </GoabBlock>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab heading="Design">

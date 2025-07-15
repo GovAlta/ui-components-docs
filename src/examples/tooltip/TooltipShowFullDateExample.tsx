@@ -5,17 +5,18 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const TooltipShowFullDateExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <Sandbox skipRender fullWidth>
       {/*SkipRender because we need to display a slot that sandbox doesn't support*/}
 
       {/*Angular code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-container type="non-interactive" accent="thick">
                     <div slot="title">
                       Joan Smith
@@ -26,12 +27,14 @@ export const TooltipShowFullDateExample = () => {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </goa-container>     
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goab-container type="non-interactive" accent="thick" [title]="containerTitle">
                     <ng-template #containerTitle>
                       Joan Smith
@@ -42,14 +45,16 @@ export const TooltipShowFullDateExample = () => {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </goab-container>     
                 `}
-      />}
+        />
+      )}
 
       {/*React code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoAContainer
                     type="non-interactive"
                     accent="thick"
@@ -68,12 +73,14 @@ export const TooltipShowFullDateExample = () => {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </GoAContainer>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoabContainer
                     type="non-interactive"
                     accent="thick"
@@ -92,20 +99,30 @@ export const TooltipShowFullDateExample = () => {
                     <p>Hover on the time it was added to see the full date and time.</p>
                   </GoabContainer>
                 `}
-      />}
+        />
+      )}
 
       <GoabContainer
         type="non-interactive"
         accent="thick"
         heading={
           <span>
-                  Joan Smith
-                  <GoabTooltip content="Nov 23, 2023 at 10:35 am">
-                    <span style={{ color:"var(--goa-color-text-secondary)", font: "var(--goa-typography-body-xs)" }} >4 hours ago</span>
-                  </GoabTooltip>
-                </span>}>
+            Joan Smith
+            <GoabTooltip content="Nov 23, 2023 at 10:35 am">
+              <span
+                style={{
+                  color: "var(--goa-color-text-secondary)",
+                  font: "var(--goa-typography-body-xs)",
+                }}
+              >
+                4 hours ago
+              </span>
+            </GoabTooltip>
+          </span>
+        }
+      >
         <p>Hover on the time it was added to see the full date and time.</p>
       </GoabContainer>
     </Sandbox>
-  )
-}
+  );
+};

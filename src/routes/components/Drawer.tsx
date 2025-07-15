@@ -25,27 +25,27 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
-const ACCESSIBILITY_FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
+const ACCESSIBILITY_FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=61514-308154";
 const componentName = "Drawer";
 const description =
   "A panel that slides in from the side of the screen to display additional content or actions without navigating away from the current view.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
-const relatedComponents = [
-  { link: "/components/modal", name: "Modal" }
-];
+const relatedComponents = [{ link: "/components/modal", name: "Modal" }];
 
 type ComponentPropsType = Omit<GoabDrawerProps, "open">;
 
 export const DrawerPage = () => {
-  const {version, language} = useContext(LanguageVersionContext);
+  const { version, language } = useContext(LanguageVersionContext);
   const [open, setOpen] = useState(false);
 
   const [drawerProps, setDrawerProps] = useState<ComponentPropsType>({
     heading: "Drawer heading",
     position: "right",
     onClose: () => {},
-    children: null
+    children: null,
   });
 
   const [drawerBindings, setDrawerBindings] = useState<ComponentBinding[]>([
@@ -54,7 +54,7 @@ export const DrawerPage = () => {
       type: "dropdown",
       name: "position",
       options: ["left", "right", "bottom"],
-      value: "right"
+      value: "right",
     },
     {
       label: "Heading",
@@ -118,14 +118,14 @@ export const DrawerPage = () => {
       type: "() => void",
       description: "Callback function to handle the close event.",
     },
-    TestIdProperty
+    TestIdProperty,
   ];
 
   function SandboxOnChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setDrawerBindings(bindings);
     setDrawerProps({
       ...drawerProps,
-      ...props
+      ...props,
     } as ComponentPropsType);
   }
 
@@ -140,7 +140,9 @@ export const DrawerPage = () => {
         relatedComponents={relatedComponents}
       />
 
-      {version === "old" && <OldComponentBanner componentName={componentName} language={language}/>}
+      {version === "old" && (
+        <OldComponentBanner componentName={componentName} language={language} />
+      )}
 
       {version === "new" && (
         <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
@@ -162,7 +164,12 @@ export const DrawerPage = () => {
                   </p>
                 </GoabDrawer>
               </GoabContainer>
-              <Sandbox properties={drawerBindings} onChange={SandboxOnChange} skipRenderDom={true} variableNames={["open"]}>
+              <Sandbox
+                properties={drawerBindings}
+                onChange={SandboxOnChange}
+                skipRenderDom={true}
+                variableNames={["open"]}
+              >
                 <CodeSnippet
                   lang="typescript"
                   tags="angular"
@@ -205,13 +212,15 @@ export const DrawerPage = () => {
                 </GoabDrawer>
               </Sandbox>
 
-
               <ComponentProperties properties={componentProperties} />
-
             </GoabTab>
-            <GoabTab heading={
-              <>Examples <GoabBadge type={"information"} content={"2"} /></>
-            }>
+            <GoabTab
+              heading={
+                <>
+                  Examples <GoabBadge type={"information"} content={"2"} />
+                </>
+              }
+            >
               <DrawerExamples />
             </GoabTab>
 
@@ -227,4 +236,4 @@ export const DrawerPage = () => {
       )}
     </>
   );
-}
+};

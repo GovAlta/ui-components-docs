@@ -25,13 +25,14 @@ export function HelpButton() {
 
   return (
     <GoabTooltip content="More information">
-      <GoabIconButton ml={"s"}
-                      mr={"s"}
-                      variant="color"
-                      size="small"
-                      icon="help-circle"
-                      ariaLabel="Help"
-                      onClick={handleHelpClick}
+      <GoabIconButton
+        ml={"s"}
+        mr={"s"}
+        variant="color"
+        size="small"
+        icon="help-circle"
+        ariaLabel="Help"
+        onClick={handleHelpClick}
       />
     </GoabTooltip>
   );

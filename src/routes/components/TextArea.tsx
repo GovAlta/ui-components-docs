@@ -362,7 +362,8 @@ export default function TextAreaPage() {
               onChangeFormItemBindings={onFormItemChange}
               flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}
               allow={["form"]}
-              fullWidth>
+              fullWidth
+            >
               {/*Angular code*/}
               {version === "old" && (
                 <>
@@ -508,7 +509,8 @@ export default function TextAreaPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }>
+            }
+          >
             <TextAreaExamples />
           </GoabTab>
 

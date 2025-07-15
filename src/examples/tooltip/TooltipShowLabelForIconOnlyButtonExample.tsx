@@ -6,15 +6,15 @@ export const TooltipShowLabelForIconOnlyButtonExample = () => {
     <Sandbox fullWidth>
       <GoabButtonGroup alignment="center">
         <GoabTooltip content="Edit">
-          <GoabIconButton icon="pencil" ariaLabel="Pencil icon"/>
+          <GoabIconButton icon="pencil" ariaLabel="Pencil icon" />
         </GoabTooltip>
         <GoabTooltip content="Alerts">
-          <GoabIconButton icon="notifications" ariaLabel="Alert icon"/>
+          <GoabIconButton icon="notifications" ariaLabel="Alert icon" />
         </GoabTooltip>
         <GoabTooltip content="Settings">
-          <GoabIconButton icon="settings" ariaLabel="Settings icon"/>
+          <GoabIconButton icon="settings" ariaLabel="Settings icon" />
         </GoabTooltip>
       </GoabButtonGroup>
     </Sandbox>
-  )
-}
+  );
+};

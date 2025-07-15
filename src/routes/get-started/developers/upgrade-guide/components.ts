@@ -1150,11 +1150,13 @@ export const components: UpgradedComponent[] = [
   },
   {
     name: "Table",
-    react: [{
-      name: "onSort",
-      v5: "(sortBy: string, sortDir: number) => void;",
-      v6: "(details: GoabTableOnSortDetail) => void;",
-    }],
+    react: [
+      {
+        name: "onSort",
+        v5: "(sortBy: string, sortDir: number) => void;",
+        v6: "(details: GoabTableOnSortDetail) => void;",
+      },
+    ],
     angular: [
       {
         v3: {
@@ -1336,7 +1338,7 @@ export const components: UpgradedComponent[] = [
   },
   {
     name: "PageBlock",
-    angular:[
+    angular: [
       {
         v3: {
           name: "gap",
@@ -1383,7 +1385,7 @@ export const components: UpgradedComponent[] = [
         v6: "GoabSpinnerSize",
       },
     ],
-    angular:[
+    angular: [
       {
         v3: {
           name: "type",

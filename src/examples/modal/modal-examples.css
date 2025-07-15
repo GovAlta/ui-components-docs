@@ -1,7 +1,7 @@
 .address-change-example--description dt {
-    font: var(--goa-typography-heading-s);
+  font: var(--goa-typography-heading-s);
 }
 .address-change-example--description dd {
-    font: var(--goa-typography-body-m);
-    margin-left: 0;
+  font: var(--goa-typography-body-m);
+  margin-left: 0;
 }

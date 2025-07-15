@@ -4,18 +4,19 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
-export default function CheckboxNoneOrManyExample () {
-  const {version} = useContext(LanguageVersionContext);
+export default function CheckboxNoneOrManyExample() {
+  const { version } = useContext(LanguageVersionContext);
   return (
     <>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}
 
-        {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
               <goa-form-item
                 label="How would you like to be contacted?"
                 helpText="Choose all that apply"
@@ -25,13 +26,15 @@ export default function CheckboxNoneOrManyExample () {
                 <goa-checkbox checked="false" name="optionThree" text="Text message" />
               </goa-form-item>
             `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
               <goab-form-item
                 label="How would you like to be contacted?"
                 helpText="Choose all that apply"
@@ -41,14 +44,16 @@ export default function CheckboxNoneOrManyExample () {
                 <goab-checkbox [checked]="false" name="optionThree" text="Text message" />
               </goab-form-item>
             `}
-        />}
+          />
+        )}
 
         {/*React*/}
-        {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
               <GoAFormItem
                 label="How would you like to be contacted?"
                 helpText="Choose all that apply"
@@ -58,13 +63,15 @@ export default function CheckboxNoneOrManyExample () {
                 <GoACheckbox checked={false} name="optionThree" text="Text message" />
               </GoAFormItem>
             `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
               <GoabFormItem
                 label="How would you like to be contacted?"
                 helpText="Choose all that apply"
@@ -74,7 +81,8 @@ export default function CheckboxNoneOrManyExample () {
                 <GoabCheckbox checked={false} name="optionThree" text="Text message" />
               </GoabFormItem>
             `}
-        />}
+          />
+        )}
 
         <GoabFormItem label="How would you like to be contacted?" helpText="Choose all that apply">
           <GoabCheckbox checked={false} name="optionOne" text="Email" />

@@ -36,18 +36,20 @@ export default function HelperTextPage() {
           style={{
             margin: "0 auto",
             textAlign: "left",
-          }}>
+          }}
+        >
           <GoabFormItem
             label="Project name"
             labelSize="regular"
-            helpText="Select an existing or create a new project name.">
+            helpText="Select an existing or create a new project name."
+          >
             <GoabInput name="item" onChange={() => {}} value=""></GoabInput>
           </GoabFormItem>
         </div>
       </GoabContainer>
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>
       <h2 id="considerations">Considerations</h2>
-      <p>Consider the following ways to convey more information:</p>      
+      <p>Consider the following ways to convey more information:</p>
       <GoabTable width="100%" mb="xl">
         <thead>
           <tr>
@@ -205,7 +207,8 @@ export default function HelperTextPage() {
         <br />
         <a
           href="https://www.alberta.ca/web-writing-style-guide-writing-style#:~:text=depending%20on%20audience-,Plain%20language,-Write%20all%20web"
-          target="_blank">
+          target="_blank"
+        >
           Web writing style guide - Plain language
         </a>
       </p>
@@ -223,7 +226,8 @@ export default function HelperTextPage() {
         <br />
         <a
           href="https://www.alberta.ca/web-writing-style-guide-numbers-and-measurements"
-          target="_blank">
+          target="_blank"
+        >
           Web writing style guide – Numbers and measurements
         </a>
       </p>
@@ -260,28 +264,32 @@ export default function HelperTextPage() {
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
-            description="Refer directly to the content in the Text field using words such as This, These, and The when possible.">
+            description="Refer directly to the content in the Text field using words such as This, These, and The when possible."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/disclosure-do-1.png" width="80%"></img>
             </div>
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t be ambiguous with unknown outcomes and phrasing of objects, groups and places.">
+            description="Don’t be ambiguous with unknown outcomes and phrasing of objects, groups and places."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/disclosure-dont-1.png" width="80%"></img>
             </div>
           </DoDont>
           <DoDont
             type="do"
-            description="Use phrasing that communicates specific actions to objects, groups, and places.">
+            description="Use phrasing that communicates specific actions to objects, groups, and places."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/disclosure-do-2.png" width="80%"></img>
             </div>
           </DoDont>
           <DoDont
             type="do"
-            description="Use phrasing that informs the user what the data provided will be used for.">
+            description="Use phrasing that informs the user what the data provided will be used for."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/disclosure-dont-2.png" width="80%"></img>
             </div>
@@ -311,14 +319,16 @@ export default function HelperTextPage() {
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
-            description="Begin with an Action (Directive Verb) e.g. Search, Start, Select, Find, Deposit; phrasing that follows should briefly describe or summarize directions.">
+            description="Begin with an Action (Directive Verb) e.g. Search, Start, Select, Find, Deposit; phrasing that follows should briefly describe or summarize directions."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/instructions-do-1.png" width="80%"></img>
             </div>
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t begin with polite phrases or adverbs e.g. Please, Thank you, or Quickly. ">
+            description="Don’t begin with polite phrases or adverbs e.g. Please, Thank you, or Quickly. "
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/instructions-dont-1.png" width="80%"></img>
             </div>
@@ -361,7 +371,8 @@ export default function HelperTextPage() {
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t rely on error validation to provide all of the specific formatting information required.">
+            description="Don’t rely on error validation to provide all of the specific formatting information required."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/restrictive-dont-1.png" width="80%"></img>
             </div>
@@ -373,7 +384,8 @@ export default function HelperTextPage() {
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t use character symbols in lieu of words. eg. > || >= || != for greater than, less than or not equal to.">
+            description="Don’t use character symbols in lieu of words. eg. > || >= || != for greater than, less than or not equal to."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/restrictive-dont-2.png" width="80%"></img>
             </div>
@@ -390,7 +402,8 @@ export default function HelperTextPage() {
         <GoabGrid gap="2xl" minChildWidth={minGridWidth}>
           <DoDont
             type="do"
-            description="Use sentence case with no punctuation at the end of the helper text.">
+            description="Use sentence case with no punctuation at the end of the helper text."
+          >
             <div style={{ textAlign: "center" }}>
               <img src="/images/helper-text/formatting-do.png" width="80%"></img>
             </div>

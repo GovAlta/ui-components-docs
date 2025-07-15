@@ -29,12 +29,14 @@ p {
   min-width: 50px;
 }
 
-.dst::before, .partial-dst-start::before, .partial-dst-end::before {
+.dst::before,
+.partial-dst-start::before,
+.partial-dst-end::before {
   content: "";
   display: block;
   position: absolute;
   height: 100%;
-  background-color: rgba(0, 133, 63, 0.20);
+  background-color: rgba(0, 133, 63, 0.2);
   top: 0;
   left: 0;
 }
@@ -54,11 +56,11 @@ p {
 }
 
 .dst-months {
-    border: 1px solid var(--goa-color-greyscale-200);
-    padding: 3rem 10rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  border: 1px solid var(--goa-color-greyscale-200);
+  padding: 3rem 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .date-table td {
@@ -68,7 +70,7 @@ p {
 /* Responsive adjustments */
 @media (max-width: 623px) {
   .month {
-      flex-basis: 15%; 
-      min-width: 50px;
+    flex-basis: 15%;
+    min-width: 50px;
   }
 }

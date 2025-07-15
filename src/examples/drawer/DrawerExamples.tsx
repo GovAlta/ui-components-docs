@@ -5,15 +5,11 @@ import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.
 export const DrawerExamples = () => {
   return (
     <>
-      <SandboxHeader
-        exampleTitle="Filters">
-      </SandboxHeader>
+      <SandboxHeader exampleTitle="Filters"></SandboxHeader>
       <DrawerFiltersExample />
 
-      <SandboxHeader
-        exampleTitle="Add record">
-      </SandboxHeader>
-      <DrawerAddRecordExample/>
+      <SandboxHeader exampleTitle="Add record"></SandboxHeader>
+      <DrawerAddRecordExample />
     </>
   );
 };

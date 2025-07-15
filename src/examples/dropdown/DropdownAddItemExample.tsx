@@ -78,12 +78,14 @@ export const DropdownAddItemExample = () => {
             mt="m"
             label="Name of item"
             error={taskError ? "Please enter item name" : undefined}
-            helpText="Add an item to the dropdown list below">
+            helpText="Add an item to the dropdown list below"
+          >
             <GoabInput
               onChange={(event: GoabInputOnChangeDetail) => setNewTask(event.value)}
               name="item"
               placeholder=""
-              value={newTask}></GoabInput>
+              value={newTask}
+            ></GoabInput>
           </GoabFormItem>
 
           <GoabFormItem mt="m" label="Add to">
@@ -91,7 +93,8 @@ export const DropdownAddItemExample = () => {
               name="mountType"
               onChange={(event: GoabRadioGroupOnChangeDetail) => onMountTypeChange(event.value)}
               value={mountType}
-              orientation="horizontal">
+              orientation="horizontal"
+            >
               <GoabRadioItem value="prepend" label="Start" />
               <GoabRadioItem value="append" label="End" />
             </GoabRadioGroup>
@@ -112,20 +115,23 @@ export const DropdownAddItemExample = () => {
             <div
               style={{
                 width: isReset ? "320px" : "auto",
-              }}>
+              }}
+            >
               <GoabDropdown
                 key={tasks.length}
                 onChange={(event: GoabDropdownOnChangeDetail) =>
                   setSelectedTask(event.value as string)
                 }
                 value={selectedTask}
-                name="selectedTask">
+                name="selectedTask"
+              >
                 {tasks.map(task => (
                   <GoabDropdownItem
                     key={task.value}
                     value={task.value}
                     mountType={task.mount}
-                    label={task.label}></GoabDropdownItem>
+                    label={task.label}
+                  ></GoabDropdownItem>
                 ))}
               </GoabDropdown>
             </div>

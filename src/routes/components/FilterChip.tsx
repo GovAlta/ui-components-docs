@@ -32,7 +32,8 @@ const relatedComponents = [
   { link: "/components/input", name: "Input" },
   { link: "/components/table", name: "Table" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=911-5909";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=911-5909";
 type ComponentPropsType = GoabFilterChipProps;
 
 type CastingType = {
@@ -126,7 +127,9 @@ export default function FilterChipPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoabFilterChip {...componentProps} />
             </Sandbox>
@@ -134,7 +137,6 @@ export default function FilterChipPage() {
               properties={componentProperties}
               oldProperties={oldComponentProperties}
             />
-
           </GoabTab>
 
           <GoabTab

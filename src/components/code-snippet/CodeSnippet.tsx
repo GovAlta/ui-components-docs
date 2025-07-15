@@ -25,7 +25,7 @@ interface Props {
 }
 
 export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }) => {
-  const {language} = useContext(LanguageVersionContext);
+  const { language } = useContext(LanguageVersionContext);
   const [output, setOutput] = useState<string>("");
   const [isCopied, setIsCopied] = useState(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -113,9 +113,9 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }
         className={`goa-code-snippet ${showMore ? "overflow" : ""}`}
         style={isExpanded ? { maxHeight: "none" } : {}}
       >
-      <pre>
-        <code className={`highlight-${lang}`}>{output}</code>
-      </pre>
+        <pre>
+          <code className={`highlight-${lang}`}>{output}</code>
+        </pre>
         {showMore && !isExpanded && <div className={"gradient"}></div>}
         {showMore && (
           <div className={"goa-code-snippet-actions--show-more"}>
@@ -132,7 +132,11 @@ export const CodeSnippet: FC<Props> = ({ lang, allowCopy, code, children, tags }
 
         {allowCopy && (
           <div className="goa-code-snippet-actions--copy">
-            <GoabTooltip content={isCopied ? "Copied" : "Copy"} key={isCopied ? "copied" : "copy"} position="left">
+            <GoabTooltip
+              content={isCopied ? "Copied" : "Copy"}
+              key={isCopied ? "copied" : "copy"}
+              position="left"
+            >
               <GoabIconButton icon="copy" onClick={copyCode} />
             </GoabTooltip>
           </div>

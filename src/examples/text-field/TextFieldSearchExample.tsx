@@ -5,8 +5,8 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const TextFieldSearchExample = () => {
-  const {version} = useContext(LanguageVersionContext);
-  const noop = () => {}
+  const { version } = useContext(LanguageVersionContext);
+  const noop = () => {};
   return (
     <Sandbox flags={["reactive"]} allow={["form"]} skipRenderOnly={"react"}>
       {/*Angular code*/}
@@ -88,4 +88,4 @@ export const TextFieldSearchExample = () => {
       </form>
     </Sandbox>
   );
-}
+};

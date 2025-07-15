@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const TooltipClickCopyToClipboardExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [isCopied, setIsCopied] = useState(false);
 
   function copyCode() {
@@ -18,7 +18,7 @@ export const TooltipClickCopyToClipboardExample = () => {
   }
 
   return (
-    <Sandbox allow={['div', 'pre', 'a']} skipRender>
+    <Sandbox allow={["div", "pre", "a"]} skipRender>
       <CodeSnippet
         lang="css"
         allowCopy={true}
@@ -48,11 +48,12 @@ export const TooltipClickCopyToClipboardExample = () => {
                   }
                 `}
       />
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-block alignment="center">
                     <div class="token-block"></div>
                     <a (_click)="copyCode()">
@@ -63,12 +64,14 @@ export const TooltipClickCopyToClipboardExample = () => {
                     </goa-tooltip>
                   </goa-block>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goab-block alignment="center">
                     <div class="token-block"></div>
                     <a (click)="copyCode()">
@@ -79,7 +82,8 @@ export const TooltipClickCopyToClipboardExample = () => {
                     </goab-tooltip>
                   </goab-block>
                 `}
-      />}
+        />
+      )}
 
       {/*React code*/}
       <CodeSnippet
@@ -98,11 +102,12 @@ export const TooltipClickCopyToClipboardExample = () => {
                   }
                 `}
       />
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoABlock alignment="center">
                     <div className="token-block"/>
                     <a onClick={copyCode}>
@@ -113,12 +118,14 @@ export const TooltipClickCopyToClipboardExample = () => {
                     </GoATooltip>
                   </GoABlock>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoabBlock alignment="center">
                     <div className="token-block"/>
                     <a onClick={copyCode}>
@@ -129,15 +136,16 @@ export const TooltipClickCopyToClipboardExample = () => {
                     </GoabTooltip>
                   </GoabBlock>
                 `}
-      />}
+        />
+      )}
       <GoabBlock alignment="center">
         <div
           className="token-block"
           style={{
             backgroundColor: getCssVarValue(`--goa-color-interactive-default`),
-            height: '22px',
-            width: '24px',
-            borderRadius: getCssVarValue('--goa-border-radius-m')
+            height: "22px",
+            width: "24px",
+            borderRadius: getCssVarValue("--goa-border-radius-m"),
           }}
         />
         <a onClick={copyCode}>
@@ -148,5 +156,5 @@ export const TooltipClickCopyToClipboardExample = () => {
         </GoabTooltip>
       </GoabBlock>
     </Sandbox>
-  )
-}
+  );
+};

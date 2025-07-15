@@ -5,7 +5,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useContext, useEffect, useState } from "react";
 
 export const AccordionHideOrShowSectionExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [expandedAll, setExpandedAll] = useState<boolean>(false);
   const [expandedList, setExpandedList] = useState<number[]>([]);
 
@@ -14,7 +14,7 @@ export const AccordionHideOrShowSectionExample = () => {
   }, [expandedList.length]);
 
   const expandOrCollapseAll = () => {
-    setExpandedAll((prev) => {
+    setExpandedAll(prev => {
       const newState = !prev;
       setExpandedList(newState ? [1, 2, 3, 4] : []);
       return newState;
@@ -22,21 +22,22 @@ export const AccordionHideOrShowSectionExample = () => {
   };
 
   const updateAccordion = (order: number, isOpen: boolean) => {
-    setExpandedList((prev) => {
+    setExpandedList(prev => {
       if (isOpen) {
-        return prev.includes(order) ? prev: [...prev, order];
+        return prev.includes(order) ? prev : [...prev, order];
       }
-      return prev.filter((item) => item !== order);
+      return prev.filter(item => item !== order);
     });
-  }
+  };
   return (
     <Sandbox fullWidth skipRender>
       {/*Angular*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
           import {Component, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
                 
           @Component({
@@ -67,13 +68,15 @@ export const AccordionHideOrShowSectionExample = () => {
             }
           }
     `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags="angular"
+          allowCopy={true}
+          code={`
           <goa-button type="tertiary" mb="m" (_click)="onClick()">
             {{ accordionStatus }}
           </goa-button>
@@ -94,13 +97,15 @@ export const AccordionHideOrShowSectionExample = () => {
             Yes, our digital service is designed with accessibility in mind. <a href="#">More information on accessibility.</a>
           </goa-accordion>
         `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
           export class ExampleComponent {
             expandedList: boolean[] = [false, false, false, false];
             expandedAll = false;
@@ -123,13 +128,15 @@ export const AccordionHideOrShowSectionExample = () => {
             }
           }
     `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="html"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="html"
+          tags="angular"
+          allowCopy={true}
+          code={`
                 <goab-button type="tertiary" mb="m" (onClick)="onClick()">
                   {{ accordionStatus }}
                 </goab-button>
@@ -150,7 +157,8 @@ export const AccordionHideOrShowSectionExample = () => {
                   Yes, our digital service is designed with accessibility in mind. <a href="#">More information on accessibility.</a>
                 </goab-accordion>
               `}
-      />}
+        />
+      )}
 
       {/*React*/}
       <CodeSnippet
@@ -183,11 +191,12 @@ export const AccordionHideOrShowSectionExample = () => {
               `}
       />
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                <GoAButton type="tertiary" mb="m" onClick={() => expandOrCollapseAll()}>
                   {expandedAll ? "Hide all sections" : "Show all sections"}
                </GoAButton>
@@ -208,13 +217,15 @@ export const AccordionHideOrShowSectionExample = () => {
                   Yes, our digital service is designed with accessibility in mind. <a href="">More information on accessibility.</a>
                </GoAAccordion>
               `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                <GoabButton type="tertiary" mb="m" onClick={() => expandOrCollapseAll()}>
                   {expandedAll ? "Hide all sections" : "Show all sections"}
                </GoabButton>
@@ -235,30 +246,51 @@ export const AccordionHideOrShowSectionExample = () => {
                   Yes, our digital service is designed with accessibility in mind. <a href="">More information on accessibility.</a>
                </GoabAccordion>
               `}
-      />}
+        />
+      )}
 
       <GoabButton type="tertiary" mb="m" onClick={() => expandOrCollapseAll()}>
         {expandedAll ? "Hide all sections" : "Show all sections"}
       </GoabButton>
 
-      <GoabAccordion open={expandedList.includes(1)} heading="How do I create an account?" headingSize="medium" onChange={(open) => updateAccordion(1, open)}>
+      <GoabAccordion
+        open={expandedList.includes(1)}
+        heading="How do I create an account?"
+        headingSize="medium"
+        onChange={open => updateAccordion(1, open)}
+      >
         To create an account you will need to contact your office admin.
       </GoabAccordion>
 
-      <GoabAccordion open={expandedList.includes(2)} heading="What verification is needed to sign documents digitally?" headingSize="medium" onChange={(open) => updateAccordion(2, open)}>
+      <GoabAccordion
+        open={expandedList.includes(2)}
+        heading="What verification is needed to sign documents digitally?"
+        headingSize="medium"
+        onChange={open => updateAccordion(2, open)}
+      >
         You will need to verify your identity through our two factor authentication in addition to
         the digital signature.
       </GoabAccordion>
 
-      <GoabAccordion open={expandedList.includes(3)} heading="Can I track the status of my service requests online?" headingSize="medium" onChange={(open) => updateAccordion(3, open)}>
+      <GoabAccordion
+        open={expandedList.includes(3)}
+        heading="Can I track the status of my service requests online?"
+        headingSize="medium"
+        onChange={open => updateAccordion(3, open)}
+      >
         Yes, you can see the status of your application on the main service dashboard when you
-        login. You will receive updates and notifications in your email as your request
-        progresses.
+        login. You will receive updates and notifications in your email as your request progresses.
       </GoabAccordion>
 
-      <GoabAccordion open={expandedList.includes(4)} heading="Are there accessibility features for people with disabilities?" headingSize="medium" onChange={(open) => updateAccordion(4, open)}>
-        Yes, our digital service is designed with accessibility in mind. <a href="">More information on accessibility.</a>
+      <GoabAccordion
+        open={expandedList.includes(4)}
+        heading="Are there accessibility features for people with disabilities?"
+        headingSize="medium"
+        onChange={open => updateAccordion(4, open)}
+      >
+        Yes, our digital service is designed with accessibility in mind.{" "}
+        <a href="">More information on accessibility.</a>
       </GoabAccordion>
     </Sandbox>
-  )
-}
+  );
+};

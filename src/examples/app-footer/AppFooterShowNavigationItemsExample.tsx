@@ -2,8 +2,9 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabAppFooter,
   GoabAppFooterMetaSection,
-  GoabAppFooterNavSection, GoabAppFooterProps,
-  GoabFooterNavSectionProps
+  GoabAppFooterNavSection,
+  GoabAppFooterProps,
+  GoabFooterNavSectionProps,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useState } from "react";
@@ -18,7 +19,7 @@ type CastingType = {
 };
 
 export const AppFooterShowNavigationItemsExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
   const [appFooterNavBindings, setAppFooterNavBindings] = useState<ComponentBinding[]>([
     {
@@ -45,14 +46,14 @@ export const AppFooterShowNavigationItemsExample = () => {
     heading: "",
   });
   const [footerProps, setFooterProps] = useState<FooterPropsType>({
-    maxContentWidth: "100%"
+    maxContentWidth: "100%",
   });
 
   function onSandbox2Change(bindings: ComponentBinding[], props: Record<string, unknown>) {
     const footerProps = { maxContentWidth: props.maxContentWidth };
     const footerNavSectionProps = {
       heading: props.heading || "",
-      maxColumnCount: props.maxColumnCount || 1
+      maxColumnCount: props.maxColumnCount || 1,
     };
 
     setFooterProps(footerProps as CastingType);
@@ -65,14 +66,24 @@ export const AppFooterShowNavigationItemsExample = () => {
       properties={appFooterNavBindings}
       onChange={onSandbox2Change}
       skipRenderOnly={"angular"}
-      fullWidth>
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
-                <goa-app-footer ${propsToString(footerProps as Record<string, string>, "angular", "old")}>
-                  <goa-app-footer-nav-section slot="nav" ${propsToString(footerNavSectionProps as Record<string, string>, "angular", "old")}>
+      fullWidth
+    >
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                <goa-app-footer ${propsToString(
+                  footerProps as Record<string, string>,
+                  "angular",
+                  "old"
+                )}>
+                  <goa-app-footer-nav-section slot="nav" ${propsToString(
+                    footerNavSectionProps as Record<string, string>,
+                    "angular",
+                    "old"
+                  )}>
                     <a href="a.html">
                       Arts and culture
                     </a>
@@ -120,15 +131,25 @@ export const AppFooterShowNavigationItemsExample = () => {
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
                `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
-                <goab-app-footer ${propsToString(footerProps as Record<string, string>, "angular", "new")}>
-                  <goab-app-footer-nav-section slot="nav" ${propsToString(footerNavSectionProps as Record<string, string|number>, "angular", "new")}>
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
+                <goab-app-footer ${propsToString(
+                  footerProps as Record<string, string>,
+                  "angular",
+                  "new"
+                )}>
+                  <goab-app-footer-nav-section slot="nav" ${propsToString(
+                    footerNavSectionProps as Record<string, string | number>,
+                    "angular",
+                    "new"
+                  )}>
                   <a href="a.html">
                     Arts and culture
                   </a>
@@ -176,7 +197,8 @@ export const AppFooterShowNavigationItemsExample = () => {
                 </goab-app-footer-meta-section>
               </goab-app-footer>
                `}
-      />}
+        />
+      )}
 
       <GoabAppFooter {...footerProps}>
         <GoabAppFooterNavSection {...footerNavSectionProps}>
@@ -199,5 +221,5 @@ export const AppFooterShowNavigationItemsExample = () => {
         </GoabAppFooterMetaSection>
       </GoabAppFooter>
     </Sandbox>
-  )
-}
+  );
+};

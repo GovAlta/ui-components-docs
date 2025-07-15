@@ -1,9 +1,4 @@
-import {
-  GoabBadge,
-  GoabContainer,
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -23,7 +18,8 @@ const componentName = "Tabs";
 const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
 export default function TabsPage() {
   const { version } = useContext(LanguageVersionContext);
   const oldComponentProperties: ComponentProperty[] = [
@@ -283,7 +279,6 @@ export default function TabsPage() {
               properties={tabProperties}
               oldProperties={oldTabProperties}
             />
-
           </GoabTab>
           <GoabTab
             heading={

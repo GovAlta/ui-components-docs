@@ -17,10 +17,9 @@ export default function DateFormatPage() {
         <div
           className="example"
           style={{
-
-
             textAlign: "center",
-          }}>
+          }}
+        >
           March 14, 2021
         </div>
       </GoabContainer>
@@ -39,7 +38,8 @@ export default function DateFormatPage() {
           className="example"
           style={{
             textAlign: "center",
-          }}>
+          }}
+        >
           <strong>Month date, Year</strong> (e.g., March 14, 2021)
         </div>
       </GoabContainer>
@@ -70,7 +70,8 @@ export default function DateFormatPage() {
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity.">
+            description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity."
+          >
             <div className="example">March 12, 21</div>
           </DoDont>
         </GoabGrid>
@@ -115,7 +116,8 @@ export default function DateFormatPage() {
         <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
-            description="Use the same format as the long-form: month, cardinal date, year.">
+            description="Use the same format as the long-form: month, cardinal date, year."
+          >
             <div className="example">Mar 14, 2021</div>
           </DoDont>
         </GoabGrid>
@@ -123,12 +125,14 @@ export default function DateFormatPage() {
         <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="dont"
-            description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity.">
+            description="Don’t use two digit abbreviations for the year, as this adds confusion and ambiguity."
+          >
             <div className="example">Mar 12, 21</div>
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t use other punctuation, other than a comma, in the date expression.">
+            description="Don’t use other punctuation, other than a comma, in the date expression."
+          >
             <div className="example">Mar. 12, 2021</div>
           </DoDont>
           <DoDont type="dont" description="Don’t use capital letters for the month abbreviation.">
@@ -198,7 +202,8 @@ export default function DateFormatPage() {
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t use other punctuation, other than a comma, in the date expression.">
+            description="Don’t use other punctuation, other than a comma, in the date expression."
+          >
             <div className="example">Mon, Mar 12, 2021</div>
           </DoDont>
           <DoDont type="dont" description="Don’t forget to delineate day and month with a comma.">
@@ -241,7 +246,8 @@ export default function DateFormatPage() {
         <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="do"
-            description="Use the same format: day, month cardinal date, year at XX:XX am/pm">
+            description="Use the same format: day, month cardinal date, year at XX:XX am/pm"
+          >
             <div className="example">Monday, March 14, 2021 at 3:30 pm</div>
           </DoDont>
         </GoabGrid>
@@ -319,7 +325,8 @@ export default function DateFormatPage() {
         <GoabGrid minChildWidth={minGridWidth}>
           <DoDont
             type="generic"
-            description="12-month timeline highlighting those that pertain to daylight time.">
+            description="12-month timeline highlighting those that pertain to daylight time."
+          >
             <div className="month-container">
               <div className="month">Jan</div>
               <div className="month">Feb</div>
@@ -340,19 +347,22 @@ export default function DateFormatPage() {
         <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl">
           <DoDont
             type="do"
-            description="Use standard time between the months of November and March.">
+            description="Use standard time between the months of November and March."
+          >
             <img src="/images/date-st.png" width="80%"></img>
           </DoDont>
           <DoDont
             type="do"
-            description="Use daylight time between the months of April and October.">
+            description="Use daylight time between the months of April and October."
+          >
             <img src="/images/date-dst.png" width="80%"></img>
           </DoDont>
         </GoabGrid>
         <GoabGrid minChildWidth={minGridWidth} mt="2xl">
           <DoDont
             type="dont"
-            description="Don’t wrap the three-letter abbreviation in parentheses.">
+            description="Don’t wrap the three-letter abbreviation in parentheses."
+          >
             <div className="example">4:43pm (MST)</div>
           </DoDont>
         </GoabGrid>

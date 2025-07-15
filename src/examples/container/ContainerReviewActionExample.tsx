@@ -2,17 +2,22 @@ import "./container-review-action-example.css";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
-  GoabBlock, GoabButton,
-  GoabContainer, GoabDropdown, GoabDropdownItem,
+  GoabBlock,
+  GoabButton,
+  GoabContainer,
+  GoabDropdown,
+  GoabDropdownItem,
   GoabFormItem,
   GoabGrid,
-  GoabRadioGroup, GoabRadioItem, GoabTextarea
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabTextarea,
 } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const ContainerReviewActionExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <Sandbox fullWidth flags={["reactive"]}>
       <CodeSnippet
@@ -48,11 +53,12 @@ export const ContainerReviewActionExample = () => {
           `}
       />
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
                   export class ExampleComponent {
                     form!: FormGroup;
                     constructor(private fb: FormBuilder) {
@@ -66,13 +72,15 @@ export const ContainerReviewActionExample = () => {
                     }
                   }  
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={"react"}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={"react"}
+          allowCopy={true}
+          code={`
         const radioGroupOnChange = (event: GoabRadioGroupOnChangeDetail) => {
           console.log(event.value);
         };
@@ -86,7 +94,8 @@ export const ContainerReviewActionExample = () => {
           console.log('clicked!');
         };  
         `}
-      />}
+        />
+      )}
 
       <GoabGrid minChildWidth="315px">
         <GoabContainer accent="thin" type="non-interactive">
@@ -116,32 +125,20 @@ export const ContainerReviewActionExample = () => {
           <h5 className="container-example-4--h5">Docket number(s) $ charges</h5>
           <GoabContainer type="non-interactive">
             <h6 className="container-example-4--h6">1) 12345678</h6>
-            <p className="container-example-4--container-content">
-              CC 334(1) - Theft under $5000
-            </p>
-            <p className="container-example-4--container-content">
-              CC 268(1) - Aggravated assult
-            </p>
+            <p className="container-example-4--container-content">CC 334(1) - Theft under $5000</p>
+            <p className="container-example-4--container-content">CC 268(1) - Aggravated assult</p>
           </GoabContainer>
 
           <GoabContainer type="non-interactive">
             <h6 className="container-example-4--h6">2) 12345678</h6>
-            <p className="container-example-4--container-content">
-              CC 334(1) - Theft under $5000
-            </p>
-            <p className="container-example-4--container-content">
-              CC 268(1) - Aggravated assult
-            </p>
+            <p className="container-example-4--container-content">CC 334(1) - Theft under $5000</p>
+            <p className="container-example-4--container-content">CC 268(1) - Aggravated assult</p>
           </GoabContainer>
 
           <GoabContainer type="non-interactive">
             <h6 className="container-example-4--h6">3) 12345678</h6>
-            <p className="container-example-4--container-content">
-              CC 334(1) - Theft under $5000
-            </p>
-            <p className="container-example-4--container-content">
-              CC 268(1) - Aggravated assult
-            </p>
+            <p className="container-example-4--container-content">CC 334(1) - Theft under $5000</p>
+            <p className="container-example-4--container-content">CC 268(1) - Aggravated assult</p>
           </GoabContainer>
         </GoabContainer>
         <GoabContainer accent="thin" width={"content"}>
@@ -165,7 +162,8 @@ export const ContainerReviewActionExample = () => {
                 <GoabDropdownItem value="2" label="Eligibility Criteria Not Met"></GoabDropdownItem>
                 <GoabDropdownItem
                   value="3"
-                  label="Documentation Verification Failure"></GoabDropdownItem>
+                  label="Documentation Verification Failure"
+                ></GoabDropdownItem>
               </GoabDropdown>
             </GoabFormItem>
 
@@ -180,5 +178,5 @@ export const ContainerReviewActionExample = () => {
         </GoabContainer>
       </GoabGrid>
     </Sandbox>
-  )
-}
+  );
+};

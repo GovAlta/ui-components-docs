@@ -1,7 +1,4 @@
-import {
-  GoabTab,
-  GoabTabs
-} from "@abgov/react-components";
+import { GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import css from "./patterns.module.css";
 import { ReviewPageExamples } from "@examples/review-page/ReviewPageExamples";
@@ -13,7 +10,8 @@ export default function ReviewPage() {
       <h3>Let users check answers before submitting information to a service.</h3>
       <ComponentContent
         contentClassName="question-page"
-        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])"
+      >
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
             <ReviewPageExamples />

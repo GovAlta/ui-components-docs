@@ -1,31 +1,33 @@
 export function toKebabCase(str: string) {
   return str
-  .replace(/\s+/g, '-')        // Replace spaces with -
-  .replace(/_/g, '-')          // Replace underscores with -
-  .replace(/([a-z])([A-Z])/g, '$1-$2') // Convert camelCase to kebab-case
-  .toLowerCase();              // Convert to lowercase
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/_/g, "-") // Replace underscores with -
+    .replace(/([a-z])([A-Z])/g, "$1-$2") // Convert camelCase to kebab-case
+    .toLowerCase(); // Convert to lowercase
 }
 
 export const toSentenceCase = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
-export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Record<string, number>> {
-  const token =
-    import.meta.env.VITE_GITHUB_TOKEN ||
-    import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
+export async function fetchAllIssueCounts(
+  cards: { name: string }[]
+): Promise<Record<string, number>> {
+  const token = import.meta.env.VITE_GITHUB_TOKEN || import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
 
   if (!token) {
     console.error("GitHub token not provided");
     return {};
   }
 
-  const queryFields = cards.map((card) => {
-    const alias = card.name.replace(/\s+/g, "").toLowerCase();
-    const label = card.name.charAt(0).toUpperCase() + card.name.slice(1).toLowerCase();
-    const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
-    return `${alias}: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) { issueCount }`;
-  }).join("\n");
+  const queryFields = cards
+    .map(card => {
+      const alias = card.name.replace(/\s+/g, "").toLowerCase();
+      const label = card.name.charAt(0).toUpperCase() + card.name.slice(1).toLowerCase();
+      const labelQuery = label.includes(" ") ? `\\"${label}\\"` : label;
+      return `${alias}: search(query: "is:issue is:open repo:GovAlta/ui-components label:${labelQuery}", type: ISSUE, first: 1) { issueCount }`;
+    })
+    .join("\n");
 
   const graphQLQuery = `
     query {
@@ -38,9 +40,9 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ query: graphQLQuery })
+      body: JSON.stringify({ query: graphQLQuery }),
     });
 
     const result = await response.json();
@@ -50,12 +52,10 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
     }
 
     const issueCounts: Record<string, number> = {};
-    cards.forEach((card) => {
+    cards.forEach(card => {
       const alias = card.name.replace(/\s+/g, "").toLowerCase();
       issueCounts[card.name] =
-        result.data[alias] && result.data[alias].issueCount
-          ? result.data[alias].issueCount
-          : 0;
+        result.data[alias] && result.data[alias].issueCount ? result.data[alias].issueCount : 0;
     });
 
     return issueCounts;
@@ -66,9 +66,7 @@ export async function fetchAllIssueCounts(cards: { name: string }[]): Promise<Re
 }
 
 export async function fetchIssueCount(label: string): Promise<number | null> {
-  const token =
-    import.meta.env.VITE_GITHUB_TOKEN ||
-    import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
+  const token = import.meta.env.VITE_GITHUB_TOKEN || import.meta.env.VITE_GITHUB_TOKEN_ALTERNATE;
 
   if (!token) {
     console.error("GitHub token not provided");
@@ -90,9 +88,9 @@ export async function fetchIssueCount(label: string): Promise<number | null> {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ query })
+      body: JSON.stringify({ query }),
     });
 
     const result = await response.json();

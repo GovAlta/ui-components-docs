@@ -5,7 +5,8 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303450";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303450";
 
 export default function ListPage() {
   return (
@@ -16,9 +17,8 @@ export default function ListPage() {
         description="Organize information into brief and clear groups."
         githubLink="List"
         figmaLink={FIGMA_LINK}
-        relatedComponents={[
-          { link: "/components/details", name: "Details" },
-        ]}      />
+        relatedComponents={[{ link: "/components/details", name: "Details" }]}
+      />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab
@@ -29,9 +29,7 @@ export default function ListPage() {
               </>
             }
           >
-            <SandboxHeader
-              exampleTitle="Ordered list">
-            </SandboxHeader>
+            <SandboxHeader exampleTitle="Ordered list"></SandboxHeader>
             <GoabContainer mt="none" mb="none">
               <ol className="goa-ordered-list">
                 <li>
@@ -143,9 +141,7 @@ export default function ListPage() {
             `}
             />
 
-            <SandboxHeader
-              exampleTitle="Unordered list">
-            </SandboxHeader>
+            <SandboxHeader exampleTitle="Unordered list"></SandboxHeader>
             <GoabContainer mt="none" mb="none">
               <ul className="goa-unordered-list">
                 <li>Milk</li>
@@ -199,7 +195,6 @@ export default function ListPage() {
           <GoabTab heading="Design">
             <DesignEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </>

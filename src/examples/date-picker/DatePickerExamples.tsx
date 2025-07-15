@@ -4,11 +4,8 @@ import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.
 export const DatePickerExamples = () => {
   return (
     <>
-      <SandboxHeader
-        exampleTitle="Reset example"
-        figmaExample="">
-      </SandboxHeader>
+      <SandboxHeader exampleTitle="Reset example" figmaExample=""></SandboxHeader>
       <DatePickerResetExample />
     </>
-  )
-}
+  );
+};

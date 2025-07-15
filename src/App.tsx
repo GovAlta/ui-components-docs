@@ -12,9 +12,7 @@ import Root from "@routes/root";
 import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
 import "./index.css";
 
-import {
-  VersionUpdateNotificationProvider
-} from "@components/version-language-switcher/VersionUpdateNotificationContext";
+import { VersionUpdateNotificationProvider } from "@components/version-language-switcher/VersionUpdateNotificationContext";
 import { SiteWideNotificationProvider } from "@contexts/SiteWideNotificationContext";
 
 import HomePage from "@routes/home";
@@ -61,7 +59,10 @@ import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuid
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
 import { ComponentsRouter, PatternsRouter } from "./versioned-router";
 import ComponentNotFound from "@routes/not-found/NotFound.tsx";
-import { LanguageVersionContext, LanguageVersionProvider } from "@contexts/LanguageVersionContext.tsx";
+import {
+  LanguageVersionContext,
+  LanguageVersionProvider,
+} from "@contexts/LanguageVersionContext.tsx";
 import DevelopersUpgradePage from "@routes/get-started/developers/upgrade-guide/DevelopersUpgrade.tsx";
 
 // Foundations Pages

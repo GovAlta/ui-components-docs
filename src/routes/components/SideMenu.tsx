@@ -20,19 +20,19 @@ import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.t
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24089-474089";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24089-474089";
 
 const componentName = "Side menu";
-const description =
-  "A side navigation that helps the user navigate between pages.";
+const description = "A side navigation that helps the user navigate between pages.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [
   { link: "/components/header", name: "Header" },
-  { link: "/patterns/layout", name: "Layout" }
+  { link: "/patterns/layout", name: "Layout" },
 ];
 
 export default function SideMenuPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
   const oldSideMenuGroupProperties: ComponentProperty[] = [
     {
@@ -132,18 +132,19 @@ export default function SideMenuPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox fullWidth allow={["div"]} skipRender>
-
               {/*Angular code*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <div style="max-width: 250px">
                   <goa-side-menu>
                     <goa-side-menu-heading>
@@ -167,13 +168,15 @@ export default function SideMenuPage() {
                   </goa-side-menu>
                 </div>
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <div style="max-width: 250px">
                   <goab-side-menu>
                     <goab-side-menu-heading>
@@ -197,14 +200,16 @@ export default function SideMenuPage() {
                   </goab-side-menu>
                 </div>
               `}
-              />}
+                />
+              )}
 
               {/*React code*/}
-              {version === "old" && <CodeSnippet
-                allowCopy={true}
-                lang="typescript"
-                tags={["react"]}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  allowCopy={true}
+                  lang="typescript"
+                  tags={["react"]}
+                  code={`
                   <div style={{ maxWidth: "250px" }}>
                   <GoASideMenu>
                     <GoASideMenuHeading>Nav section 1</GoASideMenuHeading>
@@ -225,13 +230,15 @@ export default function SideMenuPage() {
                   </GoASideMenu>
                 </div>
                 `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                allowCopy={true}
-                lang="typescript"
-                tags={["react"]}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  allowCopy={true}
+                  lang="typescript"
+                  tags={["react"]}
+                  code={`
                   <div style={{ maxWidth: "250px" }}>
                   <GoabSideMenu>
                   <GoabSideMenuHeading>Nav section 1</GoabSideMenuHeading>
@@ -252,7 +259,8 @@ export default function SideMenuPage() {
                 </GoabSideMenu>
                 </div>
                 `}
-              />}
+                />
+              )}
 
               <div style={{ maxWidth: "250px" }}>
                 <GoabSideMenu>
@@ -261,7 +269,8 @@ export default function SideMenuPage() {
                   <a>Profile</a>
                   <GoabSideMenuHeading
                     meta={<GoabBadge type="midtone" content="Details"></GoabBadge>}
-                    icon="home">
+                    icon="home"
+                  >
                     Nav section 2
                   </GoabSideMenuHeading>
                   <a>About</a>

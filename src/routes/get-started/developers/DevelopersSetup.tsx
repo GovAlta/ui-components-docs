@@ -6,44 +6,56 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function DevelopersSetupPage() {
   return (
     <div className="developer-setup">
-    <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Setup</GoabText>
-      <GoabText size="body-l" mb="m">Once you are setup, you can use the project template to quickly get
-        started.</GoabText>
-      <GoabText size="body-m" mb="2xl"><a href="#templates">View project templates</a></GoabText>
+      <ComponentContent tocCssQuery="h2[id], h3[id]">
+        <GoabText size="heading-m" mt="xl" mb={"xs"}>
+          Developers
+        </GoabText>
+        <GoabText size="heading-xl" mb="m">
+          Setup
+        </GoabText>
+        <GoabText size="body-l" mb="m">
+          Once you are setup, you can use the project template to quickly get started.
+        </GoabText>
+        <GoabText size="body-m" mb="2xl">
+          <a href="#templates">View project templates</a>
+        </GoabText>
 
+        <h2 id="angular">Angular UI components</h2>
+        <GoabText size="body-m" mt="l" mb="l">
+          This is the web component library and utilizes Angular's web component integration.
+        </GoabText>
 
-      <h2 id="angular">Angular UI components</h2>
-      <GoabText size="body-m" mt="l" mb="l">This is the web component library and utilizes Angular's web component
-        integration.</GoabText>
-
-      <GoabText size="heading-s" mt="xl" mb="s">1. Add Dependencies</GoabText>
-      <CodeSnippet
-        lang="typescript"
-        allowCopy={true}
-        code={`
+        <GoabText size="heading-s" mt="xl" mb="s">
+          1. Add Dependencies
+        </GoabText>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
           npm i @abgov/web-components
           npm i @abgov/angular-components
         `}
-      />
+        />
 
-      <GoabText size="heading-s" mt="xl" mb="s">2. Link ionicons in app/index.html Add the following in the head
-        element</GoabText>
-      <CodeSnippet
-        lang="typescript"
-        allowCopy={true}
-        code={`
+        <GoabText size="heading-s" mt="xl" mb="s">
+          2. Link ionicons in app/index.html Add the following in the head element
+        </GoabText>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
           <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
           <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
         `}
-      />
+        />
 
-      <GoabText size="heading-s" mt="xl" mb="s">3. Update src/app/app.module.ts as per the four steps below</GoabText>
-      <CodeSnippet
-        lang="typescript"
-        allowCopy={true}
-        code={`
+        <GoabText size="heading-s" mt="xl" mb="s">
+          3. Update src/app/app.module.ts as per the four steps below
+        </GoabText>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`
           // 1. Import the CUSTOM_ELEMENTS_SCHEMA
           import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
           // 2. Import the libs
@@ -64,24 +76,28 @@ export default function DevelopersSetupPage() {
           })
           export class AppModule {}
         `}
-      />
+        />
 
-      <GoabText size="heading-s" mt="xl" mb="s">4. Add the styles link in the src/styles.css file</GoabText>
-      <CodeSnippet
-        lang="typescript"
-        allowCopy={true}
-        code={`@import "@abgov/web-components/index.css";`}
-      />
+        <GoabText size="heading-s" mt="xl" mb="s">
+          4. Add the styles link in the src/styles.css file
+        </GoabText>
+        <CodeSnippet
+          lang="typescript"
+          allowCopy={true}
+          code={`@import "@abgov/web-components/index.css";`}
+        />
 
-      <GoabDivider mt="2xl" mb="2xl" />
+        <GoabDivider mt="2xl" mb="2xl" />
 
-      <h2 id="react">React UI components</h2>
-      <GoabText size="body-m" mt="l" mb="l">
+        <h2 id="react">React UI components</h2>
+        <GoabText size="body-m" mt="l" mb="l">
           This library contains React components which wrap the Government of Alberta Web
           Components.
-      </GoabText>
+        </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">1. Add Dependencies</GoabText>
+        <GoabText size="heading-s" mt="xl" mb="s">
+          1. Add Dependencies
+        </GoabText>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
@@ -91,8 +107,9 @@ export default function DevelopersSetupPage() {
         `}
         />
 
-      <GoabText size="heading-s" mt="xl" mb="s">2. Link ionicons in app/index.html Add the following to the head
-        element</GoabText>
+        <GoabText size="heading-s" mt="xl" mb="s">
+          2. Link ionicons in app/index.html Add the following to the head element
+        </GoabText>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
@@ -102,28 +119,30 @@ export default function DevelopersSetupPage() {
         `}
         />
 
-      <GoabText size="heading-s" mt="xl" mb="s">3. Import the web-component styles in the src/index.css file</GoabText>
+        <GoabText size="heading-s" mt="xl" mb="s">
+          3. Import the web-component styles in the src/index.css file
+        </GoabText>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
 
-      <GoabDivider mt="2xl" mb="2xl" />
+        <GoabDivider mt="2xl" mb="2xl" />
 
-      <h2 id="web-components">Web components</h2>
-      <GoabText size="body-m" mt="l" mb="l">This library contains react components from the Government of
-        Alberta.</GoabText>
+        <h2 id="web-components">Web components</h2>
+        <GoabText size="body-m" mt="l" mb="l">
+          This library contains react components from the Government of Alberta.
+        </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">1. Add Dependencies</GoabText>
-        <CodeSnippet
-          lang="typescript"
-          allowCopy={true}
-          code={`npm i @abgov/web-components`}
-        />
+        <GoabText size="heading-s" mt="xl" mb="s">
+          1. Add Dependencies
+        </GoabText>
+        <CodeSnippet lang="typescript" allowCopy={true} code={`npm i @abgov/web-components`} />
 
-      <GoabText size="heading-s" mt="xl" mb="s">2. Link ionicons in index.html Add the following in the head
-        element</GoabText>
+        <GoabText size="heading-s" mt="xl" mb="s">
+          2. Link ionicons in index.html Add the following in the head element
+        </GoabText>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
@@ -133,36 +152,36 @@ export default function DevelopersSetupPage() {
         `}
         />
 
-      <GoabText size="heading-s" mt="xl" mb="s">3. Import the web-components into src/main.js:</GoabText>
-        <CodeSnippet
-          lang="typescript"
-          allowCopy={true}
-          code={`import "@abgov/web-components";`}
-        />
+        <GoabText size="heading-s" mt="xl" mb="s">
+          3. Import the web-components into src/main.js:
+        </GoabText>
+        <CodeSnippet lang="typescript" allowCopy={true} code={`import "@abgov/web-components";`} />
 
-      <GoabText size="heading-s" mt="xl" mb="s">
+        <GoabText size="heading-s" mt="xl" mb="s">
           4. Add the styles link in the src/assets/main.css file or wherever your main css file is
           located:
-      </GoabText>
+        </GoabText>
         <CodeSnippet
           lang="typescript"
           allowCopy={true}
           code={`@import "@abgov/web-components/index.css";`}
         />
 
-      <GoabDivider mt="2xl" mb="2xl" />
+        <GoabDivider mt="2xl" mb="2xl" />
 
-      <h2 id="templates">Angular/React templates</h2>
-      <GoabBlock gap="xl" mb="xl">
-        <a href="https://github.com/GovAlta/ui-components-angular-template" target="_blank">
-          Angular template
-        </a>
-        <a href="https://github.com/GovAlta/ui-components-react-template" target="_blank">
-          React template
-        </a>
-      </GoabBlock>
+        <h2 id="templates">Angular/React templates</h2>
+        <GoabBlock gap="xl" mb="xl">
+          <a href="https://github.com/GovAlta/ui-components-angular-template" target="_blank">
+            Angular template
+          </a>
+          <a href="https://github.com/GovAlta/ui-components-react-template" target="_blank">
+            React template
+          </a>
+        </GoabBlock>
 
-      <GoabText size="body-m" mt="l" mb="l">To use the templates, follow these steps:</GoabText>
+        <GoabText size="body-m" mt="l" mb="l">
+          To use the templates, follow these steps:
+        </GoabText>
         <ol>
           <li>
             Click the green <strong>Use this template</strong> button

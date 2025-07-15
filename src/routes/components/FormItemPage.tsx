@@ -11,17 +11,19 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
-  LegacyTestIdProperties, MarginProperty,
-  TestIdProperty
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { FormItemExamples } from "@examples/form-item/FormItemExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27284-300347";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27284-300347";
 
 export default function FormItemPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [formItemProps, setFormItemProps] = useState({
     label: "First name",
   });
@@ -112,13 +114,15 @@ export default function FormItemPage() {
       name: "error",
       type: "string | ReactNode",
       lang: "react",
-      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+      description:
+        "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
     {
       name: "error",
       type: "string | slot",
       lang: "angular",
-      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+      description:
+        "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
     {
       name: "requirement",
@@ -174,13 +178,15 @@ export default function FormItemPage() {
       name: "error",
       type: "string | ReactNode",
       lang: "react",
-      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+      description:
+        "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
     {
       name: "error",
       type: "string",
       lang: "angular",
-      description: "Error text displayed under the form field. Leave blank to indicate valid field.",
+      description:
+        "Error text displayed under the form field. Leave blank to indicate valid field.",
     },
     {
       name: "requirement",
@@ -196,7 +202,7 @@ export default function FormItemPage() {
     {
       name: "maxWidth",
       type: "string",
-      description: "Sets the maximum width of the form item."
+      description: "Sets the maximum width of the form item.",
     },
     TestIdProperty,
     MarginProperty,
@@ -204,10 +210,10 @@ export default function FormItemPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFormItemBindings(bindings);
-    setFormItemProps(props as { label: string;[key: string]: unknown });
+    setFormItemProps(props as { label: string; [key: string]: unknown });
   }
 
-  const noop = () => { };
+  const noop = () => {};
 
   return (
     <>
@@ -236,7 +242,8 @@ export default function FormItemPage() {
               properties={formItemBindings}
               onChange={onSandboxChange}
               flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}
-              allow={["form"]}>
+              allow={["form"]}
+            >
               {/* ************** Angular code snippets ****************/}
 
               {/*Old versions*/}

@@ -8,10 +8,11 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoabBadge,
   GoabFormItem,
-  GoabRadioGroup, GoabRadioGroupProps,
+  GoabRadioGroup,
+  GoabRadioGroupProps,
   GoabRadioItem,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
@@ -21,7 +22,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -34,19 +35,20 @@ const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/checkbox", name: "Checkbox" },
   { link: "/components/dropdown", name: "Dropdown" },
-  { link: "/components/form-item", name: "Form item" }
+  { link: "/components/form-item", name: "Form item" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=102-26";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=102-26";
 type ComponentPropsType = GoabRadioGroupProps;
 type CastingType = {
   name: string;
   value: string;
   [key: string]: unknown;
   onChange: (detail: GoabRadioGroupOnChangeDetail) => void;
-}
+};
 
 export default function RadioPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [radioProps, setRadioProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -79,7 +81,9 @@ export default function RadioPage() {
       value: "",
     },
   ]);
-  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic" });
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
+    label: "Basic",
+  });
 
   const oldRadioGroupProperties: ComponentProperty[] = [
     {
@@ -114,29 +118,25 @@ export default function RadioPage() {
     {
       name: "ariaLabel",
       lang: "react",
-      description:
-        "Defines how the text will be translated for the screen reader.",
+      description: "Defines how the text will be translated for the screen reader.",
       type: "string",
     },
     {
       name: "arialabel",
       lang: "angular",
-      description:
-        "Defines how the text will be translated for the screen reader.",
+      description: "Defines how the text will be translated for the screen reader.",
       type: "string",
     },
     {
       name: "arialabelledby",
       lang: "angular",
-      description:
-        "Refers to the element that contains the label of the radio group.",
+      description: "Refers to the element that contains the label of the radio group.",
       type: "string",
     },
     {
       name: "ariaLabelledBy",
       lang: "react",
-      description:
-        "Refers to the element that contains the label of the radio group.",
+      description: "Refers to the element that contains the label of the radio group.",
       type: "string",
     },
     {
@@ -180,8 +180,7 @@ export default function RadioPage() {
     },
     {
       name: "ariaLabel",
-      description:
-        "Defines how the text will be translated for the screen reader.",
+      description: "Defines how the text will be translated for the screen reader.",
       type: "string",
     },
     {
@@ -288,7 +287,7 @@ export default function RadioPage() {
     {
       name: "maxWidth",
       type: "string",
-      description: "Sets the maximum width of the radio."
+      description: "Sets the maximum width of the radio.",
     },
     {
       name: "ariaLabel",
@@ -303,7 +302,7 @@ export default function RadioPage() {
     setRadioBindings(bindings);
   }
 
-  const noop = () => { };
+  const noop = () => {};
 
   return (
     <>
@@ -329,7 +328,8 @@ export default function RadioPage() {
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
               allow={["form"]}
-              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}
+            >
               {/*============ Angular code ========== */}
               {version === "old" && (
                 <CodeSnippet

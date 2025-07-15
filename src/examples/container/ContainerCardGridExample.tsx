@@ -29,8 +29,8 @@ export const ContainerCardGridExample = () => {
             Waitlist submission
           </a>
           <div className="container-example-3--container-content">
-            Enter and maintain information about the households waiting for affordable housing
-            with your organization.
+            Enter and maintain information about the households waiting for affordable housing with
+            your organization.
           </div>
         </GoabContainer>
 
@@ -67,8 +67,8 @@ export const ContainerCardGridExample = () => {
             Employment Opportunity
           </a>
           <div className="container-example-3--container-content">
-            Search for job openings, access career development tools, and receive
-            employment-related updates.
+            Search for job openings, access career development tools, and receive employment-related
+            updates.
           </div>
         </GoabContainer>
 
@@ -83,5 +83,5 @@ export const ContainerCardGridExample = () => {
         </GoabContainer>
       </GoabGrid>
     </Sandbox>
-  )
-}
+  );
+};

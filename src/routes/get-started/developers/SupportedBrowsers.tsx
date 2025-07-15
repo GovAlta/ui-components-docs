@@ -5,9 +5,14 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function SupportedBrowsersPage() {
   return (
     <ComponentContent>
-      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Supported browsers</GoabText>
-      <GoabText size="body-l" mb="2xl">The design system components are tested on the following browsers and devices:
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>
+        Developers
+      </GoabText>
+      <GoabText size="heading-xl" mb="m">
+        Supported browsers
+      </GoabText>
+      <GoabText size="body-l" mb="2xl">
+        The design system components are tested on the following browsers and devices:
       </GoabText>
 
       <GoabTable width="564px">

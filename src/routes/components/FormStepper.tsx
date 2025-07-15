@@ -128,7 +128,8 @@ export default function FormStepperPage() {
                 <GoabFormStepper
                   testId="foo"
                   onChange={event => setStep(+event.step)}
-                  {...formStepProps}>
+                  {...formStepProps}
+                >
                   <GoabFormStep text="Personal details" />
                   <GoabFormStep text="Employment history" />
                   <GoabFormStep text="References" />
@@ -291,7 +292,8 @@ export default function FormStepperPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }>
+            }
+          >
             <FormStepperExamples />
           </GoabTab>
 

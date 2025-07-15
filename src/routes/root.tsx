@@ -4,27 +4,21 @@ import {
   GoabAppFooterNavSection,
   GoabAppHeader,
   GoabMicrositeHeader,
-  GoabOneColumnLayout
+  GoabOneColumnLayout,
 } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import "./root.css";
 
-import {
-  MAX_CONTENT_WIDTH,
-} from "../global-constants.ts";
-
+import { MAX_CONTENT_WIDTH } from "../global-constants.ts";
 
 import VersionUpdateNotification from "@components/version-language-switcher/VersionUpdateNotification";
 import { HelpButton } from "@components/version-language-switcher/HelpButton";
-import {
-  VersionLanguageSwitcher
-} from "@components/version-language-switcher/VersionLanguageSwitcher";
+import { VersionLanguageSwitcher } from "@components/version-language-switcher/VersionLanguageSwitcher";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext";
 import { useContext } from "react";
 import SiteWideNotification from "@components/version-language-switcher/SiteWideNotification";
-
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,7 +36,6 @@ export default function Root() {
   const showNotification =
     location.pathname.startsWith("/components") || location.pathname.startsWith("/examples");
   const [visible, setVisibility] = useState<boolean>(false);
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -64,20 +57,27 @@ export default function Root() {
                 <VersionLanguageSwitcher />
                 <HelpButton />
               </>
-            } />
-          <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}
-                         fullMenuBreakpoint={996}>
+            }
+          />
+          <GoabAppHeader
+            heading="Design system"
+            maxContentWidth={MAX_CONTENT_WIDTH}
+            url={"/"}
+            fullMenuBreakpoint={996}
+          >
             <Link to="/get-started">Get started</Link>
             <Link to="/foundations">Foundations</Link>
             <Link to="/patterns">Patterns</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Tokens</Link>
             <Link to="/content/capitalization">Content</Link>
-            <Link to="/get-started/support" className="interactive">Get support</Link>
+            <Link to="/get-started/support" className="interactive">
+              Get support
+            </Link>
           </GoabAppHeader>
           {showNotification && <VersionUpdateNotification version={version} />}
           <SiteWideNotification />
-        <Outlet />
+          <Outlet />
         </section>
 
         <section slot="footer">
@@ -90,8 +90,12 @@ export default function Root() {
               <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
-              <Link to="/get-started/support/report-bug" target="_blank">Submit an issue</Link>
-              <Link to="https://goa-dio.slack.com/archives/C02PLLT9HQ9">#design-system-support</Link>
+              <Link to="/get-started/support/report-bug" target="_blank">
+                Submit an issue
+              </Link>
+              <Link to="https://goa-dio.slack.com/archives/C02PLLT9HQ9">
+                #design-system-support
+              </Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterMetaSection>
               <Link to="get-started/contribute">Contribute to the design system</Link>

@@ -70,6 +70,6 @@ export interface RadioBinding extends BaseBinding {
 }
 
 export interface DateBinding extends BaseBinding {
-  type: "date",
-  value?: Date|string;
+  type: "date";
+  value?: Date | string;
 }

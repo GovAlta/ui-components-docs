@@ -455,7 +455,8 @@ export const TextFieldRightAlignExample = () => {
             <GoabFormItem
               label="Price"
               helpText="The input number component is right aligned by default."
-              mb="xl">
+              mb="xl"
+            >
               <GoabInputNumber
                 onChange={noop}
                 name="price"
@@ -467,7 +468,8 @@ export const TextFieldRightAlignExample = () => {
             <GoabFormItem
               label="Quantity"
               helpText="You can set a number input to be left aligned."
-              mb="xl">
+              mb="xl"
+            >
               <GoabInputNumber onChange={noop} name="quantity" textAlign="left" width="7ch" />
             </GoabFormItem>
           </>

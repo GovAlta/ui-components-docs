@@ -16,7 +16,7 @@ export const DeviceWidthProvider: React.FC<DeviceWidthProviderProps> = ({ childr
 
   return (
     <DeviceWidthContext.Provider value={{ isDesktop, isMobile }}>
-  {children}
-  </DeviceWidthContext.Provider>
-);
+      {children}
+    </DeviceWidthContext.Provider>
+  );
 };

@@ -9,9 +9,12 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       " "
     );
 
-  constructor(properties: ComponentBinding[], version: LanguageVersion, protected variableNames: string[]) {
+  constructor(
+    properties: ComponentBinding[],
+    version: LanguageVersion,
+    protected variableNames: string[]
+  ) {
     super(properties, version);
-
   }
 
   setIsRoot(isRoot: boolean) {
@@ -32,7 +35,6 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
       _name = _name.substring(0, 1).toLowerCase() + _name.substring(1);
       return `(_${_name})="${name}($event)"`;
     }
-
 
     if (name === "onClick" || name === "onClose") {
       return `(${name})="${name}()"`;
@@ -83,7 +85,9 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (this.isDynamic(name)) {
       return this.#dynamicProp(name);
     }
-    return delimit ? `${this.version === "old" ? name.toLowerCase() : name}=[${items}]` : `${this.version === "old" ? name.toLowerCase(): name}=${items}`;
+    return delimit
+      ? `${this.version === "old" ? name.toLowerCase() : name}=[${items}]`
+      : `${this.version === "old" ? name.toLowerCase() : name}=${items}`;
   }
 
   componentNameToString(name: string): string {

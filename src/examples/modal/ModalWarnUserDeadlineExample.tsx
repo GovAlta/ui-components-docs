@@ -5,15 +5,18 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const ModalWarnUserDeadlineExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [warnCalloutModalOpen, setWarnCalloutModalOpen] = useState<boolean>();
   return (
-    <Sandbox skipRender
-             note={{
-               type: "important",
-               heading: "AlertDialog Accessibility",
-               content: "Do not make the modal closeable or add any focusable elements before the action button when using an AlertDialog. This ensures that the screen reader will announce the full content."
-             }}>
+    <Sandbox
+      skipRender
+      note={{
+        type: "important",
+        heading: "AlertDialog Accessibility",
+        content:
+          "Do not make the modal closeable or add any focusable elements before the action button when using an AlertDialog. This ensures that the screen reader will announce the full content.",
+      }}
+    >
       <GoabButton type="secondary" onClick={() => setWarnCalloutModalOpen(true)}>
         Save for later
       </GoabButton>
@@ -29,11 +32,12 @@ export const ModalWarnUserDeadlineExample = () => {
               I understand
             </GoabButton>
           </GoabButtonGroup>
-        }>
+        }
+      >
         <p>
           You’ve selected to adjourn a matter that is required to appear today. This Calgary court
-          location does not accept adjournment requests past 1PM MST. Please submit your
-          adjournment request as soon as possible.
+          location does not accept adjournment requests past 1PM MST. Please submit your adjournment
+          request as soon as possible.
         </p>
       </GoabModal>
 
@@ -154,5 +158,5 @@ export const ModalWarnUserDeadlineExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

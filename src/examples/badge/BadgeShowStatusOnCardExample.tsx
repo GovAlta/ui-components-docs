@@ -5,15 +5,16 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const BadgeShowStatusOnCardExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <Sandbox fullWidth skipRender>
       {/*Angular code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                 <goa-container type="non-interactive" accent="thick">
                     <div slot="title">Heading</div>
                     <div slot="actions">
@@ -22,12 +23,14 @@ export const BadgeShowStatusOnCardExample = () => {
                     Content
                 </goa-container>     
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                <goab-container type="non-interactive" accent="thick" [title]="title" [actions]="actions">
                 <ng-template #title>Heading</ng-template>
                 <ng-template #actions>
@@ -36,14 +39,16 @@ export const BadgeShowStatusOnCardExample = () => {
                   Content
                </goab-container>
           `}
-      />}
+        />
+      )}
 
       {/*React code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                     <GoAContainer
                         type="non-interactive"
                         accent="thick"
@@ -52,12 +57,14 @@ export const BadgeShowStatusOnCardExample = () => {
                         Content
                     </GoAContainer>
                  `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
             <GoabContainer
               type="non-interactive"
               accent="thick"
@@ -66,15 +73,17 @@ export const BadgeShowStatusOnCardExample = () => {
                 Content
             </GoabContainer>
           `}
-      />}
+        />
+      )}
 
       <GoabContainer
         type="non-interactive"
         accent="thick"
         heading="Heading"
-        actions={<GoabBadge type="important" content="Priority" />}>
+        actions={<GoabBadge type="important" content="Priority" />}
+      >
         Content
       </GoabContainer>
     </Sandbox>
-  )
-}
+  );
+};

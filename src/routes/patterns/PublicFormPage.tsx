@@ -26,8 +26,8 @@ export default function PublicFormPage() {
 
       <h2 id="toc-1">Form structure</h2>
       <p>
-        Use the public form structure focused on content, and asking the right questions to your user
-        to keep the interaction as simple as possible.
+        Use the public form structure focused on content, and asking the right questions to your
+        user to keep the interaction as simple as possible.
       </p>
 
       <h3 id="toc-1-1">Start with one idea per page</h3>
@@ -103,7 +103,8 @@ export default function PublicFormPage() {
 
       <h2 id="toc-3">Adding complexity</h2>
       <p>
-        Start by making sure that the content and questions you are asking the user are as simple as possible.
+        Start by making sure that the content and questions you are asking the user are as simple as
+        possible.
       </p>
 
       <div className={css.descriptionWithList}>
@@ -124,7 +125,10 @@ export default function PublicFormPage() {
         <h4>As the complexity of your form grows, consider: </h4>
         <ul>
           <li>adding simple text progress indicators to communicate progress</li>
-          <li>follow the one idea per page approach, and break the form into sections as needed using a task list page</li>
+          <li>
+            follow the one idea per page approach, and break the form into sections as needed using
+            a task list page
+          </li>
         </ul>
       </div>
 

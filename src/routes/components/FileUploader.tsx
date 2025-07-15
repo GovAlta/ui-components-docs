@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
-import { propsToString } from "@components/sandbox/BaseSerializer"
+import { propsToString } from "@components/sandbox/BaseSerializer";
 import {
   GoabBadge,
   GoabFileUploadCard,
@@ -9,7 +9,7 @@ import {
   GoabFileUploadInputProps,
   GoabFormItem,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import {
   ComponentProperties,
@@ -18,7 +18,10 @@ import {
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { MarginProperty, TestIdProperty } from "@components/component-properties/common-properties.ts";
+import {
+  MarginProperty,
+  TestIdProperty,
+} from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
@@ -36,10 +39,10 @@ interface Upload {
 class MockUploader implements Uploader {
   private processId?: any;
 
-  public onprogress: (percent: number) => void = (_: number) => { };
-  public onabort: () => void = () => { };
-  public onfail: (err: string) => void = (_: string) => { };
-  public oncomplete: () => void = () => { };
+  public onprogress: (percent: number) => void = (_: number) => {};
+  public onabort: () => void = () => {};
+  public onfail: (err: string) => void = (_: string) => {};
+  public oncomplete: () => void = () => {};
 
   upload(_url: string | ArrayBuffer) {
     let progress = 0;
@@ -65,9 +68,10 @@ const description = "Help users select and upload a file.";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/container", name: "Container" },
-  { link: "/components/progress-indicator", name: "Progress indicator" }
+  { link: "/components/progress-indicator", name: "Progress indicator" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=804-5767";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=804-5767";
 type ComponentPropsType = Omit<GoabFileUploadInputProps, "onSelectFile">;
 type CastingType = {
   maxFileSize: string;
@@ -75,7 +79,7 @@ type CastingType = {
 };
 
 export default function FileUploaderPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [fileUploaderProps, setFileUploaderProps] = useState<ComponentPropsType>({
     maxFileSize: "100MB",
   });
@@ -267,7 +271,6 @@ export default function FileUploaderPage() {
     },
   ];
 
-
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFileUploaderBindings(bindings);
     setFileUploaderProps(props as CastingType);
@@ -315,12 +318,17 @@ export default function FileUploaderPage() {
         githubLink="File uploader"
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code Playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
-
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
+            <Sandbox
+              properties={fileUploaderBindings}
+              onChange={onSandboxChange}
+              fullWidth
+              skipRender
+            >
               {/* ******* */}
               {/* Angular */}
               {/* ******* */}
@@ -357,11 +365,12 @@ export default function FileUploaderPage() {
 
               {/************* Angular old code snippets *******************/}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 export class FileUploadComponent {
                   uploads: Upload[] = [];
                   progressList: Record<string, number> = {};
@@ -395,15 +404,21 @@ export default function FileUploaderPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <goa-form-item label="Upload a file">
-                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps, "angular", version)}></goa-file-upload-input>
+                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(
+                    fileUploaderProps,
+                    "angular",
+                    version
+                  )}></goa-file-upload-input>
                   <goa-file-upload-card
                     *ngFor="let upload of uploads; index as i"
                     [type]="upload.file.type"
@@ -416,16 +431,17 @@ export default function FileUploaderPage() {
                   </goa-file-upload-card>              
                 </goa-form-item>
               `}
-              />}
-
+                />
+              )}
 
               {/************* Angular new code snippets *******************/}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 export class FileUploadComponent {
                   uploads: Upload[] = [];
                   progressList: Record<string, number> = {};
@@ -459,13 +475,15 @@ export default function FileUploaderPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <goab-form-item label="Upload a file">
                   <goab-file-upload-input variant="dragdrop" (onSelectFile)="uploadFile($event)" maxFileSize="100MB"></goab-file-upload-input>
                     <goab-file-upload-card
@@ -480,7 +498,8 @@ export default function FileUploaderPage() {
                   </goab-file-upload-card>
                 </goab-form-item>
               `}
-              />}
+                />
+              )}
 
               {/* ***** */}
               {/* React */}
@@ -519,11 +538,12 @@ export default function FileUploaderPage() {
               />
 
               {/************* React old code snippets *******************/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
               const [uploads, setUploads] = useState<Upload[]>([]);
               const [progressList, setProgressList] = useState<Record<string, number>>({});
 
@@ -554,15 +574,21 @@ export default function FileUploaderPage() {
               }
               reader.readAsDataURL(file);
             `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 <GoAFormItem label="Upload a file">
-                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps, "react", version)} />
+                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(
+                    fileUploaderProps,
+                    "react",
+                    version
+                  )} />
                   {uploads.map(upload => (
                     <GoAFileUploadCard
                       key={upload.file.name}
@@ -576,14 +602,16 @@ export default function FileUploaderPage() {
                   ))}
                 </GoAFormItem>
               `}
-              />}
+                />
+              )}
 
               {/************* React new code snippets *******************/}
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 const [uploads, setUploads] = useState<Upload[]>([]);
                 const [progressList, setProgressList] = useState<Record<string, number>>({});
 
@@ -616,15 +644,21 @@ export default function FileUploaderPage() {
                   reader.readAsDataURL(file);
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 <GoabFormItem label="Upload a file">
-                  <GoabFileUploadInput onSelectFile={(event: GoabFileUploadInputOnSelectFileDetail) => uploadFile(event.file)} ${propsToString(fileUploaderProps, "react", version)} />
+                  <GoabFileUploadInput onSelectFile={(event: GoabFileUploadInputOnSelectFileDetail) => uploadFile(event.file)} ${propsToString(
+                    fileUploaderProps,
+                    "react",
+                    version
+                  )} />
                   {uploads.map(upload => (
                     <GoabFileUploadCard
                       key={upload.file.name}
@@ -638,10 +672,14 @@ export default function FileUploaderPage() {
                   ))}
                 </GoabFormItem>
               `}
-              />}
+                />
+              )}
 
               <GoabFormItem label="Upload a file">
-                <GoabFileUploadInput onSelectFile={(e) => uploadFile(e.file)} {...fileUploaderProps} />
+                <GoabFileUploadInput
+                  onSelectFile={e => uploadFile(e.file)}
+                  {...fileUploaderProps}
+                />
                 {uploads.map(upload => (
                   <GoabFileUploadCard
                     key={upload.file.name}
@@ -668,7 +706,6 @@ export default function FileUploaderPage() {
               properties={fileUploadCardProperties}
               oldProperties={oldFileUploadCardProperties}
             />
-
           </GoabTab>
           <GoabTab
             heading={

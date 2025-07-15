@@ -24,11 +24,14 @@ export function VersionUpdateNotification({ version }: VersionUpdateNotification
   if (isDismissed) return null;
 
   return (
-    <GoabNotification type={version === "old" ? "important" : "information"} maxContentWidth={MAX_CONTENT_WIDTH}>
+    <GoabNotification
+      type={version === "old" ? "important" : "information"}
+      maxContentWidth={MAX_CONTENT_WIDTH}
+    >
       {version === "old" ? (
         <>
-          Support for the Long Term Support (LTS) version of the Design system will be available until September
-          2025.{" "}
+          Support for the Long Term Support (LTS) version of the Design system will be available
+          until September 2025.{" "}
           <a ref={oldLinkRef} href="/get-started/developers/update">
             <span style={{ whiteSpace: "nowrap" }}>View the upgrade guide</span>
           </a>

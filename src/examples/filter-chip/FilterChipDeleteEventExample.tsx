@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const FilterChipDeleteEventExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [chips, setChips] = useState(["Chip 1", "Chip 2", "Chip 3"]);
   const deleteChip = (chip: string) => {
     setChips(prevChips => prevChips.filter(c => c !== chip));
@@ -109,5 +109,5 @@ export const FilterChipDeleteEventExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

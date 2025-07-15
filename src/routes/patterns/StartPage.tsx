@@ -1,7 +1,4 @@
-import {
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { StartPageExamples } from "@examples/start-page/StartPageExamples";
 import css from "./patterns.module.css";
@@ -16,7 +13,8 @@ export default function StartPage() {
       </h3>
       <ComponentContent
         contentClassName="start-page"
-        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])"
+      >
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
             <StartPageExamples />
@@ -56,7 +54,13 @@ export default function StartPage() {
                 and whether it will meet their need
               </li>
               <li>a service's name should reflects the problem it solves for users</li>
-              <li>be written in plain language — <a href="https://www.alberta.ca/web-writing-style-guide" target="_blank">GOA web writing style guide</a>.</li>
+              <li>
+                be written in plain language —{" "}
+                <a href="https://www.alberta.ca/web-writing-style-guide" target="_blank">
+                  GOA web writing style guide
+                </a>
+                .
+              </li>
               <li>
                 include a "start button" linking into the service, with text that's consistent with
                 the action you're asking users to take — for example, "Start now", "Sign in" or
@@ -94,7 +98,8 @@ export default function StartPage() {
 
             <h3 id="toc-3-1">Overview</h3>
             <p>
-              What the user needs to know before they enter into the service. A high level description of what the service is and what you can use it to do
+              What the user needs to know before they enter into the service. A high level
+              description of what the service is and what you can use it to do
             </p>
 
             <h3 id="toc-3-2">Before you begin</h3>
@@ -109,12 +114,14 @@ export default function StartPage() {
 
             <h3 id="toc-3-3">Call to action</h3>
             <p>
-              Below the primary information, include an obvious call to action to get started with the service.
+              Below the primary information, include an obvious call to action to get started with
+              the service.
             </p>
 
             <h3 id="toc-3-4">Other information</h3>
             <p>
-              Below the call to action, include any additional information as applicable such as customer support, frequently asked questions, or related links.
+              Below the call to action, include any additional information as applicable such as
+              customer support, frequently asked questions, or related links.
             </p>
           </GoabTab>
         </GoabTabs>

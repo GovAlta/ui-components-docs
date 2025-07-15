@@ -29,7 +29,8 @@ export const FormStepperStepStatusExample = () => {
         allow={["div"]}
         note={
           "The status of each step can be configured to “complete”, “incomplete” or ”not-started” using the status property."
-        }>
+        }
+      >
         {/*Angular code*/}
         {version === "old" && (
           <CodeSnippet

@@ -79,10 +79,9 @@ export default function GridPage() {
     },
   ];
 
-
   function onSandboxChange(gridBindings: ComponentBinding[], props: Record<string, unknown>) {
     setGridBindings(gridBindings);
-    setGridProps(props as { minChildWidth: string; gap: string;[key: string]: unknown });
+    setGridProps(props as { minChildWidth: string; gap: string; [key: string]: unknown });
   }
 
   return (
@@ -101,7 +100,6 @@ export default function GridPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>
@@ -158,19 +156,25 @@ export default function GridPage() {
               </GoabGrid>
             </Sandbox>
             {/*Grid component properties*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab heading="Design">
             <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
               <GoabText size="body-m" mt="none" mb="none">
                 To use grid in design, set Figma's built-in{" "}
-                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
-                   target="_blank" rel="noreferrer">
+                <a
+                  href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   auto layout
                 </a>{" "}
-                to <i>wrap</i>. This will create a responsive grid pattern that can respond to different screen
-                sizes, similar to the Grid component in code.
+                to <i>wrap</i>. This will create a responsive grid pattern that can respond to
+                different screen sizes, similar to the Grid component in code.
               </GoabText>
             </GoabContainer>
           </GoabTab>

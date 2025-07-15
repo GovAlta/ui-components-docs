@@ -12,10 +12,12 @@ export const AngularGuide = () => {
     <>
       <h2 id="angular">Migrating an Angular app</h2>
       <GoabCallout maxWidth={"640px"}>
-          <InlineCode>@abgov/angular-components</InlineCode> supports only Angular v16 and above.
+        <InlineCode>@abgov/angular-components</InlineCode> supports only Angular v16 and above.
       </GoabCallout>
 
-      <GoabText size="heading-s" mt="xl" mb="s">1. Update dependencies</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        1. Update dependencies
+      </GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -25,7 +27,9 @@ export const AngularGuide = () => {
         `}
       />
 
-      <GoabText size="heading-s" mt="xl" mb="s">2. Update angular component dependencies and import paths</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        2. Update angular component dependencies and import paths
+      </GoabText>
       <CodeSnippet
         lang="typescript"
         allowCopy={true}
@@ -75,12 +79,16 @@ export const AngularGuide = () => {
         As a result, imports and dependencies for pages using these components will not need to be
         changed.
       </GoabText>
-      <GoabText size="heading-s" mt="xl" mb="s">Special Case:</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Special Case:
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         The <InlineCode>goa-one-column-layout</InlineCode> component has been renamed to{" "}
         <InlineCode>goab-column-layout</InlineCode>
       </GoabText>
-      <GoabText size="heading-s" mt="xl" mb="s">Next Steps:</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Next Steps:
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         After updating your packages and imports, perform a find/replace in your code editor to
         change <InlineCode>goa-</InlineCode> to <InlineCode>goab-</InlineCode> for all component
@@ -101,7 +109,9 @@ export const AngularGuide = () => {
         `}
       />
 
-      <GoabText size="heading-s" mt="xl" mb="s">4. Update component margin properties</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        4. Update component margin properties
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         The margin properties for components have been standardized. Previously, margin values in
         Angular components were defined as <InlineCode>string</InlineCode>. Now, these margin
@@ -109,59 +119,61 @@ export const AngularGuide = () => {
       </GoabText>
       <GoabTable width="100%">
         <thead>
-        <th>Property Name</th>
-        <th>v3</th>
-        <th>v4</th>
+          <th>Property Name</th>
+          <th>v3</th>
+          <th>v4</th>
         </thead>
         <tbody>
-        <tr>
-          <td>
-            <InlineCode>mt</InlineCode>
-          </td>
-          <td>
-            <InlineCode>string</InlineCode>
-          </td>
-          <td>
-            <InlineCode>Spacing</InlineCode>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <InlineCode>mb</InlineCode>
-          </td>
-          <td>
-            <InlineCode>string</InlineCode>
-          </td>
-          <td>
-            <InlineCode>Spacing</InlineCode>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <InlineCode>ml</InlineCode>
-          </td>
-          <td>
-            <InlineCode>string</InlineCode>
-          </td>
-          <td>
-            <InlineCode>Spacing</InlineCode>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <InlineCode>mr</InlineCode>
-          </td>
-          <td>
-            <InlineCode>string</InlineCode>
-          </td>
-          <td>
-            <InlineCode>Spacing</InlineCode>
-          </td>
-        </tr>
+          <tr>
+            <td>
+              <InlineCode>mt</InlineCode>
+            </td>
+            <td>
+              <InlineCode>string</InlineCode>
+            </td>
+            <td>
+              <InlineCode>Spacing</InlineCode>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <InlineCode>mb</InlineCode>
+            </td>
+            <td>
+              <InlineCode>string</InlineCode>
+            </td>
+            <td>
+              <InlineCode>Spacing</InlineCode>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <InlineCode>ml</InlineCode>
+            </td>
+            <td>
+              <InlineCode>string</InlineCode>
+            </td>
+            <td>
+              <InlineCode>Spacing</InlineCode>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <InlineCode>mr</InlineCode>
+            </td>
+            <td>
+              <InlineCode>string</InlineCode>
+            </td>
+            <td>
+              <InlineCode>Spacing</InlineCode>
+            </td>
+          </tr>
         </tbody>
       </GoabTable>
 
-      <GoabText size="heading-s" mt="xl" mb="s">5. Update component properties</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        5. Update component properties
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         In version 4, we have updated all Angular component properties from lowercase to camelCase.
         For example, a property previously named <InlineCode>headingsize</InlineCode> is now{" "}
@@ -176,41 +188,45 @@ export const AngularGuide = () => {
       </GoabText>
       <GoabTable width={"100%"} mb={"m"}>
         <thead>
-        <th>Component</th>
-        <th>v3</th>
-        <th>v4</th>
+          <th>Component</th>
+          <th>v3</th>
+          <th>v4</th>
         </thead>
         <tbody>
-        {angularComponents.map((component, index) => (
-          <tr key={index}>
-            <td><b>{component.name}</b></td>
-            <td>
-              <ul>
-                {component.angular?.map((prop, propsIndex) => (
-                  <li key={propsIndex}>
-                    {prop.v3?.name && <span>{prop.v3.name + ": " + prop.v3.type}</span>}{" "}
-                    {prop.v3 == null && "Do not have"}
-                  </li>
-                ))}
-              </ul>
-            </td>
-            <td>
-              <ul>
-                {component.angular?.map((prop, propsIndex) => (
-                  <li key={propsIndex}>
-                    {prop.v4?.name && <span>{prop.v4.name + ": " + prop.v4.type}</span>}{" "}
-                    {prop.v4 == null && <strong>Removed</strong>}{" "}
-                    {prop.v3 == null && <strong>(Newly added)</strong>}
-                  </li>
-                ))}
-              </ul>
-            </td>
-          </tr>
-        ))}
+          {angularComponents.map((component, index) => (
+            <tr key={index}>
+              <td>
+                <b>{component.name}</b>
+              </td>
+              <td>
+                <ul>
+                  {component.angular?.map((prop, propsIndex) => (
+                    <li key={propsIndex}>
+                      {prop.v3?.name && <span>{prop.v3.name + ": " + prop.v3.type}</span>}{" "}
+                      {prop.v3 == null && "Do not have"}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  {component.angular?.map((prop, propsIndex) => (
+                    <li key={propsIndex}>
+                      {prop.v4?.name && <span>{prop.v4.name + ": " + prop.v4.type}</span>}{" "}
+                      {prop.v4 == null && <strong>Removed</strong>}{" "}
+                      {prop.v3 == null && <strong>(Newly added)</strong>}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </GoabTable>
 
-      <GoabText size="heading-s" mt="xl" mb="s">6. Update component slot content using Angular's ng-template</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        6. Update component slot content using Angular's ng-template
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         The most common manual update that teams will need to make involves adjusting slot content
         that uses <InlineCode>slot="name"</InlineCode> to reference a property. For example,
@@ -249,40 +265,42 @@ export const AngularGuide = () => {
         </GoabText>
         <GoabTable>
           <thead>
-          <th>Component</th>
-          <th>v3</th>
-          <th>v4</th>
+            <th>Component</th>
+            <th>v3</th>
+            <th>v4</th>
           </thead>
           <tbody>
-          {componentsWithTemplateRef.map((component, index) => (
-            <tr key={index}>
-              <td><b>{component.name}</b></td>
-              <td>
-                <ul>
-                  {component.angular?.map(
-                    (prop, propIndex) =>
-                      prop.v4?.type.includes("TemplateRef") && (
-                        <li key={propIndex}>
-                          {prop.v3?.name}: {prop.v3?.type}
-                        </li>
-                      )
-                  )}
-                </ul>
-              </td>
-              <td>
-                <ul>
-                  {component.angular?.map(
-                    (prop, propIndex) =>
-                      prop.v4?.type.includes("TemplateRef") && (
-                        <li key={propIndex}>
-                          {prop.v4?.name}: {prop.v4?.type}
-                        </li>
-                      )
-                  )}
-                </ul>
-              </td>
-            </tr>
-          ))}
+            {componentsWithTemplateRef.map((component, index) => (
+              <tr key={index}>
+                <td>
+                  <b>{component.name}</b>
+                </td>
+                <td>
+                  <ul>
+                    {component.angular?.map(
+                      (prop, propIndex) =>
+                        prop.v4?.type.includes("TemplateRef") && (
+                          <li key={propIndex}>
+                            {prop.v3?.name}: {prop.v3?.type}
+                          </li>
+                        )
+                    )}
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    {component.angular?.map(
+                      (prop, propIndex) =>
+                        prop.v4?.type.includes("TemplateRef") && (
+                          <li key={propIndex}>
+                            {prop.v4?.name}: {prop.v4?.type}
+                          </li>
+                        )
+                    )}
+                  </ul>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </GoabTable>
       </div>
@@ -336,7 +354,8 @@ export const AngularGuide = () => {
               });
             }
           }
-        `}></CodeSnippet>
+        `}
+      ></CodeSnippet>
       <CodeSnippet
         lang={"html"}
         allowCopy={true}
@@ -344,7 +363,8 @@ export const AngularGuide = () => {
             <form [formGroup]="form">
               <goab-checkbox formControlName="checked" text="Item"></goab-checkbox>
             </form>
-          `}></CodeSnippet>
+          `}
+      ></CodeSnippet>
 
       <h5>2. Template-driven</h5>
       <CodeSnippet
@@ -366,7 +386,8 @@ export const AngularGuide = () => {
           class CheckboxComponent {
             checked = false;
           }
-        `}></CodeSnippet>
+        `}
+      ></CodeSnippet>
       <CodeSnippet
         lang={"html"}
         allowCopy={true}
@@ -374,7 +395,8 @@ export const AngularGuide = () => {
             <form>
               <goab-checkbox [(ngModel)]="checked" text="Item"></goab-checkbox>
             </form>
-          `}></CodeSnippet>
+          `}
+      ></CodeSnippet>
 
       <h5>3. Event handler</h5>
       <CodeSnippet
@@ -397,13 +419,15 @@ export const AngularGuide = () => {
                this.checked = event.checked;
             }
           }
-        `}></CodeSnippet>
+        `}
+      ></CodeSnippet>
       <CodeSnippet
         lang="html"
         allowCopy={true}
         code={`
           <goab-checkbox name="item" text="Item" [value]="checked" (onChange)="onChange($event)"></goab-checkbox>
-          `}></CodeSnippet>
+          `}
+      ></CodeSnippet>
     </>
   );
 };

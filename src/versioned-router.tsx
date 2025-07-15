@@ -86,48 +86,48 @@ const VersionedComponentRoute: React.FC<{
 
 export const ComponentsRouter = () => {
   const componentPaths: Record<string, React.ReactElement> = {
-    "accordion": <AccordionPage />,
-    "badge": <BadgePage />,
-    "block": <BlockPage />,
-    "button": <ButtonPage />,
+    accordion: <AccordionPage />,
+    badge: <BadgePage />,
+    block: <BlockPage />,
+    button: <ButtonPage />,
     "button-group": <ButtonGroupPage />,
-    "callout": <CalloutPage />,
-    "checkbox": <CheckboxPage />,
-    "container": <ContainerPage />,
+    callout: <CalloutPage />,
+    checkbox: <CheckboxPage />,
+    container: <ContainerPage />,
     "date-picker": <DatePickerPage />,
-    "details": <DetailsPage />,
-    "divider": <DividerPage />,
-    "drawer": <DrawerPage />,
-    "dropdown": <DropdownPage />,
+    details: <DetailsPage />,
+    divider: <DividerPage />,
+    drawer: <DrawerPage />,
+    dropdown: <DropdownPage />,
     "file-uploader": <FileUploaderPage />,
     "filter-chip": <FilterChipPage />,
     "form-item": <FormItemPage />,
     "form-stepper": <FormStepperPage />,
-    "grid": <GridPage />,
+    grid: <GridPage />,
     "hero-banner": <HeroBannerPage />,
-    "icons": <IconsPage />,
+    icons: <IconsPage />,
     "icon-button": <IconButtonPage />,
-    "input": <TextFieldPage />,
-    "list": <ListPage />,
+    input: <TextFieldPage />,
+    list: <ListPage />,
     "microsite-header": <MicrositeHeaderPage />,
-    "modal": <ModalPage />,
+    modal: <ModalPage />,
     "notification-banner": <NotificationBannerPage />,
-    "pagination": <PaginationPage />,
-    "popover": <PopoverPage />,
+    pagination: <PaginationPage />,
+    popover: <PopoverPage />,
     "progress-indicator": <ProgressIndicatorPage />,
-    "radio": <RadioPage />,
+    radio: <RadioPage />,
     "side-menu": <SideMenuPage />,
     "skeleton-loader": <SkeletonPage />,
-    "spacer": <SpacerPage />,
-    "table": <TablePage />,
-    "tabs": <TabsPage />,
-    "text": <TextPage/>,
+    spacer: <SpacerPage />,
+    table: <TablePage />,
+    tabs: <TabsPage />,
+    text: <TextPage />,
     "text-area": <TextAreaPage />,
-    "tooltip": <TooltipPage />,
+    tooltip: <TooltipPage />,
     "text-field": <TextFieldPage />,
-    "header": <AppHeaderPage />,
-    "footer": <AppFooterPage />,
-    "link": <LinkPage />,
+    header: <AppHeaderPage />,
+    footer: <AppFooterPage />,
+    link: <LinkPage />,
   };
 
   return (
@@ -138,7 +138,10 @@ export const ComponentsRouter = () => {
         <Route path=":component" element={<ComponentRoute versionedPaths={componentPaths} />} />
 
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={componentPaths}/>} />
+        <Route
+          path=":version/:component"
+          element={<VersionedComponentRoute versionedPaths={componentPaths} />}
+        />
       </Route>
     </Routes>
   );
@@ -146,12 +149,12 @@ export const ComponentsRouter = () => {
 
 export const PatternsRouter = () => {
   const patternsPaths = {
-    "layout": <LayoutPage/>,
-    "start-page": <StartPage/>,
-    "task-list-page": <TaskListPage/>,
-    "question-page": <QuestionPage/>,
-    "review-page": <ReviewPage/>,
-    "result-page": <ResultPage/>,
+    layout: <LayoutPage />,
+    "start-page": <StartPage />,
+    "task-list-page": <TaskListPage />,
+    "question-page": <QuestionPage />,
+    "review-page": <ReviewPage />,
+    "result-page": <ResultPage />,
   };
 
   return (
@@ -159,10 +162,13 @@ export const PatternsRouter = () => {
       <Route path="/" element={<PatternsLayout />} errorElement={<ComponentNotFoundPage />}>
         {/* Non-versioned paths components */}
         <Route index element={<PatternsOverviewPage />} />
-        <Route path="/public-form" element={<PublicFormPage/>} />
+        <Route path="/public-form" element={<PublicFormPage />} />
         <Route path=":component" element={<ComponentRoute versionedPaths={patternsPaths} />} />
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={patternsPaths} />} />
+        <Route
+          path=":version/:component"
+          element={<VersionedComponentRoute versionedPaths={patternsPaths} />}
+        />
       </Route>
     </Routes>
   );

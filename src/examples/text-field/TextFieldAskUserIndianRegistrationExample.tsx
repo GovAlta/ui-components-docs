@@ -5,17 +5,18 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const TextFieldAskUserIndianRegistrationExample = () => {
-  const {version} = useContext(LanguageVersionContext);
-  const noop = () => {}
+  const { version } = useContext(LanguageVersionContext);
+  const noop = () => {};
 
   return (
     <Sandbox flags={["reactive"]} skipRenderOnly={"react"}>
       {/*React code*/}
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
           <GoAFormItem label="Indian registration number" labelSize="large">
             <GoABlock gap="m" direction="row">
               <GoAFormItem label="Band #" helpText="3 digits">
@@ -30,23 +31,27 @@ export const TextFieldAskUserIndianRegistrationExample = () => {
             </GoABlock>
           </GoAFormItem>
         `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
           const [bandNo, setBandNo] = useState<string>('');
           const [family, setFamily] = useState<string>('');
           const [position, setPosition] = useState<string>('');
         `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
         <GoabFormItem label="Indian registration number" labelSize="large">
           <GoabBlock gap="m" direction="row">
             <GoabFormItem label="Band #" helpText="3 digits">
@@ -85,14 +90,16 @@ export const TextFieldAskUserIndianRegistrationExample = () => {
           </GoabBlock>
         </GoabFormItem>
         `}
-      />}
+        />
+      )}
 
       {/*Angular code*/}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
          export class ExampleComponent {
           form!: FormGroup;
           constructor(private fb: FormBuilder) {
@@ -104,39 +111,22 @@ export const TextFieldAskUserIndianRegistrationExample = () => {
           }
         }
         `}
-      />}
+        />
+      )}
 
       <GoabFormItem label="Indian registration number" labelSize="large">
         <GoabBlock gap="m" direction="row">
           <GoabFormItem label="Band #" helpText="3 digits">
-            <GoabInput
-              onChange={noop}
-              value=""
-              name="bandNo"
-              width="88px"
-              maxLength={3}
-            />
+            <GoabInput onChange={noop} value="" name="bandNo" width="88px" maxLength={3} />
           </GoabFormItem>
           <GoabFormItem label="Family" helpText="Up to 5 digits">
-            <GoabInput
-              onChange={noop}
-              value=""
-              name="family"
-              width="105px"
-              maxLength={5}
-            />
+            <GoabInput onChange={noop} value="" name="family" width="105px" maxLength={5} />
           </GoabFormItem>
           <GoabFormItem label="Position" helpText="2 digits">
-            <GoabInput
-              onChange={noop}
-              value=""
-              name="position"
-              width="71px"
-              maxLength={2}
-            />
+            <GoabInput onChange={noop} value="" name="position" width="71px" maxLength={2} />
           </GoabFormItem>
         </GoabBlock>
       </GoabFormItem>
     </Sandbox>
-  )
-}
+  );
+};

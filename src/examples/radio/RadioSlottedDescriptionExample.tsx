@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const RadioSlottedDescriptionExample = () => {
-  const {version} = useContext(LanguageVersionContext);
-  const noop = () => {}
+  const { version } = useContext(LanguageVersionContext);
+  const noop = () => {};
   return (
     <Sandbox fullWidth skipRender>
       {/* =========== Angular =============== */}
@@ -136,5 +136,5 @@ export const RadioSlottedDescriptionExample = () => {
         </GoabRadioGroup>
       </GoabFormItem>
     </Sandbox>
-  )
-}
+  );
+};

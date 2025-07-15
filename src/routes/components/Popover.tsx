@@ -293,7 +293,8 @@ export default function PopoverPage() {
                   <GoabButton type="secondary" size="compact">
                     Click me
                   </GoabButton>
-                }>
+                }
+              >
                 <p>This is a popover</p>
                 It can be used for a number of different contexts.
               </GoabPopover>
@@ -310,7 +311,8 @@ export default function PopoverPage() {
                 Examples
                 <GoabBadge type="information" content="3" />
               </>
-            }>
+            }
+          >
             <PopoverExamples />
           </GoabTab>
 

@@ -256,7 +256,8 @@ export default function MicrositeHeaderPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }>
+            }
+          >
             <MicrositeHeaderExamples />
           </GoabTab>
 

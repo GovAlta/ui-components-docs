@@ -4,9 +4,15 @@ import { GoabText } from "@abgov/react-components";
 export default function DevelopersTechnologiesPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Technologies</GoabText>
-      <GoabText size="body-l" mb="2xl">An overview of the technologies that make up the design system.</GoabText>
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>
+        Developers
+      </GoabText>
+      <GoabText size="heading-xl" mb="m">
+        Technologies
+      </GoabText>
+      <GoabText size="body-l" mb="2xl">
+        An overview of the technologies that make up the design system.
+      </GoabText>
 
       <div className="design-system-image">
         <img src="/images/design-system-technologies.png" />
@@ -21,7 +27,9 @@ export default function DevelopersTechnologiesPage() {
         styling and functionality encapsulated away from the rest of your code.
       </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">Benefits of using web components</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Benefits of using web components
+      </GoabText>
       <ul>
         <li>
           <strong>Reuse:</strong> A component is made once and can be reused across different pages,
@@ -51,7 +59,9 @@ export default function DevelopersTechnologiesPage() {
         </li>
       </ul>
 
-      <GoabText size="heading-s" mt="xl" mb="s">Using web components in your project</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Using web components in your project
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="2xl">
         Web Components generated from Svelte can be used along side various other front-end
         frameworks or used with our Angular or React implementations.
@@ -65,7 +75,9 @@ export default function DevelopersTechnologiesPage() {
         is a JavaScript framework that we are using to generate web components.
       </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">Why use Svelte</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        Why use Svelte
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="2xl">
         We use Svelte to build our web components. Svelte gathers the logic (JavaScript), the
         structure (HTML), and the style (CSS) in the same file. Then, Svelte is used to build single
@@ -82,16 +94,20 @@ export default function DevelopersTechnologiesPage() {
         the application. It is a declarative and intuitive language with directives like ng-app,
         ng-model, ng-repeat, and forms control.
       </GoabText>
-      <GoabText size="body-m" mt="l" mb="l">Angular is the most used web application framework in this
-        organization.</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
+        Angular is the most used web application framework in this organization.
+      </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">How Web Components and Angular work together</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        How Web Components and Angular work together
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         Our Angular implementation adds form binding, both Reactive and Template, to our web
         components.
       </GoabText>
-      <GoabText size="body-m" mt="l" mb="2xl">Angular applications will need to use our web components and Angular
-        components.</GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">
+        Angular applications will need to use our web components and Angular components.
+      </GoabText>
 
       <h2 id="react">React</h2>
       <GoabText size="body-m" mt="l" mb="l">
@@ -101,10 +117,13 @@ export default function DevelopersTechnologiesPage() {
         is an open-source JavaScript library commonly used to create user interfaces for single-page
         applications from isolated components.
       </GoabText>
-      <GoabText size="body-m" mt="l" mb="l">React is the 2nd most used web application framework in this
-        organization.</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
+        React is the 2nd most used web application framework in this organization.
+      </GoabText>
 
-      <GoabText size="heading-s" mt="xl" mb="s">How Web Components and React work together</GoabText>
+      <GoabText size="heading-s" mt="xl" mb="s">
+        How Web Components and React work together
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         We use React to create wrappers around our web components. This helps manage events and
         properties of the web components rather than trying to use our web components by themselves.

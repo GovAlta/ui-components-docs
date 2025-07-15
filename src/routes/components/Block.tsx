@@ -89,7 +89,6 @@ export default function BlockPage() {
     },
   ];
 
-
   useEffect(() => {
     const direction = blockBindings.find(binding => binding.name === "direction");
     setSandboxFullWidth(direction?.value === "column");
@@ -118,8 +117,14 @@ export default function BlockPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={blockBindings} onChange={onSandboxChange} fullWidth={sandboxFullWidth}>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
+            <Sandbox
+              properties={blockBindings}
+              onChange={onSandboxChange}
+              fullWidth={sandboxFullWidth}
+            >
               <GoabBlock {...blockProps}>
                 <div
                   style={{
@@ -154,22 +159,28 @@ export default function BlockPage() {
                 </div>
               </GoabBlock>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab heading="Design">
             <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
               <GoabText size="body-m" mt="none" mb="none">
                 To use Block in design, use Figma's built-in{" "}
-                <a href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
-                   target="_blank" rel="noreferrer">
+                <a
+                  href="https://help.figma.com/hc/en-us/articles/360040451373-Explore-auto-layout-properties"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   auto layout
-                </a>.{" "} This will group multiple things with consistent spacing between them, similar to the Block
-                component in code.
+                </a>
+                . This will group multiple things with consistent spacing between them, similar to
+                the Block component in code.
               </GoabText>
             </GoabContainer>
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </>

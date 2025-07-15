@@ -7,7 +7,7 @@
 .description {
   font: var(--goa-typography-body-s);
 }
-.description.type-generic{
+.description.type-generic {
   margin-top: var(--goa-space-m);
 }
 
@@ -28,4 +28,3 @@
 [data-positive="dont"].do-content {
   color: var(--goa-color-emergency-dark);
 }
-

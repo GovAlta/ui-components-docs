@@ -32,7 +32,8 @@ p + figure.imageContainer {
   margin-bottom: 0;
 }
 
-.descriptionWithList h3 + ul, .descriptionWithList h3 + ol {
+.descriptionWithList h3 + ul,
+.descriptionWithList h3 + ol {
   margin-top: var(--goa-space-l);
 }
 

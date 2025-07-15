@@ -1,17 +1,25 @@
 import {
   GoabBlock,
-  GoabButton, GoabCheckbox, GoabContainer, GoabDatePicker,
+  GoabButton,
+  GoabCheckbox,
+  GoabContainer,
+  GoabDatePicker,
   GoabDrawer,
   GoabDropdown,
   GoabDropdownItem,
-  GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem
+  GoabFormItem,
+  GoabInput,
+  GoabRadioGroup,
+  GoabRadioItem,
 } from "@abgov/react-components";
 import { useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const DrawerAddRecordExample = () => {
   const [open, setOpen] = useState(false);
-  const noop = () => {/* do something */}
+  const noop = () => {
+    /* do something */
+  };
   return (
     <>
       {/*Don't use a Sandbox because the animation slowing displaying the drawer isn't working if it is inside sandbox*/}
@@ -39,11 +47,23 @@ export const DrawerAddRecordExample = () => {
             <GoabDropdownItem value="university" label="University Degree"></GoabDropdownItem>
           </GoabDropdown>
         </GoabFormItem>
-        <GoabFormItem label="Educational institution" mt="l" >
-          <GoabInput name="education" type="text" placeholder="University of Colorado Boulder" width="100%" onChange={noop}></GoabInput>
+        <GoabFormItem label="Educational institution" mt="l">
+          <GoabInput
+            name="education"
+            type="text"
+            placeholder="University of Colorado Boulder"
+            width="100%"
+            onChange={noop}
+          ></GoabInput>
         </GoabFormItem>
         <GoabFormItem label="Field of study" requirement="optional" mt="l">
-          <GoabInput name="fieldOfStudy" type="text" placeholder="Master of Engineering in Engineering Management" width="100%" onChange={noop}></GoabInput>
+          <GoabInput
+            name="fieldOfStudy"
+            type="text"
+            placeholder="Master of Engineering in Engineering Management"
+            width="100%"
+            onChange={noop}
+          ></GoabInput>
         </GoabFormItem>
         <GoabFormItem label="Is the person currently attending the training?" mt="l">
           <GoabRadioGroup name="attendTraining" onChange={noop}>
@@ -54,13 +74,22 @@ export const DrawerAddRecordExample = () => {
         <GoabFormItem label="Start date" mt="l">
           <GoabBlock direction="row" alignment="center">
             <GoabDatePicker onChange={noop} value={new Date("2022-09-01")}></GoabDatePicker>
-            <GoabCheckbox name="startDateApproximate" text="Approximate date" value="y"></GoabCheckbox>
+            <GoabCheckbox
+              name="startDateApproximate"
+              text="Approximate date"
+              value="y"
+            ></GoabCheckbox>
           </GoabBlock>
         </GoabFormItem>
         <GoabFormItem label="Completion/last attended date" mt="l">
           <GoabBlock direction="row" alignment="center">
             <GoabDatePicker onChange={noop} value={new Date("2024-01-31")}></GoabDatePicker>
-            <GoabCheckbox name="endDateApproximate" text="Approximate date" value="y" checked={true}></GoabCheckbox>
+            <GoabCheckbox
+              name="endDateApproximate"
+              text="Approximate date"
+              value="y"
+              checked={true}
+            ></GoabCheckbox>
           </GoabBlock>
         </GoabFormItem>
         <GoabFormItem label="Credential received?" mt="l">
@@ -70,12 +99,21 @@ export const DrawerAddRecordExample = () => {
           </GoabRadioGroup>
         </GoabFormItem>
         <GoabFormItem label="Name of credential" mt="l">
-          <GoabInput name="credentialName" width="100%" type="text" placeholder="Master of Engineering in Engineering Management" onChange={noop}></GoabInput>
+          <GoabInput
+            name="credentialName"
+            width="100%"
+            type="text"
+            placeholder="Master of Engineering in Engineering Management"
+            onChange={noop}
+          ></GoabInput>
         </GoabFormItem>
         <GoabFormItem label="Where did this education occur?" mt="l">
           <GoabRadioGroup name="educationLocation" onChange={noop}>
             <GoabRadioItem label="In Alberta" value="alberta"></GoabRadioItem>
-            <GoabRadioItem label="In Canada but not in Alberta" value="outsideAlberta"></GoabRadioItem>
+            <GoabRadioItem
+              label="In Canada but not in Alberta"
+              value="outsideAlberta"
+            ></GoabRadioItem>
             <GoabRadioItem label="Outside Canada" value="outsideCanada"></GoabRadioItem>
           </GoabRadioGroup>
         </GoabFormItem>
@@ -262,6 +300,6 @@ export const DrawerAddRecordExample = () => {
           </goab-drawer>
         `}
       />
-  </>
+    </>
   );
 };

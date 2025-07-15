@@ -399,7 +399,8 @@ export default function DropdownPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}
+            >
               {/* Keep all existing CodeSnippets and form content as-is */}
               <GoabFormItem {...formItemProps}>
                 <GoabDropdown name="item" value={color} {...dropdownProps}>
@@ -428,7 +429,8 @@ export default function DropdownPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }>
+            }
+          >
             <DropdownExamples />
           </GoabTab>
 

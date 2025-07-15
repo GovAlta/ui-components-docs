@@ -49,7 +49,8 @@ export const ComponentProperties = (props: Props) => {
       <h2
         id={props.heading ? `components-${dasherize(props.heading)}` : "component-properties"}
         className="hidden"
-        aria-hidden="true">
+        aria-hidden="true"
+      >
         {props.heading || "Properties"}
       </h2>{" "}
       <GoabText size="heading-m" mb="l" mt="2xl">

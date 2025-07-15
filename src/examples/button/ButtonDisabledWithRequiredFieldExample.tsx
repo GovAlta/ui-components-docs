@@ -4,19 +4,22 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabButtonGroup, GoabButton, GoabFormItem, GoabInput } from "@abgov/react-components";
 
-
 export const ButtonDisabledWithRequiredFieldExample = () => {
   const { version } = useContext(LanguageVersionContext);
-  const noop = () => {}
+  const noop = () => {};
   return (
-    <Sandbox flags={version === "new" ? ["reactive", "template-driven"] : ["reactive"]} allow={["form"]}>
+    <Sandbox
+      flags={version === "new" ? ["reactive", "template-driven"] : ["reactive"]}
+      allow={["form"]}
+    >
       {/*Reactive FormControl Angular Code Snippet*/}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={["angular"]}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular"]}
+          allowCopy={true}
+          code={`
                   export class ExampleComponent {
                      inputOnChange(event: GoabInputOnChangeDetail) {}
                      onClick() {
@@ -24,12 +27,14 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
                      }
                   }  
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
                   export class ExampleComponent {
                     form!: FormGroup;
                     constructor(private fb: FormBuilder) {
@@ -42,7 +47,8 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
                     }
                   }  
                 `}
-      />}
+        />
+      )}
 
       {/*Template driven Angular Code Snippet*/}
       <CodeSnippet
@@ -63,28 +69,32 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
       />
 
       {/*React*/}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={"react"}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={"react"}
+          allowCopy={true}
+          code={`
                  function onClick() {
                   // do nothing.
                  }
                  function inputOnChange(event: GoabInputOnChangeDetail) {}
                 `}
-      />}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags={"react"}
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={"react"}
+          allowCopy={true}
+          code={`
                  function onClick() {
                   // do nothing.
                  }
                  onChange(name: string, value: string) {}
                 `}
-      />}
+        />
+      )}
 
       <form>
         <GoabFormItem label="Name" requirement="required">
@@ -101,5 +111,5 @@ export const ButtonDisabledWithRequiredFieldExample = () => {
         </GoabButtonGroup>
       </form>
     </Sandbox>
-);
+  );
 };

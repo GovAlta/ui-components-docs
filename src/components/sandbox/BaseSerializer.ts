@@ -22,25 +22,38 @@ export interface SerializerState {
   props: { name: string };
 }
 
-export function propsToString(props: Record<string, string|number>, lang: "angular" | "react", version: LanguageVersion): string {
+export function propsToString(
+  props: Record<string, string | number>,
+  lang: "angular" | "react",
+  version: LanguageVersion
+): string {
   if (lang === "angular") {
     if (version === "old") {
-      return Object.entries(props).filter(e => e[1] !== '' && e[1] != undefined)
-        .map((e) => {
-          return typeof e[1] === 'number' || typeof e[1] === 'boolean' ? `${e[0].toLowerCase()}="${e[1]}"` : `${e[0].toLowerCase()}="${e[1]}"`
+      return Object.entries(props)
+        .filter(e => e[1] !== "" && e[1] != undefined)
+        .map(e => {
+          return typeof e[1] === "number" || typeof e[1] === "boolean"
+            ? `${e[0].toLowerCase()}="${e[1]}"`
+            : `${e[0].toLowerCase()}="${e[1]}"`;
         })
         .join(" ");
     } else {
-      return Object.entries(props).filter(e => e[1] !== '' && e[1] != undefined)
-        .map((e) => {
-          return typeof e[1] === 'number' || typeof e[1] === 'boolean' ?  `[${e[0]}]="${e[1]}"` : `${e[0]}="${e[1]}"`
+      return Object.entries(props)
+        .filter(e => e[1] !== "" && e[1] != undefined)
+        .map(e => {
+          return typeof e[1] === "number" || typeof e[1] === "boolean"
+            ? `[${e[0]}]="${e[1]}"`
+            : `${e[0]}="${e[1]}"`;
         })
         .join(" ");
     }
   }
-  return Object.entries(props).filter(e => e[1] !== '' && e[1] != undefined)
-    .map((e) => {
-      return typeof e[1] === 'number' || typeof e[1] === 'boolean' ?  `${e[0]}={${e[1]}}` : `${e[0]}="${e[1]}"`
+  return Object.entries(props)
+    .filter(e => e[1] !== "" && e[1] != undefined)
+    .map(e => {
+      return typeof e[1] === "number" || typeof e[1] === "boolean"
+        ? `${e[0]}={${e[1]}}`
+        : `${e[0]}="${e[1]}"`;
     })
     .join(" ");
 }
@@ -80,14 +93,13 @@ export class BaseSerializer {
     return this.getProperty(name)?.dynamic || false;
   }
 
-
   protected getNewVersionFunctionName(functionName: string): string {
-    let element = this.state.element || 'goab-';
-    let componentName = '';
-    if (element.includes('-')) {
-      const parts = element.split('-');
-      componentName = parts[1] || '';
-    } else if (element.toLowerCase().startsWith('goab')) {
+    let element = this.state.element || "goab-";
+    let componentName = "";
+    if (element.includes("-")) {
+      const parts = element.split("-");
+      componentName = parts[1] || "";
+    } else if (element.toLowerCase().startsWith("goab")) {
       componentName = element.substring(4);
       if (componentName.length > 0) {
         componentName = componentName[0].toLowerCase() + componentName.slice(1);

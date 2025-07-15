@@ -6,20 +6,21 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const CalloutExamples = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <>
       <SandboxHeader
         exampleTitle="Confirm that an application was submitted"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-125026&t=X0IQW5flDDaj8Vyg-4">
-      </SandboxHeader>
-      <Sandbox fullWidth allow={['h2', 'h3', 'p']} skipRender>
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-125026&t=X0IQW5flDDaj8Vyg-4"
+      ></SandboxHeader>
+      <Sandbox fullWidth allow={["h2", "h3", "p"]} skipRender>
         {/*Angular code*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                       <h2>You have completed the application</h2>
 
                       <goa-callout type="success">
@@ -40,13 +41,15 @@ export const CalloutExamples = () => {
                         <goa-button type="secondary">Back to dashboard</goa-button>
                       </goa-button-group>
                     `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
                     <h2>You have completed the application</h2>
 
                     <goab-callout type="success" heading="Your application was successful">
@@ -67,14 +70,16 @@ export const CalloutExamples = () => {
                       <goab-button type="secondary">Back to dashboard</goab-button>
                     </goab-button-group>
                 `}
-        />}
+          />
+        )}
 
         {/*React code*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                     <h2>You have completed the application</h2>
 
                     <GoACallout type="success" heading="Your application was successful">
@@ -94,13 +99,15 @@ export const CalloutExamples = () => {
                       <GoAButton type="secondary">Back to dashboard</GoAButton>
                     </GoAButtonGroup>
                   `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
                     <h2>You have completed the application</h2>
 
                     <GoabCallout type="success" heading="Your application was successful">
@@ -122,17 +129,23 @@ export const CalloutExamples = () => {
                       <GoabButton type="secondary">Back to dashboard</GoabButton>
                     </GoabButtonGroup>
                   `}
-        />}
+          />
+        )}
 
         <h2 style={{ marginTop: 0 }}>You have completed the application</h2>
         <GoabCallout type="success" heading="Your application was successful">
           <p>You will receive a copy of the confirmation to the email person@email.com</p>
-          <p style={{ marginBottom: 0 }}>Confirmation number: <strong>1234ABC</strong></p>
+          <p style={{ marginBottom: 0 }}>
+            Confirmation number: <strong>1234ABC</strong>
+          </p>
         </GoabCallout>
         <h3>Go back to the dashboard, or direct your user somewhere else useful.</h3>
         <p>
-          Other information about what was just completed, other tertiary information, and/or contact information.<br />
-          Phone: <a href="#">780 123 4567</a><br />
+          Other information about what was just completed, other tertiary information, and/or
+          contact information.
+          <br />
+          Phone: <a href="#">780 123 4567</a>
+          <br />
           Email: <a href="#">information@gov.ab.ca</a>
         </p>
         <GoabSpacer vSpacing="l"></GoabSpacer>
@@ -142,5 +155,5 @@ export const CalloutExamples = () => {
         </GoabButtonGroup>
       </Sandbox>
     </>
-  )
-}
+  );
+};

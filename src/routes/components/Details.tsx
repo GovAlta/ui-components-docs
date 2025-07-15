@@ -5,12 +5,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import {
-  GoabBadge,
-  GoabDetails,
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { GoabBadge, GoabDetails, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import {
   LegacyMarginProperty,
@@ -21,7 +16,8 @@ import { DetailsExamples } from "@examples/details/DetailsExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=15931-553576";
 
 export default function DetailsPage() {
   const [detailsProps, setDetailsProps] = useState({

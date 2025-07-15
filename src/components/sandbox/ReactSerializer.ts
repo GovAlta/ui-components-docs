@@ -5,7 +5,11 @@ import { LanguageVersion } from "@components/version-language-switcher/version-l
 export class ReactSerializer extends BaseSerializer implements Serializer {
   public isRoot = false;
 
-  constructor(properties: ComponentBinding[], version: LanguageVersion, protected variableNames: string[]) {
+  constructor(
+    properties: ComponentBinding[],
+    version: LanguageVersion,
+    protected variableNames: string[]
+  ) {
     super(properties, version);
   }
 
@@ -95,10 +99,10 @@ export class ReactSerializer extends BaseSerializer implements Serializer {
 
   // @ts-ignore
   modifyProps(props: string, propName: string, elementType: string): string {
-      return props;
+    return props;
   }
 
-  postProcess (children: string): string {
+  postProcess(children: string): string {
     return children;
   }
 }

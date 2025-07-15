@@ -13,7 +13,8 @@ import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.t
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302108";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302108";
 
 export default function ButtonGroupPage() {
   const [buttonGroupProps, setButtonGroupProps] = useState({
@@ -95,11 +96,11 @@ export default function ButtonGroupPage() {
     },
   ];
 
-  const noop = () => { };
+  const noop = () => {};
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setButtonGroupBindings(bindings);
-    setButtonGroupProps(props as { alignment: GoabButtonGroupAlignment;[key: string]: unknown });
+    setButtonGroupProps(props as { alignment: GoabButtonGroupAlignment; [key: string]: unknown });
   }
 
   return (
@@ -108,18 +109,17 @@ export default function ButtonGroupPage() {
         name="Button Group"
         category={Category.INPUTS_AND_ACTIONS}
         description="Display multiple related actions stacked or in a horizontal row to help with arrangement and spacing."
-        relatedComponents={[
-          { link: "/components/button", name: "Button" },
-        ]}
+        relatedComponents={[{ link: "/components/button", name: "Button" }]}
         figmaLink={FIGMA_LINK}
         githubLink="Button Group"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={buttonGroupBindings} onChange={onSandboxChange} fullWidth>
               <CodeSnippet
                 lang="typescript"
@@ -144,12 +144,21 @@ export default function ButtonGroupPage() {
                 `}
               />
               <GoabButtonGroup {...buttonGroupProps}>
-                <GoabButton type="primary" onClick={noop}>Button</GoabButton>
-                <GoabButton type="secondary" onClick={noop}>Button</GoabButton>
-                <GoabButton type="tertiary" onClick={noop}>Button</GoabButton>
+                <GoabButton type="primary" onClick={noop}>
+                  Button
+                </GoabButton>
+                <GoabButton type="secondary" onClick={noop}>
+                  Button
+                </GoabButton>
+                <GoabButton type="tertiary" onClick={noop}>
+                  Button
+                </GoabButton>
               </GoabButtonGroup>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab

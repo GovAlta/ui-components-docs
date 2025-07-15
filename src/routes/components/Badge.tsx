@@ -14,7 +14,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=458-16984";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=458-16984";
 const componentName = "Badge";
 const description =
   "Small labels which hold small amounts of information, system feedback, or states.";
@@ -174,17 +175,20 @@ export default function BadgePage() {
         relatedComponents={relatedComponents}
         figmaLink={FIGMA_LINK}
         githubLink="Badge"
-
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoabBadge {...badgeProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -205,7 +209,6 @@ export default function BadgePage() {
           <GoabTab heading="Accessibility">
             <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </>

@@ -8,7 +8,11 @@ export function TaskListPageExamples() {
     <div className="task-list-page-example">
       <div className="component-example-header">
         <h3 id="component-example-1">Task list page</h3>
-        <a href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4107&mode=design" target="_blank" rel="noreferrer">
+        <a
+          href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4107&mode=design"
+          target="_blank"
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -37,7 +41,8 @@ export function TaskListPageExamples() {
             size="medium"
             heading="Application incomplete"
             mb="2xl"
-            mt="xl">
+            mt="xl"
+          >
             You have completed 1 of 3 sections.
           </GoabCallout>
         </div>
@@ -67,7 +72,8 @@ export function TaskListPageExamples() {
                 <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoabBadge>
+                  ariaLabel="not started"
+                ></GoabBadge>
               </td>
             </tr>
             <tr>
@@ -78,7 +84,8 @@ export function TaskListPageExamples() {
                 <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoabBadge>
+                  ariaLabel="not started"
+                ></GoabBadge>
               </td>
             </tr>
             <tr>
@@ -89,7 +96,8 @@ export function TaskListPageExamples() {
                 <GoabBadge
                   type="information"
                   content="Not started"
-                  ariaLabel="not started"></GoabBadge>
+                  ariaLabel="not started"
+                ></GoabBadge>
               </td>
             </tr>
           </tbody>
@@ -107,7 +115,8 @@ export function TaskListPageExamples() {
                 <GoabBadge
                   type="light"
                   content="Cannot start yet"
-                  ariaLabel="cannot start yet"></GoabBadge>
+                  ariaLabel="cannot start yet"
+                ></GoabBadge>
               </td>
             </tr>
             <tr>
@@ -116,7 +125,8 @@ export function TaskListPageExamples() {
                 <GoabBadge
                   type="light"
                   content="Cannot start yet"
-                  ariaLabel="cannot start yet"></GoabBadge>
+                  ariaLabel="cannot start yet"
+                ></GoabBadge>
               </td>
             </tr>
           </tbody>

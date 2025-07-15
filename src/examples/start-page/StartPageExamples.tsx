@@ -1,14 +1,12 @@
 import { Sandbox } from "@components/sandbox";
-import {
-  GoabButton,
-} from "@abgov/react-components";
+import { GoabButton } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import "./start-page-example.css";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export function StartPageExamples() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
   return (
     <div className="start-page-example">
@@ -17,7 +15,8 @@ export function StartPageExamples() {
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?type=design&node-id=101-4106&mode=design"
           target="_blank"
-          rel="noreferrer">
+          rel="noreferrer"
+        >
           View in Figma
         </a>
       </div>
@@ -41,11 +40,12 @@ export function StartPageExamples() {
 
         {/*Angular code*/}
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
             <h1 class="page-title">
               Name of service
             </h1>
@@ -74,13 +74,15 @@ export function StartPageExamples() {
             <h2>Support</h2>
             <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help&#64;gov.ab.ca</a></p>
         `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
             <h1 class="page-title">
               Name of service
             </h1>
@@ -109,15 +111,17 @@ export function StartPageExamples() {
             <h2>Support</h2>
             <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help&#64;gov.ab.ca</a></p>
         `}
-        />}
+          />
+        )}
 
         {/*React code*/}
 
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
             <h1 className="page-title">
               Name of service
             </h1>
@@ -148,13 +152,15 @@ export function StartPageExamples() {
             <h2>Support</h2>
             <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a></p>
           `}
-        />}
+          />
+        )}
 
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
             <h1 className="page-title">
               Name of service
             </h1>
@@ -185,7 +191,8 @@ export function StartPageExamples() {
             <h2>Support</h2>
             <p><span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a></p>
           `}
-        />}
+          />
+        )}
 
         <h1 className="page-title">Name of service</h1>
         <h3>
@@ -221,7 +228,8 @@ export function StartPageExamples() {
 
         <h2>Support</h2>
         <p>
-          <span>For assistance, email us at &nbsp;</span><a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a>
+          <span>For assistance, email us at &nbsp;</span>
+          <a href="mailto:help@gov.ab.ca">help@gov.ab.ca</a>
         </p>
       </Sandbox>
     </div>

@@ -7,15 +7,15 @@ export const DropdownExamples = () => {
     <>
       <SandboxHeader
         exampleTitle="Dynamically add an item to a dropdown list"
-        figmaExample="">
-      </SandboxHeader>
+        figmaExample=""
+      ></SandboxHeader>
       <DropdownAddItemExample />
 
       <SandboxHeader
         exampleTitle="Dynamically change items in a dropdown"
-        figmaExample="">
-      </SandboxHeader>
-      <DropdownChangeItemExample/>
+        figmaExample=""
+      ></SandboxHeader>
+      <DropdownChangeItemExample />
     </>
   );
-}
+};

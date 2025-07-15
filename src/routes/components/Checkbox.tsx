@@ -1,5 +1,12 @@
 import { useContext, useState } from "react";
-import { GoabBadge, GoabCheckbox, GoabCheckboxProps, GoabFormItem, GoabTab, GoabTabs } from "@abgov/react-components";
+import {
+  GoabBadge,
+  GoabCheckbox,
+  GoabCheckboxProps,
+  GoabFormItem,
+  GoabTab,
+  GoabTabs,
+} from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import {
@@ -14,7 +21,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyTestIdProperties,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
@@ -26,9 +33,10 @@ const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/components/dropdown", name: "Dropdown" },
   { link: "/components/form-item", name: "Form item" },
-  { link: "/components/radio", name: "Radio" }
+  { link: "/components/radio", name: "Radio" },
 ];
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
 type ComponentPropsType = GoabCheckboxProps;
 type CastingType = {
   name: string;
@@ -36,7 +44,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 export default function CheckboxPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
     name: "item",
     checked: false,
@@ -139,13 +147,13 @@ export default function CheckboxPage() {
       name: "onChange",
       type: "(name: string, checked: boolean, value: string) => void",
       description: "Callback function when checkbox value is changed.",
-      lang: "react"
+      lang: "react",
     },
     {
       name: "_change",
       type: "(event: CustomEvent) => void",
       description: "Callback function when checkbox value is changed.",
-      lang: "angular"
+      lang: "angular",
     },
     {
       name: "maxWidth",
@@ -160,7 +168,7 @@ export default function CheckboxPage() {
       lang: "angular",
     },
     ...LegacyTestIdProperties,
-    MarginProperty
+    MarginProperty,
   ];
 
   const componentProperties: ComponentProperty[] = [
@@ -178,8 +186,7 @@ export default function CheckboxPage() {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
-      description:
-        "Disable this control. It will not receive focus or events.",
+      description: "Disable this control. It will not receive focus or events.",
     },
     {
       name: "error",
@@ -247,13 +254,13 @@ export default function CheckboxPage() {
     MarginProperty,
   ];
 
-  const noop = () => { };
+  const noop = () => {};
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     const missingProps = {
       name: "item",
       checked: false,
-      value: ""
+      value: "",
     };
     const updatedProps = { ...missingProps, ...props };
 
@@ -272,17 +279,19 @@ export default function CheckboxPage() {
         githubLink="Checkbox"
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={checkboxBindings}
               formItemProperties={formItemBindings}
               onChange={onChange}
               allow={["form"]}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven"]}
+            >
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
@@ -296,23 +305,26 @@ export default function CheckboxPage() {
                 `}
               />
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                   import { FormControl } from "@angular/forms";
                   export class SomeOtherComponent {
                     itemFormCtrl = new FormControl();
                   }
                 `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                   export class SomeOtherComponent {
                    form!: FormGroup;
                    constructor(private fb: FormBuilder) {
@@ -322,13 +334,15 @@ export default function CheckboxPage() {
                    }
                   }
                 `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
                   export class SomeOtherComponent {
                    item=false;
                    checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
@@ -337,19 +351,21 @@ export default function CheckboxPage() {
                    }
                   }
                 `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   function checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
                     console.log(event.value);
                   }
                 `}
-              />
-              }
+                />
+              )}
 
               <form>
                 <GoabFormItem {...formItemProps}>
@@ -358,7 +374,10 @@ export default function CheckboxPage() {
               </form>
             </Sandbox>
 
-            <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
+            <ComponentProperties
+              oldProperties={oldComponentProperties}
+              properties={componentProperties}
+            />
           </GoabTab>
 
           <GoabTab

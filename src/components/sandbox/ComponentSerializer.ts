@@ -24,7 +24,7 @@ export class ComponentSerializer {
     elementName: string,
     name: string,
     item: ReactElement | Object | string | number | boolean,
-    delimit = true,
+    delimit = true
   ): string {
     if (typeof item === "string") {
       return this.serializer.stringToProp(name, item);
@@ -65,10 +65,10 @@ export class ComponentSerializer {
   #componentToString(
     component: ReactElement & GoAElement,
     isRoot: boolean,
-    spacing: number = 0,
+    spacing: number = 0
   ): string {
     let elementType = this.serializer.componentNameToString(
-      (component.type as unknown as any).name || (component.type as string),
+      (component.type as unknown as any).name || (component.type as string)
     );
     this.serializer.setIsRoot(isRoot);
     this.serializer.setState({ element: elementType, props: { name: component.props.name } });
@@ -85,25 +85,36 @@ export class ComponentSerializer {
       .filter(item => !!item)
       .join(" ");
 
-      props = this.serializer.modifyProps(props, component.props.name, elementType);
+    props = this.serializer.modifyProps(props, component.props.name, elementType);
 
     // add single space here to ensure only 1 space is added
     if (props.length > 0) {
       props = " " + props;
     }
 
-      // Define void elements (HTML elements that should be self-closing)
-  const voidElements = [
-    'area', 'base', 'br', 'col', 'embed', 'hr', 'img',
-    'input', 'link', 'meta', 'param', 'source', 'track', 'wbr'
-  ];
-
+    // Define void elements (HTML elements that should be self-closing)
+    const voidElements = [
+      "area",
+      "base",
+      "br",
+      "col",
+      "embed",
+      "hr",
+      "img",
+      "input",
+      "link",
+      "meta",
+      "param",
+      "source",
+      "track",
+      "wbr",
+    ];
 
     if (!component.props.children) {
-       if (voidElements.includes(elementType.toLowerCase())) {
+      if (voidElements.includes(elementType.toLowerCase())) {
         return `<${elementType}${props} />`;
-    }
-    return `<${elementType}${props}></${elementType}>`;
+      }
+      return `<${elementType}${props}></${elementType}>`;
     }
 
     let children: string = "";
@@ -131,7 +142,7 @@ export class ComponentSerializer {
     // final output
     return `<${elementType}${props}>\n${indentation}${children}\n${indentation.slice(
       0,
-      -2,
+      -2
     )}</${elementType}>`;
   }
 }

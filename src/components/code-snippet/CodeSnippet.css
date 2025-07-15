@@ -32,7 +32,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(0deg, rgba(241, 241, 241, 0.90) 36.01%, rgba(255, 255, 255, 0.00) 100%);
+  background: linear-gradient(0deg, rgba(241, 241, 241, 0.9) 36.01%, rgba(255, 255, 255, 0) 100%);
 }
 
 .goa-code-snippet-actions--show-more {

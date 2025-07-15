@@ -5,18 +5,27 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import { GoabContainer, GoabGrid, GoabIcon, GoabTab, GoabTabs, GoabText } from "@abgov/react-components";
+import {
+  GoabContainer,
+  GoabGrid,
+  GoabIcon,
+  GoabTab,
+  GoabTabs,
+  GoabText,
+} from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { IconSnippet } from "@components/icon-snippet/IconSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabIconType } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
-  LegacyTestIdProperties, MarginProperty,
-  TestIdProperty
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
 
 export default function IconsPage() {
   const [iconsProps, setIconsProps] = useState({
@@ -141,7 +150,7 @@ export default function IconsPage() {
       description: "Sets the accessible name of the icon.",
     },
     ...LegacyTestIdProperties,
-    LegacyMarginProperty
+    LegacyMarginProperty,
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -191,9 +200,8 @@ export default function IconsPage() {
       description: "Sets the accessible name of the icon.",
     },
     TestIdProperty,
-    MarginProperty
+    MarginProperty,
   ];
-
 
   function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
     setIconsBindings(iconsBindings);
@@ -228,11 +236,13 @@ export default function IconsPage() {
             </Sandbox>
 
             {/*Icons Properties*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab heading="Core icon set">
-
             <h3 id="component-example-alert-messaging">Alert and messaging</h3>
             <GoabGrid minChildWidth="230px" gap="l" mt="l">
               <IconSnippet type={"information-circle"} />
@@ -303,18 +313,15 @@ export default function IconsPage() {
           <GoabTab heading="Extended icon set">
             <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="content">
               <GoabText size="body-m" mt="none" mb="none">
-                The extended icon set includes the full
-                {" "}<a href="https://ionic.io/ionicons"
-                        target="_blank" rel="noreferrer">
-                Ionicons library.
-              </a>{" "}
-                When you need additional icons outside of the core icon set, use these icons to maintain a consistent
-                visual language.
+                The extended icon set includes the full{" "}
+                <a href="https://ionic.io/ionicons" target="_blank" rel="noreferrer">
+                  Ionicons library.
+                </a>{" "}
+                When you need additional icons outside of the core icon set, use these icons to
+                maintain a consistent visual language.
               </GoabText>
             </GoabContainer>
           </GoabTab>
-
-
         </GoabTabs>
       </ComponentContent>
     </>

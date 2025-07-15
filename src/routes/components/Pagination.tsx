@@ -20,13 +20,14 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { PaginationExamples } from "@examples/pagination/PaginationExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13964";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13964";
 
 type ComponentPropsType = Omit<GoabPaginationProps, "pageNumber" | "onChange">;
 type CastingType = {
@@ -44,8 +45,8 @@ export function propsToString(
       .join(" ");
   }
   return Object.entries(props)
-    .map((e) => {
-      return typeof e[1] === 'number' ? `${e[0]}={${e[1]}}` : `${e[0]}="${e[1]}"`
+    .map(e => {
+      return typeof e[1] === "number" ? `${e[0]}={${e[1]}}` : `${e[0]}="${e[1]}"`;
     })
     .join(" ");
 }
@@ -63,12 +64,11 @@ const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
 const relatedComponents = [{ link: "/components/table", name: "Table" }];
 
 export default function PaginationPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [paginationProps, setPaginationProps] = useState<ComponentPropsType>({
     itemCount: 30,
     perPageCount: 10,
   });
-
 
   const [paginationBindings, setPaginationBindings] = useState<ComponentBinding[]>([
     {
@@ -91,7 +91,6 @@ export default function PaginationPage() {
       value: 10,
     },
   ]);
-
 
   const oldComponentProperties: ComponentProperty[] = [
     {
@@ -230,8 +229,8 @@ export default function PaginationPage() {
               properties={paginationBindings}
               onChange={onSandboxChange}
               fullWidth
-              skipRender>
-
+              skipRender
+            >
               {/*========React code =========*/}
               <CodeSnippet
                 lang="typescript"
@@ -351,11 +350,12 @@ export default function PaginationPage() {
               )}
 
               {/*===========Angular code=============*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 import { faker } from "@faker-js/faker";
                 interface User {
                   id: string;
@@ -391,13 +391,15 @@ export default function PaginationPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 import { faker } from "@faker-js/faker";
                 interface User {
                   id: string;
@@ -432,13 +434,15 @@ export default function PaginationPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 <goa-table width="100%" mb="xl">
                   <thead>
                     <tr>
@@ -457,13 +461,15 @@ export default function PaginationPage() {
                 </goa-table>
                 <goa-pagination [itemcount]="users.length" perpagecount="10" [pagenumber]="page" (_change)="handlePageChange($event)"></goa-pagination>
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   <goab-table width="100%" mb="xl">
                     <thead>
                       <tr>
@@ -483,7 +489,8 @@ export default function PaginationPage() {
                   <goab-pagination [itemCount]="users.length" [perPageCount]="10" [pageNumber]="page"
                                     (onChange)="handlePageChange($event)"></goab-pagination>
               `}
-              />}
+                />
+              )}
 
               <GoabTable width="100%" mb="xl">
                 <thead>
@@ -512,9 +519,10 @@ export default function PaginationPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-
-
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
           <GoabTab
             heading={

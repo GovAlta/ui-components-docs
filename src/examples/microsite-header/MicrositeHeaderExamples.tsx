@@ -15,8 +15,8 @@ export default function MicrositeHeaderExamples() {
     <>
       <SandboxHeader
         exampleTitle="Link to give feedback to the service"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92884&t=X0IQW5flDDaj8Vyg-4">
-      </SandboxHeader>
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92884&t=X0IQW5flDDaj8Vyg-4"
+      ></SandboxHeader>
       <Sandbox skipRender fullWidth>
         <GoabMicrositeHeader type="alpha" onFeedbackClick={onClick} />
         {/*Angular code*/}
@@ -137,15 +137,16 @@ export default function MicrositeHeaderExamples() {
 
       <SandboxHeader
         exampleTitle="Show version number"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92885&t=X0IQW5flDDaj8Vyg-4">
-      </SandboxHeader>
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-92885&t=X0IQW5flDDaj8Vyg-4"
+      ></SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*Angular*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
           <goa-microsite-header type="alpha">
             <div slot="version">
               <span>Slotted <b>version text</b>.</span>
@@ -153,12 +154,14 @@ export default function MicrositeHeaderExamples() {
             </div>
           </goa-microsite-header>
         `}
-        />}
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="angular"
+            allowCopy={true}
+            code={`
          <goab-microsite-header type="alpha" [version]="version">
             <ng-template #version>
               <span>Slotted <b>version text</b>.</span>
@@ -166,30 +169,35 @@ export default function MicrositeHeaderExamples() {
             </ng-template>
          </goab-microsite-header>
         `}
-        />}
+          />
+        )}
         {/*React*/}
-        {version === "old" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+        {version === "old" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
           <GoAMicrositeHeader
             type="alpha"
             version={<><span>Slotted <b>version text</b>.</span><span>v1.23</span></>}
           ></GoAMicrositeHeader>
         `}
-        />}
-        {version === "new" && <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+          />
+        )}
+        {version === "new" && (
+          <CodeSnippet
+            lang="typescript"
+            tags="react"
+            allowCopy={true}
+            code={`
           <GoabMicrositeHeader
             type="alpha"
             version={<><span>Slotted <b>version text</b>.</span><span>v1.23</span></>}
           ></GoabMicrositeHeader>
         `}
-        />}
+          />
+        )}
         <GoabMicrositeHeader
           type="alpha"
           version={

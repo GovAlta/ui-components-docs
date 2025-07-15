@@ -4,7 +4,7 @@ import {
   GoabContainer,
   GoabDatePicker,
   GoabFormItem,
-  GoabModal
+  GoabModal,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext, useState } from "react";
@@ -12,7 +12,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 
 export const ModalConfirmRecordChangeExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [inputModalOpen, setInputModalOpen] = useState<boolean>();
   const [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());
 
@@ -40,7 +40,8 @@ export const ModalConfirmRecordChangeExample = () => {
                 Confirm
               </GoabButton>
             </GoabButtonGroup>
-          }>
+          }
+        >
           <GoabContainer type="non-interactive" accent="filled" padding="compact" width="full">
             <dl className="address-change-example--description">
               <dt>Before</dt>
@@ -55,7 +56,8 @@ export const ModalConfirmRecordChangeExample = () => {
             <GoabDatePicker
               onChange={onChangeEffectiveDate}
               name="effectiveDate"
-              value={effectiveDate}></GoabDatePicker>
+              value={effectiveDate}
+            ></GoabDatePicker>
           </GoabFormItem>
         </GoabModal>
       </GoabContainer>
@@ -74,11 +76,12 @@ export const ModalConfirmRecordChangeExample = () => {
       />
 
       {/*Angular code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   export class SomeOtherComponent {
                     open = false;
                     effectiveDate = new Date(); 
@@ -92,13 +95,15 @@ export const ModalConfirmRecordChangeExample = () => {
                     }
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   export class SomeOtherComponent {
                     open = false;
                     effectiveDate = new Date(); 
@@ -112,13 +117,15 @@ export const ModalConfirmRecordChangeExample = () => {
                     }
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-button (_click)="toggleModal()">Save and continue</goa-button>
                   <goa-modal [open]="open" role="dialog"
                     (_close)="toggleModal()" heading="Address has changed">
@@ -148,13 +155,15 @@ export const ModalConfirmRecordChangeExample = () => {
                     </div>
                   </goa-modal>
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
           <goab-button (onClick)="toggleModal()">Save and continue</goab-button>
           <goab-modal [open]="open" role="dialog"
            (onClose)="toggleModal()" heading="Address has changed" [actions]="actions">
@@ -183,14 +192,16 @@ export const ModalConfirmRecordChangeExample = () => {
             </ng-template>
           </goab-modal>
                 `}
-      />}
+        />
+      )}
 
       {/*React code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [open, setOpen] = useState(false);
                   const [effectiveDate, setEffectiveDate] = useState<Date>(new Date());
                   
@@ -198,12 +209,14 @@ export const ModalConfirmRecordChangeExample = () => {
                     setEffectiveDate(value);
                   }
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [open, setOpen] = useState(false);
                   const [effectiveDate, setEffectiveDate] = useState<Date | undefined>(new Date());
                   
@@ -211,13 +224,15 @@ export const ModalConfirmRecordChangeExample = () => {
                     setEffectiveDate(detail.value as Date);
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoAButton onClick={() => setOpen(true)}>Save and continue</GoAButton>
                   <GoAModal
                     heading="Address has changed"
@@ -253,12 +268,14 @@ export const ModalConfirmRecordChangeExample = () => {
                     </GoAFormItem>
                   </GoAModal>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoabButton onClick={() => setOpen(true)}>Save and continue</GoabButton>
                   <GoabModal
                     heading="Address has changed"
@@ -294,7 +311,8 @@ export const ModalConfirmRecordChangeExample = () => {
                     </GoabFormItem>
                   </GoabModal>
                 `}
-      />}
+        />
+      )}
     </>
-  )
-}
+  );
+};

@@ -22,7 +22,8 @@ export const PopoverExamples = () => {
       {/*Popover example - close using an icon-button*/}
       <SandboxHeader
         exampleTitle="Close a Popover with an Icon Button"
-        figmaExample=""></SandboxHeader>
+        figmaExample=""
+      ></SandboxHeader>
       <IconButtonClosePopover />
 
       <GoabSpacer vSpacing={"2xl"}></GoabSpacer>

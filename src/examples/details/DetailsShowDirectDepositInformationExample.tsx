@@ -5,18 +5,18 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const DetailsShowDirectDepositInformationExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const noop = () => {};
 
   return (
     <Sandbox flags={["reactive"]} fullWidth allow={["form", "h2", "p"]} skipRenderOnly={"react"}>
-
       {/*Angular code*/}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags={["angular", "reactive"]}
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags={["angular", "reactive"]}
+          allowCopy={true}
+          code={`
           export class ExampleComponent {
             form!: FormGroup;
 
@@ -29,24 +29,28 @@ export const DetailsShowDirectDepositInformationExample = () => {
             }
           }
         `}
-      />}
+        />
+      )}
 
       {/*React code*/}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
             const [bankNumber, setBankNumber] = useState<string>("");
             const [transitNumber, setTransitNumber] = useState<string>("");
             const [accountNumber, setAccountNumber] = useState<string>("");
         `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
             <h2>Direct deposit information</h2>
             <p>
               Find this information on your bank's website or on your personal cheques. Contact your bank if you can't find
@@ -70,13 +74,15 @@ export const DetailsShowDirectDepositInformationExample = () => {
               <img src="https://design.alberta.ca/images/details-demo.jpg" />
             </GoabDetails>
         `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="html"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="html"
+          tags="react"
+          allowCopy={true}
+          code={`
            <GoAFormItem label="Bank or Institution number" id="bankNumber" helpText="3-4 digits in length" mb="xl">
               <GoAInput maxLength={4} name="bankNumber" onChange={onChange} value="" ariaLabel="bankNumber" width="88px"></GoAInput>
            </GoAFormItem>
@@ -91,8 +97,8 @@ export const DetailsShowDirectDepositInformationExample = () => {
               <img src="https://design.alberta.ca/images/details-demo.jpg" />
            </GoADetails>
         `}
-      />}
-
+        />
+      )}
 
       <h2>Direct deposit information</h2>
       <p>
@@ -104,7 +110,8 @@ export const DetailsShowDirectDepositInformationExample = () => {
           label="Bank or Institution number"
           id="bankNumber"
           helpText={"3-4 digits in length"}
-          mb="xl">
+          mb="xl"
+        >
           <GoabInput
             maxLength={4}
             name="bankNumber"
@@ -118,7 +125,8 @@ export const DetailsShowDirectDepositInformationExample = () => {
           label="Branch or Transit number"
           helpText={"5 digits in length"}
           id="transitNumber"
-          mb="xl">
+          mb="xl"
+        >
           <GoabInput
             maxLength={5}
             name="transitNumber"

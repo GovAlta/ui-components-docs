@@ -6,11 +6,11 @@ export type TOCItem = {
   tagName: string;
   id: string;
   yOffset: number;
-}
+};
 
 type TOCProps = {
   cssQuery: string;
-}
+};
 
 export function TOC(props: TOCProps) {
   const [items, setItems] = useState<TOCItem[]>();
@@ -25,7 +25,7 @@ export function TOC(props: TOCProps) {
       }
     }
     return hash.replace("#", "");
-  }
+  };
   useEffect(() => {
     // set first link as current by default if no hash exists
     setTimeout(() => {
@@ -37,8 +37,8 @@ export function TOC(props: TOCProps) {
         const el = document.getElementById(idPart);
         el?.scrollIntoView();
       }
-    }, 100)
-    
+    }, 100);
+
     const updateOnScroll = () => {
       let activeItem: TOCItem | undefined;
       const items = queryItems().reverse();
@@ -51,7 +51,7 @@ export function TOC(props: TOCProps) {
 
       if (activeItem) {
         setActiveByScroll(activeItem);
-      } 
+      }
     };
 
     // observe path changes
@@ -64,23 +64,22 @@ export function TOC(props: TOCProps) {
     });
 
     if (node) {
-      observer.observe(node, { childList: true, subtree: true })
+      observer.observe(node, { childList: true, subtree: true });
     }
 
     // observe hash changes
-    window.addEventListener("popstate", bind)
+    window.addEventListener("popstate", bind);
 
     document.addEventListener("scroll", updateOnScroll);
 
     // need small delay to ensure targets are found
     setTimeout(bind, 100);
-    
-    return () => {
-      window.removeEventListener("popstate", bind)
-      document.removeEventListener("scroll", updateOnScroll);
-    }
-  }, []);
 
+    return () => {
+      window.removeEventListener("popstate", bind);
+      document.removeEventListener("scroll", updateOnScroll);
+    };
+  }, []);
 
   function bind() {
     const items = queryItems();
@@ -118,12 +117,12 @@ export function TOC(props: TOCProps) {
 
   function getAnchorLink(id: string): string {
     const currentHash = window.location.hash;
-    
-    if (currentHash.includes('#tab-')) {
+
+    if (currentHash.includes("#tab-")) {
       // If URL contains #tab-, append our ID after it
       return `${currentHash}#${id}`;
     }
-    
+
     return `#${id}`;
   }
 
@@ -131,28 +130,31 @@ export function TOC(props: TOCProps) {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({behavior: "smooth"});
+      el.scrollIntoView({ behavior: "smooth" });
       const newHash = getAnchorLink(id);
       window.history.replaceState(null, "", newHash);
     }
-  }
+  };
 
   return (
     <nav className={css["toc"]}>
-      {items && items.map(({ title, tagName: element, id }, index) => {
-        return <div key={id}>
-          <a
-            className={`
+      {items &&
+        items.map(({ title, tagName: element, id }, index) => {
+          return (
+            <div key={id}>
+              <a
+                className={`
               ${css[`toc-item-${element.toLowerCase()}`]}
               ${isActive(id, index) ? css["active"] : ""}
             `}
-            href={getAnchorLink(id)}
-            onClick={(e) => handleClick(e, id)}
-          >
-            {title}
-          </a>
-        </div>
-      })}
+                href={getAnchorLink(id)}
+                onClick={e => handleClick(e, id)}
+              >
+                {title}
+              </a>
+            </div>
+          );
+        })}
     </nav>
   );
 }

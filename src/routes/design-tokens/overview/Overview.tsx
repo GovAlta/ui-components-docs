@@ -30,11 +30,13 @@ export default function DesignTokensOverviewPage() {
       </p>
 
       <GoabContainer type="interactive" mt="xl" mb="l">
-        <GoabText size="heading-s" mt="none" mb="m">Example of a design token</GoabText>
+        <GoabText size="heading-s" mt="none" mb="m">
+          Example of a design token
+        </GoabText>
         <GoabText size="body-m" mt="none" mb="none">
           The GoA’s colour for a hover interaction is #004F84. This property is defined as a design
-          token called <code className="inline">--goa-color-interactive-hover</code>. This token is used in Figma as a
-          style and used in code as CSS or SASS variables
+          token called <code className="inline">--goa-color-interactive-hover</code>. This token is
+          used in Figma as a style and used in code as CSS or SASS variables
         </GoabText>
       </GoabContainer>
 
@@ -42,29 +44,37 @@ export default function DesignTokensOverviewPage() {
       <h4>Developers</h4>
       <p>
         You can access the design tokens as an NPM package here:{" "}
-        <a href="https://www.npmjs.com/package/@abgov/design-tokens" target="_blank">npm: @abgov/design-tokens</a>.
-        Incorporate the SCSS or CSS file into your projects, replacing hard-coded values with the
+        <a href="https://www.npmjs.com/package/@abgov/design-tokens" target="_blank">
+          npm: @abgov/design-tokens
+        </a>
+        . Incorporate the SCSS or CSS file into your projects, replacing hard-coded values with the
         token variables from the design system. Your designers can use and reference these design
         tokens in their tools to hand off their designs to you.
       </p>
       <p>
         Save time going back and forth with your designer on hex values and adjusting a few pixels
-        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the spacing is:{" "}
-        <code className="inline">--goa-spacing-m</code>".
+        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the
+        spacing is: <code className="inline">--goa-spacing-m</code>".
       </p>
 
       <h4>Designers</h4>
       <p>
         Many of the design tokens are represented in Figma as styles within the shared GOA Figma
-        Styles Library here: <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=4154-103403&mode=design&t=gILvZW7G5Zl8hYZz-4" target="_blank">Styles, Guidelines, and Patterns | DDD</a>, and
-        is automatically enabled in your project files. Spacing can be applied in Figma using the
-        spacing component. As a designer, you can communicate design decisions using design tokens,
-        which developers can then use in code.
+        Styles Library here:{" "}
+        <a
+          href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=4154-103403&mode=design&t=gILvZW7G5Zl8hYZz-4"
+          target="_blank"
+        >
+          Styles, Guidelines, and Patterns | DDD
+        </a>
+        , and is automatically enabled in your project files. Spacing can be applied in Figma using
+        the spacing component. As a designer, you can communicate design decisions using design
+        tokens, which developers can then use in code.
       </p>
       <p>
         Save time going back and forth with your developer on hex values and adjusting a few pixels
-        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the spacing is:{" "}
-        <code className="inline"> --goa-spacing-m</code>".
+        at a time. "The colour is: <code className="inline">--goa-color-info-default</code>, the
+        spacing is: <code className="inline"> --goa-spacing-m</code>".
       </p>
     </ComponentContent>
   );

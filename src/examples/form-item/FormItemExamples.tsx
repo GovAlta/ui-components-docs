@@ -5,17 +5,11 @@ import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.
 export const FormItemExamples = () => {
   return (
     <>
-      <SandboxHeader
-        exampleTitle="Slotted Helper Text"
-        figmaExample="">
-      </SandboxHeader>
+      <SandboxHeader exampleTitle="Slotted Helper Text" figmaExample=""></SandboxHeader>
       <FormItemSlottedHelperTextExample />
 
-      <SandboxHeader
-        exampleTitle="Slotted Error Text"
-        figmaExample="">
-      </SandboxHeader>
+      <SandboxHeader exampleTitle="Slotted Error Text" figmaExample=""></SandboxHeader>
       <FormItemSlottedErrorTextExample />
     </>
-  )
-}
+  );
+};

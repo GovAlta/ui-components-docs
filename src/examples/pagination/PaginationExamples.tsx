@@ -59,11 +59,10 @@ export const PaginationExamples = () => {
 
   return (
     <>
-
       <SandboxHeader
         exampleTitle="Set items per page and navigate multiple pages in a table"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-118312&t=X0IQW5flDDaj8Vyg-4">
-      </SandboxHeader>
+        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6311-118312&t=X0IQW5flDDaj8Vyg-4"
+      ></SandboxHeader>
       <Sandbox fullWidth skipRender>
         {/*============= React code ==============*/}
         {version === "old" && (
@@ -559,7 +558,8 @@ export const PaginationExamples = () => {
             <GoabDropdown
               onChange={handlePerPageCountChangeEvent}
               value={perPage.toString()}
-              width="9ch">
+              width="9ch"
+            >
               {[10, 20, 30].map(value => (
                 <GoabDropdownItem key={value} value={value.toString()} label={value.toString()} />
               ))}

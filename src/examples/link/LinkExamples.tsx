@@ -5,8 +5,7 @@ import { GoabLink } from "@abgov/react-components";
 export const LinkExamples = () => {
   return (
     <>
-      <SandboxHeader exampleTitle="Link to an external page">
-      </SandboxHeader>
+      <SandboxHeader exampleTitle="Link to an external page"></SandboxHeader>
 
       <Sandbox>
         <GoabLink trailingIcon="open">
@@ -15,4 +14,4 @@ export const LinkExamples = () => {
       </Sandbox>
     </>
   );
-}
+};

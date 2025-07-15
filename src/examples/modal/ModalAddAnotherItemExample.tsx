@@ -2,17 +2,23 @@ import {
   GoabButton,
   GoabButtonGroup,
   GoabContainer,
-  GoabDropdown, GoabDropdownItem,
-  GoabFormItem, GoabInput,
-  GoabModal, GoabTextarea
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+  GoabInput,
+  GoabModal,
+  GoabTextarea,
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { GoabDropdownOnChangeDetail, GoabTextAreaOnChangeDetail } from "@abgov/ui-components-common";
+import {
+  GoabDropdownOnChangeDetail,
+  GoabTextAreaOnChangeDetail,
+} from "@abgov/ui-components-common";
 
 export const ModalAddAnotherItemExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [addItemModalOpen, setAddItemModalOpen] = useState<boolean>();
   const [type, setType] = useState<string>();
   const [name, setName] = useState<string>();
@@ -52,7 +58,8 @@ export const ModalAddAnotherItemExample = () => {
                 Save new item
               </GoabButton>
             </GoabButtonGroup>
-          }>
+          }
+        >
           <p>Fill in the information to create a new item</p>
           <GoabFormItem label="Type" mt="xs">
             <GoabDropdown onChange={onChangeType} value={type}>
@@ -64,7 +71,8 @@ export const ModalAddAnotherItemExample = () => {
             <GoabInput
               onChange={event => onChangeName(event.value)}
               value={name}
-              name="name"></GoabInput>
+              name="name"
+            ></GoabInput>
           </GoabFormItem>
           <GoabFormItem label="Description" mt="xs">
             <GoabTextarea
@@ -72,16 +80,18 @@ export const ModalAddAnotherItemExample = () => {
               width="80%"
               rows={2}
               onChange={onChangeDescription}
-              value={description}></GoabTextarea>
+              value={description}
+            ></GoabTextarea>
           </GoabFormItem>
         </GoabModal>
       </GoabContainer>
       {/*Angular code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   export class SomeOtherComponent {
                     open = false;
                     type = "";
@@ -105,13 +115,15 @@ export const ModalAddAnotherItemExample = () => {
                     }
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   export class SomeOtherComponent {
                     open = false;
                     type: string|undefined = "";
@@ -135,13 +147,15 @@ export const ModalAddAnotherItemExample = () => {
                     }
                   }
                 `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-button type="tertiary" leadingicon="add" (_click)="toggleModal()">Add another item</goa-button>
                   <goa-modal [open]="open" role="dialog"
                     (_close)="toggleModal()" heading="Add a new item">
@@ -166,13 +180,15 @@ export const ModalAddAnotherItemExample = () => {
                       </div>
                   </goa-modal>
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
         <goab-button type="tertiary" leadingIcon="add" (onClick)="toggleModal()">Add another item</goab-button>
         <goab-modal [open]="open" role="dialog"
            (onClose)="toggleModal()" heading="Add a new item" [actions]="actions">
@@ -197,14 +213,16 @@ export const ModalAddAnotherItemExample = () => {
           </ng-template>
         </goab-modal>
         `}
-      />}
+        />
+      )}
 
       {/*React code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [open, setOpen] = useState(false);
                   const [type, setType] = useState<string>();
                   const [name, setName] = useState<string>();
@@ -223,13 +241,15 @@ export const ModalAddAnotherItemExample = () => {
                   };
                   
                 `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   const [open, setOpen] = useState(false);
                   const [type, setType] = useState<string>();
                   const [name, setName] = useState<string>();
@@ -248,12 +268,14 @@ export const ModalAddAnotherItemExample = () => {
                   };
                   
                 `}
-      />}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoAButton type="tertiary" leadingIcon="add" onClick={() => setOpen(true)}>
                     Add another item
                   </GoAButton>
@@ -286,12 +308,14 @@ export const ModalAddAnotherItemExample = () => {
                       </GoAFormItem>
                    </GoAModal>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                   <GoabButton type="tertiary" leadingIcon="add" onClick={() => setOpen(true)}>
                     Add another item
                   </GoabButton>
@@ -324,8 +348,8 @@ export const ModalAddAnotherItemExample = () => {
                       </GoabFormItem>
                    </GoabModal>
                 `}
-      />}
-
+        />
+      )}
     </>
-  )
-}
+  );
+};

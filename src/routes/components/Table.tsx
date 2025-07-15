@@ -39,7 +39,8 @@ export default function TablePage() {
   const [tableProps, setTableProps] = useState<ComponentPropsType>({
     width: "100%",
   });
-  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=3785-18038";
+  const FIGMA_LINK =
+    "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=3785-18038";
   const [tableBindings, setTableBindings] = useState<ComponentBinding[]>([
     {
       label: "Width",
@@ -178,7 +179,9 @@ export default function TablePage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={tableBindings} onChange={onSandboxChange} fullWidth>
               <GoabTable
                 {...omit(tableProps, "onSort")}
@@ -186,7 +189,8 @@ export default function TablePage() {
                   if (tableProps.onSort) {
                     tableProps.onSort(detail.sortBy, detail.sortDir);
                   }
-                }}>
+                }}
+              >
                 <thead>
                   <tr>
                     <th>Status</th>
@@ -240,51 +244,51 @@ export default function TablePage() {
               </GoabTable>
             </Sandbox>
 
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
-            <GoabTab
-              heading={
-                <>
-                  Examples
-                  <GoabBadge type="information" content="3" />
-                </>
-              }
-            >
-
-
-              <SandboxHeader
-                exampleTitle="Sort data in a table"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97462&t=X0IQW5flDDaj8Vyg-4">
-              </SandboxHeader>
-              <Sandbox fullWidth>
-                <GoabTable onSort={sortData} width="100%">
-                  <thead>
-                    <tr>
-                      <th>
-                        <GoabTableSortHeader name="firstName">First name</GoabTableSortHeader>
-                      </th>
-                      <th>
-                        <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
-                      </th>
-                      <th>
-                        <GoabTableSortHeader name="age" direction="asc">
-                          Age
-                        </GoabTableSortHeader>
-                      </th>
+          <GoabTab
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="3" />
+              </>
+            }
+          >
+            <SandboxHeader
+              exampleTitle="Sort data in a table"
+              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97462&t=X0IQW5flDDaj8Vyg-4"
+            ></SandboxHeader>
+            <Sandbox fullWidth>
+              <GoabTable onSort={sortData} width="100%">
+                <thead>
+                  <tr>
+                    <th>
+                      <GoabTableSortHeader name="firstName">First name</GoabTableSortHeader>
+                    </th>
+                    <th>
+                      <GoabTableSortHeader name="lastName">Last name</GoabTableSortHeader>
+                    </th>
+                    <th>
+                      <GoabTableSortHeader name="age" direction="asc">
+                        Age
+                      </GoabTableSortHeader>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map(user => (
+                    <tr key={user.firstName}>
+                      <td>{user.firstName}</td>
+                      <td>{user.lastName}</td>
+                      <td>{user.age}</td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {users.map(user => (
-                      <tr key={user.firstName}>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.age}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </GoabTable>
-
-              </Sandbox>
+                  ))}
+                </tbody>
+              </GoabTable>
+            </Sandbox>
             {/*React code*/}
             {version === "old" && (
               <CodeSnippet
@@ -595,10 +599,10 @@ export default function TablePage() {
               />
             )}
 
-              <SandboxHeader
-                exampleTitle="Display numbers in a table so they can be scanned easily"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97673&t=X0IQW5flDDaj8Vyg-4">
-              </SandboxHeader>
+            <SandboxHeader
+              exampleTitle="Display numbers in a table so they can be scanned easily"
+              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6312-97673&t=X0IQW5flDDaj8Vyg-4"
+            ></SandboxHeader>
             <Sandbox fullWidth>
               <GoabTable width="100%">
                 <thead>
@@ -623,10 +627,10 @@ export default function TablePage() {
               </GoabTable>
             </Sandbox>
 
-              <SandboxHeader
-                exampleTitle="Filter data in a table"
-                figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7104-1626357&t=WrSJODVw0mryQrrA-4">
-              </SandboxHeader>
+            <SandboxHeader
+              exampleTitle="Filter data in a table"
+              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7104-1626357&t=WrSJODVw0mryQrrA-4"
+            ></SandboxHeader>
             <TableWithGlobalFiltersExample />
           </GoabTab>
 
@@ -636,7 +640,6 @@ export default function TablePage() {
           <GoabTab heading="Accessibility">
             <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </>

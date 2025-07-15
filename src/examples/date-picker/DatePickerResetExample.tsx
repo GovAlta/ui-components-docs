@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const DatePickerResetExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [date, setDate] = useState<Date | undefined>();
 
   const setNewDate = (value: Date | undefined) => {
@@ -24,9 +24,10 @@ export const DatePickerResetExample = () => {
     setDate(undefined);
   }
   return (
-      <Sandbox fullWidth skipRender flags={version === "old" ? ["reactive"] : ["event"]}>
-        {/*React*/}
-        {version === "old" && <CodeSnippet
+    <Sandbox fullWidth skipRender flags={version === "old" ? ["reactive"] : ["event"]}>
+      {/*React*/}
+      {version === "old" && (
+        <CodeSnippet
           tags="react"
           lang="typescript"
           allowCopy={true}
@@ -68,9 +69,11 @@ export const DatePickerResetExample = () => {
                     );
                   }
               `}
-        />}
+        />
+      )}
 
-        {version === "new" && <CodeSnippet
+      {version === "new" && (
+        <CodeSnippet
           tags="react"
           lang="typescript"
           allowCopy={true}
@@ -113,11 +116,13 @@ export const DatePickerResetExample = () => {
                     );
                   }
               `}
-        />}
+        />
+      )}
 
-        {/*Angular*/}
+      {/*Angular*/}
 
-        {version === "old" && <CodeSnippet
+      {version === "old" && (
+        <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -139,9 +144,11 @@ export const DatePickerResetExample = () => {
                     }
                   }
                 `}
-        />}
+        />
+      )}
 
-        {version === "old" && <CodeSnippet
+      {version === "old" && (
+        <CodeSnippet
           lang="html"
           tags="angular"
           allowCopy={true}
@@ -155,9 +162,11 @@ export const DatePickerResetExample = () => {
                     <goa-button (_click)="clearValue()">Clear Value</goa-button>
                   </goa-button-group>
                 `}
-        />}
+        />
+      )}
 
-        {version === "old" && <CodeSnippet
+      {version === "old" && (
+        <CodeSnippet
           tags={["angular", "reactive"]}
           lang="typescript"
           allowCopy={true}
@@ -178,8 +187,10 @@ export const DatePickerResetExample = () => {
                     }
                   }
               `}
-        />}
-        {version === "old" && <CodeSnippet
+        />
+      )}
+      {version === "old" && (
+        <CodeSnippet
           tags={["angular", "reactive"]}
           lang="typescript"
           allowCopy={true}
@@ -193,10 +204,12 @@ export const DatePickerResetExample = () => {
                     <goa-button (_click)="clearValue()">Clear Value</goa-button>
                   </goa-button-group>
               `}
-        />}
+        />
+      )}
 
-        {/*New version*/}
-        {version === "new" && <CodeSnippet
+      {/*New version*/}
+      {version === "new" && (
+        <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -216,9 +229,11 @@ export const DatePickerResetExample = () => {
                     }
                   }
                 `}
-        />}
+        />
+      )}
 
-        {version === "new" && <CodeSnippet
+      {version === "new" && (
+        <CodeSnippet
           lang="html"
           tags="angular"
           allowCopy={true}
@@ -232,22 +247,24 @@ export const DatePickerResetExample = () => {
                     <goab-button (onClick)="clearValue()">Clear Value</goab-button>
                   </goab-button-group>
                 `}
-        />}
+        />
+      )}
 
-        <GoabFormItem label="Date Picker">
-          <GoabDatePicker
-            name="item"
-            value={date}
-            onChange={(e: GoabDatePickerOnChangeDetail) => setNewDate(e.value as Date)}
-            mb="xl"></GoabDatePicker>
-        </GoabFormItem>
+      <GoabFormItem label="Date Picker">
+        <GoabDatePicker
+          name="item"
+          value={date}
+          onChange={(e: GoabDatePickerOnChangeDetail) => setNewDate(e.value as Date)}
+          mb="xl"
+        ></GoabDatePicker>
+      </GoabFormItem>
 
-        <GoabButtonGroup mt={"xs"} alignment={"start"}>
-          <GoabButton onClick={setValue} mr="l">
-            Set Value
-          </GoabButton>
-          <GoabButton onClick={clearValue}>Clear Value</GoabButton>
-        </GoabButtonGroup>
-      </Sandbox>
-  )
-}
+      <GoabButtonGroup mt={"xs"} alignment={"start"}>
+        <GoabButton onClick={setValue} mr="l">
+          Set Value
+        </GoabButton>
+        <GoabButton onClick={clearValue}>Clear Value</GoabButton>
+      </GoabButtonGroup>
+    </Sandbox>
+  );
+};

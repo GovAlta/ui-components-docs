@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const ContainerUserInformationExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
   return (
     <Sandbox fullWidth skipRender>
@@ -335,33 +335,41 @@ export const ContainerUserInformationExample = () => {
         accent="thick"
         heading="Upcoming important due dates"
         actions={
-          <GoabButton type="tertiary" size="compact" leadingIcon="calendar" onClick={() => {/* do nothing */}}>
+          <GoabButton
+            type="tertiary"
+            size="compact"
+            leadingIcon="calendar"
+            onClick={() => {
+              /* do nothing */
+            }}
+          >
             Add to calendar
           </GoabButton>
-        }>
+        }
+      >
         <div className="container-example-1">
           <GoabTable width="100%">
             <tbody className="striped">
-            <tr>
-              <td>Business plan submission</td>
-              <td className="align-right">June 30, 2024</td>
-            </tr>
-            <tr>
-              <td>Annual review</td>
-              <td className="align-right">October 3, 2024</td>
-            </tr>
-            <tr>
-              <td>Application submission</td>
-              <td className="align-right">December 20, 2024</td>
-            </tr>
-            <tr>
-              <td>Application review</td>
-              <td className="align-right">January 3, 2025</td>
-            </tr>
+              <tr>
+                <td>Business plan submission</td>
+                <td className="align-right">June 30, 2024</td>
+              </tr>
+              <tr>
+                <td>Annual review</td>
+                <td className="align-right">October 3, 2024</td>
+              </tr>
+              <tr>
+                <td>Application submission</td>
+                <td className="align-right">December 20, 2024</td>
+              </tr>
+              <tr>
+                <td>Application review</td>
+                <td className="align-right">January 3, 2025</td>
+              </tr>
             </tbody>
           </GoabTable>
         </div>
       </GoabContainer>
     </Sandbox>
-  )
-}
+  );
+};

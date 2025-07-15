@@ -5,9 +5,13 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const FormItemSlottedHelperTextExample = () => {
-  const {version} = useContext(LanguageVersionContext);
-  const noop = () => {}
-  const reactNode = <><i>This is </i> slotted <b> help text</b>.</>;
+  const { version } = useContext(LanguageVersionContext);
+  const noop = () => {};
+  const reactNode = (
+    <>
+      <i>This is </i> slotted <b> help text</b>.
+    </>
+  );
 
   return (
     // Must skip render because we use slotted that isn't supported by sandbox
@@ -54,11 +58,12 @@ export const FormItemSlottedHelperTextExample = () => {
       )}
 
       {/*Angular*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goa-form-item label="First name">
                     <goa-input goaValue name="item" [formControl]="itemFormCtrl" [value]="itemFormCtrl.value"></goa-input>
 
@@ -70,13 +75,15 @@ export const FormItemSlottedHelperTextExample = () => {
 
                   </goa-form-item>
                   `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   <goab-form-item label="First name" [formGroup]="form">
                     <goab-input name="item" formControlName="item"></goab-input>
                     <goab-form-item-slot slot="helptext">
@@ -86,11 +93,12 @@ export const FormItemSlottedHelperTextExample = () => {
                     </goab-form-item-slot>
                   </goab-form-item>
                 `}
-      />}
+        />
+      )}
 
       <GoabFormItem label="First name" helpText={reactNode}>
         <GoabInput onChange={noop} value="" name="item" />
       </GoabFormItem>
     </Sandbox>
-  )
-}
+  );
+};

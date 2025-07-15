@@ -20,7 +20,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=582-5939";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=582-5939";
 const componentName = "Footer";
 const description = "Provides information related your service at the bottom of every page.";
 const componentCategory = Category.STRUCTURE_AND_NAVIGATION;
@@ -36,7 +37,7 @@ type CastingType = {
 };
 
 export default function AppFooterPage() {
-  const {language} = useContext(LanguageVersionContext);
+  const { language } = useContext(LanguageVersionContext);
 
   const [sandbox1Props, setSandbox1Props] = useState<ComponentPropsType>({
     maxContentWidth: "100%",
@@ -115,7 +116,10 @@ export default function AppFooterPage() {
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties heading="Basic footer properties" properties={componentProperties} />
+            <ComponentProperties
+              heading="Basic footer properties"
+              properties={componentProperties}
+            />
             <ComponentProperties
               heading="Nav section properties"
               properties={secondaryNavProperties}
@@ -127,7 +131,6 @@ export default function AppFooterPage() {
                 properties={metaLinkProperties}
               />
             )}
-
           </GoabTab>
 
           <GoabTab
@@ -136,7 +139,8 @@ export default function AppFooterPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }>
+            }
+          >
             <AppFooterExamples />
           </GoabTab>
 

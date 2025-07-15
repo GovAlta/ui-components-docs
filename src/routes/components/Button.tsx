@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  GoabBadge,
-  GoabButton,
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { GoabBadge, GoabButton, GoabTab, GoabTabs } from "@abgov/react-components";
 import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
@@ -19,12 +14,13 @@ import {
   LegacyMarginProperty,
   LegacyTestIdProperties,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=420-6810";
 
 export default function ButtonPage() {
   const [buttonProps, setButtonProps] = useState({});
@@ -65,7 +61,7 @@ export default function ButtonPage() {
       options: [""].concat(ICONS),
       value: "",
     },
-    {label: "Width", type: "string", name: "width", value: ""},
+    { label: "Width", type: "string", name: "width", value: "" },
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
   ]);
   const oldComponentProperties: ComponentProperty[] = [
@@ -135,7 +131,7 @@ export default function ButtonPage() {
       description: "Callback function when button is clicked.",
     },
     ...LegacyTestIdProperties,
-    LegacyMarginProperty
+    LegacyMarginProperty,
   ];
   const componentProperties: ComponentProperty[] = [
     {
@@ -210,7 +206,9 @@ export default function ButtonPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={buttonBindings} onChange={SandboxOnChange}>
               <CodeSnippet
                 lang="typescript"

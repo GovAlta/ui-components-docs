@@ -28,8 +28,11 @@ export default function ColorPage() {
       <>
         {colors.map((color, index) => (
           <div key={index} className="color-section">
-              <GoabText size="heading-m" mt="2xl" mb="m"> {color.name} </GoabText>
-              <GoabTable width="100%">
+            <GoabText size="heading-m" mt="2xl" mb="m">
+              {" "}
+              {color.name}{" "}
+            </GoabText>
+            <GoabTable width="100%">
               <thead>
                 <tr>
                   <th></th>
@@ -64,7 +67,6 @@ export default function ColorPage() {
                       )}
                     </td>
                     */}
-
                   </tr>
                 ))}
               </tbody>
@@ -96,7 +98,8 @@ export default function ColorPage() {
                   <TokenSnippet className="mobile-token-view" code={token.code} />
                   <dl>
                     <dt>Hex value</dt> <dd className="dd-style">{token.value}</dd>
-                    <dt>Figma colour style</dt> <dd className="dd-style">{token.figmaColorStyle}</dd>
+                    <dt>Figma colour style</dt>{" "}
+                    <dd className="dd-style">{token.figmaColorStyle}</dd>
                     <dt>Description</dt> <dd className="dd-style">{token.description}</dd>
                   </dl>
                 </GoabContainer>

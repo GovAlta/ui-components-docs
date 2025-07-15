@@ -10,7 +10,8 @@ import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.t
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303449";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303449";
 
 export default function TextPage() {
   const [textProps, setTextProps] = useState({});
@@ -20,28 +21,39 @@ export default function TextPage() {
       label: "Size",
       type: "list",
       name: "size",
-      options: ["", "heading-xl", "heading-l", "heading-m", "heading-s", "heading-xs", "body-l", "body-m", "body-s", "body-xs"],
+      options: [
+        "",
+        "heading-xl",
+        "heading-l",
+        "heading-m",
+        "heading-s",
+        "heading-xs",
+        "body-l",
+        "body-m",
+        "body-s",
+        "body-xs",
+      ],
       value: "",
     },
     {
       label: "Tag",
       type: "list",
       name: "tag",
-      options: ["", "h1", "h2", "h3", "h4", "h5", "span", "div", "p" ],
+      options: ["", "h1", "h2", "h3", "h4", "h5", "span", "div", "p"],
       value: "",
     },
     {
       label: "Max width",
       type: "string",
       name: "maxWidth",
-      value: ""
+      value: "",
     },
     {
       label: "Color",
       type: "list",
       name: "color",
       options: ["", "primary", "secondary"],
-      value: ""
+      value: "",
     },
     {
       label: "Top Margin",
@@ -64,25 +76,25 @@ export default function TextPage() {
       name: "tag",
       type: "h1 | h2 | h3 | h4 | h5 | span | div | p",
       description: "Sets the tag and text size.",
-      defaultValue: "div"
+      defaultValue: "div",
     },
     {
       name: "size",
       type: "heading-xl | heading-l | heading-m | heading-s | heading-xs | body-l | body-m | body-s | body-xs",
-      description: "Overrides the text size from the 'as' property."
+      description: "Overrides the text size from the 'as' property.",
     },
     {
-     name: "maxWidth",
-     type: "string",
-     description: "Sets the max width.",
-     defaultValue: "65ch"
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the max width.",
+      defaultValue: "65ch",
     },
-     {
+    {
       name: "color",
       type: "primary | secondary",
       description: "Sets the text colour.",
-      defaultValue: "primary"
-     },
+      defaultValue: "primary",
+    },
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -107,11 +119,13 @@ export default function TextPage() {
 
       <GoabTabs initialTab={1}>
         <GoabTab heading="Code playground">
-          <h2 id="component" style={{ display: "none" }}>Playground</h2>
+          <h2 id="component" style={{ display: "none" }}>
+            Playground
+          </h2>
           <Sandbox properties={textBindings} onChange={onSandboxChange}>
             <GoabText {...textProps}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
             </GoabText>
           </Sandbox>
           <ComponentProperties properties={componentProperties} />

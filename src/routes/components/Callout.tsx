@@ -4,7 +4,7 @@ import {
   GoabTab,
   GoabTabs,
   GoabCallout,
-  GoabCalloutProps
+  GoabCalloutProps,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
@@ -17,8 +17,9 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabCalloutType } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
-  LegacyTestIdProperties, MarginProperty,
-  TestIdProperty
+  LegacyTestIdProperties,
+  MarginProperty,
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { CalloutExamples } from "@examples/callout/CalloutExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -26,7 +27,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=434-14122";
 const componentName = "Callout";
 const description = "Communicate important information through a strong visual emphasis.";
 const category = Category.CONTENT_AND_LAYOUT;
@@ -190,16 +192,21 @@ export default function CalloutPage() {
                 Callout important information for the user.
               </GoabCallout>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
-            heading={<>
-              Examples
-              <GoabBadge type="information" content="1" />
-            </>}
+            heading={
+              <>
+                Examples
+                <GoabBadge type="information" content="1" />
+              </>
+            }
           >
-          <CalloutExamples />
+            <CalloutExamples />
           </GoabTab>
 
           <GoabTab heading="Design">

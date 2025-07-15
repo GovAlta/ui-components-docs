@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const AccordionExpandOrCollapseExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <Sandbox fullWidth skipRender allow={["h3"]}>
       <CodeSnippet
@@ -34,11 +34,12 @@ export const AccordionExpandOrCollapseExample = () => {
       />
 
       {/*Angular*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`<h3>Review your application</h3>
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`<h3>Review your application</h3>
                   <goa-accordion heading="Referral details">
                     <goa-badge type="important" content="Updated" slot="headingcontent"/>
                       <dl class="accordion-example">
@@ -62,13 +63,15 @@ export const AccordionExpandOrCollapseExample = () => {
                     </dl>
                   </goa-accordion>
               `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`<h3>Review your application</h3>
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`<h3>Review your application</h3>
                   <goab-accordion heading="Referral details" [headingContent]="importantBadge">
                     <ng-template #importantBadge>
                       <goab-badge type="important" content="Updated"></goab-badge>
@@ -94,32 +97,38 @@ export const AccordionExpandOrCollapseExample = () => {
                     </dl>
                   </goab-accordion>
               `}
-      />}
+        />
+      )}
 
       {/*React*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                 const headingContent = <GoABadge type="important" content="Updated" />;
               `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                 const headingContent = <GoabBadge type="important" content="Updated" />;
               `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                 <h3>Review your application</h3>
                 
                 <GoAAccordion heading="Referral details" headingContent={headingContent}>
@@ -144,13 +153,15 @@ export const AccordionExpandOrCollapseExample = () => {
                   </dl>
                 </GoAAccordion>
               `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                 <h3>Review your application</h3>
                 
                 <GoabAccordion heading="Referral details" headingContent={headingContent}>
@@ -175,12 +186,14 @@ export const AccordionExpandOrCollapseExample = () => {
                   </dl>
                 </GoabAccordion>
               `}
-      />}
+        />
+      )}
 
       <h3>Review your application</h3>
       <GoabAccordion
         heading="Referral details"
-        headingContent={<GoabBadge type="important" content="Updated" />}>
+        headingContent={<GoabBadge type="important" content="Updated" />}
+      >
         <dl className="accordion-example">
           <dt>Date of referral</dt>
           <dd>January 27, 2021</dd>
@@ -202,5 +215,5 @@ export const AccordionExpandOrCollapseExample = () => {
         </dl>
       </GoabAccordion>
     </Sandbox>
-  )
-}
+  );
+};

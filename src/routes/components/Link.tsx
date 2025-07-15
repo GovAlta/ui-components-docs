@@ -11,9 +11,9 @@ import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.t
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import ICONS from "@routes/components/icons.json";
 
-
 export default function LinkPage() {
-  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303448";
+  const FIGMA_LINK =
+    "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303448";
   const [linkProps, setLinkProps] = useState({});
 
   const [linkBindings, setLinkBindings] = useState<ComponentBinding[]>([
@@ -92,39 +92,34 @@ export default function LinkPage() {
         githubLink="Link"
         category={Category.UTILITIES}
         description="Wraps an anchor element to add icons or margins."
-        relatedComponents={[
-          { link: "/components/button", name: "Button" },
-        ]}
+        relatedComponents={[{ link: "/components/button", name: "Button" }]}
       />
 
       <GoabTabs initialTab={1}>
         <GoabTab heading="Code playground">
           <Sandbox properties={linkBindings} onChange={onSandboxChange}>
-
             <GoabLink {...linkProps}>
               <a href="#url">Link</a>
             </GoabLink>
-
           </Sandbox>
           <ComponentProperties properties={componentProperties} />
         </GoabTab>
 
-        
         <GoabTab
-            heading={
-              <>
-                Examples
-                <GoabBadge type="information" content="1" />
-              </>
-            }
-          >
+          heading={
+            <>
+              Examples
+              <GoabBadge type="information" content="1" />
+            </>
+          }
+        >
           <LinkExamples />
         </GoabTab>
 
         <GoabTab heading="Design">
           <DesignEmpty figmaLink={FIGMA_LINK} />
         </GoabTab>
-        
+
         <GoabTab heading="Accessibility">
           <AccessibilityEmpty figmaLink={FIGMA_LINK} />
         </GoabTab>

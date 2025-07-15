@@ -54,7 +54,6 @@ export default function ShadowPage() {
       value: "x=0, y=20, blur=20, spread=-8, #1A1A1A47",
       figmaUsage: "Effect: Drop-shadow/600",
     },
-
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
 

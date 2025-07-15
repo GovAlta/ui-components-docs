@@ -20,16 +20,15 @@ import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.t
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
 
 export default function HeroBannerPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [heroBannerProps, setHeroBannerProps] = useState({
     heading: "Heading",
   });
-  const relatedComponents = [
-    { link: "/components/header", name: "Header" },
-  ];
+  const relatedComponents = [{ link: "/components/header", name: "Header" }];
   const [heroBannerBindings, setHeroBannerBindings] = useState<ComponentBinding[]>([
     {
       label: "Heading",
@@ -220,7 +219,9 @@ export default function HeroBannerPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={heroBannerBindings} fullWidth={true} onChange={onSandboxChange}>
               <GoabHeroBanner {...heroBannerProps}>
                 Resources are available to help Alberta entrepreneurs and small businesses start,
@@ -241,17 +242,17 @@ export default function HeroBannerPage() {
               </>
             }
           >
-
             <SandboxHeader
               exampleTitle="Hero Banner with actions"
-              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-93120&t=X0IQW5flDDaj8Vyg-4">
-            </SandboxHeader>
+              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-93120&t=X0IQW5flDDaj8Vyg-4"
+            ></SandboxHeader>
             <Sandbox skipRender fullWidth>
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   <goa-hero-banner heading="Supporting public citizens">
                     Digital services help to support Albertan citizens receive government services.
                     <div slot="actions">
@@ -259,13 +260,15 @@ export default function HeroBannerPage() {
                     </div>
                   </goa-hero-banner>
                 `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                   <goab-hero-banner heading="Supporting Businesses" [actions]="heroBannerActionTemplate">
                     Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
                     <ng-template #heroBannerActionTemplate>
@@ -273,14 +276,16 @@ export default function HeroBannerPage() {
                     </ng-template>
                   </goab-hero-banner>
                 `}
-              />}
+                />
+              )}
 
               {/*React code*/}
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   <GoAHeroBanner heading="Supporting Businesses">
                     Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
                     <GoAHeroBannerActions>
@@ -288,12 +293,14 @@ export default function HeroBannerPage() {
                     </GoAHeroBannerActions>
                   </GoAHeroBanner>
                 `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
+                />
+              )}
+              {version === "new" && (
+                <CodeSnippet
+                  lang="html"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   <GoabHeroBanner heading="Supporting Businesses">
                     Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
                     <GoabHeroBannerActions>
@@ -301,7 +308,8 @@ export default function HeroBannerPage() {
                     </GoabHeroBannerActions>
                   </GoabHeroBanner>
                 `}
-              />}
+                />
+              )}
 
               <GoabHeroBanner heading="Supporting Businesses">
                 Resources are available to help Alberta entrepreneurs and small businesses start,

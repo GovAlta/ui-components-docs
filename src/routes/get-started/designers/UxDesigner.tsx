@@ -3,24 +3,44 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabCallout, GoabContainer, GoabDivider, GoabText } from "@abgov/react-components";
 
 export default function UxDesignerPage() {
-  return ( <ComponentContent tocCssQuery="h2[id], h3[id]">
-
-      <GoabText size="heading-m" mt="xl" mb={"xs"}>Designers</GoabText>
-      <GoabText size="heading-xl" mb="m">Overview</GoabText>
-      <GoabText size="body-l" mb="xl">As a designer, you can consume the design system through Figma. Through Figma you
-        can use tokens, components, and page templates.</GoabText>
-
+  return (
+    <ComponentContent tocCssQuery="h2[id], h3[id]">
+      <GoabText size="heading-m" mt="xl" mb={"xs"}>
+        Designers
+      </GoabText>
+      <GoabText size="heading-xl" mb="m">
+        Overview
+      </GoabText>
+      <GoabText size="body-l" mb="xl">
+        As a designer, you can consume the design system through Figma. Through Figma you can use
+        tokens, components, and page templates.
+      </GoabText>
 
       <GoabText size="body-m" mt="l" mb="l">
         The design system provides designers with a library of{" "}
-        <a href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design" target="_blank">design tokens</a>,{" "}
-        <a href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?type=design&node-id=1101-7241&mode=design" target="_blank">components</a>, and{" "}
+        <a
+          href="https://www.figma.com/file/ylmHeuDMfxnDBnP1VaQYz8/%E2%9D%96-Styles-and-Guidelines-%7C-DDD?type=design&node-id=7497-327764&mode=design"
+          target="_blank"
+        >
+          design tokens
+        </a>
+        ,{" "}
+        <a
+          href="https://www.figma.com/file/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?type=design&node-id=1101-7241&mode=design"
+          target="_blank"
+        >
+          components
+        </a>
+        , and{" "}
         <a
           href="https://www.figma.com/file/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-and-Templates-library-%7C-DDD?type=design&node-id=101-4112&mode=design"
-          target="_blank">patterns</a>{" "}
-        in Figma that are also available to developers in code.
-        Start by using the design system components for common parts of your service so that your
-        developers can also use the coded components.
+          target="_blank"
+        >
+          patterns
+        </a>{" "}
+        in Figma that are also available to developers in code. Start by using the design system
+        components for common parts of your service so that your developers can also use the coded
+        components.
       </GoabText>
 
       <ol className="max-width-72ch">
@@ -46,18 +66,25 @@ export default function UxDesignerPage() {
           View the Figma design system library
         </a>
       </GoabText>
-      <GoabCallout heading="Design with development in mind" type="information" size="medium" ariaLive="off"
-                   maxWidth={"640px"} mb={"2xl"} mt={"xl"}>When
-        selecting components, prioritize those with a “goa-” prefix in the name such as “goa-input.” These components
-        are available in both design and development, which means that developers can avoid unnecessary custom
-        development.</GoabCallout>
-
+      <GoabCallout
+        heading="Design with development in mind"
+        type="information"
+        size="medium"
+        ariaLive="off"
+        maxWidth={"640px"}
+        mb={"2xl"}
+        mt={"xl"}
+      >
+        When selecting components, prioritize those with a “goa-” prefix in the name such as
+        “goa-input.” These components are available in both design and development, which means that
+        developers can avoid unnecessary custom development.
+      </GoabCallout>
 
       <h2 id="design-tokens">Design tokens</h2>
       <GoabText size="body-m" mt="l" mb="l">
         The components and resources in the design system libraries in both Figma and code are built
-        using <Link to="/design-tokens">design tokens</Link>. As a designer, you can communicate design
-        decisions using design tokens, which developers can then use in code.
+        using <Link to="/design-tokens">design tokens</Link>. As a designer, you can communicate
+        design decisions using design tokens, which developers can then use in code.
       </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         Save time going back and forth with your developer on hex values and adjusting a few pixels
@@ -74,8 +101,9 @@ export default function UxDesignerPage() {
       </GoabContainer>
 
       <h2 id="components">Components</h2>
-      <GoabText size="body-m" mt="l" mb="l">All of the components in the design system are available in Figma and in
-        code.</GoabText>
+      <GoabText size="body-m" mt="l" mb="l">
+        All of the components in the design system are available in Figma and in code.
+      </GoabText>
       <GoabText size="body-m" mt="l" mb="l">
         These design system components have all been designed and coded to meet a{" "}
         <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank">

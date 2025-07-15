@@ -23,13 +23,13 @@ export const TokenSnippet: FC<Props> = ({ code, className }) => {
 
   return (
     <div className={`goa-token-snippet ${className || ""}`}>
-        <a onClick={copyCode}>
-          <u>
-            {lang === "css" ? "--" : "$"}
-            {code}
-          </u>
-            <GoabIcon ml="xs" mt="3xs" type="copy" />
-        </a>
+      <a onClick={copyCode}>
+        <u>
+          {lang === "css" ? "--" : "$"}
+          {code}
+        </u>
+        <GoabIcon ml="xs" mt="3xs" type="copy" />
+      </a>
       <span
         className="copy-feedback"
         style={isCopied ? { visibility: "visible" } : { visibility: "hidden" }}

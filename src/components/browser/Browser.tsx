@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export function Browser(props: { ignore: boolean, children: ReactNode }) {
+export function Browser(props: { ignore: boolean; children: ReactNode }) {
   return (
     <div
       style={{

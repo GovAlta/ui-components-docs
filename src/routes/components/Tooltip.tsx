@@ -18,7 +18,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import {
   LegacyMarginProperty,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { TooltipExamples } from "@examples/tooltip/TooltipExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -26,14 +26,15 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21932-557049";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=21932-557049";
 const componentName = "Tooltip";
 const description = "A small popover that displays more information about an item.";
 const relatedComponents = [
   { link: "/components/details", name: "Details" },
   { link: "/components/form-item", name: "Helper text" },
   { link: "/components/icon-button", name: "Icon button" },
-  { link: "/components/popover", name: "Popover" }
+  { link: "/components/popover", name: "Popover" },
 ];
 type ComponentPropsType = GoabTooltipProps;
 type CastingType = {
@@ -42,7 +43,6 @@ type CastingType = {
 };
 
 export default function TooltipPage() {
-
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
   });
@@ -109,7 +109,7 @@ export default function TooltipPage() {
       defaultValue: "center",
     },
     TestIdProperty,
-    MarginProperty
+    MarginProperty,
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -129,16 +129,20 @@ export default function TooltipPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange}>
               <GoabTooltip {...componentProps}>
                 <GoabIcon type="information-circle" />
               </GoabTooltip>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab

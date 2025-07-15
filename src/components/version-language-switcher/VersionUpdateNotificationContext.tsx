@@ -9,12 +9,14 @@ interface VersionUpdateNotificationContextType {
   newLinkRef: React.RefObject<HTMLAnchorElement>;
 }
 
-const VersionUpdateNotificationContext = createContext<VersionUpdateNotificationContextType | undefined>(undefined);
+const VersionUpdateNotificationContext = createContext<
+  VersionUpdateNotificationContextType | undefined
+>(undefined);
 
 export const VersionUpdateNotificationProvider = ({
-                                                    version,
-                                                    children
-                                                  }: {
+  version,
+  children,
+}: {
   version: LanguageVersion;
   children: React.ReactNode;
 }) => {
@@ -40,7 +42,9 @@ export const VersionUpdateNotificationProvider = ({
   };
 
   return (
-    <VersionUpdateNotificationContext.Provider value={{ isDismissed, dismiss, reset, oldLinkRef, newLinkRef }}>
+    <VersionUpdateNotificationContext.Provider
+      value={{ isDismissed, dismiss, reset, oldLinkRef, newLinkRef }}
+    >
       {children}
     </VersionUpdateNotificationContext.Provider>
   );
@@ -49,7 +53,9 @@ export const VersionUpdateNotificationProvider = ({
 export const useVersionUpdateNotification = () => {
   const context = useContext(VersionUpdateNotificationContext);
   if (!context) {
-    throw new Error("useVersionUpdateNotification must be used within VersionUpdateNotificationProvider");
+    throw new Error(
+      "useVersionUpdateNotification must be used within VersionUpdateNotificationProvider"
+    );
   }
   return context;
 };

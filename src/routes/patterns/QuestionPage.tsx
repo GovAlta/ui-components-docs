@@ -1,7 +1,4 @@
-import {
-  GoabTab,
-  GoabTabs
-} from "@abgov/react-components";
+import { GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import QuestionPageExamples from "@examples/question-page/QuestionPageExamples";
 import css from "./patterns.module.css";
@@ -16,7 +13,8 @@ export default function QuestionPage() {
       </h3>
       <ComponentContent
         contentClassName="question-page"
-        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
+        tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])"
+      >
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code examples">
             <QuestionPageExamples />

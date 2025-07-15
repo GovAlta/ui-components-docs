@@ -27,7 +27,8 @@ export const DrawerFiltersExample = () => {
           open={open}
           onClose={() => setOpen(false)}
           position="right"
-          actions={<GoabButton onClick={() => setOpen(false)}>Apply</GoabButton>}>
+          actions={<GoabButton onClick={() => setOpen(false)}>Apply</GoabButton>}
+        >
           <GoabFormItem label="Entry status">
             <GoabCheckbox text="Draft" value="draft" name={"entryStatus"}></GoabCheckbox>
             <GoabCheckbox text="Published" value="published" name={"entryStatus"}></GoabCheckbox>
@@ -44,7 +45,8 @@ export const DrawerFiltersExample = () => {
               name="assignedTo"
               onChange={() => {
                 /* do something */
-              }}>
+              }}
+            >
               <GoabDropdownItem value={"1"} label="Person 1"></GoabDropdownItem>
               <GoabDropdownItem value={"2"} label="Person 2"></GoabDropdownItem>
             </GoabDropdown>
@@ -61,7 +63,8 @@ export const DrawerFiltersExample = () => {
               name="takenBy"
               onChange={() => {
                 /* do something */
-              }}>
+              }}
+            >
               <GoabDropdownItem value={"1"} label="Person 1"></GoabDropdownItem>
               <GoabDropdownItem value={"2"} label="Person 2"></GoabDropdownItem>
             </GoabDropdown>
@@ -71,7 +74,8 @@ export const DrawerFiltersExample = () => {
               name={"dateTaken"}
               onChange={() => {
                 /** do something **/
-              }}>
+              }}
+            >
               <GoabRadioItem value="24" label="Last 24 hours"></GoabRadioItem>
               <GoabRadioItem value="72" label="Last 72 hours"></GoabRadioItem>
             </GoabRadioGroup>

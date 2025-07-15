@@ -1,13 +1,19 @@
 import { Sandbox } from "@components/sandbox";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem, GoabSpacer } from "@abgov/react-components";
+import {
+  GoabFormItem,
+  GoabInput,
+  GoabRadioGroup,
+  GoabRadioItem,
+  GoabSpacer,
+} from "@abgov/react-components";
 import { OldComponentBanner } from "@components/old-component-banner/OldComponentBanner.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const RadioRevealSlotExample = () => {
   const { version, language } = useContext(LanguageVersionContext);
-  const noop = () => {}
+  const noop = () => {};
   return (
     <>
       {/*Skip rendering because we use reveal that isn't supported by sandbox*/}
@@ -161,23 +167,50 @@ export const RadioRevealSlotExample = () => {
 
         <GoabFormItem label="How would you like to be contacted?" helpText={"Select one option"}>
           <GoabRadioGroup name="contactMethod" onChange={noop}>
-            <GoabRadioItem value="email" label="Email" reveal={
-              <GoabFormItem label="Phone number">
-                <GoabInput name="phoneNumber" onChange={() => {/** do nothing */}} value="" />
-              </GoabFormItem>
-            }
+            <GoabRadioItem
+              value="email"
+              label="Email"
+              reveal={
+                <GoabFormItem label="Phone number">
+                  <GoabInput
+                    name="phoneNumber"
+                    onChange={() => {
+                      /** do nothing */
+                    }}
+                    value=""
+                  />
+                </GoabFormItem>
+              }
             />
-            <GoabRadioItem value="phone" label="Phone" reveal={
-              <GoabFormItem label="Email address">
-                <GoabInput name="email" onChange={() => {/** do nothing */}} value="" />
-              </GoabFormItem>
-            }
+            <GoabRadioItem
+              value="phone"
+              label="Phone"
+              reveal={
+                <GoabFormItem label="Email address">
+                  <GoabInput
+                    name="email"
+                    onChange={() => {
+                      /** do nothing */
+                    }}
+                    value=""
+                  />
+                </GoabFormItem>
+              }
             />
-            <GoabRadioItem value="text" label="Text message" reveal={
-              <GoabFormItem label="Mobile phone number">
-                <GoabInput name="mobilePhoneNumber" onChange={() => {/** do nothing */}} value="" />
-              </GoabFormItem>
-            }
+            <GoabRadioItem
+              value="text"
+              label="Text message"
+              reveal={
+                <GoabFormItem label="Mobile phone number">
+                  <GoabInput
+                    name="mobilePhoneNumber"
+                    onChange={() => {
+                      /** do nothing */
+                    }}
+                    value=""
+                  />
+                </GoabFormItem>
+              }
             />
           </GoabRadioGroup>
         </GoabFormItem>

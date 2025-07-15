@@ -7,7 +7,7 @@ import { useContext } from "react";
 
 export const BadgeShowStatusInTableExample = () => {
   const noop = () => {};
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const badgeValues = [
     {
       key: 1,
@@ -43,11 +43,12 @@ export const BadgeShowStatusInTableExample = () => {
   return (
     <Sandbox fullWidth skipRender>
       {/*Angular code*/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                     onClick($event: Event) {
                         console.log("clicked");
                     } 
@@ -79,12 +80,14 @@ export const BadgeShowStatusInTableExample = () => {
                         },
                     ];
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                   badgeValues: {type: GoabBadgeType, content: string}[] = [
                         {
                             type: "important",
@@ -116,13 +119,15 @@ export const BadgeShowStatusInTableExample = () => {
                         console.log("clicked");
                   } 
                 `}
-      />}
+        />
+      )}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                     <goa-table width="100%">
                         <thead>
                             <tr>
@@ -147,12 +152,14 @@ export const BadgeShowStatusInTableExample = () => {
                         </tbody>
                     <goa-table>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                 <goab-table width="100%">
                 <thead>
                   <tr>
@@ -177,7 +184,8 @@ export const BadgeShowStatusInTableExample = () => {
                 </tbody>
                 </goab-table>
               `}
-      />}
+        />
+      )}
 
       {/*React code*/}
       <CodeSnippet
@@ -224,11 +232,12 @@ export const BadgeShowStatusInTableExample = () => {
                 `}
       />
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                     <GoATable width="100%">
                         <thead>
                         <tr>
@@ -260,12 +269,14 @@ export const BadgeShowStatusInTableExample = () => {
                         </tbody>
                     </GoATable>
                 `}
-      />}
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+        />
+      )}
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                     <GoabTable width="100%">
                         <thead>
                         <tr>
@@ -297,34 +308,35 @@ export const BadgeShowStatusInTableExample = () => {
                         </tbody>
                     </GoabTable>
                 `}
-      />}
+        />
+      )}
 
       <GoabTable width="100%">
         <thead>
-        <tr>
-          <th>Status</th>
-          <th>Name</th>
-          <th className="goa-table-number-header">File number</th>
-          <th></th>
-        </tr>
+          <tr>
+            <th>Status</th>
+            <th>Name</th>
+            <th className="goa-table-number-header">File number</th>
+            <th></th>
+          </tr>
         </thead>
         <tbody>
-        {badgeValues.map(badge => (
-          <tr key={badge.key}>
-            <td>
-              <GoabBadge type={badge.type as GoabBadgeType} content={badge.content} />
-            </td>
-            <td>Lorem ipsum dolor sit amet consectetur</td>
-            <td className="goa-table-number-column">1234567890</td>
-            <td>
-              <GoabButton size={"compact"} type="tertiary" onClick={noop}>
-                Assign
-              </GoabButton>
-            </td>
-          </tr>
-        ))}
+          {badgeValues.map(badge => (
+            <tr key={badge.key}>
+              <td>
+                <GoabBadge type={badge.type as GoabBadgeType} content={badge.content} />
+              </td>
+              <td>Lorem ipsum dolor sit amet consectetur</td>
+              <td className="goa-table-number-column">1234567890</td>
+              <td>
+                <GoabButton size={"compact"} type="tertiary" onClick={noop}>
+                  Assign
+                </GoabButton>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </GoabTable>
     </Sandbox>
-  )
-}
+  );
+};

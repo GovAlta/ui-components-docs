@@ -46,29 +46,37 @@ type SandboxViewProps = {
 };
 
 export const Sandbox = (props: SandboxProps) => {
-  const {language: lang, version} = useContext(LanguageVersionContext);
+  const { language: lang, version } = useContext(LanguageVersionContext);
   const [formatLang, setFormatLang] = useState<string>("");
 
   const serializers: Record<string, Serializer> = {
-    "react": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new ReactSerializer(properties, version, props.variableNames || []));
+    react: (els: ReactElement[], properties) => {
+      const serializer = new ComponentSerializer(
+        new ReactSerializer(properties, version, props.variableNames || [])
+      );
       return serializer.componentsToString(els);
     },
 
-    "angular": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularSerializer(properties, version, props.variableNames || []));
+    angular: (els: ReactElement[], properties) => {
+      const serializer = new ComponentSerializer(
+        new AngularSerializer(properties, version, props.variableNames || [])
+      );
       return serializer.componentsToString(els);
     },
 
     "angular-reactive": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularReactiveSerializer(properties, version));
+      const serializer = new ComponentSerializer(
+        new AngularReactiveSerializer(properties, version)
+      );
       return serializer.componentsToString(els);
     },
 
     "angular-template-driven": (els: ReactElement[], properties) => {
-      const serializer = new ComponentSerializer(new AngularTemplateDrivenSerializer(properties, version, props.variableNames || []));
+      const serializer = new ComponentSerializer(
+        new AngularTemplateDrivenSerializer(properties, version, props.variableNames || [])
+      );
       return serializer.componentsToString(els);
-    }
+    },
   };
 
   const formatMap: Record<string, string> = {
@@ -108,16 +116,24 @@ export const Sandbox = (props: SandboxProps) => {
   function SandboxView(props: SandboxViewProps): ReactElement {
     const { background } = props;
 
-    return <div className="sandbox-render" style={{ background }}>
-      <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
-        <ComponentList type="goa" sandboxProps={props.sandboxProps} />
+    return (
+      <div className="sandbox-render" style={{ background }}>
+        <div className={props.fullWidth ? "sandbox-render-fullwidth" : "sandbox-render-centered"}>
+          <ComponentList type="goa" sandboxProps={props.sandboxProps} />
+        </div>
       </div>
-    </div>
+    );
   }
 
   return (
     <>
-    {props.skipRenderDom ? null : <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />}
+      {props.skipRenderDom ? null : (
+        <SandboxView
+          fullWidth={props.fullWidth}
+          sandboxProps={props}
+          background={props.background}
+        />
+      )}
 
       {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (
@@ -135,13 +151,16 @@ export const Sandbox = (props: SandboxProps) => {
             />
           )}
 
-          <SandboxProperties
-            properties={props.properties}
-            onChange={onChange}
-          />
+          <SandboxProperties properties={props.properties} onChange={onChange} />
         </GoabAccordion>
       )}
-      <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
+      <SandboxCode
+        props={props}
+        formatLang={formatLang}
+        lang={lang}
+        serializers={serializers}
+        version={version}
+      />
       {props.note &&
         (typeof props.note === "string" ? (
           <p className="sandbox-note">{props.note}</p>
@@ -167,24 +186,26 @@ type SandboxCodeProps = {
   formatLang: string;
   serializers: Record<string, Serializer>;
   version?: LanguageVersion;
-}
+};
 function SandboxCode(p: SandboxCodeProps) {
   // reactive angular
   if (p.lang === "angular" && p.props.flags?.includes("reactive")) {
     return (
       <>
-        {(p.version === "old" || p.props.flags?.includes("event")) && <>
-          <h4>Event based</h4>
-          <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
-          {!p.props.skipRender && p.props?.skipRenderOnly !== p.lang && (
-            <ComponentOutput
-              formatLang={p.formatLang}
-              type="angular"
-              sandboxProps={p.props}
-              serializer={p.serializers[p.lang]}
-            />
-          )}
-        </>}
+        {(p.version === "old" || p.props.flags?.includes("event")) && (
+          <>
+            <h4>Event based</h4>
+            <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
+            {!p.props.skipRender && p.props?.skipRenderOnly !== p.lang && (
+              <ComponentOutput
+                formatLang={p.formatLang}
+                type="angular"
+                sandboxProps={p.props}
+                serializer={p.serializers[p.lang]}
+              />
+            )}
+          </>
+        )}
 
         <h4>Reactive forms (FormControl)</h4>
         <AdditionalCodeSnippets tags={["angular", "reactive"]} sandboxProps={p.props} />
@@ -223,7 +244,14 @@ function SandboxCode(p: SandboxCodeProps) {
     return (
       <>
         <AdditionalCodeSnippets tags={["angular"]} sandboxProps={p.props} />
-        {!p.props.skipRender && p.props.skipRenderOnly !== "angular" && <ComponentOutput formatLang={p.formatLang} type="angular" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {!p.props.skipRender && p.props.skipRenderOnly !== "angular" && (
+          <ComponentOutput
+            formatLang={p.formatLang}
+            type="angular"
+            sandboxProps={p.props}
+            serializer={p.serializers[p.lang]}
+          />
+        )}
       </>
     );
   }
@@ -233,7 +261,14 @@ function SandboxCode(p: SandboxCodeProps) {
     return (
       <>
         <AdditionalCodeSnippets tags={["react"]} sandboxProps={p.props} />
-        {!p.props.skipRender && p.props.skipRenderOnly !== "react" && <ComponentOutput formatLang={p.formatLang} type="react" sandboxProps={p.props} serializer={p.serializers[p.lang]} />}
+        {!p.props.skipRender && p.props.skipRenderOnly !== "react" && (
+          <ComponentOutput
+            formatLang={p.formatLang}
+            type="react"
+            sandboxProps={p.props}
+            serializer={p.serializers[p.lang]}
+          />
+        )}
       </>
     );
   }
@@ -241,29 +276,27 @@ function SandboxCode(p: SandboxCodeProps) {
   return <>No formatter found for {p.formatLang}</>;
 }
 
-
 // Gets code snippets matching the tags passed in. This allows for Angular reactive components
 // to be displayed, while hiding the non-reactive ones
 type AdditionalCodeSnippetsProps = {
   tags: string[];
   sandboxProps: SandboxProps;
-}
+};
 function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
   const matches = (list: string[]): boolean => {
     return props.tags.filter(tag => list.includes(tag)).length === list.length;
   };
-  const els = ComponentList({type: "codesnippet", sandboxProps: props.sandboxProps})
-    .filter(el => {
+  const els = ComponentList({ type: "codesnippet", sandboxProps: props.sandboxProps }).filter(
+    el => {
       if (el.props.lang === "css") return true;
-      const componentTags: string[] =
-        Array.isArray(el.props.tags)
-          ? el.props.tags
-          : [el.props.tags];
-      if (props.tags.length !== componentTags.length)
-        return false;
+      const componentTags: string[] = Array.isArray(el.props.tags)
+        ? el.props.tags
+        : [el.props.tags];
+      if (props.tags.length !== componentTags.length) return false;
       return matches(componentTags);
-    });
-  return <>{els}</>
+    }
+  );
+  return <>{els}</>;
 }
 
 // Filters components from within the Sandbox children
@@ -271,14 +304,14 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
 type ComponentListProps = {
   sandboxProps: SandboxProps;
   type: ComponentType;
-}
+};
 function ComponentList(props: ComponentListProps): ReactElement[] {
   const children = React.Children.toArray(props.sandboxProps.children) as ReactElement[];
   const isValidGOAComponent = (el: ReactElement) =>
     typeof el.type === "function" && el.type.name.toLowerCase().startsWith(props.type);
   const isAllowedInSandbox = (el: ReactElement) =>
-    typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type) ||
-    typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name);
+    (typeof el.type === "string" && props.sandboxProps.allow?.includes(el.type)) ||
+    (typeof el.type === "function" && props.sandboxProps.allow?.includes(el.type.name));
   return children.filter(
     el => React.isValidElement(el) && (isValidGOAComponent(el) || isAllowedInSandbox(el))
   );
@@ -291,30 +324,22 @@ type ComponentOutputProps = {
   type: "angular" | "angular-reactive" | "angular-template-driven" | "react";
   sandboxProps: SandboxProps;
   serializer: Serializer;
-}
+};
 
 function ComponentOutput(props: ComponentOutputProps): ReactElement {
   let code = props.serializer(
-    ComponentList({type: "goa", sandboxProps: props.sandboxProps})
-    ,props.sandboxProps.properties || []
-  )
+    ComponentList({ type: "goa", sandboxProps: props.sandboxProps }),
+    props.sandboxProps.properties || []
+  );
 
   // HACK: solve angular template error: If you meant to write the @ character, you should use the "&#64;" HTML entity instead.
   if (props.type.includes("angular")) {
     code = code.replace(/@/g, "&#64;");
   }
   // HACK: remove `$1`s that appear only in the prod build
-  code = code.replace(/\$1/g, "")
+  code = code.replace(/\$1/g, "");
 
-  return (
-    <CodeSnippet
-      lang={props.formatLang}
-      tags={props.type}
-      allowCopy={true}
-      code={code}
-    />
-  )
+  return <CodeSnippet lang={props.formatLang} tags={props.type} allowCopy={true} code={code} />;
 }
-
 
 export default Sandbox;

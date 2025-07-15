@@ -77,7 +77,6 @@ export default function IconSizePage() {
       figmaUsage: "Icon-size/Large",
       size: "large",
     },
-
   ];
   const { isDesktop } = useContext(DeviceWidthContext);
 

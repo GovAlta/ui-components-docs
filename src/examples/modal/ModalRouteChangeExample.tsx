@@ -6,19 +6,18 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { useNavigate } from "react-router-dom";
 
 export const ModalRouteChangeExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [onRouteChangeModalOpen, setOnRouteChangeModalOpen] = useState<boolean>();
   const navigate = useNavigate();
 
   return (
-      <Sandbox skipRender>
-
-        {/*Angular code*/}
-        <CodeSnippet
-          lang="typescript"
-          tags="angular"
-          allowCopy={true}
-          code={`
+    <Sandbox skipRender>
+      {/*Angular code*/}
+      <CodeSnippet
+        lang="typescript"
+        tags="angular"
+        allowCopy={true}
+        code={`
                   import { Router } from "@angular/router";
                   export class SomeOtherComponent {
                     open = false;
@@ -37,9 +36,10 @@ export const ModalRouteChangeExample = () => {
                     }
                   }
                 `}
-        />
+      />
 
-        {version === "old" && <CodeSnippet
+      {version === "old" && (
+        <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -54,9 +54,11 @@ export const ModalRouteChangeExample = () => {
                     </div>
                   </goa-modal>
                 `}
-        />}
+        />
+      )}
 
-        {version === "new" && <CodeSnippet
+      {version === "new" && (
+        <CodeSnippet
           lang="typescript"
           tags="angular"
           allowCopy={true}
@@ -71,25 +73,27 @@ export const ModalRouteChangeExample = () => {
                     </ng-template>
                   </goab-modal>
                 `}
-        />}
-
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`import { useNavigate } from "react-router-dom";`}
         />
-        <CodeSnippet
-          lang="typescript"
-          tags="react"
-          allowCopy={true}
-          code={`
+      )}
+
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`import { useNavigate } from "react-router-dom";`}
+      />
+      <CodeSnippet
+        lang="typescript"
+        tags="react"
+        allowCopy={true}
+        code={`
             const navigate = useNavigate();
             const [open, setOpen] = useState(false);
           `}
-        />
+      />
 
-        {version === "old" && <CodeSnippet
+      {version === "old" && (
+        <CodeSnippet
           lang="typescript"
           tags="react"
           allowCopy={true}
@@ -116,9 +120,11 @@ export const ModalRouteChangeExample = () => {
                     }
                   ></GoAModal>
                 `}
-        />}
+        />
+      )}
 
-        {version === "new" && <CodeSnippet
+      {version === "new" && (
+        <CodeSnippet
           lang="typescript"
           tags="react"
           allowCopy={true}
@@ -145,28 +151,31 @@ export const ModalRouteChangeExample = () => {
                     }
                   ></GoabModal>
                 `}
-        />}
+        />
+      )}
 
-        <GoabButton onClick={() => setOnRouteChangeModalOpen(true)}>Open</GoabButton>
-        <GoabModal
-          heading="Are you sure you want to change route?"
-          open={onRouteChangeModalOpen}
-          onClose={() => setOnRouteChangeModalOpen(false)}
-          actions={
-            <GoabButtonGroup alignment="end">
-              <GoabButton type="secondary" onClick={() => setOnRouteChangeModalOpen(false)}>
-                Cancel
-              </GoabButton>
-              <GoabButton
-                type="primary"
-                onClick={() => {
-                  setOnRouteChangeModalOpen(false);
-                  navigate("/components");
-                }}>
-                Change route
-              </GoabButton>
-            </GoabButtonGroup>
-          }></GoabModal>
-      </Sandbox>
-  )
-}
+      <GoabButton onClick={() => setOnRouteChangeModalOpen(true)}>Open</GoabButton>
+      <GoabModal
+        heading="Are you sure you want to change route?"
+        open={onRouteChangeModalOpen}
+        onClose={() => setOnRouteChangeModalOpen(false)}
+        actions={
+          <GoabButtonGroup alignment="end">
+            <GoabButton type="secondary" onClick={() => setOnRouteChangeModalOpen(false)}>
+              Cancel
+            </GoabButton>
+            <GoabButton
+              type="primary"
+              onClick={() => {
+                setOnRouteChangeModalOpen(false);
+                navigate("/components");
+              }}
+            >
+              Change route
+            </GoabButton>
+          </GoabButtonGroup>
+        }
+      ></GoabModal>
+    </Sandbox>
+  );
+};

@@ -106,9 +106,9 @@ export default function BorderRadiusPage() {
                 />
                 <TokenSnippet code={token.tokenName} className="mobile-token-view" />
                 <dl>
-                  <dt>rem</dt> <dd  className="dd-style">{token.rem}</dd>
-                  <dt>px</dt> <dd  className="dd-style">{token.px}</dd>
-                  <dt>Figma variable</dt> <dd  className="dd-style">{token.figmaUsage}</dd>
+                  <dt>rem</dt> <dd className="dd-style">{token.rem}</dd>
+                  <dt>px</dt> <dd className="dd-style">{token.px}</dd>
+                  <dt>Figma variable</dt> <dd className="dd-style">{token.figmaUsage}</dd>
                 </dl>
               </GoabContainer>
             </>

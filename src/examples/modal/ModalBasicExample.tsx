@@ -5,7 +5,7 @@ import { useContext, useState } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const ModalBasicExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [basicModalOpen, setBasicModalOpen] = useState<boolean>();
   return (
     <Sandbox skipRender>
@@ -24,7 +24,8 @@ export const ModalBasicExample = () => {
               Primary
             </GoabButton>
           </GoabButtonGroup>
-        }>
+        }
+      >
         <p>Content</p>
       </GoabModal>
       {/*Angular*/}
@@ -150,5 +151,5 @@ export const ModalBasicExample = () => {
         />
       )}
     </Sandbox>
-  )
-}
+  );
+};

@@ -50,7 +50,11 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   stringToProp(name: string, item: string): string {
-    if (ReactiveComponents.includes(this.state.element) && name === "value" && this.version === "old") {
+    if (
+      ReactiveComponents.includes(this.state.element) &&
+      name === "value" &&
+      this.version === "old"
+    ) {
       return `goaValue`;
     }
     if (this.isDynamic(name)) {
@@ -74,14 +78,20 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
   }
 
   booleanToProp(propName: string, propValue: boolean): string {
-    if (this.version === "old" && ReactiveComponents.includes(this.state.element) && propName === "checked") {
+    if (
+      this.version === "old" &&
+      ReactiveComponents.includes(this.state.element) &&
+      propName === "checked"
+    ) {
       return `goaChecked`;
     }
     if (this.isDynamic(propName)) {
       return this.#dynamicProp(propName);
     }
     if (!propValue) return "";
-    return this.version === "old" ? `${propName.toLowerCase()}="${propValue}"` : `[${propName.toLowerCase()}]="${propValue}"`;
+    return this.version === "old"
+      ? `${propName.toLowerCase()}="${propValue}"`
+      : `[${propName.toLowerCase()}]="${propValue}"`;
   }
 
   funcToProp(name: string, _item: Object): string {
@@ -128,7 +138,11 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
   postProcess(children: string): string {
     // New version, reactive form will include [formGroup]
-    if (this.version === "new" && children.includes("<form") && !children.includes("[formGroup]=")) {
+    if (
+      this.version === "new" &&
+      children.includes("<form") &&
+      !children.includes("[formGroup]=")
+    ) {
       children = children.replace(/<form/g, '<form [formGroup]="form"');
     }
     if (this.version === "new" && children.startsWith("<goab-form-item")) {
@@ -144,9 +158,9 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
 
     if (this.version === "new") {
       children = children.replace(/<goab-radio-group([^>]*)>/g, (match, attrs) => {
-        if (attrs.includes('formControlName')) {
+        if (attrs.includes("formControlName")) {
           // Remove the value attribute (with any numeric value)
-          const newAttrs = attrs.replace(/ ?value="\d+"/, '');
+          const newAttrs = attrs.replace(/ ?value="\d+"/, "");
           return `<goab-radio-group${newAttrs}>`;
         }
         return match;

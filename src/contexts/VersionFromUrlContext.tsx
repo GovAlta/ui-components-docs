@@ -24,7 +24,10 @@ export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ childre
       const versionSegment = pathSegments.find(segment => segment.startsWith("v"));
       if (versionSegment) {
         setVersionFromPath(versionSegment);
-       localStorage.setItem(LOCAL_STORAGE_LANGUAGE_KEY, versionSegment.includes("angular") ? "angular" : "react");
+        localStorage.setItem(
+          LOCAL_STORAGE_LANGUAGE_KEY,
+          versionSegment.includes("angular") ? "angular" : "react"
+        );
       } else {
         setVersionFromPath(null);
         localStorage.setItem(LOCAL_STORAGE_VERSION_KEY, DEFAULT_VERSION);
@@ -39,5 +42,9 @@ export const VersionFromUrlProvider: React.FC<VersionProviderProps> = ({ childre
       window.removeEventListener("popstate", updateVersion);
     };
   }, []);
-  return <VersionFromUrlContext.Provider value={{ version: versionFromPath }}>{children}</VersionFromUrlContext.Provider>;
+  return (
+    <VersionFromUrlContext.Provider value={{ version: versionFromPath }}>
+      {children}
+    </VersionFromUrlContext.Provider>
+  );
 };

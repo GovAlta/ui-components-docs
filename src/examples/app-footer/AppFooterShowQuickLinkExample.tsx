@@ -5,15 +5,16 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const AppFooterShowQuickLinkExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   return (
     <Sandbox skipRender fullWidth>
       {/*********** Angular code **************/}
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                 <goa-app-footer maxcontentwidth="100%">
                   <goa-app-footer-meta-section slot="meta">
                     <a href="#">
@@ -31,13 +32,15 @@ export const AppFooterShowQuickLinkExample = () => {
                   </goa-app-footer-meta-section>
                 </goa-app-footer>
                `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="angular"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="angular"
+          allowCopy={true}
+          code={`
                 <goab-app-footer maxContentWidth="100%">
                   <goab-app-footer-meta-section slot="meta">
                     <a href="#">
@@ -55,15 +58,17 @@ export const AppFooterShowQuickLinkExample = () => {
                   </goab-app-footer-meta-section>
                 </goab-app-footer>
                `}
-      />}
+        />
+      )}
 
       {/*********** React code **************/}
 
-      {version === "old" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "old" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                  <GoAAppFooter maxContentWidth="100%">
                   <GoAAppFooterMetaSection>
                     <a href="#">
@@ -81,13 +86,15 @@ export const AppFooterShowQuickLinkExample = () => {
                   </GoAAppFooterMetaSection>
                 </GoAAppFooter>
               `}
-      />}
+        />
+      )}
 
-      {version === "new" && <CodeSnippet
-        lang="typescript"
-        tags="react"
-        allowCopy={true}
-        code={`
+      {version === "new" && (
+        <CodeSnippet
+          lang="typescript"
+          tags="react"
+          allowCopy={true}
+          code={`
                  <GoabAppFooter maxContentWidth="100%">
                   <GoabAppFooterMetaSection>
                     <a href="#">
@@ -105,7 +112,8 @@ export const AppFooterShowQuickLinkExample = () => {
                   </GoabAppFooterMetaSection>
                 </GoabAppFooter>
               `}
-      />}
+        />
+      )}
 
       <GoabAppFooter maxContentWidth={"100%"}>
         <GoabAppFooterMetaSection>
@@ -116,5 +124,5 @@ export const AppFooterShowQuickLinkExample = () => {
         </GoabAppFooterMetaSection>
       </GoabAppFooter>
     </Sandbox>
-  )
-}
+  );
+};

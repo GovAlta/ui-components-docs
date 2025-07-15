@@ -1,10 +1,5 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import {
-  GoabBadge,
-  GoabNotification,
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { GoabBadge, GoabNotification, GoabTab, GoabTabs } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
 import {
@@ -19,13 +14,12 @@ import { NotificationExamples } from "@examples/notification/NotificationExample
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-12949";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-12949";
 const componentName = "Notification Banner";
 const description = "Display important page level information or notifications.";
 const category = Category.FEEDBACK_AND_ALERTS;
-const relatedComponents = [
-  { link: "/components/callout", name: "Callout" },
-];
+const relatedComponents = [{ link: "/components/callout", name: "Callout" }];
 type ComponentPropsType = {
   type: GoabNotificationType;
   content?: string;
@@ -110,7 +104,7 @@ export default function NotificationBannerPage() {
       name: "type",
       type: "GoabNotificationType(success | important | information | emergency)",
       description: "Define the context and colour of the badge",
-      defaultValue: "information"
+      defaultValue: "information",
     },
     {
       name: "maxContentWidth",
@@ -147,14 +141,18 @@ export default function NotificationBannerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} fullWidth={true}>
               <GoabNotification {...componentProps}>Notification banner message</GoabNotification>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -165,7 +163,7 @@ export default function NotificationBannerPage() {
               </>
             }
           >
-          <NotificationExamples />
+            <NotificationExamples />
           </GoabTab>
 
           <GoabTab heading="Design">

@@ -1,11 +1,12 @@
+import { GoabIcon, GoabPopover, GoabTooltip } from "@abgov/react-components";
 import {
-  GoabIcon,
-  GoabPopover, GoabTooltip
-} from "@abgov/react-components";
-import {
-  ANGULAR_VERSIONS, getVersionedUrlPath, Language, LanguageVersion,
+  ANGULAR_VERSIONS,
+  getVersionedUrlPath,
+  Language,
+  LanguageVersion,
   VERSIONED_ANGULAR_URL_SEGMENT,
-  VERSIONED_REACT_URL_SEGMENT, REACT_VERSIONS
+  VERSIONED_REACT_URL_SEGMENT,
+  REACT_VERSIONS,
 } from "./version-language-constants.ts";
 import { useLocation, useNavigate } from "react-router-dom";
 import React, { useContext, useEffect } from "react";
@@ -13,10 +14,10 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import "./version-language-switcher.css";
 
 export const VersionLanguageSwitcher = () => {
-  const {language, version, setLanguage, setVersion} = useContext(LanguageVersionContext);
+  const { language, version, setLanguage, setVersion } = useContext(LanguageVersionContext);
   const location = useLocation();
   const navigate = useNavigate();
-	const [hash, setHash] = React.useState<string>(window.location.hash);
+  const [hash, setHash] = React.useState<string>(window.location.hash);
 
   useEffect(() => {
     function setLanguageAndVersionFromUrl() {
@@ -33,7 +34,7 @@ export const VersionLanguageSwitcher = () => {
     setLanguageAndVersionFromUrl();
   });
 
-	// popover collapses when Url hash tag changes
+  // popover collapses when Url hash tag changes
   const generateHyperlink = (newValue: LanguageVersion | Language) => {
     return hash === newValue ? "#" : `#${newValue}`;
   };
@@ -83,7 +84,7 @@ export const VersionLanguageSwitcher = () => {
   const capitalizeFirstLetter = (str: string): string => {
     if (!str) return str;
     return str.charAt(0).toUpperCase() + str.slice(1);
-  }
+  };
 
   const openLanguagePopOver = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -96,47 +97,76 @@ export const VersionLanguageSwitcher = () => {
   const getCurrentVersionLabel = (language: string, version: string) => {
     if (language === "react") {
       return version === "new" ? REACT_VERSIONS.NEW.label : REACT_VERSIONS.OLD.label;
-    }    if (language === "angular") {
+    }
+    if (language === "angular") {
       return version === "new" ? ANGULAR_VERSIONS.NEW.label : ANGULAR_VERSIONS.OLD.label;
     }
-  }
+  };
 
   return (
     <>
       <GoabTooltip content="Framework">
-      <GoabPopover
-        target={
-          <a className="version-language-switcher__heading" href="#" id="language-switcher" onClick={e => openLanguagePopOver(e)}>
-            <GoabIcon type="chevron-down" size="small"></GoabIcon> {capitalizeFirstLetter(language)}
-          </a>
-        }
-        padded={false}>
-        <>
-          {["angular", "react"].map(lang => (
-            <a key={lang} href={generateHyperlink(lang as Language)} className={`version-language-switcher__menu ${language === lang ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateLanguage(lang as Language)}>
-              {capitalizeFirstLetter(lang)}
-            </a>))
+        <GoabPopover
+          target={
+            <a
+              className="version-language-switcher__heading"
+              href="#"
+              id="language-switcher"
+              onClick={e => openLanguagePopOver(e)}
+            >
+              <GoabIcon type="chevron-down" size="small"></GoabIcon>{" "}
+              {capitalizeFirstLetter(language)}
+            </a>
           }
-        </>
-      </GoabPopover>
+          padded={false}
+        >
+          <>
+            {["angular", "react"].map(lang => (
+              <a
+                key={lang}
+                href={generateHyperlink(lang as Language)}
+                className={`version-language-switcher__menu ${
+                  language === lang ? "version-language-switcher__menu--current" : ""
+                }`}
+                onClick={() => updateLanguage(lang as Language)}
+              >
+                {capitalizeFirstLetter(lang)}
+              </a>
+            ))}
+          </>
+        </GoabPopover>
       </GoabTooltip>
 
       <GoabTooltip content="Version">
-      <GoabPopover target={
-        <a className="version-language-switcher__heading" href="#"
-           onClick={e => openVersionPopOver(e)}>
-          <GoabIcon type="chevron-down" size="small"></GoabIcon> {getCurrentVersionLabel(language, version)}
-        </a>
-      } padded={false}>
-        <>
-          {["new", "old"].map(ver => (
-            <a key={ver} href={generateHyperlink(ver as LanguageVersion)} className={`version-language-switcher__menu ${version === ver ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateVersion(ver as LanguageVersion)}>
-              {getCurrentVersionLabel(language, ver)}
+        <GoabPopover
+          target={
+            <a
+              className="version-language-switcher__heading"
+              href="#"
+              onClick={e => openVersionPopOver(e)}
+            >
+              <GoabIcon type="chevron-down" size="small"></GoabIcon>{" "}
+              {getCurrentVersionLabel(language, version)}
             </a>
-          ))}
-        </>
-      </GoabPopover>
+          }
+          padded={false}
+        >
+          <>
+            {["new", "old"].map(ver => (
+              <a
+                key={ver}
+                href={generateHyperlink(ver as LanguageVersion)}
+                className={`version-language-switcher__menu ${
+                  version === ver ? "version-language-switcher__menu--current" : ""
+                }`}
+                onClick={() => updateVersion(ver as LanguageVersion)}
+              >
+                {getCurrentVersionLabel(language, ver)}
+              </a>
+            ))}
+          </>
+        </GoabPopover>
       </GoabTooltip>
     </>
   );
-}
+};

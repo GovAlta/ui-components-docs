@@ -1,4 +1,10 @@
-import { GoabBlock, GoabDivider, GoabFormItem, GoabGrid, GoabSideMenu } from "@abgov/react-components";
+import {
+  GoabBlock,
+  GoabDivider,
+  GoabFormItem,
+  GoabGrid,
+  GoabSideMenu,
+} from "@abgov/react-components";
 import { DoDont } from "@components/do-dont/DoDont";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 
@@ -27,7 +33,8 @@ export default function CapitalizationPage() {
         <GoabGrid minChildWidth={minGridWidth} gap="2xl">
           <DoDont
             type="do"
-            description="Always capitalize the first word of a heading or new sentence.">
+            description="Always capitalize the first word of a heading or new sentence."
+          >
             <h3>Applicant admission requirements</h3>
             <div>
               An Alberta high school diploma or non-Alberta Canadian equivalent is required.
@@ -40,13 +47,15 @@ export default function CapitalizationPage() {
           </DoDont>
           <DoDont
             type="do"
-            description="Capitalize proper nouns. For example, there are lots of chief operating officers, so chief operating officer is a common noun. There’s only one John Doe, Chief Operating Officer, so that’s a proper noun.">
+            description="Capitalize proper nouns. For example, there are lots of chief operating officers, so chief operating officer is a common noun. There’s only one John Doe, Chief Operating Officer, so that’s a proper noun."
+          >
             Find available dates for Civil Regular Chambers, Family Docket Court or Applications
             Judges Chambers in Edmonton or Calgary.
           </DoDont>
           <DoDont
             type="dont"
-            description="Don’t use lower case proper pronouns, services, brands etc.">
+            description="Don’t use lower case proper pronouns, services, brands etc."
+          >
             Before the alberta digital filing services, the only way to file court documents was
             in-person or through email.
           </DoDont>
@@ -72,8 +81,17 @@ export default function CapitalizationPage() {
       <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="xl">
         <DoDont
           type="do"
-          description="Use title case when words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized.">
-          <div style={{ textAlign: "center", height: "176px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          description="Use title case when words are joined by a slash, capitalize the word after the slash if the word before the slash is capitalized."
+        >
+          <div
+            style={{
+              textAlign: "center",
+              height: "176px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <GoabFormItem label="Country/Region" mb="2xl" />
             <GoabFormItem label="On/Off" />
           </div>
@@ -93,7 +111,8 @@ export default function CapitalizationPage() {
       <GoabGrid minChildWidth={minGridWidth} gap="2xl" mt="2xl" mb="3xl">
         <DoDont
           type="dont"
-          description="Don’t use internal capitalization (such as AutoScale or e-Book) unless it’s part of a proper noun.">
+          description="Don’t use internal capitalization (such as AutoScale or e-Book) unless it’s part of a proper noun."
+        >
           <div style={{ textAlign: "center" }}>
             <h3>Submitting adjournment Pre-Court</h3>
           </div>
@@ -131,14 +150,16 @@ export default function CapitalizationPage() {
       <p>
         <a
           href="https://medium.com/@jsaito/making-a-case-for-letter-case-19d09f653c98 "
-          target="_blank">
+          target="_blank"
+        >
           Making a case for letter case - Medium
         </a>
       </p>
       <p>
         <a
           href="https://uxplanet.org/why-letter-casing-is-important-to-consider-during-design-decisions-50402acd0a4e"
-          target="_blank">
+          target="_blank"
+        >
           Why letter casing is important to consider during design decisions - Medium
         </a>
       </p>

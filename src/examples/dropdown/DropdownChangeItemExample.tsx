@@ -1,11 +1,16 @@
-import { GoabContainer, GoabDropdown, GoabDropdownItem, GoabFormItem } from "@abgov/react-components";
+import {
+  GoabContainer,
+  GoabDropdown,
+  GoabDropdownItem,
+  GoabFormItem,
+} from "@abgov/react-components";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 import { useContext, useState } from "react";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const DropdownChangeItemExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [children, setChildren] = useState<string[]>([]);
   const parents = ["All", "Big", "Small"];
   const childrenAll = ["Bus", "Elephant", "Key", "Pen", "Watch", "Truck"];
@@ -30,13 +35,15 @@ export const DropdownChangeItemExample = () => {
           <GoabFormItem
             label="Size"
             requirement="optional"
-            helpText="Choose the type to change the list below">
+            helpText="Choose the type to change the list below"
+          >
             <GoabDropdown
               name="parent"
               placeholder="Select a value"
               onChange={(event: GoabDropdownOnChangeDetail) =>
                 loadSchemas(event.name as string, event.value as string)
-              }>
+              }
+            >
               {parents.map(parent => (
                 <GoabDropdownItem key={parent} value={parent} label={parent} />
               ))}
@@ -249,4 +256,4 @@ export const DropdownChangeItemExample = () => {
       )}
     </>
   );
-}
+};

@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const AppHeaderWithNavigationExample = () => {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
 
   return (
     <Sandbox fullWidth skipRender>
@@ -97,5 +97,5 @@ export const AppHeaderWithNavigationExample = () => {
         <a className="interactive">Sign in</a>
       </GoabAppHeader>
     </Sandbox>
-  )
-}
+  );
+};

@@ -28,7 +28,6 @@ export default function GetStartedLayout() {
           <Link to="roadmap">Roadmap</Link>
           <Link to="lts-policy">Long Term Support (LTS)</Link>
           <Link to="support">Get support</Link>
-
         </GoabSideMenu>
       </section>
 

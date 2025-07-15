@@ -648,7 +648,8 @@ export default function TextFieldPage() {
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
               allow={["form"]}
-              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}>
+              flags={version === "old" ? ["reactive"] : ["event", "reactive", "template-driven"]}
+            >
               {version === "old" && (
                 <CodeSnippet
                   lang="typescript"
@@ -788,7 +789,8 @@ export default function TextFieldPage() {
                 Examples
                 <GoabBadge type="information" content="6" />
               </>
-            }>
+            }
+          >
             <TextFieldExamples />
           </GoabTab>
 

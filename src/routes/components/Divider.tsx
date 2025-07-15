@@ -13,7 +13,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 import "./AllComponents.css";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=46-115";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=46-115";
 
 export default function DividerPage() {
   const [dividerProps, setDividerProps] = useState({});
@@ -64,7 +65,7 @@ export default function DividerPage() {
       name: "testId",
       type: "string",
       description: "Sets the data-testid attribute. Used with ByTestId queries in tests.",
-    }
+    },
   ];
 
   function onSandboxChange(utilityBindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -78,22 +79,24 @@ export default function DividerPage() {
         name="Divider"
         category={Category.UTILITIES}
         description="Indicate a separation of layout, or to distinguish large chunks of information on a page."
-        relatedComponents={[
-          { link: "/components/container", name: "Container" },
-        ]}
+        relatedComponents={[{ link: "/components/container", name: "Container" }]}
         figmaLink={FIGMA_LINK}
         githubLink="Divider"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={dividerBindings} onChange={onSandboxChange} fullWidth>
               <GoabDivider {...dividerProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab

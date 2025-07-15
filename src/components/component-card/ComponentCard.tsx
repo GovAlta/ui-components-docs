@@ -15,7 +15,10 @@ type Group =
   | "Utilities";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
+import {
+  ANGULAR_VERSIONS,
+  REACT_VERSIONS,
+} from "@components/version-language-switcher/version-language-constants.ts";
 
 export interface Props {
   name: string;
@@ -56,39 +59,28 @@ export function ComponentCard(props: Props) {
 
   const badgeType = getBadgeType(props.status);
 
-  const {language} = useContext(LanguageVersionContext);
+  const { language } = useContext(LanguageVersionContext);
   return (
     <div className="card">
       {props.status === "Published" ? (
         <Link to={toKebabCase(props.name)} tabIndex={-1}>
-          <div
-            className="card-image"
-            style={{ backgroundImage: `url(${imageUrl})` }}
-          />
+          <div className="card-image" style={{ backgroundImage: `url(${imageUrl})` }} />
         </Link>
       ) : (
-        <div
-          className="card-image"
-          tabIndex={-1}
-          style={{ backgroundImage: `url(${imageUrl})` }}
-        />
+        <div className="card-image" tabIndex={-1} style={{ backgroundImage: `url(${imageUrl})` }} />
       )}
       <div className="card-content">
         <div className="card-title-with-badge">
           {badgeType && <GoabBadge mt="none" mb="m" type={badgeType} content={props.status} />}
 
           {props.status === "Published" ? (
-
             <Link to={toKebabCase(props.name)}>
               {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
             </Link>
-
           ) : (
-
             <GoabText size="body-l" mt="none" mb="none">
               {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
             </GoabText>
-
           )}
         </div>
         <GoabText size="body-m" mt="m" mb="none">
@@ -102,11 +94,22 @@ export function ComponentCard(props: Props) {
               rel="noopener noreferrer"
               className="github-link"
             >
-             View issues{typeof props.openIssues === 'number' && ` (${props.openIssues})`}
+              View issues{typeof props.openIssues === "number" && ` (${props.openIssues})`}
             </a>
           </GoabText>
         )}
-        {props.isNew && <GoabBadge type="important" mt="l" content={"Available in " + (language === "angular" ? ANGULAR_VERSIONS.NEW.label.substring(0,2).toUpperCase() : REACT_VERSIONS.NEW.label.substring(0,2).toUpperCase())}/>}
+        {props.isNew && (
+          <GoabBadge
+            type="important"
+            mt="l"
+            content={
+              "Available in " +
+              (language === "angular"
+                ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+            }
+          />
+        )}
       </div>
     </div>
   );

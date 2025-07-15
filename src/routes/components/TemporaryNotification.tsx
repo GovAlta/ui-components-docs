@@ -14,7 +14,7 @@ const componentName = "Temporary notification";
 const description = "A temporary notification showing a process started or completed.";
 const relatedComponents = [
   { link: "/components/callout", name: "Callout" },
-  { link: "/components/notification-banner", name: "Notification banner" }
+  { link: "/components/notification-banner", name: "Notification banner" },
 ];
 type ComponentPropsType = GoabCalloutProps;
 type CastingType = {
