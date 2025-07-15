@@ -139,6 +139,12 @@ export default function TextFieldPage() {
       name: "ariaLabel",
     },
     {
+      label: "Trailing icon ARIA label",
+      type: "string",
+      value: "",
+      name: "trailingIconAriaLabel",
+    },
+    {
       label: "Value",
       type: "string",
       name: "value",
@@ -211,6 +217,18 @@ export default function TextFieldPage() {
       lang: "angular",
       type: "GoAIconType",
       description: "Icon shown to the right of the text.",
+    },
+    {
+      name: "trailingIconAriaLabel",
+      lang: "react",
+      type: "string",
+      description: "Aria label for the trailing icon.",
+    },
+    {
+      name: "trailingiconarialabel",
+      lang: "angular",
+      type: "string",
+      description: "Aria label for the trailing icon.",
     },
     {
       name: "disabled",
@@ -331,7 +349,7 @@ export default function TextFieldPage() {
       lang: "react",
       type: "on | off | none | sentences | words | characters",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
@@ -339,7 +357,7 @@ export default function TextFieldPage() {
       lang: "angular",
       type: "on | off | none | sentences | words | characters",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
@@ -478,6 +496,11 @@ export default function TextFieldPage() {
       description: "Icon shown to the right of the text.",
     },
     {
+      name: "trailingIconAriaLabel",
+      type: "string",
+      description: "Aria label for the trailing icon.",
+    },
+    {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
@@ -553,7 +576,7 @@ export default function TextFieldPage() {
       name: "autoCapitalize",
       type: "GoabInputAutoCapitalize (on | off | none | sentences | words | characters)",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
