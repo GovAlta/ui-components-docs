@@ -1,11 +1,17 @@
-import { GoabDivider } from "@abgov/react-components";
+import { GoabDivider, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function DesignAtGoAPage() {
   return (
       <ComponentContent>
-        <h1>Design at the Government of Alberta</h1>
-        <h3>Citizens expect digital products that are modern, easy to use, and consistent. To meet these needs, our digital products must follow our user experience guidelines and should be tested frequently to make continuous improvement and stay relevant.</h3>
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Design at the Government of Alberta
+        </GoabText>
+        <GoabText size="body-l" mb="2xl">
+          Citizens expect digital products that are modern, easy to use, and consistent. To meet these needs, our
+          digital products must follow our user experience guidelines and should be tested frequently to make continuous
+          improvement and stay relevant.
+        </GoabText>
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
             <h2>User experience guidelines</h2>

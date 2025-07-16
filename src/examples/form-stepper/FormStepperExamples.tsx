@@ -1,7 +1,7 @@
 import {
-  FormStepperControlledNavigationExample
-} from "@examples/form-stepper/FormStepperControlledNavigationExample.tsx";
-import { FormStepperStepStatusExample } from "@examples/form-stepper/FormStepperStepStatusExample.tsx";
+  FormStepperWithControlledNavigation
+} from "@examples/form-stepper-with-controlled-navigation.tsx";
+import { SetTheStatusOfStepOnAFormStepper } from "@examples/set-the-status-of-step-on-a-form-stepper.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const FormStepperExamples = () => {
@@ -11,13 +11,13 @@ export const FormStepperExamples = () => {
         exampleTitle="Controlled Navigation"
         figmaExample="">
       </SandboxHeader>
-      <FormStepperControlledNavigationExample />
+      <FormStepperWithControlledNavigation />
 
       <SandboxHeader
         exampleTitle="Step status"
         figmaExample="">
       </SandboxHeader>
-      <FormStepperStepStatusExample/>
+      <SetTheStatusOfStepOnAFormStepper />
     </>
   )
 }

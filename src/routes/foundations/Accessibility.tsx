@@ -1,12 +1,18 @@
-import { GoabDivider } from "@abgov/react-components";
+import { GoabDivider, GoabText } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function AccessibilityPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Accessibility</h1>
-        <h3>We aim to create digital products that everyone can use, no matter their abilities or situation. This guide outlines key principles, design tips, and tools to help create accessible and inclusive experiences.</h3>
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Accessibility
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          We aim to create digital products that everyone can use, no matter their abilities or situation. This guide
+          outlines key principles, design tips, and tools to help create accessible and inclusive experiences.
+        </GoabText>
+
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
           <p>Every component in our design system meets meets WCAG 2.2 Level AA standards. While the system has accessibility features, teams should take extra steps to ensure consistent and accessible experiences across all products and platforms.</p>

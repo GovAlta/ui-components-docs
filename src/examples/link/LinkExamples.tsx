@@ -1,18 +1,12 @@
-import { Sandbox } from "@components/sandbox";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
-import { GoabLink } from "@abgov/react-components";
+import { LinkToAnExternalPage } from "../link-to-an-external-page.tsx";
 
-export const LinkExamples = () => {
+export default function LinkExamples() {
   return (
     <>
-      <SandboxHeader exampleTitle="Link to an external page">
-      </SandboxHeader>
-
-      <Sandbox>
-        <GoabLink trailingIcon="open">
-          <a href="#external-url">External link</a>
-        </GoabLink>
-      </Sandbox>
+      <SandboxHeader exampleTitle="Link to an external page"
+                     figmaExample={"https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=7219-158738&t=ZAP1bFiCNoYaDiKo-4"} />
+      <LinkToAnExternalPage />
     </>
   );
 }

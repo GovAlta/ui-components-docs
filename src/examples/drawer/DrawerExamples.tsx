@@ -1,19 +1,19 @@
-import { DrawerFiltersExample } from "@examples/drawer/DrawerFiltersExample.tsx";
-import { DrawerAddRecordExample } from "@examples/drawer/DrawerAddRecordExample.tsx";
+import { AddAndEditLotsOfFilters } from "@examples/add-and-edit-lots-of-filters.tsx";
+import { AddARecordUsingADrawer } from "@examples/add-a-record-using-a-drawer.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const DrawerExamples = () => {
   return (
     <>
       <SandboxHeader
-        exampleTitle="Filters">
+        exampleTitle="Add and edit lots of filters">
       </SandboxHeader>
-      <DrawerFiltersExample />
+      <AddAndEditLotsOfFilters />
 
       <SandboxHeader
         exampleTitle="Add record">
       </SandboxHeader>
-      <DrawerAddRecordExample/>
+      <AddARecordUsingADrawer />
     </>
   );
 };
