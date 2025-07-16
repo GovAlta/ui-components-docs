@@ -3,12 +3,18 @@ import { BaseSerializer, Serializer, SerializerState } from "./BaseSerializer";
 import { LanguageVersion } from "@components/version-language-switcher/version-language-constants.ts";
 
 const ReactiveComponents = [
-  "goab-input",
-  "goab-textarea",
-  "goab-dropdown",
-  "goab-checkbox",
-  "goab-radio-group",
-  "goab-date-picker",
+  "goa-input",    // old version
+  "goab-input",   // new version
+  "goa-textarea", // old version
+  "goab-textarea", // new version
+  "goa-dropdown", // old version
+  "goab-dropdown", // new version
+  "goa-checkbox", // old version
+  "goab-checkbox", // new version
+  "goa-radio-group", // old version
+  "goab-radio-group", // new version
+  "goa-date-picker", // old version
+  "goab-date-picker", // new version
 ];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
