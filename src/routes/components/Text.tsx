@@ -17,6 +17,12 @@ export default function TextPage() {
 
   const [textBindings, setTextBindings] = useState<ComponentBinding[]>([
     {
+      label: "ID",
+      type: "string",
+      name: "id",
+      value: ""
+    },
+    {
       label: "Size",
       type: "list",
       name: "size",
@@ -61,9 +67,14 @@ export default function TextPage() {
 
   const componentProperties: ComponentProperty[] = [
     {
+      name: "id",
+      type: "string",
+      description: "Sets the HTML id attribute. Useful for anchoring and navigation."
+    },
+    {
       name: "tag",
       type: "h1 | h2 | h3 | h4 | h5 | span | div | p",
-      description: "Sets the tag and text size.",
+      description: "Sets the HTML tag and can be used to create semantic heading hierarchy independent of visual size. Use the 'size' property to control the visual appearance.",
       defaultValue: "div"
     },
     {
