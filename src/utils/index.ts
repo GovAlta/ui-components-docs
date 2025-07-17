@@ -94,7 +94,7 @@ async function executeGraphQLQuery(cacheName: string, query: string): Promise<an
 
 // Unified mapping function (Benji's consolidation approach)
 function mapItemsToMetadata(items: any[], group: IssueGroup): ComponentProps[] {
-  const validStatuses: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+  const validStatuses: ComponentStatus[] = ["Available", "In Progress", "Legacy", "Not Published"];
 
   return items
     .filter((item: any) =>

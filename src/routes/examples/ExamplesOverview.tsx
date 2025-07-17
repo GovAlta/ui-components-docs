@@ -96,7 +96,7 @@ export default function ExamplesOverviewPage() {
           .replace(/\s+/g, "-")
       }));
       const sorted = withSlugs.sort((a, b) => {
-        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+        const statusOrder: ComponentStatus[] = ["Available", "In Progress", "Not Published"];
         const statusComparison =
           statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
         if (statusComparison !== 0) return statusComparison;
@@ -172,7 +172,7 @@ export default function ExamplesOverviewPage() {
 
     const sortedFiltered = [...result].sort((a, b) => {
       if (sortBy === "status") {
-        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
+        const statusOrder: ComponentStatus[] = ["Available", "In Progress", "Not Published"];
         const statusComparison =
           statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
         if (statusComparison !== 0) return statusComparison * newDirection;
@@ -292,11 +292,11 @@ export default function ExamplesOverviewPage() {
             <td style={{ width: "100px" }}>
               <GoabBadge
                 mt="2xs"
-                type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "light"}
+                type={card.status === "Available" ? "success" : card.status === "In Progress" ? "important" : "light"}
                 content={card.status} />
             </td>
             <td>
-              {card.status === "Published" ? (
+              {card.status === "Available" ? (
                 <Link to={`/examples/${card.slug}`}>
                   {toSentenceCase(card.name)}
                 </Link>
