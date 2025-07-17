@@ -4,7 +4,7 @@ import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
 
-export type ComponentStatus = "Published" | "Not Published" | "In Progress";
+export type ComponentStatus = "Available" | "Legacy" | "Not Published" | "In Progress";
 
 // Define allowed group options as a union type
 export type Group =
@@ -51,22 +51,22 @@ export function ComponentCard(props: ComponentCardProps) {
 
   const getBadgeType = (status: ComponentStatus) => {
     switch (status) {
-      case "Published":
-        return null; // No badge for "Published"
+      case "Available": //Published replaced with Available
+        return null; // No badge for "Available"
       case "Not Published":
         return "light";
       case "In Progress":
         return "important";
       default:
-        return "information"; // Fallback for unknown status
+        return "information"; // Fallback for Legacy and unknown status
     }
   };
   getBadgeType(props.status);
-  const {language} = useContext(LanguageVersionContext);
+  const { language, version } = useContext(LanguageVersionContext);
   return (
 
     <div className="card">
-      {props.status === "Published" ? (
+      {props.status === "Available" || props.status === "Legacy" ? (
         <Link to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}
               tabIndex={-1}>
           <div
@@ -93,19 +93,15 @@ export function ComponentCard(props: ComponentCardProps) {
             }
           />
         )}
-        {props.status !== "Published" && (
+        {props.status !== "Available" && (
           <GoabBadge
             mb="m"
-            type={
-              props.status === "In Progress"
-                ? "important"
-                : "information"
-            }
+            type={getBadgeType(props.status) || "information"}
             content={props.status}
           />
         )}
         <h3 style={{ marginTop: 0, marginBottom: 12 }}>
-          {props.status === "Published" ? (
+          {props.status === "Available" ? (
             <Link
               to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}>{props.name}</Link>
           ) : (
@@ -117,7 +113,7 @@ export function ComponentCard(props: ComponentCardProps) {
         </GoabText>
 
 
-        {props.status !== "Published" && props.githubLink && (
+        {props.status !== "Available" && props.githubLink && (
           <GoabText tag="div" mt="m" size="body-s">
             <a
               href={props.githubLink}
@@ -130,6 +126,22 @@ export function ComponentCard(props: ComponentCardProps) {
           </GoabText>
         )}
 
+        {/* Cards */}
+        {/* TODO: Replace props.name === "Drawer" with props.isNew once available */}
+        {props.name === "Drawer" && (
+          <GoabBadge
+            type={version === "new" ? "success" : "important"}
+            mt="l"
+            content={
+              version === "new"
+                ? "New"
+                : "Available in " +
+                  (language === "angular"
+                    ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                    : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+            }
+          />
+        )}
       </div>
     </div>
   );

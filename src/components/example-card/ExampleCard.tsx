@@ -4,7 +4,7 @@ import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
 
-export type ComponentStatus = "Published" | "Not Published" | "In Progress";
+export type ComponentStatus = "Available" | "Not Published" | "In Progress" | "Legacy";
 
 // Define allowed group options as a union type
 export type Group =
@@ -47,7 +47,7 @@ export function ExampleCard(props: ExampleCardProps) {
     const testImage = new Image();
     testImage.src = imageUrl;
     testImage.onerror = () => {
-      if (props.status !== "Published") {
+      if (props.status !== "Available") {
         setImageUrl("/images/component-thumbnails/not-yet-available.png");
       } else {
         setImageUrl("");
@@ -57,8 +57,8 @@ export function ExampleCard(props: ExampleCardProps) {
 
   const getBadgeType = (status: ComponentStatus) => {
     switch (status) {
-      case "Published":
-        return null; // No badge for "Published"
+      case "Available":
+        return null; // No badge for "Available"
       case "Not Published":
         return "light";
       case "In Progress":
@@ -72,7 +72,7 @@ export function ExampleCard(props: ExampleCardProps) {
   return (
 
     <div className="card">
-      {props.status === "Published" ? (
+      {props.status === "Available" ? (
         <Link to={isRelativeUrl(props.exampleUrl) ? props.exampleUrl! : toKebabCase(props.name)}
               tabIndex={-1}>
           <div
@@ -99,7 +99,7 @@ export function ExampleCard(props: ExampleCardProps) {
             }
           />
         )}
-        {props.status !== "Published" && (
+        {props.status !== "Available" && (
           <GoabBadge
             mb="m"
             type={
@@ -111,7 +111,7 @@ export function ExampleCard(props: ExampleCardProps) {
           />
         )}
         <h3 style={{ marginTop: 0, marginBottom: 12 }}>
-          {props.status === "Published" ? (
+          {props.status === "Available" ? (
             <Link
               to={isRelativeUrl(props.exampleUrl) ? props.exampleUrl! : toKebabCase(props.name)}>{props.name}</Link>
           ) : (
@@ -133,7 +133,7 @@ export function ExampleCard(props: ExampleCardProps) {
           />
         ))}
 
-        {props.status !== "Published" && props.githubLink && (
+        {props.status !== "Available" && props.githubLink && (
           <GoabText tag="div" mt="m" size="body-s">
             <a
               href={props.githubLink}

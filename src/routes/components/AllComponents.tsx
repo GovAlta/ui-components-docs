@@ -17,6 +17,11 @@ import {
   ComponentStatus
 } from "@components/component-card/ComponentCard";
 import { useDebounce } from "use-debounce";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
+import { GoabBadgeType } from "@abgov/ui-components-common";
+import { NEW_COMPONENTS } from "../../global-constants";
 
 type ComponentProps = Omit<RawComponentProps, "status"> & {
   status: ComponentStatus;
@@ -27,8 +32,22 @@ type ComponentProps = Omit<RawComponentProps, "status"> & {
   groups?: string[];
 };
 
+const getBadgeType = (status: ComponentStatus): GoabBadgeType => {
+  if (status === "Available") return "success";
+  if (status === "Legacy") return "information";
+  if (status === "In Progress") return "important";
+  return "light"; // Default or "Not Published"
+};
+
+//order the components based on the status rank
+const getStatusRank = (status: ComponentStatus): number => {
+  if (status === "Available" || status === "Legacy") return 0;
+  if (status === "In Progress") return 1;
+  return 2; // Not Published and others
+};
 
 const AllComponents = () => {
+  const { version, language } = useContext(LanguageVersionContext);
   const [filter, setFilter] = useState<string>("");
   const [debouncedFilter] = useDebounce(filter, 300);
   const [issueCounts, setIssueCounts] = useState<Record<string, number>>({});
@@ -41,10 +60,9 @@ const AllComponents = () => {
     const fetchData = async () => {
       const metadata = await fetchComponentMetadataFromProject();
       const sorted = metadata.sort((a, b) => {
-        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
-        const statusComparison =
-          statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
-        if (statusComparison !== 0) return statusComparison;
+        const aRank = getStatusRank(a.status as ComponentStatus);
+        const bRank = getStatusRank(b.status as ComponentStatus);
+        if (aRank !== bRank) return aRank - bRank;
         return a.name.localeCompare(b.name);
       });
       setCards(sorted);
@@ -53,6 +71,7 @@ const AllComponents = () => {
     };
     fetchData();
   }, []);
+
   const [sortDirection, setSortDirection] = useState<{ [key: string]: number }>({
     status: -1,
     name: 1,
@@ -75,10 +94,13 @@ const AllComponents = () => {
 
     const sortedFiltered = [...result].sort((a, b) => {
       if (sortBy === "status") {
-        const statusOrder: ComponentStatus[] = ["Published", "In Progress", "Not Published"];
-        const statusComparison =
-          statusOrder.indexOf(a.status as ComponentStatus) - statusOrder.indexOf(b.status as ComponentStatus);
-        if (statusComparison !== 0) return statusComparison * newDirection;
+        const aRank = getStatusRank(a.status as ComponentStatus);
+        const bRank = getStatusRank(b.status as ComponentStatus);
+
+        if (aRank !== bRank) return (aRank - bRank) * newDirection;
+
+        // If same status rank, sort by name
+        return a.name.localeCompare(b.name) * newDirection;
       }
 
       const key = sortBy as keyof ComponentProps;
@@ -214,12 +236,23 @@ const AllComponents = () => {
           <td style={{ width: "100px" }}>
             <GoabBadge
               mt="2xs"
-              type={card.status === "Published" ? "success" : card.status === "In Progress" ? "important" : "information"}
-              content={card.status}
+              type={
+                version === "old" && NEW_COMPONENTS.includes(card.name) 
+                  ? "important" 
+                  : getBadgeType(card.status)
+              }
+              content={
+                version === "old" && NEW_COMPONENTS.includes(card.name)
+                  ? "Available in " + 
+                    (language === "angular"
+                      ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                      : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+                  : card.status
+              }
             />
           </td>
           <td>
-            {card.status === "Published" ? (
+            {card.status === "Available" || card.status === "Legacy" ? (
               <a href={`/components/${card.name.toLowerCase().replace(/\s+/g, "-")}`}>
                 {toSentenceCase(card.name)}
               </a>
@@ -309,7 +342,7 @@ const AllComponents = () => {
                 status={card.status}
                 githubLink={card.openIssuesUrl || `https://github.com/GovAlta/ui-components/issues?q=is%3Aissue+is%3Aopen+label%3A${encodeURIComponent(getLabelQuery(card.name))}`}
                 openIssues={issueCounts[card.name]}
-                isNew={card.isNew}
+                isNew={NEW_COMPONENTS.includes(card.name)}
                 designComponentFigmaUrl={card.designComponentFigmaUrl}
                 designContributionFigmaUrl={card.designContributionFigmaUrl}
                 imageFolder="component-thumbnails"
