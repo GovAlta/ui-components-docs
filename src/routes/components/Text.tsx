@@ -88,6 +88,11 @@ export default function TextPage() {
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
       description: "Apply margin to the top, right, bottom, and/or left of the component.",
     },
+    {
+      name: "id",
+      type: "string",
+      description: "Sets the HTML id attribute on the text element.",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
