@@ -487,7 +487,7 @@ export default function TextFieldPage() {
     {
       name: "trailingIconAriaLabel",
       type: "string",
-      description: "Aria label for the trailing icon.",
+      description: "Aria label for the trailing icon. Use only when the trailing icon is interactive.",
     },
     {
       name: "disabled",
