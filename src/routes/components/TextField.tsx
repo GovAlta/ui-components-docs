@@ -138,6 +138,12 @@ export default function TextFieldPage() {
       value: "",
       name: "ariaLabel",
     },
+    ...(version === "new" ? [{
+      label: "Trailing icon ARIA label",
+      type: "string" as const,
+      value: "",
+      name: "trailingIconAriaLabel",
+    }] : []),
     {
       label: "Value",
       type: "string",
@@ -212,6 +218,7 @@ export default function TextFieldPage() {
       type: "GoAIconType",
       description: "Icon shown to the right of the text.",
     },
+
     {
       name: "disabled",
       type: "boolean",
@@ -331,7 +338,7 @@ export default function TextFieldPage() {
       lang: "react",
       type: "on | off | none | sentences | words | characters",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
@@ -339,7 +346,7 @@ export default function TextFieldPage() {
       lang: "angular",
       type: "on | off | none | sentences | words | characters",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
@@ -478,6 +485,11 @@ export default function TextFieldPage() {
       description: "Icon shown to the right of the text.",
     },
     {
+      name: "trailingIconAriaLabel",
+      type: "string",
+      description: "Aria label for the trailing icon. Use only when the trailing icon is interactive.",
+    },
+    {
       name: "disabled",
       type: "boolean",
       defaultValue: "false",
@@ -553,7 +565,7 @@ export default function TextFieldPage() {
       name: "autoCapitalize",
       type: "GoabInputAutoCapitalize (on | off | none | sentences | words | characters)",
       description:
-        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user.",
+        "Controls whether and how text input is automatically capitalized as it is entered/edited by the user. This only works on mobile devices.",
       defaultValue: "off",
     },
     {
