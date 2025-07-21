@@ -39,7 +39,7 @@ const getBadgeType = (status: ComponentStatus): GoabBadgeType => {
   return "light"; // Default or "Not Published"
 };
 
-//order the components based on the status rank
+//order the components based on the status rank (ascending)
 const getStatusRank = (status: ComponentStatus): number => {
   if (status === "Available" || status === "Legacy") return 0;
   if (status === "In Progress") return 1;

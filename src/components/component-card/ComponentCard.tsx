@@ -89,7 +89,7 @@ export function ComponentCard(props: ComponentCardProps) {
           />
         )}
         <h3 style={{ marginTop: 0, marginBottom: 12 }}>
-          {props.status === "Available" ? (
+          {props.status === "Available" || props.status === "Legacy" ? (
             <Link
               to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}>{props.name}</Link>
           ) : (
