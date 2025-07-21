@@ -10,7 +10,7 @@ interface OldComponentBannerProps {
 
 export const OldComponentBanner = ({ componentName, language, type = "component" }: OldComponentBannerProps) => {
   return (
-    <GoabCallout type="important" size={"medium"} mt="m" heading={
+    <GoabCallout type="important" size={"medium"} mt="m" maxWidth="608px" heading={
       `${componentName} ${type} is not available in this version`
     }>
       This {type} is only available in {language == "angular" ? ANGULAR_VERSIONS.NEW.label.substring(0,2).toUpperCase()
