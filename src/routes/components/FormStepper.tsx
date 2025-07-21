@@ -38,7 +38,7 @@ const relatedComponents = [{ link: "/components/form-item", name: "Form item" }]
 type ComponentPropsType = GoabFormStepperProps;
 
 export default function FormStepperPage() {
-  const { version, language } = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [formStepProps] = useState<ComponentPropsType>();
 
   const oldComponentProperties: ComponentProperty[] = [

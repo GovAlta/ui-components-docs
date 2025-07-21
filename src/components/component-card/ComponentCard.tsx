@@ -3,7 +3,7 @@ import "./ComponentCard.css";
 import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
-
+import { NEW_COMPONENTS } from "../../global-constants";
 export type ComponentStatus = "Available" | "Legacy" | "Not Published" | "In Progress";
 
 // Define allowed group options as a union type
@@ -81,18 +81,6 @@ export function ComponentCard(props: ComponentCardProps) {
         ></div>
       )}
       <div className="card-content">
-        {props.isNew && (
-          <GoabBadge
-            type="important"
-            mt="l"
-            content={
-              "Available in " +
-              (language === "angular"
-                ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
-                : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
-            }
-          />
-        )}
         {props.status !== "Available" && (
           <GoabBadge
             mb="m"
@@ -126,9 +114,7 @@ export function ComponentCard(props: ComponentCardProps) {
           </GoabText>
         )}
 
-        {/* Cards */}
-        {/* TODO: Replace props.name === "Drawer" with props.isNew once available */}
-        {props.name === "Drawer" && (
+        {NEW_COMPONENTS.includes(props.name) && (
           <GoabBadge
             type={version === "new" ? "success" : "important"}
             mt="l"
