@@ -1,7 +1,7 @@
-import { TableWithGlobalFiltersExample } from "@examples/filter-chip/TableWithGlobalFiltersExample.tsx";
-import { FilterChipDeleteEventExample } from "@examples/filter-chip/FilterChipDeleteEventExample.tsx";
-import { FilterChipInteractiveExample } from "@examples/filter-chip/FilterChipInteractiveExample.tsx";
-import { FilterChipTypedChipExample } from "@examples/filter-chip/FilterChipTypedChipExample.tsx";
+import { FilterDataInATable } from "@examples/filter-data-in-a-table.tsx";
+import { RemoveAFilter } from "@examples/remove-a-filter.tsx";
+import { AddAFilterChip } from "@examples/add-a-filter-chip.tsx";
+import { TypeToCreateANewFilter } from "@examples/type-to-create-a-new-filter.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const FilterChipExamples = () => {
@@ -11,13 +11,13 @@ export const FilterChipExamples = () => {
         exampleTitle="Remove a filter"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-59262&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <FilterChipDeleteEventExample />
+      <RemoveAFilter />
 
       <SandboxHeader
-        exampleTitle="Interactive Example"
+        exampleTitle="Add a filter chip"
         figmaExample="">
       </SandboxHeader>
-      <FilterChipInteractiveExample />
+      <AddAFilterChip />
 
 
       <SandboxHeader
@@ -25,12 +25,12 @@ export const FilterChipExamples = () => {
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6308-51849&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
 
-      <FilterChipTypedChipExample/>
+      <TypeToCreateANewFilter />
 
       <SandboxHeader
         exampleTitle="Filter data in a table">
       </SandboxHeader>
-      <TableWithGlobalFiltersExample />
+      <FilterDataInATable />
     </>
   )
 }

@@ -1,13 +1,18 @@
-import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer, GoabTable } from "@abgov/react-components";
+import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer, GoabTable, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function FoundationsColorPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        
-        <h1>Color</h1>
-        <h3>Colors play a major role in how the Government of Alberta communicates. They serve as a tool to convey clarity, express emotions, and promote inclusivity.</h3>
-        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
+
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Color
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          Colors play a major role in how the Government of Alberta communicates. They serve as a tool to convey
+          clarity,
+          express emotions, and promote inclusivity.
+        </GoabText> <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="max-width-72ch">
           <p>Our palette is divided into these categories:</p>
           <ul>

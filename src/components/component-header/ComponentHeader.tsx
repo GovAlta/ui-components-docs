@@ -2,7 +2,7 @@ import { GoabBadge, GoabBlock, GoabText } from "@abgov/react-components";
 import "./ComponentHeader.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { toSentenceCase, fetchIssueCount } from "../../utils";
+import { toSentenceCase, fetchAllIssueCounts, fetchComponentMetadataFromProject } from "../../utils";
 
 export enum Category {
   CONTENT_AND_LAYOUT = "Content and layout",
@@ -29,7 +29,9 @@ export const ComponentHeader: React.FC<Props> = (props) => {
 
     const getCount = async () => {
       const label = toSentenceCase(props.githubLink!);
-      const count = await fetchIssueCount(label);
+      const metadata = await fetchComponentMetadataFromProject();
+      const Allcounts = await fetchAllIssueCounts("Components", metadata);
+      const count = Allcounts[label] || 0;
       setIssueCount(count);
     };
 

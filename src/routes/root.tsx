@@ -3,20 +3,29 @@ import {
   GoabAppFooterMetaSection,
   GoabAppFooterNavSection,
   GoabAppHeader,
-  GoabMicrositeHeader, GoabNotification,
-  GoabOneColumnLayout
+  GoabMicrositeHeader,
+  GoabOneColumnLayout,
+  GoabTemporaryNotificationCtrl
 } from "@abgov/react-components";
 import { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-import Cookies from "js-cookie";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 import "./root.css";
 
-import { useLocation } from "react-router-dom";
 import {
   MAX_CONTENT_WIDTH,
 } from "../global-constants.ts";
-import { VersionLanguageSwitcher } from "@components/version-language-switcher/VersionLanguageSwitcher.tsx";
+
+
+import VersionUpdateNotification from "@components/version-language-switcher/VersionUpdateNotification";
+import { HelpButton } from "@components/version-language-switcher/HelpButton";
+import {
+  VersionLanguageSwitcher
+} from "@components/version-language-switcher/VersionLanguageSwitcher";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext";
+import { useContext } from "react";
+import SiteWideNotification from "@components/version-language-switcher/SiteWideNotification";
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -29,8 +38,17 @@ function ScrollToTop() {
 }
 
 export default function Root() {
-  const isFirstVisit = Cookies.get("hasVisited");
+  const { version } = useContext(LanguageVersionContext);
+  const location = useLocation();
+  const showNotification =
+    location.pathname.startsWith("/components") || location.pathname.startsWith("/examples");
   const [visible, setVisibility] = useState<boolean>(false);
+  
+  // to show temporary notification on examples route, except temporary-notification playground which needs playground bindings
+  const shouldRenderTemporaryNotificationCtrl = !(
+    location.pathname.includes("/temporary-notification") && 
+    (location.hash === "#tab-0" || location.hash === "" || !location.hash.includes("#tab-"))
+  );
 
 
   useEffect(() => {
@@ -38,12 +56,6 @@ export default function Root() {
       setVisibility(true);
     }, 50);
   });
-
-  useEffect(() => {
-    setTimeout(() => {
-      Cookies.set("hasVisited", "true", {expires: 3650}); // increase the time everytime ppl land on so it won't expire
-    }, 600); // update later
-  }, []);
 
   return (
     <div className="app" style={{ opacity: visible ? "1" : "0" }}>
@@ -54,33 +66,34 @@ export default function Root() {
             type={"live"}
             feedbackUrl="https://forms.microsoft.com/r/8Zp7zSJS6W"
             maxContentWidth={MAX_CONTENT_WIDTH}
-            version={<VersionLanguageSwitcher/>}
-          />
-          <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"} fullMenuBreakpoint={978}>
+            version={
+              <>
+                <VersionLanguageSwitcher />
+                <HelpButton />
+              </>
+            } />
+          <GoabAppHeader heading="Design system" maxContentWidth={MAX_CONTENT_WIDTH} url={"/"}
+                         fullMenuBreakpoint={996}>
             <Link to="/get-started">Get started</Link>
             <Link to="/foundations">Foundations</Link>
-            <Link to="/patterns">Patterns</Link>
+            <Link to="/examples">Examples</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Tokens</Link>
-            <Link to="/content/capitalization">Content</Link>
             <Link to="/get-started/support" className="interactive">Get support</Link>
           </GoabAppHeader>
+          {showNotification && <VersionUpdateNotification version={version} />}
+          <SiteWideNotification />
+          <Outlet />
         </section>
-
-        {isFirstVisit == null && <GoabNotification type='information'>
-          Select your development framework to see all code in your development languages. You can change this in the top right of the screen.
-        </GoabNotification>}
-
-        <Outlet />
 
         <section slot="footer">
           <GoabAppFooter url="/" maxContentWidth={MAX_CONTENT_WIDTH}>
             <GoabAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
-              <Link to="/patterns">Patterns</Link>
+              <Link to="/foundations">Foundations</Link>
+              <Link to="/examples">Examples</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Design tokens</Link>
-              <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
               <Link to="/get-started/support/report-bug" target="_blank">Submit an issue</Link>
@@ -94,6 +107,13 @@ export default function Root() {
           </GoabAppFooter>
         </section>
       </GoabOneColumnLayout>
+
+      {shouldRenderTemporaryNotificationCtrl && (
+        <GoabTemporaryNotificationCtrl 
+          verticalPosition="bottom" 
+          horizontalPosition="center" 
+        />
+      )}
     </div>
   );
 }

@@ -1,7 +1,7 @@
-import { ContainerUserInformationExample } from "@examples/container/ContainerUserInformationExample.tsx";
-import { ContainerCaseFilesExample } from "@examples/container/ContainerCaseFilesExample.tsx";
-import { ContainerCardGridExample } from "@examples/container/ContainerCardGridExample.tsx";
-import { ContainerReviewActionExample } from "@examples/container/ContainerReviewActionExample.tsx";
+import { DisplayUserInformation } from "@examples/display-user-information.tsx";
+import { CardViewOfCaseFiles } from "@examples/card-view-of-case-files.tsx";
+import { CardGrid } from "@examples/card-grid.tsx";
+import { ReviewAndAction } from "@examples/review-and-action.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function ContainerExamples() {
@@ -13,26 +13,26 @@ export default function ContainerExamples() {
         exampleTitle="User information"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-154067&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <ContainerUserInformationExample/>
+      <DisplayUserInformation />
 
       <SandboxHeader
         exampleTitle="Card view of case files"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-161012&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <ContainerCaseFilesExample/>
+      <CardViewOfCaseFiles />
 
       <SandboxHeader
         exampleTitle="Card grid"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-165873&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
-      <ContainerCardGridExample/>
+      <CardGrid />
 
       <SandboxHeader
         exampleTitle="Review and action"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-173587&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
 
-      <ContainerReviewActionExample/>
+      <ReviewAndAction />
     </>
   );
 }

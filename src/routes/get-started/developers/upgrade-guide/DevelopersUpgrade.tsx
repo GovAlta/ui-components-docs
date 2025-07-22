@@ -2,7 +2,7 @@ import { GoabCallout, GoabContainer } from "@abgov/react-components";
 import { GoabText } from "@abgov/react-components";
 import "../Developers.css";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import css from "@routes/patterns/patterns.module.css";
+import css from "@routes/examples/patterns.module.css";
 import { ReactGuide } from "@routes/get-started/developers/upgrade-guide/ReactGuide.tsx";
 import { AngularGuide } from "@routes/get-started/developers/upgrade-guide/AngularGuide.tsx";
 import { InlineCode } from "@components/inline-code/InlineCode.tsx";
@@ -70,7 +70,26 @@ export default function DevelopersUpgradePage() {
             </ul>
           </div>
         </GoabContainer>
+  <GoabCallout type="information" heading="Watch a real service upgrade" maxWidth="65ch">
+    See a real government service go through a version update in this short, three-part video series:
 
+    <ol>
+      <li>
+        <strong>Updating versions</strong> – two ways to install the latest packages
+      </li>
+      <li>
+        <strong>Renaming components</strong> – update old names to new names
+      </li>
+      <li>
+        <strong>Updating component props</strong> – adjust component properties and clean up warnings
+      </li>
+    </ol>
+    <p>
+      <a href="https://abgov.sharepoint.com/:u:/r/sites/DDDdesignsystem/SitePages/Version-update-walkthrough.aspx?csf=1&web=1&share=EWA6F1DYep1AjhES5h3NoBkBxL6fd2ym9wtiyXyz3klPCw&e=FFsDQM">
+        View the upgrade videos
+      </a>
+    </p>
+  </GoabCallout>
         <ReactGuide />
         <AngularGuide />
       </ComponentContent>

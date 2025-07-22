@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import {
   GoabBadge,
   GoabDropdown,
-  GoabDropdownItem, GoabDropdownProps,
+  GoabDropdownItem,
+  GoabDropdownProps,
   GoabFormItem,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import ICONS from "./icons.json";
@@ -19,11 +20,15 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { DropdownExamples } from "@examples/dropdown/DropdownExamples";
 import { GoabDropdownOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { LegacyMarginProperty, MarginProperty } from "@components/component-properties/common-properties.ts";
+import {
+  LegacyMarginProperty,
+  MarginProperty,
+} from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=105-42";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=105-42";
 
 // == Page props ==
 const componentName = "Dropdown";
@@ -41,10 +46,10 @@ type CastingType = {
   value: string;
   [key: string]: unknown;
   onChange: (event: GoabDropdownOnChangeDetail) => void;
-}
+};
 
 export default function DropdownPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [dropdownProps, setDropdownProps] = useState<ComponentPropsType>({
     name: "item",
     value: "",
@@ -82,7 +87,9 @@ export default function DropdownPage() {
     { label: "Filterable", type: "boolean", name: "filterable", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
-  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({ label: "Basic dropdown" });
+  const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
+    label: "Basic dropdown",
+  });
 
   const oldDropdownProperties: ComponentProperty[] = [
     {
@@ -218,6 +225,12 @@ export default function DropdownPage() {
       description: "Stores the value of the item selected from the dropdown.",
     },
     {
+      name: "autoComplete",
+      type: "string",
+      description: "Specifies the autocomplete attribute for the dropdown input. Native only.",
+    },
+
+    {
       name: "leadingIcon",
       type: "GoAIconType",
       description: "Show an icon to the left of the dropdown option.",
@@ -315,15 +328,15 @@ export default function DropdownPage() {
       lang: "react",
       type: "append | prepend | reset",
       description: "The mount type for the dropdown item.",
-      defaultValue: "append"
+      defaultValue: "append",
     },
     {
-      name:"mount",
+      name: "mount",
       lang: "angular",
       type: "append | prepend | reset",
       description: "The mount type for the dropdown item.",
-      defaultValue: "append"
-    }
+      defaultValue: "append",
+    },
   ];
   const dropdownItemProperties: ComponentProperty[] = [
     {
@@ -348,8 +361,8 @@ export default function DropdownPage() {
       name: "mountType",
       type: "GoabDropdownItemMountType (append | prepend | reset)",
       description: "The mount type for the dropdown item.",
-      defaultValue: "append"
-    }
+      defaultValue: "append",
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -376,10 +389,11 @@ export default function DropdownPage() {
         githubLink="Dropdown"
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={dropdownBindings}
               formItemProperties={formItemBindings}
@@ -396,7 +410,10 @@ export default function DropdownPage() {
               </GoabFormItem>
             </Sandbox>
 
-            <ComponentProperties properties={dropdownProperties} oldProperties={oldDropdownProperties} />
+            <ComponentProperties
+              properties={dropdownProperties}
+              oldProperties={oldDropdownProperties}
+            />
 
             <ComponentProperties
               heading="Dropdown item properties"
@@ -411,8 +428,7 @@ export default function DropdownPage() {
                 Examples
                 <GoabBadge type="information" content="2" />
               </>
-            }
-          >
+            }>
             <DropdownExamples />
           </GoabTab>
 
