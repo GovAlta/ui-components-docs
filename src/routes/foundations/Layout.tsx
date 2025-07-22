@@ -1,4 +1,4 @@
-import { GoabDivider, GoabTable, GoabContainer, GoabSpacer } from "@abgov/react-components";
+import { GoabDivider, GoabTable, GoabContainer, GoabSpacer, GoabText } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
@@ -6,9 +6,14 @@ export default function FoundationsLayoutPage() {
   return (
     
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Layout</h1>
-        <h3>We use the layout as a structural template to support consistency across our products. By defining visual grids, spacing, and sections, we create intuitive products for our users.</h3>
-        <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Layout
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          We use the layout as a structural template to support consistency across our products. By defining visual
+          grids,
+          spacing, and sections, we create intuitive products for our users.
+        </GoabText> <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
         <div className="maximum-width-72ch">
           <h3 id="spacing-scale">The spacing scale</h3>
           <p>The Design System uses a spacing scale with a 16px base value to be used within layout spacing and spacing within components. <Link to="/design-tokens/spacing">See spacing for more information</Link>.</p>

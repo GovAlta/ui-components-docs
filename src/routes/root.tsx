@@ -4,7 +4,8 @@ import {
   GoabAppFooterNavSection,
   GoabAppHeader,
   GoabMicrositeHeader,
-  GoabOneColumnLayout
+  GoabOneColumnLayout,
+  GoabTemporaryNotificationCtrl
 } from "@abgov/react-components";
 import { useEffect, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
@@ -42,6 +43,12 @@ export default function Root() {
   const showNotification =
     location.pathname.startsWith("/components") || location.pathname.startsWith("/examples");
   const [visible, setVisibility] = useState<boolean>(false);
+  
+  // to show temporary notification on examples route, except temporary-notification playground which needs playground bindings
+  const shouldRenderTemporaryNotificationCtrl = !(
+    location.pathname.includes("/temporary-notification") && 
+    (location.hash === "#tab-0" || location.hash === "" || !location.hash.includes("#tab-"))
+  );
 
 
   useEffect(() => {
@@ -69,25 +76,24 @@ export default function Root() {
                          fullMenuBreakpoint={996}>
             <Link to="/get-started">Get started</Link>
             <Link to="/foundations">Foundations</Link>
-            <Link to="/patterns">Patterns</Link>
+            <Link to="/examples">Examples</Link>
             <Link to="/components">Components</Link>
             <Link to="/design-tokens">Tokens</Link>
-            <Link to="/content/capitalization">Content</Link>
             <Link to="/get-started/support" className="interactive">Get support</Link>
           </GoabAppHeader>
           {showNotification && <VersionUpdateNotification version={version} />}
           <SiteWideNotification />
-        <Outlet />
+          <Outlet />
         </section>
 
         <section slot="footer">
           <GoabAppFooter url="/" maxContentWidth={MAX_CONTENT_WIDTH}>
             <GoabAppFooterNavSection heading="Resources" maxColumnCount={2}>
               <Link to="/get-started">Get started</Link>
-              <Link to="/patterns">Patterns</Link>
+              <Link to="/foundations">Foundations</Link>
+              <Link to="/examples">Examples</Link>
               <Link to="/components">Components</Link>
               <Link to="/design-tokens">Design tokens</Link>
-              <Link to="/content/capitalization">Content</Link>
             </GoabAppFooterNavSection>
             <GoabAppFooterNavSection heading="Get support">
               <Link to="/get-started/support/report-bug" target="_blank">Submit an issue</Link>
@@ -101,6 +107,13 @@ export default function Root() {
           </GoabAppFooter>
         </section>
       </GoabOneColumnLayout>
+
+      {shouldRenderTemporaryNotificationCtrl && (
+        <GoabTemporaryNotificationCtrl 
+          verticalPosition="bottom" 
+          horizontalPosition="center" 
+        />
+      )}
     </div>
   );
 }

@@ -9,7 +9,7 @@ export default function DevelopersTechnologiesPage() {
       <GoabText size="body-l" mb="2xl">An overview of the technologies that make up the design system.</GoabText>
 
       <div className="design-system-image">
-        <img src="/images/design-system-technologies.png" />
+        <img src="/images/component-thumbnails/design-system-technologies.png" />
       </div>
 
       <h2 id="web-components">Web components</h2>

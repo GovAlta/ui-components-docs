@@ -3,11 +3,11 @@ import "./ComponentCard.css";
 import { toKebabCase } from "../../utils";
 import { GoabBadge, GoabText } from "@abgov/react-components";
 import { useState, useEffect } from "react";
-
-export type ComponentStatus = "Published" | "Not Published" | "In Progress";
+import { NEW_COMPONENTS } from "../../global-constants";
+export type ComponentStatus = "Available" | "Legacy" | "Not Published" | "In Progress";
 
 // Define allowed group options as a union type
-type Group =
+export type Group =
   | "Content layout"
   | "Feedback and alerts"
   | "Inputs and actions"
@@ -17,50 +17,58 @@ import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { ANGULAR_VERSIONS, REACT_VERSIONS } from "@components/version-language-switcher/version-language-constants.ts";
 
-export interface Props {
+export interface ComponentCardProps {
   name: string;
   description: string;
-  groups: Group[]; // Use the Group type here
   tags?: string[];
   status: ComponentStatus;
   githubLink?: string;
   openIssues?: number;
   isNew?: boolean; // if true, show a badge on the component card to let users know the component is available in the latest version
+  designSystemUrl?: string;
+  designComponentFigmaUrl?: string;
+  designContributionFigmaUrl?: string;
+  imageFolder?: "component-thumbnails" | "example-thumbnails";
 }
 
 function dasherize(value: string): string {
-  return value.split(" ").join("-");
+  return value.toLowerCase().split(" ").join("-");
 }
 
-export function ComponentCard(props: Props) {
-  const [imageUrl, setImageUrl] = useState(`/images/${dasherize(props.name)}.png`);
+function isRelativeUrl(url?: string): boolean {
+  return url !== undefined && !/^https?:\/\//i.test(url);
+}
+
+export function ComponentCard(props: ComponentCardProps) {
+  const folder = props.imageFolder ?? "components";
+  const [imageUrl, setImageUrl] = useState(`/images/${folder}/${dasherize(props.name)}.png`);
 
   useEffect(() => {
     const testImage = new Image();
     testImage.src = imageUrl;
-    testImage.onerror = () => setImageUrl("/images/not-yet-available.png");
+    testImage.onerror = () => setImageUrl("/images/component-thumbnails/not-yet-available.png");
   }, [imageUrl]);
 
   const getBadgeType = (status: ComponentStatus) => {
     switch (status) {
-      case "Published":
-        return null; // No badge for "Published"
+      case "Available": //Published replaced with Available
+        return null; // No badge for "Available"
       case "Not Published":
-        return "information";
+        return "light";
       case "In Progress":
         return "important";
       default:
-        return "information"; // Fallback for unknown status
+        return "information"; // Fallback for Legacy and unknown status
     }
   };
-
-  const badgeType = getBadgeType(props.status);
-
-  const {language} = useContext(LanguageVersionContext);
+  getBadgeType(props.status);
+  const { language, version } = useContext(LanguageVersionContext);
   return (
+
     <div className="card">
-      {props.status === "Published" ? (
-        <Link to={toKebabCase(props.name)} tabIndex={-1}>
+      {props.status === "Available" || props.status === "Legacy" ? (
+        <Link to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}
+              tabIndex={-1}>
           <div
             className="card-image"
             style={{ backgroundImage: `url(${imageUrl})` }}
@@ -69,44 +77,57 @@ export function ComponentCard(props: Props) {
       ) : (
         <div
           className="card-image"
-          tabIndex={-1}
           style={{ backgroundImage: `url(${imageUrl})` }}
-        />
+        ></div>
       )}
       <div className="card-content">
-        <div className="card-title-with-badge">
-          {badgeType && <GoabBadge mt="none" mb="m" type={badgeType} content={props.status} />}
-
-          {props.status === "Published" ? (
-
-            <Link to={toKebabCase(props.name)}>
-              {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
-            </Link>
-
+        {props.status !== "Available" && (
+          <GoabBadge
+            mb="m"
+            type={getBadgeType(props.status) || "information"}
+            content={props.status}
+          />
+        )}
+        <h3 style={{ marginTop: 0, marginBottom: 12 }}>
+          {props.status === "Available" || props.status === "Legacy" ? (
+            <Link
+              to={isRelativeUrl(props.designSystemUrl) ? props.designSystemUrl! : toKebabCase(props.name)}>{props.name}</Link>
           ) : (
-
-            <GoabText size="body-l" mt="none" mb="none">
-              {`${props.name.substring(0, 1).toUpperCase()}${props.name.substring(1)}`}
-            </GoabText>
-
+            props.name
           )}
-        </div>
-        <GoabText size="body-m" mt="m" mb="none">
+        </h3>
+        <GoabText size="body-m" mb="s">
           {props.description}
         </GoabText>
-        {props.status !== "Published" && props.githubLink && (
-          <GoabText size="body-s">
+
+
+        {props.status !== "Available" && props.githubLink && (
+          <GoabText tag="div" mt="m" size="body-s">
             <a
               href={props.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="github-link"
             >
-             View issues{typeof props.openIssues === 'number' && ` (${props.openIssues})`}
+              {props.imageFolder === "example-thumbnails" ? "View issue" : "View open issues"}
+              {props.imageFolder === "example-thumbnails" ? "" : props.openIssues !== undefined ? ` (${props.openIssues})` : ""}
             </a>
           </GoabText>
         )}
-        {props.isNew && <GoabBadge type="important" mt="l" content={"Available in " + (language === "angular" ? ANGULAR_VERSIONS.NEW.label.substring(0,2).toUpperCase() : REACT_VERSIONS.NEW.label.substring(0,2).toUpperCase())}/>}
+
+        {NEW_COMPONENTS.includes(props.name) && (
+          <GoabBadge
+            type={version === "new" ? "success" : "important"}
+            mt="l"
+            content={
+              version === "new"
+                ? "New"
+                : "Available in " +
+                  (language === "angular"
+                    ? ANGULAR_VERSIONS.NEW.label.substring(0, 2).toUpperCase()
+                    : REACT_VERSIONS.NEW.label.substring(0, 2).toUpperCase())
+            }
+          />
+        )}
       </div>
     </div>
   );

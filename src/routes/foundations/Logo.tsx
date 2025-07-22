@@ -1,12 +1,18 @@
-import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer } from "@abgov/react-components"
+import { GoabDivider, GoabGrid, GoabContainer, GoabSpacer, GoabText } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 
 export default function LogoPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <h1>Logo</h1>
-        <h3>Our logo is an important part of our brand identity and serves as a symbol that distinguishes our digital products from others. To keep our brand consistent and recognizable, we encourage following the guidelines for proper usage.</h3>
-
+        <GoabText size="heading-xl" mb="m" mt="xl">
+          Logo
+        </GoabText>
+        <GoabText size="heading-m" mb="xl">
+          Our logo is an important part of our brand identity and serves as a symbol that distinguishes our digital
+          products
+          from others. To keep our brand consistent and recognizable, we encourage following the guidelines for proper
+          usage.
+        </GoabText>
         <GoabDivider mt="2xl" mb="2xl"></GoabDivider>
           <h2 id="anatomy">Anatomy</h2>
             <div style={{ width: "100%", textAlign: "center", padding:"var(--goa-space-l) 0" }}>

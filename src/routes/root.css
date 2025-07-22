@@ -26,8 +26,8 @@
   Side Menu
 ==================*/
 .side-menu {
-  min-width: 180px;
-  width: 180px;
+  min-width: 250px;
+  width: 250px;
   border-right: 1px solid var(--goa-color-greyscale-200);
   padding-bottom: var(--goa-space-l);
 }

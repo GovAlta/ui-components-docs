@@ -7,9 +7,11 @@ export default function ComponentLifecyclePage() {
         <GoabText size="heading-xl" mb="m" mt="xl">
           Component lifecycle
         </GoabText>
-        <GoabText size="body-m" mb="2xl">
+      <GoabText size="body-l" mb="none">
           This lifecycle defines the stages every component in the Design System undergoes, from Alpha to Production to Legacy. Each stage describes the component's maturity, adoption level, and support status.<br /><br />
-          To request new components or enhancements, please follow the{' '}
+      </GoabText>
+      <GoabText size="body-m" mb="2xl">
+        To request new components or enhancements, please follow the{" "}
           <a href="/get-started/contribute">Design contribution process</a>.
         </GoabText>
 
