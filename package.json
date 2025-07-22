@@ -12,9 +12,9 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "6.6.0-alpha.4",
-    "@abgov/ui-components-common": "1.6.0-alpha.4",
-    "@abgov/web-components": "1.36.0-alpha.6",
+    "@abgov/react-components": "6.6.1",
+    "@abgov/ui-components-common": "1.6.0",
+    "@abgov/web-components": "1.36.1",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "js-cookie": "^3.0.5",
