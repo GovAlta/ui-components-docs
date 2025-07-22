@@ -5,6 +5,14 @@
   font: var(--goa-typography-body-s);
 }
 
+/* Fix for disabled input visibility in sandbox - ensure disabled inputs remain visible */
+.sandbox-render goa-input[disabled] input,
+.sandbox-render goa-input[disabled]::part(input) {
+  border: 1px solid var(--goa-color-greyscale-400) !important;
+  background-color: var(--goa-color-greyscale-100) !important;
+  color: var(--goa-color-greyscale-600) !important;
+}
+
 .sandbox-render {
   border-radius: 4px;
   border: var(--goa-border-width-s) solid var(--goa-color-greyscale-200);
