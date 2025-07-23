@@ -41,7 +41,6 @@ export const AddAnotherItemInAModal = () => {
 
         <GoabModal
           heading="Add a new item"
-          role="dialog"
           open={addItemModalOpen}
           actions={
             <GoabButtonGroup alignment="end">
@@ -143,7 +142,7 @@ export const AddAnotherItemInAModal = () => {
         allowCopy={true}
         code={`
                   <goa-button type="tertiary" leadingicon="add" (_click)="toggleModal()">Add another item</goa-button>
-                  <goa-modal [open]="open" role="dialog"
+                  <goa-modal [open]="open"
                     (_close)="toggleModal()" heading="Add a new item">
                     <p>Fill in the information to create a new item</p>
                     <goa-form-item label="Type" mt="xs">
@@ -174,7 +173,7 @@ export const AddAnotherItemInAModal = () => {
         allowCopy={true}
         code={`
         <goab-button type="tertiary" leadingIcon="add" (onClick)="toggleModal()">Add another item</goab-button>
-        <goab-modal [open]="open" role="dialog"
+        <goab-modal [open]="open"
            (onClose)="toggleModal()" heading="Add a new item" [actions]="actions">
           <p>Fill in the information to create a new item</p>
           <goab-form-item label="Type" mt="xs">
@@ -259,7 +258,6 @@ export const AddAnotherItemInAModal = () => {
                   </GoAButton>
                    <GoAModal
                     heading="Add a new item"
-                    role="dialog"
                     open={open}
                     actions={
                       <GoAButtonGroup alignment="end">
@@ -297,7 +295,6 @@ export const AddAnotherItemInAModal = () => {
                   </GoabButton>
                    <GoabModal
                     heading="Add a new item"
-                    role="dialog"
                     open={open}
                     actions={
                       <GoabButtonGroup alignment="end">
