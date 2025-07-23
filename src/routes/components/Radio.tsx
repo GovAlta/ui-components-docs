@@ -480,7 +480,8 @@ export default function RadioPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="3" />
+                {version === "new" && <GoabBadge type="information" content="3" />}
+                {version === "old" && <GoabBadge type="information" content="2" />}
               </>
             }
           >

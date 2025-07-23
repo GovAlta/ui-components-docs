@@ -1,74 +1,16 @@
 import { Sandbox } from "@components/sandbox";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem, GoabSpacer } from "@abgov/react-components";
-import { OldComponentBanner } from "@components/old-component-banner/OldComponentBanner.tsx";
+import { GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 export const RadioRevealSlotExample = () => {
-  const { version, language } = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const noop = () => {}
   return (
     <>
       {/*Skip rendering because we use reveal that isn't supported by sandbox*/}
       <Sandbox fullWidth skipRender>
-        {/*Angular*/}
-        {version === "old" && (
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
-              <goa-form-item label="How would you like to be contacted?" helptext="Select one option">
-                <goa-radio-group
-                  name="color"
-                  goaValue
-                  [formControl]="contactMethodFormCtrl"
-                  [value]="contactMethodFormCtrl.value"
-                >
-                <goa-radio-item name="contactMethod" label="Email" value="email">
-                  <div slot="reveal">
-                    <goa-form-item label="Phone number">
-                      <goa-input name="phone" goaValue [value]="phoneNumberFormCtrl.value" [formControl]="phoneNumberFormCtrl"></goa-input>
-                    </goa-form-item>
-                  </div>
-                </goa-radio-item>
-                <goa-radio-item name="contactMethod" value="phone" label="Phone">
-                  <div slot="reveal">
-                    <goa-form-item label="Email address">
-                      <goa-input name="email" goaValue [value]="emailFormCtrl.value" [formControl]="emailFormCtrl"></goa-input>
-                    </goa-form-item>
-                  </div>
-                </goa-radio-item>
-
-                <goa-radio-item name="contactMethod" value="text" label="Text message">
-                  <div slot="reveal">
-                    <goa-form-item label="Mobile phone number">
-                      <goa-input name="phone" goaValue [value]="phoneNumberFormCtrl.value" [formControl]="phoneNumberFormCtrl"></goa-input>
-                    </goa-form-item>
-                  </div>
-                </goa-radio-item>
-              </goa-radio-group>
-            </goa-form-item>
-            `}
-          />
-        )}
-
-        {version === "old" && (
-          <CodeSnippet
-            lang="typescript"
-            tags="angular"
-            allowCopy={true}
-            code={`
-        export class ExampleComponent {
-         contactMethodFormCtrl = new FormControl();
-         phoneNumberFormCtrl = new FormControl();
-         emailFormCtrl = new FormControl();
-        }
-     `}
-          />
-        )}
-
         {/*Angular*/}
         {version === "new" && (
           <CodeSnippet
@@ -182,14 +124,6 @@ export const RadioRevealSlotExample = () => {
           </GoabRadioGroup>
         </GoabFormItem>
       </Sandbox>
-      <GoabSpacer vSpacing={"1"}></GoabSpacer>
-      {version === "old" && language === "react" && (
-        <OldComponentBanner
-          componentName={"Reveal input based on selection"}
-          language={language}
-          type="example"
-        />
-      )}
     </>
   );
 };
