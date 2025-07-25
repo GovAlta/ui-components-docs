@@ -1,27 +1,26 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabBadge,
+  GoabFilterChip,
   GoabFormItem,
   GoabRadioGroup,
   GoabRadioItem,
   GoabButton,
   GoabPopover,
-  GoabTable
+  GoabTable,
+  GoabText
 } from "@abgov/react-components";
 import "./popover-page-examples.css";
 import { GoabBadgeType } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
+import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 export const TablePopover = () => {
-    const noop = () => {}
     const { version } = useContext(LanguageVersionContext);
-    const target = (
-        <GoabButton type="tertiary" leadingIcon="funnel" size="compact">
-            Filter
-        </GoabButton>
-    );
+    const [selectedChips, setSelectedChips] = useState<string[]>([]);
+    const [filter, setFilter] = useState('All');
     const popoverValues = [
         {
         key: 1,
@@ -54,6 +53,49 @@ export const TablePopover = () => {
         status: "Closed",
         },
     ];
+
+    const [dataFiltered, setDataFiltered] = useState(popoverValues);
+
+    const target = (
+        <GoabButton type="tertiary" leadingIcon="funnel" size="compact">
+            Filter
+        </GoabButton>
+    );
+
+    function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
+        setSelectedChips([...selectedChips, event.value]);
+        return;
+    };
+
+    const checkNested = useCallback((obj: object, chip: string): boolean => {
+        return Object.values(obj).some(value =>
+            typeof value === "object" && value !== null
+            ? checkNested(value, chip)
+            : typeof value === "string" && value.toLowerCase().includes(chip.toLowerCase())
+        );
+    }, []);
+
+    const removeFilter = (chip: string) => {
+        setSelectedChips(selectedChips.filter(c => c !== chip));
+    };
+
+    const getFilteredData = useCallback ((selectedChips: string[]) => {
+            if (selectedChips.length === 0) {
+                return popoverValues;
+            }
+            const filteredData = popoverValues.filter((item: object) =>
+                selectedChips.every(chip => checkNested(item, chip))
+            );
+
+            return filteredData;
+        }, 
+        [checkNested, popoverValues]
+    );
+
+    useEffect(() => {
+        setDataFiltered(getFilteredData(selectedChips));
+    }, [getFilteredData, selectedChips]);
+    
     return (
         <>
         <Sandbox fullWidth skipRender allow={["h3", "div"]}>
@@ -421,15 +463,34 @@ export const TablePopover = () => {
                 <GoabPopover target={target}>
                     <form>
                         <GoabFormItem label="Status">
-                            <GoabRadioGroup name="item" onChange={noop}>
-                                <GoabRadioItem value="1" label="Open"></GoabRadioItem>
-                                <GoabRadioItem value="2" label="Closed"></GoabRadioItem>
+                            <GoabRadioGroup name="item" onChange={radioGroupOnChange}>
+                                <GoabRadioItem value="Open" checked={filter === '1'} label="Open"></GoabRadioItem>
+                                <GoabRadioItem value="Closed" checked={filter === '2'} label="Closed"></GoabRadioItem>
                             </GoabRadioGroup>
                         </GoabFormItem>
-                        <GoabButton type="tertiary" mt="m">Remove filter</GoabButton>
                     </form>
                 </GoabPopover>
             </div>
+             {selectedChips.length > 0 && (
+                <div>
+                <GoabText tag="span" color="secondary" mb="xs" mr="xs">
+                    Filter:
+                </GoabText>
+                {selectedChips.length > 0 &&
+                    selectedChips.map((selectedChip, index) => (
+                    <GoabFilterChip
+                        key={index}
+                        content={selectedChip}
+                        mb="xs"
+                        mr="xs"
+                        onClick={() => removeFilter(selectedChip)}
+                    />
+                    ))}
+                <GoabButton type="tertiary" size="compact" mb="xs" onClick={() => setSelectedChips([])}>
+                    Clear all
+                </GoabButton>
+                </div>
+            )}
             <GoabTable width="100%" mb="xl">
                 <thead>
                     <tr>
@@ -440,7 +501,7 @@ export const TablePopover = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {popoverValues.map(u => (
+                    {dataFiltered.map(u => (
                     <tr key={u.key}>
                         <td><GoabBadge type={u.type as GoabBadgeType} content={u.status} /></td>
                         <td>Lorem ipsum</td>
