@@ -18,7 +18,6 @@ export const ConfirmADestructiveAction = () => {
       <GoabModal
         heading="Are you sure you want to delete this record?"
         open={destructiveModalOpen}
-        role="alertdialog"
         actions={
           <GoabButtonGroup alignment="end">
             <GoabButton type="tertiary" onClick={() => setDestructiveModalOpen(false)}>
@@ -57,7 +56,7 @@ export const ConfirmADestructiveAction = () => {
           allowCopy={true}
           code={`
                   <goa-button type="tertiary" leadingIcon="trash" (_click)="toggleModal()">Delete record</goa-button>
-                  <goa-modal [open]="open" role="alertdialog" (_close)="toggleModal()" heading="Are you sure you want to delete this record?">
+                  <goa-modal [open]="open" (_close)="toggleModal()" heading="Are you sure you want to delete this record?">
                       <p>This action cannot be undone.</p>
                     <div slot="actions">
                       <goa-button-group alignment="end">
@@ -76,7 +75,7 @@ export const ConfirmADestructiveAction = () => {
           allowCopy={true}
           code={`
             <goab-button type="tertiary" leadingIcon="trash" (onClick)="toggleModal()">Delete record</goab-button>
-            <goab-modal [open]="open" role="alertdialog" (onClose)="toggleModal()" heading="Are you sure you want to delete this record?" [actions]="actions">
+            <goab-modal [open]="open" (onClose)="toggleModal()" heading="Are you sure you want to delete this record?" [actions]="actions">
               <p>This action cannot be undone.</p>
               <ng-template #actions>
                 <goab-button-group alignment="end">
@@ -109,7 +108,6 @@ export const ConfirmADestructiveAction = () => {
                   <GoAModal
                     heading="Are you sure you want to delete this record?"
                     open={open}
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoAButtonGroup alignment="end">
@@ -138,7 +136,6 @@ export const ConfirmADestructiveAction = () => {
                   <GoabModal
                     heading="Are you sure you want to delete this record?"
                     open={open}
-                    role="alertdialog"
                     onClose={() => setOpen(false)}
                     actions={
                       <GoabButtonGroup alignment="end">

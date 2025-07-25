@@ -1,6 +1,6 @@
 import {
   GoabIcon,
-  GoabPopover, GoabTooltip
+  GoabPopover
 } from "@abgov/react-components";
 import {
   ANGULAR_VERSIONS, getVersionedUrlPath, Language, LanguageVersion,
@@ -103,7 +103,7 @@ export const VersionLanguageSwitcher = () => {
 
   return (
     <>
-      <GoabTooltip content="Framework">
+      <div className="version-language-switcher">
       <GoabPopover
         target={
           <a className="version-language-switcher__heading" href="#" id="language-switcher" onClick={e => openLanguagePopOver(e)}>
@@ -119,9 +119,7 @@ export const VersionLanguageSwitcher = () => {
           }
         </>
       </GoabPopover>
-      </GoabTooltip>
 
-      <GoabTooltip content="Version">
       <GoabPopover target={
         <a className="version-language-switcher__heading" href="#"
            onClick={e => openVersionPopOver(e)}>
@@ -136,7 +134,7 @@ export const VersionLanguageSwitcher = () => {
           ))}
         </>
       </GoabPopover>
-      </GoabTooltip>
+      </div>
     </>
   );
 }
