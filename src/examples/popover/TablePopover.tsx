@@ -20,7 +20,7 @@ import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 export const TablePopover = () => {
     const { version } = useContext(LanguageVersionContext);
     const [selectedChips, setSelectedChips] = useState<string[]>([]);
-    const [filter, setFilter] = useState('All');
+    const [filter] = useState('All');
     const popoverValues = [
         {
         key: 1,
@@ -77,6 +77,7 @@ export const TablePopover = () => {
 
     const removeFilter = (chip: string) => {
         setSelectedChips(selectedChips.filter(c => c !== chip));
+        return;
     };
 
     const getFilteredData = useCallback ((selectedChips: string[]) => {
