@@ -1,7 +1,7 @@
 import IncludeDescriptionsForItemsInACheckboxList
   from "@examples/include-descriptions-for-items-in-a-checkbox-list.tsx";
 import SelectOneOrMoreFromAListOfOptions from "@examples/select-one-or-more-from-a-list-of-options.tsx";
-import { CheckboxRevealSlotExample } from "@examples/checkbox/CheckboxRevealSlotExample.tsx";
+import { RevealCheckboxInputBasedOnSelection } from "@examples/reveal-checkbox-input-based-on-selection.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const CheckboxExamples = () => {
@@ -25,6 +25,6 @@ export const CheckboxExamples = () => {
       exampleTitle="Reveal input based on selection"
       figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131069&m=dev">
     </SandboxHeader>
-    <CheckboxRevealSlotExample />
+    <RevealCheckboxInputBasedOnSelection />
   </>;
 }

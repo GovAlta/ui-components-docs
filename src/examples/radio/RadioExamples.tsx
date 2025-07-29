@@ -2,7 +2,7 @@ import {
   IncludeALinkInTheHelperTextOfAnOption
 } from "@examples/include-a-link-in-the-helper-text-of-an-option.tsx";
 import { SetAMaxWidthOnALongRadioItem } from "@examples/set-a-max-width-on-a-long-radio-item.tsx";
-import { RadioRevealSlotExample } from "@examples/radio/RadioRevealSlotExample.tsx";
+import { RevealRadioInputBasedOnSelection } from "@examples/reveal-radio-input-based-on-selection.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export default function RadioExamples () {
@@ -25,7 +25,7 @@ export default function RadioExamples () {
         exampleTitle="Reveal input based on selection"
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131069&m=dev">
       </SandboxHeader>
-      <RadioRevealSlotExample />
+      <RevealRadioInputBasedOnSelection />
     </>
   );
 }

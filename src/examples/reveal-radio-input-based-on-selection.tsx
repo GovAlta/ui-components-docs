@@ -5,7 +5,7 @@ import { GoabFormItem, GoabInput, GoabRadioGroup, GoabRadioItem, GoabSpacer } fr
 import { OldComponentBanner } from "@components/old-component-banner/OldComponentBanner.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
-export const RadioRevealSlotExample = () => {
+export const RevealRadioInputBasedOnSelection = () => {
   const { version, language } = useContext(LanguageVersionContext);
   const noop = () => {}
   return (

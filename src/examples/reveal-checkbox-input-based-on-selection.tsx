@@ -5,7 +5,7 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { OldComponentBanner } from "@components/old-component-banner/OldComponentBanner.tsx";
 
-export const CheckboxRevealSlotExample = () => {
+export const RevealCheckboxInputBasedOnSelection = () => {
   const { version, language } = useContext(LanguageVersionContext);
   return (
     <>
