@@ -9,6 +9,7 @@ const ReactiveComponents = [
   "goab-checkbox",
   "goab-radio-group",
   "goab-date-picker",
+  "goa-input"
 ];
 
 export class AngularReactiveSerializer extends BaseSerializer implements Serializer {
@@ -153,15 +154,17 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
       });
     }
 
-    if (children.startsWith("<goa-checkbox")) {
+    const componentsToProcess = ["<goa-checkbox", "<goa-input"];
+    
+    if (componentsToProcess.some(component => children.startsWith(component))) {
       if (this.version === "old") {
         if (children.includes("goaChecked") && children.includes("goaValue")) {
           children = children.replace(/\bgoaValue\b\s?/g, "");
         }
 
-        if (children.includes("disabled=true")) {
+        if (children.includes('disabled="true"') || children.includes("disabled=true")) {
           children = children
-            .replace(/disabled=true/g, '[attr.disabled]="true"')
+            .replace(/disabled=(["']?)true\1/g, '[attr.disabled]="true"')
             .replace(/\bgoaValue\b\s?/g, "");
         }
       }
