@@ -1,10 +1,9 @@
 import {
   GoabBadge,
-  GoabBlock,
-  GoabIconButton, GoabIconButtonProps,
+  GoabIconButton,
+  GoabIconButtonProps,
   GoabTab,
-  GoabTable,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
@@ -18,7 +17,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import { GoabIconType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+import { IconButtonExamples } from "@examples/icon-button/IconButtonExamples.tsx";
 
 type ComponentPropsType = GoabIconButtonProps;
 type CastingType = {
@@ -31,7 +30,8 @@ export default function IconButtonPage() {
     icon: "refresh" as GoabIconType,
     ariaLabel: "Refresh icon",
   });
-  const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302107";
+  const FIGMA_LINK =
+    "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302107";
   const [iconButtonBindings, setIconButtonBindings] = useState<ComponentBinding[]>([
     {
       label: "Variant",
@@ -71,7 +71,7 @@ export default function IconButtonPage() {
       type: "string",
       name: "ariaLabel",
       value: "Refresh icon",
-    }
+    },
   ]);
 
   const oldComponentProperties: ComponentProperty[] = [
@@ -212,24 +212,27 @@ export default function IconButtonPage() {
         description="An icon-only button for common or repetitive actions."
         relatedComponents={[
           { link: "/components/button", name: "Button" },
-          { link: "/components/button-group", name: "Button group" }
+          { link: "/components/button-group", name: "Button group" },
         ]}
         figmaLink={FIGMA_LINK}
         githubLink="Icon button"
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
               <GoabIconButton {...iconButtonProps} />
             </Sandbox>
 
             {/*Component properties table*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties}/>
-
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -238,117 +241,8 @@ export default function IconButtonPage() {
                 Examples
                 <GoabBadge type="information" content="1" />
               </>
-            }
-          >
-
-            <SandboxHeader
-              exampleTitle="Show multiple actions in a compact table"
-              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-127620&t=X0IQW5flDDaj8Vyg-4">
-            </SandboxHeader>
-            <Sandbox fullWidth>
-              <GoabTable width="100%">
-                <thead>
-                  <tr>
-                    <th>Status</th>
-                    <th>Name</th>
-                    <th style={{ textAlign: "right" }}>Id Number</th>
-                    <th>Edit | Flag | Send</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <GoabBadge type="information" content="In progress"></GoabBadge>
-                    </td>
-                    <td>Darlene Robertson</td>
-                    <td className="goa-table-number-column">45904</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <GoabBadge type="dark" content="Inactive"></GoabBadge>
-                    </td>
-                    <td>Floyd Miles</td>
-                    <td className="goa-table-number-column">47838</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <GoabBadge type="success" content="Active"></GoabBadge>
-                    </td>
-                    <td>Kathryn Murphy</td>
-                    <td className="goa-table-number-column">34343</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <GoabBadge type="important" content="Recent"></GoabBadge>
-                    </td>
-                    <td>Annette Black</td>
-                    <td className="goa-table-number-column">89897</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <GoabBadge type="success" content="Active"></GoabBadge>
-                    </td>
-                    <td>Esther Howard</td>
-                    <td className="goa-table-number-column">12323</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <GoabBadge type="success" content="Active"></GoabBadge>
-                    </td>
-                    <td>Jane Cooper</td>
-                    <td className="goa-table-number-column">56565</td>
-                    <td>
-                      <GoabBlock>
-                        <GoabIconButton size="small" icon="pencil" ariaLabel="Edit"></GoabIconButton>
-                        <GoabIconButton size="small" icon="flag" ariaLabel="Flag"></GoabIconButton>
-                        <GoabIconButton size="small" icon="mail" ariaLabel="Send"></GoabIconButton>
-                      </GoabBlock>
-                    </td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </GoabTable>
-            </Sandbox>
+            }>
+            <IconButtonExamples />
           </GoabTab>
 
           <GoabTab heading="Design">
