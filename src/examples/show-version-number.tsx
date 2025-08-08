@@ -19,7 +19,6 @@ export default function ShowVersionNumberExample() {
           code={`
             <goa-microsite-header type="alpha">
               <div slot="version">
-                <span>Slotted <b>version text</b>.</span>
                 <span>v1.23</span>
               </div>
             </goa-microsite-header>
@@ -34,7 +33,6 @@ export default function ShowVersionNumberExample() {
           code={`
             <goab-microsite-header type="alpha">
               <div slot="version">
-                <span>Slotted <b>version text</b>.</span>
                 <span>v1.23</span>
               </div>
             </goab-microsite-header>
@@ -49,12 +47,7 @@ export default function ShowVersionNumberExample() {
           code={`
             <GoAMicrositeHeader
               type="alpha"
-              version={
-                <>
-                  <span>Slotted <b>version text</b>.</span>
-                  <span>v1.23</span>
-                </>
-              }
+              version={<span>v1.23</span>}
             ></GoAMicrositeHeader>
           `}
         />}
@@ -67,12 +60,7 @@ export default function ShowVersionNumberExample() {
           code={`
             <GoabMicrositeHeader
               type="alpha"
-              version={
-                <>
-                  <span>Slotted <b>version text</b>.</span>
-                  <span>v1.23</span>
-                </>
-              }
+              version={<span>v1.23</span>}
             ></GoabMicrositeHeader>
           `}
         />}
@@ -80,12 +68,7 @@ export default function ShowVersionNumberExample() {
         {/* ...React + Angular code snippets here (same as original)... */}
         <GoabMicrositeHeader
           type="alpha"
-          version={
-            <>
-              <span>Slotted <b>version text</b>.</span>
-              <span>v1.23</span>
-            </>
-          }
+          version={<span>v1.23</span>}
         />
       </Sandbox>
     </>
