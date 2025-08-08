@@ -1,5 +1,5 @@
 import { ShowMultipleActionsInACompactTable } from "@examples/show-multiple-actions-in-a-compact-table.tsx";
-import { RequireUserActionBeforeContinuing } from "@examples/require-user-action-before-continuing.tsx";
+import { BasicModalWithClose } from "@examples/basic-modal-with-close.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const IconButtonExamples = () => {
@@ -9,7 +9,7 @@ export const IconButtonExamples = () => {
           exampleTitle="Basic modal with close"
           figmaExample={"https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=26318-184965&t=Mgdr0KBlqhEz1RXF-4"}>
         </SandboxHeader>
-      <RequireUserActionBeforeContinuing />
+      <BasicModalWithClose />
 
       <SandboxHeader
         exampleTitle="Show multiple actions in a compact table"
