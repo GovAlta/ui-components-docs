@@ -49,7 +49,7 @@ export const TodayDatePickerField = () => {
           allowCopy={true}
           code={`
                 <GoABlock gap="s" alignment="end">
-                    <GoAFormItem label="Date Picker">
+                    <GoAFormItem label="Select a date">
                         <GoADatePicker
                             name="item"
                             value={date}
@@ -89,7 +89,7 @@ export const TodayDatePickerField = () => {
           allowCopy={true}
           code={`
                 <GoabBlock gap="s" alignment="end">
-                    <GoabFormItem label="Date Picker">
+                    <GoabFormItem label="Select a date">
                         <GoabDatePicker
                             name="item"
                             value={date}
@@ -131,7 +131,7 @@ export const TodayDatePickerField = () => {
             allowCopy={true}
             code={`
                 <goa-block gap="s" alignment="end">
-                    <goa-form-item label="Date Picker">
+                    <goa-form-item label="Select a date">
                         <goa-date-picker (_change)="onChange($event)" name="item" [value]="item"></goa-date-picker>
                     </goa-form-item>
                     <goa-button type="tertiary" (onClick)="setToday()" mr="l">
@@ -164,7 +164,7 @@ export const TodayDatePickerField = () => {
             allowCopy={true}
             code={`
                 <goa-block gap="s" alignment="end">
-                    <goa-form-item label="Date Picker">
+                    <goa-form-item label="Select a date">
                         <goa-date-picker [formControl]="dateCtrl" [value]="dateCtrl.value" ngDefaultControl />
                     </goa-form-item>
                     <goa-button type="tertiary" (onClick)="setToday()" mr="l">
@@ -200,7 +200,7 @@ export const TodayDatePickerField = () => {
           allowCopy={true}
           code={`
                 <goab-block gap="s" alignment="end">
-                    <goab-form-item label="Date Picker">
+                    <goab-form-item label="Select a date">
                         <goab-date-picker
                             name="item"
                             [value]="item"
@@ -213,7 +213,7 @@ export const TodayDatePickerField = () => {
             `}
         />}
         <GoabBlock gap="s" alignment="end">
-            <GoabFormItem label="Date Picker">
+            <GoabFormItem label="Select a date">
             <GoabDatePicker
                 name="item"
                 value={date}

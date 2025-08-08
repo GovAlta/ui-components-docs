@@ -55,7 +55,7 @@ export const ResetDatePickerField = () => {
           lang="typescript"
           allowCopy={true}
           code={`
-            <GoAFormItem label="Item">
+            <GoAFormItem label="Select a date">
               <GoADatePicker
                 name="item"
                 value={date}
@@ -104,7 +104,7 @@ export const ResetDatePickerField = () => {
           lang="typescript"
           allowCopy={true}
           code={`
-            <GoabFormItem label="Date Picker">
+            <GoabFormItem label="Select a date">
               <GoabDatePicker
                 name="item"
                 value={date}
@@ -154,7 +154,7 @@ export const ResetDatePickerField = () => {
           tags="angular"
           allowCopy={true}
           code={`
-                  <goa-form-item label="Item">
+                  <goa-form-item label="Select a date">
                     <goa-date-picker (_change)="onChange($event)" name="item" [value]="item"></goa-date-picker>
                   </goa-form-item>
 
@@ -192,7 +192,7 @@ export const ResetDatePickerField = () => {
           lang="typescript"
           allowCopy={true}
           code={`
-                  <goa-form-item label="Input Label" helptext="Helper text" mb="3xl">
+                  <goa-form-item label="Select a date">
                     <goa-date-picker [formControl]="dateCtrl" [value]="dateCtrl.value" ngDefaultControl />
                   </goa-form-item>
                   
@@ -231,7 +231,7 @@ export const ResetDatePickerField = () => {
           tags="angular"
           allowCopy={true}
           code={`
-                  <goab-form-item label="Item">
+                  <goab-form-item label="Select a date">
                     <goab-date-picker (onChange)="onChange($event)" name="item" [value]="item"></goab-date-picker>
                   </goab-form-item>
 
@@ -242,7 +242,7 @@ export const ResetDatePickerField = () => {
                 `}
         />}
 
-        <GoabFormItem label="Date Picker">
+        <GoabFormItem label="Select a date">
           <GoabDatePicker
             name="item"
             value={date}
