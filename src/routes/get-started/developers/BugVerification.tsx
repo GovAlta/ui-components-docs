@@ -5,8 +5,8 @@ export default function BugVerificationPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Verify a bug</GoabText>
-      <GoabText size="body-l" mb="xl">
+      <GoabText size="heading-xl" mt="none" mb="m">Verify a bug</GoabText>
+      <GoabText size="body-l" mt="none" mb="xl">
         How to resolve issues with design system components </GoabText>
 
       <GoabText size="body-m" mt="l" mb="l">

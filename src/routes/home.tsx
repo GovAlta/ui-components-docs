@@ -80,7 +80,7 @@ const HomePage = () => {
         <GoabDivider mb="2xl" mt="3xl"></GoabDivider>
         <GoabGrid gap="xl" minChildWidth="320px">
           <div>
-            <GoabText size={"heading-l"} mb={"l"}><b> Start by using the design system in your service</b></GoabText>
+            <GoabText size={"heading-l"} mt="none" mb={"l"}><b> Start by using the design system in your service</b></GoabText>
             <GoabText size={"body-m"} mb={"m"}>
               Use the existing components and patterns in the design system to save time and build off of the current
               standard. Typically, these cover around 80% of your service's needs.
@@ -103,8 +103,8 @@ const HomePage = () => {
                            heading="What happens when I need a new or different component or pattern?"
                            headingSize="medium"
             >
-              <GoabText size={"body-m"} mb={"m"}>
-                If a component or pattern doesn’t exists in the design system or doesn’t meet the needs of your users,
+              <GoabText size={"body-m"} mt="none" mb={"m"}>
+                If a component or pattern doesn't exists in the design system or doesn't meet the needs of your users,
                 follow the process below:
               </GoabText>
 
@@ -135,10 +135,10 @@ const HomePage = () => {
         <GoabText size={"heading-l"} mt={"3xl"} mb={"xl"}><b> Additional resources</b></GoabText>
         <GoabGrid gap="xl" minChildWidth="320px">
           <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="full">
-            <GoabText size={"heading-m"} mb={"m"}>
+            <GoabText size={"heading-m"} mt="none" mb={"m"}>
               Common capabilities: Shared digital services
             </GoabText>
-            <GoabText size={"body-m"} mb={"m"}>
+            <GoabText size={"body-m"} mt="none" mb={"m"}>
               A directory of reusable backend services designed to help you and your team work more efficiently and
               align to government infrastructure standards.
             </GoabText>
@@ -152,10 +152,10 @@ const HomePage = () => {
             </GoabLink>
           </GoabContainer>
           <GoabContainer type="non-interactive" accent="filled" padding="relaxed" width="full">
-            <GoabText size={"heading-m"} mb={"m"}>
+            <GoabText size={"heading-m"} mt="none" mb={"m"}>
               User Experience best practices
             </GoabText>
-            <GoabText size={"body-m"} mb={"m"}>
+            <GoabText size={"body-m"} mt="none" mb={"m"}>
               These resources establish best practices to shape and guide the work of DDD user experience designers.
             </GoabText>
             <GoabLink>

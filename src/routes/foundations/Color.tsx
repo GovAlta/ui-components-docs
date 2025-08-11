@@ -5,10 +5,11 @@ export default function FoundationsColorPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
 
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Color
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Colors play a major role in how the Government of Alberta communicates. They serve as a tool to convey
           clarity,
           express emotions, and promote inclusivity.

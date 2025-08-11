@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Opacity.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -94,7 +94,7 @@ export default function OpacityPage() {
 
   return (
     <ComponentContent contentClassName="opacity-page">
-      <h1>Opacity</h1>
+      <GoabText size="heading-xl" mb="m" mt="xl">Opacity</GoabText>
       {isDesktop ? renderDesktop() : renderMobile()}
     </ComponentContent>
   );
