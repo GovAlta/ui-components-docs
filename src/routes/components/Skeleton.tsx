@@ -9,20 +9,23 @@ import {
   GoabSkeleton,
   GoabTab,
   GoabTabs,
-  GoabSkeletonProps, GoabBlock, GoabText
+  GoabSkeletonProps,
+  GoabBlock,
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabSkeletonType } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
   MarginProperty,
-  TestIdProperty
+  TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 // == Page props ==
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303445";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303445";
 const componentName = "Skeleton loader";
 const description =
   "Provide visual feedback to users while loading a content heavy page or page element.";
@@ -172,7 +175,9 @@ export default function SkeletonPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={skeletonBindings} onChange={onSandboxChange} fullWidth>
               <GoabSkeleton {...skeletonProps} />
             </Sandbox>
@@ -183,97 +188,85 @@ export default function SkeletonPage() {
           </GoabTab>
 
           <GoabTab heading="All">
-              <GoabBlock gap="xl" mb="xl" direction="column">
-                <GoabText size="heading-m" mt="none" mb="s">
-                  Card
-                </GoabText>
-                <h2 id="skeleton-card" style={{ display: "none" }}>Card</h2>
-                <GoabSkeleton type="card" size="1" maxWidth="360px"></GoabSkeleton>
-                <GoabSkeleton type="card" size="2"></GoabSkeleton>
-                <GoabSkeleton type="card" size="3"></GoabSkeleton>
-                <GoabSkeleton type="card" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Card"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="card" size="1" maxWidth="360px"></GoabSkeleton>
+              <GoabSkeleton type="card" size="2"></GoabSkeleton>
+              <GoabSkeleton type="card" size="3"></GoabSkeleton>
+              <GoabSkeleton type="card" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Image
-                </GoabText>
-                <h2 id="skeleton-image" style={{ display: "none" }}>Image</h2>
-                <GoabSkeleton type="image" size="1"></GoabSkeleton>
-                <GoabSkeleton type="image" size="2"></GoabSkeleton>
-                <GoabSkeleton type="image" size="3"></GoabSkeleton>
-                <GoabSkeleton type="image" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Image"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="image" size="1"></GoabSkeleton>
+              <GoabSkeleton type="image" size="2"></GoabSkeleton>
+              <GoabSkeleton type="image" size="3"></GoabSkeleton>
+              <GoabSkeleton type="image" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Text
-                </GoabText>
-                <h2 id="skeleton-text" style={{ display: "none" }}>Text</h2>
-                <GoabSkeleton type="text" size="1"></GoabSkeleton>
-                <GoabSkeleton type="text" size="2"></GoabSkeleton>
-                <GoabSkeleton type="text" size="3"></GoabSkeleton>
-                <GoabSkeleton type="text" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Text"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="text" size="1"></GoabSkeleton>
+              <GoabSkeleton type="text" size="2"></GoabSkeleton>
+              <GoabSkeleton type="text" size="3"></GoabSkeleton>
+              <GoabSkeleton type="text" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Small text
-                </GoabText>
-                <h2 id="skeleton-small-text" style={{ display: "none" }}>Small text</h2>
-                <GoabSkeleton type="text-small" size="1"></GoabSkeleton>
-                <GoabSkeleton type="text-small" size="2"></GoabSkeleton>
-                <GoabSkeleton type="text-small" size="3"></GoabSkeleton>
-                <GoabSkeleton type="text-small" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Small text"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="text-small" size="1"></GoabSkeleton>
+              <GoabSkeleton type="text-small" size="2"></GoabSkeleton>
+              <GoabSkeleton type="text-small" size="3"></GoabSkeleton>
+              <GoabSkeleton type="text-small" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Title
-                </GoabText>
-                <h2 id="skeleton-title" style={{ display: "none" }}>Title</h2>
-                <GoabSkeleton type="title" size="1"></GoabSkeleton>
-                <GoabSkeleton type="title" size="2"></GoabSkeleton>
-                <GoabSkeleton type="title" size="3"></GoabSkeleton>
-                <GoabSkeleton type="title" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Title"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="title" size="1"></GoabSkeleton>
+              <GoabSkeleton type="title" size="2"></GoabSkeleton>
+              <GoabSkeleton type="title" size="3"></GoabSkeleton>
+              <GoabSkeleton type="title" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Header
-                </GoabText>
-                <h2 id="skeleton-header" style={{ display: "none" }}>Header</h2>
-                <GoabSkeleton type="header" size="1"></GoabSkeleton>
-                <GoabSkeleton type="header" size="2"></GoabSkeleton>
-                <GoabSkeleton type="header" size="3"></GoabSkeleton>
-                <GoabSkeleton type="header" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Header"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="header" size="1"></GoabSkeleton>
+              <GoabSkeleton type="header" size="2"></GoabSkeleton>
+              <GoabSkeleton type="header" size="3"></GoabSkeleton>
+              <GoabSkeleton type="header" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Paragraph
-                </GoabText>
-                <h2 id="skeleton-paragraph" style={{ display: "none" }}>Paragraph</h2>
-                <GoabSkeleton type="paragraph" size="1"></GoabSkeleton>
-                <GoabSkeleton type="paragraph" size="2"></GoabSkeleton>
-                <GoabSkeleton type="paragraph" size="3"></GoabSkeleton>
-                <GoabSkeleton type="paragraph" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Paragraph"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="paragraph" size="1"></GoabSkeleton>
+              <GoabSkeleton type="paragraph" size="2"></GoabSkeleton>
+              <GoabSkeleton type="paragraph" size="3"></GoabSkeleton>
+              <GoabSkeleton type="paragraph" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Thumbnail
-                </GoabText>
-                <h2 id="skeleton-thumbnail" style={{ display: "none" }}>Thumbnail</h2>
-                <GoabSkeleton type="thumbnail" size="1"></GoabSkeleton>
-                <GoabSkeleton type="thumbnail" size="2"></GoabSkeleton>
-                <GoabSkeleton type="thumbnail" size="3"></GoabSkeleton>
-                <GoabSkeleton type="thumbnail" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Thumbnail"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="thumbnail" size="1"></GoabSkeleton>
+              <GoabSkeleton type="thumbnail" size="2"></GoabSkeleton>
+              <GoabSkeleton type="thumbnail" size="3"></GoabSkeleton>
+              <GoabSkeleton type="thumbnail" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Avatar
-                </GoabText>
-                <h2 id="skeleton-avatar" style={{ display: "none" }}>Avatar</h2>
-                <GoabSkeleton type="avatar" size="1"></GoabSkeleton>
-                <GoabSkeleton type="avatar" size="2"></GoabSkeleton>
-                <GoabSkeleton type="avatar" size="3"></GoabSkeleton>
-                <GoabSkeleton type="avatar" size="4"></GoabSkeleton>
+            <SandboxHeader exampleTitle="Avatar"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="avatar" size="1"></GoabSkeleton>
+              <GoabSkeleton type="avatar" size="2"></GoabSkeleton>
+              <GoabSkeleton type="avatar" size="3"></GoabSkeleton>
+              <GoabSkeleton type="avatar" size="4"></GoabSkeleton>
+            </GoabBlock>
 
-                <GoabText size="heading-m" mt="3xl" mb="s">
-                  Profile
-                </GoabText>
-                <h2 id="skeleton-profile" style={{ display: "none" }}>Profile</h2>
-                <GoabSkeleton type="profile" size="1"></GoabSkeleton>
-                <GoabSkeleton type="profile" size="2"></GoabSkeleton>
-                <GoabSkeleton type="profile" size="3"></GoabSkeleton>
-                <GoabSkeleton type="profile" size="4"></GoabSkeleton>
-              </GoabBlock>
+            <SandboxHeader exampleTitle="Profile"></SandboxHeader>
+            <GoabBlock gap="l" mb="xl" direction="column">
+              <GoabSkeleton type="profile" size="1"></GoabSkeleton>
+              <GoabSkeleton type="profile" size="2"></GoabSkeleton>
+              <GoabSkeleton type="profile" size="3"></GoabSkeleton>
+              <GoabSkeleton type="profile" size="4"></GoabSkeleton>
+            </GoabBlock>
           </GoabTab>
 
           <GoabTab heading="Design">
