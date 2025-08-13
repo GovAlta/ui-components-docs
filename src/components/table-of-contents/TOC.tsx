@@ -120,8 +120,8 @@ export function TOC(props: TOCProps) {
     const currentHash = window.location.hash;
     
     if (currentHash.includes('#tab-')) {
-      // If URL contains #tab-, append our ID after it
-      return `${currentHash}#${id}`;
+      // If URL contains "#tab-" then append another hash after it
+      return `#${currentHash.split('#')[1]}#${id}`;
     }
     
     return `#${id}`;
