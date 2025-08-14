@@ -1,35 +1,24 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import {
-  GoabButton,
-  GoabHeroBanner,
-  GoabHeroBannerActions,
-  GoabTab,
-  GoabTabs,
-  GoabBadge,
-} from "@abgov/react-components";
+import { GoabHeroBanner, GoabTab, GoabTabs, GoabBadge } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+import { HeroBannerExamples } from "@examples/hero-banner/HeroBannerExamples.tsx";
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-14412";
 
 export default function HeroBannerPage() {
-  const {version} = useContext(LanguageVersionContext);
   const [heroBannerProps, setHeroBannerProps] = useState({
     heading: "Heading",
   });
-  const relatedComponents = [
-    { link: "/components/header", name: "Header" },
-  ];
+  const relatedComponents = [{ link: "/components/header", name: "Header" }];
   const [heroBannerBindings, setHeroBannerBindings] = useState<ComponentBinding[]>([
     {
       label: "Heading",
@@ -204,8 +193,6 @@ export default function HeroBannerPage() {
     setHeroBannerProps(props as { heading: string; [key: string]: unknown });
   }
 
-  function noop() {}
-
   return (
     <>
       <ComponentHeader
@@ -220,7 +207,9 @@ export default function HeroBannerPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={heroBannerBindings} fullWidth={true} onChange={onSandboxChange}>
               <GoabHeroBanner {...heroBannerProps}>
                 Resources are available to help Alberta entrepreneurs and small businesses start,
@@ -239,80 +228,8 @@ export default function HeroBannerPage() {
                 Examples
                 <GoabBadge type="information" content="1" />
               </>
-            }
-          >
-
-            <SandboxHeader
-              exampleTitle="Hero Banner with actions"
-              figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6309-93120&t=X0IQW5flDDaj8Vyg-4">
-            </SandboxHeader>
-            <Sandbox skipRender fullWidth>
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goa-hero-banner heading="Supporting public citizens">
-                    Digital services help to support Albertan citizens receive government services.
-                    <div slot="actions">
-                      <goa-button type="start" (_click)="onClick($event)">Call to action</goa-button>
-                    </div>
-                  </goa-hero-banner>
-                `}
-              />}
-
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                  <goab-hero-banner heading="Supporting Businesses" [actions]="heroBannerActionTemplate">
-                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
-                    <ng-template #heroBannerActionTemplate>
-                      <goab-button type="start">Call to action</goab-button>
-                    </ng-template>
-                  </goab-hero-banner>
-                `}
-              />}
-
-              {/*React code*/}
-              {version === "old" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoAHeroBanner heading="Supporting Businesses">
-                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
-                    <GoAHeroBannerActions>
-                      <GoAButton type="start" onClick={noop}>Call to action</GoAButton>
-                    </GoAHeroBannerActions>
-                  </GoAHeroBanner>
-                `}
-              />}
-              {version === "new" && <CodeSnippet
-                lang="html"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  <GoabHeroBanner heading="Supporting Businesses">
-                    Resources are available to help Alberta entrepreneurs and small businesses start, grow and succeed.
-                    <GoabHeroBannerActions>
-                      <GoabButton type="start">Call to action</GoabButton>
-                    </GoabHeroBannerActions>
-                  </GoabHeroBanner>
-                `}
-              />}
-
-              <GoabHeroBanner heading="Supporting Businesses">
-                Resources are available to help Alberta entrepreneurs and small businesses start,
-                grow and succeed.
-                <GoabHeroBannerActions>
-                  <GoabButton type="start" onClick={noop}>
-                    Call to action
-                  </GoabButton>
-                </GoabHeroBannerActions>
-              </GoabHeroBanner>
-            </Sandbox>
+            }>
+            <HeroBannerExamples />
           </GoabTab>
 
           <GoabTab heading="Design">
