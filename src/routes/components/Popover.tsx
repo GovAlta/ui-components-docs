@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
+import { Link } from "react-router-dom";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoabBadge, GoabButton, GoabPopover, GoabTab, GoabTabs } from "@abgov/react-components";
+import { GoabBadge, GoabButton, GoabCallout, GoabPopover, GoabSpacer, GoabTab, GoabTabs } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -298,6 +299,8 @@ export default function PopoverPage() {
                 It can be used for a number of different contexts.
               </GoabPopover>
             </Sandbox>
+            <GoabSpacer vSpacing="m"></GoabSpacer>
+            <GoabCallout type="information">Popovers are used as a base layer in other components like <Link to="/components/tooltip">tooltips</Link> and <Link to="/components/dropdown">dropdown menus</Link>.</GoabCallout>
             <ComponentProperties
               properties={componentProperties}
               oldProperties={oldComponentProperties}
@@ -308,7 +311,7 @@ export default function PopoverPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="3" />
+                <GoabBadge type="information" content="4" />
               </>
             }>
             <PopoverExamples />
