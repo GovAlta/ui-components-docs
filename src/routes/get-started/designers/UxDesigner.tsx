@@ -6,8 +6,8 @@ export default function UxDesignerPage() {
   return ( <ComponentContent tocCssQuery="h2[id], h3[id]">
 
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Designers</GoabText>
-      <GoabText size="heading-xl" mb="m">Overview</GoabText>
-      <GoabText size="body-l" mb="xl">As a designer, you can consume the design system through Figma. Through Figma you
+      <GoabText size="heading-xl" mt="none" mb="m">Overview</GoabText>
+      <GoabText size="body-l" mt="none" mb="xl">As a designer, you can consume the design system through Figma. Through Figma you
         can use tokens, components, and page templates.</GoabText>
 
 
@@ -65,7 +65,7 @@ export default function UxDesignerPage() {
       </GoabText>
 
       <GoabContainer type="non-interactive" accent="filled" padding="compact" width="content">
-        <GoabText size="body-m">
+        <GoabText size="body-m" mt="none" mb="none">
           <i>For example, you can communicate to your developer:</i> <br />
           The colour is:
           <code> --goa-color-info-default</code> <br />

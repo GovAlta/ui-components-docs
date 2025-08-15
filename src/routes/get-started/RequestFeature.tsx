@@ -10,7 +10,7 @@ export default function RequestFeaturePage() {
       <GoabText size="heading-xl" mb="m" mt="l">
         Request a new feature
       </GoabText>
-      <GoabText size="body-l" mb="xl">
+      <GoabText size="body-l" mt="none" mb="xl">
         Anyone can propose a new component or pattern for the design
         system.
       </GoabText>

@@ -13,13 +13,13 @@ export default function GetStartedOverviewPage() {
       <GoabText size="heading-xl" mb="m" mt="xl">
         Starting with the design system
       </GoabText>
-      <GoabText size="heading-m" mb="xl">
+      <GoabText size="body-l" mt="none" mb="xl">
         Start with the design system to build on the research and experience of other service teams and avoid
         repeating work that's already been done.
       </GoabText>
 
       <GoabBlock gap="m" direction="row" mb="xl">
-        <GoabText size="heading-s" color="secondary">
+        <GoabText size="heading-s" color="secondary" mt="none">
           Design system by role:
         </GoabText>
         <GoabLink>

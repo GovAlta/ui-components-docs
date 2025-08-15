@@ -32,7 +32,7 @@ export default function SupportPage() {
       <GoabText size="heading-xl" mt="xl" mb="m">
         Get support
       </GoabText>
-      <GoabText size="body-l">
+      <GoabText size="body-l" mt="none">
         Get help from our team with using the design system, including components, guidelines, best practices, and accessibility.
       </GoabText>
 

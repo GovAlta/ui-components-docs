@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Spacing.css";
 import SPACING_TOKENS from "./spacing.json";
@@ -90,7 +90,7 @@ export default function SpacingPage() {
 
   return (
     <ComponentContent contentClassName="spacing-page">
-      <h1>Spacing</h1>
+      <GoabText size="heading-xl" mb="m" mt="xl">Spacing</GoabText>
       {isDesktop ? renderDesktop() : renderMobile()}
     </ComponentContent>
   );

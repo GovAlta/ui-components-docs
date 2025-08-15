@@ -4,8 +4,8 @@ export default function UserExperienceGuidelinesPage() {
   return (
     <>
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Designers</GoabText>
-      <GoabText size="heading-xl" mb="m">User experience guidelines</GoabText>
-      <GoabText size="body-l" mb="xl"> Digital products built for the Government of Alberta should comply with these
+      <GoabText size="heading-xl" mt="none" mb="m">User experience guidelines</GoabText>
+      <GoabText size="body-l" mt="none" mb="xl"> Digital products built for the Government of Alberta should comply with these
         guidelines to ensure a quality
         user experience for Albertans.</GoabText>
 

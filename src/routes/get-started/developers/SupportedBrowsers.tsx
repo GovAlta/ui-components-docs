@@ -6,8 +6,8 @@ export default function SupportedBrowsersPage() {
   return (
     <ComponentContent>
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Supported browsers</GoabText>
-      <GoabText size="body-l" mb="2xl">The design system components are tested on the following browsers and devices:
+      <GoabText size="heading-xl" mt="none" mb="m">Supported browsers</GoabText>
+      <GoabText size="body-l" mt="none" mb="2xl">The design system components are tested on the following browsers and devices:
       </GoabText>
 
       <GoabTable width="564px">
@@ -82,13 +82,13 @@ export default function SupportedBrowsersPage() {
 
       <div className="max-width-72ch">
         <GoabContainer type="non-interactive" mt="2xl" width={"content"}>
-          <GoabText size="heading-m" mb="m">
+          <GoabText size="heading-m" mt="none" mb="m">
             Representative mobile OS used in testing
           </GoabText>
-          <GoabText size="body-m">
+          <GoabText size="body-m" mt="none" mb="2xs">
             <strong>Android OS:</strong> 10+
           </GoabText>
-          <GoabText size="body-m">
+          <GoabText size="body-m" mt="none" mb="none">
             <strong>iOS: </strong> 15+
           </GoabText>
         </GoabContainer>

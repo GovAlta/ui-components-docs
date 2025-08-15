@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import TYPO_TOKENS from "./typography.json";
 import { getTokenGroups } from "../getTokenGroups";
@@ -81,7 +81,7 @@ export default function TypographyPage() {
   return (
     <ComponentContent>
       <div style={{ whiteSpace: "normal" }}>
-        <h1>Typography</h1>
+        <GoabText size="heading-xl" mb="m" mt="xl">Typography</GoabText>
         {isDesktop ? renderDesktop() : renderMobile()}
       </div>
     </ComponentContent>

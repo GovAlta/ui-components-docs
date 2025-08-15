@@ -6,7 +6,7 @@ export default function RoadmapPage() {
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-xl" mt="xl" mb="m">Roadmap</GoabText>
 
-      <GoabText size="body-l" mb="m">
+      <GoabText size="body-l" mt="none" mb="m">
         A high-level summary of the work the design system team plans to focus on in 2025. Some initiatives span
         multiple phases, meaning they will be continuously worked on across the year.
       </GoabText>

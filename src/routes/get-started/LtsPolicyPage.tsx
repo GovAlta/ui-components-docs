@@ -6,7 +6,7 @@ export const LtsPolicyPage = () => {
     <>
       <GoabText size="heading-xl" mt="xl" mb="m">Long Term Support (LTS)</GoabText>
 
-      <GoabText size="body-l" tag="h3" mb="xl">
+      <GoabText size="body-l" tag="h3" mt="none" mb="xl">
         The Long Term Support (LTS) version will continue to be supported until September 30, 2025. Learn more about what you can expect.
       </GoabText>
 

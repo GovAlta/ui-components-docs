@@ -233,7 +233,7 @@ export default function ReportBugPage() {
         <GoabText size="heading-xl" mb="m" mt="l">
           Report a bug
         </GoabText>
-        <GoabText size="body-l" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Let us know if you find a problem or inconsistency in the design system. Providing complete details in your bug report
           helps our team understand, prioritize, and fix the issue faster.
         </GoabText>
