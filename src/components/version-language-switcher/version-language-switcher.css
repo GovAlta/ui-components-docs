@@ -3,7 +3,6 @@
     align-items: center;
     gap: var(--goa-space-2xs);
     font-size: var(--goa-font-size-2);
-    margin-left: var(--goa-space-m);
     white-space: nowrap;
     height: 20px;
 }
@@ -30,13 +29,30 @@
     align-items: center; /* vertically align content */
 }
 
+.version-language-switcher {
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* vertically align content */
+    gap: var(--goa-space-s);
+    margin-bottom: var(--goa-space-xs);
+}
+
 @media (max-width: 623px) {
     [slot="version"] {
         display: flex; /* if needed to align items horizontally */
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0;
+        margin-top: 0;
+        height: auto;
+    }
+
+    .version-language-switcher {
+        height: auto;
         flex-direction: column;
         align-items: flex-start;
-        gap: 2px;
-        margin-top: 0;
-
+        gap: 0;
+        margin-bottom: var(--goa-space-3xs);
     }
 }

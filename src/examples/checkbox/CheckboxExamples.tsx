@@ -3,8 +3,11 @@ import IncludeDescriptionsForItemsInACheckboxList
 import SelectOneOrMoreFromAListOfOptions from "@examples/select-one-or-more-from-a-list-of-options.tsx";
 import { CheckboxRevealSlotExample } from "@examples/checkbox/CheckboxRevealSlotExample.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
+import { useContext } from "react";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const CheckboxExamples = () => {
+  const { version } = useContext(LanguageVersionContext);
   return <>
     {/*Checkbox example 1*/}
     <SandboxHeader
@@ -20,11 +23,15 @@ export const CheckboxExamples = () => {
     </SandboxHeader>
     <SelectOneOrMoreFromAListOfOptions />
 
-    {/*Checkbox example 3 - NEW from alpha*/}
-    <SandboxHeader
-      exampleTitle="Reveal input based on selection"
-      figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131069&m=dev">
-    </SandboxHeader>
-    <CheckboxRevealSlotExample />
+    {version === "new" && (
+      <>
+        {/*Checkbox example 3 - NEW from alpha*/}
+        <SandboxHeader
+          exampleTitle="Reveal input based on selection"
+          figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6307-131069&m=dev">
+        </SandboxHeader>
+        <CheckboxRevealSlotExample/>
+      </>
+    )}
   </>;
 }

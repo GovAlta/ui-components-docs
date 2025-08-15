@@ -315,7 +315,7 @@ export default function DatePickerPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="2" />
               </>
             }
           >

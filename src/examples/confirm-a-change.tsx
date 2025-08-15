@@ -29,7 +29,6 @@ export const ConfirmAChange = () => {
 
         <GoabModal
           heading="Address has changed"
-          role="dialog"
           open={inputModalOpen}
           actions={
             <GoabButtonGroup alignment="end">
@@ -120,7 +119,7 @@ export const ConfirmAChange = () => {
         allowCopy={true}
         code={`
                   <goa-button (_click)="toggleModal()">Save and continue</goa-button>
-                  <goa-modal [open]="open" role="dialog"
+                  <goa-modal [open]="open"
                     (_close)="toggleModal()" heading="Address has changed">
                       <goa-container type="non-interactive" accent="filled" padding="compact" width="full">
                         <dl class="address-change-example--description">
@@ -156,7 +155,7 @@ export const ConfirmAChange = () => {
         allowCopy={true}
         code={`
           <goab-button (onClick)="toggleModal()">Save and continue</goab-button>
-          <goab-modal [open]="open" role="dialog"
+          <goab-modal [open]="open"
            (onClose)="toggleModal()" heading="Address has changed" [actions]="actions">
             <goab-container type="non-interactive" accent="filled" padding="compact" width="full">
               <dl class="address-change-example--description">
@@ -221,7 +220,6 @@ export const ConfirmAChange = () => {
                   <GoAButton onClick={() => setOpen(true)}>Save and continue</GoAButton>
                   <GoAModal
                     heading="Address has changed"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
@@ -262,7 +260,6 @@ export const ConfirmAChange = () => {
                   <GoabButton onClick={() => setOpen(true)}>Save and continue</GoabButton>
                   <GoabModal
                     heading="Address has changed"
-                    role="dialog"
                     open={open}
                     onClose={() => setOpen(false)}
                     actions={
