@@ -18,11 +18,12 @@ export default function ErrorMessagesPage() {
   const noop = () => { };
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-xl" mb="m" mt="xl">
+      <GoabText size="heading-m" mt="xl" mb="xs">Content guidelines</GoabText>
+      <GoabText size="heading-xl" mb="m" mt="none">
         Error messages
       </GoabText>
-      <GoabText size="heading-m" mb="xl">
-        Error messages appear when the user’s proposed action fails.
+      <GoabText size="body-l" mt="none" mb="xl">
+        Error messages appear when the user's proposed action fails.
       </GoabText>
 
       <GoabDivider mb="2xl" mt="2xl"></GoabDivider>

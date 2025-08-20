@@ -4,10 +4,11 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function LogoPage() {
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Logo
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Our logo is an important part of our brand identity and serves as a symbol that distinguishes our digital
           products
           from others. To keep our brand consistent and recognizable, we encourage following the guidelines for proper

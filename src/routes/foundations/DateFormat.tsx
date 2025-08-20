@@ -7,10 +7,11 @@ const minGridWidth = "36ch";
 export default function DateFormatPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
-      <GoabText size="heading-xl" mb="m" mt="xl">
+      <GoabText size="heading-m" mt="xl" mb="xs">Content guidelines</GoabText>
+      <GoabText size="heading-xl" mb="m" mt="none">
         Date format
       </GoabText>
-      <GoabText size="heading-m" mb="xl">
+      <GoabText size="body-l" mt="none" mb="xl">
         Configuration which contains date information that includes the specification of the form and structure of the
         date data within the date format in different scenarios.
       </GoabText>

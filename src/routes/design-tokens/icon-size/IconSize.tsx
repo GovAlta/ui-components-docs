@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabIcon, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabIcon, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./IconSize.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -138,7 +138,7 @@ export default function IconSizePage() {
 
   return (
     <ComponentContent contentClassName="icon-size">
-      <h1>Icon size</h1>
+      <GoabText size="heading-xl" mb="m" mt="xl">Icon size</GoabText>
       {isDesktop ? renderDesktop() : renderMobile()}
     </ComponentContent>
   );

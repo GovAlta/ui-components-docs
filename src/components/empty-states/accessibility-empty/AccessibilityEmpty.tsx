@@ -13,7 +13,7 @@ export function AccessibilityEmpty(props: Props) {
             component&nbsp;page&nbsp;in&nbsp;Figma.
           </a>{" "}
         </GoabText>
-        <GoabText size="body-m" mb="none" mt="m">
+        <GoabText size="body-m" mb="none" mt="none">
           More accessibility guidance for design and development is coming soon.
         </GoabText>
       </GoabContainer>

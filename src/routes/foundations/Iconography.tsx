@@ -75,10 +75,11 @@ export default function IconographyPage() {
 
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Iconography
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Icons are simple and universal graphic symbols that communicate and enhance both the aesthetic and functional
           aspects
           of our products. While they can be used with descriptors, they can also be self-expressive and convey meaning

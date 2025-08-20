@@ -6,8 +6,8 @@ export default function DevelopersVSCodePage() {
   return (
     <ComponentContent>
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">VS Code</GoabText>
-      <GoabText size="body-l" mb="xl">
+      <GoabText size="heading-xl" mt="none" mb="m">VS Code</GoabText>
+      <GoabText size="body-l" mt="none" mb="xl">
         You can use VS Code's autocomplete suggestions for design system components and design tokens.
       </GoabText>
 

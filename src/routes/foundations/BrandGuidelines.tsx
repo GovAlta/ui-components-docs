@@ -7,7 +7,7 @@ export default function BrandGuidelinesPage() {
         <GoabText size="heading-xl" mb="m" mt="xl">
           Brand guidelines
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Communications and Public Engagement (CPE) plays an important role in providing and maintaining brand identity
           guidelines across the Government of Alberta. These guidelines ensure all digital products are consistent and
           easily recognizable, building trust with users.
