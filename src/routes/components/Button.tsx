@@ -248,7 +248,7 @@ export default function ButtonPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="3" />
+                <GoabBadge type="information" content="4" />
               </>
             }
           >
