@@ -67,7 +67,7 @@ export const CompactButtonsInATable = () => {
                   const [users, setUsers] = useState<User[]>([]);
                   const [pageUsers, setPageUsers] = useState<User[]>([]);
                   const [page, setPage] = useState<number>(1);
-                  const [perPage, setPerPage] = useState<number>(10);
+                  const [perPage] = useState<number>(10);
 
                   useEffect(() => {
                     const _users = [];
@@ -111,7 +111,7 @@ export const CompactButtonsInATable = () => {
                   const [users, setUsers] = useState<User[]>([]);
                   const [pageUsers, setPageUsers] = useState<User[]>([]);
                   const [page, setPage] = useState<number>(1);
-                  const [perPage, setPerPage] = useState<number>(10);
+                  const [perPage] = useState<number>(10);
 
                   useEffect(() => {
                     const _users = [];
