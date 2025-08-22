@@ -1,6 +1,7 @@
 import { AskAUserForAnAddress } from "@examples/ask-a-user-for-an-address.tsx";
 import { ConfirmADestructiveAction } from "@examples/confirm-a-destructive-action.tsx";
 import { DisabledButtonWithARequiredField } from "@examples/disabled-button-with-a-required-field.tsx";
+import { CompactButtonsInATable } from "@examples/compact-buttons-in-a-table.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const ButtonExamples = () => {
@@ -20,11 +21,18 @@ export const ButtonExamples = () => {
     </SandboxHeader>
     <ConfirmADestructiveAction />
 
-    {/*Button example */}
+    {/*Button example 3*/}
     <SandboxHeader
       exampleTitle="Disabled button with a required field"
       figmaExample="">
     </SandboxHeader>
     <DisabledButtonWithARequiredField />
+
+    {/*Button example 4*/}
+    <SandboxHeader
+      exampleTitle="Compact buttons in a table"
+      figmaExample="">
+    </SandboxHeader>
+    <CompactButtonsInATable />
   </>;
 };
