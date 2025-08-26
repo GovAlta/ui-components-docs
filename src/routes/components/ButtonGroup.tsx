@@ -11,7 +11,7 @@ import { GoabButtonGroupAlignment } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+import { ButtonGroupExamples } from "@examples/button-group/ButtonGroupExamples.tsx";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-302108";
 
@@ -156,11 +156,11 @@ export default function ButtonGroupPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="0" />
+                <GoabBadge type="information" content="3" />
               </>
             }
           >
-            <ExamplesEmpty />
+            <ButtonGroupExamples />
           </GoabTab>
 
           <GoabTab heading="Design">
