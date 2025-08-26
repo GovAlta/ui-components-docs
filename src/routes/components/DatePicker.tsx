@@ -1,6 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -71,6 +71,32 @@ export default function DatePickerPage() {
       value: false,
     },
   ]);
+
+  useEffect(() => {
+    setComponentBindings(prevBindings => {
+      if (version === "new") {
+        // Add the type property if it doesn't exist
+        if (!prevBindings.find(binding => binding.name === "type")) {
+          return [
+            ...prevBindings,
+            {
+              label: "Type",
+              type: "list",
+              name: "type",
+              options: ["", "calendar", "input"],
+              value: "",
+              defaultValue: "calendar",
+            }
+          ];
+        }
+      } else {
+        // Remove the type property if it exists
+        return prevBindings.filter(binding => binding.name !== "type");
+      }
+      return prevBindings;
+    });
+  }, [version]);
+
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Item",
   });
@@ -95,7 +121,7 @@ export default function DatePickerPage() {
     {
       name: "min",
       type: "string",
-      defaultValue: "5 year previous",
+      defaultValue: "5 years previous",
       description: "Minimum date value allowed.",
     },
     {
@@ -126,6 +152,12 @@ export default function DatePickerPage() {
       description: "Name of the date field.",
     },
     {
+      name: "type",
+      type: "calendar | input",
+      description: "Sets the type of date picker to use.",
+      defaultValue: "calendar",
+    },
+    {
       name: "value",
       type: "Date | string | null | undefined",
       description: "Value of the calendar date.",
@@ -133,14 +165,14 @@ export default function DatePickerPage() {
     {
       name: "min",
       type: "Date | string",
-      defaultValue: "5 year previous",
-      description: "Minimum date value allowed.",
+      defaultValue: "5 years previous",
+      description: "Minimum date value allowed. Only used for calendar type.",
     },
     {
       name: "max",
       type: "Date | string",
       defaultValue: "5 years forward",
-      description: "Maximum date value allowed.",
+      description: "Maximum date value allowed. Only used for calendar type.",
     },
     {
       name: "error",
@@ -311,16 +343,31 @@ export default function DatePickerPage() {
 
           </GoabTab>
 
-          <GoabTab
-            heading={
+          {version === "new" && (
+            <GoabTab
+              heading={
               <>
-                Examples
-                <GoabBadge type="information" content="2" />
-              </>
-            }
-          >
-            <DatePickerExamples />
-          </GoabTab>
+                  Examples
+                  <GoabBadge type="information" content="3" />
+                </>
+              }
+            >
+              <DatePickerExamples />
+            </GoabTab>
+          )}
+
+          {version === "old" && (
+            <GoabTab
+              heading={
+                <>
+                  Examples
+                  <GoabBadge type="information" content="2" />
+                </>
+              }
+            >
+              <DatePickerExamples />
+            </GoabTab>
+          )}
 
           <GoabTab heading="Design">
             <DesignEmpty figmaLink={FIGMA_LINK} />

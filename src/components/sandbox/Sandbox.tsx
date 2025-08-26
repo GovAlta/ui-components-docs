@@ -134,7 +134,7 @@ export const Sandbox = (props: SandboxProps) => {
               properties={props.formItemProperties}
             />
           )}
-
+          <br />
           <SandboxProperties
             properties={props.properties}
             onChange={onChange}
