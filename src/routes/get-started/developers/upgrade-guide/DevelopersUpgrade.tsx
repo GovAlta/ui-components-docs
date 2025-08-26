@@ -13,8 +13,8 @@ export default function DevelopersUpgradePage() {
       <ComponentContent tocCssQuery="h2[id], h3[id]">
 
         <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-        <GoabText size="heading-xl" mb="m">Version update guide</GoabText>
-        <GoabText size="body-l" mb="2xl">Step-by-step guide to updating your code from DDD Design System v3 to v4
+        <GoabText size="heading-xl" mt="none" mb="m">Version update guide</GoabText>
+        <GoabText size="body-l" mt="none" mb="2xl">Step-by-step guide to updating your code from DDD Design System v3 to v4
           (Angular) and v5 to v6 (React)</GoabText>
 
         <GoabText size="heading-m" mt="l" mb="l">
@@ -38,8 +38,8 @@ export default function DevelopersUpgradePage() {
           The component is stable and supported in the latest major release. However, we recommend using the <a href="/patterns/public-form">public form pattern</a> for a more modular, flexible, and accessible approach.
         </GoabCallout>
 
-        <GoabContainer mt="xl">
-          <GoabText size="heading-m" mb="m">
+        <GoabContainer mt="xl" mb="l">
+          <GoabText size="heading-m" mt="none" mb="m">
             Major differences between current and new version
           </GoabText>
           <GoabText size="body-m" mt="l">
