@@ -33,7 +33,7 @@ export default function ButtonPage() {
       label: "Type",
       type: "list",
       name: "type",
-      options: ["primary", "submit", "secondary", "tertiary", "start"],
+      options: ["primary", "secondary", "tertiary", "start"],
       value: "",
       defaultValue: "primary",
     },
@@ -71,7 +71,7 @@ export default function ButtonPage() {
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
-      type: "primary | submit | secondary | tertiary | start",
+      type: "primary | secondary | tertiary | start",
       description: "Sets the type of button.",
       defaultValue: "primary",
     },
@@ -140,7 +140,7 @@ export default function ButtonPage() {
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
-      type: "GoabButtonType (primary | submit | secondary | tertiary | start)",
+      type: "GoabButtonType (primary | secondary | tertiary | start)",
       description: "Sets the type of button.",
       defaultValue: "primary",
     },
