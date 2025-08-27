@@ -6,10 +6,11 @@ export default function FoundationsTypographyPage() {
 
   return (
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Typography
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           Our typography system is designed to create a consistent and accessible experience across all Government of
           Alberta
           digital products. When paired with an effective content strategy, it enhances accessibility and makes content

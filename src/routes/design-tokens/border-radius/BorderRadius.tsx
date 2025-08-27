@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./BorderRadius.css";
 import { Token } from "../token";
@@ -120,7 +120,7 @@ export default function BorderRadiusPage() {
 
   return (
     <ComponentContent contentClassName="border-radius-page">
-      <h1>Border Radius</h1>
+      <GoabText size="heading-xl" mb="m" mt="xl">Border Radius</GoabText>
       {isDesktop ? renderDesktop() : renderMobile()}
     </ComponentContent>
   );
