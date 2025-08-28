@@ -51,7 +51,7 @@ export const ShowAListToHelpAnswerAQuestion = () => {
         </GoabRadioGroup>
       </GoabFormItem>
 
-        <GoabDetails heading="What is considered an additional education expense?">
+        <GoabDetails heading="What is considered an additional education expense?" mt="xl">
         <GoabBlock gap="m" mt="m">
           <div>
             <strong>Examples of education expenses</strong>

@@ -139,7 +139,7 @@ export const AskAUserForDirectDepositInformation = () => {
         </GoabFormItem>
       </form>
 
-      <GoabDetails heading="Where can I find this information on a personal cheque?" mt="l">
+      <GoabDetails heading="Where can I find this information on a personal cheque?" mt="xl">
         <p>
           Below is an example of where you can find the required bank information on a personal
           cheque.
