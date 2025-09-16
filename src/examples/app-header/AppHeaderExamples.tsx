@@ -1,5 +1,7 @@
 import { HeaderWithNavigation } from "@examples/header-with-navigation.tsx";
 import { HeaderWithMenuClickEvent } from "@examples/header-with-menu-click-event.tsx";
+import { HeaderSignIn } from "@examples/header-with-sign-in.tsx";
+import { HeaderLoggedInMenu } from "@examples/header-logged-in-menu.tsx";
 import { SandboxHeader } from "@components/sandbox/sandbox-header/sandboxHeader.tsx";
 
 export const AppHeaderExamples = () => {
@@ -16,6 +18,18 @@ export const AppHeaderExamples = () => {
         figmaExample="">
       </SandboxHeader>
       <HeaderWithMenuClickEvent />
+
+      <SandboxHeader
+        exampleTitle="Sign in using the site header"
+        figmaExample="">
+      </SandboxHeader>
+      <HeaderSignIn />
+
+      <SandboxHeader
+        exampleTitle="Access user settings in the site header"
+        figmaExample="">
+      </SandboxHeader>
+      <HeaderLoggedInMenu />
     </>
   );
 };
