@@ -1,4 +1,4 @@
-import { GoabContainer, GoabGrid, GoabTable } from "@abgov/react-components";
+import { GoabContainer, GoabGrid, GoabTable, GoabText } from "@abgov/react-components";
 import { TokenSnippet } from "@components/token-snippet/TokenSnippet";
 import "./Shadow.css";
 import { getTokenGroups } from "../getTokenGroups";
@@ -110,7 +110,7 @@ export default function ShadowPage() {
 
   return (
     <ComponentContent contentClassName="shadow-page">
-      <h1>Shadow</h1>
+      <GoabText size="heading-xl" mb="m" mt="xl">Shadow</GoabText>
       {isDesktop ? renderDesktop() : renderMobile()}
     </ComponentContent>
   );

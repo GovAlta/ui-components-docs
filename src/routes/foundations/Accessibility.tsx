@@ -8,7 +8,7 @@ export default function AccessibilityPage() {
         <GoabText size="heading-xl" mb="m" mt="xl">
           Accessibility
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           We aim to create digital products that everyone can use, no matter their abilities or situation. This guide
           outlines key principles, design tips, and tools to help create accessible and inclusive experiences.
         </GoabText>

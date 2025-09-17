@@ -4,10 +4,11 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 export default function ImagesPage() {
   return (
       <ComponentContent>
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Photography
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           The Government of Alberta maintains a library of photos specifically taken for government use, ensuring they
           are
           relevant to our citizens. This collection meets our established criteria for quality and accessibility.
