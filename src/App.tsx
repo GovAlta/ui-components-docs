@@ -11,6 +11,7 @@ import "@abgov/web-components";
 import Root from "@routes/root";
 import { DeviceWidthProvider } from "@contexts/DeviceWidthContext";
 import "./index.css";
+import "./tokens.css";
 
 import {
   VersionUpdateNotificationProvider
