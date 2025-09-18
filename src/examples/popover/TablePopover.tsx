@@ -123,14 +123,6 @@ export const TablePopover = () => {
                                         <GoabRadioItem value="Closed" label="Closed" />
                                     </GoabRadioGroup>
                                 </GoabFormItem>
-                                <GoabButton
-                                    type="tertiary"
-                                    mt="m"
-                                    onClick={() => setSelectedFilter(null)}
-                                    aria-label="Remove filter"
-                                >
-                                    Remove filter
-                                </GoabButton>
                             </form>
                         </GoabPopover>
                     </div>
@@ -270,7 +262,6 @@ export const TablePopover = () => {
                                     <goab-radio-item value="Closed" label="Closed"></goab-radio-item>
                                 </goab-radio-group>
                             </goab-form-item>
-                            <goab-button type="tertiary" mt="m" (_click)="onClick()">Remove filter</goab-button>
                         </form>
                         <ng-template #filterTarget>
                             <goab-button
@@ -335,13 +326,6 @@ export const TablePopover = () => {
                                 <GoabRadioItem value="Closed" label="Closed" />
                             </GoabRadioGroup>
                         </GoabFormItem>
-                        <GoabButton
-                            type="tertiary"
-                            mt="m"
-                            onClick={() => setSelectedFilter(null)}
-                        >
-                            Remove filter
-                        </GoabButton>
                     </form>
                 </GoabPopover>
             </div>
