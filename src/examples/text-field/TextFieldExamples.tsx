@@ -1,4 +1,3 @@
-import { AskAUserForABirthday } from "@examples/ask-a-user-for-a-birthday.tsx";
 import { Search } from "@examples/search.tsx";
 import { AskAUserForDollarAmounts } from "@examples/ask-a-user-for-dollar-amounts.tsx";
 import {
@@ -19,12 +18,6 @@ export default function TextFieldExamples() {
         figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6304-43250&t=X0IQW5flDDaj8Vyg-4">
       </SandboxHeader>
       <AskAUserForAnAddress />
-
-      <SandboxHeader
-        exampleTitle="Ask a user for their birthday"
-        figmaExample="https://www.figma.com/design/aIRjvBzpIUH0GbkffjbL04/%E2%9D%96-Patterns-library-%7C-DDD?node-id=6334-80568&t=X0IQW5flDDaj8Vyg-44">
-      </SandboxHeader>
-      <AskAUserForABirthday />
 
       <SandboxHeader
         exampleTitle="Search"
