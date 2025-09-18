@@ -110,7 +110,7 @@ export default function ColorPage() {
 
   return (
     <ComponentContent contentClassName="colors-page">
-      <h1>Color</h1>
+      <GoabText size="heading-xl" mb="none" mt="xl">Color</GoabText>
       {isDesktop ? renderDesktop() : renderTablet()}
     </ComponentContent>
   );

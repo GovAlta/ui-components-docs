@@ -426,7 +426,7 @@ export default function DropdownPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="2" />
+                <GoabBadge type="information" content="5" />
               </>
             }>
             <DropdownExamples />

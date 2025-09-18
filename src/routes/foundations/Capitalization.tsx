@@ -8,10 +8,11 @@ export default function CapitalizationPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
 
-      <GoabText size="heading-xl" mb="m" mt="xl">
+      <GoabText size="heading-m" mt="xl" mb="xs">Content guidelines</GoabText>
+      <GoabText size="heading-xl" mb="m" mt="none">
         Capitalization
       </GoabText>
-      <GoabText size="heading-m" mb="xl">
+      <GoabText size="body-l" mt="none" mb="xl">
         Use sentence case for all headings, labels, and content.
       </GoabText>
 

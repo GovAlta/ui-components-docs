@@ -239,7 +239,7 @@ export default function IconButtonPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="1" />
+                <GoabBadge type="information" content="2" />
               </>
             }>
             <IconButtonExamples />

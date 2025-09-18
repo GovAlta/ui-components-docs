@@ -8,7 +8,7 @@ export default function QATestingOverviewPage() {
       <GoabText size="heading-xl" mb="m" mt="xl">
         QA Testing
       </GoabText>
-      <GoabText size="body-l" mb="2xl">
+      <GoabText size="body-l" mt="none" mb="2xl">
         Outline of the testing procedure for the DDD design system. The procedure
         ensures that all components function correctly and integrate seamlessly within DDD products.
       </GoabText>

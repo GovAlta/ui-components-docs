@@ -7,8 +7,8 @@ export default function DevelopersOverviewPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Overview</GoabText>
-      <GoabText size="body-l" mb="xl">As a developer, you can consume the design system using tokens, components,
+      <GoabText size="heading-xl" mt="none" mb="m">Overview</GoabText>
+      <GoabText size="body-l" mt="none" mb="xl">As a developer, you can consume the design system using tokens, components,
         templates, and the demo application.</GoabText>
 
       <GoabText size="body-m" mt="l" mb="l">
