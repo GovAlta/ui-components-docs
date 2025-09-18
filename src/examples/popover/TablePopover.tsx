@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
@@ -19,236 +19,94 @@ import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 
 export const TablePopover = () => {
     const { version } = useContext(LanguageVersionContext);
-    const [selectedChips, setSelectedChips] = useState<string[]>([]);
-    const [filter] = useState('All');
+    const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
+
     const popoverValues = [
-        {
-        key: 1,
-        type: "success",
-        status: "Open",
-        },
-        {
-        key: 2,
-        type: "midtone",
-        status: "Closed",
-        },
-        {
-        key: 3,
-        type: "midtone",
-        status: "Closed",
-        },
-        {
-        key: 4,
-        type: "midtone",
-        status: "Closed",
-        },
-        {
-        key: 5,
-        type: "success",
-        status: "Open",
-        },
-        {
-        key: 6,
-        type: "midtone",
-        status: "Closed",
-        },
+        { key: 1, type: "success", status: "Open" },
+        { key: 2, type: "midtone", status: "Closed" },
+        { key: 3, type: "midtone", status: "Closed" },
+        { key: 4, type: "midtone", status: "Closed" },
+        { key: 5, type: "success", status: "Open" },
+        { key: 6, type: "midtone", status: "Closed" },
     ];
 
-    const [dataFiltered, setDataFiltered] = useState(popoverValues);
-
     const target = (
-        <GoabButton type="tertiary" leadingIcon="funnel" size="compact">
+        <GoabButton type="tertiary" leadingIcon="funnel" size="compact" aria-label="Filter table">
             Filter
         </GoabButton>
     );
 
     function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
-        setSelectedChips([...selectedChips, event.value]);
-        return;
-    };
+        setSelectedFilter(event.value);
+    }
 
-    const checkNested = useCallback((obj: object, chip: string): boolean => {
-        return Object.values(obj).some(value =>
-            typeof value === "object" && value !== null
-            ? checkNested(value, chip)
-            : typeof value === "string" && value.toLowerCase().includes(chip.toLowerCase())
-        );
-    }, []);
+    const filteredData = selectedFilter ? popoverValues.filter((item) =>
+        item.status === selectedFilter
+    ) : popoverValues;
 
-    const removeFilter = (chip: string) => {
-        setSelectedChips(selectedChips.filter(c => c !== chip));
-        return;
-    };
-
-    const getFilteredData = useCallback ((selectedChips: string[]) => {
-            if (selectedChips.length === 0) {
-                return popoverValues;
-            }
-            const filteredData = popoverValues.filter((item: object) =>
-                selectedChips.every(chip => checkNested(item, chip))
-            );
-
-            return filteredData;
-        }, 
-        [checkNested, popoverValues]
-    );
-
-    useEffect(() => {
-        setDataFiltered(getFilteredData(selectedChips));
-    }, [getFilteredData, selectedChips]);
-    
     return (
         <>
         <Sandbox fullWidth skipRender allow={["h3", "div"]}>
             {/*============= React code ==============*/}
-            {version === "old" && (
-            <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                    function onChange(name: string, value: string) {
-                        console.log("onChange", name, value);
-                    }
 
-                    const target = (
-                        <GoAButton type="tertiary" leadingIcon="funnel" size="compact">
-                            Filter
-                        </GoAButton>
-                    );
-
-                    const popoverValues = [
-                        {
-                            key: 1,
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            key: 2,
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            key: 3,
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            key: 4,
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            key: 5,
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            key: 6,
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                    ];
-                `}
-            />
-            )}
-    
             {version === "new" && (
             <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
-                    function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
-                        console.log("onChange", event.name, event.value);
-                    }
-
-                    const target = (
-                        <GoabButton type="tertiary" leadingIcon="funnel" size="compact">
-                            Filter
-                        </GoabButton>
-                    );
+                    const [selectedFilter, setSelectedFilter] = useState<string | null>(null);
 
                     const popoverValues = [
                         {
                             key: 1,
                             type: "success",
-                            status: "Open",
+                            status: "Open"
                         },
                         {
                             key: 2,
                             type: "midtone",
-                            status: "Closed",
+                            status: "Closed"
                         },
                         {
                             key: 3,
                             type: "midtone",
-                            status: "Closed",
+                            status: "Closed"
                         },
                         {
                             key: 4,
                             type: "midtone",
-                            status: "Closed",
+                            status: "Closed"
                         },
                         {
                             key: 5,
                             type: "success",
-                            status: "Open",
+                            status: "Open"
                         },
                         {
                             key: 6,
                             type: "midtone",
-                            status: "Closed",
+                            status: "Closed"
                         },
                     ];
+
+                    const target = (
+                        <GoabButton type="tertiary" leadingIcon="funnel" size="compact" aria-label="Filter table">
+                            Filter
+                        </GoabButton>
+                    );
+
+                    function radioGroupOnChange(event: GoabRadioGroupOnChangeDetail) {
+                        setSelectedFilter(event.value);
+                    }
+
+                    const filteredData = selectedFilter ? popoverValues.filter((item) =>
+                        item.status === selectedFilter
+                    ) : popoverValues;
                 `}
             />
             )}
-    
-            {version === "old" && (
-            <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                    <div className="goa-table-heading-container">
-                        <h3>Table with a filter</h3>
-                        <GoAPopover target={target}>
-                            <form>
-                                <GoAFormItem label="Status">
-                                    <GoARadioGroup name="item" onChange={onChange}>
-                                        <GoARadioItem value="1" label="Open"></GoARadioItem>
-                                        <GoARadioItem value="2" label="Closed"></GoARadioItem>
-                                    </GoARadioGroup>
-                                </GoAFormItem>
-                                <GoAButton type="tertiary" mt="m">Remove filter</GoAButton>
-                            </form>
-                        </GoAPopover>
-                    </div>
-                    <GoATable width="100%" mb="xl">
-                        <thead>
-                            <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {popoverValues.map(u => (
-                            <tr key={u.key}>
-                                <td><GoABadge type={u.type as GoABadgeType} content={u.status} /></td>
-                                <td>Lorem ipsum</td>
-                                <td className="goa-table-number-column">1234567890</td>
-                                <td><GoAButton type="tertiary">Action</GoAButton></td>
-                            </tr>
-                            ))}
-                        </tbody>
-                    </GoATable>
-                `}
-            />
-            )}
-    
+
             {version === "new" && (
             <CodeSnippet
                 lang="typescript"
@@ -260,162 +118,142 @@ export const TablePopover = () => {
                         <GoabPopover target={target}>
                             <form>
                                 <GoabFormItem label="Status">
-                                    <GoabRadioGroup name="item" onChange={radioGroupOnChange}>
-                                        <GoabRadioItem value="1" label="Open"></GoabRadioItem>
-                                        <GoabRadioItem value="2" label="Closed"></GoabRadioItem>
+                                    <GoabRadioGroup name="item" onChange={radioGroupOnChange} value={selectedFilter ?? ""}>
+                                        <GoabRadioItem value="Open" label="Open" />
+                                        <GoabRadioItem value="Closed" label="Closed" />
                                     </GoabRadioGroup>
                                 </GoabFormItem>
-                                <GoabButton type="tertiary" mt="m">Remove filter</GoabButton>
+                                <GoabButton
+                                    type="tertiary"
+                                    mt="m"
+                                    onClick={() => setSelectedFilter(null)}
+                                    aria-label="Remove filter"
+                                >
+                                    Remove filter
+                                </GoabButton>
                             </form>
                         </GoabPopover>
                     </div>
+                    {selectedFilter && (
+                        <div>
+                            <GoabText tag="span" color="secondary" mb="xs" mr="xs">
+                                Filter:
+                            </GoabText>
+                            <GoabFilterChip
+                                content={selectedFilter}
+                                mb="xs"
+                                mr="xs"
+                                onClick={() => setSelectedFilter(null)}
+                            />
+                            <GoabButton
+                                type="tertiary"
+                                size="compact"
+                                mb="xs"
+                                onClick={() => setSelectedFilter(null)}
+                            >
+                                Clear all
+                            </GoabButton>
+                        </div>
+                    )}
+                    
                     <GoabTable width="100%" mb="xl">
                         <thead>
                             <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th className="goa-table-number-header">Number</th>
-                            <th>Action</th>
+                                <th>Status</th>
+                                <th>Text</th>
+                                <th className="goa-table-number-header">Number</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {popoverValues.map(u => (
-                            <tr key={u.key}>
-                                <td><GoabBadge type={u.type as GoabBadgeType} content={u.status} /></td>
+                            {filteredData.map((u) => (
+                                <tr key={u.key}>
+                                <td>
+                                    <GoabBadge type={u.type as GoabBadgeType} content={u.status} />
+                                </td>
                                 <td>Lorem ipsum</td>
                                 <td className="goa-table-number-column">1234567890</td>
-                                <td><GoabButton type="tertiary">Action</GoabButton></td>
-                            </tr>
+                                <td>
+                                    <GoabButton type="tertiary">Action</GoabButton>
+                                </td>
+                                </tr>
                             ))}
                         </tbody>
                     </GoabTable>
                 `}
             />
             )}
-    
+
             {/*================ Angular code ==================*/}
-            {version === "old" && (
-            <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                    onClick($event: Event) {
-                        console.log("clicked");
-                    }
 
-                    popoverValues = [
-                        {
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                    ];
-                `}
-            />
-            )}
-    
             {version === "new" && (
             <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
-                    onClick() {
-                        console.log("clicked");
+                    interface PopoverValue {
+                        key: number;
+                        type: string;
+                        status: string;
                     }
 
-                    popoverValues: {type: GoabBadgeType, content: string}[] = [
-                        {
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                        {
-                            type: "success",
-                            status: "Open",
-                        },
-                        {
-                            type: "midtone",
-                            status: "Closed",
-                        },
-                    ];
+                    @Component({
+                        selector: 'app-table-popover',
+                        templateUrl: './table-popover.component.html',
+                    })
+
+                    export class TablePopoverComponent {
+                        selectedFilter = new FormControl<string | null>(null);
+
+                        popoverValues: PopoverValue[] = [
+                            { 
+                                key: 1, 
+                                type: 'success', 
+                                status: 'Open' 
+                            },
+                            { 
+                                key: 2, 
+                                type: 'midtone', 
+                                status: 'Closed' 
+                            },
+                            { 
+                                key: 3, 
+                                type: 'midtone', 
+                                status: 'Closed' 
+                            },
+                            { 
+                                key: 4, 
+                                type: 'midtone', 
+                                status: 'Closed' 
+                            },
+                            { 
+                                key: 5, 
+                                type: 'success', 
+                                status: 'Open' 
+                            },
+                            { 
+                                key: 6, 
+                                type: 'midtone', 
+                                status: 'Closed' 
+                            },
+                        ];
+
+                        get filteredData(): PopoverValue[] {
+                            const filter = this.selectedFilter.value;
+                            return filter
+                            ? this.popoverValues.filter(item => item.status === filter)
+                            : this.popoverValues;
+                        }
+
+                        clearFilter() {
+                            this.selectedFilter.setValue(null);
+                        }
+                    }
                 `}
             />
             )}
-    
-            {version === "old" && (
-            <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
-                <div class="goa-table-heading-container">
-                    <h3>Table with a filter</h3>
-                    <goa-popover [target]="target">
-                        <form>
-                            <goa-form-item label="Status">
-                                <goa-radio-group name="selectOne" formControlName="selectOne">
-                                    <goa-radio-item value="1" label="Open"></goa-radio-item>
-                                    <goa-radio-item value="2" label="Closed"></goa-radio-item>
-                                </goa-radio-group>
-                            </goa-form-item>
-                            <goa-button type="tertiary" mt="m" (_click)="onClick($event)">Remove filter</goa-button>
-                        </form>
-                        <div slot="target">
-                            <goa-button type="tertiary" leadingicon="funnel" size="compact">Filter</goa-button>
-                        </div>
-                    </goa-popover>
-                </div>
-                <goa-table width="100%" mb="xl">
-                    <thead>
-                        <tr>
-                            <th>Status</th>
-                            <th>Text</th>
-                            <th class="goa-table-number-header">Number</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                        <tr *ngFor="let u of popoverValues">
-                            <td><goa-badge [type]="u.type" [content]="u.status" /></td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td><goa-button type="tertiary" (_click)="onClick($event)">Action</goa-button></td>
-                        </tr>
-                    </tbody>
-                </goa-table>
-                `}
-            />
-            )}
-    
+
             {version === "new" && (
             <CodeSnippet
                 lang="typescript"
@@ -424,21 +262,48 @@ export const TablePopover = () => {
                 code={`
                 <div class="goa-table-heading-container">
                     <h3>Table with a filter</h3>
-                    <goab-popover [target]="target">
+                    <goab-popover [target]="filterTarget">
                         <form>
                             <goab-form-item label="Status">
-                                <goab-radio-group name="selectOne" formControlName="selectOne">
-                                    <goab-radio-item value="1" label="Open"></goab-radio-item>
-                                    <goab-radio-item value="2" label="Closed"></goab-radio-item>
+                                <goab-radio-group [formControl]="selectedFilter" name="item">
+                                    <goab-radio-item value="Open" label="Open"></goab-radio-item>
+                                    <goab-radio-item value="Closed" label="Closed"></goab-radio-item>
                                 </goab-radio-group>
                             </goab-form-item>
                             <goab-button type="tertiary" mt="m" (_click)="onClick()">Remove filter</goab-button>
                         </form>
-                        <div slot="target">
-                            <goab-button type="tertiary" leadingIcon="funnel" size="compact">Filter</goab-button>
-                        </div>
+                        <ng-template #filterTarget>
+                            <goab-button
+                                type="tertiary"
+                                leadingIcon="funnel"
+                                size="compact"
+                            >
+                                Filter  
+                            </goab-button>
+                        </ng-template>
                     </goab-popover>
                 </div>
+
+                <div *ngIf="selectedFilter.value">
+                    <goab-text tag="span" color="secondary" mb="xs" mr="xs">
+                        Filter:
+                    </goab-text>
+                    <goab-filter-chip
+                        [content]="selectedFilter.value"
+                        mb="xs"
+                        mr="xs"
+                        (click)="clearFilter()"
+                    ></goab-filter-chip>
+                    <goab-button
+                        type="tertiary"
+                        size="compact"
+                        mb="xs"
+                        (click)="clearFilter()"
+                    >
+                        Clear all
+                    </goab-button>
+                </div>
+
                 <goab-table width="100%" mb="xl">
                     <thead>
                         <tr>
@@ -459,39 +324,50 @@ export const TablePopover = () => {
                 `}
             />
             )}
+            
             <div className="goa-table-heading-container">
                 <h3>Table with a filter</h3>
                 <GoabPopover target={target}>
                     <form>
                         <GoabFormItem label="Status">
-                            <GoabRadioGroup name="item" onChange={radioGroupOnChange}>
-                                <GoabRadioItem value="Open" checked={filter === '1'} label="Open"></GoabRadioItem>
-                                <GoabRadioItem value="Closed" checked={filter === '2'} label="Closed"></GoabRadioItem>
+                            <GoabRadioGroup name="item" onChange={radioGroupOnChange} value={selectedFilter ?? ""}>
+                                <GoabRadioItem value="Open" label="Open" />
+                                <GoabRadioItem value="Closed" label="Closed" />
                             </GoabRadioGroup>
                         </GoabFormItem>
+                        <GoabButton
+                            type="tertiary"
+                            mt="m"
+                            onClick={() => setSelectedFilter(null)}
+                        >
+                            Remove filter
+                        </GoabButton>
                     </form>
                 </GoabPopover>
             </div>
-             {selectedChips.length > 0 && (
+            {selectedFilter && (
                 <div>
-                <GoabText tag="span" color="secondary" mb="xs" mr="xs">
-                    Filter:
-                </GoabText>
-                {selectedChips.length > 0 &&
-                    selectedChips.map((selectedChip, index) => (
+                    <GoabText tag="span" color="secondary" mb="xs" mr="xs">
+                        Filter:
+                    </GoabText>
                     <GoabFilterChip
-                        key={index}
-                        content={selectedChip}
+                        content={selectedFilter}
                         mb="xs"
                         mr="xs"
-                        onClick={() => removeFilter(selectedChip)}
+                        onClick={() => setSelectedFilter(null)}
                     />
-                    ))}
-                <GoabButton type="tertiary" size="compact" mb="xs" onClick={() => setSelectedChips([])}>
-                    Clear all
-                </GoabButton>
+                    <GoabButton
+                        type="tertiary"
+                        size="compact"
+                        mb="xs"
+                        onClick={() => setSelectedFilter(null)}
+                        aria-label="Clear all filters"
+                    >
+                        Clear all
+                    </GoabButton>
                 </div>
             )}
+            
             <GoabTable width="100%" mb="xl">
                 <thead>
                     <tr>
@@ -502,17 +378,21 @@ export const TablePopover = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {dataFiltered.map(u => (
-                    <tr key={u.key}>
-                        <td><GoabBadge type={u.type as GoabBadgeType} content={u.status} /></td>
+                    {filteredData.map((u) => (
+                        <tr key={u.key}>
+                        <td>
+                            <GoabBadge type={u.type as GoabBadgeType} content={u.status} />
+                        </td>
                         <td>Lorem ipsum</td>
                         <td className="goa-table-number-column">1234567890</td>
-                        <td><GoabButton type="tertiary">Action</GoabButton></td>
-                    </tr>
+                        <td>
+                            <GoabButton type="tertiary">Action</GoabButton>
+                        </td>
+                        </tr>
                     ))}
                 </tbody>
             </GoabTable>
         </Sandbox>
         </>
     );
-}
+};

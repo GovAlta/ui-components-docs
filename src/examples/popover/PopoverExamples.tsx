@@ -1,3 +1,4 @@
+import { GoabSpacer } from "@abgov/react-components";
 import { ButtonClosePopover } from "@examples/popover/ButtonClosePopover";
 import { LinkClosePopover } from "@examples/popover/LinkClosePopover";
 import { IconButtonClosePopover } from "@examples/popover/IconButtonClosePopover";
@@ -11,9 +12,7 @@ export const PopoverExamples = () => {
   const { version, language } = useContext(LanguageVersionContext);
   return (
     <>
-      {version === "old" && (
-        <OldComponentBanner componentName={"The popover"} language={language} type="example" />
-      )}
+      
       {/*Popover Example - close using a button*/}
       <SandboxHeader exampleTitle="Close a Popover with a Button" figmaExample=""></SandboxHeader>
       <ButtonClosePopover />
