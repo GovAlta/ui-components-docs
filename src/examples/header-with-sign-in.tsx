@@ -30,7 +30,7 @@ export const HeaderSignIn = () => {
                   [hasmenuclickhandler]="true"
                   (_menuClick)="handleMenuClick()"
                 >
-                  <a href="#" className="interactive">Sign in</a>
+                  <a href="#" class="interactive">Sign in</a>
                 </goa-app-header>
               `}
         />
@@ -49,7 +49,7 @@ export const HeaderSignIn = () => {
                   [fullMenuBreakpoint]="1500"
                   (onMenuClick)="handleMenuClick()"
                 >
-                  <a href="#" className="interactive">Sign in</a>
+                  <a href="#" class="interactive">Sign in</a>
                 </goab-app-header>
               `}
         />

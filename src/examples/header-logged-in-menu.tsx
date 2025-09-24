@@ -41,7 +41,7 @@ export const HeaderLoggedInMenu = () => {
                       <a href="#">Manage account</a>
                       <a href="#">Request new staff account</a>
                       <a href="#">System admin</a>
-                      <a href="#" className="interactive">Sign out</a>
+                      <a href="#" class="interactive">Sign out</a>
                   </goa-app-header-menu>
                 </goa-app-header>
               `}
@@ -66,7 +66,7 @@ export const HeaderLoggedInMenu = () => {
                       <a href="#">Manage account</a>
                       <a href="#">Request new staff account</a>
                       <a href="#">System admin</a>
-                      <a href="#" className="interactive">Sign out</a>
+                      <a href="#" class="interactive">Sign out</a>
                   </goab-app-header-menu>
                 </goab-app-header>
               `}
