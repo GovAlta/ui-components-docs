@@ -199,7 +199,7 @@ export default function TablePage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="4" />
+                <GoabBadge type="information" content="3" />
               </>
             }>
             <TablesExamples />

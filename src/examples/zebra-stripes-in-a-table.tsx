@@ -52,7 +52,7 @@ export const ZebraStripesInATable = () => {
           allowCopy={true}
           code={`
             .goa-table-zebra-stripes > tr:nth-child(even) {
-                background-color: #F8F8F8;
+                background-color: var(--goa-color-greyscale-50);
             }
           `}
         />
