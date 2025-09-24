@@ -116,6 +116,29 @@ export default function AppHeaderPage() {
       description: "Function invoked when the menu hamburger button (on mobile/tablet device) is clicked."
     }
   ];
+
+  const appHeaderMenuLegacyProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      description: "Set the heading text displayed for the menu.",
+      required: true,
+    },
+    {
+      name: "leadingicon",
+      type: "GoAIconType",
+      description: "Set the leading icon for the menu item.",
+      lang: "angular"
+    },
+    {
+      name: "leadingIcon",
+      type: "GoAIconType",
+      description: "Set the leading icon for the menu item.",
+      lang: "react"
+    },
+    ...LegacyTestIdProperties,
+  ];
+
   const componentProperties: ComponentProperty[] = [
     {
       name: "url",
@@ -146,6 +169,21 @@ export default function AppHeaderPage() {
     }
   ];
 
+  const appHeaderMenuProperties: ComponentProperty[] = [
+    {
+      name: "heading",
+      type: "string",
+      description: "Set the heading text displayed for the menu.",
+      required: true,
+    },
+    {
+      name: "leadingIcon",
+      type: "GoabIconType",
+      description: "Set the leading icon for the menu item.",
+    },
+    TestIdProperty,
+  ];
+
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setAppHeaderProps(props as CastingType);
@@ -174,7 +212,18 @@ export default function AppHeaderPage() {
             </Sandbox>
 
             {/*Component properties*/}
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              heading="Properties - App Header"
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
+
+            {/*App Header Menu Component properties*/}
+            <ComponentProperties
+              heading="Properties - App Header Menu"
+              properties={appHeaderMenuProperties}
+              oldProperties={appHeaderMenuLegacyProperties}
+            />
 
           </GoabTab>
 
