@@ -30,12 +30,10 @@
 }
 
 .version-language-switcher {
-    height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center; /* vertically align content */
     gap: var(--goa-space-s);
-    margin-bottom: var(--goa-space-xs);
 }
 
 @media (max-width: 623px) {

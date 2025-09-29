@@ -26,7 +26,6 @@ export function HelpButton() {
   return (
     <GoabTooltip content="Version and framework info">
       <GoabIconButton ml={"xs"}
-                      mb={"2xs"}
                       variant="color"
                       size="small"
                       icon="help-circle"
