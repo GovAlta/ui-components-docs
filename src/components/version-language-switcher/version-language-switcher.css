@@ -59,10 +59,12 @@
 
 .menu-link {
   display: flex;
-  align-item: center;
+  align-items: center;
+  justify-content: center;
   color: var(--goa-color-interactive-default);
 }
 
 .menu-link:hover {
   color: var(--goa-color-interactive-hover);
+  text-decoration: underline;
 }

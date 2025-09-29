@@ -95,13 +95,12 @@ export const VersionLanguageSwitcher = () => {
   }
 
   return (
-    <>
-      <div className="version-language-switcher">
+    <div className="version-language-switcher">
       <GoabPopover
         target={
           <div className="menu-link">
             <GoabIcon type="chevron-down" size="small"></GoabIcon> 
-            {language}
+            {capitalizeFirstLetter(language)}
           </div>
         }
         padded={false}>
@@ -116,7 +115,8 @@ export const VersionLanguageSwitcher = () => {
 
       <GoabPopover target={
         <div className="menu-link">
-          <GoabIcon type="chevron-down" size="small"></GoabIcon> {getCurrentVersionLabel(language, version)}
+          <GoabIcon type="chevron-down" size="small"></GoabIcon> 
+          {getCurrentVersionLabel(language, version)}
         </div>
       } padded={false}>
         <>
@@ -127,7 +127,6 @@ export const VersionLanguageSwitcher = () => {
           ))}
         </>
       </GoabPopover>
-      </div>
-    </>
+    </div>
   );
 }
