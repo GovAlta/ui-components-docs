@@ -73,8 +73,15 @@ export default function TooltipPage() {
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "content",
-      type: "string",
+      type: "string | slot",
       description: "The content of the tooltip",
+      lang: "angular",
+    },
+    {
+      name: "content",
+      type: "string | ReactNode",
+      description: "The content of the tooltip",
+      lang: "react",
     },
     {
       name: "position",
@@ -93,8 +100,15 @@ export default function TooltipPage() {
   const componentProperties: ComponentProperty[] = [
     {
       name: "content",
-      type: "string",
+      type: "string | TemplateRef<any>",
       description: "The content of the tooltip",
+      lang: "angular",
+    },
+    {
+      name: "content",
+      type: "string | ReactNode",
+      description: "The content of the tooltip",
+      lang: "react",
     },
     {
       name: "position",

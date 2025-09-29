@@ -10,6 +10,7 @@ import ButtonPage from "@routes/components/Button.tsx";
 import ButtonGroupPage from "@routes/components/ButtonGroup.tsx";
 import CalloutPage from "@routes/components/Callout.tsx";
 import CheckboxPage from "@routes/components/Checkbox.tsx";
+import CheckboxListPage from "@routes/components/CheckboxList";
 import ContainerPage from "@routes/components/Container.tsx";
 import DatePickerPage from "@routes/components/DatePicker.tsx";
 import DetailsPage from "@routes/components/Details.tsx";
@@ -93,6 +94,7 @@ export const ComponentsRouter = () => {
     "button-group": <ButtonGroupPage />,
     "callout": <CalloutPage />,
     "checkbox": <CheckboxPage />,
+    "checkbox-list": <CheckboxListPage />,
     "container": <ContainerPage />,
     "date-picker": <DatePickerPage />,
     "details": <DetailsPage />,

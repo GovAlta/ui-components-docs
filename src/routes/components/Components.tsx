@@ -87,6 +87,7 @@ export function Components() {
               <Link to={getUrl("button")}>Button</Link>
               <Link to={getUrl("button-group")}>Button group</Link>
               <Link to={getUrl("checkbox")}>Checkbox</Link>
+              <Link to={getUrl("checkbox-list")}>{newComponentLabel("Checkbox list")}</Link>
               <Link to={getUrl("date-picker")}>Date picker</Link>
               <Link to={getUrl("dropdown")}>Dropdown</Link>
               <Link to={getUrl("file-uploader")}>File uploader</Link>
