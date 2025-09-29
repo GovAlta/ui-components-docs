@@ -4,31 +4,38 @@ import { Link } from "react-router-dom";
 export const LtsPolicyPage = () => {
   return (
     <>
-      <GoabText size="heading-xl" mt="xl" mb="m">Long Term Support (LTS)</GoabText>
+      <GoabText tag="h1" size="heading-xl">Long Term Support (LTS)</GoabText>
 
-      <GoabText size="body-l" tag="h3" mt="none" mb="xl">
-        The Long Term Support (LTS) version will continue to be supported until September 30, 2025. Learn more about what you can expect.
+      <GoabText size="body-l" tag="h3">
+        LTS for the design system has ended. Version v3 (Angular) and v5 (React) are no longer supported.
       </GoabText>
 
-      <GoabText tag={"p"} mt={"5"}>
-        The previous version of the design system v3 (Angular) and v5 (React) is now in Long-Term Support (LTS). Here's what that means:
+      <GoabText tag={"p"} size="heading-m">
+        What this means:
       </GoabText>
 
       <GoabText size="body-m" mb="xl">
-      <ul>
-        <li><strong>Bug fixes only:</strong> We'll continue fixing critical bugs and regressions.</li>
-        <li><strong>No new features or enhancements:</strong> All new development is happening in the latest major version.</li>
-        <li><strong>Same reliable experience:</strong> Your project will continue to work as expected.</li>
-      </ul>
+        <ul>
+          <li><strong>No fixes or patches:</strong> We won't ship bug or security fixes for v3/v5</li>
+          <li><strong>No new features or enhancements:</strong> All new work happens in the current major version.</li>
+          <li><strong>Use at your own risk:</strong> Existing projects may continue to run, but we won't test or guarantee compatibility with new browsers, OS updates, or framework changes.</li>
+        </ul>
       </GoabText>
 
-      <GoabText size="body-m" mb="2xl">
-        Ready to update to the latest version? Visit our <Link to="/get-started/developers/update">update guide</Link>
+      <GoabText tag={"p"} size="heading-m">
+        What to do next
       </GoabText>
 
-      <GoabCallout type="important" size={"medium"} heading="Active maintenance will cease on September 30, 2025"
+      <GoabText size="body-m" mb="xl">
+        <ul>
+          <li>Upgrade to the latest version. See the <Link to="update">update guide</Link></li>
+          <li>Need help planning the upgrade? Book a <a href="https://outlook.office365.com/owa/calendar/BKGDesignsystemdropinhours@abgov.onmicrosoft.com/bookings/" target="_blank">drop in hours session</a> for guidance</li>
+        </ul>
+      </GoabText>
+
+      <GoabCallout type="important" size={"medium"} heading="Active maintenance has ended"
                    maxWidth={"65ch"} mt={"xl"}>
-        Projects still using LTS will continue to work, but new issues or bugs will not be prioritized.
+        Projects still using LTS will continue to work, but new issues or bugs in v3 (Angular) and v5 (React) will not be fixed.
       </GoabCallout>
     </>
   );
