@@ -56,3 +56,13 @@
         margin-bottom: var(--goa-space-3xs);
     }
 }
+
+.menu-link {
+  display: flex;
+  align-item: center;
+  color: var(--goa-color-interactive-default);
+}
+
+.menu-link:hover {
+  color: var(--goa-color-interactive-hover);
+}
