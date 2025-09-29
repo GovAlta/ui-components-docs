@@ -30,12 +30,10 @@
 }
 
 .version-language-switcher {
-    height: 20px;
     display: flex;
     flex-direction: row;
     align-items: center; /* vertically align content */
     gap: var(--goa-space-s);
-    margin-bottom: var(--goa-space-xs);
 }
 
 @media (max-width: 623px) {
@@ -55,4 +53,16 @@
         gap: 0;
         margin-bottom: var(--goa-space-3xs);
     }
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--goa-color-interactive-default);
+}
+
+.menu-link:hover {
+  color: var(--goa-color-interactive-hover);
+  text-decoration: underline;
 }
