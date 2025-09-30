@@ -182,7 +182,7 @@ export default function ContributePage() {
           </li>
           <li>
             Run the bash script:
-            <CodeSnippet lang="css" allowCopy={true} code={`./playground-setup.sh`} />
+            <CodeSnippet lang="css" allowCopy={true} code={`.scripts/playground-setup.sh`} />
           </li>
           <li>The commands above will install all necessary packages and create a “playground” folder containing both React and Angular environments. Since nothing in this folder is committed to the repository, you can freely make any changes you want. These environments are designed for testing purposes.</li>
           <li>

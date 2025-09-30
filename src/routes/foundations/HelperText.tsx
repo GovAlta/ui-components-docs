@@ -19,10 +19,11 @@ export default function HelperTextPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
 
-      <GoabText size="heading-xl" mb="m" mt="xl">
+      <GoabText size="heading-m" mt="xl" mb="xs">Content guidelines</GoabText>
+      <GoabText size="heading-xl" mb="m" mt="none">
         Helper text
       </GoabText>
-      <GoabText size="heading-m" mb="m">
+      <GoabText size="body-l" mt="none" mb="m">
         Additional context and guidance that is always visible below an input. The
         text instructs a user on what needs to be completed to move to the next question in the form
         or process.

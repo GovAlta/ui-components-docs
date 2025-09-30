@@ -5,8 +5,8 @@ export default function DevelopersTechnologiesPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-m" mt="xl" mb={"xs"}>Developers</GoabText>
-      <GoabText size="heading-xl" mb="m">Technologies</GoabText>
-      <GoabText size="body-l" mb="2xl">An overview of the technologies that make up the design system.</GoabText>
+      <GoabText size="heading-xl" mt="none" mb="m">Technologies</GoabText>
+      <GoabText size="body-l" mt="none" mb="2xl">An overview of the technologies that make up the design system.</GoabText>
 
       <div className="design-system-image">
         <img src="/images/component-thumbnails/design-system-technologies.png" />

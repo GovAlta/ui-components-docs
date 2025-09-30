@@ -6,10 +6,11 @@ export default function FoundationsLayoutPage() {
   return (
     
       <ComponentContent tocCssQuery="h2[id], h3[id]">
-        <GoabText size="heading-xl" mb="m" mt="xl">
+        <GoabText size="heading-m" mt="xl" mb="xs">Style guide</GoabText>
+        <GoabText size="heading-xl" mb="m" mt="none">
           Layout
         </GoabText>
-        <GoabText size="heading-m" mb="xl">
+        <GoabText size="body-l" mt="none" mb="xl">
           We use the layout as a structural template to support consistency across our products. By defining visual
           grids,
           spacing, and sections, we create intuitive products for our users.
