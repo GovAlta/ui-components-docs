@@ -6,7 +6,6 @@ import {
   GoabMenuButtonProps,
   GoabTab,
   GoabTabs,
-  GoabText,
 } from "@abgov/react-components";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
