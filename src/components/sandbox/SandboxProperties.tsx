@@ -80,7 +80,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
       case "list":
       case "dropdown":
         return (
-          <GoabDropdown key={p.name} name={p.name} value={p.value} onChange={onListChange}>
+          <GoabDropdown key={p.name} name={p.name} width="100%" value={p.value} onChange={onListChange}>
             {p.options.map(option => (
               <GoabDropdownItem
                 value={option || ""}
@@ -95,6 +95,7 @@ export function SandboxProperties({ properties = [], onChange }: Props) {
           <GoabDropdown
             key={p.name}
             name={p.name}
+            width="100%"
             filterable
             leadingIcon="search"
             value={p.value}
