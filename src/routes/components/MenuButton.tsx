@@ -158,8 +158,8 @@ export default function MenuButtonPage() {
                   tags="react"
                   allowCopy={true}
                   code={`
-                    const menuButtonOnAction = (detail: GoabMenuButtonOnActionDetail) => {
-                      console.log("Last action: ", detail.action);
+                    const menuButtonOnAction = (action: string) => {
+                      console.log("Last action: ", action);
                     };
                   `}
                 />
