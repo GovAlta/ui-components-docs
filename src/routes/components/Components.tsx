@@ -92,6 +92,7 @@ export function Components() {
               <Link to={getUrl("file-uploader")}>File uploader</Link>
               <Link to={getUrl("icon-button")}>Icon button</Link>
               <Link to={getUrl("input")}>Input</Link>
+              <Link to={getUrl("menu-button")}>{newComponentLabel("Menu Button")}</Link>
               <Link to={getUrl("radio")}>Radio</Link>
               <Link to={getUrl("text-area")}>Text area</Link>
             </GoabSideMenuGroup>

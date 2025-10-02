@@ -85,30 +85,22 @@ export const VersionLanguageSwitcher = () => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
-  const openLanguagePopOver = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-  };
-
-  const openVersionPopOver = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-  };
-
   const getCurrentVersionLabel = (language: string, version: string) => {
     if (language === "react") {
       return version === "new" ? REACT_VERSIONS.NEW.label : REACT_VERSIONS.OLD.label;
-    }    if (language === "angular") {
+    } if (language === "angular") {
       return version === "new" ? ANGULAR_VERSIONS.NEW.label : ANGULAR_VERSIONS.OLD.label;
     }
   }
 
   return (
-    <>
-      <div className="version-language-switcher">
+    <div className="version-language-switcher">
       <GoabPopover
         target={
-          <a className="version-language-switcher__heading" href="#" id="language-switcher" onClick={e => openLanguagePopOver(e)}>
-            <GoabIcon type="chevron-down" size="small"></GoabIcon> {capitalizeFirstLetter(language)}
-          </a>
+          <div className="menu-link">
+            <GoabIcon type="chevron-down" size="small" />
+            { capitalizeFirstLetter(language) }
+          </div>
         }
         padded={false}>
         <>
@@ -121,10 +113,10 @@ export const VersionLanguageSwitcher = () => {
       </GoabPopover>
 
       <GoabPopover target={
-        <a className="version-language-switcher__heading" href="#"
-           onClick={e => openVersionPopOver(e)}>
-          <GoabIcon type="chevron-down" size="small"></GoabIcon> {getCurrentVersionLabel(language, version)}
-        </a>
+        <div className="menu-link">
+          <GoabIcon type="chevron-down" size="small" />
+          { getCurrentVersionLabel(language, version) }
+        </div>
       } padded={false}>
         <>
           {["new", "old"].map(ver => (
@@ -134,7 +126,6 @@ export const VersionLanguageSwitcher = () => {
           ))}
         </>
       </GoabPopover>
-      </div>
-    </>
+    </div>
   );
 }
