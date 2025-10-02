@@ -75,7 +75,7 @@ export default function MenuButtonPage() {
     },
     {
       name: "type",
-      type: "GoabButtonType (primary | secondary | tertiary)",
+      type: "GoabButtonType (primary | secondary | tertiary | start)",
       description: "Controls the visual style of the trigger button.",
       defaultValue: "primary",
     },
@@ -148,8 +148,8 @@ export default function MenuButtonPage() {
                   tags="angular"
                   allowCopy={true}
                   code={`
-                    menuOnAction(action: string) {
-                      console.log("Last action: ", action);
+                    menuOnAction(detail: GoabMenuButtonOnActionDetail) {
+                      console.log("Last action: ", detail.action);
                     }
                   `}
                 />
@@ -158,8 +158,8 @@ export default function MenuButtonPage() {
                   tags="react"
                   allowCopy={true}
                   code={`
-                    const menuButtonOnAction = (action: string) => {
-                      console.log("Last action: ", action);
+                    const menuButtonOnAction = (detail: GoabMenuButtonOnActionDetail) => {
+                      console.log("Last action: ", detail.action);
                     };
                   `}
                 />
