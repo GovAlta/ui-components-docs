@@ -24,7 +24,7 @@ import { GoabButtonType } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 
 const FIGMA_LINK =
-  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=41625-336313&t=SorPzaYbnqfQ8qiQ-4";
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=69366-164803";
 
 const componentName = "Menu button";
 const description = "Expose a short list of contextual actions without cluttering the interface.";
