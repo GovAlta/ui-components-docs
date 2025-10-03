@@ -55,7 +55,7 @@ export default function CheckboxPage() {
       name: "maxWidth",
       requirement: "optional",
       value: "",
-    },
+    }
   ]);
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
@@ -230,11 +230,16 @@ export default function CheckboxPage() {
       type: "(event: GoabCheckboxOnChangeDetail) => void",
       description: "Callback function when checkbox value is changed.",
     },
+    {
+      name: "indeterminate",
+      type: "boolean",
+      description: "Displays the checkbox styled with a dash when set to true",
+    },
     TestIdProperty,
     MarginProperty,
   ];
 
-  const noop = () => { };
+  const noop = () => {};
 
   function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     const missingProps = {
@@ -284,10 +289,10 @@ export default function CheckboxPage() {
               />
 
               {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                   import { FormControl } from "@angular/forms";
                   export class SomeOtherComponent {
                     itemFormCtrl = new FormControl();
@@ -296,10 +301,10 @@ export default function CheckboxPage() {
               />}
 
               {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                   export class SomeOtherComponent {
                    form!: FormGroup;
                    constructor(private fb: FormBuilder) {
@@ -312,10 +317,10 @@ export default function CheckboxPage() {
               />}
 
               {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
                   export class SomeOtherComponent {
                    item=false;
                    checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
@@ -327,15 +332,15 @@ export default function CheckboxPage() {
               />}
 
               {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                   function checkboxOnChange(event: GoabCheckboxOnChangeDetail) {
                     console.log(event.value);
                   }
                 `}
-              />
+                />
               }
 
               <form>

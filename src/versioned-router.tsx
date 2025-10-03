@@ -10,6 +10,7 @@ import ButtonPage from "@routes/components/Button.tsx";
 import ButtonGroupPage from "@routes/components/ButtonGroup.tsx";
 import CalloutPage from "@routes/components/Callout.tsx";
 import CheckboxPage from "@routes/components/Checkbox.tsx";
+import CheckboxListPage from "@routes/components/CheckboxList";
 import ContainerPage from "@routes/components/Container.tsx";
 import DatePickerPage from "@routes/components/DatePicker.tsx";
 import DetailsPage from "@routes/components/Details.tsx";
@@ -24,6 +25,7 @@ import IconsPage from "@routes/components/Icons.tsx";
 import IconButtonPage from "@routes/components/IconButton.tsx";
 import TextFieldPage from "@routes/components/TextField.tsx";
 import ListPage from "@routes/components/List.tsx";
+import MenuButtonPage from "@routes/components/MenuButton.tsx";
 import MicrositeHeaderPage from "@routes/components/MicrositeHeader.tsx";
 import ModalPage from "@routes/components/Modal.tsx";
 import NotificationBannerPage from "@routes/components/Notificationbanner.tsx";
@@ -93,6 +95,7 @@ export const ComponentsRouter = () => {
     "button-group": <ButtonGroupPage />,
     "callout": <CalloutPage />,
     "checkbox": <CheckboxPage />,
+    "checkbox-list": <CheckboxListPage />,
     "container": <ContainerPage />,
     "date-picker": <DatePickerPage />,
     "details": <DetailsPage />,
@@ -109,6 +112,7 @@ export const ComponentsRouter = () => {
     "icon-button": <IconButtonPage />,
     "input": <TextFieldPage />,
     "list": <ListPage />,
+    "menu-button": <MenuButtonPage />,
     "microsite-header": <MicrositeHeaderPage />,
     "modal": <ModalPage />,
     "notification-banner": <NotificationBannerPage />,
