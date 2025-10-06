@@ -328,6 +328,11 @@ export default function TextAreaPage() {
       type: "(event: GoabTextAreaOnKeyPressDetail) => void",
       description: "Function invoked when a key is pressed",
     },
+    {
+      name: "onBlur",
+      type: "(event: GoabTextAreaOnBlurDetail) => void",
+      description: "Callback when the textarea loses focus",
+    },
     MarginProperty,
   ];
 
