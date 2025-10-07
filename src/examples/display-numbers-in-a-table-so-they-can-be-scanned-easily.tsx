@@ -15,14 +15,24 @@ export const DisplayNumbersInATableSoTheyCanBeScannedEasily = () => {
           </thead>
           <tbody>
             <tr>
-              <td>Item 1</td>
-              <td>Item 2</td>
-              <td className="goa-table-number-column">54</td>
+              <td>Christian</td>
+              <td>Batz</td>
+              <td className="goa-table-number-column">54356456</td>
             </tr>
             <tr>
-              <td>Item 1</td>
-              <td>Item 2</td>
-              <td className="goa-table-number-column">4567</td>
+              <td>Brian</td>
+              <td>Wisozk</td>
+              <td className="goa-table-number-column">23212321</td>
+            </tr>
+            <tr>
+              <td>Neha</td>
+              <td>Jones</td>
+              <td className="goa-table-number-column">23197213</td>
+            </tr>
+            <tr>
+              <td>Tristan</td>
+              <td>Buckridge</td>
+              <td className="goa-table-number-column">76312313</td>
             </tr>
           </tbody>
         </GoabTable>
