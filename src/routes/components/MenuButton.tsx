@@ -7,6 +7,7 @@ import {
   GoabTab,
   GoabTabs,
 } from "@abgov/react-components";
+import { GoabMenuButtonOnActionDetail } from "@abgov/ui-components-common";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import {
@@ -82,7 +83,7 @@ export default function MenuButtonPage() {
     TestIdProperty,
     {
       name: "onAction",
-      type: "(action: string) => void",
+      type: "(detail: GoabMenuButtonOnActionDetail) => void",
       description:
         "Callback fired when a menu action is selected. Receives the action identifier from the clicked item.",
     },
@@ -118,8 +119,8 @@ export default function MenuButtonPage() {
     setMenuButtonProps(props as CastingType);
   }
 
-  function handleAction(action: string) {
-    console.log("Last action: ", action);
+  function handleAction(detail: GoabMenuButtonOnActionDetail) {
+    console.log("Last action: ", detail.action);
   }
 
   return (
