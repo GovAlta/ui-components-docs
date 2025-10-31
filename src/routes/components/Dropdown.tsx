@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   GoabBadge,
   GoabDropdown,
@@ -81,15 +81,42 @@ export default function DropdownPage() {
       name: "width",
       value: "",
     },
+    {
+      label: "Max width",
+      type: "string",
+      name: "maxWidth",
+      value: "",
+      hidden: version === "old", // Hide in LTS (old) version
+    },
     { label: "Disabled", type: "boolean", name: "disabled", value: false },
     { label: "Error", type: "boolean", name: "error", value: false },
     { label: "Native", type: "boolean", name: "native", value: false },
     { label: "Filterable", type: "boolean", name: "filterable", value: false },
     { label: "ARIA label", type: "string", name: "ariaLabel", value: "" },
   ]);
+
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic dropdown",
   });
+
+  // Hide the maxWidth control and remove the prop when LTS version is selected
+  useEffect(() => {
+    setDropdownBindings(prev =>
+      prev.map(b => {
+        if (b.name === "maxWidth" && b.type === "string") {
+          return { ...b, hidden: version === "old", value: version === "old" ? "" : b.value };
+        }
+        return b;
+      })
+    );
+
+    if (version === "old") {
+      setDropdownProps(prev => {
+        const { maxWidth, ...rest } = prev as unknown as Record<string, unknown>;
+        return rest as ComponentPropsType;
+      });
+    }
+  }, [version]);
 
   const oldDropdownProperties: ComponentProperty[] = [
     {
@@ -251,6 +278,11 @@ export default function DropdownPage() {
       name: "width",
       type: "string",
       description: "Overrides the autosized menu width. Non-native only.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Maximum width of the dropdown. Non-native only.",
     },
     {
       name: "disabled",

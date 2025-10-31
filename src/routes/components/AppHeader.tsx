@@ -231,7 +231,7 @@ export default function AppHeaderPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="2" />
+                <GoabBadge type="information" content="4" />
               </>
             }
           >

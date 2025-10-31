@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -89,6 +89,13 @@ export default function TextAreaPage() {
       type: "number",
     },
     {
+      label: "Max width",
+      name: "maxWidth",
+      type: "string",
+      value: "",
+      hidden: version === "old", // Hide in LTS (old) version
+    },
+    {
       name: "value",
       type: "string",
       value: "",
@@ -97,9 +104,29 @@ export default function TextAreaPage() {
       label: "Value",
     },
   ]);
+
   const { formItemBindings, formItemProps, onFormItemChange } = useSandboxFormItem({
     label: "Basic",
   });
+
+  // Hide the maxWidth control and remove the prop when LTS version is selected
+  useEffect(() => {
+    setTextAreaBindings(prev =>
+      prev.map(b => {
+        if (b.name === "maxWidth" && b.type === "string") {
+          return { ...b, hidden: version === "old", value: version === "old" ? "" : b.value };
+        }
+        return b;
+      })
+    );
+
+    if (version === "old") {
+      setComponentProps(prev => {
+        const { maxWidth, ...rest } = prev as unknown as Record<string, unknown>;
+        return rest as CastingType;
+      });
+    }
+  }, [version]);
 
   const oldComponentProperties: ComponentProperty[] = [
     {
@@ -327,6 +354,11 @@ export default function TextAreaPage() {
       name: "onKeyPress",
       type: "(event: GoabTextAreaOnKeyPressDetail) => void",
       description: "Function invoked when a key is pressed",
+    },
+    {
+      name: "onBlur",
+      type: "(event: GoabTextAreaOnBlurDetail) => void",
+      description: "Callback when the textarea loses focus",
     },
     MarginProperty,
   ];
