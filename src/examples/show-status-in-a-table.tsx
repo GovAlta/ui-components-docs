@@ -134,7 +134,8 @@ export const ShowStatusInATable = () => {
                         </thead>
 
                         <tbody>
-                            <tr *ngFor="let badge of badgeValues">
+                            @for (badge of badgeValues; track badge) {
+                              <tr>
                                 <td>
                                     <goa-badge [type]="badge.type" [content]="badge.content" />
                                 </td>
@@ -143,7 +144,8 @@ export const ShowStatusInATable = () => {
                                 <td>
                                     <goa-button type="tertiary" (_click)="onClick($event)">Assign</goa-button>
                                 </td>
-                            </tr>
+                              </tr>
+                            }
                         </tbody>
                     <goa-table>
                 `}
@@ -164,16 +166,18 @@ export const ShowStatusInATable = () => {
                 </thead>
 
                 <tbody>
-                  <tr *ngFor="let badge of badgeValues">
-                    <td>
-                      <goab-badge [type]="badge.type" [content]="badge.content" />
-                    </td>
-                    <td>Lorem ipsum dolor sit amet consectetur.</td>
-                    <td class="goa-table-number-column">1234567890</td>
-                    <td>
-                      <goab-button type="tertiary" (onClick)="onClick()">Assign</goab-button>
-                    </td>
-                  </tr>
+                  @for (badge of badgeValues; track badge) {
+                    <tr>
+                      <td>
+                        <goab-badge [type]="badge.type" [content]="badge.content" />
+                      </td>
+                      <td>Lorem ipsum dolor sit amet consectetur.</td>
+                      <td class="goa-table-number-column">1234567890</td>
+                      <td>
+                        <goab-button type="tertiary" (onClick)="onClick()">Assign</goab-button>
+                      </td>
+                    </tr>
+                  }
                 </tbody>
                 </goab-table>
               `}

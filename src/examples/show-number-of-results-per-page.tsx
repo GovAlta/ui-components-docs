@@ -422,11 +422,13 @@ export default function ShowResultsPerPageExample() {
                   </tr>
                   </thead>
                   <tbody>
-                  <tr *ngFor="let user of pageUsers; index as i">
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td>{{ user.age }}</td>
-                  </tr>
+                  @for (user of pageUsers; track $index) {
+                    <tr>
+                      <td>{{ user.firstName }}</td>
+                      <td>{{ user.lastName }}</td>
+                      <td>{{ user.age }}</td>
+                    </tr>
+                  }
                   </tbody>
                 </goa-table>
 
@@ -484,11 +486,13 @@ export default function ShowResultsPerPageExample() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let user of pageUsers; index as i">
-                      <td>{{ user.firstName }}</td>
-                      <td>{{ user.lastName }}</td>
-                      <td>{{ user.age }}</td>
-                    </tr>
+                    @for (user of pageUsers; track $index) {
+                      <tr>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.age }}</td>
+                      </tr>
+                    }
                   </tbody>
                 </goab-table>
 
