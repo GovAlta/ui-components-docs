@@ -860,8 +860,8 @@ export default function MultipleActionsinATable() {
                                 </tr>
                             </thead>
                             <tbody>
-                            {pageUsers.map(user => (
-                                <tr *ngFor="let user of users; index as i">
+                            @for (user of users; track $index) {
+                                <tr>
                                     <td><goa-badge [type]="item.status.type" [content]="item.status.text"></goa-badge></td>
                                     <td>{{ user.text }}</td>
                                     <td className="goa-table-number-column">{{ user.number }}</td>
@@ -879,7 +879,7 @@ export default function MultipleActionsinATable() {
                                         </goa-button-group>
                                     </td>
                                 </tr>
-                            ))}
+                            }
                             </tbody>
                         </goa-table>
 
@@ -1077,8 +1077,8 @@ export default function MultipleActionsinATable() {
                                 </tr>
                             </thead>
                             <tbody>
-                            {pageUsers.map(user => (
-                                <tr *ngFor="let user of users; index as i">
+                            @for (user of users; track $index) {
+                                <tr>
                                     <td><goab-badge [type]="item.status.type" [content]="item.status.text"></goab-badge></td>
                                     <td>{{ user.text }}</td>
                                     <td className="goab-table-number-column">{{ user.number }}</td>
@@ -1096,7 +1096,7 @@ export default function MultipleActionsinATable() {
                                         </goab-button-group>
                                     </td>
                                 </tr>
-                            ))}
+                            }
                             </tbody>
                         </goab-table>
 

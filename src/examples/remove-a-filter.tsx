@@ -36,12 +36,13 @@ export const RemoveAFilter = () => {
           tags="angular"
           allowCopy={true}
           code={`
-                  <goa-filter-chip
-                    *ngFor="let chip of chips"
-                    [content]="chip"
-                    (_click)="deleteChip(chip)"
-                    mr="s">
-                  </goa-filter-chip>
+                  @for (chip of chips; track chip) {
+                    <goa-filter-chip
+                      [content]="chip"
+                      (_click)="deleteChip(chip)"
+                      mr="s">
+                    </goa-filter-chip>
+                  }
                 `}
         />
       )}
@@ -51,12 +52,13 @@ export const RemoveAFilter = () => {
           tags="angular"
           allowCopy={true}
           code={`
-                  <goab-filter-chip
-                    *ngFor="let chip of chips"
-                    [content]="chip"
-                    (onClick)="deleteChip(chip)"
-                    mr="s">
-                  </goab-filter-chip>
+                  @for (chip of chips; track chip) {
+                    <goab-filter-chip
+                      [content]="chip"
+                      (onClick)="deleteChip(chip)"
+                      mr="s">
+                    </goab-filter-chip>
+                  }
                 `}
         />
       )}

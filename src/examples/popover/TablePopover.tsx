@@ -304,12 +304,15 @@ export const TablePopover = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                        <tr *ngFor="let u of popoverValues">
-                            <td><goab-badge [type]="u.type" [content]="u.status" /></td>
-                            <td>Lorem ipsum</td>
-                            <td class="goa-table-number-column">1234567890</td>
-                            <td><goab-button type="tertiary" (_click)="onClick()">Action</goab-button></td>
-                        </tr>
+                    <tbody>
+                        @for (u of popoverValues; track u) {
+                            <tr>
+                                <td><goab-badge [type]="u.type" [content]="u.status" /></td>
+                                <td>Lorem ipsum</td>
+                                <td class="goa-table-number-column">1234567890</td>
+                                <td><goab-button type="tertiary" (_click)="onClick()">Action</goab-button></td>
+                            </tr>
+                        }
                     </tbody>
                 </goab-table>
                 `}

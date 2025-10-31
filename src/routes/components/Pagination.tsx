@@ -448,11 +448,13 @@ export default function PaginationPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let user of pageUsers; index as i">
-                      <td>{{ user.firstName }}</td>
-                      <td>{{ user.lastName }}</td>
-                      <td>{{ user.age }}</td>
-                    </tr>
+                    @for (user of pageUsers; track $index) {
+                      <tr>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.age }}</td>
+                      </tr>
+                    }
                   </tbody>
                 </goa-table>
                 <goa-pagination [itemcount]="users.length" perpagecount="10" [pagenumber]="page" (_change)="handlePageChange($event)"></goa-pagination>
@@ -473,11 +475,13 @@ export default function PaginationPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr *ngFor="let user of pageUsers; index as i">
-                        <td>{{ user.firstName }}</td>
-                        <td>{{ user.lastName }}</td>
-                        <td>{{ user.age }}</td>
-                      </tr>
+                      @for (user of pageUsers; track $index) {
+                        <tr>
+                          <td>{{ user.firstName }}</td>
+                          <td>{{ user.lastName }}</td>
+                          <td>{{ user.age }}</td>
+                        </tr>
+                      }
                     </tbody>
                   </goab-table>
                   <goab-pagination [itemCount]="users.length" [perPageCount]="10" [pageNumber]="page"
