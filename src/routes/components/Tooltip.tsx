@@ -1,6 +1,6 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
@@ -23,6 +23,7 @@ import {
 import { TooltipExamples } from "@examples/tooltip/TooltipExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 
@@ -42,6 +43,7 @@ type CastingType = {
 };
 
 export default function TooltipPage() {
+  const { version } = useContext(LanguageVersionContext);
 
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Tooltip",
@@ -68,7 +70,35 @@ export default function TooltipPage() {
       options: ["left", "center", "right"],
       value: "",
     },
+    {
+      label: "Max width",
+      type: "string",
+      name: "maxWidth",
+      value: "",
+      hidden: version === "old", // ensure hidden on initial render when LTS selected
+    },
   ]);
+
+  // Hide the maxWidth control and remove the prop when LTS version is selected
+  useEffect(() => {
+    // Toggle the visibility of the Max width binding
+    setComponentBindings(prev =>
+      prev.map(b => {
+        if (b.name === "maxWidth" && b.type === "string") {
+          return { ...b, hidden: version === "old", value: version === "old" ? "" : b.value };
+        }
+        return b;
+      })
+    );
+
+    // Ensure the component props do not include maxWidth when LTS is selected
+    if (version === "old") {
+      setComponentProps(prev => {
+        const { maxWidth, ...rest } = prev as Record<string, unknown>;
+        return rest as ComponentPropsType;
+      });
+    }
+  }, [version]);
 
   const oldComponentProperties: ComponentProperty[] = [
     {
@@ -122,6 +152,11 @@ export default function TooltipPage() {
       description: "Horizontal alignment to the child element",
       defaultValue: "center",
     },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Maximum width of the tooltip",
+    },
     TestIdProperty,
     MarginProperty
   ];
@@ -143,7 +178,6 @@ export default function TooltipPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
