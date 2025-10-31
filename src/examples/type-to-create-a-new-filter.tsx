@@ -112,14 +112,15 @@ export class FilterChipComponent {
   </goa-input>
 </goa-form-item>
 <div *ngIf="typedChips.length > 0">
-  <goa-filter-chip
-    *ngFor="let typedChip of typedChips"
-    [content]="typedChip"
-    mb="xs"
-    mr="xs"
-    (_click)="removeTypedChip(typedChip)"
-  >
-  </goa-filter-chip>
+  @for (typedChip of typedChips; track typedChip) {
+    <goa-filter-chip
+      [content]="typedChip"
+      mb="xs"
+      mr="xs"
+      (_click)="removeTypedChip(typedChip)"
+    >
+    </goa-filter-chip>
+  }
 </div>
             `}
           />
@@ -180,14 +181,15 @@ export class FilterChipComponent {
   </goab-input>
 </goab-form-item>
 <div *ngIf="typedChips.length > 0">
-  <goab-filter-chip
-    *ngFor="let typedChip of typedChips"
-    [content]="typedChip"
-    mb="xs"
-    mr="xs"
-    (onClick)="removeTypedChip(typedChip)"
-  >
-  </goab-filter-chip>
+  @for (typedChip of typedChips; track typedChip) {
+    <goab-filter-chip
+      [content]="typedChip"
+      mb="xs"
+      mr="xs"
+      (onClick)="removeTypedChip(typedChip)"
+    >
+    </goab-filter-chip>
+  }
 </div>
             `}
           />
