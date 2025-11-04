@@ -64,12 +64,13 @@ export const AddAFilterChip = () => {
           allowCopy={true}
           code={`
                       <div>
-                        <goa-filter-chip
-                          *ngFor="let filter of activeFilters"
-                          [content]="filter"
-                          (_click)="removeFilter(filter)"
-                          mr="s">
-                        </goa-filter-chip>
+                        @for (filter of activeFilters; track filter) {
+                          <goa-filter-chip
+                            [content]="filter"
+                            (_click)="removeFilter(filter)"
+                            mr="s">
+                          </goa-filter-chip>
+                        }
                       </div>
                       <goa-button-group alignment="center" mt="l">
                         <goa-button (click)="addFilter()">Add Random Filter</goa-button>
@@ -84,12 +85,13 @@ export const AddAFilterChip = () => {
           allowCopy={true}
           code={`
                       <div>
-                        <goab-filter-chip
-                          *ngFor="let filter of activeFilters"
-                          [content]="filter"
-                          (onClick)="removeFilter(filter)"
-                          mr="s">
-                        </goab-filter-chip>
+                        @for (filter of activeFilters; track filter) {
+                          <goab-filter-chip
+                            [content]="filter"
+                            (onClick)="removeFilter(filter)"
+                            mr="s">
+                          </goab-filter-chip>
+                        }
                       </div>
                       <goab-button-group alignment="center" mt="l">
                         <goab-button (onClick)="addFilter()">Add Random Filter</goab-button>

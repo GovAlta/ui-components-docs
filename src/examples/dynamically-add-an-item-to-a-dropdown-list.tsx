@@ -321,12 +321,13 @@ export const DynamicallyAddAnItemToADropdownList = () => {
                         [value]="selectedTask"
                         name="selectedTask"
                         (_change)="onSelectedTaskChange($event)">
-                        <goa-dropdown-item
-                          *ngFor="let task of tasks; trackBy: trackByFn"
-                          [value]="task.value"
-                          [mount]="task.mount"
-                          [label]="task.label">
-                        </goa-dropdown-item>
+                        @for (task of tasks; track trackByFn($index, task)) {
+                          <goa-dropdown-item
+                            [value]="task.value"
+                            [mount]="task.mount"
+                            [label]="task.label">
+                          </goa-dropdown-item>
+                        }
                       </goa-dropdown>
                     </ng-container>
                   </goa-form-item>
@@ -382,12 +383,13 @@ export const DynamicallyAddAnItemToADropdownList = () => {
                     [value]="selectedTask"
                     name="selectedTask"
                     (onChange)="onSelectedTaskChange($event)">
-                    <goab-dropdown-item
-                      *ngFor="let task of tasks; trackBy: trackByFn"
-                      [value]="task.value"
-                      [mountType]="task.mount"
-                      [label]="task.label">
-                    </goab-dropdown-item>
+                    @for (task of tasks; track trackByFn($index, task)) {
+                      <goab-dropdown-item
+                        [value]="task.value"
+                        [mountType]="task.mount"
+                        [label]="task.label">
+                      </goab-dropdown-item>
+                    }
                   </goab-dropdown>
                 </ng-container>
               </goab-form-item>

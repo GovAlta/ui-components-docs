@@ -126,26 +126,30 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1,2,3]">
-                      <td>
-                        <goa-badge type="important" content="Review pending" />
-                      </td>
-                      <td>Lorem ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goa-button type="tertiary">Action</goa-button>
-                      </td>
-                    </tr>
-                    <tr *ngFor="let i of [0,1]">
-                      <td>
-                        <goa-badge type="information" content="Complete" />
-                      </td>
-                      <td>Lorem Ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goa-button type="tertiary">Action</goa-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1,2,3]; track i) {
+                      <tr>
+                        <td>
+                          <goa-badge type="important" content="Review pending" />
+                        </td>
+                        <td>Lorem ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goa-button type="tertiary">Action</goa-button>
+                        </td>
+                      </tr>
+                    }
+                    @for (i of [0,1]; track i) {
+                      <tr>
+                        <td>
+                          <goa-badge type="information" content="Complete" />
+                        </td>
+                        <td>Lorem Ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goa-button type="tertiary">Action</goa-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goa-table>
               </goa-tab>
@@ -161,16 +165,18 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1,2,3]">
-                      <td>
-                        <goa-badge type="important" content="Review pending" />
-                      </td>
-                      <td>Lorem ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goa-button type="tertiary">Action</goa-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1,2,3]; track i) {
+                      <tr>
+                        <td>
+                          <goa-badge type="important" content="Review pending" />
+                        </td>
+                        <td>Lorem ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goa-button type="tertiary">Action</goa-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goa-table>
               </goa-tab>
@@ -186,16 +192,18 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1]">
-                      <td>
-                        <goa-badge type="information" content="Complete" />
-                      </td>
-                      <td>Lorem Ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goa-button type="tertiary">Action</goa-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1]; track i) {
+                      <tr>
+                        <td>
+                          <goa-badge type="information" content="Complete" />
+                        </td>
+                        <td>Lorem Ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goa-button type="tertiary">Action</goa-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goa-table>
               </goa-tab>
@@ -220,26 +228,30 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1,2,3]">
-                      <td>
-                        <goab-badge type="important" content="Review pending" />
-                      </td>
-                      <td>Lorem ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goab-button type="tertiary">Action</goab-button>
-                      </td>
-                    </tr>
-                    <tr *ngFor="let i of [0,1]">
-                      <td>
-                        <goab-badge type="information" content="Complete" />
-                      </td>
-                      <td>Lorem Ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goab-button type="tertiary">Action</goab-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1,2,3]; track i) {
+                      <tr>
+                        <td>
+                          <goab-badge type="important" content="Review pending" />
+                        </td>
+                        <td>Lorem ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goab-button type="tertiary">Action</goab-button>
+                        </td>
+                      </tr>
+                    }
+                    @for (i of [0,1]; track i) {
+                      <tr>
+                        <td>
+                          <goab-badge type="information" content="Complete" />
+                        </td>
+                        <td>Lorem Ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goab-button type="tertiary">Action</goab-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goab-table>
               </goab-tab>
@@ -255,16 +267,18 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1,2,3]">
-                      <td>
-                        <goab-badge type="important" content="Review pending" />
-                      </td>
-                      <td>Lorem ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goab-button type="tertiary">Action</goab-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1,2,3]; track i) {
+                      <tr>
+                        <td>
+                          <goab-badge type="important" content="Review pending" />
+                        </td>
+                        <td>Lorem ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goab-button type="tertiary">Action</goab-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goab-table>
               </goab-tab>
@@ -280,16 +294,18 @@ export const SetASpecificTabToBeActive = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let i of [0,1]">
-                      <td>
-                        <goab-badge type="information" content="Complete" />
-                      </td>
-                      <td>Lorem Ipsum</td>
-                      <td class="goa-table-number-column">1234567890</td>
-                      <td>
-                        <goab-button type="tertiary">Action</goab-button>
-                      </td>
-                    </tr>
+                    @for (i of [0,1]; track i) {
+                      <tr>
+                        <td>
+                          <goab-badge type="information" content="Complete" />
+                        </td>
+                        <td>Lorem Ipsum</td>
+                        <td class="goa-table-number-column">1234567890</td>
+                        <td>
+                          <goab-button type="tertiary">Action</goab-button>
+                        </td>
+                      </tr>
+                    }
                   </tbody>
                 </goab-table>
               </goab-tab>

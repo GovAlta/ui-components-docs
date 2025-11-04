@@ -417,13 +417,14 @@ export const FilterDataInATable = () => {
                 <goa-text tag="span" color="secondary" mb="xs" mr="xs">
                   Filter:
                 </goa-text>
-                <goa-filter-chip
-                  *ngFor="let typedChip of typedChips"
-                  [content]="typedChip"
-                  mb="xs"
-                  mr="xs"
-                  (_click)="removeTypedChip(typedChip)">
-                </goa-filter-chip>
+                @for (typedChip of typedChips; track typedChip) {
+                  <goa-filter-chip
+                    [content]="typedChip"
+                    mb="xs"
+                    mr="xs"
+                    (_click)="removeTypedChip(typedChip)">
+                  </goa-filter-chip>
+                }
                 <goa-button type="tertiary" size="compact" mb="xs" (_click)="removeAllTypedChips()">
                   Clear all
                 </goa-button>
@@ -438,13 +439,15 @@ export const FilterDataInATable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let u of filteredData">
-                    <td>
-                      <goa-badge [type]="u.type" [content]="u.status"></goa-badge>
-                    </td>
-                    <td>Lorem ipsum</td>
-                    <td class="goa-table-number-column">{{ u.key }}</td>
-                  </tr>
+                  @for (u of filteredData; track u) {
+                    <tr>
+                      <td>
+                        <goa-badge [type]="u.type" [content]="u.status"></goa-badge>
+                      </td>
+                      <td>Lorem ipsum</td>
+                      <td class="goa-table-number-column">{{ u.key }}</td>
+                    </tr>
+                  }
                 </tbody>
               </goa-table>
 
@@ -855,13 +858,14 @@ export const FilterDataInATable = () => {
                 <goab-text tag="span" color="secondary" mb="xs" mr="xs">
                   Filter:
                 </goab-text>
-                <goab-filter-chip
-                  *ngFor="let typedChip of typedChips"
-                  [content]="typedChip"
-                  mb="xs"
-                  mr="xs"
-                  (click)="removeTypedChip(typedChip)">
-                </goab-filter-chip>
+                @for (typedChip of typedChips; track typedChip) {
+                  <goab-filter-chip
+                    [content]="typedChip"
+                    mb="xs"
+                    mr="xs"
+                    (click)="removeTypedChip(typedChip)">
+                  </goab-filter-chip>
+                }
                 <goab-button type="tertiary" size="compact" mb="xs" (click)="removeAllTypedChips()">
                   Clear all
                 </goab-button>
@@ -876,13 +880,15 @@ export const FilterDataInATable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let u of filteredData">
-                    <td>
-                      <goab-badge [type]="u.type" [content]="u.status"></goab-badge>
-                    </td>
-                    <td>Lorem ipsum</td>
-                    <td class="goa-table-number-column">{{ u.key }}</td>
-                  </tr>
+                  @for (u of filteredData; track u) {
+                    <tr>
+                      <td>
+                        <goab-badge [type]="u.type" [content]="u.status"></goab-badge>
+                      </td>
+                      <td>Lorem ipsum</td>
+                      <td class="goa-table-number-column">{{ u.key }}</td>
+                    </tr>
+                  }
                 </tbody>
               </goab-table>
 

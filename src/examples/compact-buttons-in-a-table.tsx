@@ -359,18 +359,20 @@ export const CompactButtonsInATable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of pageUsers; index as i">
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td class="goa-table-number-column">12345667</td>
-                    <td>
-                    <goa-button-group alignment="center">
-                      <goa-button type="tertiary" size="compact" (_click)="onClick($event)">
-                        View
-                      </goa-button>
-                    </goa-button-group>
-                  </td>
-                  </tr>
+                  @for (user of pageUsers; track $index) {
+                    <tr>
+                      <td>{{ user.firstName }}</td>
+                      <td>{{ user.lastName }}</td>
+                      <td class="goa-table-number-column">12345667</td>
+                      <td>
+                      <goa-button-group alignment="center">
+                        <goa-button type="tertiary" size="compact" (_click)="onClick($event)">
+                          View
+                        </goa-button>
+                      </goa-button-group>
+                    </td>
+                    </tr>
+                  }
                 </tbody>
               </goa-table>
 
@@ -400,18 +402,20 @@ export const CompactButtonsInATable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of pageUsers; index as i">
-                    <td>{{ user.firstName }}</td>
-                    <td>{{ user.lastName }}</td>
-                    <td class="goa-table-number-column">12345667</td>
-                    <td>
-                    <goab-button-group alignment="center">
-                      <goab-button type="tertiary" size="compact" (onClick)="onClick()">
-                        View
-                      </goab-button>
-                    </goab-button-group>
-                  </td>
-                  </tr>
+                  @for (user of pageUsers; track $index) {
+                    <tr>
+                      <td>{{ user.firstName }}</td>
+                      <td>{{ user.lastName }}</td>
+                      <td class="goa-table-number-column">12345667</td>
+                      <td>
+                      <goab-button-group alignment="center">
+                        <goab-button type="tertiary" size="compact" (onClick)="onClick()">
+                          View
+                        </goab-button>
+                      </goab-button-group>
+                    </td>
+                    </tr>
+                  }
                 </tbody>
               </goab-table>
 

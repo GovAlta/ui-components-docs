@@ -315,11 +315,13 @@ export class TableComponent() {
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users; index as i">
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.age }}</td>
-    </tr>
+    @for (user of users; track $index) {
+      <tr>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+      </tr>
+    }
   </tbody>
 </goa-table>
           `}
@@ -392,11 +394,13 @@ export class TableComponent() {
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users; index as i">
-      <td>{{ user.firstName }}</td>
-      <td>{{ user.lastName }}</td>
-      <td>{{ user.age }}</td>
-    </tr>
+    @for (user of users; track $index) {
+      <tr>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.age }}</td>
+      </tr>
+    }
   </tbody>
 </goab-table>
           `}

@@ -193,22 +193,25 @@ export const DynamicallyChangeItemsInADropdownList = () => {
           code={`
               <div [formGroup]="changeForm">
                 <goa-form-item label="Size" requirement="optional" helptext="Choose the type to change the list below">
-                  <goa-dropdown goaValue formControlName="parentDropdown" 
+                  <goa-dropdown goaValue formControlName="parentDropdown"
                     placeholder="Select a value" name="parent">
-                    <goa-dropdown-item *ngFor="let parent of parents" 
+                    @for (parent of parents; track parent) {
+                      <goa-dropdown-item
                         [value]="parent" [label]="parent" />
+                    }
                   </goa-dropdown>
                 </goa-form-item>
                 <goa-form-item label="Items" requirement="optional">
                   <goa-dropdown formControlName="childDropdown" 
                       placeholder="Select a value" goaValue name="children">
                     <ng-container *ngIf="children.length > 0">
-                    <goa-dropdown-item
-                      *ngFor="let child of children; trackBy: generateUniqueKey"
-                      [value]="child"
-                      [label]="child"
-                      [mount]="'reset'"
-                    />
+                    @for (child of children; track generateUniqueKey($index, child)) {
+                      <goa-dropdown-item
+                        [value]="child"
+                        [label]="child"
+                        [mount]="'reset'"
+                      />
+                    }
                   </ng-container>
                   </goa-dropdown>
                 </goa-form-item>
@@ -226,20 +229,23 @@ export const DynamicallyChangeItemsInADropdownList = () => {
                 <goab-form-item label="Size" requirement="optional" helpText="Choose the type to change the list below">
                   <goab-dropdown formControlName="parentDropdown"
                       placeholder="Select a value" name="parent">
-                    <goab-dropdown-item *ngFor="let parent of parents"
-                         [value]="parent" [label]="parent" />
+                    @for (parent of parents; track parent) {
+                      <goab-dropdown-item
+                        [value]="parent" [label]="parent" />
+                    }
                   </goab-dropdown>
                 </goab-form-item>
                 <goab-form-item label="Items" requirement="optional">
                   <goab-dropdown formControlName="childDropdown"
                     placeholder="Select a value" name="children">
                       <ng-container *ngIf="children.length > 0">
-                        <goab-dropdown-item
-                          *ngFor="let child of children; trackBy: generateUniqueKey"
-                          [value]="child"
-                          [label]="child"
-                          [mountType]="'reset'"
-                        />
+                        @for (child of children; track generateUniqueKey($index, child)) {
+                          <goab-dropdown-item
+                            [value]="child"
+                            [label]="child"
+                            [mountType]="'reset'"
+                          />
+                        }
                       </ng-container>
                   </goab-dropdown>
                 </goab-form-item>

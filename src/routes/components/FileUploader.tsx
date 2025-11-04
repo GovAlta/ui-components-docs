@@ -404,16 +404,17 @@ export default function FileUploaderPage() {
                 code={`
                 <goa-form-item label="Upload a file">
                   <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps, "angular", version)}></goa-file-upload-input>
-                  <goa-file-upload-card
-                    *ngFor="let upload of uploads; index as i"
-                    [type]="upload.file.type"
-                    [size]="upload.file.size"
-                    [filename]="upload.file.name"
-                    [progress]="progressList[upload.file.name]"
-                    (_delete)="deleteFile(upload)"
-                    (_cancel)="deleteFile(upload)"
-                  >
-                  </goa-file-upload-card>              
+                  @for (upload of uploads; track $index) {
+                    <goa-file-upload-card
+                      [type]="upload.file.type"
+                      [size]="upload.file.size"
+                      [filename]="upload.file.name"
+                      [progress]="progressList[upload.file.name]"
+                      (_delete)="deleteFile(upload)"
+                      (_cancel)="deleteFile(upload)"
+                    >
+                    </goa-file-upload-card>
+                  }
                 </goa-form-item>
               `}
               />}
@@ -468,16 +469,17 @@ export default function FileUploaderPage() {
                 code={`
                 <goab-form-item label="Upload a file">
                   <goab-file-upload-input variant="dragdrop" (onSelectFile)="uploadFile($event)" maxFileSize="100MB"></goab-file-upload-input>
-                    <goab-file-upload-card
-                      *ngFor="let upload of uploads; index as i"
-                      [type]="upload.file.type"
-                      [size]="upload.file.size"
-                      [filename]="upload.file.name"
-                      [progress]="progressList[upload.file.name]"
-                      (onDelete)="deleteFile(upload)"
-                      (onCancel)="deleteFile(upload)"
-                    >
-                  </goab-file-upload-card>
+                    @for (upload of uploads; track $index) {
+                      <goab-file-upload-card
+                        [type]="upload.file.type"
+                        [size]="upload.file.size"
+                        [filename]="upload.file.name"
+                        [progress]="progressList[upload.file.name]"
+                        (onDelete)="deleteFile(upload)"
+                        (onCancel)="deleteFile(upload)"
+                      >
+                      </goab-file-upload-card>
+                    }
                 </goab-form-item>
               `}
               />}
