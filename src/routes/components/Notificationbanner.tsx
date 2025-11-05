@@ -63,7 +63,7 @@ export default function NotificationBannerPage() {
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "type",
-      type: "success | important | information | emergency",
+      type: "important | information | event | emergency",
       description: "Define the context and colour of the badge",
     },
     {
@@ -108,7 +108,7 @@ export default function NotificationBannerPage() {
   const componentProperties: ComponentProperty[] = [
     {
       name: "type",
-      type: "GoabNotificationType(success | important | information | emergency)",
+      type: "GoabNotificationType(important | information | event | emergency)",
       description: "Define the context and colour of the badge",
       defaultValue: "information"
     },
