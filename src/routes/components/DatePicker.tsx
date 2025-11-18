@@ -244,7 +244,8 @@ export default function DatePickerPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}
+              fullWidth>
               {/*Angular*/}
               {version === "old" && (
                 <CodeSnippet
