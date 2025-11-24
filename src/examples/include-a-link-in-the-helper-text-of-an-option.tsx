@@ -6,8 +6,6 @@ import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 export const IncludeALinkInTheHelperTextOfAnOption = () => {
   const {version} = useContext(LanguageVersionContext);
-  const noop = () => {
-  };
 
   return (
     <>
