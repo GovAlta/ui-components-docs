@@ -187,7 +187,7 @@ export default function DatePickerPage() {
     {
       name: "width",
       type: "string | undefined",
-      defaultValue: "Defaults to 16ch",
+      defaultValue: "16ch",
       description:
         "Set the width of the date text field. Supports all valid CSS units, including %, px, em, rem, and ch.",
     },
