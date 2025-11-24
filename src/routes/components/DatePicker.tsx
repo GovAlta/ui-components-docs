@@ -187,7 +187,9 @@ export default function DatePickerPage() {
     {
       name: "width",
       type: "string | undefined",
-      description: "Set the width of the date text field.",
+      defaultValue: "Defaults to 16ch.",
+      description:
+        "Set the width of the date text field. Supports all CSS units, including %, px, em, rem, and ch.",
     },
     {
       name: "error",
@@ -244,8 +246,7 @@ export default function DatePickerPage() {
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
-              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}
-              fullWidth>
+              flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
               {/*Angular*/}
               {version === "old" && (
                 <CodeSnippet
