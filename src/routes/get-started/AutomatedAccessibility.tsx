@@ -71,7 +71,7 @@ export default function AutomatedAccessibilityPage() {
                 <li>Missed opportunities to fix genuine barriers</li>
                 <li>A false sense of compliance without real usability improvements</li>
             </ul>
-            By combing automation with thoughtful manual testing, teams can focus on real issues impacting 
+            By combining automation with thoughtful manual testing, teams can focus on real issues impacting 
             users, improving the accessibility and quality of their digital products.
         </GoabText>
       </div>
