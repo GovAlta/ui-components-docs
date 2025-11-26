@@ -1,4 +1,4 @@
-import { GoabFormItem, GoabRadioGroup, GoabRadioItem } from "@abgov/react-components";
+import { GoabFormItem, GoabCheckbox } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
@@ -19,14 +19,12 @@ export default function IncludeDescriptionsForIndividualInputOptions() {
           allowCopy={true}
           code={`
             <goa-form-item label="How do you want to sign in?">
-              <goa-radio-group name="selectOne" (_change)="onChange($event)">
-                <goa-radio-item value="1" label="Sign in as a business">
-                  <span slot="description">Use the account associated with the business</span>
-                </goa-radio-item>
-                <goa-radio-item value="2" label="Sign in as an individual">
-                  <span slot="description">If you don't have a Alberta.ca login, you can create one</span>
-                </goa-radio-item>
-              </goa-radio-group>
+              <goa-checkbox text="Sign in as a business" (_change)="onChange($event)">
+                <span slot="description">Use the account associated with the business</span>
+              </goa-checkbox>
+              <goa-checkbox text="Sign in as an individual" (_change)="onChange($event)>
+                <span slot="description">If you don't have a Alberta.ca login, you can create one</span>
+              </goa-checkbox>
             </goa-form-item>     
             `}
         />
@@ -42,7 +40,8 @@ export default function IncludeDescriptionsForIndividualInputOptions() {
 
                 public constructor(private fb: FormBuilder) {
                   this.form = this.fb.group({
-                    selectOne: ["1"]
+                    checkboxOne: [""],
+                    checkboxTwo: [""]
                   });
                 }
               }
@@ -57,18 +56,16 @@ export default function IncludeDescriptionsForIndividualInputOptions() {
           allowCopy={true}
           code={`
               <goab-form-item label="How do you want to sign in?" [formGroup]="form">
-                <goab-radio-group name="selectOne"  formControlName="selectOne">
-                  <goab-radio-item value="1" label="Sign in as a business" [description]="optionOneDescription">
-                    <ng-template #optionOneDescription>
-                      Use the account associated with the business
-                    </ng-template>
-                  </goab-radio-item>
-                  <goab-radio-item value="2" label="Sign in as an individual" [description]="optionTwoDescription">
-                    <ng-template #optionTwoDescription>
-                      If you don't have a Alberta.ca login, you can create one
-                    </ng-template>
-                  </goab-radio-item>
-                </goab-radio-group>
+                <goab-checkbox text="Sign in as a business" [description]="optionOneDescription" formControlName="checkboxOne">
+                  <ng-template #optionOneDescription>
+                    Use the account associated with the business
+                  </ng-template>
+                </goab-checkbox>
+                <goab-checkbox text="Sign in as an individual" [description]="optionTwoDescription" formControlName="checkboxTwo">
+                  <ng-template #optionTwoDescription>
+                    If you don't have a Alberta.ca login, you can create one
+                  </ng-template>
+                </goab-checkbox>
               </goab-form-item>
             `}
         />
@@ -82,18 +79,20 @@ export default function IncludeDescriptionsForIndividualInputOptions() {
           allowCopy={true}
           code={`
             <GoAFormItem label="How do you want to sign in?">
-              <GoARadioGroup name="selectOne" onChange={onChange}>
-                <GoARadioItem
-                  value="1"
-                  label="Sign in as a business"
-                  description="Use the account associated with the business"
-                />
-                <GoARadioItem
-                  value="2"
-                  label="Sign in as an individual"
-                  description="If you don't have a Alberta.ca login, you can create one"
-                />
-              </GoARadioGroup>
+              <GoACheckbox
+                name="checkboxOne"
+                value="1"
+                text="Sign in as a business"
+                description="Use the account associated with the business"
+                onChange={onChange}
+              />
+              <GoACheckbox
+                name="checkboxTwo"
+                value="2"
+                text="Sign in as an individual"
+                description="If you don't have a Alberta.ca login, you can create one"
+                onChange={onChange}
+              />
             </GoAFormItem> 
             `}
         />
@@ -106,36 +105,40 @@ export default function IncludeDescriptionsForIndividualInputOptions() {
           allowCopy={true}
           code={`
             <GoabFormItem label="How do you want to sign in?">
-              <GoabRadioGroup name="selectOne" onChange={onChange}>
-                <GoabRadioItem
-                  value="1"
-                  label="Sign in as a business"
-                  description="Use the account associated with the business"
-                />
-                <GoabRadioItem
-                  value="2"
-                  label="Sign in as an individual"
-                  description="If you don't have a Alberta.ca login, you can create one"
-                />
-              </GoabRadioGroup>
+              <GoabCheckbox
+                name="checkboxOne"
+                value="1"
+                text="Sign in as a business"
+                description="Use the account associated with the business"
+                onChange={onChange}
+              />
+              <GoabCheckbox
+                name="checkboxTwo
+                value="2"
+                text="Sign in as an individual"
+                description="If you don't have a Alberta.ca login, you can create one"
+                onChange={onChange}
+              />
             </GoabFormItem> 
             `}
         />
       )}
 
       <GoabFormItem label="How do you want to sign in?">
-        <GoabRadioGroup name="selectOne" onChange={noop}>
-          <GoabRadioItem
-            value="1"
-            label="Sign in as a business"
-            description="Use the account associated with the business"
-          />
-          <GoabRadioItem
-            value="2"
-            label="Sign in as an individual"
-            description="If you don't have a Alberta.ca login, you can create one"
-          />
-        </GoabRadioGroup>
+        <GoabCheckbox
+          name="checkboxOne"
+          value="1"
+          text="Sign in as a business"
+          description="Use the account associated with the business"
+          onChange={noop}
+        />
+        <GoabCheckbox
+          name="checkboxTwo"
+          value="2"
+          text="Sign in as an individual"
+          description="If you don't have a Alberta.ca login, you can create one"
+          onChange={noop}
+        />
       </GoabFormItem>
     </Sandbox>
   )

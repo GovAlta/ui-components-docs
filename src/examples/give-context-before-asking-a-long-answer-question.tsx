@@ -4,7 +4,7 @@ import {
   GoabButtonGroup,
   GoabDetails,
   GoabFormItem,
-  GoabTextarea
+  GoabTextArea
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext } from "react";
@@ -44,7 +44,7 @@ export const GiveContextBeforeAskingALongAnswerQuestion = () => {
         <GoabFormItem
           label="Provide details about your situation"
           helpText="Include specific details to help us answer your question quickly.">
-          <GoabTextarea name="program" onChange={noop} maxCount={400} countBy={"character"} />
+          <GoabTextArea name="program" onChange={noop} maxCount={400} countBy={"character"} />
         </GoabFormItem>
         </form>
         <GoabDetails mt={"m"} heading="What kind of information is useful?">

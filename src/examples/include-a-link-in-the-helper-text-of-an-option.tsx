@@ -1,5 +1,5 @@
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
-import { GoabCheckbox, GoabFormItem } from "@abgov/react-components";
+import { GoabRadioGroup, GoabRadioItem, GoabFormItem } from "@abgov/react-components";
 import { Sandbox } from "@components/sandbox";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
@@ -17,14 +17,16 @@ export const IncludeALinkInTheHelperTextOfAnOption = () => {
         tags="angular"
         allowCopy={true}
         code={`
-              <goa-form-item label="How would you like to be contacted?">
-                <goa-checkbox checked="true" name="optionOne" text="Email">
-                  <span slot="description">Help text with a <a href="#">link</a>.</span>
-                </goa-checkbox>
-                <goa-checkbox checked="false" name="optionTwo" text="Phone" />
-                <goa-checkbox checked="false" name="optionThree" text="Text message" />
-              </goa-form-item>
-            `}
+          <goa-form-item label="How would you like to be contacted?">
+            <goa-radio-group name="contactOption">
+              <goa-radio-item value="1" label="Email">
+                <span slot="description">Help text with a <a href="#">link</a>.</span>
+              </goa-radio-item>
+              <goa-radio-item value="2" text="Phone" />
+              <goa-radio-item value="3" text="Text message" />
+            </goa-radio-group>
+          </goa-form-item>
+        `}
       />}
 
       {version === "new" && <CodeSnippet
@@ -32,16 +34,18 @@ export const IncludeALinkInTheHelperTextOfAnOption = () => {
         tags="angular"
         allowCopy={true}
         code={`
-              <goab-form-item label="How would you like to be contacted?">
-                <goab-checkbox [checked]="true" name="optionOne" text="Email" [description]="descriptionTemplate">
-                  <ng-template #descriptionTemplate>
-                    <span>Help text with a <a href="#">link</a>.</span>
-                  </ng-template>
-                </goab-checkbox>
-                <goab-checkbox [checked]="false" name="optionTwo" text="Phone" />
-                <goab-checkbox [checked]="false" name="optionThree" text="Text message" />
-              </goab-form-item>
-            `}
+          <goab-form-item label="How would you like to be contacted?">
+            <goab-radio-group name="contactOption">
+              <goab-radio-item value="1" label="Email" [description]="descriptionTemplate">
+                <ng-template #descriptionTemplate>
+                  <span>Help text with a <a href="#">link</a>.</span>
+                </ng-template>
+              </goab-radio-item>
+              <goab-radio-item value="2" text="Phone" />
+              <goab-radio-item value="3" text="Text message" />
+            </goab-radio-group>
+          </goab-form-item>
+        `}
       />}
 
       {/*React*/}
@@ -50,17 +54,18 @@ export const IncludeALinkInTheHelperTextOfAnOption = () => {
         tags="react"
         allowCopy={true}
         code={`
-              <GoAFormItem label="How would you like to be contacted?">
-                <GoACheckbox
-                  checked={true}
-                  name="optionOne"
-                  text="Email"
-                  description={<span>Help text with a <a href="#">link</a>.</span>}
-                  />
-                <GoACheckbox checked={false} name="optionTwo" text="Phone" />
-                <GoACheckbox checked={false} name="optionThree" text="Text message" />
-              </GoAFormItem>
-            `}
+          <GoAFormItem label="How would you like to be contacted?">
+            <GoARadioGroup name="contactOption">
+              <GoARadioItem
+                value="1"
+                label="Email"
+                description={<span>Help text with a <a href="#">link</a>.</span>}
+              />
+              <GoARadioItem value="2" label="Phone" />
+              <GoARadioItem value="3" label="Text message" />
+            </GoARadioGroup>
+          </GoAFormItem>
+        `}
       />}
 
       {version === "new" && <CodeSnippet
@@ -68,28 +73,31 @@ export const IncludeALinkInTheHelperTextOfAnOption = () => {
         tags="react"
         allowCopy={true}
         code={`
-              <GoabFormItem label="How would you like to be contacted?">
-                <GoabCheckbox
-                  checked={true}
-                  name="optionOne"
-                  text="Email"
-                  description={<span>Help text with a <a href="#">link</a>.</span>}
-                  />
-                <GoabCheckbox checked={false} name="optionTwo" text="Phone" />
-                <GoabCheckbox checked={false} name="optionThree" text="Text message" />
-              </GoabFormItem>
-            `}
+          <GoabFormItem label="How would you like to be contacted?">
+            <GoabRadioGroup name="contactOption">
+              <GoabRadioItem
+                value="1"
+                label="Email"
+                description={<span>Help text with a <a href="#">link</a>.</span>}
+              />
+              <GoabRadioItem value="2" label="Phone" />
+              <GoabRadioItem value="3" label="Text message" />
+            </GoabRadioGroup>
+          </GoabFormItem>
+        `}
       />}
 
       <GoabFormItem label="How would you like to be contacted?">
-        <GoabCheckbox
-          checked={true}
-          name="optionOne"
-          text="Email"
-          description={<span>Help text with a <a href="#">link</a>.</span>}
-        />
-        <GoabCheckbox checked={false} name="optionTwo" text="Phone" />
-        <GoabCheckbox checked={false} name="optionThree" text="Text message" />
+        <GoabRadioGroup name="contactOption">
+          <GoabRadioItem
+            name="optionOne"
+            value="1"
+            label="Email"
+            description={<span>Help text with a <a href="#">link</a>.</span>}
+          />
+          <GoabRadioItem value="2" name="optionTwo" label="Phone" />
+          <GoabRadioItem value="3" name="optionThree" label="Text message" />
+        </GoabRadioGroup>
       </GoabFormItem>
     </Sandbox>
     </>

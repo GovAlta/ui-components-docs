@@ -6,7 +6,7 @@ import {
   GoabContainer, GoabDropdown, GoabDropdownItem,
   GoabFormItem,
   GoabGrid,
-  GoabRadioGroup, GoabRadioItem, GoabTextarea
+  GoabRadioGroup, GoabRadioItem, GoabTextArea
 } from "@abgov/react-components";
 import { useContext } from "react";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
@@ -170,7 +170,7 @@ export const ReviewAndAction = () => {
             </GoabFormItem>
 
             <GoabFormItem label="Message" mt="l">
-              <GoabTextarea name="message" rows={5} width="100%" value="" onChange={() => {}} />
+              <GoabTextArea name="message" rows={5} width="100%" value="" onChange={() => {}} />
             </GoabFormItem>
 
             <GoabButton mt="xl" onClick={() => {}}>

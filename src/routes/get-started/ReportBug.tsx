@@ -6,7 +6,7 @@ import {
   GoabFormItem,
   GoabInput,
   GoabRadioItem,
-  GoabRadioGroup, GoabTextarea, GoabText
+  GoabRadioGroup, GoabTextArea, GoabText
 } from "@abgov/react-components";
 import { ComponentContent } from "@components/component-content/ComponentContent.tsx";
 import { useEffect, useState } from "react";
@@ -258,13 +258,13 @@ export default function ReportBugPage() {
           </GoabFormItem>
         </GoabBlock>
         <GoabFormItem label="Expected Behaviour" mb="xl" helpText="A description of what you are expecting to happen." error={ expectedError }>
-          <GoabTextarea name="expected" value={ formValues.expected } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!expectedError } />
+          <GoabTextArea name="expected" value={ formValues.expected } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!expectedError } />
         </GoabFormItem>
         <GoabFormItem label="Actual Behaviour" mb="xl" helpText="A description of what is actually happening (what the bug is)." error={ actualError }>
-          <GoabTextarea name="actual" value={ formValues.actual } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!actualError } />
+          <GoabTextArea name="actual" value={ formValues.actual } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!actualError } />
         </GoabFormItem>
         <GoabFormItem label="Replication steps" mb="xl" helpText="Detailed steps to reproduce your issue." error={ replicationError }>
-          <GoabTextarea name="replication" value={ formValues.replication } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!replicationError } />
+          <GoabTextArea name="replication" value={ formValues.replication } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" error={ !!replicationError } />
         </GoabFormItem>
         <GoabFormItem label="StackBlitz URL" mb="s" 
           helpText={
@@ -294,7 +294,7 @@ export default function ReportBugPage() {
           the issue.        
         </GoabDetails>
         <GoabFormItem label="Any additional information" mb="2xl" helpText="Add any other relevant context." requirement="optional">
-          <GoabTextarea name="additional" value={ formValues.additional } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" />
+          <GoabTextArea name="additional" value={ formValues.additional } onChange={(event: GoabTextAreaOnChangeDetail) => handleChange(event.name, event.value) } rows={ 6 } width="90%" />
         </GoabFormItem>
         <GoabButton onClick={submitBug}>Submit bug report</GoabButton>
       </ComponentContent>
