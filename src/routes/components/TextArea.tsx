@@ -5,7 +5,7 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { GoabBadge, GoabFormItem, GoabTab, GoabTabs, GoabTextarea } from "@abgov/react-components";
+import { GoabBadge, GoabFormItem, GoabTab, GoabTabs, GoabTextArea } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -517,7 +517,7 @@ export default function TextAreaPage() {
               )}
               <form>
                 <GoabFormItem {...formItemProps}>
-                  <GoabTextarea
+                  <GoabTextArea
                     {...componentProps}
                     width="60ch"
                     name="item"

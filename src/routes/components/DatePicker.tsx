@@ -19,30 +19,34 @@ import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { LegacyMarginProperty, MarginProperty } from "@components/component-properties/common-properties.ts";
+import {
+  LegacyMarginProperty,
+  MarginProperty,
+} from "@components/component-properties/common-properties.ts";
 import { DatePickerExamples } from "@examples/date-picker/DatePickerExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-33175";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=33054-33175";
 const componentName = "Date picker";
 const category = Category.INPUTS_AND_ACTIONS;
 const relatedComponents = [
   { link: "/content/date-format", name: "Date format" },
-  { link: "/components/form-item", name: "Form item" }
+  { link: "/components/form-item", name: "Form item" },
 ];
 const description =
   "Lets users select a date through a calendar without the need to manually type it in a field.";
 type ComponentPropsType = GoabDatePickerProps;
 type CastingType = {
   [key: string]: unknown;
-  onChange: (event: GoabDatePickerOnChangeDetail)=> void;
+  onChange: (event: GoabDatePickerOnChangeDetail) => void;
 };
 
 export default function DatePickerPage() {
-  const {version} = useContext(LanguageVersionContext);
+  const { version } = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     onChange: () => {},
   });
@@ -70,6 +74,12 @@ export default function DatePickerPage() {
       name: "disabled",
       value: false,
     },
+    {
+      label: "Width",
+      type: "string",
+      name: "width",
+      value: "",
+    },
   ]);
 
   useEffect(() => {
@@ -86,7 +96,7 @@ export default function DatePickerPage() {
               options: ["", "calendar", "input"],
               value: "",
               defaultValue: "calendar",
-            }
+            },
           ];
         }
       } else {
@@ -175,6 +185,13 @@ export default function DatePickerPage() {
       description: "Maximum date value allowed. Only used for calendar type.",
     },
     {
+      name: "width",
+      type: "string | undefined",
+      defaultValue: "16ch",
+      description:
+        "Set the width of the date text field. Supports all valid CSS units, including %, px, em, rem, and ch.",
+    },
+    {
       name: "error",
       type: "boolean",
       defaultValue: "false",
@@ -197,7 +214,7 @@ export default function DatePickerPage() {
       name: "onChange",
       type: "(event: GoabDatePickerOnChangeDetail) => void",
       description: "Function to call when the date changes.",
-    }
+    },
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
@@ -219,23 +236,24 @@ export default function DatePickerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox
               properties={componentBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
               onChangeFormItemBindings={onFormItemChange}
               flags={version === "old" ? ["reactive"] : ["reactive", "template-driven", "event"]}>
-
               {/*Angular*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class MyComponent {
                   item = new Date();
@@ -243,15 +261,17 @@ export default function DatePickerPage() {
                   // handle change
                     console.log((event as CustomEvent).detail.value);
                   }
-                }  
+                }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="angular"
+                  allowCopy={true}
+                  code={`
                 // non-reactive code
                 export class MyComponent {
                   item = new Date();
@@ -259,28 +279,32 @@ export default function DatePickerPage() {
                   // handle change
                     console.log(event.value);
                   }
-                }  
+                }
               `}
-              />}
+                />
+              )}
 
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
                   itemFormCtrl = new FormControl(new Date());
-                }  
+                }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "reactive"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "reactive"]}
+                  allowCopy={true}
+                  code={`
                 // reactive code
                 import { FormControl } from "@angular/forms";
                 export class MyComponent {
@@ -292,13 +316,15 @@ export default function DatePickerPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags={["angular", "template-driven"]}
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags={["angular", "template-driven"]}
+                  allowCopy={true}
+                  code={`
                   export class MyComponent {
                    item = new Date();
                    dateOnChange(event: GoabDatePickerOnChangeDetail) {
@@ -309,49 +335,59 @@ export default function DatePickerPage() {
                   }
                 }
               `}
-              />}
+                />
+              )}
 
               {/*React*/}
-              {version === "old" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "old" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 function onChange(name: string, value: Date) {
                   console.log(name, value);
                 }
               `}
-              />}
+                />
+              )}
 
-              {version === "new" && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
+              {version === "new" && (
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
                 function onChange(event: GoabDatePickerOnChangeDetail) {
                   console.log(event.value);
                 }
               `}
-              />}
+                />
+              )}
 
               <GoabFormItem {...formItemProps}>
-                <GoabDatePicker {...componentProps} name="item" value={new Date()} onChange={noop} />
+                <GoabDatePicker
+                  {...componentProps}
+                  name="item"
+                  value={new Date()}
+                  onChange={noop}
+                />
               </GoabFormItem>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-
-
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           {version === "new" && (
             <GoabTab
               heading={
-              <>
+                <>
                   Examples
                   <GoabBadge type="information" content="3" />
                 </>
-              }
-            >
+              }>
               <DatePickerExamples />
             </GoabTab>
           )}
@@ -363,8 +399,7 @@ export default function DatePickerPage() {
                   Examples
                   <GoabBadge type="information" content="2" />
                 </>
-              }
-            >
+              }>
               <DatePickerExamples />
             </GoabTab>
           )}

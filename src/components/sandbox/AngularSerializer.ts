@@ -94,6 +94,9 @@ export class AngularSerializer extends BaseSerializer implements Serializer {
     if (tail === "OneColumnLayout" && this.version === "new") {
       tail = "ColumnLayout";
     }
+    if (tail === "TextArea" && this.version === "new") {
+      tail = "Textarea"
+    }
     return `${this.version === "old" ? "goa" : "goab"}-${this.dasherize(tail)}`;
   }
 

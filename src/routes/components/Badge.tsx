@@ -11,10 +11,12 @@ import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
 import { GoabBadgeType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import ICONS from "@routes/components/icons.json";
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=458-16984";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=458-16984";
 const componentName = "Badge";
 const description =
   "Small labels which hold small amounts of information, system feedback, or states.";
@@ -89,6 +91,13 @@ export default function BadgePage() {
       type: "boolean",
       name: "icon",
       value: false,
+    },
+    {
+      label: "Icon type",
+      type: "combobox",
+      name: "iconType",
+      options: [""].concat(ICONS),
+      value: "",
     },
     {
       label: "Content",
@@ -167,6 +176,12 @@ export default function BadgePage() {
       defaultValue: "false",
     },
     {
+      name: "iconType",
+      type: "GoabIconType",
+      description:
+        "Specifies which icon to display when icon is enabled. See the Icons component for available options.",
+    },
+    {
       name: "content",
       type: "string",
       description: "Text label of the badge.",
@@ -202,17 +217,20 @@ export default function BadgePage() {
         relatedComponents={relatedComponents}
         figmaLink={FIGMA_LINK}
         githubLink="Badge"
-
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
               <GoabBadge {...badgeProps} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
-
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -221,8 +239,7 @@ export default function BadgePage() {
                 Examples
                 <GoabBadge type="information" content="3" />
               </>
-            }
-          >
+            }>
             <BadgeExamples />
           </GoabTab>
 
@@ -233,7 +250,6 @@ export default function BadgePage() {
           <GoabTab heading="Accessibility">
             <AccessibilityEmpty figmaLink={FIGMA_LINK} />
           </GoabTab>
-
         </GoabTabs>
       </ComponentContent>
     </>

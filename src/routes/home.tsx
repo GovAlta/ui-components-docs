@@ -54,7 +54,7 @@ const HomePage = () => {
           <CardLite
             title="Foundations"
             description="Guidelines on design, brand, content, styles, and accessibility."
-            linkTo="/content/capitalization"
+            linkTo="/foundations"
             linkDisplay="View content"
           />
           <CardLite

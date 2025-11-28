@@ -4,7 +4,7 @@ import {
   GoabContainer,
   GoabDropdown, GoabDropdownItem,
   GoabFormItem, GoabInput,
-  GoabModal, GoabTextarea
+  GoabModal, GoabTextArea
 } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useContext, useState } from "react";
@@ -66,12 +66,12 @@ export const AddAnotherItemInAModal = () => {
               name="name"></GoabInput>
           </GoabFormItem>
           <GoabFormItem label="Description" mt="xs">
-            <GoabTextarea
+            <GoabTextArea
               name="description"
               width="80%"
               rows={2}
               onChange={onChangeDescription}
-              value={description}></GoabTextarea>
+              value={description}></GoabTextArea>
           </GoabFormItem>
         </GoabModal>
       </GoabContainer>
