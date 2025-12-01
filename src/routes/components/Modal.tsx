@@ -331,20 +331,24 @@ export default function ModalPage() {
               <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
               {!isClosableChecked(componentBindings) && (
-                <GoabModal {...componentProps} open={open}>
+                <GoabModal
+                  {...componentProps}
+                  open={open}
+                  actions={
+                    <GoabButtonGroup alignment="end" mt={"xl"}>
+                      <GoabButton type="tertiary" onClick={() => setOpen(false)}>
+                        Cancel
+                      </GoabButton>
+                      <GoabButton type="primary" onClick={() => setOpen(false)}>
+                        Exit
+                      </GoabButton>
+                    </GoabButtonGroup>
+                  }>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                     molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi
                     eius laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
                   </p>
-                  <GoabButtonGroup alignment="end" mt={"xl"}>
-                    <GoabButton type="tertiary" onClick={() => setOpen(false)}>
-                      Cancel
-                    </GoabButton>
-                    <GoabButton type="primary" onClick={() => setOpen(false)}>
-                      Exit
-                    </GoabButton>
-                  </GoabButtonGroup>
                 </GoabModal>
               )}
 
