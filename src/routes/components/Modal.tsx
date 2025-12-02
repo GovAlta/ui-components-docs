@@ -335,7 +335,7 @@ export default function ModalPage() {
                   {...componentProps}
                   open={open}
                   actions={
-                    <GoabButtonGroup alignment="end" mt={"xl"}>
+                    <GoabButtonGroup alignment="end">
                       <GoabButton type="tertiary" onClick={() => setOpen(false)}>
                         Cancel
                       </GoabButton>
