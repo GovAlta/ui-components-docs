@@ -2,7 +2,6 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoabBadge,
   GoabButton,
-  GoabButtonGroup,
   GoabModal,
   GoabModalProps,
   GoabTab,
