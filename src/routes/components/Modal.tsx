@@ -44,7 +44,7 @@ type CastingType = {
 export default function ModalPage() {
   const { language } = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    heading: "Are you sure you want to exit your application?",
+    heading: "This is important information",
   });
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function ModalPage() {
       type: "string",
       name: "heading",
       width: "40ch",
-      value: "Are you sure you want to exit your application?",
+      value: "This is important information",
     },
     {
       label: "Max width",
@@ -81,12 +81,6 @@ export default function ModalPage() {
       name: "maxWidth",
       width: "16ch",
       value: "",
-    },
-    {
-      label: "Closable",
-      type: "boolean",
-      name: "closable",
-      value: false,
     },
     {
       label: "Open",
@@ -281,86 +275,36 @@ export default function ModalPage() {
                 tags="angular"
                 allowCopy={true}
                 code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onClick() {
-                      this.open = !this.open;
-                    }
-                  }
-                `}
-              />
-
-              {isClosableChecked(componentBindings) && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
                     onClose() {
                       this.open = false;
                    }
                 `}
-                />
-              )}
+              />
 
               <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
-                  const [open, setOpen] = useState(false);
-                   function onClick() {
-                    setOpen(!open);
-                   }
-                `}
-              />
-
-              {isClosableChecked(componentBindings) && (
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
                   function modalOnClose() {
                     setOpen(false);
                    }
                 `}
-                />
-              )}
+              />
 
               <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
-              {!isClosableChecked(componentBindings) && (
-                <GoabModal
-                  {...componentProps}
-                  open={open}
-                  actions={
-                    <GoabButtonGroup alignment="end">
-                      <GoabButton type="tertiary" onClick={() => setOpen(false)}>
-                        Cancel
-                      </GoabButton>
-                      <GoabButton type="primary" onClick={() => setOpen(false)}>
-                        Exit
-                      </GoabButton>
-                    </GoabButtonGroup>
-                  }>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
-                    molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi
-                    eius laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  </p>
-                </GoabModal>
-              )}
-
-              {isClosableChecked(componentBindings) && (
-                <GoabModal {...componentProps} open={open} onClose={onClose}>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
-                    molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi
-                    eius laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
-                  </p>
-                </GoabModal>
-              )}
+              <GoabModal {...componentProps} open={open} onClose={onClose}>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+                  molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
+                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                </p>
+                <p>
+                  See the Examples tab for customized closing buttons and behavior using the
+                  "actions" property.
+                </p>
+              </GoabModal>
             </Sandbox>
             <ComponentProperties
               properties={componentProperties}
