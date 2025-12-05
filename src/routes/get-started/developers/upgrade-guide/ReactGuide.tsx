@@ -52,7 +52,7 @@ export const ReactGuide = () => {
       <GoabTable width={"100%"} mb={"3xl"}>
         <thead>
         <th>Component</th>
-        <th>v5(LTS)</th>
+        <th>v5</th>
         <th>v6(latest)</th>
         </thead>
         <tbody>
