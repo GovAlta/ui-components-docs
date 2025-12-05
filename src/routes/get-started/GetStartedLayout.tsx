@@ -27,7 +27,7 @@ export default function GetStartedLayout() {
           <Link to="component-lifecycle">Component lifecycle</Link>
           <Link to="contribute">Contribute</Link>
           <Link to="roadmap">Roadmap</Link>
-          <Link to="out-of-support">Out of support versions</Link>
+          <Link to="lts-policy">Long Term Support (LTS)</Link>
           <Link to="support">Get support</Link>
 
         </GoabSideMenu>

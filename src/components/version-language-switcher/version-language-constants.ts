@@ -2,7 +2,7 @@ export type LanguageVersion = "old" | "new";
 export type Language = "react" | "angular";
 export const ANGULAR_VERSIONS = {
   OLD: {
-    label: "v3.2.2",
+    label: "v3.2.2 (LTS)",
     value: "old"
   },
   NEW: {
@@ -12,7 +12,7 @@ export const ANGULAR_VERSIONS = {
 }
 export const REACT_VERSIONS = {
   OLD: {
-    label: "v5.4.1",
+    label: "v5.4.1 (LTS)",
     value: "old"
   },
   NEW: {
