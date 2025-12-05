@@ -50,7 +50,7 @@ import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
-import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
+import { OutOfSupportPage } from "@routes/get-started/OutOfSupport";
 
 // Examples Pages
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
@@ -120,8 +120,8 @@ const router = createBrowserRouter(
           <Route index element={<AutomatedAccessibilityPage />} />
         </Route>
         <Route path="component-lifecycle" element={<ComponentLifecyclePage />} />
-        <Route path="lts-policy">
-          <Route index element={<LtsPolicyPage />} />
+        <Route path="out-of-support">
+          <Route index element={<OutOfSupportPage />} />
         </Route>
         <Route path="contribute">
           <Route index element={<ContributePage />} />
