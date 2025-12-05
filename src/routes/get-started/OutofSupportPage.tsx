@@ -1,13 +1,13 @@
 import { GoabCallout, GoabText } from "@abgov/react-components";
 import { Link } from "react-router-dom";
 
-export const LtsPolicyPage = () => {
+export const OutofSupportPage = () => {
   return (
     <>
-      <GoabText tag="h1" size="heading-xl">Long Term Support (LTS)</GoabText>
+      <GoabText tag="h1" size="heading-xl">Out-of-support versions</GoabText>
 
       <GoabText size="body-l" tag="h3">
-        LTS for the design system has ended. Version v3 (Angular) and v5 (React) are no longer supported.
+        Versions v3 (Angular) and v5 (React) are no longer supported.
       </GoabText>
 
       <GoabText tag={"p"} size="heading-m">
@@ -35,7 +35,7 @@ export const LtsPolicyPage = () => {
 
       <GoabCallout type="important" size={"medium"} heading="Active maintenance has ended"
                    maxWidth={"65ch"} mt={"xl"}>
-        Projects still using LTS will continue to work, but new issues or bugs in v3 (Angular) and v5 (React) will not be fixed.
+        Projects still using v3/v5 will continue to work, but new issues or bugs in v3 (Angular) and v5 (React) will not be fixed.
       </GoabCallout>
     </>
   );
