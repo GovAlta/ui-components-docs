@@ -35,7 +35,6 @@ import TypographyPage from "@routes/design-tokens/typography/Typography";
 import DevelopersOverviewPage from "@routes/get-started/developers/DevelopersOverview";
 import DevelopersSetupPage from "@routes/get-started/developers/DevelopersSetup";
 import DevelopersTechnologiesPage from "@routes/get-started/developers/DevelopersTechnologies";
-import DevelopersVSCodePage from "@routes/get-started/developers/DevelopersVSCode";
 import BugVerificationPage from "@routes/get-started/developers/BugVerification";
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
@@ -108,7 +107,6 @@ const router = createBrowserRouter(
           <Route path="browsers" element={<SupportedBrowsersPage />} />
           <Route path="setup" element={<DevelopersSetupPage />} />
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
-          <Route path="vscode" element={<DevelopersVSCodePage />} />
           <Route path="bug" element={<BugVerificationPage />} />
           <Route path="update" element={<DevelopersUpgradePage />} />
         </Route>

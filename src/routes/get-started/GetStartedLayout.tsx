@@ -17,7 +17,6 @@ export default function GetStartedLayout() {
             <Link to="developers">Overview</Link>
             <Link to="developers/setup">Setup</Link>
             <Link to="developers/bug">Verify a bug</Link>
-            <Link to="developers/vscode">VS Code</Link>
             <Link to="developers/technologies">Technologies </Link>
             <Link to="developers/browsers">Supported Browsers</Link>
             <Link to="developers/update">Version update guide</Link>
