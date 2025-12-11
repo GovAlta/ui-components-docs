@@ -32,6 +32,7 @@ import NotificationBannerPage from "@routes/components/Notificationbanner.tsx";
 import PaginationPage from "@routes/components/Pagination.tsx";
 import PopoverPage from "@routes/components/Popover.tsx";
 import ProgressIndicatorPage from "@routes/components/ProgressIndicator.tsx";
+import LinearProgressIndicatorPage from "@routes/components/LinearProgressIndicator.tsx";
 import RadioPage from "@routes/components/Radio.tsx";
 import SideMenuPage from "@routes/components/SideMenu.tsx";
 import SkeletonPage from "@routes/components/Skeleton.tsx";
@@ -88,51 +89,52 @@ const VersionedComponentRoute: React.FC<{
 
 export const ComponentsRouter = () => {
   const componentPaths: Record<string, React.ReactElement> = {
-    "accordion": <AccordionPage />,
-    "badge": <BadgePage />,
-    "block": <BlockPage />,
-    "button": <ButtonPage />,
+    accordion: <AccordionPage />,
+    badge: <BadgePage />,
+    block: <BlockPage />,
+    button: <ButtonPage />,
     "button-group": <ButtonGroupPage />,
-    "callout": <CalloutPage />,
-    "checkbox": <CheckboxPage />,
+    callout: <CalloutPage />,
+    checkbox: <CheckboxPage />,
     "checkbox-list": <CheckboxListPage />,
-    "container": <ContainerPage />,
+    container: <ContainerPage />,
     "date-picker": <DatePickerPage />,
-    "details": <DetailsPage />,
-    "divider": <DividerPage />,
-    "drawer": <DrawerPage />,
-    "dropdown": <DropdownPage />,
+    details: <DetailsPage />,
+    divider: <DividerPage />,
+    drawer: <DrawerPage />,
+    dropdown: <DropdownPage />,
     "file-uploader": <FileUploaderPage />,
     "filter-chip": <FilterChipPage />,
     "form-item": <FormItemPage />,
     "form-stepper": <FormStepperPage />,
-    "grid": <GridPage />,
+    grid: <GridPage />,
     "hero-banner": <HeroBannerPage />,
-    "icons": <IconsPage />,
+    icons: <IconsPage />,
     "icon-button": <IconButtonPage />,
-    "input": <TextFieldPage />,
-    "list": <ListPage />,
+    input: <TextFieldPage />,
+    list: <ListPage />,
     "menu-button": <MenuButtonPage />,
     "microsite-header": <MicrositeHeaderPage />,
-    "modal": <ModalPage />,
+    modal: <ModalPage />,
     "notification-banner": <NotificationBannerPage />,
-    "pagination": <PaginationPage />,
-    "popover": <PopoverPage />,
+    pagination: <PaginationPage />,
+    popover: <PopoverPage />,
     "progress-indicator": <ProgressIndicatorPage />,
-    "radio": <RadioPage />,
+    "linear-progress-indicator": <LinearProgressIndicatorPage />,
+    radio: <RadioPage />,
     "side-menu": <SideMenuPage />,
     "skeleton-loader": <SkeletonPage />,
-    "spacer": <SpacerPage />,
-    "table": <TablePage />,
-    "tabs": <TabsPage />,
+    spacer: <SpacerPage />,
+    table: <TablePage />,
+    tabs: <TabsPage />,
     "temporary-notification": <TemporaryNotificationPage />,
-    "text": <TextPage/>,
+    text: <TextPage />,
     "text-area": <TextAreaPage />,
-    "tooltip": <TooltipPage />,
+    tooltip: <TooltipPage />,
     "text-field": <TextFieldPage />,
-    "header": <AppHeaderPage />,
-    "footer": <AppFooterPage />,
-    "link": <LinkPage />,
+    header: <AppHeaderPage />,
+    footer: <AppFooterPage />,
+    link: <LinkPage />,
   };
 
   return (
@@ -143,7 +145,10 @@ export const ComponentsRouter = () => {
         <Route path=":component" element={<ComponentRoute versionedPaths={componentPaths} />} />
 
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={componentPaths}/>} />
+        <Route
+          path=":version/:component"
+          element={<VersionedComponentRoute versionedPaths={componentPaths} />}
+        />
       </Route>
     </Routes>
   );
@@ -151,11 +156,11 @@ export const ComponentsRouter = () => {
 
 export const PatternsRouter = () => {
   const patternsPaths = {
-    "layout": <BasicPageLayout />,
-    "task-list-page": <TaskListPage/>,
-    "question-page": <QuestionPage/>,
-    "review-page": <ReviewPage/>,
-    "result-page": <ResultPage/>,
+    layout: <BasicPageLayout />,
+    "task-list-page": <TaskListPage />,
+    "question-page": <QuestionPage />,
+    "review-page": <ReviewPage />,
+    "result-page": <ResultPage />,
   };
 
   return (
@@ -166,7 +171,10 @@ export const PatternsRouter = () => {
         <Route path="/public-form" element={<PublicForm />} />
         <Route path=":component" element={<ComponentRoute versionedPaths={patternsPaths} />} />
         {/* Versioned paths components */}
-        <Route path=":version/:component" element={<VersionedComponentRoute versionedPaths={patternsPaths} />} />
+        <Route
+          path=":version/:component"
+          element={<VersionedComponentRoute versionedPaths={patternsPaths} />}
+        />
       </Route>
     </Routes>
   );
