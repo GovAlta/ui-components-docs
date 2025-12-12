@@ -31,7 +31,7 @@ import ModalPage from "@routes/components/Modal.tsx";
 import NotificationBannerPage from "@routes/components/Notificationbanner.tsx";
 import PaginationPage from "@routes/components/Pagination.tsx";
 import PopoverPage from "@routes/components/Popover.tsx";
-import ProgressIndicatorPage from "@routes/components/ProgressIndicator.tsx";
+import CircularProgressIndicatorPage from "@routes/components/CircularProgressIndicator.tsx";
 import LinearProgressIndicatorPage from "@routes/components/LinearProgressIndicator.tsx";
 import RadioPage from "@routes/components/Radio.tsx";
 import SideMenuPage from "@routes/components/SideMenu.tsx";
@@ -119,7 +119,7 @@ export const ComponentsRouter = () => {
     "notification-banner": <NotificationBannerPage />,
     pagination: <PaginationPage />,
     popover: <PopoverPage />,
-    "progress-indicator": <ProgressIndicatorPage />,
+    "circular-progress-indicator": <CircularProgressIndicatorPage />,
     "linear-progress-indicator": <LinearProgressIndicatorPage />,
     radio: <RadioPage />,
     "side-menu": <SideMenuPage />,

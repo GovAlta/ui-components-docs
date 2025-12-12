@@ -32,9 +32,9 @@ const componentName = "Linear Progress indicator";
 const category = Category.FEEDBACK_AND_ALERTS;
 const description = "Provide visual feedback to users while loading.";
 const relatedComponents = [
+  { link: "/components/circular-progress-indicator", name: "Circular Progress indicator" },
   { link: "/components/file-uploader", name: "File uploader" },
   { link: "/components/skeleton-loader", name: "Skeleton loading" },
-  { link: "/components/progress-indicator", name: "Circular Progress indicator" },
 ];
 
 export default function LinearProgressIndicatorPage() {
