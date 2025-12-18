@@ -27,7 +27,7 @@ type CastingType = {
 };
 
 const FIGMA_LINK =
-  "figma.com/design/3pb2IK8s2QUqWieH79KdN7/❖-Component-library-%7C-DDD?node-id=41625-1999968&p=f";
+  "https://figma.com/design/3pb2IK8s2QUqWieH79KdN7/❖-Component-library-%7C-DDD?node-id=41625-1999968&p=f";
 const componentName = "Linear Progress indicator";
 const category = Category.FEEDBACK_AND_ALERTS;
 const description = "Provide visual feedback to users while loading.";
@@ -39,7 +39,7 @@ const relatedComponents = [
 
 export default function LinearProgressIndicatorPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    progress: 0,
+    progress: 10,
     percentVisibility: "visible",
   });
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
@@ -84,12 +84,7 @@ export default function LinearProgressIndicatorPage() {
   ];
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    console.log("bindings:", bindings);
-    console.log("props:", props);
-
     const updatedProps = { ...props } as CastingType;
-
-    console.log("Updated props:", updatedProps);
 
     setComponentBindings(bindings);
     setComponentProps(updatedProps);
@@ -125,7 +120,7 @@ export default function LinearProgressIndicatorPage() {
             heading={
               <>
                 Examples
-                <GoabBadge type="information" content="0" />
+                <GoabBadge type="information" content="3" />
               </>
             }>
             <SandboxHeader exampleTitle="Indeterminate Progress"></SandboxHeader>
