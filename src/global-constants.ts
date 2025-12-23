@@ -3,4 +3,9 @@ export const DEFAULT_VERSION = "new";
 export const DEFAULT_LANGUAGE = "react";
 
 // Array of 'New' components
-export const NEW_COMPONENTS = ["Drawer", "Temporary notification", "Checkbox list"];
+export const NEW_COMPONENTS = [
+  "Drawer",
+  "Temporary notification",
+  "Checkbox list",
+  "Linear Progress",
+];

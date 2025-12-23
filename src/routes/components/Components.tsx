@@ -41,7 +41,7 @@ export function Components() {
     };
 
     return (
-      <GoabBlock alignment="center">
+      <GoabBlock alignment="center" width="185px">
         {componentName} <GoabBadge type={getBadgeType()} content={getBadgeLabel()}></GoabBadge>
       </GoabBlock>
     );
@@ -78,8 +78,10 @@ export function Components() {
               <Link to={getUrl("filter-chip")}>Filter chip</Link>
               <Link to={getUrl("modal")}>Modal</Link>
               <Link to={getUrl("notification-banner")}>Notification banner</Link>
-              <Link to={getUrl("circular-progress-indicator")}>Circular Progress indicator</Link>
-              <Link to={getUrl("linear-progress-indicator")}>Linear Progress indicator</Link>
+              <Link to={getUrl("circular-progress-indicator")}>Circular Progress</Link>
+              <Link to={getUrl("linear-progress-indicator")}>
+                {newComponentLabel("Linear Progress")}
+              </Link>
               <Link to={getUrl("skeleton-loader")}>Skeleton loader</Link>
               <Link to={getUrl("temporary-notification")}>
                 {newComponentLabel("Temporary notification")}
