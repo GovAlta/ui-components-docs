@@ -26,19 +26,26 @@ export function LinearProgressAutoExample() {
         lang="typescript"
         tags="react"
         allowCopy={true}
-        code={`useEffect(() => {
-    const intervalId = setInterval(() => {
-      let nextProgress = autoProgress + 0.25;
-      if (nextProgress > 100) {
-        nextProgress = 0;
-      }
-      setAutoProgress(nextProgress);
-    }, 100);
+        code={`
+  export function LinearProgressAutoExample() {
+    const [autoProgress, setAutoProgress] = useState(0);
 
-    return () => {
-      clearInterval(intervalId);
-    };
-    return <GoabLinearProgress progress={autoProgress} />;`}
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        let nextProgress = autoProgress + 0.25;
+        if (nextProgress > 100) {
+          nextProgress = 0;
+        }
+        setAutoProgress(nextProgress);
+      }, 100);
+
+      return () => {
+        clearInterval(intervalId);
+      };
+    });
+
+    return <GoabLinearProgress progress={autoProgress} />;
+  };`}
       />
       <CodeSnippet
         lang="typescript"
