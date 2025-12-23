@@ -7,5 +7,5 @@ export const NEW_COMPONENTS = [
   "Drawer",
   "Temporary notification",
   "Checkbox list",
-  "Linear Progress",
+  "Linear Progress indicator",
 ];
