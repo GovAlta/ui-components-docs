@@ -66,6 +66,7 @@ export function Components() {
               <Link to={getUrl("accordion")}>Accordion</Link>
               <Link to={getUrl("callout")}>Callout</Link>
               <Link to={getUrl("container")}>Container</Link>
+              <Link to={getUrl("data-grid")}>{newComponentLabel("Data grid")}</Link>
               <Link to={getUrl("details")}>Details</Link>
               <Link to={getUrl("hero-banner")}>Hero banner</Link>
               <Link to={getUrl("list")}>List</Link>

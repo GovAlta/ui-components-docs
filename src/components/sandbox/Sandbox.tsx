@@ -259,6 +259,12 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
         Array.isArray(el.props.tags)
           ? el.props.tags
           : [el.props.tags];
+
+      const isSharedSnippet = componentTags.includes("angular") && componentTags.includes("react");
+      if (isSharedSnippet) {
+        return props.tags.some(tag => componentTags.includes(tag));
+      }
+
       if (props.tags.length !== componentTags.length)
         return false;
       return matches(componentTags);
