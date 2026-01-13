@@ -14,7 +14,6 @@ import {
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabCalloutType } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
   LegacyTestIdProperties, MarginProperty,
@@ -34,10 +33,6 @@ const relatedComponents = [
   { link: "/components/notification-banner", name: "Notification banner" },
 ];
 type ComponentPropsType = GoabCalloutProps;
-type CastingType = {
-  type: GoabCalloutType;
-  [key: string]: unknown;
-};
 
 export default function CalloutPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
@@ -163,9 +158,9 @@ export default function CalloutPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   return (
@@ -185,7 +180,7 @@ export default function CalloutPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <Sandbox<ComponentPropsType> properties={componentBindings} onChange={onSandboxChange}>
               <GoabCallout {...componentProps}>
                 Callout important information for the user.
               </GoabCallout>

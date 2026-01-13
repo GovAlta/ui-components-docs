@@ -21,12 +21,12 @@ type Flag = "reactive" | "template-driven" | "event";
 type ComponentType = "goa" | "codesnippet";
 type Serializer = (el: any, properties: ComponentBinding[]) => string;
 
-interface SandboxProps {
+interface SandboxProps<T = Record<string, unknown>> {
   properties?: ComponentBinding[];
   formItemProperties?: ComponentBinding[];
   note?: string | { type?: GoabCalloutType; heading?: string; content: string };
   fullWidth?: boolean;
-  onChange?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
+  onChange?: (bindings: ComponentBinding[], props: T) => void;
   onChangeFormItemBindings?: (bindings: ComponentBinding[], props: Record<string, unknown>) => void;
   flags?: Flag[];
   skipRender?: boolean; // prevent rendering the snippet, to allow custom code to be shown
@@ -41,11 +41,11 @@ interface SandboxProps {
 
 type SandboxViewProps = {
   fullWidth?: boolean;
-  sandboxProps: SandboxProps;
+  sandboxProps: SandboxProps<unknown>;
   background?: string;
 };
 
-export const Sandbox = (props: SandboxProps) => {
+export const Sandbox = <T = Record<string, unknown>,>(props: SandboxProps<T>) => {
   const {language: lang, version} = useContext(LanguageVersionContext);
   const [formatLang, setFormatLang] = useState<string>("");
 
@@ -92,10 +92,20 @@ export const Sandbox = (props: SandboxProps) => {
   }
 
   function onChangeFormItemBindings(bindings: ComponentBinding[]) {
-    props.onChangeFormItemBindings?.(bindings, toKeyValue(bindings));
+    props.onChangeFormItemBindings?.(bindings, toFormItemKeyValue(bindings));
   }
 
-  function toKeyValue(bindings: ComponentBinding[]) {
+  function toKeyValue(bindings: ComponentBinding[]): T {
+    return bindings.reduce((acc: Record<string, unknown>, prop: ComponentBinding) => {
+      if (typeof prop.value === "string" && prop.value === "") {
+        return acc;
+      }
+      acc[prop.name] = prop.value;
+      return acc;
+    }, {}) as unknown as T;
+  }
+
+  function toFormItemKeyValue(bindings: ComponentBinding[]): Record<string, unknown> {
     return bindings.reduce((acc: Record<string, unknown>, prop: ComponentBinding) => {
       if (typeof prop.value === "string" && prop.value === "") {
         return acc;
@@ -117,7 +127,7 @@ export const Sandbox = (props: SandboxProps) => {
 
   return (
     <>
-    {props.skipRenderDom ? null : <SandboxView fullWidth={props.fullWidth} sandboxProps={props} background={props.background} />}
+    {props.skipRenderDom ? null : <SandboxView fullWidth={props.fullWidth} sandboxProps={props as SandboxProps<unknown>} background={props.background} />}
 
       {/* Only render the GoAAccordion if props.properties is provided */}
       {props.properties && props.properties.length > 0 && (
@@ -141,7 +151,7 @@ export const Sandbox = (props: SandboxProps) => {
           />
         </GoabAccordion>
       )}
-      <SandboxCode props={props} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
+      <SandboxCode props={props as SandboxProps<unknown>} formatLang={formatLang} lang={lang} serializers={serializers} version={version} />
       {props.note &&
         (typeof props.note === "string" ? (
           <p className="sandbox-note">{props.note}</p>
@@ -162,7 +172,7 @@ export const Sandbox = (props: SandboxProps) => {
 };
 
 type SandboxCodeProps = {
-  props: SandboxProps & { children: ReactNode };
+  props: SandboxProps<unknown> & { children: ReactNode };
   lang: string;
   formatLang: string;
   serializers: Record<string, Serializer>;
@@ -246,7 +256,7 @@ function SandboxCode(p: SandboxCodeProps) {
 // to be displayed, while hiding the non-reactive ones
 type AdditionalCodeSnippetsProps = {
   tags: string[];
-  sandboxProps: SandboxProps;
+  sandboxProps: SandboxProps<unknown>;
 }
 function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
   const matches = (list: string[]): boolean => {
@@ -269,7 +279,7 @@ function AdditionalCodeSnippets(props: AdditionalCodeSnippetsProps) {
 // Filters components from within the Sandbox children
 // i.e. Get all the <CodeSnippet> components
 type ComponentListProps = {
-  sandboxProps: SandboxProps;
+  sandboxProps: SandboxProps<unknown>;
   type: ComponentType;
 }
 function ComponentList(props: ComponentListProps): ReactElement[] {
@@ -289,7 +299,7 @@ function ComponentList(props: ComponentListProps): ReactElement[] {
 type ComponentOutputProps = {
   formatLang: string;
   type: "angular" | "angular-reactive" | "angular-template-driven" | "react";
-  sandboxProps: SandboxProps;
+  sandboxProps: SandboxProps<unknown>;
   serializer: Serializer;
 }
 

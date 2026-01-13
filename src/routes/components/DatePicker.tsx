@@ -17,7 +17,6 @@ import {
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabDatePickerOnChangeDetail } from "@abgov/ui-components-common";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 import {
   LegacyMarginProperty,
@@ -40,10 +39,6 @@ const relatedComponents = [
 const description =
   "Lets users select a date through a calendar without the need to manually type it in a field.";
 type ComponentPropsType = GoabDatePickerProps;
-type CastingType = {
-  [key: string]: unknown;
-  onChange: (event: GoabDatePickerOnChangeDetail) => void;
-};
 
 export default function DatePickerPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -217,9 +212,9 @@ export default function DatePickerPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   const noop = () => {};
@@ -241,7 +236,7 @@ export default function DatePickerPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={componentBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}

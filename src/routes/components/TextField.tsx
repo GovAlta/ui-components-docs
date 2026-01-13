@@ -45,12 +45,6 @@ const relatedComponents = [
 type ComponentPropsType = Omit<GoabInputProps, "onChange"> & {
   onChange?: (event: GoabInputOnChangeDetail) => void;
 };
-type CastingType = {
-  name: string;
-  value: string;
-  [key: string]: unknown;
-  onChange: (event: GoabInputOnChangeDetail) => void;
-};
 
 export default function TextFieldPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -628,9 +622,9 @@ export default function TextFieldPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   // For sandbox demo function
@@ -654,7 +648,7 @@ export default function TextFieldPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={componentBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}
