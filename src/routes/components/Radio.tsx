@@ -24,7 +24,6 @@ import {
   MarginProperty,
   TestIdProperty,
 } from "@components/component-properties/common-properties.ts";
-import { GoabRadioGroupOnChangeDetail } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 
@@ -40,12 +39,6 @@ const relatedComponents = [
 const FIGMA_LINK =
   "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=102-26";
 type ComponentPropsType = GoabRadioGroupProps;
-type CastingType = {
-  name: string;
-  value: string;
-  [key: string]: unknown;
-  onChange: (detail: GoabRadioGroupOnChangeDetail) => void;
-};
 
 export default function RadioPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -297,8 +290,8 @@ export default function RadioPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setRadioProps(props as CastingType);
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
+    setRadioProps(props);
     setRadioBindings(bindings);
   }
 
@@ -322,7 +315,7 @@ export default function RadioPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={radioBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}

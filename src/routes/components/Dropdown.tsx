@@ -41,12 +41,6 @@ const relatedComponents = [
   { link: "/components/radio", name: "Radio" },
 ];
 type ComponentPropsType = GoabDropdownProps;
-type CastingType = {
-  name: string;
-  value: string;
-  [key: string]: unknown;
-  onChange: (event: GoabDropdownOnChangeDetail) => void;
-};
 
 export default function DropdownPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -397,9 +391,9 @@ export default function DropdownPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setDropdownBindings(bindings);
-    setDropdownProps(props as CastingType);
+    setDropdownProps(props);
   }
 
   // Demo
@@ -407,7 +401,7 @@ export default function DropdownPage() {
 
   function onChange(event: GoabDropdownOnChangeDetail) {
     setColor(event.value || "");
-    setDropdownProps({ ...dropdownProps, value: event.value || "" } as CastingType);
+    setDropdownProps({ ...dropdownProps, value: event.value || "" });
   }
 
   return (
@@ -426,7 +420,7 @@ export default function DropdownPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={dropdownBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}

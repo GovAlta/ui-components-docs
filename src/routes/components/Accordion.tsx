@@ -14,7 +14,6 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import { useState } from "react";
 import AccordionExamples from "@examples/accordion/AccordionExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabAccordionHeadingSize } from "@abgov/ui-components-common";
 import {
   LegacyMarginProperty,
   LegacyTestIdProperties,
@@ -35,12 +34,6 @@ const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%9
 
 
 type ComponentPropsType = GoabAccordionProps;
-type CastingType = {
-  heading: string;
-  headingSize: GoabAccordionHeadingSize;
-  children: React.ReactNode;
-  [key: string]: unknown;
-};
 
 export default function AccordionPage() {
 
@@ -215,9 +208,9 @@ export default function AccordionPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setAccordionBindings(bindings);
-    setAccordionProps(props as CastingType);
+    setAccordionProps(props);
   }
 
   return (
@@ -237,7 +230,7 @@ export default function AccordionPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={accordionBindings} onChange={onSandboxChange} fullWidth>
+            <Sandbox<ComponentPropsType> properties={accordionBindings} onChange={onSandboxChange} fullWidth>
               <GoabAccordion {...accordionProps}>
                 This is the content in an accordion item. This content can be anything that you want including rich
                 text, components, and more.

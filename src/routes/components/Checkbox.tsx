@@ -30,11 +30,6 @@ const relatedComponents = [
 ];
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=183-219";
 type ComponentPropsType = GoabCheckboxProps;
-type CastingType = {
-  name: string;
-  checked: boolean;
-  [key: string]: unknown;
-};
 export default function CheckboxPage() {
   const {version} = useContext(LanguageVersionContext);
   const [checkboxProps, setCheckboxProps] = useState<ComponentPropsType>({
@@ -241,7 +236,7 @@ export default function CheckboxPage() {
 
   const noop = () => {};
 
-  function onChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     const missingProps = {
       name: "item",
       checked: false,
@@ -250,7 +245,7 @@ export default function CheckboxPage() {
     const updatedProps = { ...missingProps, ...props };
 
     setCheckboxBindings(bindings);
-    setCheckboxProps(updatedProps as CastingType);
+    setCheckboxProps(updatedProps);
   }
 
   return (
@@ -268,7 +263,7 @@ export default function CheckboxPage() {
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={checkboxBindings}
               formItemProperties={formItemBindings}
               onChange={onChange}

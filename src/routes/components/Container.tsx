@@ -27,9 +27,6 @@ const relatedComponents = [
   { link: "/components/divider", name: "Divider" }
 ];
 type ComponentPropsType = GoabContainerProps;
-type CastingType = {
-  [key: string]: unknown;
-};
 
 export default function ContainerPage() {
   const [containerProps, setContainerProps] = useState<ComponentPropsType>({});
@@ -213,9 +210,9 @@ export default function ContainerPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setContainerBindings(bindings);
-    setContainerProps(props as CastingType);
+    setContainerProps(props);
   }
 
   return (
@@ -234,7 +231,7 @@ export default function ContainerPage() {
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={containerBindings} onChange={onSandboxChange} fullWidth>
+            <Sandbox<ComponentPropsType> properties={containerBindings} onChange={onSandboxChange} fullWidth>
               <GoabContainer {...containerProps}>
                 <h2>Detach to use</h2>
                 <p>Add things inside me</p>

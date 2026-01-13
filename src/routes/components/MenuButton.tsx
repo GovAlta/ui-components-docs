@@ -21,7 +21,6 @@ import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesE
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { GoabButtonType } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 
 const FIGMA_LINK =
@@ -37,11 +36,6 @@ const relatedComponents = [
 ];
 
 type ComponentPropsType = GoabMenuButtonProps;
-type CastingType = {
-  text: string,
-  type: GoabButtonType,
-  [key: string]: unknown;
-};
 
 export default function MenuButtonPage() {
   const { version, language } = useContext(LanguageVersionContext);
@@ -114,9 +108,9 @@ export default function MenuButtonPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setMenuButtonBindings(bindings);
-    setMenuButtonProps(props as CastingType);
+    setMenuButtonProps(props);
   }
 
   function handleAction(detail: GoabMenuButtonOnActionDetail) {
@@ -143,7 +137,7 @@ export default function MenuButtonPage() {
               <h2 id="component" style={{ display: "none" }}>
                 Playground
               </h2>
-              <Sandbox properties={menuButtonBindings} onChange={onSandboxChange}>
+              <Sandbox<ComponentPropsType> properties={menuButtonBindings} onChange={onSandboxChange}>
                 <CodeSnippet
                   lang="typescript"
                   tags="angular"
