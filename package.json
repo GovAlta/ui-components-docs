@@ -12,9 +12,9 @@
     "prettier": "npx prettier . --write"
   },
   "dependencies": {
-    "@abgov/react-components": "6.10.0-dev.8",
-    "@abgov/ui-components-common": "1.10.0-dev.2",
-    "@abgov/web-components": "1.40.0-dev.17",
+    "@abgov/react-components": "file:../ui-components/dist/libs/react-components",
+    "@abgov/ui-components-common": "file:../ui-components/dist/libs/common",
+    "@abgov/web-components": "file:../ui-components/dist/libs/web-components",
     "@faker-js/faker": "^8.3.1",
     "highlight.js": "^11.8.0",
     "js-cookie": "^3.0.5",
