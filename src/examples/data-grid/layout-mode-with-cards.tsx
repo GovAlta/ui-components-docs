@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
@@ -23,6 +24,12 @@ type User = {
 };
 
 export function LayoutModeWithCards() {
+  const [isGridReady, setIsGridReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsGridReady(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const users: User[] = [
     {
       id: "1",
@@ -59,6 +66,7 @@ export function LayoutModeWithCards() {
 
   return (
     <>
+      {isGridReady && (
       <GoabContainer mt="none" mb="none">
         <GoabDataGrid keyboardNav="layout">
           {users.map(user => (
@@ -112,6 +120,7 @@ export function LayoutModeWithCards() {
           ))}
         </GoabDataGrid>
       </GoabContainer>
+      )}
 
       <Sandbox fullWidth skipRender skipRenderDom>
         {/* Angular Code */}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
@@ -22,6 +22,12 @@ type Application = {
 };
 
 export function SortableTableWithRowSelection() {
+  const [isGridReady, setIsGridReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsGridReady(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const initialApplications: Application[] = [
     { id: "APP-001", applicant: "John Doe", dateSubmitted: "2024-01-15", status: "Approved", amount: "$5,000" },
     { id: "APP-002", applicant: "Jane Smith", dateSubmitted: "2024-01-18", status: "Pending", amount: "$3,500" },
@@ -78,6 +84,7 @@ export function SortableTableWithRowSelection() {
 
   return (
     <>
+      {isGridReady && (
       <GoabContainer mt="none" mb="none">
         <GoabDataGrid keyboardNav="table">
           <GoabTable width="100%" onSort={handleSort}>
@@ -134,6 +141,7 @@ export function SortableTableWithRowSelection() {
           </GoabTable>
         </GoabDataGrid>
       </GoabContainer>
+      )}
 
       <Sandbox fullWidth skipRender skipRenderDom>
         {/* Angular Code */}

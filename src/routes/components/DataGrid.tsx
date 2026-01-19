@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   GoabBadge,
   GoabCheckbox,
@@ -53,6 +53,13 @@ export default function DataGridPage() {
   const [dataGridProps, setDataGridProps] = useState<ComponentPropsType>({
     keyboardNav: "table",
   });
+
+  const [isGridReady, setIsGridReady] = useState(false);
+  useEffect(() => {
+    // add small delay for all nested doms fully render
+    const timer = setTimeout(() => setIsGridReady(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const initialUsers: User[] = [
     { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
@@ -188,65 +195,73 @@ export default function DataGridPage() {
               </h2>
 
               {/* Don't render inside Sandbox because the table with interactive elements (arrow right left cannot focus on action button directly inside sandbox */}
-              <GoabContainer mt="none" mb="none">
-                <GoabDataGrid {...dataGridProps}>
-                  <GoabTable width="100%" onSort={handleSort}>
-                    <thead>
-                      <tr data-grid="row">
-                        <th style={{ paddingBottom: 0 }} data-grid="cell">
-                          <GoabCheckbox
-                            name="selectAll"
-                            mt="2xs"
-                            checked={isSelectedAll}
-                            onChange={e => selectAll(e.checked)}
-                          />
-                        </th>
-                        <th data-grid="cell">
-                          <GoabTableSortHeader name="name">Name</GoabTableSortHeader>
-                        </th>
-                        <th data-grid="cell">
-                          <GoabTableSortHeader name="status">Status</GoabTableSortHeader>
-                        </th>
-                        <th data-grid="cell">Email</th>
-                        <th data-grid="cell">Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {users.map(user => (
-                        <tr key={user.id} data-grid="row">
-                          <td data-grid="cell">
+              {isGridReady && (
+                <GoabContainer mt="none" mb="none">
+                  <GoabDataGrid {...dataGridProps}>
+                    <GoabTable width="100%" onSort={handleSort}>
+                      <thead>
+                        <tr data-grid="row">
+                          <th style={{ paddingBottom: 0 }} data-grid="cell">
                             <GoabCheckbox
-                              name={`user${user.id}`}
-                              checked={isSelected(user.id)}
-                              onChange={() => toggleSelection(user.id)}
+                              name="selectAll"
+                              mt="2xs"
+                              checked={isSelectedAll}
+                              onChange={e => selectAll(e.checked)}
                             />
-                          </td>
-                          <td data-grid="cell">{user.name}</td>
-                          <td data-grid="cell">
-                            <GoabBadge type={getStatusBadgeType(user.status)} content={user.status} />
-                          </td>
-                          <td data-grid="cell">{user.email}</td>
-                          <td data-grid="cell">
-                            <GoabMenuButton
-                              text="Actions"
-                              type="tertiary"
-                              onAction={e => handleMenuAction(user.id, e.action)}>
-                              <GoabMenuAction action="view" text="View" />
-                              <GoabMenuAction action="delete" text="Delete" />
-                            </GoabMenuButton>
-                          </td>
+                          </th>
+                          <th data-grid="cell">
+                            <GoabTableSortHeader name="name">Name</GoabTableSortHeader>
+                          </th>
+                          <th data-grid="cell">
+                            <GoabTableSortHeader name="status">Status</GoabTableSortHeader>
+                          </th>
+                          <th data-grid="cell">Email</th>
+                          <th data-grid="cell">Actions</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </GoabTable>
-                </GoabDataGrid>
-              </GoabContainer>
+                      </thead>
+                      <tbody>
+                        {users.map(user => (
+                          <tr key={user.id} data-grid="row">
+                            <td data-grid="cell">
+                              <GoabCheckbox
+                                name={`user${user.id}`}
+                                checked={isSelected(user.id)}
+                                onChange={() => toggleSelection(user.id)}
+                              />
+                            </td>
+                            <td data-grid="cell">{user.name}</td>
+                            <td data-grid="cell">
+                              <GoabBadge
+                                type={getStatusBadgeType(user.status)}
+                                content={user.status}
+                              />
+                            </td>
+                            <td data-grid="cell">{user.email}</td>
+                            <td data-grid="cell">
+                              <GoabMenuButton
+                                text="Actions"
+                                type="tertiary"
+                                onAction={e => handleMenuAction(user.id, e.action)}
+                              >
+                                <GoabMenuAction action="view" text="View" />
+                                <GoabMenuAction action="delete" text="Delete" />
+                              </GoabMenuButton>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </GoabTable>
+                  </GoabDataGrid>
+                </GoabContainer>
+              )}
 
               <Sandbox
                 properties={componentBindings}
                 onChange={onSandboxChange}
-                skipRenderDom={true}
-                fullWidth>
+                skipRenderDom
+                skipRender
+		fullWidth
+              >
                 <CodeSnippet
                   lang="typescript"
                   tags={["angular", "react"]}
@@ -627,7 +642,8 @@ export default function DataGridPage() {
                   Examples
                   <GoabBadge type="information" content="3" />
                 </>
-              }>
+              }
+            >
               <DataGridExamples />
             </GoabTab>
 

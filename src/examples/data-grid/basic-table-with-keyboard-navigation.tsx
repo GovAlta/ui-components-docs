@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
@@ -9,6 +10,12 @@ import {
 } from "@abgov/react-components";
 
 export function BasicTableWithKeyboardNavigation() {
+  const [isGridReady, setIsGridReady] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setIsGridReady(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
+
   const users = [
     { id: "1", name: "Alice Johnson", role: "Developer", status: "Active" },
     { id: "2", name: "Bob Smith", role: "Designer", status: "Active" },
@@ -18,6 +25,7 @@ export function BasicTableWithKeyboardNavigation() {
 
   return (
     <>
+      {isGridReady && (
       <GoabContainer mt="none" mb="none">
         <GoabDataGrid keyboardNav="table">
           <GoabTable width="100%">
@@ -49,6 +57,7 @@ export function BasicTableWithKeyboardNavigation() {
           </GoabTable>
         </GoabDataGrid>
       </GoabContainer>
+      )}
 
       <Sandbox fullWidth skipRender skipRenderDom>
         {/* Angular Code */}
