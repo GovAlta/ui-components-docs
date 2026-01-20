@@ -1,18 +1,14 @@
-import {
-  GoabBadge,
-  GoabContainer,
-  GoabTab,
-  GoabTabs,
-} from "@abgov/react-components";
+import { useState, useContext } from "react";
+import { GoabBadge, GoabContainer, GoabTab, GoabTabs } from "@abgov/react-components";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
+import { Sandbox, ComponentBinding } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
-import { useContext } from "react";
 import { TestIdProperty } from "@components/component-properties/common-properties.ts";
 import { TabsExamples } from "@examples/tabs/TabsExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -23,9 +19,20 @@ const componentName = "Tabs";
 const description =
   "Let users navigate between related sections of content, displaying one section at a time.";
 const category = Category.STRUCTURE_AND_NAVIGATION;
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=25293-519360";
 export default function TabsPage() {
   const { version } = useContext(LanguageVersionContext);
+  const [tabsBindings, setTabsBindings] = useState<ComponentBinding[]>([
+    {
+      label: "Variant",
+      type: "list",
+      name: "variant",
+      options: ["", "default", "segmented"],
+      value: "",
+    },
+  ]);
+  const [tabsProps, setTabsProps] = useState<Record<string, unknown>>({});
   const oldComponentProperties: ComponentProperty[] = [
     {
       name: "initialtab",
@@ -62,6 +69,12 @@ export default function TabsPage() {
       description: "Current active tab",
     },
     {
+      name: "variant",
+      type: "GoabTabsVariant (default | segmented)",
+      defaultValue: "default",
+      description: "The visual style variant of the tabs.",
+    },
+    {
       name: "onChange",
       type: "(event: GoabTabsOnChangeDetail) => void",
       description: "Callback function when tab is changed.",
@@ -89,6 +102,12 @@ export default function TabsPage() {
       lang: "angular",
       description: "Add components to the tab heading such as badges",
     },
+    {
+      name: "disabled",
+      type: "boolean",
+      defaultValue: "false",
+      description: "Disables the tab, preventing user interaction.",
+    },
   ];
   const noop = () => {};
 
@@ -115,7 +134,13 @@ export default function TabsPage() {
             {/*4. If you click anywhere on the screen, it then autoscrolls back up to the top*/}
             <GoabContainer mt="m" mb="none">
               <div style={{ padding: "40px" }}>
-                <GoabTabs onChange={noop}>
+                {/* JSON stringify to force React to remount the `GoabTabs` component when variant changes */}
+                <GoabTabs
+                  key={JSON.stringify(tabsProps)}
+                  initialTab={1}
+                  onChange={noop}
+                  {...tabsProps}
+                >
                   <GoabTab heading="Tab Item 1">
                     Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -131,8 +156,8 @@ export default function TabsPage() {
                 </GoabTabs>
               </div>
             </GoabContainer>
-            {/*Angular code*/}
 
+            {/*Angular code*/}
             {version === "old" && (
               <>
                 <CodeSnippet
@@ -168,8 +193,18 @@ export default function TabsPage() {
                 />
               </>
             )}
+
             {version === "new" && (
-              <>
+              <Sandbox
+                properties={tabsBindings}
+                onChange={(bindings, props) => {
+                  setTabsBindings(bindings);
+                  setTabsProps(props);
+                }}
+                skipRender
+                skipRenderDom
+              >
+                {/* Angular Code */}
                 <CodeSnippet
                   lang="typescript"
                   tags="angular"
@@ -178,7 +213,7 @@ export default function TabsPage() {
                   tabsOnChange(event: GoabTabsOnChangeDetail) {
                     const tabIndex = event.tab;
                     console.log('Tab changed to ', tabIndex);
-                  } 
+                  }
                 `}
                 />
                 <CodeSnippet
@@ -186,7 +221,9 @@ export default function TabsPage() {
                   tags="angular"
                   allowCopy={true}
                   code={`
-                  <goab-tabs (onChange)="tabsOnChange($event)">
+                  <goab-tabs${
+                    tabsProps.variant ? ` variant="${tabsProps.variant}"` : ""
+                  } (onChange)="tabsOnChange($event)">
                     <goab-tab heading="Tab Item 1">
                       Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     </goab-tab>
@@ -199,11 +236,42 @@ export default function TabsPage() {
                   </goab-tabs>
                 `}
                 />
-              </>
+
+                {/* React Code */}
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  function tabsOnChange(event: GoabTabsOnChangeDetail): void {
+                    console.log('Tab changed to ', event.tab);
+                  }
+                  `}
+                />
+                <CodeSnippet
+                  lang="typescript"
+                  tags="react"
+                  allowCopy={true}
+                  code={`
+                  <GoabTabs${
+                    tabsProps.variant ? ` variant="${tabsProps.variant}"` : ""
+                  } onChange={tabsOnChange}>
+                    <GoabTab heading="Tab Item 1">
+                      Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                    <GoabTab heading="Tab Item 2">
+                      Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                    <GoabTab heading="Tab Item 3">
+                      Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </GoabTab>
+                  </GoabTabs>
+                  `}
+                />
+              </Sandbox>
             )}
 
             {/*React Code*/}
-
             {version === "old" && (
               <>
                 <CodeSnippet
@@ -237,41 +305,6 @@ export default function TabsPage() {
               </>
             )}
 
-            {version === "new" && (
-              <>
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
-                  function tabsOnChange(event: GoabTabsOnChangeDetail): void {
-                    console.log('Tab changed to ', event.tab);
-                  }
-                  `}
-                />
-                <CodeSnippet
-                  lang="html"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
-                  <GoabTabs onChange={tabsOnChange}>
-                    <GoabTab heading="Tab Item 1">
-                      Tab Item 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </GoabTab>
-                    <GoabTab heading="Tab Item 2">
-                      Tab Item 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </GoabTab>
-                    <GoabTab heading="Tab Item 3">
-                      Tab Item 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </GoabTab>
-                  </GoabTabs>
-                  `}
-                />
-              </>
-            )}
-
-            {/*</Sandbox>*/}
-
             {/*GoATabs Table Properties*/}
             <ComponentProperties
               heading="GoATabs Properties"
@@ -283,7 +316,6 @@ export default function TabsPage() {
               properties={tabProperties}
               oldProperties={oldTabProperties}
             />
-
           </GoabTab>
           <GoabTab
             heading={
