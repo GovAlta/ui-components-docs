@@ -1,6 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import {
   GoabBadge,
+  GoabBlock,
   GoabCheckbox,
   GoabContainer,
   GoabDataGrid,
@@ -82,12 +83,14 @@ export default function DataGridPage() {
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
   const [isSelectedAll, setIsSelectedAll] = useState(false);
 
+  const [layoutView, setLayoutView] = useState<"table" | "card">("table");
+
   const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([
     {
-      label: "Keyboard Navigation",
+      label: "Layout View",
       type: "dropdown",
-      name: "keyboardNav",
-      options: ["table", "layout"],
+      name: "layoutView",
+      options: ["table", "card"],
       value: "table",
     },
     {
@@ -147,7 +150,11 @@ export default function DataGridPage() {
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setComponentBindings(bindings);
-    setDataGridProps({ keyboardNav: "table", ...props } as ComponentPropsType);
+    const newLayoutView = (props.layoutView as "table" | "card") || "table";
+    setLayoutView(newLayoutView);
+    const keyboardNav = newLayoutView === "card" ? "layout" : "table";
+    const { layoutView: _, ...restProps } = props;
+    setDataGridProps({ keyboardNav, ...restProps } as ComponentPropsType);
   }
 
   const componentProperties: ComponentProperty[] = [
@@ -195,7 +202,7 @@ export default function DataGridPage() {
               </h2>
 
               {/* Don't render inside Sandbox because the table with interactive elements (arrow right left cannot focus on action button directly inside sandbox */}
-              {isGridReady && (
+              {isGridReady && layoutView === "table" && (
                 <GoabContainer mt="none" mb="none">
                   <GoabDataGrid {...dataGridProps}>
                     <GoabTable width="100%" onSort={handleSort}>
@@ -255,12 +262,57 @@ export default function DataGridPage() {
                 </GoabContainer>
               )}
 
+              {/* Card view */}
+              {isGridReady && layoutView === "card" && (
+                <GoabContainer mt="none" mb="none">
+                  <GoabDataGrid {...dataGridProps}>
+                    {users.map(user => (
+                      <GoabContainer key={user.id} mt="m" data-grid="row">
+                        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                          <GoabCheckbox
+                            data-grid="cell-0"
+                            name={`user${user.id}`}
+                            checked={isSelected(user.id)}
+                            onChange={() => toggleSelection(user.id)}
+                          />
+                          <div style={{ flex: 1 }}>
+                            <GoabBlock direction="row" gap="s" alignment="center">
+                              <strong data-grid="cell-1">{user.name}</strong>
+                              <GoabBadge
+                                data-grid="cell-2"
+                                type={getStatusBadgeType(user.status)}
+                                content={user.status}
+                              />
+                            </GoabBlock>
+                            <span
+                              data-grid="cell-3"
+                              style={{ color: "var(--goa-color-text-secondary)" }}
+                            >
+                              {user.email}
+                            </span>
+                          </div>
+                          <GoabMenuButton
+                            data-grid="cell-4"
+                            text="Actions"
+                            type="tertiary"
+                            onAction={e => handleMenuAction(user.id, e.action)}
+                          >
+                            <GoabMenuAction action="view" text="View" />
+                            <GoabMenuAction action="delete" text="Delete" />
+                          </GoabMenuButton>
+                        </div>
+                      </GoabContainer>
+                    ))}
+                  </GoabDataGrid>
+                </GoabContainer>
+              )}
+
               <Sandbox
                 properties={componentBindings}
                 onChange={onSandboxChange}
-                skipRenderDom
                 skipRender
-		fullWidth
+                skipRenderDom
+                fullWidth
               >
                 <CodeSnippet
                   lang="typescript"
@@ -275,247 +327,447 @@ export default function DataGridPage() {
                   };`}
                 />
 
-                {/* Angular */}
-                <CodeSnippet
-                  lang="typescript"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
-                  export class ExampleComponent {
-                    users: User[] = [
+                {/* Angular - Table View */}
+                {layoutView === "table" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="angular"
+                    allowCopy={true}
+                    code={`
+                    export class ExampleComponent {
+                      users: User[] = [
+                        { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
+                        { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
+                      ];
+                      selectedUsers: string[] = [];
+                      isSelectedAll = false;
+
+                      getStatusBadgeType(status: string): GoabBadgeType {
+                        const types: Record<string, GoabBadgeType> = {
+                          "Active": "success",
+                          "Pending": "important"
+                        };
+                        return types[status] || "information";
+                      }
+
+                      isSelected(userId: string): boolean {
+                        return this.selectedUsers.includes(userId);
+                      }
+
+                      handleSort(event: GoabTableOnSortDetail) {
+                        const { sortBy, sortDir } = event;
+                        this.users.sort((a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir);
+                      }
+
+                      selectAll(event: GoabCheckboxOnChangeDetail) {
+                        this.isSelectedAll = event.checked;
+                        this.selectedUsers = event.checked ? this.users.map(u => u.id) : [];
+                      }
+
+                      toggleSelection(userId: string, event: GoabCheckboxOnChangeDetail) {
+                        if (event.checked) {
+                          this.selectedUsers.push(userId);
+                        } else {
+                          this.selectedUsers = this.selectedUsers.filter(id => id !== userId);
+                        }
+                      }
+
+                      handleMenuAction(userId: string, event: GoabMenuButtonOnActionDetail) {
+                        if (event.action === "view") {
+                          console.log("View user:", userId);
+                        } else if (event.action === "delete") {
+                          this.users = this.users.filter(u => u.id !== userId);
+                        }
+                      }
+                    }`}
+                  />
+                )}
+                {layoutView === "table" && (
+                  <CodeSnippet
+                    lang="html"
+                    tags="angular"
+                    allowCopy={true}
+                    code={`
+                    <goab-data-grid keyboardNav="${dataGridProps.keyboardNav}"${
+                      dataGridProps.keyboardIconPosition
+                        ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
+                        : ""
+                    }${
+                      dataGridProps.keyboardIconVisibility
+                        ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
+                        : ""
+                    }>
+                      <goab-table width="100%" (onSort)="handleSort($event)">
+                        <thead>
+                          <tr data-grid="row">
+                            <th style="padding-bottom: 0" data-grid="cell">
+                              <goab-checkbox
+                                name="selectAll"
+                                mt="2xs"
+                                [checked]="isSelectedAll"
+                                (onChange)="selectAll($event)">
+                              </goab-checkbox>
+                            </th>
+                            <th data-grid="cell">
+                              <goab-table-sort-header name="name">Name</goab-table-sort-header>
+                            </th>
+                            <th data-grid="cell">
+                              <goab-table-sort-header name="status">Status</goab-table-sort-header>
+                            </th>
+                            <th data-grid="cell">Email</th>
+                            <th data-grid="cell">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          @for (user of users; track user.id) {
+                            <tr data-grid="row">
+                              <td data-grid="cell">
+                                <goab-checkbox
+                                  [name]="'user' + user.id"
+                                  [checked]="isSelected(user.id)"
+                                  (onChange)="toggleSelection(user.id, $event)">
+                                </goab-checkbox>
+                              </td>
+                              <td data-grid="cell">{{ user.name }}</td>
+                              <td data-grid="cell">
+                                <goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge>
+                              </td>
+                              <td data-grid="cell">{{ user.email }}</td>
+                              <td data-grid="cell">
+                                <goab-menu-button text="Actions" type="tertiary" (onAction)="handleMenuAction(user.id, $event)">
+                                  <goab-menu-action action="view" text="View"></goab-menu-action>
+                                  <goab-menu-action action="delete" text="Delete"></goab-menu-action>
+                                </goab-menu-button>
+                              </td>
+                            </tr>
+                          }
+                        </tbody>
+                      </goab-table>
+                    </goab-data-grid>`}
+                  />
+                )}
+
+                {/* Angular - Card View */}
+                {layoutView === "card" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="angular"
+                    allowCopy={true}
+                    code={`
+                    export class ExampleComponent {
+                      users: User[] = [
+                        { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
+                        { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
+                      ];
+                      selectedUsers: string[] = [];
+
+                      getStatusBadgeType(status: string): GoabBadgeType {
+                        const types: Record<string, GoabBadgeType> = {
+                          "Active": "success",
+                          "Pending": "important"
+                        };
+                        return types[status] || "information";
+                      }
+
+                      isSelected(userId: string): boolean {
+                        return this.selectedUsers.includes(userId);
+                      }
+
+                      toggleSelection(userId: string) {
+                        if (this.selectedUsers.includes(userId)) {
+                          this.selectedUsers = this.selectedUsers.filter(id => id !== userId);
+                        } else {
+                          this.selectedUsers = [...this.selectedUsers, userId];
+                        }
+                      }
+
+                      handleMenuAction(userId: string, event: GoabMenuButtonOnActionDetail) {
+                        if (event.action === "view") {
+                          console.log("View user:", userId);
+                        } else if (event.action === "delete") {
+                          this.users = this.users.filter(u => u.id !== userId);
+                        }
+                      }
+                    }`}
+                  />
+                )}
+                {layoutView === "card" && (
+                  <CodeSnippet
+                    lang="html"
+                    tags="angular"
+                    allowCopy={true}
+                    code={`
+                    <goab-data-grid keyboardNav="${dataGridProps.keyboardNav}"${
+                      dataGridProps.keyboardIconPosition
+                        ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
+                        : ""
+                    }${
+                      dataGridProps.keyboardIconVisibility
+                        ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
+                        : ""
+                    }>
+                      @for (user of users; track user.id) {
+                        <goab-container mt="m" data-grid="row">
+                          <div style="display: flex; align-items: center; gap: 1rem">
+                            <goab-checkbox
+                              data-grid="cell-0"
+                              [name]="'user' + user.id"
+                              [checked]="isSelected(user.id)"
+                              (onChange)="toggleSelection(user.id)">
+                            </goab-checkbox>
+                            <div style="flex: 1">
+                              <goab-block direction="row" gap="s" alignment="center">
+                                <strong data-grid="cell-1">{{ user.name }}</strong>
+                                <goab-badge
+                                  data-grid="cell-2"
+                                  [type]="getStatusBadgeType(user.status)"
+                                  [content]="user.status">
+                                </goab-badge>
+                              </goab-block>
+                              <span data-grid="cell-3" style="color: var(--goa-color-text-secondary)">
+                                {{ user.email }}
+                              </span>
+                            </div>
+                            <goab-menu-button
+                              data-grid="cell-4"
+                              text="Actions"
+                              type="tertiary"
+                              (onAction)="handleMenuAction(user.id, $event)">
+                              <goab-menu-action action="view" text="View"></goab-menu-action>
+                              <goab-menu-action action="delete" text="Delete"></goab-menu-action>
+                            </goab-menu-button>
+                          </div>
+                        </goab-container>
+                      }
+                    </goab-data-grid>`}
+                  />
+                )}
+
+                {/* React - Table View */}
+                {layoutView === "table" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="react"
+                    allowCopy={true}
+                    code={`
+                    const [users, setUsers] = useState<User[]>([
                       { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
                       { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
-                    ];
-                    selectedUsers: string[] = [];
-                    isSelectedAll = false;
+                    ]);
+                    const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
+                    const [isSelectedAll, setIsSelectedAll] = useState(false);
 
-                    getStatusBadgeType(status: string): GoabBadgeType {
-                      const types: Record<string, GoabBadgeType> = {
-                        "Active": "success",
-                        "Pending": "important"
-                      };
-                      return types[status] || "information";
-                    }
+                    const getStatusBadgeType = (status: string): "success" | "important" | "information" => {
+                      switch (status) {
+                        case "Active":
+                          return "success";
+                        case "Pending":
+                          return "important";
+                        default:
+                          return "information";
+                      }
+                    };
 
-                    isSelected(userId: string): boolean {
-                      return this.selectedUsers.includes(userId);
-                    }
+                    const isSelected = (userId: string): boolean => {
+                      return selectedUsers.includes(userId);
+                    };
 
-                    handleSort(event: GoabTableOnSortDetail) {
+                    const handleSort = (event: GoabTableOnSortDetail) => {
                       const { sortBy, sortDir } = event;
-                      this.users.sort((a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir);
-                    }
+                      const sortedUsers = [...users].sort(
+                        (a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir
+                      );
+                      setUsers(sortedUsers);
+                    };
 
-                    selectAll(event: GoabCheckboxOnChangeDetail) {
-                      this.isSelectedAll = event.checked;
-                      this.selectedUsers = event.checked ? this.users.map(u => u.id) : [];
-                    }
+                    const selectAll = (event: GoabCheckboxOnChangeDetail) => {
+                      setIsSelectedAll(event.checked);
+                      setSelectedUsers(event.checked ? users.map(u => u.id) : []);
+                    };
 
-                    toggleSelection(userId: string, event: GoabCheckboxOnChangeDetail) {
+                    const toggleSelection = (userId: string, event: GoabCheckboxOnChangeDetail) => {
                       if (event.checked) {
-                        this.selectedUsers.push(userId);
+                        setSelectedUsers([...selectedUsers, userId]);
                       } else {
-                        this.selectedUsers = this.selectedUsers.filter(id => id !== userId);
+                        setSelectedUsers(selectedUsers.filter(id => id !== userId));
                       }
-                    }
+                    };
 
-                    handleMenuAction(userId: string, event: GoabMenuButtonOnActionDetail) {
-                      if (event.action === "view") {
+                    const handleMenuAction = (userId: string, action: string) => {
+                      if (action === "view") {
                         console.log("View user:", userId);
-                      } else if (event.action === "delete") {
-                        this.users = this.users.filter(u => u.id !== userId);
+                      } else if (action === "delete") {
+                        setUsers(users.filter(u => u.id !== userId));
                       }
-                    }
-                  }`}
-                />
-
-                <CodeSnippet
-                  lang="html"
-                  tags="angular"
-                  allowCopy={true}
-                  code={`
-                  <goab-data-grid keyboardNav="${dataGridProps.keyboardNav}"${
-                    dataGridProps.keyboardIconPosition
-                      ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
-                      : ""
-                  }${
-                    dataGridProps.keyboardIconVisibility
-                      ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
-                      : ""
-                  }>
-                    <goab-table width="100%" (onSort)="handleSort($event)">
-                      <thead>
-                        <tr data-grid="row">
-                          <th style="padding-bottom: 0" data-grid="cell">
-                            <goab-checkbox
-                              name="selectAll"
-                              mt="2xs"
-                              [checked]="isSelectedAll"
-                              (onChange)="selectAll($event)">
-                            </goab-checkbox>
-                          </th>
-                          <th data-grid="cell">
-                            <goab-table-sort-header name="name">Name</goab-table-sort-header>
-                          </th>
-                          <th data-grid="cell">
-                            <goab-table-sort-header name="status">Status</goab-table-sort-header>
-                          </th>
-                          <th data-grid="cell">Email</th>
-                          <th data-grid="cell">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @for (user of users; track user.id) {
+                    };`}
+                  />
+                )}
+                {layoutView === "table" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="react"
+                    allowCopy={true}
+                    code={`
+                    <GoabDataGrid keyboardNav="${dataGridProps.keyboardNav}"${
+                      dataGridProps.keyboardIconPosition
+                        ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
+                        : ""
+                    }${
+                      dataGridProps.keyboardIconVisibility
+                        ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
+                        : ""
+                    }>
+                      <GoabTable width="100%" onSort={handleSort}>
+                        <thead>
                           <tr data-grid="row">
-                            <td data-grid="cell">
-                              <goab-checkbox
-                                [name]="'user' + user.id"
-                                [checked]="isSelected(user.id)"
-                                (onChange)="toggleSelection(user.id, $event)">
-                              </goab-checkbox>
-                            </td>
-                            <td data-grid="cell">{{ user.name }}</td>
-                            <td data-grid="cell">
-                              <goab-badge [type]="getStatusBadgeType(user.status)" [content]="user.status"></goab-badge>
-                            </td>
-                            <td data-grid="cell">{{ user.email }}</td>
-                            <td data-grid="cell">
-                              <goab-menu-button text="Actions" type="tertiary" (onAction)="handleMenuAction(user.id, $event)">
-                                <goab-menu-action action="view" text="View"></goab-menu-action>
-                                <goab-menu-action action="delete" text="Delete"></goab-menu-action>
-                              </goab-menu-button>
-                            </td>
-                          </tr>
-                        }
-                      </tbody>
-                    </goab-table>
-                  </goab-data-grid>`}
-                />
-
-                {/* React */}
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
-                  const [users, setUsers] = useState<User[]>([
-                    { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
-                    { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
-                  ]);
-                  const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-                  const [isSelectedAll, setIsSelectedAll] = useState(false);
-
-                  const getStatusBadgeType = (status: string): "success" | "important" | "information" => {
-                    switch (status) {
-                      case "Active":
-                        return "success";
-                      case "Pending":
-                        return "important";
-                      default:
-                        return "information";
-                    }
-                  };
-
-                  const isSelected = (userId: string): boolean => {
-                    return selectedUsers.includes(userId);
-                  };
-
-                  const handleSort = (event: GoabTableOnSortDetail) => {
-                    const { sortBy, sortDir } = event;
-                    const sortedUsers = [...users].sort(
-                      (a: any, b: any) => (a[sortBy] > b[sortBy] ? 1 : -1) * sortDir
-                    );
-                    setUsers(sortedUsers);
-                  };
-
-                  const selectAll = (event: GoabCheckboxOnChangeDetail) => {
-                    setIsSelectedAll(event.checked);
-                    setSelectedUsers(event.checked ? users.map(u => u.id) : []);
-                  };
-
-                  const toggleSelection = (userId: string, event: GoabCheckboxOnChangeDetail) => {
-                    if (event.checked) {
-                      setSelectedUsers([...selectedUsers, userId]);
-                    } else {
-                      setSelectedUsers(selectedUsers.filter(id => id !== userId));
-                    }
-                  };
-
-                  const handleMenuAction = (userId: string, action: string) => {
-                    if (action === "view") {
-                      console.log("View user:", userId);
-                    } else if (action === "delete") {
-                      setUsers(users.filter(u => u.id !== userId));
-                    }
-                  };`}
-                />
-
-                <CodeSnippet
-                  lang="typescript"
-                  tags="react"
-                  allowCopy={true}
-                  code={`
-                  <GoabDataGrid keyboardNav="${dataGridProps.keyboardNav}"${
-                    dataGridProps.keyboardIconPosition
-                      ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
-                      : ""
-                  }${
-                    dataGridProps.keyboardIconVisibility
-                      ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
-                      : ""
-                  }>
-                    <GoabTable width="100%" onSort={handleSort}>
-                      <thead>
-                        <tr data-grid="row">
-                          <th style={{ paddingBottom: 0 }} data-grid="cell">
-                            <GoabCheckbox
-                              name="selectAll"
-                              mt="2xs"
-                              checked={isSelectedAll}
-                              onChange={selectAll}
-                            />
-                          </th>
-                          <th data-grid="cell">
-                            <GoabTableSortHeader name="name">Name</GoabTableSortHeader>
-                          </th>
-                          <th data-grid="cell">
-                            <GoabTableSortHeader name="status">Status</GoabTableSortHeader>
-                          </th>
-                          <th data-grid="cell">Email</th>
-                          <th data-grid="cell">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {users.map((user) => (
-                          <tr key={user.id} data-grid="row">
-                            <td data-grid="cell">
+                            <th style={{ paddingBottom: 0 }} data-grid="cell">
                               <GoabCheckbox
-                                name={\`user\${user.id}\`}
-                                checked={isSelected(user.id)}
-                                onChange={(e) => toggleSelection(user.id, e)}
+                                name="selectAll"
+                                mt="2xs"
+                                checked={isSelectedAll}
+                                onChange={selectAll}
                               />
-                            </td>
-                            <td data-grid="cell">{user.name}</td>
-                            <td data-grid="cell">
-                              <GoabBadge type={getStatusBadgeType(user.status)} content={user.status} />
-                            </td>
-                            <td data-grid="cell">{user.email}</td>
-                            <td data-grid="cell">
-                              <GoabMenuButton
-                                text="Actions"
-                                type="tertiary"
-                                onAction={(e) => handleMenuAction(user.id, e.action)}
-                              >
-                                <GoabMenuAction action="view" text="View" />
-                                <GoabMenuAction action="delete" text="Delete" />
-                              </GoabMenuButton>
-                            </td>
+                            </th>
+                            <th data-grid="cell">
+                              <GoabTableSortHeader name="name">Name</GoabTableSortHeader>
+                            </th>
+                            <th data-grid="cell">
+                              <GoabTableSortHeader name="status">Status</GoabTableSortHeader>
+                            </th>
+                            <th data-grid="cell">Email</th>
+                            <th data-grid="cell">Actions</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </GoabTable>
-                  </GoabDataGrid>`}
-                />
+                        </thead>
+                        <tbody>
+                          {users.map((user) => (
+                            <tr key={user.id} data-grid="row">
+                              <td data-grid="cell">
+                                <GoabCheckbox
+                                  name={\`user\${user.id}\`}
+                                  checked={isSelected(user.id)}
+                                  onChange={(e) => toggleSelection(user.id, e)}
+                                />
+                              </td>
+                              <td data-grid="cell">{user.name}</td>
+                              <td data-grid="cell">
+                                <GoabBadge type={getStatusBadgeType(user.status)} content={user.status} />
+                              </td>
+                              <td data-grid="cell">{user.email}</td>
+                              <td data-grid="cell">
+                                <GoabMenuButton
+                                  text="Actions"
+                                  type="tertiary"
+                                  onAction={(e) => handleMenuAction(user.id, e.action)}
+                                >
+                                  <GoabMenuAction action="view" text="View" />
+                                  <GoabMenuAction action="delete" text="Delete" />
+                                </GoabMenuButton>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </GoabTable>
+                    </GoabDataGrid>`}
+                  />
+                )}
+
+                {/* React - Card View */}
+                {layoutView === "card" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="react"
+                    allowCopy={true}
+                    code={`
+                    const [users, setUsers] = useState<User[]>([
+                      { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
+                      { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
+                    ]);
+                    const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
+
+                    const getStatusBadgeType = (status: string): "success" | "important" | "information" => {
+                      switch (status) {
+                        case "Active":
+                          return "success";
+                        case "Pending":
+                          return "important";
+                        default:
+                          return "information";
+                      }
+                    };
+
+                    const isSelected = (userId: string): boolean => {
+                      return selectedUsers.includes(userId);
+                    };
+
+                    const toggleSelection = (userId: string) => {
+                      if (selectedUsers.includes(userId)) {
+                        setSelectedUsers(selectedUsers.filter(id => id !== userId));
+                      } else {
+                        setSelectedUsers([...selectedUsers, userId]);
+                      }
+                    };
+
+                    const handleMenuAction = (userId: string, action: string) => {
+                      if (action === "view") {
+                        console.log("View user:", userId);
+                      } else if (action === "delete") {
+                        setUsers(users.filter(u => u.id !== userId));
+                      }
+                    };`}
+                  />
+                )}
+                {layoutView === "card" && (
+                  <CodeSnippet
+                    lang="typescript"
+                    tags="react"
+                    allowCopy={true}
+                    code={`
+                    <GoabDataGrid keyboardNav="${dataGridProps.keyboardNav}"${
+                      dataGridProps.keyboardIconPosition
+                        ? ` keyboardIconPosition="${dataGridProps.keyboardIconPosition}"`
+                        : ""
+                    }${
+                      dataGridProps.keyboardIconVisibility
+                        ? ` keyboardIconVisibility="${dataGridProps.keyboardIconVisibility}"`
+                        : ""
+                    }>
+                      {users.map((user) => (
+                        <GoabContainer key={user.id} mt="m" data-grid="row">
+                          <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                            <GoabCheckbox
+                              data-grid="cell-0"
+                              name={\`user\${user.id}\`}
+                              checked={isSelected(user.id)}
+                              onChange={() => toggleSelection(user.id)}
+                            />
+                            <div style={{ flex: 1 }}>
+                              <GoabBlock direction="row" gap="s" alignment="center">
+                                <strong data-grid="cell-1">{user.name}</strong>
+                                <GoabBadge
+                                  data-grid="cell-2"
+                                  type={getStatusBadgeType(user.status)}
+                                  content={user.status}
+                                />
+                              </GoabBlock>
+                              <span data-grid="cell-3" style={{ color: "var(--goa-color-text-secondary)" }}>
+                                {user.email}
+                              </span>
+                            </div>
+                            <GoabMenuButton
+                              data-grid="cell-4"
+                              text="Actions"
+                              type="tertiary"
+                              onAction={(e) => handleMenuAction(user.id, e.action)}
+                            >
+                              <GoabMenuAction action="view" text="View" />
+                              <GoabMenuAction action="delete" text="Delete" />
+                            </GoabMenuButton>
+                          </div>
+                        </GoabContainer>
+                      ))}
+                    </GoabDataGrid>`}
+                  />
+                )}
               </Sandbox>
 
               <ComponentProperties properties={componentProperties} />
