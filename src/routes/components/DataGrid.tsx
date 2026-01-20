@@ -81,7 +81,9 @@ export default function DataGridPage() {
 
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-  const [isSelectedAll, setIsSelectedAll] = useState(false);
+
+  const isSelectedAll = selectedUsers.length === users.length && users.length > 0;
+  const isIndeterminate = selectedUsers.length > 0 && selectedUsers.length < users.length;
 
   const [layoutView, setLayoutView] = useState<"table" | "card">("table");
 
@@ -124,7 +126,6 @@ export default function DataGridPage() {
   };
 
   const selectAll = (checked: boolean) => {
-    setIsSelectedAll(checked);
     if (checked) {
       setSelectedUsers(users.map(u => u.id));
     } else {
@@ -213,6 +214,7 @@ export default function DataGridPage() {
                               name="selectAll"
                               mt="2xs"
                               checked={isSelectedAll}
+                              indeterminate={isIndeterminate}
                               onChange={e => selectAll(e.checked)}
                             />
                           </th>
@@ -340,7 +342,14 @@ export default function DataGridPage() {
                         { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
                       ];
                       selectedUsers: string[] = [];
-                      isSelectedAll = false;
+
+                      get isSelectedAll(): boolean {
+                        return this.selectedUsers.length === this.users.length && this.users.length > 0;
+                      }
+
+                      get isIndeterminate(): boolean {
+                        return this.selectedUsers.length > 0 && this.selectedUsers.length < this.users.length;
+                      }
 
                       getStatusBadgeType(status: string): GoabBadgeType {
                         const types: Record<string, GoabBadgeType> = {
@@ -360,7 +369,6 @@ export default function DataGridPage() {
                       }
 
                       selectAll(event: GoabCheckboxOnChangeDetail) {
-                        this.isSelectedAll = event.checked;
                         this.selectedUsers = event.checked ? this.users.map(u => u.id) : [];
                       }
 
@@ -405,6 +413,7 @@ export default function DataGridPage() {
                                 name="selectAll"
                                 mt="2xs"
                                 [checked]="isSelectedAll"
+                                [indeterminate]="isIndeterminate"
                                 (onChange)="selectAll($event)">
                               </goab-checkbox>
                             </th>
@@ -555,7 +564,9 @@ export default function DataGridPage() {
                       { id: "2", name: "Bob Smith", status: "Pending", email: "bob@example.com" },
                     ]);
                     const [selectedUsers, setSelectedUsers] = useState<string[]>([]);
-                    const [isSelectedAll, setIsSelectedAll] = useState(false);
+
+                    const isSelectedAll = selectedUsers.length === users.length && users.length > 0;
+                    const isIndeterminate = selectedUsers.length > 0 && selectedUsers.length < users.length;
 
                     const getStatusBadgeType = (status: string): "success" | "important" | "information" => {
                       switch (status) {
@@ -581,7 +592,6 @@ export default function DataGridPage() {
                     };
 
                     const selectAll = (event: GoabCheckboxOnChangeDetail) => {
-                      setIsSelectedAll(event.checked);
                       setSelectedUsers(event.checked ? users.map(u => u.id) : []);
                     };
 
@@ -625,6 +635,7 @@ export default function DataGridPage() {
                                 name="selectAll"
                                 mt="2xs"
                                 checked={isSelectedAll}
+                                indeterminate={isIndeterminate}
                                 onChange={selectAll}
                               />
                             </th>

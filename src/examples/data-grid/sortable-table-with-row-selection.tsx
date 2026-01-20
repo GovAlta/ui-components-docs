@@ -53,7 +53,9 @@ export function SortableTableWithRowSelection() {
 
   const [applications, setApplications] = useState<Application[]>(initialApplications);
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
-  const [isSelectedAll, setIsSelectedAll] = useState(false);
+
+  const isSelectedAll = selectedIds.length === applications.length && applications.length > 0;
+  const isIndeterminate = selectedIds.length > 0 && selectedIds.length < applications.length;
 
   const isSelected = (id: string): boolean => selectedIds.includes(id);
 
@@ -66,7 +68,6 @@ export function SortableTableWithRowSelection() {
   };
 
   const selectAll = (checked: boolean) => {
-    setIsSelectedAll(checked);
     if (checked) {
       setSelectedIds(applications.map((app) => app.id));
     } else {
@@ -95,6 +96,7 @@ export function SortableTableWithRowSelection() {
                     name="selectAll"
                     mt="2xs"
                     checked={isSelectedAll}
+                    indeterminate={isIndeterminate}
                     onChange={(e) => selectAll(e.checked)}
                   />
                 </th>
@@ -158,7 +160,14 @@ export function SortableTableWithRowSelection() {
             ];
 
             selectedIds: string[] = [];
-            isSelectedAll = false;
+
+            get isSelectedAll(): boolean {
+              return this.selectedIds.length === this.applications.length && this.applications.length > 0;
+            }
+
+            get isIndeterminate(): boolean {
+              return this.selectedIds.length > 0 && this.selectedIds.length < this.applications.length;
+            }
 
             isSelected(id: string): boolean {
               return this.selectedIds.includes(id);
@@ -173,7 +182,6 @@ export function SortableTableWithRowSelection() {
             }
 
             selectAll(checked: boolean) {
-              this.isSelectedAll = checked;
               this.selectedIds = checked ? this.applications.map(app => app.id) : [];
             }
 
@@ -209,6 +217,7 @@ export function SortableTableWithRowSelection() {
                     <goab-checkbox
                       name="selectAll"
                       [checked]="isSelectedAll"
+                      [indeterminate]="isIndeterminate"
                       (onChange)="selectAll($event.checked)" />
                   </th>
                   <th data-grid="cell">
@@ -267,7 +276,9 @@ export function SortableTableWithRowSelection() {
           ]);
 
           const [selectedIds, setSelectedIds] = useState<string[]>([]);
-          const [isSelectedAll, setIsSelectedAll] = useState(false);
+
+          const isSelectedAll = selectedIds.length === applications.length && applications.length > 0;
+          const isIndeterminate = selectedIds.length > 0 && selectedIds.length < applications.length;
 
           const isSelected = (id: string): boolean => selectedIds.includes(id);
 
@@ -280,7 +291,6 @@ export function SortableTableWithRowSelection() {
           };
 
           const selectAll = (checked: boolean) => {
-            setIsSelectedAll(checked);
             setSelectedIds(checked ? applications.map((app) => app.id) : []);
           };
 
@@ -316,6 +326,7 @@ export function SortableTableWithRowSelection() {
                     <GoabCheckbox
                       name="selectAll"
                       checked={isSelectedAll}
+                      indeterminate={isIndeterminate}
                       onChange={(e) => selectAll(e.checked)}
                     />
                   </th>
