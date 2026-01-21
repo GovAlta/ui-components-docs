@@ -1,51 +1,17 @@
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
-import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { useState } from "react";
 import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties.tsx";
-import {
-  GoabContainer,
-  GoabTab,
-  GoabTabs,
-  GoabPushDrawerProps,
-  GoabPushDrawer,
-  GoabButton,
-  GoabTable,
-} from "@abgov/react-components";
+import { GoabTab, GoabTabs, GoabPushDrawer, GoabButton, GoabTable } from "@abgov/react-components";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 
 // == Page props ==
 
 const componentName = "Push Drawer";
 const description = "TODO: Add description here.";
-// type ComponentPropsType = GoabPushDrawerProps;
-// type CastingType = {
-//   // add any required props here
-//   [key: string]: unknown;
-// };
 
 export default function PushDrawerPage() {
-  // const [open, setOpen] = useState(false);
-
-  // const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-  //   open: open,
-  //   heading: "Push Drawer heading",
-  //   width: "492px",
-  //   onClose: null,
-  //   children: (
-  //     <>
-  //       <div style={{ height: "200px" }}>
-  //         <h1>This is component children</h1>
-  //         <p>More content inside the Push Drawer.</p>
-  //       </div>
-  //     </>
-  //   ),
-  // });
-
-  // const [componentBindings, setComponentBindings] = useState<ComponentBinding[]>([]);
-
   const componentProperties: ComponentProperty[] = [
     {
       name: "open",
@@ -69,7 +35,7 @@ export default function PushDrawerPage() {
       name: "width",
       type: "string",
       required: false,
-      description: "Width of the drawer (e.g., '300px', '30%').",
+      description: "Width of the drawer (e.g., '300px'). Cannot be a percentage.",
     },
     {
       name: "actions",
