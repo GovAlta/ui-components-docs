@@ -87,9 +87,10 @@ export function SortableTableWithRowSelection({
   return (
     <>
       {isGridReady && (
-      <GoabContainer mt="none" mb="none">
+      <GoabContainer mt="none" mb="none" maxWidth="100%">
         <GoabDataGrid keyboardNav="table" keyboardIconPosition="right">
-          <GoabTable width="100%" onSort={handleSort}>
+          <div style={{ overflowX: "auto" }}>
+            <GoabTable width="100%" onSort={handleSort}>
             <thead>
               <tr data-grid="row">
                 <th data-grid="cell" style={{ paddingBottom: 0 }}>
@@ -141,7 +142,8 @@ export function SortableTableWithRowSelection({
                 </tr>
               ))}
             </tbody>
-          </GoabTable>
+            </GoabTable>
+          </div>
         </GoabDataGrid>
       </GoabContainer>
       )}

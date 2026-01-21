@@ -67,14 +67,14 @@ export function LayoutModeWithCards({
   return (
     <>
       {isGridReady && (
-      <GoabContainer mt="none" mb="none">
+      <GoabContainer mt="none" mb="none" maxWidth="100%">
         <GoabDataGrid keyboardNav="layout" keyboardIconPosition="right">
           {users.map(user => (
-            <GoabContainer key={user.id} mt="m" data-grid="row">
-              <GoabBlock direction="row" gap="m" alignment="start">
+            <GoabContainer key={user.id} mt="m" data-grid="row" maxWidth="100%">
+              <div style={{ display: "flex", flexDirection: "row", gap: "var(--goa-space-m)", alignItems: "flex-start" }}>
                 <GoabCheckbox data-grid="cell-0" name={`user-${user.id}`} />
 
-                <GoabBlock direction="column" gap="m" alignment="start">
+                <div style={{ display: "flex", flexDirection: "column", gap: "var(--goa-space-m)", flex: 1, minWidth: 0 }}>
                   <GoabBlock direction="row" gap="s" alignment="center">
                     <strong data-grid="cell-1">{user.name}</strong>
                     <GoabBadge
@@ -84,7 +84,7 @@ export function LayoutModeWithCards({
                     />
                   </GoabBlock>
 
-                  <GoabBlock direction="row" gap="xl" alignment="start">
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--goa-space-xl)" }}>
                     <GoabBlock direction="column" gap="xs" data-grid="cell-4">
                       <strong>Updated</strong>
                       <span>{user.updated}</span>
@@ -97,9 +97,9 @@ export function LayoutModeWithCards({
                       <strong>Program</strong>
                       <span>{user.program}</span>
                     </GoabBlock>
-                  </GoabBlock>
+                  </div>
 
-                  <GoabBlock direction="row" gap="xl" alignment="start">
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--goa-space-xl)" }}>
                     <GoabBlock direction="column" gap="xs" data-grid="cell-7">
                       <strong>Program ID</strong>
                       <span>{user.programId}</span>
@@ -108,14 +108,14 @@ export function LayoutModeWithCards({
                       <strong>Service access</strong>
                       <span>{user.serviceAccess}</span>
                     </GoabBlock>
-                  </GoabBlock>
-                </GoabBlock>
+                  </div>
+                </div>
 
                 <GoabMenuButton data-grid="cell-3" text="Actions" type="tertiary">
                   <GoabMenuAction action="open" text="Open" />
                   <GoabMenuAction action="delete" text="Delete" />
                 </GoabMenuButton>
-              </GoabBlock>
+              </div>
             </GoabContainer>
           ))}
         </GoabDataGrid>
@@ -181,11 +181,11 @@ export function LayoutModeWithCards({
           code={`
           <goab-data-grid keyboardNav="layout" keyboardIconPosition="right">
             @for (user of users; track user.id) {
-              <goab-container mt="m" data-grid="row">
-                <goab-block direction="row" gap="m" alignment="start">
+              <goab-container mt="m" data-grid="row" maxWidth="100%">
+                <div style="display: flex; flex-direction: row; gap: var(--goa-space-m); align-items: flex-start">
                   <goab-checkbox data-grid="cell-0" [name]="'user-' + user.id"></goab-checkbox>
 
-                  <goab-block direction="column" gap="m" alignment="start" style="flex: 1">
+                  <div style="display: flex; flex-direction: column; gap: var(--goa-space-m); flex: 1; min-width: 0">
                     <goab-block direction="row" gap="s" alignment="center">
                       <strong data-grid="cell-1">{{ user.name }}</strong>
                       <goab-block data-grid="cell-2">
@@ -196,7 +196,7 @@ export function LayoutModeWithCards({
                       </goab-block>
                     </goab-block>
 
-                    <goab-block direction="row" gap="xl" alignment="start">
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--goa-space-xl)">
                       <goab-block direction="column" gap="xs" data-grid="cell-4">
                         <strong>Updated</strong>
                         <span>{{ user.updated }}</span>
@@ -209,9 +209,9 @@ export function LayoutModeWithCards({
                         <strong>Program</strong>
                         <span>{{ user.program }}</span>
                       </goab-block>
-                    </goab-block>
+                    </div>
 
-                    <goab-block direction="row" gap="xl" alignment="start">
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--goa-space-xl)">
                       <goab-block direction="column" gap="xs" data-grid="cell-7">
                         <strong>Program ID</strong>
                         <span>{{ user.programId }}</span>
@@ -220,14 +220,14 @@ export function LayoutModeWithCards({
                         <strong>Service access</strong>
                         <span>{{ user.serviceAccess }}</span>
                       </goab-block>
-                    </goab-block>
-                  </goab-block>
+                    </div>
+                  </div>
 
                   <goab-menu-button data-grid="cell-3" text="Actions" type="tertiary" (onAction)="handleMenuAction(user.id, $event)">
                     <goab-menu-action action="open" text="Open"></goab-menu-action>
                     <goab-menu-action action="delete" text="Delete"></goab-menu-action>
                   </goab-menu-button>
-                </goab-block>
+                </div>
               </goab-container>
             }
           </goab-data-grid>`}
@@ -300,11 +300,11 @@ export function LayoutModeWithCards({
           code={`
           <GoabDataGrid keyboardNav="layout" keyboardIconPosition="right">
             {users.map((user) => (
-              <GoabContainer key={user.id} mt="m" data-grid="row">
-                <GoabBlock direction="row" gap="m" alignment="start">
+              <GoabContainer key={user.id} mt="m" data-grid="row" maxWidth="100%">
+                <div style={{ display: "flex", flexDirection: "row", gap: "var(--goa-space-m)", alignItems: "flex-start" }}>
                   <GoabCheckbox data-grid="cell-0" name={\`user-\${user.id}\`} />
 
-                  <GoabBlock direction="column" gap="m" alignment="start">
+                  <div style={{ display: "flex", flexDirection: "column", gap: "var(--goa-space-m)", flex: 1, minWidth: 0 }}>
                     <GoabBlock direction="row" gap="s" alignment="center">
                       <strong data-grid="cell-1">{user.name}</strong>
                       <GoabBadge
@@ -314,7 +314,7 @@ export function LayoutModeWithCards({
                       />
                     </GoabBlock>
 
-                    <GoabBlock direction="row" gap="xl" alignment="start">
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--goa-space-xl)" }}>
                       <GoabBlock direction="column" gap="xs" data-grid="cell-4">
                         <strong>Updated</strong>
                         <span>{user.updated}</span>
@@ -327,9 +327,9 @@ export function LayoutModeWithCards({
                         <strong>Program</strong>
                         <span>{user.program}</span>
                       </GoabBlock>
-                    </GoabBlock>
+                    </div>
 
-                    <GoabBlock direction="row" gap="xl" alignment="start">
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: "var(--goa-space-xl)" }}>
                       <GoabBlock direction="column" gap="xs" data-grid="cell-7">
                         <strong>Program ID</strong>
                         <span>{user.programId}</span>
@@ -338,14 +338,14 @@ export function LayoutModeWithCards({
                         <strong>Service access</strong>
                         <span>{user.serviceAccess}</span>
                       </GoabBlock>
-                    </GoabBlock>
-                  </GoabBlock>
+                    </div>
+                  </div>
 
                   <GoabMenuButton data-grid="cell-3" text="Actions" type="tertiary" onAction={(e) => handleMenuAction(user.id, e)}>
                     <GoabMenuAction action="open" text="Open" />
                     <GoabMenuAction action="delete" text="Delete" />
                   </GoabMenuButton>
-                </GoabBlock>
+                </div>
               </GoabContainer>
             ))}
           </GoabDataGrid>`}
