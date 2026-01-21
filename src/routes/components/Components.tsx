@@ -109,6 +109,7 @@ export function Components() {
               <Link to={getUrl("header")}>Header</Link>
               <Link to={getUrl("microsite-header")}>Microsite header</Link>
               <Link to={getUrl("pagination")}>Pagination</Link>
+              <Link to={getUrl("push-drawer")}>{newComponentLabel("Push Drawer")}</Link>
               <Link to={getUrl("side-menu")}>Side menu</Link>
               <Link to={getUrl("tabs")}>Tabs</Link>
             </GoabSideMenuGroup>

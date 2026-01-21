@@ -33,6 +33,7 @@ import PaginationPage from "@routes/components/Pagination.tsx";
 import PopoverPage from "@routes/components/Popover.tsx";
 import CircularProgressIndicatorPage from "@routes/components/CircularProgressIndicator.tsx";
 import LinearProgressIndicatorPage from "@routes/components/LinearProgressIndicator.tsx";
+import PushDrawerPage from "@routes/components/PushDrawer.tsx";
 import RadioPage from "@routes/components/Radio.tsx";
 import SideMenuPage from "@routes/components/SideMenu.tsx";
 import SkeletonPage from "@routes/components/Skeleton.tsx";
@@ -121,6 +122,7 @@ export const ComponentsRouter = () => {
     popover: <PopoverPage />,
     "circular-progress-indicator": <CircularProgressIndicatorPage />,
     "linear-progress-indicator": <LinearProgressIndicatorPage />,
+    "push-drawer": <PushDrawerPage />,
     radio: <RadioPage />,
     "side-menu": <SideMenuPage />,
     "skeleton-loader": <SkeletonPage />,
