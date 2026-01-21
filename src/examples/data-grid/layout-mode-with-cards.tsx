@@ -68,7 +68,7 @@ export function LayoutModeWithCards({
     <>
       {isGridReady && (
       <GoabContainer mt="none" mb="none">
-        <GoabDataGrid keyboardNav="layout">
+        <GoabDataGrid keyboardNav="layout" keyboardIconPosition="right">
           {users.map(user => (
             <GoabContainer key={user.id} mt="m" data-grid="row">
               <GoabBlock direction="row" gap="m" alignment="start">
@@ -179,7 +179,7 @@ export function LayoutModeWithCards({
           tags="angular"
           allowCopy={true}
           code={`
-          <goab-data-grid keyboardNav="layout">
+          <goab-data-grid keyboardNav="layout" keyboardIconPosition="right">
             @for (user of users; track user.id) {
               <goab-container mt="m" data-grid="row">
                 <goab-block direction="row" gap="m" alignment="start">
@@ -298,7 +298,7 @@ export function LayoutModeWithCards({
           tags="react"
           allowCopy={true}
           code={`
-          <GoabDataGrid keyboardNav="layout">
+          <GoabDataGrid keyboardNav="layout" keyboardIconPosition="right">
             {users.map((user) => (
               <GoabContainer key={user.id} mt="m" data-grid="row">
                 <GoabBlock direction="row" gap="m" alignment="start">

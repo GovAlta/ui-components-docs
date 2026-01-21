@@ -25,7 +25,7 @@ export function BasicTableWithKeyboardNavigation({
   return (
     <>
       {isGridReady && (
-        <GoabDataGrid keyboardNav="table">
+        <GoabDataGrid keyboardNav="table" keyboardIconPosition="right">
           <GoabTable width="100%">
             <thead>
               <tr data-grid="row">
@@ -63,7 +63,7 @@ export function BasicTableWithKeyboardNavigation({
           tags="angular"
           allowCopy={true}
           code={`
-          <goab-data-grid keyboardNav="table">
+          <goab-data-grid keyboardNav="table" keyboardIconPosition="right">
             <goab-table width="100%">
               <thead>
                 <tr data-grid="row">
@@ -127,7 +127,7 @@ export function BasicTableWithKeyboardNavigation({
           tags="react"
           allowCopy={true}
           code={`
-          <GoabDataGrid keyboardNav="table">
+          <GoabDataGrid keyboardNav="table" keyboardIconPosition="right">
             <GoabTable width="100%">
               <thead>
                 <tr data-grid="row">

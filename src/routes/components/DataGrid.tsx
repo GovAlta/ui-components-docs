@@ -53,6 +53,7 @@ export default function DataGridPage() {
   const { version, language } = useContext(LanguageVersionContext);
   const [dataGridProps, setDataGridProps] = useState<ComponentPropsType>({
     keyboardNav: "table",
+    keyboardIconPosition: "right",
   });
   
   // We render GoabDataGrid inside GoabTabs, so when switching tabs the grid needs time to mount.
@@ -123,7 +124,7 @@ export default function DataGridPage() {
       type: "dropdown",
       name: "keyboardIconPosition",
       options: ["", "left", "right"],
-      value: "",
+      value: "right",
       defaultValue: "left",
     },
     {
