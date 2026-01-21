@@ -1,20 +1,19 @@
-import { useState, useEffect } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
   GoabBadge,
   GoabButton,
-  GoabContainer,
   GoabDataGrid,
   GoabTable,
 } from "@abgov/react-components";
 
-export function BasicTableWithKeyboardNavigation() {
-  const [isGridReady, setIsGridReady] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setIsGridReady(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
+interface BasicTableWithKeyboardNavigationProps {
+  isGridReady?: boolean;
+}
+
+export function BasicTableWithKeyboardNavigation({
+  isGridReady = true,
+}: BasicTableWithKeyboardNavigationProps) {
 
   const users = [
     { id: "1", name: "Alice Johnson", role: "Developer", status: "Active" },
@@ -26,7 +25,6 @@ export function BasicTableWithKeyboardNavigation() {
   return (
     <>
       {isGridReady && (
-      <GoabContainer mt="none" mb="none">
         <GoabDataGrid keyboardNav="table">
           <GoabTable width="100%">
             <thead>
@@ -56,7 +54,6 @@ export function BasicTableWithKeyboardNavigation() {
             </tbody>
           </GoabTable>
         </GoabDataGrid>
-      </GoabContainer>
       )}
 
       <Sandbox fullWidth skipRender skipRenderDom>

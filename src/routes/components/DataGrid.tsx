@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import {
   GoabBadge,
   GoabBlock,
@@ -54,13 +54,36 @@ export default function DataGridPage() {
   const [dataGridProps, setDataGridProps] = useState<ComponentPropsType>({
     keyboardNav: "table",
   });
-
+  
+  // We render GoabDataGrid inside GoabTabs, so when switching tabs the grid needs time to mount.
+  // This setTimeout defers initialization to the next event loop tick, giving React enough time
+  // to complete the mount/unmount cycle before the DataGrid initializes its keyboard navigation.
   const [isGridReady, setIsGridReady] = useState(false);
+  const gridTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleGridReady = () => {
+    if (gridTimerRef.current) clearTimeout(gridTimerRef.current);
+    gridTimerRef.current = setTimeout(() => setIsGridReady(true), 0);
+  };
+
   useEffect(() => {
-    // add small delay for all nested doms fully render
-    const timer = setTimeout(() => setIsGridReady(true), 200);
-    return () => clearTimeout(timer);
+    scheduleGridReady();
+    return () => {
+      if (gridTimerRef.current) clearTimeout(gridTimerRef.current);
+    };
   }, []);
+
+  const resetGridReady = () => {
+    setIsGridReady(false);
+    scheduleGridReady();
+  };
+
+  const handleTabChange = (event: { tab: number }) => {
+    // Only reset for tabs with DataGrids (tab 1 = Code playground, tab 2 = Examples)
+    if (event.tab === 1 || event.tab === 2) {
+      resetGridReady();
+    }
+  };
 
   const initialUsers: User[] = [
     { id: "1", name: "Alice Johnson", status: "Active", email: "alice@example.com" },
@@ -196,7 +219,7 @@ export default function DataGridPage() {
 
       {version === "new" && (
         <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-          <GoabTabs initialTab={1}>
+          <GoabTabs initialTab={1} onChange={handleTabChange}>
             <GoabTab heading="Code playground">
               <h2 id="component" style={{ display: "none" }}>
                 Component
@@ -907,7 +930,7 @@ export default function DataGridPage() {
                 </>
               }
             >
-              <DataGridExamples />
+              <DataGridExamples isGridReady={isGridReady} />
             </GoabTab>
 
             <GoabTab heading="Design">

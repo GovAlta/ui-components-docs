@@ -3,17 +3,23 @@ import { BasicTableWithKeyboardNavigation } from "./basic-table-with-keyboard-na
 import { SortableTableWithRowSelection } from "./sortable-table-with-row-selection.tsx";
 import { LayoutModeWithCards } from "./layout-mode-with-cards.tsx";
 
-export function DataGridExamples() {
+interface DataGridExamplesProps {
+  isGridReady?: boolean;
+}
+
+export function DataGridExamples({
+  isGridReady = true,
+}: DataGridExamplesProps) {
   return (
     <>
       <SandboxHeader exampleTitle="Basic table with keyboard navigation" />
-      <BasicTableWithKeyboardNavigation />
+      <BasicTableWithKeyboardNavigation isGridReady={isGridReady} />
 
       <SandboxHeader exampleTitle="Sortable table with row selection" />
-      <SortableTableWithRowSelection />
+      <SortableTableWithRowSelection isGridReady={isGridReady} />
 
       <SandboxHeader exampleTitle="Layout mode with cards" />
-      <LayoutModeWithCards />
+      <LayoutModeWithCards isGridReady={isGridReady} />
     </>
   );
 }

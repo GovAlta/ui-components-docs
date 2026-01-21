@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Sandbox } from "@components/sandbox";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import {
@@ -23,12 +22,13 @@ type User = {
   serviceAccess: string;
 };
 
-export function LayoutModeWithCards() {
-  const [isGridReady, setIsGridReady] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => setIsGridReady(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
+interface LayoutModeWithCardsProps {
+  isGridReady?: boolean;
+}
+
+export function LayoutModeWithCards({
+  isGridReady = true,
+}: LayoutModeWithCardsProps) {
 
   const users: User[] = [
     {
