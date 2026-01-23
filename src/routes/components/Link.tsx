@@ -9,7 +9,7 @@ import { GoabBadge, GoabTab, GoabTabs, GoabLink } from "@abgov/react-components"
 import LinkExamples from "@examples/link/LinkExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import ICONS from "@routes/components/icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 
 
 export default function LinkPage() {
@@ -21,14 +21,14 @@ export default function LinkPage() {
       label: "Leading Icon",
       type: "combobox",
       name: "leadingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
       label: "Trailing Icon",
       type: "combobox",
       name: "trailingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {

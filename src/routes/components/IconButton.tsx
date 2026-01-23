@@ -12,7 +12,7 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useState } from "react";
-import ICONS from "./icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { GoabIconType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
@@ -46,7 +46,7 @@ export default function IconButtonPage() {
       label: "Icon",
       type: "combobox",
       name: "icon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "refresh",
     },
     {

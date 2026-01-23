@@ -9,7 +9,7 @@ import {
   GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import ICONS from "./icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader.tsx";
 import {
   ComponentProperties,
@@ -60,7 +60,7 @@ export default function DropdownPage() {
       label: "Leading icon",
       type: "combobox",
       name: "leadingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
