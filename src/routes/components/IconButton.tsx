@@ -20,11 +20,6 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 import { IconButtonExamples } from "@examples/icon-button/IconButtonExamples.tsx";
 
 type ComponentPropsType = GoabIconButtonProps;
-type CastingType = {
-  // add any required props here
-  icon: GoabIconType;
-  [key: string]: unknown;
-};
 export default function IconButtonPage() {
   const [iconButtonProps, setIconButtonProps] = useState<ComponentPropsType>({
     icon: "refresh" as GoabIconType,
@@ -200,8 +195,8 @@ export default function IconButtonPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setIconButtonProps(props as CastingType);
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
+    setIconButtonProps(props);
     setIconButtonBindings(bindings);
   }
   return (
@@ -224,7 +219,7 @@ export default function IconButtonPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={iconButtonBindings} onChange={onSandboxChange}>
+            <Sandbox<ComponentPropsType> properties={iconButtonBindings} onChange={onSandboxChange}>
               <GoabIconButton {...iconButtonProps} />
             </Sandbox>
 

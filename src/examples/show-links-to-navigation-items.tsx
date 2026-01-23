@@ -12,10 +12,6 @@ import { propsToString } from "@components/sandbox/BaseSerializer.ts";
 
 type FooterNavPropsType = GoabFooterNavSectionProps;
 type FooterPropsType = GoabAppFooterProps;
-type CastingType = {
-  // add any required props here
-  [key: string]: unknown;
-};
 
 export const ShowLinksToNavigationItems = () => {
   const {version} = useContext(LanguageVersionContext);
@@ -55,8 +51,8 @@ export const ShowLinksToNavigationItems = () => {
       maxColumnCount: props.maxColumnCount || 1
     };
 
-    setFooterProps(footerProps as CastingType);
-    setFooterNavSectionProps(footerNavSectionProps as CastingType);
+    setFooterProps(footerProps as FooterPropsType);
+    setFooterNavSectionProps(footerNavSectionProps as FooterNavPropsType);
     setAppFooterNavBindings(bindings);
   }
 

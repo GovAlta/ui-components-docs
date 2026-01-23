@@ -30,11 +30,6 @@ const relatedComponents = [
 ];
 type ComponentPropsType = GoabAppFooterProps;
 
-type CastingType = {
-  // add any required props here
-  [key: string]: unknown;
-};
-
 export default function AppFooterPage() {
   const {language} = useContext(LanguageVersionContext);
 
@@ -88,8 +83,8 @@ export default function AppFooterPage() {
     },
   ];
 
-  function onSandbox1Change(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setSandbox1Props(props as CastingType);
+  function onSandbox1Change(bindings: ComponentBinding[], props: ComponentPropsType) {
+    setSandbox1Props(props);
     setAppFooterBindings(bindings);
   }
 
@@ -110,7 +105,7 @@ export default function AppFooterPage() {
               Playground
             </h2>
             <h3>Basic Footer</h3>
-            <Sandbox properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
+            <Sandbox<ComponentPropsType> properties={appFooterBindings} onChange={onSandbox1Change} fullWidth>
               <GoabAppFooter {...sandbox1Props} />
             </Sandbox>
 

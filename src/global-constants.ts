@@ -4,6 +4,7 @@ export const DEFAULT_LANGUAGE = "react";
 
 // Array of 'New' components
 export const NEW_COMPONENTS = [
+  "Data grid",
   "Drawer",
   "Temporary notification",
   "Checkbox list",

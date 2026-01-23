@@ -37,10 +37,6 @@ const relatedComponents = [
   { link: "/components/popover", name: "Popover" }
 ];
 type ComponentPropsType = GoabTooltipProps;
-type CastingType = {
-  content: string;
-  [key: string]: unknown;
-};
 
 export default function TooltipPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -161,9 +157,9 @@ export default function TooltipPage() {
     MarginProperty
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   return (
@@ -181,7 +177,7 @@ export default function TooltipPage() {
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <Sandbox<ComponentPropsType> properties={componentBindings} onChange={onSandboxChange}>
               <GoabTooltip {...componentProps}>
                 <GoabIcon type="information-circle" />
               </GoabTooltip>

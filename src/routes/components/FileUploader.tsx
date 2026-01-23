@@ -74,10 +74,6 @@ const relatedComponents = [
 const FIGMA_LINK =
   "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=804-5767";
 type ComponentPropsType = Omit<GoabFileUploadInputProps, "onSelectFile">;
-type CastingType = {
-  maxFileSize: string;
-  [key: string]: unknown;
-};
 
 export default function FileUploaderPage() {
   const { version } = useContext(LanguageVersionContext);
@@ -272,9 +268,10 @@ export default function FileUploaderPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setFileUploaderBindings(bindings);
-    setFileUploaderProps(props as CastingType);
+    setFileUploaderProps(props);
   }
 
   // For file uploader demo
@@ -321,14 +318,9 @@ export default function FileUploaderPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code Playground">
-            <h2 id="component" style={{ display: "none" }}>
-              Playground
-            </h2>
-            <Sandbox
-              properties={fileUploaderBindings}
-              onChange={onSandboxChange}
-              fullWidth
-              skipRender>
+            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <Sandbox<ComponentPropsType> properties={fileUploaderBindings} onChange={onSandboxChange} fullWidth skipRender>
+
               {/* ******* */}
               {/* Angular */}
               {/* ******* */}
@@ -414,11 +406,7 @@ export default function FileUploaderPage() {
                   allowCopy={true}
                   code={`
                 <goa-form-item label="Upload a file">
-                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(
-                    fileUploaderProps,
-                    "angular",
-                    version
-                  )}></goa-file-upload-input>
+                  <goa-file-upload-input (_selectFile)="uploadFile($event)" ${propsToString(fileUploaderProps as Record<string, string | number>, "angular", version)}></goa-file-upload-input>
                   @for (upload of uploads; track $index) {
                     <goa-file-upload-card
                       [type]="upload.file.type"
@@ -586,11 +574,7 @@ export default function FileUploaderPage() {
                   allowCopy={true}
                   code={`
                 <GoAFormItem label="Upload a file">
-                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(
-                    fileUploaderProps,
-                    "react",
-                    version
-                  )} />
+                  <GoAFileUploadInput onSelectFile={uploadFile} ${propsToString(fileUploaderProps as Record<string, string | number>, "react", version)} />
                   {uploads.map(upload => (
                     <GoAFileUploadCard
                       key={upload.file.name}
@@ -656,11 +640,7 @@ export default function FileUploaderPage() {
                   allowCopy={true}
                   code={`
                 <GoabFormItem label="Upload a file">
-                  <GoabFileUploadInput onSelectFile={(event: GoabFileUploadInputOnSelectFileDetail) => uploadFile(event.file)} ${propsToString(
-                    fileUploaderProps,
-                    "react",
-                    version
-                  )} />
+                  <GoabFileUploadInput onSelectFile={(event: GoabFileUploadInputOnSelectFileDetail) => uploadFile(event.file)} ${propsToString(fileUploaderProps as Record<string, string | number>, "react", version)} />
                   {uploads.map(upload => (
                     <GoabFileUploadCard
                       key={upload.file.name}
