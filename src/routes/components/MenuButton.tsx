@@ -89,6 +89,16 @@ export default function MenuButtonPage() {
       description: "Controls the visual style of the trigger button.",
       defaultValue: "primary",
     },
+    {
+      name: "leadingIcon",
+      type: "GoabIconType",
+      description: "Optional leading icon appearing within the button.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the dropdown menu.",
+    },
     TestIdProperty,
     {
       name: "onAction",
