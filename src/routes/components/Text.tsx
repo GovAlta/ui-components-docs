@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -9,10 +9,12 @@ import { GoabText, GoabTab, GoabTabs, GoabBadge } from "@abgov/react-components"
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=27301-303449";
 
 export default function TextPage() {
+  const { version } = useContext(LanguageVersionContext);
   const [textProps, setTextProps] = useState({});
 
   const [textBindings, setTextBindings] = useState<ComponentBinding[]>([
@@ -57,7 +59,52 @@ export default function TextPage() {
       options: ["none", "3xs", "2xs", "xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl"],
       value: "none",
     },
+    {
+      label: "Id",
+      type: "string",
+      name: "id",
+      value: "",
+    },
   ]);
+
+  const oldComponentProperties: ComponentProperty[] = [
+    {
+      name: "tag",
+      type: "h1 | h2 | h3 | h4 | h5 | span | div | p",
+      description: "Sets the tag and text size.",
+      defaultValue: "div"
+    },
+    {
+      name: "size",
+      type: "heading-xl | heading-l | heading-m | heading-s | heading-xs | body-l | body-m | body-s | body-xs",
+      description: "Overrides the text size from the 'as' property."
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the max width.",
+      defaultValue: "65ch",
+      lang: "react",
+    },
+    {
+      name: "maxwidth",
+      type: "string",
+      description: "Sets the max width.",
+      defaultValue: "65ch",
+      lang: "angular",
+    },
+    {
+      name: "color",
+      type: "primary | secondary",
+      description: "Sets the text colour.",
+      defaultValue: "primary"
+    },
+    {
+      name: "mt,mr,mb,ml",
+      type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
+      description: "Apply margin to the top, right, bottom, and/or left of the component.",
+    },
+  ];
 
   const componentProperties: ComponentProperty[] = [
     {
@@ -72,17 +119,22 @@ export default function TextPage() {
       description: "Overrides the text size from the 'as' property."
     },
     {
-     name: "maxWidth",
-     type: "string",
-     description: "Sets the max width.",
-     defaultValue: "65ch"
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the max width.",
+      defaultValue: "65ch"
     },
-     {
+    {
       name: "color",
       type: "primary | secondary",
       description: "Sets the text colour.",
       defaultValue: "primary"
-     },
+    },
+    {
+      name: "id",
+      type: "string",
+      description: "Sets the HTML id attribute on the text element.",
+    },
     {
       name: "mt,mr,mb,ml",
       type: "none | 3xs | 2xs | xs | s | m | l | xl | 2xl | 3xl | 4xl",
@@ -108,13 +160,18 @@ export default function TextPage() {
       <GoabTabs initialTab={1}>
         <GoabTab heading="Code playground">
           <h2 id="component" style={{ display: "none" }}>Playground</h2>
-          <Sandbox properties={textBindings} onChange={onSandboxChange}>
+          <Sandbox
+            properties={version === "new"
+              ? textBindings
+              : textBindings.filter(b => b.name !== "id")}
+            onChange={onSandboxChange}
+          >
             <GoabText {...textProps}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
             </GoabText>
           </Sandbox>
-          <ComponentProperties properties={componentProperties} />
+          <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
         </GoabTab>
 
         <GoabTab
