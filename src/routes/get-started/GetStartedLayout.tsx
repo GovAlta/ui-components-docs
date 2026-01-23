@@ -17,7 +17,6 @@ export default function GetStartedLayout() {
             <Link to="developers">Overview</Link>
             <Link to="developers/setup">Setup</Link>
             <Link to="developers/bug">Verify a bug</Link>
-            <Link to="developers/vscode">VS Code</Link>
             <Link to="developers/technologies">Technologies </Link>
             <Link to="developers/browsers">Supported Browsers</Link>
             <Link to="developers/update">Version update guide</Link>
@@ -27,7 +26,7 @@ export default function GetStartedLayout() {
           <Link to="component-lifecycle">Component lifecycle</Link>
           <Link to="contribute">Contribute</Link>
           <Link to="roadmap">Roadmap</Link>
-          <Link to="lts-policy">Long Term Support (LTS)</Link>
+          <Link to="out-of-support">Out of support versions</Link>
           <Link to="support">Get support</Link>
 
         </GoabSideMenu>

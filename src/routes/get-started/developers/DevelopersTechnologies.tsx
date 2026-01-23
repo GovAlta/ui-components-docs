@@ -1,5 +1,5 @@
 import { ComponentContent } from "@components/component-content/ComponentContent";
-import { GoabText } from "@abgov/react-components";
+import { GoabText, GoabCallout } from "@abgov/react-components";
 
 export default function DevelopersTechnologiesPage() {
   return (
@@ -73,6 +73,9 @@ export default function DevelopersTechnologiesPage() {
       </GoabText>
 
       <h2 id="angular">Angular</h2>
+      <GoabCallout type="information" heading="Versions supported in latest" size="medium">
+        17, 18, 19, 20
+      </GoabCallout>
       <GoabText size="body-m" mt="l" mb="l">
         <a href="https://angular.io/" target="_blank">
           Angular
@@ -87,13 +90,18 @@ export default function DevelopersTechnologiesPage() {
 
       <GoabText size="heading-s" mt="xl" mb="s">How Web Components and Angular work together</GoabText>
       <GoabText size="body-m" mt="l" mb="l">
-        Our Angular implementation adds form binding, both Reactive and Template, to our web
+        We use Angular to create wrappers around our web components. This helps manage events and properties
+        of the web components rather than trying to use our web components by themselves. Our Angular
+        implementation adds form binding, both Reactive and Template, to our web
         components.
       </GoabText>
-      <GoabText size="body-m" mt="l" mb="2xl">Angular applications will need to use our web components and Angular
-        components.</GoabText>
+      <GoabText size="body-m" mt="l" mb="2xl">The Angular wrappers are used inside an Angular app,
+        which then makes requests back to our web components to create the actual component.</GoabText>
 
       <h2 id="react">React</h2>
+      <GoabCallout type="information" heading="Versions supported in latest" size="medium">
+        17, 18, 19
+      </GoabCallout>
       <GoabText size="body-m" mt="l" mb="l">
         <a href="https://react.dev/" target="_blank">
           React

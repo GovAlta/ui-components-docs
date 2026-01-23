@@ -2,11 +2,10 @@ import { Category, ComponentHeader } from "@components/component-header/Componen
 import {
   GoabBadge,
   GoabButton,
-  GoabButtonGroup,
   GoabModal,
   GoabModalProps,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import { useContext, useEffect, useState } from "react";
@@ -25,7 +24,8 @@ import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13874";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13874";
 const componentName = "Modal";
 const description =
   "An overlay that appears in front of all other content, and requires a user to take an action before continuing.";
@@ -41,9 +41,9 @@ type CastingType = {
 };
 
 export default function ModalPage() {
-  const {language} = useContext(LanguageVersionContext);
+  const { language } = useContext(LanguageVersionContext);
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
-    heading: "Are you sure you want to exit your application?",
+    heading: "This is important information",
   });
 
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function ModalPage() {
       type: "string",
       name: "heading",
       width: "40ch",
-      value: "Are you sure you want to exit your application?",
+      value: "This is important information",
     },
     {
       label: "Max width",
@@ -80,12 +80,6 @@ export default function ModalPage() {
       name: "maxWidth",
       width: "16ch",
       value: "",
-    },
-    {
-      label: "Closable",
-      type: "boolean",
-      name: "closable",
-      value: false,
     },
     {
       label: "Open",
@@ -271,83 +265,50 @@ export default function ModalPage() {
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox properties={componentBindings} onChange={onSandboxChange} allow={["p"]}>
               <CodeSnippet
                 lang="typescript"
                 tags="angular"
                 allowCopy={true}
                 code={`
-                  export class SomeOtherComponent {
-                    open = false;
-                    onClick() {
-                      this.open = !this.open;
-                    }
-                  }
-                `}
-              />
-
-              {isClosableChecked(componentBindings) && <CodeSnippet
-                lang="typescript"
-                tags="angular"
-                allowCopy={true}
-                code={`
                     onClose() {
                       this.open = false;
-                   } 
+                   }
                 `}
-              />}
+              />
 
               <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
-                  const [open, setOpen] = useState(false);
-                   function onClick() {
-                    setOpen(!open);
+                  function modalOnClose() {
+                    setOpen(false);
                    }
                 `}
               />
 
-              {isClosableChecked(componentBindings) && <CodeSnippet
-                lang="typescript"
-                tags="react"
-                allowCopy={true}
-                code={`
-                  function modalOnClose() {
-                    setOpen(false);
-                   } 
-                `}
-              />}
-
               <GoabButton onClick={() => setOpen(true)}>Show Modal</GoabButton>
 
-              {!isClosableChecked(componentBindings) && (
-                <GoabModal {...componentProps} open={open}>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
+              <GoabModal {...componentProps} open={open} onClose={onClose}>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
                   molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
-                  <GoabButtonGroup alignment="end" mt={"xl"}>
-                    <GoabButton type="tertiary" onClick={() => setOpen(false)}>
-                      Cancel
-                    </GoabButton>
-                    <GoabButton type="primary" onClick={() => setOpen(false)}>
-                      Exit
-                    </GoabButton>
-                  </GoabButtonGroup>
-                </GoabModal>
-              )}
-
-              {isClosableChecked(componentBindings) && (
-                <GoabModal {...componentProps} open={open} onClose={onClose}>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia obcaecati id
-                  molestiae, natus dicta, eaque qui iusto similique, libero explicabo eligendi eius
-                    laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.</p>
-                </GoabModal>
-              )}
+                  laboriosam! Repellendus ducimus officia asperiores. Eos, eius numquam.
+                </p>
+                <p>
+                  See the Examples tab for customized closing buttons and behavior using the
+                  "actions" property.
+                </p>
+              </GoabModal>
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -356,8 +317,7 @@ export default function ModalPage() {
                 Examples
                 <GoabBadge type="information" content="6" />
               </>
-            }
-          >
+            }>
             <ModalExamples />
           </GoabTab>
 

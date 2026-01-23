@@ -11,7 +11,8 @@ import {
   GoabTab,
   GoabTabs,
   GoabCircularProgress,
-  GoabCircularProgressProps, GoabButton
+  GoabCircularProgressProps,
+  GoabButton,
 } from "@abgov/react-components";
 import { resetScrollbars } from "../../utils/styling";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -19,17 +20,19 @@ import { TestIdProperty } from "@components/component-properties/common-properti
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import {ExamplesEmpty} from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
+import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesEmpty.tsx";
 
 // == Page props ==
 
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13604";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=622-13604";
 const componentName = "Progress indicator";
 const description = "Provide visual feedback to users while loading.";
 const category = Category.FEEDBACK_AND_ALERTS;
 const relatedComponents = [
+  { link: "/components/linear-progress-indicator", name: "Linear Progress indicator" },
   { link: "/components/file-uploader", name: "File uploader" },
-  { link: "/components/skeleton-loader", name: "Skeleton loading" }
+  { link: "/components/skeleton-loader", name: "Skeleton loading" },
 ];
 type ComponentPropsType = GoabCircularProgressProps;
 type CastingType = {
@@ -37,7 +40,7 @@ type CastingType = {
   [key: string]: unknown;
 };
 
-export default function ProgressIndicatorPage() {
+export default function CircularProgressIndicatorPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     variant: "inline",
     size: "large",
@@ -137,7 +140,7 @@ export default function ProgressIndicatorPage() {
   const [visible, setVisible] = useState<boolean>(true);
 
   function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    const updatedProps = { ...props} as CastingType;
+    const updatedProps = { ...props } as CastingType;
 
     setComponentBindings(bindings);
     setComponentProps(updatedProps);
@@ -155,7 +158,7 @@ export default function ProgressIndicatorPage() {
       // reset body styles after closing the modal, sandbox renders multiple times that not trigger modal component no-scroll destroy effects
       resetScrollbars();
     }, 3000);
-  }
+  };
 
   return (
     <>
@@ -168,24 +171,32 @@ export default function ProgressIndicatorPage() {
         githubLink="Progress indicator"
       />
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange} variableNames={["visible"]}>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
+            <Sandbox
+              properties={componentBindings}
+              onChange={onSandboxChange}
+              variableNames={["visible"]}>
               <CodeSnippet
                 lang="typescript"
                 tags="react"
                 allowCopy={true}
                 code={`
                   const [visible, setVisible] = useState(${visible});
-                  ${componentProps.variant === 'fullscreen' ? `
+                  ${
+                    componentProps.variant === "fullscreen"
+                      ? `
                   function onClick() {
                     setVisible(true);
                     setTimeout(() => {
                       setVisible(false);
                     }, 3000);
-                  }` : ''}
+                  }`
+                      : ""
+                  }
                 `}
               />
               <CodeSnippet
@@ -195,19 +206,28 @@ export default function ProgressIndicatorPage() {
                 code={`
                   export class ExampleComponent {
                     visible = ${visible};
-                    ${componentProps.variant === 'fullscreen' ? `
+                    ${
+                      componentProps.variant === "fullscreen"
+                        ? `
                     onClick() {
                       this.visible = true;
                       setTimeout(() => {
                         this.visible = false;
                       }, 3000);
-                    }` : ''}
+                    }`
+                        : ""
+                    }
                 `}
               />
-              {componentProps.variant === "fullscreen" && <GoabButton onClick={openFullScreenProgress}>Show Fullscreen</GoabButton>}
+              {componentProps.variant === "fullscreen" && (
+                <GoabButton onClick={openFullScreenProgress}>Show Fullscreen</GoabButton>
+              )}
               <GoabCircularProgress {...componentProps} visible={visible} />
             </Sandbox>
-            <ComponentProperties properties={componentProperties} oldProperties={oldComponentProperties} />
+            <ComponentProperties
+              properties={componentProperties}
+              oldProperties={oldComponentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -216,8 +236,7 @@ export default function ProgressIndicatorPage() {
                 Examples
                 <GoabBadge type="information" content="0" />
               </>
-            }
-          >
+            }>
             <ExamplesEmpty />
           </GoabTab>
 

@@ -35,7 +35,6 @@ import TypographyPage from "@routes/design-tokens/typography/Typography";
 import DevelopersOverviewPage from "@routes/get-started/developers/DevelopersOverview";
 import DevelopersSetupPage from "@routes/get-started/developers/DevelopersSetup";
 import DevelopersTechnologiesPage from "@routes/get-started/developers/DevelopersTechnologies";
-import DevelopersVSCodePage from "@routes/get-started/developers/DevelopersVSCode";
 import BugVerificationPage from "@routes/get-started/developers/BugVerification";
 import GetStartedLayout from "@routes/get-started/GetStartedLayout";
 import GetStartedOverviewPage from "@routes/get-started/GetStartedOverview";
@@ -50,7 +49,7 @@ import RoadmapPage from "@routes/get-started/Roadmap";
 import SupportedBrowsersPage from "@routes/get-started/developers/SupportedBrowsers";
 import UxDesignerPage from "@routes/get-started/designers/UxDesigner";
 import UserExperienceGuidelinesPage from "@routes/get-started/UserExperienceGuidelines";
-import { LtsPolicyPage } from "@routes/get-started/LtsPolicyPage.tsx";
+import { OutOfSupportPage } from "@routes/get-started/OutOfSupport";
 
 // Examples Pages
 import { VersionFromUrlProvider } from "@contexts/VersionFromUrlContext.tsx";
@@ -108,7 +107,6 @@ const router = createBrowserRouter(
           <Route path="browsers" element={<SupportedBrowsersPage />} />
           <Route path="setup" element={<DevelopersSetupPage />} />
           <Route path="technologies" element={<DevelopersTechnologiesPage />} />
-          <Route path="vscode" element={<DevelopersVSCodePage />} />
           <Route path="bug" element={<BugVerificationPage />} />
           <Route path="update" element={<DevelopersUpgradePage />} />
         </Route>
@@ -120,8 +118,8 @@ const router = createBrowserRouter(
           <Route index element={<AutomatedAccessibilityPage />} />
         </Route>
         <Route path="component-lifecycle" element={<ComponentLifecyclePage />} />
-        <Route path="lts-policy">
-          <Route index element={<LtsPolicyPage />} />
+        <Route path="out-of-support">
+          <Route index element={<OutOfSupportPage />} />
         </Route>
         <Route path="contribute">
           <Route index element={<ContributePage />} />
