@@ -10,7 +10,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import ICONS from "@routes/components/icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 
 // == Page props ==
 
@@ -89,7 +89,7 @@ export default function BadgePage() {
       label: "Icon type",
       type: "combobox",
       name: "iconType",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {

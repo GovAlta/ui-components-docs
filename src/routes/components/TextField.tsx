@@ -13,7 +13,7 @@ import {
   GoabTab,
   GoabTabs,
 } from "@abgov/react-components";
-import ICONS from "./icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -85,14 +85,14 @@ export default function TextFieldPage() {
       label: "Leading Icon",
       type: "combobox",
       name: "leadingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
       label: "Trailing Icon",
       type: "combobox",
       name: "trailingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {

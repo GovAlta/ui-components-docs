@@ -1,4 +1,3 @@
-import ICONS from "./icons.json";
 import { useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
@@ -15,20 +14,22 @@ import {
   LegacyTestIdProperties, MarginProperty,
   TestIdProperty
 } from "@components/component-properties/common-properties.ts";
+import { getIconOptions } from "@utils/iconUtils";
 
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=24019-471310";
 
 export default function IconsPage() {
+  const iconOptions = getIconOptions(false);
   const [iconsProps, setIconsProps] = useState({
-    type: ICONS[0] as GoabIconType,
+    type: iconOptions[0] as GoabIconType,
   });
   const [iconsBindings, setIconsBindings] = useState<ComponentBinding[]>([
     {
       label: "Type",
       type: "combobox",
       name: "type",
-      options: ICONS,
-      value: ICONS[0],
+      options: iconOptions,
+      value: iconOptions[0],
     },
     {
       label: "Size",
@@ -37,14 +38,6 @@ export default function IconsPage() {
       options: ["", "small", "medium", "large"],
       value: "",
       defaultValue: "medium",
-    },
-    {
-      label: "Theme",
-      type: "list",
-      name: "theme",
-      options: ["", "outline", "filled"],
-      value: "",
-      defaultValue: "outline",
     },
     {
       label: "Opacity",
@@ -90,12 +83,6 @@ export default function IconsPage() {
       type: "small | medium | large",
       description: "Sets the size of icon.",
       defaultValue: "medium",
-    },
-    {
-      name: "theme",
-      type: "outline | filled",
-      description: "Styles the icon to show outline or filled.",
-      defaultValue: "outline",
     },
     {
       name: "opacity",
@@ -147,7 +134,7 @@ export default function IconsPage() {
     {
       name: "type",
       type: "GoabIconType",
-      description: "Sets the icon.",
+      description: "Sets the icon. You can optionally append a theme suffix to control the icon style (e.g. search:filled or search:outline). Defaults to outline if no theme is specified.",
       required: true,
     },
     {
@@ -155,12 +142,6 @@ export default function IconsPage() {
       type: "GoabIconSize (small | medium | large)",
       description: "Sets the size of icon.",
       defaultValue: "medium",
-    },
-    {
-      name: "theme",
-      type: "GoabIconTheme (outline | filled)",
-      description: "Styles the icon to show outline or filled.",
-      defaultValue: "outline",
     },
     {
       name: "inverted",
@@ -195,9 +176,9 @@ export default function IconsPage() {
   ];
 
 
-  function onSandboxChange(iconsBindings: ComponentBinding[], props: Record<string, unknown>) {
-    setIconsBindings(iconsBindings);
-    setIconsProps(props as { type: GoabIconType; [key: string]: unknown });
+  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+    setIconsBindings(bindings);
+    setIconsProps(props as { type: GoabIconType;[key: string]: unknown });
   }
 
   return (
@@ -223,7 +204,10 @@ export default function IconsPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={iconsBindings} onChange={onSandboxChange}>
+            <Sandbox
+              properties={iconsBindings}
+              onChange={onSandboxChange}
+            >
               <GoabIcon {...iconsProps} />
             </Sandbox>
 
@@ -305,9 +289,9 @@ export default function IconsPage() {
               <GoabText size="body-m" mt="none" mb="none">
                 The extended icon set includes the full
                 {" "}<a href="https://ionic.io/ionicons"
-                        target="_blank" rel="noreferrer">
-                Ionicons library.
-              </a>{" "}
+                  target="_blank" rel="noreferrer">
+                  Ionicons library.
+                </a>{" "}
                 When you need additional icons outside of the core icon set, use these icons to maintain a consistent
                 visual language.
               </GoabText>
