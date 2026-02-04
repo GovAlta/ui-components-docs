@@ -13,7 +13,7 @@ import {
   GoabTab,
   GoabTabs,
 } from "@abgov/react-components";
-import ICONS from "./icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet.tsx";
 import { useSandboxFormItem } from "@hooks/useSandboxFormItem.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
@@ -44,12 +44,6 @@ const relatedComponents = [
 
 type ComponentPropsType = Omit<GoabInputProps, "onChange"> & {
   onChange?: (event: GoabInputOnChangeDetail) => void;
-};
-type CastingType = {
-  name: string;
-  value: string;
-  [key: string]: unknown;
-  onChange: (event: GoabInputOnChangeDetail) => void;
 };
 
 export default function TextFieldPage() {
@@ -91,14 +85,14 @@ export default function TextFieldPage() {
       label: "Leading Icon",
       type: "combobox",
       name: "leadingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
       label: "Trailing Icon",
       type: "combobox",
       name: "trailingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
@@ -628,9 +622,9 @@ export default function TextFieldPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   // For sandbox demo function
@@ -654,7 +648,7 @@ export default function TextFieldPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox
+            <Sandbox<ComponentPropsType>
               properties={componentBindings}
               formItemProperties={formItemBindings}
               onChange={onSandboxChange}

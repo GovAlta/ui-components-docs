@@ -58,6 +58,7 @@ import PublicForm from "@examples/public-form.tsx";
 import FilterChipPage from "@routes/components/FilterChip.tsx";
 import TextPage from "@routes/components/Text.tsx";
 import { DrawerPage } from "@routes/components/Drawer.tsx";
+import DataGridPage from "@routes/components/DataGrid.tsx";
 import LinkPage from "@routes/components/Link.tsx";
 import TemporaryNotificationPage from "@routes/components/TemporaryNotification.tsx";
 
@@ -97,7 +98,8 @@ export const ComponentsRouter = () => {
     callout: <CalloutPage />,
     checkbox: <CheckboxPage />,
     "checkbox-list": <CheckboxListPage />,
-    container: <ContainerPage />,
+    "container": <ContainerPage />,
+    "data-grid": <DataGridPage />,
     "date-picker": <DatePickerPage />,
     details: <DetailsPage />,
     divider: <DividerPage />,

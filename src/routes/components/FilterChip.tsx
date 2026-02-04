@@ -35,11 +35,6 @@ const relatedComponents = [
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=911-5909";
 type ComponentPropsType = GoabFilterChipProps;
 
-type CastingType = {
-  content: string;
-  [key: string]: unknown;
-};
-
 export default function FilterChipPage() {
   const [componentProps, setComponentProps] = useState<ComponentPropsType>({
     content: "Chip text",
@@ -108,9 +103,9 @@ export default function FilterChipPage() {
     MarginProperty,
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setComponentBindings(bindings);
-    setComponentProps(props as CastingType);
+    setComponentProps(props);
   }
 
   return (
@@ -127,7 +122,7 @@ export default function FilterChipPage() {
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={componentBindings} onChange={onSandboxChange}>
+            <Sandbox<ComponentPropsType> properties={componentBindings} onChange={onSandboxChange}>
               <GoabFilterChip {...componentProps} />
             </Sandbox>
             <ComponentProperties

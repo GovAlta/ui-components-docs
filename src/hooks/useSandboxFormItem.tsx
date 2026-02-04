@@ -43,7 +43,7 @@ export const useSandboxFormItem = (initialProps: GoabFormItemProps) => {
 
   function onFormItemChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
     setFormItemBindings(bindings);
-    setFormItemProps(props);
+    setFormItemProps(props as GoabFormItemProps);
   }
 
   return { formItemBindings, formItemProps, onFormItemChange };

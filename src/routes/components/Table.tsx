@@ -114,6 +114,7 @@ export default function TablePage() {
         description="A set of structured data that is easy for a user to scan, examine, and compare."
         relatedComponents={[
           { link: "/components/button", name: "Button" },
+          { link: "/components/data-grid", name: "Data grid" },
           { link: "/components/dropdown", name: "Dropdown" },
           { link: "/components/filter-chip", name: "Filter chip" },
           { link: "/components/pagination", name: "Pagination" },

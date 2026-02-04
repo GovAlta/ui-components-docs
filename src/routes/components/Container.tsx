@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
 import {
   ComponentProperties,
@@ -16,6 +16,7 @@ import { ComponentContent } from "@components/component-content/ComponentContent
 const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1789-12623";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
+import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
 
 // == Page props ==
 const componentName = "Container";
@@ -27,11 +28,9 @@ const relatedComponents = [
   { link: "/components/divider", name: "Divider" }
 ];
 type ComponentPropsType = GoabContainerProps;
-type CastingType = {
-  [key: string]: unknown;
-};
 
 export default function ContainerPage() {
+  const { version } = useContext(LanguageVersionContext);
   const [containerProps, setContainerProps] = useState<ComponentPropsType>({});
 
   const [containerBindings, setContainerBindings] = useState<ComponentBinding[]>([
@@ -71,6 +70,20 @@ export default function ContainerPage() {
       label: "Max Width",
       type: "string",
       name: "maxWidth",
+      requirement: "optional",
+      value: "",
+    },
+    {
+      label: "Min Height",
+      type: "string",
+      name: "minHeight",
+      requirement: "optional",
+      value: "",
+    },
+    {
+      label: "Max Height",
+      type: "string",
+      name: "maxHeight",
       requirement: "optional",
       value: "",
     },
@@ -174,6 +187,16 @@ export default function ContainerPage() {
       description: "Sets the maximum width of the container.",
     },
     {
+      name: "minHeight",
+      type: "string",
+      description: "Sets the minimum height of the container.",
+    },
+    {
+      name: "maxHeight",
+      type: "string",
+      description: "Sets the maximum height of the container.",
+    },
+    {
       name: "title",
       lang: "angular",
       type: "TemplateRef<any>",
@@ -213,9 +236,9 @@ export default function ContainerPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setContainerBindings(bindings);
-    setContainerProps(props as CastingType);
+    setContainerProps(props);
   }
 
   return (
@@ -234,7 +257,13 @@ export default function ContainerPage() {
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
             <h2 id="component" style={{ display: "none" }}>Playground</h2>
-            <Sandbox properties={containerBindings} onChange={onSandboxChange} fullWidth>
+            <Sandbox<ComponentPropsType>
+              properties={version === "new"
+                ? containerBindings
+                : containerBindings.filter(b => b.name !== "minHeight" && b.name !== "maxHeight")}
+              onChange={onSandboxChange}
+              fullWidth
+            >
               <GoabContainer {...containerProps}>
                 <h2>Detach to use</h2>
                 <p>Add things inside me</p>

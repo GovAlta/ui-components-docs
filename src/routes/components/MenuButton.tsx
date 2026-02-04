@@ -21,8 +21,8 @@ import { ExamplesEmpty } from "@components/empty-states/examples-empty/ExamplesE
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { ComponentBinding, Sandbox } from "@components/sandbox";
-import { GoabButtonType } from "@abgov/ui-components-common";
 import { CodeSnippet } from "@components/code-snippet/CodeSnippet";
+import { getIconOptions } from "@utils/iconUtils";
 
 const FIGMA_LINK =
   "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=69366-164803";
@@ -37,15 +37,10 @@ const relatedComponents = [
 ];
 
 type ComponentPropsType = GoabMenuButtonProps;
-type CastingType = {
-  text: string,
-  type: GoabButtonType,
-  [key: string]: unknown;
-};
 
 export default function MenuButtonPage() {
   const { version, language } = useContext(LanguageVersionContext);
-  
+
   const [menuButtonProps, setMenuButtonProps] = useState<ComponentPropsType>({
     text: "Menu actions",
     type: "primary",
@@ -65,6 +60,20 @@ export default function MenuButtonPage() {
       options: ["primary", "secondary", "tertiary"],
       value: "primary",
     },
+    {
+      label: "Leading icon",
+      type: "combobox",
+      name: "leadingIcon",
+      options: getIconOptions(),
+      value: "",
+    },
+    {
+      label: "Max width",
+      type: "string",
+      name: "maxWidth",
+      helpText: "Sets the maximum width of the dropdown menu options.",
+      value: "",
+    },
   ]);
 
   const menuButtonProperties: ComponentProperty[] = [
@@ -79,6 +88,16 @@ export default function MenuButtonPage() {
       type: "GoabButtonType (primary | secondary | tertiary | start)",
       description: "Controls the visual style of the trigger button.",
       defaultValue: "primary",
+    },
+    {
+      name: "leadingIcon",
+      type: "GoabIconType",
+      description: "Optional leading icon appearing within the button.",
+    },
+    {
+      name: "maxWidth",
+      type: "string",
+      description: "Sets the maximum width of the dropdown menu.",
     },
     TestIdProperty,
     {
@@ -114,9 +133,9 @@ export default function MenuButtonPage() {
     },
   ];
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
     setMenuButtonBindings(bindings);
-    setMenuButtonProps(props as CastingType);
+    setMenuButtonProps(props);
   }
 
   function handleAction(detail: GoabMenuButtonOnActionDetail) {
@@ -143,7 +162,7 @@ export default function MenuButtonPage() {
               <h2 id="component" style={{ display: "none" }}>
                 Playground
               </h2>
-              <Sandbox properties={menuButtonBindings} onChange={onSandboxChange}>
+              <Sandbox<ComponentPropsType> properties={menuButtonBindings} onChange={onSandboxChange}>
                 <CodeSnippet
                   lang="typescript"
                   tags="angular"

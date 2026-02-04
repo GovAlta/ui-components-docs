@@ -29,10 +29,6 @@ const relatedComponents = [
   { link: "/components/microsite-header", name: "Microsite header" }
 ];
 type ComponentPropsType = GoabAppHeaderProps;
-type CastingType = {
-  // add any required props here
-  [key: string]: unknown;
-};
 export default function AppHeaderPage() {
   const [appHeaderProps, setAppHeaderProps] = useState<ComponentPropsType>({
     url: "www.alberta.ca",
@@ -185,8 +181,8 @@ export default function AppHeaderPage() {
   ];
 
 
-  function onSandboxChange(bindings: ComponentBinding[], props: Record<string, unknown>) {
-    setAppHeaderProps(props as CastingType);
+  function onSandboxChange(bindings: ComponentBinding[], props: ComponentPropsType) {
+    setAppHeaderProps(props);
     setAppHeaderBindings(bindings);
   }
 
@@ -207,7 +203,7 @@ export default function AppHeaderPage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
+            <Sandbox<ComponentPropsType> properties={appHeaderBindings} onChange={onSandboxChange} fullWidth>
               <GoabAppHeader {...appHeaderProps} />
             </Sandbox>
 

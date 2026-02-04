@@ -1,4 +1,5 @@
-[
+// All available icons from Ionicons library
+export const ICONS = [
   "accessibility",
   "add-circle",
   "add",
@@ -167,7 +168,6 @@
   "file-tray-full",
   "file-tray",
   "file-tray-stacked",
-  "filenames.ps1",
   "film",
   "filter-circle",
   "filter",
@@ -503,5 +503,20 @@
   "logo-xing",
   "logo-yahoo",
   "logo-yen",
-  "logo-youtube;"
-]
+  "logo-youtube",
+];
+
+/**
+ * @param includeEmpty - Whether to include an empty string as the first option (default: true)
+ * @returns Array of icon options including :filled variants
+ */
+export function getIconOptions(includeEmpty: boolean = true): string[] {
+  const options: string[] = includeEmpty ? [""] : [];
+
+  for (const icon of ICONS) {
+    options.push(icon);
+    options.push(`${icon}:filled`);
+  }
+
+  return options;
+}

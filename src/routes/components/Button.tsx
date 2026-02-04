@@ -12,7 +12,7 @@ import {
   ComponentProperties,
   ComponentProperty,
 } from "@components/component-properties/ComponentProperties";
-import ICONS from "@routes/components/icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import { ButtonExamples } from "@examples/button/ButtonExamples.tsx";
 import {
@@ -55,14 +55,14 @@ export default function ButtonPage() {
       label: "Leading icon",
       type: "combobox",
       name: "leadingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
       label: "Trailing Icon",
       type: "combobox",
       name: "trailingIcon",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {label: "Width", type: "string", name: "width", value: ""},

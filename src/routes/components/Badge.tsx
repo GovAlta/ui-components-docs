@@ -8,10 +8,9 @@ import {
 } from "@components/component-properties/ComponentProperties.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
 import BadgeExamples from "@examples/badge/BadgeExamples.tsx";
-import { GoabBadgeType } from "@abgov/ui-components-common";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
-import ICONS from "@routes/components/icons.json";
+import { getIconOptions } from "@utils/iconUtils";
 
 // == Page props ==
 
@@ -37,12 +36,6 @@ const relatedComponents = [
 ];
 
 type ComponentPropsType = GoabBadgeProps;
-type CastingType = {
-  // add any required props here
-  type: GoabBadgeType;
-  content: string;
-  [key: string]: unknown;
-};
 
 export default function BadgePage() {
   const [badgeProps, setBadgeProps] = useState<ComponentPropsType>({
@@ -96,7 +89,7 @@ export default function BadgePage() {
       label: "Icon type",
       type: "combobox",
       name: "iconType",
-      options: [""].concat(ICONS),
+      options: getIconOptions(),
       value: "",
     },
     {
@@ -203,9 +196,9 @@ export default function BadgePage() {
     },
   ];
 
-  function onSandboxChange(badgeBindings: ComponentBinding[], props: Record<string, unknown>) {
+  function onSandboxChange(badgeBindings: ComponentBinding[], props: ComponentPropsType) {
     setBadgeBindings(badgeBindings);
-    setBadgeProps(props as CastingType);
+    setBadgeProps(props);
   }
 
   return (
@@ -224,7 +217,7 @@ export default function BadgePage() {
             <h2 id="component" style={{ display: "none" }}>
               Playground
             </h2>
-            <Sandbox properties={badgeBindings} onChange={onSandboxChange}>
+            <Sandbox<ComponentPropsType> properties={badgeBindings} onChange={onSandboxChange}>
               <GoabBadge {...badgeProps} />
             </Sandbox>
             <ComponentProperties
