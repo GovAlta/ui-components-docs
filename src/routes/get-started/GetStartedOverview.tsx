@@ -11,7 +11,7 @@ export default function GetStartedOverviewPage() {
   return (
     <ComponentContent tocCssQuery="h2[id], h3[id]">
       <GoabText size="heading-xl" mb="m" mt="xl">
-        Starting with the design system
+        Getting started with the design system
       </GoabText>
       <GoabText size="body-l" mt="none" mb="xl">
         Start with the design system to build on the research and experience of other service teams and avoid
@@ -70,7 +70,7 @@ export default function GetStartedOverviewPage() {
           </ul>
       </GoabText>
       <GoabText size="heading-s" mt="xl" mb="s">
-        More time for other high value work
+        More time for other high-value work
       </GoabText>
       <GoabText size="body-m">
         Leveraging what exists in the design system saves you time, enabling you to spend more time on other
@@ -92,7 +92,7 @@ export default function GetStartedOverviewPage() {
         Start by using the design system <a href={"/components"}> components</a> and <a
         href={"/examples"}>patterns.</a> You should expect that this will cover about 80% of your needs in a service.
         When usability testing shows that a new solution or an improvement to an existing solution is needed, design a
-        better solution. Use a 3rd party library, code your own, and/or share solutions with other teams.
+        better solution. Use a third-party library, code your own, and/or share solutions with other teams.
       </GoabText>
       <GoabText size="body-m" mb="xl">
         <ol>
