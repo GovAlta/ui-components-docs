@@ -22,10 +22,6 @@ import { HelpButton } from "@components/version-language-switcher/HelpButton";
 import {
   VersionLanguageSwitcher
 } from "@components/version-language-switcher/VersionLanguageSwitcher";
-import { LanguageVersionContext } from "@contexts/LanguageVersionContext";
-import { useContext } from "react";
-import SiteWideNotification from "@components/version-language-switcher/SiteWideNotification";
-
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -38,10 +34,7 @@ function ScrollToTop() {
 }
 
 export default function Root() {
-  const { version } = useContext(LanguageVersionContext);
   const location = useLocation();
-  const showNotification =
-    location.pathname.startsWith("/components") || location.pathname.startsWith("/examples");
   const [visible, setVisibility] = useState<boolean>(false);
   
   // to show temporary notification on examples route, except temporary-notification playground which needs playground bindings
@@ -81,8 +74,7 @@ export default function Root() {
             <Link to="/design-tokens">Tokens</Link>
             <Link to="/get-started/support" className="interactive">Get support</Link>
           </GoabAppHeader>
-          {showNotification && <VersionUpdateNotification version={version} />}
-          <SiteWideNotification />
+          <VersionUpdateNotification />          
           <Outlet />
         </section>
 

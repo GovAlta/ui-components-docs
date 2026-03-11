@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams, Navigate } from "react-router-dom";
 import ComponentsPage from "@routes/components/Components.tsx";
 import ComponentNotFoundPage from "@routes/not-found/NotFound.tsx";
 import AllComponentsPage from "@routes/components/AllComponents.tsx";
@@ -128,6 +128,15 @@ export const ComponentsRouter = () => {
     radio: <RadioPage />,
     "side-menu": <SideMenuPage />,
     "skeleton-loader": <SkeletonPage />,
+    // DS2 (Astro) URL aliases — redirect to DS1 canonical URLs
+    "circular-progress": <Navigate replace to="/components/circular-progress-indicator" />,
+    "file-upload-input": <Navigate replace to="/components/file-uploader" />,
+    "app-header": <Navigate replace to="/components/header" />,
+    icon: <Navigate replace to="/components/icons" />,
+    "linear-progress": <Navigate replace to="/components/linear-progress-indicator" />,
+    notification: <Navigate replace to="/components/notification-banner" />,
+    "radio-group": <Navigate replace to="/components/radio" />,
+    skeleton: <Navigate replace to="/components/skeleton-loader" />,
     spacer: <SpacerPage />,
     table: <TablePage />,
     tabs: <TabsPage />,
