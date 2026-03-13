@@ -6,6 +6,10 @@ import {
 
 type IssueGroup = "Components" | "Examples";
 
+export function getV2Link(pathname: string): string {
+  return `https://design.alberta.ca${pathname}`;
+}
+
 export function toKebabCase(str: string) {
   return str
     .replace(/\s+/g, "-")        // Replace spaces with -

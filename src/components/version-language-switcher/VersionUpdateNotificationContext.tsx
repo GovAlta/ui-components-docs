@@ -25,17 +25,17 @@ export const VersionUpdateNotificationProvider = ({
   const newLinkRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
-    const storedValue = localStorage.getItem(storageKey);
+    const storedValue = sessionStorage.getItem(storageKey);
     setIsDismissed(storedValue === "true");
   }, [version]);
 
   const dismiss = () => {
-    localStorage.setItem(storageKey, "true");
+    sessionStorage.setItem(storageKey, "true");
     setIsDismissed(true);
   };
 
   const reset = () => {
-    localStorage.removeItem(storageKey);
+    sessionStorage.removeItem(storageKey);
     setIsDismissed(false);
   };
 

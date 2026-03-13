@@ -1,5 +1,7 @@
 import { GoabBlock, GoabText, GoabBadge } from "@abgov/react-components";
 import "../component-header/ComponentHeader.css"; // reusing existing styling from component pages
+import { getV2Link } from "../../utils";
+import { useLocation } from "react-router-dom";
 
 interface Props {
   name: string;
@@ -10,6 +12,9 @@ interface Props {
 }
 
 export const ExampleHeader: React.FC<Props> = ({ name, description, githubLink, figmaLink, tags }) => {
+
+  const v2Link = getV2Link(useLocation().pathname);
+
   return (
     <div className="component-header">
 
@@ -46,6 +51,7 @@ export const ExampleHeader: React.FC<Props> = ({ name, description, githubLink, 
         {(githubLink || figmaLink) && (
 
           <GoabBlock gap="l" direction="row">
+            <a className="small" target="_blank" rel="noopener noreferrer" href={v2Link}>New version</a>
             {githubLink && (
               <GoabBlock gap="2xs" direction="row">
                 <goa-icon type="logo-github" size="2xsmall" mb="xs" fillcolor="#666666" />

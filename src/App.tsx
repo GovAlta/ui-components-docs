@@ -5,6 +5,7 @@ import {
   RouterProvider,
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
 } from "react-router-dom";
 import "@abgov/web-components";
 
@@ -150,6 +151,12 @@ const router = createBrowserRouter(
         <Route path="error-messages" element={<ErrorMessagesPage />} />
         <Route path="helper-text" element={<HelperTextPage />} />
       </Route>
+
+      {/* Redirects from DS2 (Astro) canonical URLs back to this site's canonical URLs */}
+      <Route path="tokens" element={<Navigate replace to="/design-tokens" />} />
+      <Route path="support" element={<Navigate replace to="/get-started/support" />} />
+      {/* Old URL alias — both sites use the compact version as canonical */}
+      <Route path="/examples/show-multiple-actions-in-a-table" element={<Navigate replace to="/examples/show-multiple-actions-in-a-compact-table" />} />
 
       {/* Examples Pages */}
       <Route path="/examples" element={<ExamplesLayout />}>

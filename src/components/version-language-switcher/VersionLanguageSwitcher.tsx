@@ -3,7 +3,7 @@ import {
   GoabPopover
 } from "@abgov/react-components";
 import {
-  ANGULAR_VERSIONS, getVersionedUrlPath, Language, LanguageVersion,
+  ANGULAR_VERSIONS, DS_V2_URL, getVersionedUrlPath, Language, LanguageVersion,
   VERSIONED_ANGULAR_URL_SEGMENT,
   VERSIONED_REACT_URL_SEGMENT, REACT_VERSIONS
 } from "./version-language-constants.ts";
@@ -73,7 +73,8 @@ export const VersionLanguageSwitcher = () => {
     }, 0); // timeout related to popover collapse
   };
 
-  const updateVersion = (newValue: "old" | "new") => {
+  const updateVersion = (newValue: LanguageVersion) => {
+    if (newValue === "next") return;
     setTimeout(() => {
       setVersion(newValue);
       updateURL("version", newValue);
@@ -87,9 +88,10 @@ export const VersionLanguageSwitcher = () => {
 
   const getCurrentVersionLabel = (language: string, version: string) => {
     if (language === "react") {
-      return version === "new" ? REACT_VERSIONS.NEW.label : REACT_VERSIONS.OLD.label;
-    } if (language === "angular") {
-      return version === "new" ? ANGULAR_VERSIONS.NEW.label : ANGULAR_VERSIONS.OLD.label;
+      return version === "next" ? REACT_VERSIONS.NEXT.label : version === "new" ? REACT_VERSIONS.NEW.label : REACT_VERSIONS.OLD.label;
+    }
+    if (language === "angular") {
+      return version === "next" ? ANGULAR_VERSIONS.NEXT.label : version === "new" ? ANGULAR_VERSIONS.NEW.label : ANGULAR_VERSIONS.OLD.label;
     }
   }
 
@@ -119,11 +121,20 @@ export const VersionLanguageSwitcher = () => {
         </div>
       } padded={false}>
         <>
-          {["new", "old"].map(ver => (
-            <a key={ver} href={generateHyperlink(ver as LanguageVersion)} className={`version-language-switcher__menu ${version === ver ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateVersion(ver as LanguageVersion)}>
-              {getCurrentVersionLabel(language, ver)}
-            </a>
-          ))}
+          {["next", "new", "old"].map(ver => {
+            if (ver === "next") {
+              return (
+                <a key={ver} href={DS_V2_URL} target="_blank" rel="noopener noreferrer" className="version-language-switcher__menu no-external-icon">
+                  {getCurrentVersionLabel(language, ver)}
+                </a>
+              );
+            }
+            return (
+              <a key={ver} href={generateHyperlink(ver as LanguageVersion)} className={`version-language-switcher__menu ${version === ver ? "version-language-switcher__menu--current" : ""}`} onClick={() => updateVersion(ver as LanguageVersion)}>
+                {getCurrentVersionLabel(language, ver)}
+              </a>
+            );
+          })}
         </>
       </GoabPopover>
     </div>

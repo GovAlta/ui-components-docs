@@ -1,4 +1,4 @@
-export type LanguageVersion = "old" | "new";
+export type LanguageVersion = "old" | "new" | "next";
 export type Language = "react" | "angular";
 export const ANGULAR_VERSIONS = {
   OLD: {
@@ -8,6 +8,10 @@ export const ANGULAR_VERSIONS = {
   NEW: {
     label: "v4.0.0+",
     value: "new"
+  },
+  NEXT: {
+    label: "v5.0.0+",
+    value: "next"
   }
 }
 export const REACT_VERSIONS = {
@@ -18,8 +22,14 @@ export const REACT_VERSIONS = {
   NEW: {
     label: "v6.0.0+",
     value: "new"
+  },
+  NEXT: {
+    label: "v7.0.0+",
+    value: "next"
   }
 }
+
+export const DS_V2_URL = "https://design.alberta.ca/";
 
 export const LOCAL_STORAGE_LANGUAGE_KEY = "goa-docs-lang";
 export const LOCAL_STORAGE_VERSION_KEY = "goa-docs-version";
