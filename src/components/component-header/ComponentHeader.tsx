@@ -1,8 +1,8 @@
 import { GoabBadge, GoabBlock, GoabText } from "@abgov/react-components";
 import "./ComponentHeader.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { toSentenceCase, fetchAllIssueCounts, fetchComponentMetadataFromProject } from "../../utils";
+import { toSentenceCase, fetchAllIssueCounts, fetchComponentMetadataFromProject, getV2Link } from "../../utils";
 
 export enum Category {
   CONTENT_AND_LAYOUT = "Content and layout",
@@ -23,6 +23,7 @@ interface Props {
 
 export const ComponentHeader: React.FC<Props> = (props) => {
   const [issueCount, setIssueCount] = useState<number | null>(null);
+  const v2Link = getV2Link(useLocation().pathname);
 
   useEffect(() => {
     if (!props.githubLink) return;
@@ -49,6 +50,7 @@ export const ComponentHeader: React.FC<Props> = (props) => {
         </GoabText>
         {(props.githubLink || props.figmaLink) && (
           <GoabBlock gap="l" direction="row" mt="l">
+            <a className="small" target="_blank" rel="noopener noreferrer" href={v2Link}>New version</a>
             {/* GitHub Issues link, if we have a "githubLink" */}
             <GoabBlock gap="2xs" direction="row">
               {props.githubLink && (
