@@ -6,7 +6,7 @@ import { getV2Link } from "../../utils";
 
 export function VersionUpdateNotification() {
   const { isDismissed, dismiss, newLinkRef } = useVersionUpdateNotification();
-  const v2UpgradeLink = getV2Link("/upgrade-guide");
+  const v2UpgradeLink = getV2Link("/get-started/migration-guide");
 
   useEffect(() => {
     const el = document.querySelector("goa-notification");
