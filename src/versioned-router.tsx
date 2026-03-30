@@ -1,4 +1,4 @@
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useParams, Navigate } from "react-router-dom";
 import ComponentsPage from "@routes/components/Components.tsx";
 import ComponentNotFoundPage from "@routes/not-found/NotFound.tsx";
 import AllComponentsPage from "@routes/components/AllComponents.tsx";
@@ -33,6 +33,7 @@ import PaginationPage from "@routes/components/Pagination.tsx";
 import PopoverPage from "@routes/components/Popover.tsx";
 import CircularProgressIndicatorPage from "@routes/components/CircularProgressIndicator.tsx";
 import LinearProgressIndicatorPage from "@routes/components/LinearProgressIndicator.tsx";
+import PushDrawerPage from "@routes/components/PushDrawer.tsx";
 import RadioPage from "@routes/components/Radio.tsx";
 import SideMenuPage from "@routes/components/SideMenu.tsx";
 import SkeletonPage from "@routes/components/Skeleton.tsx";
@@ -123,9 +124,19 @@ export const ComponentsRouter = () => {
     popover: <PopoverPage />,
     "circular-progress-indicator": <CircularProgressIndicatorPage />,
     "linear-progress-indicator": <LinearProgressIndicatorPage />,
+    "push-drawer": <PushDrawerPage />,
     radio: <RadioPage />,
     "side-menu": <SideMenuPage />,
     "skeleton-loader": <SkeletonPage />,
+    // DS2 (Astro) URL aliases — redirect to DS1 canonical URLs
+    "circular-progress": <Navigate replace to="/components/circular-progress-indicator" />,
+    "file-upload-input": <Navigate replace to="/components/file-uploader" />,
+    "app-header": <Navigate replace to="/components/header" />,
+    icon: <Navigate replace to="/components/icons" />,
+    "linear-progress": <Navigate replace to="/components/linear-progress-indicator" />,
+    notification: <Navigate replace to="/components/notification-banner" />,
+    "radio-group": <Navigate replace to="/components/radio" />,
+    skeleton: <Navigate replace to="/components/skeleton-loader" />,
     spacer: <SpacerPage />,
     table: <TablePage />,
     tabs: <TabsPage />,

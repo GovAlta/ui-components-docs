@@ -7,13 +7,15 @@ import {
 import { Category, ComponentHeader } from "@components/component-header/ComponentHeader";
 import {
   GoabBadge,
-  GoabContainer, GoabContainerProps,
+  GoabContainer,
+  GoabContainerProps,
   GoabTab,
-  GoabTabs
+  GoabTabs,
 } from "@abgov/react-components";
 import ContainerExamples from "@examples/container/ContainerExamples.tsx";
 import { ComponentContent } from "@components/component-content/ComponentContent";
-const FIGMA_LINK = "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1789-12623";
+const FIGMA_LINK =
+  "https://www.figma.com/design/3pb2IK8s2QUqWieH79KdN7/%E2%9D%96-Component-library-%7C-DDD?node-id=1789-12623";
 import { DesignEmpty } from "@components/empty-states/design-empty/DesignEmpty.tsx";
 import { AccessibilityEmpty } from "@components/empty-states/accessibility-empty/AccessibilityEmpty.tsx";
 import { LanguageVersionContext } from "@contexts/LanguageVersionContext.tsx";
@@ -25,7 +27,7 @@ const category = Category.CONTENT_AND_LAYOUT;
 const relatedComponents = [
   { link: "/components/accordion", name: "Accordion" },
   { link: "/components/details", name: "Details" },
-  { link: "/components/divider", name: "Divider" }
+  { link: "/components/divider", name: "Divider" },
 ];
 type ComponentPropsType = GoabContainerProps;
 
@@ -64,7 +66,7 @@ export default function ContainerPage() {
       name: "width",
       options: ["full", "content"],
       value: "full",
-      defaultValue: "full"
+      defaultValue: "full",
     },
     {
       label: "Max Width",
@@ -124,7 +126,7 @@ export default function ContainerPage() {
       name: "width",
       type: "full | content",
       defaultValue: "full",
-      description: "Sets the width of the container."
+      description: "Sets the width of the container.",
     },
     {
       name: "maxWidth",
@@ -179,7 +181,7 @@ export default function ContainerPage() {
       name: "width",
       type: "GoabContainerWidth (full | content)",
       defaultValue: "full",
-      description: "Sets the width of the container."
+      description: "Sets the width of the container.",
     },
     {
       name: "maxWidth",
@@ -253,23 +255,28 @@ export default function ContainerPage() {
       />
 
       <ComponentContent tocCssQuery="goa-tab[open=true] :is(h2[id], h3[id])">
-
         <GoabTabs initialTab={1}>
           <GoabTab heading="Code playground">
-            <h2 id="component" style={{ display: "none" }}>Playground</h2>
+            <h2 id="component" style={{ display: "none" }}>
+              Playground
+            </h2>
             <Sandbox<ComponentPropsType>
-              properties={version === "new"
-                ? containerBindings
-                : containerBindings.filter(b => b.name !== "minHeight" && b.name !== "maxHeight")}
+              properties={
+                version === "new"
+                  ? containerBindings
+                  : containerBindings.filter(b => b.name !== "minHeight" && b.name !== "maxHeight")
+              }
               onChange={onSandboxChange}
-              fullWidth
-            >
+              fullWidth>
               <GoabContainer {...containerProps}>
                 <h2>Detach to use</h2>
                 <p>Add things inside me</p>
               </GoabContainer>
             </Sandbox>
-            <ComponentProperties oldProperties={oldComponentProperties} properties={componentProperties} />
+            <ComponentProperties
+              oldProperties={oldComponentProperties}
+              properties={componentProperties}
+            />
           </GoabTab>
 
           <GoabTab
@@ -278,8 +285,7 @@ export default function ContainerPage() {
                 Examples
                 <GoabBadge type="information" content="4" />
               </>
-            }
-          >
+            }>
             <ContainerExamples />
           </GoabTab>
 

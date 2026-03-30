@@ -104,7 +104,7 @@ export class AngularReactiveSerializer extends BaseSerializer implements Seriali
     const oldPrefix = "goa";
     let tail = name.replace(currentPrefix, "");
 
-    if (tail === "TextArea" && this.version === "new") {
+    if (tail === "TextArea") {
       tail = "Textarea"
     }
 
