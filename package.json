@@ -9,8 +9,7 @@
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "make:route": "./.scripts/make_route.sh",
-    "prettier": "npx prettier . --write",
-    "postinstall": "sh ./.ci-urjpai.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "prettier": "npx prettier . --write"
   },
   "dependencies": {
     "@abgov/react-components": "6.11.0",
